@@ -1,0 +1,331 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    emoji: '🧬', name: 'Darwin', subtitle: 'AI Landing Page Evolution',
+    status: 'live', statusLabel: '🟢 Active', priority: '#1',
+    summary: 'AI-powered A/B testing that auto-optimizes landing pages using natural selection',
+    tech: 'Astro + Tailwind, evolve.js SDK (5.7KB), Firestore, Vercel',
+    revenue: 'SaaS — Pro £29/mo, Growth £99/mo, Enterprise custom',
+    metrics: '2 live experiments, SDK collecting data, waitlist growing',
+    nextMilestone: 'Accumulate experiment data for credible case studies',
+    effort: '2-3 weeks',
+    href: '/darwin',
+  },
+  {
+    emoji: '🍽️', name: 'Chowdown', subtitle: 'AI Macro Tracking',
+    status: 'live', statusLabel: '🟢 Active', priority: '#2',
+    summary: 'Free-forever AI food scanning app that challenges paid competitors',
+    tech: 'React/Vite/Firebase, Gemini AI, Vercel',
+    revenue: 'Free forever + donations (Buy Me a Coffee)',
+    metrics: '~6-8 users, 11 blog posts live, social accounts active',
+    nextMilestone: 'Reddit organic engagement (starting Feb 5)',
+    effort: 'Ongoing marketing execution',
+    href: '/chowdown',
+  },
+  {
+    emoji: '🧭', name: 'Pocket Guide', subtitle: 'AI Travel Companion',
+    status: 'polishing', statusLabel: '🟡 Paused', priority: '#3',
+    summary: 'Photo → AI identifies → 3-min voice guide for travelers',
+    tech: 'Built, needs documentation',
+    revenue: 'Freemium (premium voice guides)',
+    metrics: 'Working prototype',
+    nextMilestone: 'Polish UX for summer travel season',
+    effort: '~1 week',
+  },
+  {
+    emoji: '🌱', name: 'Root Juice', subtitle: 'Plant Care Tracker',
+    status: 'polishing', statusLabel: '🟡 Paused', priority: '#4',
+    summary: 'Photo ID plants → smart watering schedules',
+    tech: 'Built, needs documentation',
+    revenue: 'Freemium / subscriptions',
+    metrics: 'Working prototype',
+    nextMilestone: 'Polish for release',
+    effort: '~1 week',
+  },
+  {
+    emoji: '📖', name: 'Story Time', subtitle: 'Kids Story Creator',
+    status: 'research', statusLabel: '⚪ Idea Stage', priority: '#5',
+    summary: 'Guided co-creation → AI generates → ElevenLabs reads aloud',
+    tech: 'To be determined',
+    revenue: 'Subscriptions / premium voices',
+    metrics: 'Research complete',
+    nextMilestone: 'MVP development',
+    effort: '4-6 weeks',
+  },
+  {
+    emoji: '📚', name: 'Book Social', subtitle: 'Social Reading Platform',
+    status: 'research', statusLabel: '⚪ Idea Stage', priority: '#6',
+    summary: 'Kindle-linked social reading with position-aware comments',
+    tech: 'To be determined',
+    revenue: 'Subscriptions / premium features',
+    metrics: 'Research complete',
+    nextMilestone: 'MVP development',
+    effort: '6-8 weeks',
+  },
+  {
+    emoji: '🚗', name: 'Stitch', subtitle: 'Traffic Enforcement',
+    status: 'research', statusLabel: '⚪ Idea Stage', priority: '#7',
+    summary: 'Crowdsourced traffic violation reporting via voice',
+    tech: 'To be determined',
+    revenue: 'Government partnerships / subscriptions',
+    metrics: 'Research complete',
+    nextMilestone: 'Legal framework research',
+    effort: '3-6 months',
+  },
+];
+
+const cronJobs = [
+  { name: 'Morning Briefing', schedule: '9am UK daily', desc: 'Calendar, emails, weather summary' },
+  { name: 'Blog Publisher', schedule: '9am UK Mon/Wed/Fri', desc: 'Auto-publish Chowdown blog + cross-post' },
+  { name: 'Twitter Engagement', schedule: '3x daily', desc: 'Search, draft replies, follows (drafts only)' },
+  { name: 'Darwin Analyser', schedule: 'Every 4 hours', desc: 'Run statistical analysis on experiments' },
+  { name: 'Security Scan', schedule: '10am UK daily', desc: 'Vulnerability monitoring to The Keep' },
+];
+
+const keyDates = [
+  { date: 'Feb 5', action: 'Reddit engagement ready', why: 'Account 5+ days old' },
+  { date: 'Feb 7', action: 'Cancel X Premium', why: 'Avoid £98 auto-renewal' },
+  { date: 'Summer 2026', action: 'Pocket Guide opportunity', why: 'Travel season peak' },
+];
+---
+
+<Layout title="Dashboard" description="Live status of all seven products: priorities, metrics, automation status, and what's next.">
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-8">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-4xl">📊</span>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-white">Project Dashboard</h1>
+        <p class="text-gray-400 text-sm font-mono mt-1">Last Updated: February 2, 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+
+    <!-- Quick Status Overview -->
+    <div class="overflow-x-auto mb-12">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-navy-600">
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Project</th>
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Status</th>
+            <th class="text-left py-3 px-4 text-gray-400 font-medium hidden sm:table-cell">Revenue Potential</th>
+            <th class="text-center py-3 px-4 text-gray-400 font-medium">Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projects.map(p => (
+            <tr class="border-b border-navy-700/50 hover:bg-navy-800/30 transition-colors">
+              <td class="py-3 px-4">
+                <span class="text-lg mr-2">{p.emoji}</span>
+                <span class="text-white font-medium">{p.name}</span>
+              </td>
+              <td class="py-3 px-4">
+                <span class:list={[
+                  p.status === 'live' && 'badge-live',
+                  p.status === 'polishing' && 'badge-polishing',
+                  p.status === 'research' && 'badge-research',
+                ]}>
+                  {p.statusLabel}
+                </span>
+              </td>
+              <td class="py-3 px-4 text-gray-400 hidden sm:table-cell">{p.revenue}</td>
+              <td class="py-3 px-4 text-center">
+                <span class="text-amber-400 font-mono font-bold">{p.priority}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="prose-factory">
+      <h2>Project Details</h2>
+    </div>
+
+    <div class="space-y-5 my-8">
+      {projects.map(p => (
+        <div class:list={[
+          "card",
+          p.status === 'live' && "border-green-500/20",
+          p.status === 'polishing' && "border-yellow-500/20",
+        ]}>
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">{p.emoji}</span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-white font-bold text-lg">{p.name}</h3>
+                  <span class:list={[
+                    p.status === 'live' && 'badge-live',
+                    p.status === 'polishing' && 'badge-polishing',
+                    p.status === 'research' && 'badge-research',
+                  ]}>{p.statusLabel}</span>
+                </div>
+                <p class="text-gray-500 text-sm">{p.subtitle}</p>
+              </div>
+            </div>
+            <span class="text-amber-400 font-mono font-bold text-lg">{p.priority}</span>
+          </div>
+
+          <p class="text-gray-300 text-sm mb-4">{p.summary}</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <div class="p-2 bg-navy-900/50 rounded-lg">
+              <span class="text-gray-500 block mb-0.5">Tech Stack</span>
+              <span class="text-gray-300">{p.tech}</span>
+            </div>
+            <div class="p-2 bg-navy-900/50 rounded-lg">
+              <span class="text-gray-500 block mb-0.5">Revenue Model</span>
+              <span class="text-gray-300">{p.revenue}</span>
+            </div>
+            <div class="p-2 bg-navy-900/50 rounded-lg">
+              <span class="text-gray-500 block mb-0.5">Current Metrics</span>
+              <span class="text-gray-300">{p.metrics}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mt-4 pt-3 border-t border-navy-700/30">
+            <div class="text-sm">
+              <span class="text-gray-500">Next:</span>
+              <span class="text-amber-400 ml-1">{p.nextMilestone}</span>
+            </div>
+            <span class="text-gray-500 text-xs font-mono">{p.effort}</span>
+          </div>
+
+          {p.href && (
+            <a href={p.href} class="inline-block mt-3 text-amber-400 text-sm hover:text-amber-300 transition-colors">
+              Read deep dive →
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Automation Status -->
+    <div class="prose-factory">
+      <h2>🤖 Automation Status</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
+      {cronJobs.map(job => (
+        <div class="card !p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-green-400 text-xs">●</span>
+            <h4 class="text-white font-semibold text-sm">{job.name}</h4>
+          </div>
+          <p class="text-gray-400 text-xs mb-1">{job.desc}</p>
+          <span class="text-amber-500/60 text-xs font-mono">{job.schedule}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="card my-6">
+      <h3 class="text-white font-bold mb-3">Automated Pipelines</h3>
+      <div class="space-y-2 text-sm">
+        <div class="flex items-center gap-3">
+          <span class="text-green-400">✅</span>
+          <span class="text-gray-300">Blog Publishing (Chowdown → Dev.to + Hashnode)</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-red-400">🔴</span>
+          <span class="text-gray-400">Twitter Cross-posting (blocked — datacenter IP issues)</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-green-400">✅</span>
+          <span class="text-gray-300">Dev.to + Hashnode automated, Medium manual</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Dates -->
+    <div class="prose-factory">
+      <h2>📅 Key Dates</h2>
+    </div>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-navy-600">
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Date</th>
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Action</th>
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          {keyDates.map(d => (
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 text-amber-400 font-mono font-medium">{d.date}</td>
+              <td class="py-3 px-4 text-white">{d.action}</td>
+              <td class="py-3 px-4 text-gray-400">{d.why}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Strategy -->
+    <div class="prose-factory">
+      <h2>🎯 Strategic Recommendations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+      <div class="card">
+        <h3 class="text-white font-bold mb-3">Focus Areas</h3>
+        <ol class="space-y-2 text-sm">
+          <li class="flex items-start gap-2 text-gray-300">
+            <span class="text-amber-400 font-bold">1.</span>
+            <span><strong class="text-white">Darwin:</strong> Let experiments run, accumulate data for HN launch</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-300">
+            <span class="text-amber-400 font-bold">2.</span>
+            <span><strong class="text-white">Chowdown:</strong> Execute marketing playbook (Reddit, influencers)</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-300">
+            <span class="text-amber-400 font-bold">3.</span>
+            <span><strong class="text-white">Pocket Guide:</strong> Quick polish for summer travel season</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3 class="text-white font-bold mb-3">Resource Allocation</h3>
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-300">Darwin + Chowdown</span>
+              <span class="text-amber-400 font-mono">70%</span>
+            </div>
+            <div class="w-full bg-navy-900 rounded-full h-2"><div class="bg-amber-500 h-2 rounded-full" style="width: 70%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-300">Pocket Guide</span>
+              <span class="text-amber-400 font-mono">20%</span>
+            </div>
+            <div class="w-full bg-navy-900 rounded-full h-2"><div class="bg-amber-500/60 h-2 rounded-full" style="width: 20%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-300">Admin / Setup</span>
+              <span class="text-amber-400 font-mono">10%</span>
+            </div>
+            <div class="w-full bg-navy-900 rounded-full h-2"><div class="bg-amber-500/30 h-2 rounded-full" style="width: 10%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Takeaway -->
+    <div class="mt-12 p-6 bg-amber-500/5 border border-amber-500/20 rounded-xl text-center">
+      <p class="text-amber-400 font-bold text-lg mb-2">💡 2-Minute Takeaway</p>
+      <p class="text-gray-300 text-sm">Darwin collecting data (let it cook). Chowdown ready for Reddit push Feb 5. Pocket Guide quick win for summer. Everything else can wait.</p>
+    </div>
+  </div>
+
+</Layout>

@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  { darwin: 'Commits winners to code', darwinVal: '✅', vwo: '❌', optimizely: '❌', abtasty: '❌' },
+  { darwin: 'Permanent runtime layer', darwinVal: '❌', vwo: '✅', optimizely: '✅', abtasty: '✅' },
+  { darwin: 'Performance impact', darwinVal: 'Temporary', vwo: 'Permanent', optimizely: 'Permanent', abtasty: 'Permanent' },
+  { darwin: 'Starting price', darwinVal: '£29/mo', vwo: '£199/mo', optimizely: '£79/mo', abtasty: 'Enterprise' },
+  { darwin: 'AI-generated variants', darwinVal: '✅', vwo: 'Limited', optimizely: 'Limited', abtasty: '❌' },
+  { darwin: 'Setup time', darwinVal: '5 minutes', vwo: 'Hours', optimizely: 'Hours', abtasty: 'Days' },
+];
+
+const viralFeatures = [
+  { icon: '🔮', title: 'Predict the Winner', desc: 'Vote on which variant will win, see live percentages' },
+  { icon: '📊', title: 'Evolution Timeline', desc: 'Watch the page evolve over time with before/after comparisons' },
+  { icon: '🗳️', title: 'Vote on Next Experiment', desc: 'The community decides what gets tested next' },
+  { icon: '💡', title: 'Suggest a Mutation', desc: 'Propose changes (140 chars, one per day, anti-troll)' },
+];
+
+const roadmap = [
+  'Accumulate experiment data for credible case studies',
+  'Chrome Extension: "What If?" — let anyone A/B test any webpage visually',
+  'Git integration for PR-based variant management',
+  'CMS connectors (Webflow, WordPress, Shopify)',
+  'Autopilot mode: AI generates AND selects winning variants autonomously',
+];
+
+const steps = [
+  { step: '1', icon: '📋', title: 'Install the SDK', desc: 'One <script> tag (5.7KB, lighter than most analytics)' },
+  { step: '2', icon: '🏷️', title: 'Tag elements to test', desc: 'Mark what can mutate — headlines, CTAs, images, layouts' },
+  { step: '3', icon: '🧬', title: 'Darwin generates variants', desc: 'AI creates alternatives based on best practices' },
+  { step: '4', icon: '👥', title: 'Visitors see different versions', desc: 'Standard A/B split with statistical rigour' },
+  { step: '5', icon: '🏆', title: 'Winner gets committed', desc: 'Via Git PR or CMS API push' },
+  { step: '6', icon: '🚀', title: 'SDK removed', desc: 'No permanent performance cost' },
+];
+---
+
+<Layout title="Darwin" description="AI-powered A/B testing where page variants compete for survival. The fittest version wins and gets committed to your code.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">🧬</span>
+      <div>
+        <div class="flex items-center gap-3">
+          <h1 class="text-4xl md:text-5xl font-black text-white">Darwin</h1>
+          <span class="badge-live">🟢 Live</span>
+        </div>
+        <p class="text-amber-400 font-medium mt-1">The Evolution Engine</p>
+      </div>
+    </div>
+
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mb-6">
+      What if landing page optimisation worked like natural selection? AI-powered A/B testing where page variants compete for survival — the fittest version wins, gets committed to your actual source code, and the mutation retires.
+    </p>
+
+    <a href="https://darwin.page" target="_blank" rel="noopener" class="btn-primary">
+      Visit darwin.page →
+    </a>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+
+    <!-- How it works -->
+    <div class="prose-factory">
+      <h2>How It Works</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+      {steps.map(s => (
+        <div class="card !p-4 relative">
+          <div class="absolute top-3 right-3 text-amber-500/20 font-mono font-black text-3xl">{s.step}</div>
+          <span class="text-2xl mb-2 block">{s.icon}</span>
+          <h3 class="text-white font-bold text-sm mb-1">{s.title}</h3>
+          <p class="text-gray-400 text-xs">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-factory">
+      <p>Traditional A/B testing tools (VWO, Optimizely, AB Tasty) inject JavaScript that sits on your page <strong>forever</strong>, adding latency to every visit. Darwin is different: test, find a winner, commit the change, move on.</p>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="prose-factory">
+      <h2>Darwin vs The Competition</h2>
+    </div>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-navy-600">
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Feature</th>
+            <th class="text-center py-3 px-4 text-amber-400 font-bold">Darwin</th>
+            <th class="text-center py-3 px-4 text-gray-400 font-medium">VWO</th>
+            <th class="text-center py-3 px-4 text-gray-400 font-medium">Optimizely</th>
+            <th class="text-center py-3 px-4 text-gray-400 font-medium">AB Tasty</th>
+          </tr>
+        </thead>
+        <tbody>
+          {features.map(f => (
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 text-white font-medium">{f.darwin}</td>
+              <td class="py-3 px-4 text-center text-amber-400 font-medium">{f.darwinVal}</td>
+              <td class="py-3 px-4 text-center text-gray-400">{f.vwo}</td>
+              <td class="py-3 px-4 text-center text-gray-400">{f.optimizely}</td>
+              <td class="py-3 px-4 text-center text-gray-400">{f.abtasty}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Viral Angle -->
+    <div class="prose-factory">
+      <h2>The Viral Angle</h2>
+      <p>Darwin's landing page itself is an experiment. Visitors can participate — turning optimisation into a spectator sport:</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+      {viralFeatures.map(f => (
+        <div class="card !p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-xl">{f.icon}</span>
+            <div>
+              <h3 class="text-white font-semibold text-sm">{f.title}</h3>
+              <p class="text-gray-400 text-xs mt-1">{f.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pricing -->
+    <div class="prose-factory">
+      <h2>Pricing</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+      <div class="card text-center">
+        <div class="text-gray-400 text-sm mb-2">Pro</div>
+        <div class="text-3xl font-black text-white mb-1">£29<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+        <div class="text-gray-500 text-xs">Indie developers & small sites</div>
+      </div>
+      <div class="card text-center border-amber-500/30 glow">
+        <div class="text-amber-400 text-sm font-medium mb-2">Growth</div>
+        <div class="text-3xl font-black text-white mb-1">£99<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+        <div class="text-gray-500 text-xs">Growing businesses</div>
+      </div>
+      <div class="card text-center">
+        <div class="text-gray-400 text-sm mb-2">Enterprise</div>
+        <div class="text-3xl font-black text-white mb-1">Custom</div>
+        <div class="text-gray-500 text-xs">Large teams & agencies</div>
+      </div>
+    </div>
+    <p class="text-center text-gray-500 text-sm">14-day Pro trial. No credit card required.</p>
+
+    <!-- Current Status -->
+    <div class="prose-factory mt-8">
+      <h2>Current Status</h2>
+    </div>
+
+    <div class="card my-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+        <div class="flex items-center gap-2"><span class="text-green-400">✓</span><span class="text-gray-300">Landing page live at darwin.page</span></div>
+        <div class="flex items-center gap-2"><span class="text-green-400">✓</span><span class="text-gray-300">SDK (evolve.js) collecting real session data</span></div>
+        <div class="flex items-center gap-2"><span class="text-green-400">✓</span><span class="text-gray-300">2 experiments running</span></div>
+        <div class="flex items-center gap-2"><span class="text-green-400">✓</span><span class="text-gray-300">Statistical analyser running every 4 hours</span></div>
+        <div class="flex items-center gap-2"><span class="text-green-400">✓</span><span class="text-gray-300">9 SEO blog posts ready</span></div>
+        <div class="flex items-center gap-2"><span class="text-amber-400">⏳</span><span class="text-gray-300">Waiting for data before HN launch</span></div>
+      </div>
+    </div>
+
+    <!-- Roadmap -->
+    <div class="prose-factory">
+      <h2>What's Next</h2>
+    </div>
+
+    <div class="space-y-3 my-6">
+      {roadmap.map((item, i) => (
+        <div class="flex items-start gap-3 p-3 bg-navy-800/40 rounded-lg">
+          <div class="w-6 h-6 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-400 font-mono text-xs flex-shrink-0">{i + 1}</div>
+          <span class="text-gray-300 text-sm">{item}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-factory">
+      <hr />
+      <p><em>Darwin is the #1 priority product in The Factory. The thesis: if you make A/B testing as easy as installing analytics, every website will do it.</em></p>
+    </div>
+  </div>
+
+</Layout>

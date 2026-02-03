@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tactics = [
+  { num: '01', icon: '✍️', title: 'Content Machine', subtitle: '3x Weekly Publishing', desc: 'Agent monitors industry news, drafts articles targeting high-value keywords, optimises for SEO, cross-posts to Medium, LinkedIn, and company blogs, schedules social promotion.' },
+  { num: '02', icon: '📱', title: 'Social Media Ops', subtitle: '3x Daily Engagement', desc: 'Monitors Twitter, LinkedIn, Reddit for opportunities. Engages authentically with potential customers. Identifies trending topics. Manages DMs and builds relationships at scale.' },
+  { num: '03', icon: '🔍', title: 'Competitive Intel', subtitle: 'Daily Market Monitoring', desc: 'Tracks competitor websites for changes. Monitors social media for new initiatives. Analyses job postings for strategic direction. Creates weekly intelligence briefs.' },
+  { num: '04', icon: '🐛', title: 'Code & Bug Fixes', subtitle: 'Autonomous Dev Support', desc: 'Monitors error logs and performance. Investigates issues and proposes fixes. Reviews PRs for quality and security. Maintains documentation and tech debt backlogs.' },
+  { num: '05', icon: '📈', title: 'SEO Automation', subtitle: 'Systematic Optimization', desc: 'Keyword research, content optimisation, directory submissions, ranking monitoring, internal linking strategies. Consistent SEO work that compounds over time.' },
+  { num: '06', icon: '🎯', title: 'Customer Research', subtitle: 'Continuous Market Intel', desc: 'Monitors subreddits for pain points. Analyses forums for feature requests. Tracks conversations about industry problems. Creates persona updates from real feedback.' },
+  { num: '07', icon: '📋', title: 'Project Management', subtitle: 'Memory & Coordination', desc: 'Maintains project status across initiatives. Updates stakeholders. Manages deadlines. Coordinates between tools. Maintains institutional memory as projects evolve.' },
+];
+
+const agentVsHuman = {
+  agent: [
+    '24/7 operation — no sleep, weekends, or sick days',
+    'Perfect memory — every conversation permanently stored',
+    'Infinite patience — hours of debugging without fatigue',
+    'Zero scaling costs — 2 projects or 20, same cost',
+    'Consistent quality — no bad days or varying skill',
+  ],
+  human: [
+    'Taste and judgment — brand voice, product direction',
+    'Relationship building — video calls, negotiations, trust',
+    'Platform restrictions — human posting often required',
+    'Creative breakthroughs — truly novel ideas and innovation',
+  ],
+};
+
+const phases = [
+  { phase: '1', title: 'Basic Monitoring', time: 'Month 1', items: ['Social media monitoring', 'Content research & drafting', 'Competitive intelligence'] },
+  { phase: '2', title: 'Content Automation', time: 'Month 2-3', items: ['Automated blogging & posting', 'SEO optimisation workflows', 'Customer research monitoring'] },
+  { phase: '3', title: 'Advanced Operations', time: 'Month 4-6', items: ['Code review & bug investigation', 'Sub-agent spawning', 'Sophisticated memory systems'] },
+  { phase: '4', title: 'Full Integration', time: 'Month 6+', items: ['All business functions integrated', 'Cost & performance optimisation', 'Redundancy & failover systems'] },
+];
+---
+
+<Layout title="The Playbook" description="How to use an AI agent as an unfair advantage. The full breakdown: setup, economics, specific tactics, and real numbers.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-6">
+      📖 Long-form Guide
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+      The AI Agent Playbook<br/>
+      <span class="text-amber-400">for Solo Founders</span>
+    </h1>
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl">
+      While most solo founders are drowning in the cycle of coding, marketing, and support, a small cohort has discovered something revolutionary: AI agents that work while they sleep.
+    </p>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2>The Setup: Your 24/7 AI Factory</h2>
+
+      <h3>What OpenClaw Is</h3>
+      <p>OpenClaw is an AI agent framework that transforms any AI model into a persistent, tool-wielding worker. Unlike simple chatbots, OpenClaw agents:</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
+        <div class="flex items-start gap-3 p-3 bg-navy-800/40 rounded-lg">
+          <span class="text-amber-400">🧠</span>
+          <span class="text-sm text-gray-300"><strong class="text-white">Remember everything</strong> via file-based memory systems</span>
+        </div>
+        <div class="flex items-start gap-3 p-3 bg-navy-800/40 rounded-lg">
+          <span class="text-amber-400">🔧</span>
+          <span class="text-sm text-gray-300"><strong class="text-white">Use real tools</strong> — browsers, editors, APIs, social media</span>
+        </div>
+        <div class="flex items-start gap-3 p-3 bg-navy-800/40 rounded-lg">
+          <span class="text-amber-400">⚡</span>
+          <span class="text-sm text-gray-300"><strong class="text-white">Work autonomously</strong> through background tasks and schedules</span>
+        </div>
+        <div class="flex items-start gap-3 p-3 bg-navy-800/40 rounded-lg">
+          <span class="text-amber-400">🤖</span>
+          <span class="text-sm text-gray-300"><strong class="text-white">Spawn sub-agents</strong> for complex multi-step work</span>
+        </div>
+      </div>
+
+      <p>Think of it as the difference between a calculator and a factory robot. One helps you solve problems when you ask; the other operates continuously to achieve business objectives.</p>
+
+      <h3>The "Overnight Factory" Concept</h3>
+      <blockquote>
+        "Research our top 5 competitors' new features, analyze gaps in our product, and draft a Q2 roadmap."
+        <br/><br/>
+        <strong>Before bed:</strong> One message.<br/>
+        <strong>Wake up:</strong> Complete competitive analysis with prioritized recommendations, technical implementation notes, and market positioning strategy.
+      </blockquote>
+
+      <p>One agent spawns 3-4 sub-agents to tackle different aspects of complex projects while the main agent continues handling daily operations. <a href="/overnight">Read the real overnight story →</a></p>
+
+      <h2>The Playbook: 7 Tactics You Can Replicate</h2>
+    </div>
+
+    <!-- Tactics Grid -->
+    <div class="space-y-4 my-8">
+      {tactics.map(tactic => (
+        <div class="card">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-lg bg-amber-500/15 flex items-center justify-center">
+                <span class="text-lg">{tactic.icon}</span>
+              </div>
+              <div class="text-amber-500/40 font-mono text-xs text-center mt-1">{tactic.num}</div>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg">{tactic.title}</h3>
+              <p class="text-amber-400/70 text-sm font-medium mb-2">{tactic.subtitle}</p>
+              <p class="text-gray-400 text-sm leading-relaxed">{tactic.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-factory">
+      <h2>Agent vs Human: The Honest Comparison</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+      <div class="card border-amber-500/20">
+        <h3 class="text-amber-400 font-bold text-lg mb-4">🤖 What Agents Do Better</h3>
+        <ul class="space-y-3">
+          {agentVsHuman.agent.map(item => (
+            <li class="flex items-start gap-2 text-sm text-gray-300">
+              <span class="text-green-400 mt-0.5">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="card border-blue-500/20">
+        <h3 class="text-blue-400 font-bold text-lg mb-4">🧑 What Humans Do Better</h3>
+        <ul class="space-y-3">
+          {agentVsHuman.human.map(item => (
+            <li class="flex items-start gap-2 text-sm text-gray-300">
+              <span class="text-blue-400 mt-0.5">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose-factory">
+      <h2>The Honest Economics</h2>
+    </div>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-navy-600">
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Level</th>
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Agent Cost</th>
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Human Equivalent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-navy-700/50">
+            <td class="py-3 px-4 text-white">Basic operations</td>
+            <td class="py-3 px-4 text-amber-400 font-mono">$300-500/mo</td>
+            <td class="py-3 px-4 text-gray-400 font-mono">$2,000-5,000/mo</td>
+          </tr>
+          <tr class="border-b border-navy-700/50">
+            <td class="py-3 px-4 text-white">Multi-project management</td>
+            <td class="py-3 px-4 text-amber-400 font-mono">$800-1,500/mo</td>
+            <td class="py-3 px-4 text-gray-400 font-mono">$5,000-10,000/mo</td>
+          </tr>
+          <tr class="border-b border-navy-700/50">
+            <td class="py-3 px-4 text-white">Complex sub-agent workflows</td>
+            <td class="py-3 px-4 text-amber-400 font-mono">$1,500-3,000/mo</td>
+            <td class="py-3 px-4 text-gray-400 font-mono">$10,000-20,000/mo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose-factory">
+      <h2>The Honest Limitations</h2>
+
+      <h3>Technical Constraints</h3>
+      <ul>
+        <li><strong>IP Blocking</strong> — Datacenter IPs get blocked by social platforms. Workarounds exist but add complexity.</li>
+        <li><strong>Context Windows</strong> — Token limits require careful memory management and summarisation.</li>
+        <li><strong>Session Isolation</strong> — Each conversation starts fresh. Sophisticated memory systems are essential.</li>
+      </ul>
+
+      <h3>Quality Concerns</h3>
+      <ul>
+        <li><strong>Human Review Required</strong> — Agent output is high-quality but not perfect. Critical content needs approval.</li>
+        <li><strong>Hallucination Risk</strong> — Agents can confidently present incorrect information. Verification is essential.</li>
+        <li><strong>Platform Changes</strong> — APIs and tools change frequently. Workflows need regular maintenance.</li>
+      </ul>
+
+      <h3>Operational Challenges</h3>
+      <ul>
+        <li><strong>Setup Complexity</strong> — Building effective workflows requires technical knowledge and time.</li>
+        <li><strong>Monitoring Required</strong> — Agents can go off-track without proper oversight and feedback loops.</li>
+        <li><strong>Dependency Risk</strong> — Over-reliance creates vulnerabilities if systems fail or policies change.</li>
+      </ul>
+
+      <h2>Getting Started: The Roadmap</h2>
+    </div>
+
+    <!-- Phases -->
+    <div class="relative my-8">
+      <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-navy-600 hidden md:block"></div>
+      <div class="space-y-6">
+        {phases.map(p => (
+          <div class="flex gap-6 items-start">
+            <div class="hidden md:flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-amber-500/20 border-2 border-amber-500 flex items-center justify-center text-amber-400 font-bold text-sm z-10">{p.phase}</div>
+            </div>
+            <div class="card flex-1">
+              <div class="flex items-baseline gap-3 mb-3">
+                <span class="md:hidden text-amber-400 font-bold">Phase {p.phase}</span>
+                <h3 class="text-white font-bold text-lg">{p.title}</h3>
+                <span class="text-amber-500/60 text-sm font-mono">{p.time}</span>
+              </div>
+              <ul class="space-y-1.5">
+                {p.items.map(item => (
+                  <li class="flex items-center gap-2 text-sm text-gray-300">
+                    <span class="text-amber-500">›</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="prose-factory">
+      <h2>The Compound Advantage</h2>
+      <p>Early adopters aren't just getting a head start — they're building compound advantages that become impossible to replicate:</p>
+      <ul>
+        <li><strong>Data Moats:</strong> Years of accumulated customer insights and market intelligence.</li>
+        <li><strong>Workflow Sophistication:</strong> Battle-tested automation that took months to develop.</li>
+        <li><strong>Brand Presence:</strong> Consistent content creating market presence competitors can't quickly match.</li>
+        <li><strong>Technical Debt:</strong> Deep integration creating switching costs and defensive moats.</li>
+      </ul>
+
+      <hr />
+
+      <p class="text-lg text-gray-300"><em>The question isn't whether AI agents will transform how solo founders compete. They already are. The question is whether you'll be building this advantage or competing against it.</em></p>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 p-8 bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/20 rounded-xl text-center">
+      <p class="text-white font-bold text-lg mb-4">Want to see this in action?</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/overnight" class="btn-primary">🌙 The Overnight Story</a>
+        <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener" class="btn-secondary">⭐ OpenClaw on GitHub</a>
+      </div>
+    </div>
+  </div>
+
+</Layout>

@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-navy-900 text-gray-100 font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-amber-500/30 text-white;
+  }
+}
+
+@layer components {
+  .prose-factory h1 {
+    @apply text-3xl md:text-4xl font-bold text-white mb-6;
+  }
+  .prose-factory h2 {
+    @apply text-2xl md:text-3xl font-bold text-white mt-12 mb-4 pb-2 border-b border-navy-600;
+  }
+  .prose-factory h3 {
+    @apply text-xl md:text-2xl font-semibold text-amber-400 mt-8 mb-3;
+  }
+  .prose-factory h4 {
+    @apply text-lg font-semibold text-gray-200 mt-6 mb-2;
+  }
+  .prose-factory p {
+    @apply text-gray-300 leading-relaxed mb-4;
+  }
+  .prose-factory ul {
+    @apply list-disc list-inside space-y-2 mb-4 text-gray-300;
+  }
+  .prose-factory ol {
+    @apply list-decimal list-inside space-y-2 mb-4 text-gray-300;
+  }
+  .prose-factory li {
+    @apply leading-relaxed;
+  }
+  .prose-factory strong {
+    @apply text-white font-semibold;
+  }
+  .prose-factory em {
+    @apply text-gray-400 italic;
+  }
+  .prose-factory blockquote {
+    @apply border-l-4 border-amber-500 pl-4 py-2 my-6 bg-navy-800/50 rounded-r-lg italic text-gray-300;
+  }
+  .prose-factory code {
+    @apply bg-navy-700 text-amber-400 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+  .prose-factory a {
+    @apply text-amber-400 hover:text-amber-300 underline decoration-amber-500/30 hover:decoration-amber-400 transition-colors;
+  }
+  .prose-factory hr {
+    @apply my-8 border-navy-600;
+  }
+
+  .card {
+    @apply bg-navy-800/60 border border-navy-600/50 rounded-xl p-6 backdrop-blur-sm
+           hover:border-amber-500/30 hover:bg-navy-700/60 transition-all duration-300;
+  }
+
+  .badge-live {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/15 text-green-400 border border-green-500/30;
+  }
+  .badge-polishing {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-500/15 text-yellow-400 border border-yellow-500/30;
+  }
+  .badge-research {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-400/15 text-gray-400 border border-gray-400/30;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-navy-900 font-semibold rounded-lg
+           hover:bg-amber-400 transition-all duration-200 shadow-lg shadow-amber-500/20;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-amber-500/40 text-amber-400 font-medium rounded-lg
+           hover:bg-amber-500/10 hover:border-amber-500/60 transition-all duration-200;
+  }
+
+  .glow {
+    @apply relative;
+  }
+  .glow::before {
+    content: '';
+    @apply absolute -inset-1 bg-amber-500/10 rounded-xl blur-xl -z-10;
+  }
+
+  .timeline-dot {
+    @apply w-4 h-4 rounded-full border-2 border-amber-500 bg-navy-900 flex-shrink-0;
+  }
+  .timeline-dot-active {
+    @apply w-4 h-4 rounded-full border-2 border-amber-500 bg-amber-500 flex-shrink-0;
+  }
+  .timeline-line {
+    @apply w-0.5 bg-navy-600 flex-shrink-0;
+  }
+}

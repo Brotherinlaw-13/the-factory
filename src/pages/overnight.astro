@@ -1,0 +1,312 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const waves = [
+  {
+    id: 1,
+    time: '23:00',
+    label: 'Wave 1',
+    agents: 6,
+    color: 'amber',
+    tasks: [
+      'Fix Darwin experiments page rendering',
+      'Write 4 Chowdown blog posts (comparison series)',
+      'Research and submit to 16 app directories',
+      'Write 2 Darwin SEO blog posts',
+      'Write 3 Darwin competitive comparison posts',
+      'Research Pocket Guide competitive landscape',
+    ],
+  },
+  {
+    id: 2,
+    time: '00:00',
+    label: 'Wave 2',
+    agents: 13,
+    color: 'amber',
+    tasks: [
+      'Twitter content queue for the week',
+      'Root Juice market research and launch plan',
+      'Chowdown SEO audit',
+      'Influencer outreach pack',
+      'Darwin pricing page build',
+      'Cross-posting content preparation',
+      'Chowdown vs competitor comparison posts',
+      'Master project dashboard',
+      'Reddit engagement queue refresh',
+      'Darwin landing page improvements',
+      'Moonshot/blue-sky ideas',
+      'Meta-strategy document',
+      'Hire Space AI proposal',
+    ],
+  },
+  {
+    id: 3,
+    time: '01:00–06:30',
+    label: 'Waves 3–7',
+    agents: 0,
+    color: 'gray',
+    tasks: [
+      'Scheduled via cron jobs at 1am, 2am, 3:30am, 5am, and 6:30am',
+      'Additional content creation and research tasks',
+      'Sequential batch processing through the night',
+    ],
+  },
+  {
+    id: 4,
+    time: '07:30',
+    label: 'Wave 8',
+    agents: 0,
+    color: 'green',
+    tasks: [
+      'Morning report compilation',
+      'Delivery to each Telegram topic',
+      'Git audit of all changes',
+    ],
+  },
+];
+
+const outputTable = [
+  { category: 'Strategy docs', files: 8, details: 'Project dashboard, launch plans, competitive specs' },
+  { category: 'Chowdown blog drafts', files: 13, details: 'Comparison posts, guides, SEO content' },
+  { category: 'Darwin blog posts', files: 9, details: 'A/B testing guides, competitor comparisons' },
+  { category: 'Marketing assets', files: 14, details: 'Directory research, influencer pack, social queues' },
+  { category: 'Darwin docs', files: 2, details: 'Product architecture, viral strategy' },
+];
+
+const deliveries = [
+  { topic: 'Chowdown', content: '13 blog drafts + B2B strategy summary' },
+  { topic: 'Darwin', content: '9 blog posts + Chrome extension spec' },
+  { topic: 'SEO & Growth', content: 'Directory research, influencer pack, social queues' },
+  { topic: 'Pocket Guide', content: 'Launch plan with competitive analysis' },
+  { topic: 'Root Juice', content: 'Launch plan with market research' },
+  { topic: 'Side Hustle', content: 'Strategy docs and moonshot ideas' },
+  { topic: 'Hire Space', content: 'AI Brief Builder internal proposal' },
+];
+
+const lessons = [
+  { icon: '🎯', title: 'Set constraints upfront', desc: '"Don\'t publish" should be in the initial brief, not a correction.' },
+  { icon: '📁', title: 'Use file-based output', desc: 'Files are reversible. API calls and git pushes aren\'t.' },
+  { icon: '🌊', title: 'Wave-based scheduling', desc: 'Independent tasks can run in parallel. Sequential is slow.' },
+  { icon: '🔍', title: 'Audit everything in the morning', desc: 'Trust but verify. Check git logs, review content quality.' },
+  { icon: '🎛️', title: 'Agent is the coordinator', desc: 'The real value is orchestrating 19 sub-agents across 7 projects.' },
+];
+---
+
+<Layout title="The Overnight Factory" description="What happens when you tell your AI agent to work until 7:30am and go to sleep. A real overnight session, documented.">
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-6">
+        🌙 February 2–3, 2026 · A real overnight session
+      </div>
+      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+        The Overnight Factory
+      </h1>
+      <p class="text-xl text-gray-400 leading-relaxed max-w-2xl">
+        What happens when you tell your AI agent to work until 7:30am, prepare everything, publish nothing — and go to sleep.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+
+    <!-- The Brief -->
+    <div class="prose-factory">
+      <h2>The Brief</h2>
+      <blockquote>
+        "Loop until 7:30am London time. Spawn agents, prepare content across all projects. DO NOT publish anything. Add completed items to the to-do checklist for my review."
+      </blockquote>
+      <p>That was it. One message at 22:45, then Diego went to sleep.</p>
+
+      <h2>The Wave System</h2>
+      <p>Rather than doing everything sequentially, Rook designed a wave-based approach: spawn batches of sub-agents at intervals, each tackling independent workstreams.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="my-10 space-y-0">
+      {waves.map((wave, i) => (
+        <div class="relative flex gap-4 md:gap-6">
+          <!-- Timeline column -->
+          <div class="flex flex-col items-center">
+            <div class:list={[
+              "w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 z-10",
+              wave.color === 'amber' && "bg-amber-500/20 border-2 border-amber-500 text-amber-400",
+              wave.color === 'gray' && "bg-navy-700 border-2 border-navy-500 text-gray-400",
+              wave.color === 'green' && "bg-green-500/20 border-2 border-green-500 text-green-400",
+            ]}>
+              {wave.agents > 0 ? `×${wave.agents}` : wave.id === 4 ? '📋' : '⏰'}
+            </div>
+            {i < waves.length - 1 && (
+              <div class="w-0.5 flex-1 min-h-[2rem] bg-navy-600"></div>
+            )}
+          </div>
+
+          <!-- Content -->
+          <div class="flex-1 pb-8">
+            <div class="flex items-baseline gap-3 mb-2">
+              <span class="font-mono text-amber-400 text-sm">{wave.time}</span>
+              <h3 class="text-white font-bold text-lg">{wave.label}</h3>
+              {wave.agents > 0 && (
+                <span class="text-gray-500 text-sm">{wave.agents} sub-agents</span>
+              )}
+            </div>
+            <div class="card !p-4">
+              <ul class="space-y-1.5">
+                {wave.tasks.map(task => (
+                  <li class="flex items-start gap-2 text-sm text-gray-300">
+                    <span class="text-amber-500/60 mt-0.5">›</span>
+                    <span>{task}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Output Table -->
+    <div class="prose-factory">
+      <h2>The Output</h2>
+      <p>By 7:30am, the workspace contained:</p>
+    </div>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-navy-600">
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Category</th>
+            <th class="text-center py-3 px-4 text-gray-400 font-medium">Files</th>
+            <th class="text-left py-3 px-4 text-gray-400 font-medium">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {outputTable.map(row => (
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 text-white font-medium">{row.category}</td>
+              <td class="py-3 px-4 text-amber-400 font-mono text-center">{row.files}</td>
+              <td class="py-3 px-4 text-gray-400">{row.details}</td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr class="border-t-2 border-amber-500/30">
+            <td class="py-3 px-4 text-white font-bold">Total</td>
+            <td class="py-3 px-4 text-amber-400 font-mono font-bold text-center">46</td>
+            <td class="py-3 px-4 text-gray-300 font-medium">All staged. Nothing published. Ready for review.</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Morning Report -->
+    <div class="prose-factory">
+      <h2>The Morning Report</h2>
+      <p>Diego woke up at 7:25am (5 minutes early). Reports were delivered to each relevant Telegram topic within 8 minutes:</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
+      {deliveries.map(d => (
+        <div class="flex items-start gap-3 p-3 bg-navy-800/40 rounded-lg border border-navy-700/30">
+          <span class="text-amber-400">📬</span>
+          <div>
+            <span class="text-white font-medium text-sm">{d.topic}</span>
+            <p class="text-gray-400 text-xs mt-0.5">{d.content}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- What Went Wrong -->
+    <div class="prose-factory">
+      <h2>What Went Wrong</h2>
+      <p>Transparency matters. Here's what didn't go perfectly:</p>
+    </div>
+
+    <div class="space-y-4 my-6">
+      <div class="card border-red-500/20 !bg-red-500/5">
+        <h4 class="text-red-400 font-bold mb-2">1. "No publish" came mid-session</h4>
+        <p class="text-gray-300 text-sm">The first instruction was just "loop and work." Diego corrected to "prepare only" partway through. Some Wave 1 agents had already pushed code to GitHub — 7 Darwin commits went live via Vercel auto-deploy. The content was fine, but it violated the constraint.</p>
+      </div>
+      <div class="card border-red-500/20 !bg-red-500/5">
+        <h4 class="text-red-400 font-bold mb-2">2. Sub-agents can't be recalled</h4>
+        <p class="text-gray-300 text-sm">Once spawned, a sub-agent runs to completion. When the "no publish" correction came, agents already running couldn't be stopped. Lesson: set all constraints before spawning anything.</p>
+      </div>
+      <div class="card border-yellow-500/20 !bg-yellow-500/5">
+        <h4 class="text-yellow-400 font-bold mb-2">3. Directory submissions mostly failed</h4>
+        <p class="text-gray-300 text-sm">Datacenter IP addresses get rate-limited or blocked by most directory sites. 10 of 16 were inaccessible. This kind of work is better done by the human from a residential IP.</p>
+      </div>
+    </div>
+
+    <!-- Economics -->
+    <div class="prose-factory">
+      <h2>The Economics</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+      <div class="card border-amber-500/20">
+        <h3 class="text-amber-400 font-bold text-lg mb-3">🤖 AI Cost</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-400">~19 sub-agent runs</span><span class="text-gray-300 font-mono">~$0.50-2.00 each</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">7 cron triggers</span><span class="text-gray-300 font-mono">minimal</span></div>
+          <div class="border-t border-navy-600 pt-2 flex justify-between font-bold"><span class="text-white">Overnight total</span><span class="text-amber-400 font-mono text-lg">~$15-50</span></div>
+        </div>
+      </div>
+      <div class="card border-gray-500/20">
+        <h3 class="text-gray-400 font-bold text-lg mb-3">👥 Human Equivalent</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-400">Content writing (13 posts)</span><span class="text-gray-300 font-mono">$400-800</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">Research & analysis</span><span class="text-gray-300 font-mono">$300-600</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">Strategy documents</span><span class="text-gray-300 font-mono">$500-1,000</span></div>
+          <div class="border-t border-navy-600 pt-2 flex justify-between font-bold"><span class="text-white">Total</span><span class="text-gray-300 font-mono text-lg">$1,200-2,400</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center my-8">
+      <div class="inline-block px-6 py-3 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+        <span class="text-amber-400 font-bold text-2xl">30-50×</span>
+        <span class="text-gray-400 ml-2">cost advantage, delivered while sleeping</span>
+      </div>
+    </div>
+
+    <!-- Lessons -->
+    <div class="prose-factory">
+      <h2>Lessons for Other Founders</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+      {lessons.map(l => (
+        <div class="card !p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-xl">{l.icon}</span>
+            <div>
+              <h4 class="text-white font-semibold text-sm">{l.title}</h4>
+              <p class="text-gray-400 text-xs mt-1">{l.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-factory">
+      <hr />
+      <p class="text-gray-500 italic">This is a real account from The Factory. No embellishment, no cherry-picking. Just what actually happened.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 p-8 bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/20 rounded-xl text-center">
+      <p class="text-white font-bold text-lg mb-4">Want to replicate this?</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/playbook" class="btn-primary">📖 Read the Full Playbook</a>
+        <a href="/rook" class="btn-secondary">🏰 Meet Rook</a>
+      </div>
+    </div>
+  </div>
+
+</Layout>

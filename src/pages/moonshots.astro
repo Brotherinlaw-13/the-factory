@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const crossPollination = [
+  { title: 'Darwin tests ALL products', desc: 'Use Darwin as the central nervous system that A/B tests every feature, landing page, and user flow across all 7 products.' },
+  { title: 'The Diego Stack', desc: 'Package all products as a lifestyle ecosystem: Chowdown tracks macros, Root Juice keeps plants alive, Story Time entertains kids, Pocket Guide plans holidays.' },
+  { title: 'Cross-product viral loops', desc: 'Chowdown fitness goals unlock free Pocket Guide tours. Root Juice parents get Story Time tales about their plants. Book Social streaks unlock Darwin features.' },
+];
+
+const platformPlays = [
+  { product: '🍽️ Chowdown', title: 'The Nutrition Internet', ideas: ['FoodGPT API — become the Stripe of nutrition data', 'The Macro Marketplace — users create and sell custom meal plans'] },
+  { product: '🧬 Darwin', title: 'The Experiment Economy', ideas: ['CRO-as-a-Service for small businesses', 'The Prediction Market — gamify conversion optimisation'] },
+  { product: '🌱 Root Juice', title: 'Plant Intelligence Network', ideas: ['PlantNet 2.0 — sell insights to agricultural companies', 'Voice-controlled plant care via smart speakers'] },
+  { product: '📖 Story Time', title: 'The Imagination Engine', ideas: ['Story-as-a-Service for parents, teachers, theme parks', 'Hyper-personalised bedtime stories'] },
+  { product: '🧭 Pocket Guide', title: 'Local Knowledge Marketplace', ideas: ['Anyone creates audio guides for their neighbourhood', 'Uber drivers share route stories, museums get unofficial tours'] },
+];
+
+const monetisation = [
+  { icon: '🏥', product: 'Chowdown', title: 'Insurance Play', desc: 'Partner with health insurers. Users maintaining healthy macros get premium discounts.' },
+  { icon: '🎰', product: 'Darwin', title: 'Prediction Markets', desc: '"Experiment insurance" — if your A/B test fails, get credits for future tests.' },
+  { icon: '🚗', product: 'Stitch', title: 'Good Driver Economy', desc: 'Sell to insurance companies. Good Stitch scores = lower premiums.' },
+  { icon: '🌿', product: 'Root Juice', title: 'Plant Pharma', desc: 'Users growing medicinal herbs get supplement discounts. Prove efficacy through data.' },
+  { icon: '🧸', product: 'Story Time', title: 'Therapy Pipeline', desc: 'Custom stories for kids with anxiety, ADHD, grief. Charge therapists, not parents.' },
+  { icon: '📚', product: 'Book Social', title: 'Reading Economy', desc: 'Sell anonymised reading data to publishers. Which chapters get highlighted most?' },
+];
+
+const viralMechanics = [
+  { title: 'The Macro Deceiver Challenge', desc: 'Celebrities guess macros of identical-looking meals. One has 300 calories, one has 1200. Chowdown reveals the truth.' },
+  { title: 'Darwin Deadpool', desc: 'Users predict which version wins. Leaderboard of best predictors. Turn CRO into competitive gaming.' },
+  { title: 'Plant Rescue Reality Show', desc: 'Users submit dying plants. Community votes on rescue attempts. Before/after transformations.' },
+  { title: 'Story Time Remix Culture', desc: 'Kids record themselves acting out AI stories. Parents share videos. A new genre: "AI-story performances."' },
+  { title: 'The Great British Plant-Off', desc: 'Neighbourhood competitions. Root Juice tracks growth rates. Winners get local fame and vouchers.' },
+];
+
+const tenX = [
+  { product: '🍽️ Chowdown', idea: 'Andrew Huberman uses Chowdown live on his podcast. OR: integration with continuous glucose monitors.' },
+  { product: '🧬 Darwin', idea: 'Shopify acquires it as their built-in CRO tool. Every Shopify store gets Darwin automatically.' },
+  { product: '🌱 Root Juice', idea: 'BBC Gardeners\' World endorsement. OR: integration with smart home systems — plants become IoT devices.' },
+  { product: '📖 Story Time', idea: 'Disney partnership for character licensing. Kids get stories featuring Mickey Mouse.' },
+  { product: '📚 Book Social', idea: 'Oprah\'s Book Club integration. Becomes THE literary social network.' },
+  { product: '🚗 Stitch', idea: 'Government pilot program reduces accidents by 30%. Becomes public safety infrastructure.' },
+  { product: '🧭 Pocket Guide', idea: 'Rick Steves partnership for European content. His brand + this tech = dominant platform.' },
+];
+
+const wildCards = [
+  { title: 'The Attention Marketplace', desc: 'Use all apps to study human attention patterns. When do people use Chowdown vs Story Time vs Pocket Guide? Sell insights to attention economy companies.' },
+  { title: 'The Lifestyle Prediction Engine', desc: 'AI predicts major life events from app usage. Chowdown + Root Juice data suggests someone\'s getting married. Sell predictions to lifestyle brands.' },
+  { title: 'The Cultural Bridge Business', desc: 'Use bilingual advantage to create UK-Spain business matchmaking. British companies need Spanish market entry and vice versa.' },
+  { title: 'Diego as a Case Study', desc: 'Turn the entire journey into a product. Sell the methodology, code templates, growth strategies. $10K mastermind access. $100K consulting.' },
+];
+---
+
+<Layout title="Moonshot Ideas" description="Cross-pollination concepts, platform plays, viral mechanics, and unconventional monetisation angles across the portfolio.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-6">
+      💡 Blue-sky thinking from Rook
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+      Moonshot Ideas
+    </h1>
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl">
+      Cross-pollination concepts, platform plays, and unconventional angles. Not all of these will happen — but the best ideas come from thinking without constraints.
+    </p>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+
+    <!-- Cross-Pollination -->
+    <div class="prose-factory">
+      <h2>1. Cross-Pollination Ideas</h2>
+      <p>Ways to connect the products that nobody would expect:</p>
+    </div>
+
+    <div class="space-y-4 my-6">
+      {crossPollination.map(idea => (
+        <div class="card !p-4">
+          <h3 class="text-amber-400 font-bold text-sm mb-2">{idea.title}</h3>
+          <p class="text-gray-300 text-sm">{idea.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Platform Plays -->
+    <div class="prose-factory">
+      <h2>2. Platform Plays</h2>
+      <p>Ways to turn a product into a platform:</p>
+    </div>
+
+    <div class="space-y-4 my-6">
+      {platformPlays.map(play => (
+        <div class="card">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-lg">{play.product}</span>
+            <span class="text-white font-bold">→</span>
+            <span class="text-amber-400 font-semibold">{play.title}</span>
+          </div>
+          <ul class="space-y-2">
+            {play.ideas.map(idea => (
+              <li class="flex items-start gap-2 text-sm text-gray-300">
+                <span class="text-amber-500/60 mt-0.5">›</span>
+                <span>{idea}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Monetisation -->
+    <div class="prose-factory">
+      <h2>3. Unconventional Monetisation</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+      {monetisation.map(m => (
+        <div class="card !p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-xl">{m.icon}</span>
+            <div>
+              <div class="text-gray-500 text-xs font-mono mb-0.5">{m.product}</div>
+              <h3 class="text-white font-bold text-sm mb-1">{m.title}</h3>
+              <p class="text-gray-400 text-xs">{m.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Viral Mechanics -->
+    <div class="prose-factory">
+      <h2>4. Viral Mechanics</h2>
+      <p>Things that could genuinely go viral:</p>
+    </div>
+
+    <div class="space-y-3 my-6">
+      {viralMechanics.map(v => (
+        <div class="flex items-start gap-3 p-4 bg-navy-800/40 rounded-lg border border-navy-700/30">
+          <span class="text-amber-400">🔥</span>
+          <div>
+            <h4 class="text-white font-semibold text-sm">{v.title}</h4>
+            <p class="text-gray-400 text-xs mt-1">{v.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 10x Questions -->
+    <div class="prose-factory">
+      <h2>5. The "10×" Question</h2>
+      <p>For each project — what would make it 10× more valuable overnight?</p>
+    </div>
+
+    <div class="space-y-3 my-6">
+      {tenX.map(t => (
+        <div class="card !p-4">
+          <div class="flex items-start gap-3">
+            <span class="text-lg flex-shrink-0">{t.product}</span>
+            <p class="text-gray-300 text-sm">{t.idea}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Wild Cards -->
+    <div class="prose-factory">
+      <h2>6. Wild Cards</h2>
+      <p>Completely new ideas leveraging existing assets:</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+      {wildCards.map(w => (
+        <div class="card">
+          <h3 class="text-amber-400 font-bold mb-2">{w.title}</h3>
+          <p class="text-gray-400 text-sm">{w.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Meta -->
+    <div class="my-12 p-8 bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/20 rounded-xl">
+      <h3 class="text-white font-bold text-xl mb-3">The Meta Wild Card</h3>
+      <p class="text-gray-300 leading-relaxed">
+        Turn the entire journey into a product. The products become the demo. The business becomes the product.
+      </p>
+      <p class="text-amber-400 font-medium mt-3 italic">
+        "Because sometimes the most valuable thing you build is proof that it can be built."
+      </p>
+    </div>
+  </div>
+
+</Layout>

@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+  { emoji: '🧬', name: 'Darwin', desc: 'AI that evolves landing pages through natural selection', status: 'live', statusLabel: '🟢 Live', href: '/darwin', extHref: 'https://darwin.page' },
+  { emoji: '🍽️', name: 'Chowdown', desc: 'Free AI-powered macro tracking — snap a photo, get macros', status: 'live', statusLabel: '🟢 Live', href: '/chowdown', extHref: 'https://chowdown.me' },
+  { emoji: '🧭', name: 'Pocket Guide', desc: 'Photo → AI identifies landmark → personalised voice guide', status: 'polishing', statusLabel: '🟡 Polishing', href: '/dashboard' },
+  { emoji: '🌱', name: 'Root Juice', desc: 'Smart plant care with environment-aware watering schedules', status: 'polishing', statusLabel: '🟡 Polishing', href: '/dashboard' },
+  { emoji: '📖', name: 'Story Time', desc: 'Kids co-create stories → AI generates → voice reads aloud', status: 'research', statusLabel: '⚪ Research', href: '/dashboard' },
+  { emoji: '📚', name: 'Book Social', desc: 'Position-aware comments in books — social Kindle', status: 'research', statusLabel: '⚪ Research', href: '/dashboard' },
+  { emoji: '🚗', name: 'Stitch', desc: 'Crowdsourced traffic enforcement via voice reporting', status: 'research', statusLabel: '⚪ Research', href: '/dashboard' },
+];
+
+const stats = [
+  { value: '46', label: 'Files produced overnight', icon: '📄' },
+  { value: '19', label: 'Sub-agents spawned', icon: '🤖' },
+  { value: '7', label: 'Products managed', icon: '📱' },
+  { value: '24/7', label: 'Autonomous operation', icon: '⏰' },
+];
+
+const pages = [
+  { emoji: '🏰', title: 'Meet Rook', desc: 'The AI agent behind the factory. Persistent, opinionated, always working.', href: '/rook' },
+  { emoji: '📖', title: 'The Playbook', desc: 'How to use an AI agent as an unfair advantage. The full breakdown.', href: '/playbook' },
+  { emoji: '🌙', title: 'The Overnight Factory', desc: 'What happens when you tell your AI to work until 7:30am and go to sleep.', href: '/overnight' },
+  { emoji: '💡', title: 'Moonshot Ideas', desc: 'Cross-pollination concepts, platform plays, and wild card strategies.', href: '/moonshots' },
+  { emoji: '📊', title: 'Project Dashboard', desc: 'Live status of all seven products: priorities, metrics, and what\'s next.', href: '/dashboard' },
+];
+---
+
+<Layout title="Home" description="One founder. One AI agent. Seven products. The story of AI-augmented solo entrepreneurship.">
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl"></div>
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-navy-900 via-transparent to-navy-900"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-16 md:pt-32 md:pb-24 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-8">
+        <span>🏭</span>
+        <span>A real experiment in AI-augmented entrepreneurship</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-tight mb-6">
+        One founder.<br/>
+        <span class="text-amber-400">One AI agent.</span><br/>
+        Seven products.
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        This is the story of how a solo founder uses an autonomous AI agent to build, market, and operate multiple products simultaneously — shipping more in one night than most teams do in a week.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/overnight" class="btn-primary">
+          🌙 Read the Overnight Story
+        </a>
+        <a href="/rook" class="btn-secondary">
+          🏰 Meet Rook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-y border-navy-700/50 bg-navy-800/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        {stats.map(stat => (
+          <div class="text-center">
+            <div class="text-3xl mb-2">{stat.icon}</div>
+            <div class="text-3xl md:text-4xl font-black text-amber-400">{stat.value}</div>
+            <div class="text-sm text-gray-400 mt-1">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The Products</h2>
+      <p class="text-gray-400 max-w-xl mx-auto">Seven products across health, travel, education, and developer tools — all managed by one human and one AI agent.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {products.map(product => (
+        <a href={product.href} class="card group cursor-pointer">
+          <div class="flex items-start justify-between mb-3">
+            <span class="text-3xl">{product.emoji}</span>
+            <span class:list={[
+              product.status === 'live' && 'badge-live',
+              product.status === 'polishing' && 'badge-polishing',
+              product.status === 'research' && 'badge-research',
+            ]}>
+              {product.statusLabel}
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">{product.name}</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">{product.desc}</p>
+          {product.extHref && (
+            <div class="mt-3 text-amber-500/70 text-xs font-mono">{product.extHref.replace('https://', '')}</div>
+          )}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Economics -->
+  <section class="border-y border-navy-700/50 bg-navy-800/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The Economics</h2>
+        <p class="text-gray-400">Running an AI agent factory is dramatically cheaper than any human alternative.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="card">
+          <h3 class="text-amber-400 font-bold text-lg mb-4">🏭 AI Agent Factory</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between"><span class="text-gray-400">AI infrastructure</span><span class="text-white font-mono">~£50-80/mo</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Model usage (Claude)</span><span class="text-white font-mono">~£150-400/mo</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Tool subscriptions</span><span class="text-white font-mono">~£80-150/mo</span></div>
+            <div class="border-t border-navy-600 pt-3 flex justify-between font-bold"><span class="text-white">Total</span><span class="text-amber-400 font-mono">~£280-630/mo</span></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">Works 24/7. Perfect memory. Zero context switching.</p>
+        </div>
+
+        <div class="card border-red-500/20">
+          <h3 class="text-gray-400 font-bold text-lg mb-4">👥 Human Alternative</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between"><span class="text-gray-400">Part-time VA</span><span class="text-gray-300 font-mono">£600-1,200/mo</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Marketing freelancer</span><span class="text-gray-300 font-mono">£800-2,400/mo</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Junior developer</span><span class="text-gray-300 font-mono">£2,000-4,000/mo</span></div>
+            <div class="border-t border-navy-600 pt-3 flex justify-between font-bold"><span class="text-white">Minimum</span><span class="text-gray-300 font-mono">£3,400+/mo</span></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">Limited hours. Context loss. Sick days. Holidays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Pages -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Explore the Story</h2>
+      <p class="text-gray-400">No hype, no theory. Just honest documentation of what works.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {pages.map(page => (
+        <a href={page.href} class="card group cursor-pointer">
+          <span class="text-3xl mb-3 block">{page.emoji}</span>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">{page.title}</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">{page.desc}</p>
+          <div class="mt-4 text-amber-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">Read more →</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-navy-700/50 bg-gradient-to-b from-navy-800/50 to-navy-900">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">This isn't a product.<br/> It's proof of what's possible.</h2>
+      <p class="text-gray-400 mb-8 max-w-xl mx-auto">A documentation of a workflow that anyone can replicate with OpenClaw and a bit of curiosity.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener" class="btn-primary">
+          ⭐ OpenClaw on GitHub
+        </a>
+        <a href="/playbook" class="btn-secondary">
+          📖 Read the Playbook
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

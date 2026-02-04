@@ -1,0 +1,399 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const competitors = [
+  { name: 'Oscar Stories', rating: '4.6★', price: '$4.99/mo', strengths: 'Polished, personalisation, multilingual', gap: 'Generic TTS, no co-creation' },
+  { name: 'Storywizard.ai', rating: 'N/A', price: 'Freemium', strengths: 'EdTech awards, COPPA certified, 11 languages', gap: 'Schools focus, not bedtime' },
+  { name: 'Novel Effect', rating: '4.9★', price: '$49.99/yr', strengths: 'Sound effects on real books, B2B', gap: 'Not AI, requires physical books' },
+  { name: 'BedtimeStory.ai', rating: 'N/A', price: 'Freemium', strengths: 'Web-based, user owns rights', gap: 'No audio narration, less polished' },
+  { name: 'Storytime AI', rating: '2.6★', price: '$1.99/mo', strengths: 'Cheap, multilingual', gap: 'Buggy, no audio, no library' },
+];
+
+const themes = [
+  { emoji: '🚀', name: 'Aventura espacial', ages: '5-7', desc: 'Help lost stars find their way home' },
+  { emoji: '🏴‍☠️', name: 'Piratas del río', ages: '4-7', desc: 'Treasure that turns out to be friendship' },
+  { emoji: '🐻', name: 'Amigos del bosque', ages: '3-5', desc: 'Befriend a forest animal with a problem' },
+  { emoji: '🐙', name: 'El pulpo pintor', ages: '3-5', desc: 'An octopus who paints with all eight arms' },
+  { emoji: '🌈', name: 'El arcoíris roto', ages: '3-5', desc: 'Find the rainbow\'s lost colour' },
+  { emoji: '🧙', name: 'El mago de los calcetines', ages: '4-6', desc: 'Spells that only work on socks' },
+  { emoji: '😤', name: 'El monstruo de la rabia', ages: '3-5', desc: 'Anger becomes a little creature that needs a hug' },
+  { emoji: '🌱', name: 'La semilla viajera', ages: '3-5', desc: 'A seed blown by the wind looking for home' },
+  { emoji: '⭐', name: 'La fábrica de estrellas', ages: '5-7', desc: 'Tiny creatures that build stars every night' },
+  { emoji: '🌙', name: 'Miedo a la oscuridad', ages: '3-5', desc: 'The dark is just as scared of the light' },
+];
+
+const differentiators = [
+  { icon: '🤝', title: 'Co-creation', desc: 'Parent + child build the story together through guided prompts. Not just parameters — active collaboration.' },
+  { icon: '🎭', title: 'Character Voices', desc: 'ElevenLabs-powered narration with distinct voices for heroes, villains, and narrators. No generic TTS.' },
+  { icon: '📚', title: 'Story Library', desc: 'Save and replay favourites. Kids love repetition — "again! again!" is a feature, not a bug.' },
+  { icon: '📵', title: 'Screen Down Mode', desc: 'Audio-only playback. Phone goes face-down during story time. Addresses screen guilt.' },
+  { icon: '🌍', title: 'Bilingual Stories', desc: 'Generate in English, narrate in Spanish (or vice versa). Perfect for bilingual families.' },
+  { icon: '💤', title: 'Sleep-friendly Pacing', desc: 'Narration gets slower and quieter toward the end. Built for bedtime.' },
+];
+
+const painPoints = [
+  { icon: '😫', pain: 'Creativity fatigue', detail: 'Running out of fresh stories after 300+ nights' },
+  { icon: '🎭', pain: 'Performance pressure', detail: 'Doing funny voices at 7:30pm when your brain is mush' },
+  { icon: '🔁', pain: 'Repetition boredom', detail: 'Kid wants the same story, parent dreads telling it again' },
+  { icon: '📱', pain: 'Screen guilt', detail: 'Want tech help but hate screen time at bedtime' },
+  { icon: '🤔', pain: 'Is this lazy?', detail: 'Genuine parental guilt about not doing it themselves' },
+];
+---
+
+<Layout title="Story Time" description="Kids co-create stories with parents → AI generates → character voices read aloud. Bedtime stories reimagined.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-4 mb-8">
+      <span class="text-6xl">📖</span>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-white">Story Time</h1>
+        <p class="text-purple-400 font-mono text-sm mt-1">Kids co-create · AI generates · Character voices narrate</p>
+      </div>
+    </div>
+
+    <div class="card mb-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        <div><span class="text-gray-500 block">Status</span><span class="text-white font-semibold">⚪ Prototype</span></div>
+        <div><span class="text-gray-500 block">Target</span><span class="text-white font-semibold">Ages 3-7</span></div>
+        <div><span class="text-gray-500 block">Languages</span><span class="text-white font-semibold">🇬🇧 🇪🇸</span></div>
+        <div><span class="text-gray-500 block">Voice</span><span class="text-white font-semibold">ElevenLabs</span></div>
+      </div>
+    </div>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+      The bedtime story app where you and your child create together, brought to life with character voices, and saved forever.
+    </p>
+  </section>
+
+  <!-- The Pitch -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+      <h2>The Problem</h2>
+      <p>Every parent hits the wall. 300 nights of bedtime stories and you're out of ideas, out of energy for funny voices, and your kid wants the same story AGAIN.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-8 not-prose">
+        {painPoints.map(p => (
+          <div class="card text-center">
+            <span class="text-3xl block mb-2">{p.icon}</span>
+            <p class="text-white font-semibold text-sm">{p.pain}</p>
+            <p class="text-gray-400 text-xs mt-1">{p.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      <blockquote class="border-l-4 border-purple-500 pl-4 my-8 text-gray-300 italic">
+        "I want to outsource the storytelling part of bedtime but keep the cuddling"
+        <span class="block text-gray-500 text-sm mt-1 not-italic">— Reddit parent, r/toddlers</span>
+      </blockquote>
+
+      <h2>The Solution</h2>
+      <p>Story Time turns bedtime into a creative collaboration. Parent and child answer fun prompts together: <em>Who's the hero? What animal? What's the big problem?</em> Then AI generates a unique story, and character voices bring it to life while you cuddle.</p>
+    </div>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">What Makes It Different</h2>
+    <p class="text-gray-400 mb-6">No competitor currently offers all three: co-creation + character voices + replay library. That's the gap.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {differentiators.map(d => (
+        <div class="card">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl flex-shrink-0">{d.icon}</span>
+            <div>
+              <h3 class="text-white font-semibold">{d.title}</h3>
+              <p class="text-gray-400 text-sm mt-1">{d.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Sample Stories -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">📝 Sample Stories</h2>
+    <p class="text-gray-400 mb-6">Two hand-crafted prototype stories, written for Diego's kids. These demonstrate the target quality and tone.</p>
+
+    <!-- Dante's Story -->
+    <div class="card mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">🚀</span>
+        <div>
+          <h3 class="text-xl font-bold text-white">El Astronauta de las Estrellas Perdidas</h3>
+          <p class="text-sm text-gray-400">Hero: Dante · Age: 6 · 7 chapters · Spanish</p>
+        </div>
+      </div>
+      <div class="space-y-4 text-gray-300 text-sm leading-relaxed">
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Capítulo 1 — El telescopio misterioso</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Dante tenía un telescopio viejo que encontró en el desván de su abuelo. Era de color bronce, con rayitas verdes que brillaban cuando la luna salía. Su papá decía que era un telescopio normal, pero Dante sabía que no.</p>
+            <p class="mt-2">Porque cada noche, cuando miraba por el telescopio, las estrellas le guiñaban un ojo.</p>
+            <p class="mt-2">No todas. Solo algunas. Y esta noche, una estrella muy pequeñita, allá al fondo del cielo, estaba parpadeando tan rápido que parecía que pedía ayuda.</p>
+            <p class="mt-2">—Esa estrella necesita algo —susurró Dante.</p>
+            <p class="mt-2">Y en ese momento, el telescopio empezó a vibrar.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Capítulo 2 — La nave en el jardín</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Dante bajó corriendo al jardín, todavía en pijama. Allí, entre los rosales de mamá, había aparecido algo imposible: una nave espacial pequeñita, del tamaño de un coche, hecha de un metal que cambiaba de color como las pompas de jabón.</p>
+            <p class="mt-2">La puerta se abrió con un <em>shhhhh</em> suave, y dentro había un asiento perfecto para un niño de seis años. En el panel de mandos, un botón verde parpadeaba con un mensaje:</p>
+            <p class="mt-2 text-purple-300 font-semibold">«MISIÓN: ENCONTRAR LAS ESTRELLAS PERDIDAS»</p>
+            <p class="mt-2">Dante miró hacia la ventana de su habitación. Luego miró la nave. Luego otra vez la ventana.</p>
+            <p class="mt-2">Se abrochó el cinturón.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Capítulo 3 — El campo de asteroides cantarines</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>La nave volaba sola. Dante no tenía que hacer nada, solo mirar por la ventana, y lo que veía era increíble: planetas de todos los colores, nebulosas que parecían algodón de azúcar morado, y lunas que giraban como peonzas.</p>
+            <p class="mt-2">Pero de pronto: ¡ASTEROIDES!</p>
+            <p class="mt-2">Miles de rocas enormes flotaban por todas partes. Dante iba a gritar cuando escuchó algo rarísimo. Los asteroides... estaban cantando. Cada uno hacía una nota diferente, como un coro gigante en el espacio.</p>
+            <p class="mt-2">—Si cantan —pensó Dante—, no pueden ser malos.</p>
+            <p class="mt-2">Y tenía razón. Cuando la nave se acercó, los asteroides se apartaron bailando, dejándole un caminito de luz para pasar.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Capítulo 4 — Lucía, la estrella perdida</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Al otro lado del campo de asteroides había una nube oscura, y dentro de la nube, temblando de frío, estaba Lucía. Era una estrella pequeñita, del tamaño de una pelota de tenis, y su luz estaba casi apagada.</p>
+            <p class="mt-2">—¿Eres tú la que me llamaba? —preguntó Dante.</p>
+            <p class="mt-2">—Sí —dijo Lucía con una voz finita—. Me perdí. Estaba jugando con mis hermanas y me alejé demasiado, y ahora no encuentro el camino a casa. Y sin mis hermanas, mi luz se apaga poco a poco.</p>
+            <p class="mt-2">Dante la recogió con las dos manos. Estaba tibia, como sujetar una taza de chocolate caliente.</p>
+            <p class="mt-2">—No te preocupes —dijo—. Yo te llevo.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Capítulo 5 — El mapa de las constelaciones</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Pero, ¿dónde vivía Lucía? El espacio es MUY grande.</p>
+            <p class="mt-2">—Mi casa es una constelación —explicó Lucía—. Se llama la Osa Pequeña. Pero desde aquí todo se ve diferente...</p>
+            <p class="mt-2">Dante tuvo una idea. Sacó el telescopio de su abuelo del bolsillo del pijama (no sabía cómo había llegado ahí, pero las cosas mágicas hacen lo que quieren).</p>
+            <p class="mt-2">Miró por el telescopio, y esta vez no solo vio estrellas. Vio líneas doradas conectándolas, como un mapa dibujado en el cielo. Y allí, a la derecha, brillando un poquito menos que las demás, estaba la Osa Pequeña. Con un huequito vacío.</p>
+            <p class="mt-2">—¡Allí! —gritó Dante.</p>
+            <p class="mt-2">La nave arrancó a toda velocidad.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Capítulo 6 — Volver a casa</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Cuando llegaron, las hermanas de Lucía empezaron a parpadear de alegría. Eran seis estrellas formando la forma de un cazo, y el huequito vacío era justo en la punta.</p>
+            <p class="mt-2">Dante levantó a Lucía con cuidado y la colocó en su sitio. En cuanto tocó su lugar, ¡FLASH! Lucía brilló con tanta fuerza que todo el cielo se iluminó por un segundo.</p>
+            <p class="mt-2">—¡Gracias, Dante! —dijo Lucía, ahora con una voz fuerte y clara—. Cada vez que mires al cielo y veas la Osa Pequeña, la estrellita de la punta... esa soy yo. Y estaré brillando para ti.</p>
+            <p class="mt-2">Dante sonrió tanto que le dolían las mejillas.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Capítulo 7 — De vuelta al jardín</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>La nave lo dejó en el jardín justo antes del amanecer. Cuando Dante se dio la vuelta, ya no había nave. Solo los rosales de mamá y un poquito de polvo de estrellas en la hierba.</p>
+            <p class="mt-2">Subió a su cuarto, se metió en la cama, y antes de dormirse miró por la ventana.</p>
+            <p class="mt-2">Allí estaba la Osa Pequeña. Y la estrellita de la punta brillaba más que ninguna otra noche.</p>
+            <p class="mt-2">Dante cerró los ojos y soñó con asteroides cantarines, nebulosas de algodón de azúcar y una amiga muy pequeñita que vivía en el cielo.</p>
+            <p class="mt-2 text-center text-purple-400">🌟 Fin 🌟</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Tristan's Story -->
+    <div class="card mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">🐻</span>
+        <div>
+          <h3 class="text-xl font-bold text-white">Tristán y el Oso que No Sabía Rugir</h3>
+          <p class="text-sm text-gray-400">Hero: Tristán · Age: 4 · 7 pages · Spanish</p>
+        </div>
+      </div>
+      <div class="space-y-4 text-gray-300 text-sm leading-relaxed">
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Página 1 — El bosque detrás de casa</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Tristán vivía en una casa con un jardín muy grande. Y detrás del jardín había un bosque. No un bosque oscuro y de miedo, no. Un bosque lleno de sol, con árboles gorditos y pájaros que cantaban todo el día.</p>
+            <p class="mt-2">Un día, Tristán escuchó un ruido raro entre los arbustos.</p>
+            <p class="mt-2">No era un pájaro. No era el viento.</p>
+            <p class="mt-2">Era alguien que lloraba muy bajito.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Página 2 — El oso Pompón</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Tristán apartó las hojas y allí estaba: un oso. Pero no un oso grande y feroz. Era un osito pequeño, redondito, con el pelo marrón clarito y los ojos muy grandes.</p>
+            <p class="mt-2">—¿Estás llorando? —preguntó Tristán.</p>
+            <p class="mt-2">El osito asintió con la cabeza.</p>
+            <p class="mt-2">—Me llamo Pompón —dijo el osito—. Y tengo un problema muy gordo.</p>
+            <p class="mt-2">—¿Qué problema?</p>
+            <p class="mt-2">Pompón abrió la boca muy grande, tomó mucho aire, y...</p>
+            <p class="mt-2 italic">—miii —salió un sonidito finito, como un ratoncito.</p>
+            <p class="mt-2">—¡No sé rugir! —dijo Pompón, y se le cayeron dos lagrimones—. Todos los osos saben rugir. Menos yo.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Página 3 — Vamos a practicar</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>—Yo te enseño —dijo Tristán—. Yo sé hacer ruidos muy fuertes. Mi papá dice que soy el niño más ruidoso del mundo.</p>
+            <p class="mt-2">Pompón sonrió un poquito.</p>
+            <p class="mt-2">Fueron al río, porque junto al agua todo suena más fuerte.</p>
+            <p class="mt-2">—A ver —dijo Tristán—. Di GRRRRR.</p>
+            <p class="mt-2 italic">—grr —dijo Pompón, bajito.</p>
+            <p class="mt-2">—¡Más fuerte! ¡GRRRRR!</p>
+            <p class="mt-2 italic">—grrrr —un poquito más fuerte.</p>
+            <p class="mt-2">—¡Así! ¡GROOOAAAR!</p>
+            <p class="mt-2 italic">—groooo... —Pompón se puso rojo y le salió un hipo.</p>
+            <p class="mt-2">—Mmm —dijo Tristán, pensando—. Necesitamos ayuda.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Página 4 — Los amigos del bosque</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Primero fueron a ver a Renata, la rana.</p>
+            <p class="mt-2">—Yo te enseño —dijo Renata—. ¡CROAC CROAC!</p>
+            <p class="mt-2">Pompón lo intentó: <em>—croac...</em> —pero le salió un estornudo.</p>
+            <p class="mt-2">Luego fueron a ver a Lorenzo, el león que vivía en la colina.</p>
+            <p class="mt-2">—Fácil —dijo Lorenzo—. ¡ROOOAAAR!</p>
+            <p class="mt-2">Pompón lo intentó: <em>—rooo...</em> —pero le salió un bostezo.</p>
+            <p class="mt-2">Por último, Carlota la cotorra:</p>
+            <p class="mt-2">—¡AAAAAAH! —gritó Carlota, que gritaba mucho.</p>
+            <p class="mt-2">Pompón abrió la boca... y no salió nada. Se sentó en el suelo, triste.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Página 5 — El secreto de Tristán</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Tristán se sentó al lado de Pompón y le pasó el brazo por encima. El osito era blandito y calentito.</p>
+            <p class="mt-2">—Oye, Pompón —dijo Tristán—. ¿Sabes qué? A mí no me sale silbar. Lo intento y lo intento, pero solo sale aire. Y a mi hermano Dante no le sale chasquear los dedos. Y a papá no le sale cantar. Dice que canta bien pero no es verdad.</p>
+            <p class="mt-2">Pompón se rio un poquito.</p>
+            <p class="mt-2">—Cada uno sabe hacer cosas diferentes —dijo Tristán—. A lo mejor tú no sabes rugir. Pero, ¿sabes qué sabes hacer?</p>
+            <p class="mt-2">—¿Qué?</p>
+            <p class="mt-2">—¡Dar los abrazos más blanditos del mundo!</p>
+            <p class="mt-2">Y Tristán abrazó a Pompón muy fuerte. Y Pompón abrazó a Tristán. Y los dos se rieron.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Página 6 — El rugido más raro del mundo</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Justo en ese momento, una mariposa se posó en la nariz de Pompón.</p>
+            <p class="mt-2">Le hizo cosquillas.</p>
+            <p class="mt-2">Pompón empezó a reírse. Se reía y se reía. Y de pronto, entre tanta risa, le salió:</p>
+            <p class="mt-2 text-xl font-bold text-purple-300">—¡JA JA JA GROOOOAAAAAR JA JA!</p>
+            <p class="mt-2">Fue el rugido más raro del mundo. Un rugido mezclado con risa. Pero fue un RUGIDO. Los pájaros salieron volando. Las hojas temblaron. Renata se cayó al río del susto.</p>
+            <p class="mt-2">Pompón se quedó con la boca abierta.</p>
+            <p class="mt-2">—¡Lo hice! —gritó.</p>
+            <p class="mt-2">—¡LO HICISTE! —gritó Tristán.</p>
+            <p class="mt-2">Y se abrazaron otra vez, dando saltitos.</p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">Página 7 — Amigos para siempre</summary>
+          <div class="mt-3 pl-4 border-l-2 border-navy-600">
+            <p>Desde ese día, Tristán iba al bosque todas las tardes a jugar con Pompón. Y Pompón le enseñó a Tristán a trepar árboles. Y Tristán le enseñó a Pompón a hacer castillos de barro.</p>
+            <p class="mt-2">Y cada vez que Pompón rugía, le salía ese rugido raro, mezclado con risa.</p>
+            <p class="mt-2">Pero, ¿sabes qué? Era el rugido más bonito de todo el bosque.</p>
+            <p class="mt-2">Porque era un rugido feliz.</p>
+            <p class="mt-2 text-center text-purple-400">🌟 Fin 🌟</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive Landscape -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">🔍 Competitive Landscape</h2>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left">
+        <thead>
+          <tr class="border-b border-navy-700">
+            <th class="pb-3 text-gray-400 font-medium">Competitor</th>
+            <th class="pb-3 text-gray-400 font-medium">Rating</th>
+            <th class="pb-3 text-gray-400 font-medium">Price</th>
+            <th class="pb-3 text-gray-400 font-medium">Strengths</th>
+            <th class="pb-3 text-gray-400 font-medium text-red-400">Gap</th>
+          </tr>
+        </thead>
+        <tbody>
+          {competitors.map(c => (
+            <tr class="border-b border-navy-800">
+              <td class="py-3 text-white font-medium">{c.name}</td>
+              <td class="py-3 text-gray-300">{c.rating}</td>
+              <td class="py-3 text-gray-300">{c.price}</td>
+              <td class="py-3 text-gray-400">{c.strengths}</td>
+              <td class="py-3 text-red-400/80">{c.gap}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card mt-6 border-l-4 border-green-500">
+      <p class="text-green-400 font-semibold mb-2">The Gap We Fill</p>
+      <p class="text-gray-300 text-sm">No competitor currently offers <strong class="text-white">co-creation + character voices + replay library</strong>. Oscar is closest but uses generic TTS and parents set parameters without the child actively participating. The co-creation flow is the moat.</p>
+    </div>
+  </section>
+
+  <!-- Theme Ideas -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">🎨 Theme Catalogue</h2>
+    <p class="text-gray-400 mb-6">20 curated themes across adventure, animals, magic, emotions, and nature. Here are 10 highlights:</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {themes.map(t => (
+        <div class="card flex items-center gap-3">
+          <span class="text-2xl flex-shrink-0">{t.emoji}</span>
+          <div>
+            <p class="text-white font-medium text-sm">{t.name} <span class="text-gray-500 text-xs">({t.ages})</span></p>
+            <p class="text-gray-400 text-xs">{t.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Legal -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">⚖️ Legal Framework</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card">
+        <h3 class="text-white font-semibold mb-3">🇬🇧 UK Requirements</h3>
+        <ul class="text-gray-400 text-sm space-y-2">
+          <li>• <strong class="text-gray-300">UK GDPR:</strong> Parental consent for under-13s</li>
+          <li>• <strong class="text-gray-300">Children's Code (ICO):</strong> 15 standards, high privacy defaults, no profiling</li>
+          <li>• <strong class="text-gray-300">Online Safety Act 2023:</strong> Risk assessments, content moderation, age verification</li>
+          <li>• <strong class="text-gray-300">DPIA required</strong> before launch</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="text-white font-semibold mb-3">🇪🇸 Spain Requirements</h3>
+        <ul class="text-gray-400 text-sm space-y-2">
+          <li>• <strong class="text-gray-300">LOPDGDD:</strong> Consent age is 14 (stricter than UK's 13)</li>
+          <li>• <strong class="text-gray-300">AEPD enforcement:</strong> Dedicated youth channel, active fines</li>
+          <li>• <strong class="text-gray-300">Audiovisual law:</strong> Content protections for minors</li>
+          <li>• <strong class="text-gray-300">Privacy notices:</strong> Must be in Spanish, child-adapted</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card mt-4 border-l-4 border-amber-500">
+      <p class="text-amber-400 font-semibold mb-2">Practical Approach</p>
+      <p class="text-gray-300 text-sm">Privacy by design: parent creates account, minimal data (first name + age range), robust AI content filtering, no analytics on children, high privacy defaults, DPIA before launch.</p>
+    </div>
+  </section>
+
+  <!-- Next Steps -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-24">
+    <h2 class="text-2xl font-bold text-white mb-8">🗺️ Next Steps</h2>
+    <div class="card">
+      <ol class="text-gray-300 text-sm space-y-3">
+        <li class="flex gap-3"><span class="text-purple-400 font-bold">1.</span> <span>Integrate Gemini API for dynamic story generation from prompts</span></li>
+        <li class="flex gap-3"><span class="text-purple-400 font-bold">2.</span> <span>ElevenLabs character voice narration (distinct voices per character)</span></li>
+        <li class="flex gap-3"><span class="text-purple-400 font-bold">3.</span> <span>Simple mobile UI: prompt flow → generate → play → save</span></li>
+        <li class="flex gap-3"><span class="text-purple-400 font-bold">4.</span> <span>Story library with replay functionality</span></li>
+        <li class="flex gap-3"><span class="text-purple-400 font-bold">5.</span> <span>Content safety filtering layer before any story reaches a child</span></li>
+        <li class="flex gap-3"><span class="text-purple-400 font-bold">6.</span> <span>Pricing: £4.99-6.99/month or £39.99-49.99/year</span></li>
+      </ol>
+    </div>
+  </section>
+
+</Layout>

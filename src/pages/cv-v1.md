@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/DocLayout.astro
+layout: ../layouts/Layout.astro
 title: Diego Cuñado — AI Builder (v1)
 ---
 

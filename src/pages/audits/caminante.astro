@@ -15,22 +15,22 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --bg: #0f1117;
-      --bg-card: #1a1d27;
-      --bg-card-alt: #151821;
-      --border: #2a2d3a;
-      --text: #e4e4e7;
-      --text-muted: #9ca3af;
-      --text-dim: #6b7280;
-      --accent: #6366f1;
-      --accent-light: #818cf8;
-      --red: #ef4444;
-      --red-bg: rgba(239,68,68,0.1);
-      --orange: #f59e0b;
-      --orange-bg: rgba(245,158,11,0.1);
-      --green: #22c55e;
-      --green-bg: rgba(34,197,94,0.1);
-      --blue: #3b82f6;
+      --bg: #ffffff;
+      --bg-card: #f8fafa;
+      --bg-card-alt: #f0f5f5;
+      --border: #d1e0e0;
+      --text: #1a2b2b;
+      --text-muted: #4a5e5e;
+      --text-dim: #7a8f8f;
+      --accent: #0d9488;
+      --accent-light: #14b8a6;
+      --red: #dc2626;
+      --red-bg: rgba(220,38,38,0.08);
+      --orange: #d97706;
+      --orange-bg: rgba(217,119,6,0.08);
+      --green: #16a34a;
+      --green-bg: rgba(22,163,74,0.08);
+      --blue: #0891b2;
     }
     
     body {
@@ -47,7 +47,7 @@
     .report-header {
       text-align: center;
       padding: 4rem 2rem;
-      background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+      background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%);
       border-bottom: 1px solid var(--border);
       margin-bottom: 3rem;
     }
@@ -62,9 +62,7 @@
       font-size: 2.2rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #e4e4e7, #9ca3af);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text);
     }
     .report-header .subtitle {
       color: var(--text-muted);

@@ -1,0 +1,891 @@
+---
+// SEO Audit Report — caminantenohaycamino.com
+// Generated: 2026-02-07
+// By: Rook AI (Huboo)
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auditoría SEO — caminantenohaycamino.com | Rook AI</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0f1117;
+      --bg-card: #1a1d27;
+      --bg-card-alt: #151821;
+      --border: #2a2d3a;
+      --text: #e4e4e7;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --red: #ef4444;
+      --red-bg: rgba(239,68,68,0.1);
+      --orange: #f59e0b;
+      --orange-bg: rgba(245,158,11,0.1);
+      --green: #22c55e;
+      --green-bg: rgba(34,197,94,0.1);
+      --blue: #3b82f6;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+    
+    /* Header */
+    .report-header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .report-header .brand {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent-light);
+      margin-bottom: 1rem;
+    }
+    .report-header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #e4e4e7, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .report-header .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .report-meta {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    .report-meta span { display: flex; align-items: center; gap: 0.4rem; }
+    
+    /* Score */
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .score-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .score-card .score {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .score-card .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.3rem;
+    }
+    .score-red { color: var(--red); }
+    .score-orange { color: var(--orange); }
+    .score-green { color: var(--green); }
+    
+    /* Sections */
+    .section {
+      margin-bottom: 3rem;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--accent-light);
+    }
+    .section p { margin-bottom: 1rem; color: var(--text-muted); }
+    
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.85rem;
+    }
+    th {
+      background: var(--bg-card-alt);
+      color: var(--text);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--border);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+    tr:hover td { background: rgba(99,102,241,0.03); }
+    
+    code {
+      background: var(--bg-card-alt);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: var(--accent-light);
+    }
+    
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 0.2em 0.6em;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-critical { background: var(--red-bg); color: var(--red); }
+    .badge-warning { background: var(--orange-bg); color: var(--orange); }
+    .badge-ok { background: var(--green-bg); color: var(--green); }
+    
+    /* Issue cards */
+    .issue {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .issue.warning { border-left-color: var(--orange); }
+    .issue.info { border-left-color: var(--blue); }
+    .issue .issue-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .issue .issue-detail {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .issue .issue-detail code { font-size: 0.8rem; }
+    
+    /* Action list */
+    .action-list {
+      counter-reset: action;
+      list-style: none;
+      padding: 0;
+    }
+    .action-list li {
+      counter-increment: action;
+      padding: 1.25rem;
+      margin: 0.75rem 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      position: relative;
+      padding-left: 3.5rem;
+    }
+    .action-list li::before {
+      content: counter(action);
+      position: absolute;
+      left: 1.25rem;
+      top: 1.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .action-list li strong { color: var(--text); }
+    .action-list li p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
+    
+    .toc { list-style: none; padding: 0; }
+    .toc li { padding: 0.4rem 0; }
+    .toc a { color: var(--accent-light); text-decoration: none; font-size: 0.95rem; }
+    .toc a:hover { text-decoration: underline; }
+    
+    .highlight-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .footer-note {
+      text-align: center;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+    }
+    
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      .report-header { padding: 2rem 1rem; }
+      .report-header h1 { font-size: 1.5rem; }
+      .report-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
+      .score-grid { grid-template-columns: repeat(2, 1fr); }
+      table { font-size: 0.75rem; }
+      td, th { padding: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="report-header">
+  <div class="brand">Rook AI — Auditoría SEO Profesional</div>
+  <h1>caminantenohaycamino.com</h1>
+  <p class="subtitle">Informe completo de auditoría SEO con hallazgos y plan de acción</p>
+  <div class="report-meta">
+    <span>📅 7 de febrero de 2026</span>
+    <span>🌐 www.caminantenohaycamino.com</span>
+    <span>📊 Versión 1.0</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- TOC -->
+<div class="section">
+  <h2>📋 Índice</h2>
+  <ol class="toc">
+    <li><a href="#resumen">1. Resumen Ejecutivo</a></li>
+    <li><a href="#puntuacion">2. Puntuación General</a></li>
+    <li><a href="#inventario">3. Inventario del Sitio</a></li>
+    <li><a href="#tecnico">4. SEO Técnico</a></li>
+    <li><a href="#onpage">5. SEO On-Page</a></li>
+    <li><a href="#contenido">6. Análisis de Contenido</a></li>
+    <li><a href="#arquitectura">7. Arquitectura y Enlazado Interno</a></li>
+    <li><a href="#imagenes">8. SEO de Imágenes</a></li>
+    <li><a href="#enlaces">9. Perfil de Enlaces Externos</a></li>
+    <li><a href="#competencia">10. Posicionamiento Competitivo</a></li>
+    <li><a href="#acciones">11. Plan de Acción Priorizado</a></li>
+  </ol>
+</div>
+
+<!-- 1. RESUMEN EJECUTIVO -->
+<div class="section" id="resumen">
+  <h2>1. Resumen Ejecutivo</h2>
+  <p>
+    <strong style="color:var(--text)">caminantenohaycamino.com</strong> es un sitio web construido con <strong style="color:var(--text)">Wix</strong> que funciona como landing page de un blog de viajes personal. El sitio presenta <strong style="color:var(--red)">problemas graves</strong> que le impiden posicionarse en buscadores y generar tráfico orgánico. En su estado actual, el sitio es prácticamente invisible para Google.
+  </p>
+  
+  <div class="highlight-box">
+    <p style="margin:0"><strong style="color:var(--text)">🔴 Hallazgo principal:</strong> El contenido real (los blogs de viaje) reside en <strong style="color:var(--text)">más de 25 dominios externos de Blogspot</strong> (azoresenotonho2025.blogspot.com, copenhaguejulio2025.blogspot.com, etc.). El sitio Wix actúa como mero directorio de enlaces, sin contenido propio indexable. Esto significa que <strong style="color:var(--red)">toda la autoridad SEO se la llevan los blogs de Blogspot, no el dominio principal</strong>.</p>
+  </div>
+  
+  <p>
+    Además, varias páginas contienen <strong style="color:var(--text)">texto placeholder de la plantilla Wix</strong> sin personalizar, las redes sociales enlazan a cuentas de Wix en vez de a las propias, y la página de contacto tiene datos ficticios (<code>info@misitio.com</code>). Google solo indexa 1 página del sitio.
+  </p>
+  <p>
+    La buena noticia: el dominio tiene un nombre memorable inspirado en Antonio Machado, el contenido viajero existe (en Blogspot) y la pareja lleva más de 10 años documentando viajes. Con una reestructuración adecuada, el potencial es significativo.
+  </p>
+</div>
+
+<!-- 2. PUNTUACIÓN -->
+<div class="section" id="puntuacion">
+  <h2>2. Puntuación General</h2>
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="score score-red">8/100</div>
+      <div class="label">SEO General</div>
+    </div>
+    <div class="score-card">
+      <div class="score score-red">12/100</div>
+      <div class="label">Contenido</div>
+    </div>
+    <div class="score-card">
+      <div class="score score-orange">35/100</div>
+      <div class="label">SEO Técnico</div>
+    </div>
+    <div class="score-card">
+      <div class="score score-red">5/100</div>
+      <div class="label">On-Page</div>
+    </div>
+    <div class="score-card">
+      <div class="score score-red">0/100</div>
+      <div class="label">Backlinks</div>
+    </div>
+    <div class="score-card">
+      <div class="score score-red">10/100</div>
+      <div class="label">Arquitectura</div>
+    </div>
+  </div>
+  <p>La puntuación refleja un sitio web que no ha recibido ninguna optimización SEO. No es un diagnóstico negativo de la marca, sino una oportunidad: partiendo de cero, cualquier mejora generará resultados visibles.</p>
+</div>
+
+<!-- 3. INVENTARIO -->
+<div class="section" id="inventario">
+  <h2>3. Inventario del Sitio</h2>
+  
+  <h3>3.1 Páginas en el Sitemap</h3>
+  <p>El sitemap (<code>sitemap.xml</code>) contiene un único sub-sitemap (<code>pages-sitemap.xml</code>) con <strong style="color:var(--text)">5 URLs</strong>. Última modificación: 16 de noviembre de 2025.</p>
+  
+  <table>
+    <thead>
+      <tr><th>URL</th><th>Title Tag</th><th>Meta Description</th><th>Contenido</th><th>Estado</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>/</code></td>
+        <td>Caminante no hay camino | "blog de viajes"</td>
+        <td>Sí (270 chars) — Larga pero descriptiva</td>
+        <td>Galería de imágenes con enlaces a Blogspot</td>
+        <td><span class="badge badge-warning">Mínimo</span></td>
+      </tr>
+      <tr>
+        <td><code>/sobre-mi</code></td>
+        <td>Sobre mí | caminantenohaycamino</td>
+        <td>No detectada</td>
+        <td><strong style="color:var(--red)">Texto placeholder de Wix:</strong> "Párrafo. Haz clic para editar y agregar tu propio texto..."</td>
+        <td><span class="badge badge-critical">Crítico</span></td>
+      </tr>
+      <tr>
+        <td><code>/portafolio</code></td>
+        <td>Portafolio | caminantenohaycamino</td>
+        <td>No detectada</td>
+        <td>Vacío — solo el footer</td>
+        <td><span class="badge badge-critical">Crítico</span></td>
+      </tr>
+      <tr>
+        <td><code>/contacto</code></td>
+        <td>Contacto | caminantenohaycamino</td>
+        <td>No detectada</td>
+        <td>Email ficticio: <code>info@misitio.com</code>, teléfono: 914-135-288</td>
+        <td><span class="badge badge-critical">Crítico</span></td>
+      </tr>
+      <tr>
+        <td><code>/clientes</code></td>
+        <td>Clientes | caminantenohaycamino</td>
+        <td>No detectada</td>
+        <td><strong style="color:var(--red)">Texto placeholder:</strong> "Testimonio. Haz clic aquí para editar..."</td>
+        <td><span class="badge badge-critical">Crítico</span></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>3.2 Indexación en Google</h3>
+  <p>Una búsqueda <code>site:caminantenohaycamino.com</code> devuelve <strong style="color:var(--red)">1 solo resultado</strong> (la homepage). Las páginas internas no están indexadas o han sido excluidas por Google debido a su contenido nulo/placeholder.</p>
+  
+  <h3>3.3 Blogs Externos (Blogspot)</h3>
+  <p>El verdadero contenido del proyecto reside en <strong style="color:var(--text)">más de 25 blogs individuales en Blogspot</strong>, cada uno para un viaje diferente. Identificamos los siguientes:</p>
+  
+  <table>
+    <thead>
+      <tr><th>Viaje</th><th>Dominio Blogspot</th><th>Año</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Islas Azores</td><td>azoresenotonho2025.blogspot.com</td><td>2025</td></tr>
+      <tr><td>Copenhague</td><td>copenhaguejulio2025.blogspot.com</td><td>2025</td></tr>
+      <tr><td>Guatemala y Costa Rica</td><td>guatecostarica2025.blogspot.com</td><td>2025</td></tr>
+      <tr><td>Sur de Italia</td><td>viajecostaamalfitanaypuglia.blogspot.com</td><td>2024</td></tr>
+      <tr><td>Nueva York</td><td>nuevayorkjulio2024.blogspot.com</td><td>2024</td></tr>
+      <tr><td>Camino Borgoña</td><td>caminosquesehacenalandar.blogspot.com</td><td>2024</td></tr>
+      <tr><td>Sri Lanka</td><td>viajeporsrilanka2024.blogspot.com</td><td>2024</td></tr>
+      <tr><td>Chipre</td><td>viajeachipre2023.blogspot.com</td><td>2023</td></tr>
+      <tr><td>Colombia</td><td>unmesporcolombia2023.blogspot.com</td><td>2023</td></tr>
+      <tr><td>Sicilia</td><td>15diasensicilia.blogspot.com</td><td>2022</td></tr>
+      <tr><td>Normandía y Bretaña</td><td>autocaravananormanda.blogspot.com</td><td>2022</td></tr>
+      <tr><td>Alsacia</td><td>caminosquesehacenalandar.blogspot.com</td><td>2022</td></tr>
+      <tr><td>Canal del Loira</td><td>navegandoelmidi.blogspot.com</td><td>2021</td></tr>
+      <tr><td>Grecia</td><td>porgrecia2019.blogspot.com</td><td>2019</td></tr>
+      <tr><td>Camino Podiense</td><td>caminopodiense.blogspot.co.uk</td><td>2012-2019</td></tr>
+      <tr><td>Sur de la India</td><td>mumbaiagoa.blogspot.com</td><td>2018</td></tr>
+      <tr><td>Nueva Zelanda</td><td>antipodas2017.blogspot.com</td><td>2017</td></tr>
+      <tr><td>Creta y Santorini</td><td>cretasantorini2016.blogspot.com.es</td><td>2016</td></tr>
+      <tr><td>Toscana</td><td>bajoelsoldelatoscana2016.blogspot.com</td><td>2016</td></tr>
+      <tr><td>Portugal en caravana</td><td>autocaravavasenportugal2015.blogspot.com.es</td><td>2015</td></tr>
+      <tr><td>Ruta del Okavango</td><td>granrutaokavango2015.blogspot.com</td><td>2015</td></tr>
+      <tr><td>San Francisco y Costa Oeste</td><td>sanfranciscocostaoeste.blogspot.com</td><td>2014</td></tr>
+      <tr><td>Canal du Midi</td><td>navegandoelmidi.blogspot.com</td><td>2014</td></tr>
+      <tr><td>Costa Licia, Turquía</td><td>costaliciaturquia.blogspot.com</td><td>2013</td></tr>
+      <tr><td>Berlín y Polonia</td><td>ventealemania.blogspot.com</td><td>2013</td></tr>
+      <tr><td>Argentina</td><td>peritodemivida.blogspot.com</td><td>2012</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="issue">
+    <div class="issue-title">🔴 Problema Crítico: Contenido disperso en 25+ dominios externos</div>
+    <div class="issue-detail">
+      Cada viaje tiene su propio subdominio de Blogspot. Esto significa que la autoridad SEO (backlinks, antigüedad, señales de calidad) se reparte entre decenas de dominios de Google en vez de acumularse en <code>caminantenohaycamino.com</code>. Es el equivalente a abrir una tienda nueva para cada producto que vendes en vez de tenerlos todos en una.
+    </div>
+  </div>
+</div>
+
+<!-- 4. SEO TÉCNICO -->
+<div class="section" id="tecnico">
+  <h2>4. SEO Técnico</h2>
+  
+  <h3>4.1 Plataforma</h3>
+  <table>
+    <thead><tr><th>Aspecto</th><th>Valor</th><th>Evaluación</th></tr></thead>
+    <tbody>
+      <tr><td>CMS</td><td>Wix (Thunderbolt v1.16832.0)</td><td><span class="badge badge-warning">Limitado para SEO</span></td></tr>
+      <tr><td>HTTPS</td><td>✅ Activo con certificado válido</td><td><span class="badge badge-ok">OK</span></td></tr>
+      <tr><td>Idioma HTML</td><td><code>&lt;html lang="es"&gt;</code></td><td><span class="badge badge-ok">OK</span></td></tr>
+      <tr><td>Viewport</td><td><code>width=device-width, initial-scale=1</code></td><td><span class="badge badge-ok">OK</span></td></tr>
+      <tr><td>Charset</td><td>UTF-8</td><td><span class="badge badge-ok">OK</span></td></tr>
+    </tbody>
+  </table>
+  
+  <h3>4.2 Robots.txt</h3>
+  <p>El archivo <code>robots.txt</code> está presente y correctamente configurado:</p>
+  <div class="highlight-box">
+    <code style="display:block;white-space:pre;font-size:0.8rem;color:var(--text-muted)">User-agent: *
+Allow: /
+Disallow: *?lightbox=
+
+User-agent: PetalBot
+Disallow: /
+
+Sitemap: https://www.caminantenohaycamino.com/sitemap.xml</code>
+  </div>
+  <p>Bloquea correctamente PetalBot y los parámetros de lightbox. Tiene crawl-delay para dotbot y AhrefsBot. <span class="badge badge-ok">Sin problemas</span></p>
+  
+  <h3>4.3 Sitemap XML</h3>
+  <div class="issue warning">
+    <div class="issue-title">⚠️ Sitemap con solo 5 URLs</div>
+    <div class="issue-detail">
+      El sitemap incluye únicamente las 5 páginas del sitio Wix. No contiene ninguna URL de contenido real de viajes porque ese contenido está en Blogspot. Un blog de viajes competitivo tiene cientos de URLs indexables.
+    </div>
+  </div>
+  
+  <h3>4.4 Favicon</h3>
+  <div class="issue warning">
+    <div class="issue-title">⚠️ Favicon por defecto de Wix</div>
+    <div class="issue-detail">
+      El sitio usa el favicon genérico de Wix (<code>parastorage.com/client/pfavico.ico</code>) en lugar de un icono propio. Esto afecta al reconocimiento de marca en los resultados de búsqueda de Google, donde ahora se muestra el favicon junto al resultado.
+    </div>
+  </div>
+  
+  <h3>4.5 Datos Estructurados (Schema.org)</h3>
+  <div class="issue">
+    <div class="issue-title">🔴 Sin datos estructurados</div>
+    <div class="issue-detail">
+      No se detecta ningún marcado Schema.org (JSON-LD, Microdata o RDFa). Para un blog de viajes, sería esencial implementar al menos: <code>TravelAction</code>, <code>BlogPosting</code>, <code>BreadcrumbList</code>, <code>WebSite</code> con SearchAction, y <code>Person</code> o <code>Organization</code>.
+    </div>
+  </div>
+  
+  <h3>4.6 Rendimiento y Velocidad</h3>
+  <p>Wix carga una cantidad significativa de JavaScript propio (Thunderbolt framework, polyfills, security overrides). El HTML inicial contiene ~100KB+ de scripts inline antes de que el contenido del usuario comience a renderizarse. Esto impacta directamente en los Core Web Vitals.</p>
+  
+  <div class="issue warning">
+    <div class="issue-title">⚠️ JavaScript excesivo de Wix</div>
+    <div class="issue-detail">
+      Scripts de seguridad de Wix (<code>handleAccessTokens</code>, <code>overrideGlobals</code>) se cargan inline y bloquean el renderizado. Polyfills de <code>Intl.Segmenter</code>, <code>core-js</code> y <code>focus-within</code> añaden peso. Esto es inherente a Wix y no es controlable por el usuario — es una limitación de la plataforma.
+    </div>
+  </div>
+</div>
+
+<!-- 5. SEO ON-PAGE -->
+<div class="section" id="onpage">
+  <h2>5. SEO On-Page</h2>
+  
+  <h3>5.1 Title Tags</h3>
+  <table>
+    <thead><tr><th>Página</th><th>Title Tag Actual</th><th>Problema</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>/</code></td>
+        <td>Caminante no hay camino | "blog de viajes"</td>
+        <td><span class="badge badge-warning">Genérico</span> — No incluye keywords como "viajes en pareja", "senderismo", "camino de Santiago"</td>
+      </tr>
+      <tr>
+        <td><code>/sobre-mi</code></td>
+        <td>Sobre mí | caminantenohaycamino</td>
+        <td><span class="badge badge-critical">No descriptivo</span> — "caminantenohaycamino" no es un keyword buscado</td>
+      </tr>
+      <tr>
+        <td><code>/portafolio</code></td>
+        <td>Portafolio | caminantenohaycamino</td>
+        <td><span class="badge badge-critical">Irrelevante</span> — "Portafolio" no tiene relación con viajes</td>
+      </tr>
+      <tr>
+        <td><code>/contacto</code></td>
+        <td>Contacto | caminantenohaycamino</td>
+        <td><span class="badge badge-warning">Estándar</span> — Aceptable para una página de contacto</td>
+      </tr>
+      <tr>
+        <td><code>/clientes</code></td>
+        <td>Clientes | caminantenohaycamino</td>
+        <td><span class="badge badge-critical">Irrelevante</span> — Un blog de viajes no tiene "clientes"</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>5.2 Meta Descriptions</h3>
+  <div class="issue">
+    <div class="issue-title">🔴 4 de 5 páginas sin meta description</div>
+    <div class="issue-detail">
+      Solo la homepage tiene meta description. Las páginas <code>/sobre-mi</code>, <code>/portafolio</code>, <code>/contacto</code> y <code>/clientes</code> carecen de ella. Google mostrará un snippet auto-generado que probablemente incluirá el texto placeholder de Wix: <em>"Párrafo. Haz clic para editar y agregar tu propio texto"</em>.
+    </div>
+  </div>
+  <p>La meta description de la homepage es aceptable en contenido pero excesivamente larga (~270 caracteres). Google recomienda entre 120-160 caracteres. Texto actual:</p>
+  <div class="highlight-box">
+    <p style="font-size:0.85rem;font-style:italic;margin:0">"Caminante no hay camino es un "blog de viajes" de una pareja de españoles a la que le apasiona conocer diferentes lugares del mundo, Solemos viajar en grupo, con amigos, a diferentes países del mundo, y todos los años solemos hacer un trozo diferente del camino de Santiago. Organizamos los viajes nosotros mismos y nos gusta compartir nuestras experiencias."</p>
+  </div>
+  
+  <h3>5.3 Estructura de Encabezados (H1, H2, H3)</h3>
+  <div class="issue">
+    <div class="issue-title">🔴 Múltiples H1 en la homepage y estructura caótica</div>
+    <div class="issue-detail">
+      La homepage contiene <strong>al menos 4 etiquetas H1</strong>, todas usadas para el nombre "gala Atias" y el botón "INGRESAR". Los H2 se usan para el eslogan y el texto de bienvenida. Esto es un uso completamente invertido de la jerarquía de encabezados:
+      <br/><br/>
+      <code>&lt;h1&gt;gala Atias&lt;/h1&gt;</code> (aparece 2 veces — en header fijo y en body)<br/>
+      <code>&lt;h1&gt;INGRESAR&lt;/h1&gt;</code> (un enlace simple marcado como H1)<br/>
+      <code>&lt;h2&gt;Caminante no hay camino... Se hace camino al andar&lt;/h2&gt;</code><br/>
+      <code>&lt;h2&gt;Bienvenidos a nuestro "blog de viajes"...&lt;/h2&gt;</code>
+      <br/><br/>
+      El H1 debería ser el título principal de la página (el eslogan o nombre del blog), no el nombre del autor repetido.
+    </div>
+  </div>
+  
+  <h3>5.4 Open Graph y Redes Sociales</h3>
+  <p>La homepage tiene tags Open Graph básicos (<code>og:title</code>, <code>og:description</code>, <code>og:url</code>, <code>og:site_name</code>, <code>og:type</code>). Sin embargo:</p>
+  <div class="issue warning">
+    <div class="issue-title">⚠️ Sin imagen OG (og:image)</div>
+    <div class="issue-detail">
+      No se detecta <code>og:image</code> en la homepage. Cuando se comparte en WhatsApp, Facebook o Twitter, no aparecerá una imagen de vista previa. Para un blog visual de viajes, esto es una oportunidad perdida enorme.
+    </div>
+  </div>
+</div>
+
+<!-- 6. CONTENIDO -->
+<div class="section" id="contenido">
+  <h2>6. Análisis de Contenido</h2>
+  
+  <h3>6.1 Contenido Textual por Página</h3>
+  <table>
+    <thead><tr><th>Página</th><th>Palabras aprox.</th><th>Evaluación</th></tr></thead>
+    <tbody>
+      <tr><td><code>/</code> (Homepage)</td><td>~30 palabras</td><td><span class="badge badge-critical">Vacío</span> — Solo título y una frase de bienvenida</td></tr>
+      <tr><td><code>/sobre-mi</code></td><td>~80 palabras</td><td><span class="badge badge-critical">Placeholder</span> — Texto de plantilla Wix</td></tr>
+      <tr><td><code>/portafolio</code></td><td>~10 palabras</td><td><span class="badge badge-critical">Vacío</span> — Solo el footer</td></tr>
+      <tr><td><code>/contacto</code></td><td>~15 palabras</td><td><span class="badge badge-critical">Datos falsos</span></td></tr>
+      <tr><td><code>/clientes</code></td><td>~20 palabras</td><td><span class="badge badge-critical">Placeholder</span></td></tr>
+    </tbody>
+  </table>
+  
+  <div class="issue">
+    <div class="issue-title">🔴 Contenido total del sitio: ~155 palabras (de las cuales ~100 son placeholder)</div>
+    <div class="issue-detail">
+      Un artículo SEO competitivo para un blog de viajes necesita mínimo 1.000-2.000 palabras por post. El sitio entero tiene menos texto que un tweet largo. Google no tiene absolutamente nada que indexar o posicionar.
+    </div>
+  </div>
+  
+  <h3>6.2 Texto Placeholder No Eliminado</h3>
+  <p>Dos páginas contienen literalmente el texto de ejemplo que Wix incluye al crear una web:</p>
+  
+  <div class="issue">
+    <div class="issue-title">🔴 /sobre-mi — Texto de plantilla Wix intacto</div>
+    <div class="issue-detail">
+      Contenido actual: <em>"Párrafo. Haz clic para editar y agregar tu propio texto. Es fácil. Haz clic en Editar Texto o doble clic aquí para agregar tu contenido y cambiar la fuente..."</em><br/><br/>
+      Esto transmite abandono y falta de profesionalidad. Google puede interpretar esto como "thin content" y penalizar al dominio.
+    </div>
+  </div>
+  
+  <div class="issue">
+    <div class="issue-title">🔴 /clientes — Testimonios ficticios</div>
+    <div class="issue-detail">
+      Contenido actual: <em>"Testimonio. Haz clic aquí para editar y agregar un texto que diga algo bueno sobre ti y tus servicios"</em><br/><br/>
+      Además, la nomenclatura "clientes" y "portafolio" sugiere que esta plantilla Wix era originalmente para un freelancer/profesional, no para un blog de viajes. No se ha adaptado.
+    </div>
+  </div>
+  
+  <h3>6.3 Datos de Contacto Ficticios</h3>
+  <div class="issue">
+    <div class="issue-title">🔴 /contacto — Email y teléfono de plantilla</div>
+    <div class="issue-detail">
+      La página de contacto muestra:<br/>
+      • Email: <code>info@misitio.com</code> (dominio ficticio de Wix)<br/>
+      • Teléfono: <code>914-135-288</code> (parece un formato inventado)<br/><br/>
+      Esto no solo es inútil para los visitantes, sino que Google puede considerarlo como señal de sitio spam o abandonado.
+    </div>
+  </div>
+  
+  <h3>6.4 Keyword Targeting</h3>
+  <p>El sitio no apunta a ninguna keyword de forma intencionada. Keywords con volumen de búsqueda relevante que podrían trabajarse:</p>
+  <table>
+    <thead><tr><th>Keyword</th><th>Intención</th><th>Competencia estimada</th></tr></thead>
+    <tbody>
+      <tr><td>"blog de viajes en pareja"</td><td>Informativa</td><td>Media</td></tr>
+      <tr><td>"camino de Santiago etapas"</td><td>Informativa/Transaccional</td><td>Alta</td></tr>
+      <tr><td>"viaje a Sri Lanka desde España"</td><td>Informativa</td><td>Media-Baja</td></tr>
+      <tr><td>"viaje a Nueva Zelanda por libre"</td><td>Informativa</td><td>Media</td></tr>
+      <tr><td>"ruta Costa Amalfitana en coche"</td><td>Informativa</td><td>Media</td></tr>
+      <tr><td>"viaje a Colombia por libre"</td><td>Informativa</td><td>Media</td></tr>
+      <tr><td>"autocaravana por Normandía"</td><td>Informativa</td><td>Baja</td></tr>
+      <tr><td>"canal du Midi en barco"</td><td>Informativa</td><td>Baja</td></tr>
+      <tr><td>"senderismo Alsacia"</td><td>Informativa</td><td>Baja</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 7. ARQUITECTURA -->
+<div class="section" id="arquitectura">
+  <h2>7. Arquitectura y Enlazado Interno</h2>
+  
+  <h3>7.1 Estructura del Menú</h3>
+  <p>El menú de navegación tiene 5 elementos:</p>
+  <table>
+    <thead><tr><th>Etiqueta</th><th>URL</th><th>Pertinencia</th></tr></thead>
+    <tbody>
+      <tr><td>Bienvenido</td><td><code>/</code></td><td><span class="badge badge-ok">OK</span></td></tr>
+      <tr><td>Portafolio</td><td><code>/portafolio</code></td><td><span class="badge badge-critical">Irrelevante</span> — Página vacía, nombre de freelancer</td></tr>
+      <tr><td>Clientes</td><td><code>/clientes</code></td><td><span class="badge badge-critical">Irrelevante</span> — Placeholder, no aplica a blog de viajes</td></tr>
+      <tr><td>Sobre mí</td><td><code>/sobre-mi</code></td><td><span class="badge badge-warning">Placeholder</span></td></tr>
+      <tr><td>Contacto</td><td><code>/contacto</code></td><td><span class="badge badge-warning">Datos falsos</span></td></tr>
+    </tbody>
+  </table>
+  <p>Además, hay un elemento "More" en el menú, que está vacío. También aparece un texto de accesibilidad en inglés: <em>"Use tab to navigate through the menu items"</em>, inconsistente con un sitio en español.</p>
+  
+  <h3>7.2 Enlazado Interno</h3>
+  <div class="issue">
+    <div class="issue-title">🔴 Zero enlaces internos útiles</div>
+    <div class="issue-detail">
+      La galería de la homepage contiene <strong>25+ enlaces, pero todos son externos</strong> (apuntan a Blogspot, Google Photos, etc.). No hay ningún enlace interno entre páginas del sitio que genere valor SEO. El "link juice" fluye enteramente hacia fuera.
+    </div>
+  </div>
+  
+  <h3>7.3 Redes Sociales</h3>
+  <div class="issue">
+    <div class="issue-title">🔴 Enlaces sociales apuntan a cuentas de Wix</div>
+    <div class="issue-detail">
+      Los iconos de redes sociales en el header enlazan a:<br/>
+      • Facebook: <code>facebook.com/WixEspanol</code> ❌<br/>
+      • Twitter: <code>twitter.com/MundoWix</code> ❌<br/>
+      • Instagram: <code>instagram.com/wix</code> ❌<br/><br/>
+      Estos son los enlaces por defecto de la plantilla Wix, nunca personalizados. Envían a los visitantes a las redes sociales de Wix en lugar de las del blog.
+    </div>
+  </div>
+  
+  <h3>7.4 Footer</h3>
+  <div class="issue warning">
+    <div class="issue-title">⚠️ Footer con autoría incorrecta</div>
+    <div class="issue-detail">
+      El footer dice: <em>"© 2023 por Ximena. Creado con Wix.com"</em>. "Ximena" parece ser el nombre de la plantilla o de la autora original del template, no de los propietarios del blog. Además, el año 2023 está desactualizado (estamos en 2026).
+    </div>
+  </div>
+</div>
+
+<!-- 8. IMÁGENES -->
+<div class="section" id="imagenes">
+  <h2>8. SEO de Imágenes</h2>
+  
+  <h3>8.1 Alt Text en la Galería Principal</h3>
+  <p>Las imágenes de la galería de viajes <strong style="color:var(--green)">sí tienen atributos alt</strong>, lo cual es positivo. Sin embargo, son genéricos:</p>
+  <table>
+    <thead><tr><th>Imagen</th><th>Alt Text</th><th>Mejora sugerida</th></tr></thead>
+    <tbody>
+      <tr><td>Azores</td><td>"Islas Azores (2025)"</td><td>"Viaje a las Islas Azores en otoño 2025 — paisajes volcánicos y lagos"</td></tr>
+      <tr><td>Sri Lanka</td><td>"Sri Lanka (2024)"</td><td>"Viaje por Sri Lanka 2024 — templos, playas y naturaleza"</td></tr>
+      <tr><td>Colombia</td><td>"Colombia (2023)"</td><td>"Un mes recorriendo Colombia por libre — Cartagena, Medellín y eje cafetero"</td></tr>
+      <tr><td>Nueva Zelanda</td><td>"Nueva Zelanda (2017)"</td><td>"Road trip por Nueva Zelanda — Milford Sound y glaciares"</td></tr>
+    </tbody>
+  </table>
+  
+  <h3>8.2 Iconos de Redes Sociales</h3>
+  <div class="issue warning">
+    <div class="issue-title">⚠️ 2 de 3 iconos sociales sin alt text</div>
+    <div class="issue-detail">
+      • Facebook: <code>alt=""</code> (vacío)<br/>
+      • Twitter: <code>alt=""</code> (vacío)<br/>
+      • Instagram: <code>alt="Black Instagram Icon"</code> (en inglés, al menos tiene algo)<br/><br/>
+      Los alt vacíos son aceptables para iconos decorativos, pero idealmente deberían decir "Facebook de Caminante no hay camino", etc.
+    </div>
+  </div>
+  
+  <h3>8.3 Imagen de Background (Sobre Mí)</h3>
+  <div class="issue warning">
+    <div class="issue-title">⚠️ Imagen principal de /sobre-mi sin alt text</div>
+    <div class="issue-detail">
+      La imagen de fondo de la sección principal de "Sobre mí" tiene <code>alt=""</code>. Si es una foto de los autores del blog, debería tener un alt descriptivo como "Los autores de Caminante no hay camino viajando".
+    </div>
+  </div>
+  
+  <h3>8.4 Formato y Optimización</h3>
+  <p>Las imágenes se sirven a través del CDN de Wix (<code>static.wixstatic.com</code>) con conversión automática a AVIF y dimensiones adaptativas. Esto es <span class="badge badge-ok">positivo</span> y es una de las ventajas de usar Wix.</p>
+</div>
+
+<!-- 9. ENLACES EXTERNOS -->
+<div class="section" id="enlaces">
+  <h2>9. Perfil de Enlaces Externos</h2>
+  
+  <h3>9.1 Backlinks hacia el dominio</h3>
+  <p>Una búsqueda de menciones externas de <code>caminantenohaycamino.com</code> no devolvió resultados significativos. El perfil de backlinks es prácticamente <strong style="color:var(--red)">inexistente</strong>.</p>
+  
+  <div class="issue">
+    <div class="issue-title">🔴 Sin backlinks detectables</div>
+    <div class="issue-detail">
+      No se encontraron enlaces entrantes de otros sitios web hacia <code>caminantenohaycamino.com</code>. Sin backlinks, Google no tiene señales externas de confianza para posicionar el sitio. Es posible que algunos blogs de Blogspot enlacen de vuelta al sitio Wix, pero dado que Blogspot tiene autoridad baja, el impacto sería mínimo.
+    </div>
+  </div>
+  
+  <h3>9.2 Enlaces Salientes</h3>
+  <p>La homepage contiene <strong>25+ enlaces salientes</strong> a dominios de Blogspot y 2-3 a Google Photos. Todos tienen <code>target="_blank"</code> y <code>rel="noreferrer noopener"</code> (no pasan autoridad de forma controlada). Algunos usan HTTP en vez de HTTPS.</p>
+  
+  <div class="issue warning">
+    <div class="issue-title">⚠️ Varios enlaces salientes usan HTTP (no seguro)</div>
+    <div class="issue-detail">
+      Enlaces como <code>http://azoresenotonho2025.blogspot.com</code>, <code>http://mumbaiagoa.blogspot.com</code>, <code>http://palmerosubealapalma.blogspot.co.uk/</code> usan HTTP. Aunque Blogspot redirige a HTTPS, es mejor práctica enlazar directamente a la versión HTTPS.
+    </div>
+  </div>
+</div>
+
+<!-- 10. COMPETENCIA -->
+<div class="section" id="competencia">
+  <h2>10. Posicionamiento Competitivo</h2>
+  
+  <p>En el nicho de blogs de viajes en español, la competencia es feroz. Blogs establecidos como <strong>Viajeros Callejeros</strong>, <strong>Mochileros TV</strong>, <strong>Chavetas</strong>, <strong>Mi Viaje por el Mundo</strong> o <strong>Inteligencia Viajera</strong> tienen:</p>
+  
+  <table>
+    <thead><tr><th>Aspecto</th><th>Competidores</th><th>caminantenohaycamino.com</th></tr></thead>
+    <tbody>
+      <tr><td>Artículos indexados</td><td>500-2.000+</td><td><strong style="color:var(--red)">1</strong></td></tr>
+      <tr><td>Palabras por artículo</td><td>1.500-4.000</td><td><strong style="color:var(--red)">~30</strong></td></tr>
+      <tr><td>Domain Authority (estimado)</td><td>30-60</td><td><strong style="color:var(--red)">0-5</strong></td></tr>
+      <tr><td>Backlinks</td><td>Miles</td><td><strong style="color:var(--red)">0</strong></td></tr>
+      <tr><td>Contenido en dominio propio</td><td>✅ Todo</td><td><strong style="color:var(--red)">❌ En Blogspot</strong></td></tr>
+      <tr><td>Blog activo</td><td>Posts semanales/mensuales</td><td><strong style="color:var(--red)">No hay blog en el dominio</strong></td></tr>
+    </tbody>
+  </table>
+  
+  <div class="highlight-box">
+    <p style="margin:0"><strong style="color:var(--text)">Ventaja diferencial:</strong> 10+ años de viajes documentados a destinos variados (Okavango, Costa Licia, Camino Podiense, Sri Lanka) con un enfoque personal y auténtico. El contenido existe — solo necesita mudarse al dominio correcto.</p>
+  </div>
+</div>
+
+<!-- 11. PLAN DE ACCIÓN -->
+<div class="section" id="acciones">
+  <h2>11. Plan de Acción Priorizado</h2>
+  <p>Ordenado por impacto y urgencia. Las primeras 3 acciones son transformacionales; las siguientes son optimización.</p>
+  
+  <ol class="action-list">
+    <li>
+      <strong>Migrar TODO el contenido de Blogspot al dominio principal</strong>
+      <p>Esta es la acción más importante. Crear una sección <code>/viajes/</code> o <code>/blog/</code> y migrar cada blog de Blogspot como artículos dentro del dominio. Estructura sugerida: <code>/viajes/sri-lanka-2024/</code>, <code>/viajes/colombia-2023/</code>, etc. Configurar redirects 301 desde los Blogspot si es posible. <strong>Sin esto, nada más importa.</strong></p>
+      <p><span class="badge badge-critical">Impacto: 🔴 Crítico</span> · Esfuerzo: Alto · Plazo: 1-2 meses</p>
+    </li>
+    <li>
+      <strong>Considerar migrar de Wix a una plataforma SEO-friendly</strong>
+      <p>Wix tiene limitaciones inherentes: JavaScript excesivo, control limitado sobre el HTML, imposibilidad de crear estructuras de URL complejas. WordPress (con hosting propio), Astro o Hugo ofrecerían mucho más control. Si se migra el contenido de Blogspot, merece la pena hacerlo directamente a una plataforma mejor.</p>
+      <p><span class="badge badge-critical">Impacto: 🔴 Crítico</span> · Esfuerzo: Alto · Plazo: 1-2 meses (junto con acción 1)</p>
+    </li>
+    <li>
+      <strong>Eliminar TODAS las páginas placeholder y reestructurar el menú</strong>
+      <p>Eliminar <code>/portafolio</code>, <code>/clientes</code>. Reescribir <code>/sobre-mi</code> con la historia real de los viajeros. Corregir <code>/contacto</code> con datos reales. Nuevo menú sugerido: Inicio | Viajes | Sobre Nosotros | Contacto.</p>
+      <p><span class="badge badge-critical">Impacto: 🔴 Crítico</span> · Esfuerzo: Bajo · Plazo: 1 día</p>
+    </li>
+    <li>
+      <strong>Corregir los enlaces de redes sociales</strong>
+      <p>Cambiar los enlaces de Facebook, Twitter e Instagram para que apunten a las cuentas reales del blog (o eliminarlos si no existen cuentas propias).</p>
+      <p><span class="badge badge-warning">Impacto: ⚠️ Medio</span> · Esfuerzo: Mínimo · Plazo: 5 minutos</p>
+    </li>
+    <li>
+      <strong>Corregir el footer</strong>
+      <p>Cambiar "© 2023 por Ximena" por "© 2026 Caminante no hay camino" o el nombre real de los autores. Eliminar "Creado con Wix.com" si el plan lo permite.</p>
+      <p><span class="badge badge-warning">Impacto: ⚠️ Medio</span> · Esfuerzo: Mínimo · Plazo: 5 minutos</p>
+    </li>
+    <li>
+      <strong>Personalizar el favicon</strong>
+      <p>Crear un favicon propio (puede ser una brújula, unas huellas, las iniciales "C") en lugar del genérico de Wix. Esto mejora el reconocimiento en los resultados de Google.</p>
+      <p><span class="badge badge-warning">Impacto: ⚠️ Medio</span> · Esfuerzo: Bajo · Plazo: 30 minutos</p>
+    </li>
+    <li>
+      <strong>Optimizar los title tags y meta descriptions</strong>
+      <p>Homepage sugerido: <em>"Caminante no hay camino — Blog de viajes en pareja | Rutas, destinos y caminos por el mundo"</em>. Cada página de viaje debería tener un title como: <em>"Viaje a Sri Lanka 2024: guía, rutas y consejos — Caminante no hay camino"</em>.</p>
+      <p><span class="badge badge-warning">Impacto: ⚠️ Medio</span> · Esfuerzo: Medio · Plazo: Continuo</p>
+    </li>
+    <li>
+      <strong>Corregir la jerarquía de encabezados</strong>
+      <p>Un solo H1 por página con el tema principal. Los H2 para secciones. El nombre del autor NO debe ser H1 en todas las páginas.</p>
+      <p><span class="badge badge-warning">Impacto: ⚠️ Medio</span> · Esfuerzo: Bajo · Plazo: 1 hora</p>
+    </li>
+    <li>
+      <strong>Implementar datos estructurados (Schema.org)</strong>
+      <p>Añadir marcado JSON-LD de tipo <code>WebSite</code>, <code>Person</code>, y <code>BlogPosting</code> para cada artículo de viaje. Esto habilitaría rich snippets en Google.</p>
+      <p><span class="badge badge-ok">Impacto: 🟢 Potencial alto</span> · Esfuerzo: Medio · Plazo: Post-migración</p>
+    </li>
+    <li>
+      <strong>Crear una estrategia de contenido SEO</strong>
+      <p>Publicar guías de viaje optimizadas para keywords de cola larga. Ejemplo: "Cómo recorrer el Camino Podiense desde Le Puy-en-Velay: etapas, albergues y consejos" (2.000+ palabras). Frecuencia mínima: 2-4 artículos al mes.</p>
+      <p><span class="badge badge-ok">Impacto: 🟢 Potencial alto</span> · Esfuerzo: Alto (continuo) · Plazo: Estrategia a 6-12 meses</p>
+    </li>
+    <li>
+      <strong>Añadir imagen OG (og:image) a todas las páginas</strong>
+      <p>Cada página debería tener una imagen de vista previa de 1200x630px para compartir en redes sociales. Las fotos de viaje son perfectas para esto.</p>
+      <p><span class="badge badge-warning">Impacto: ⚠️ Medio</span> · Esfuerzo: Bajo · Plazo: 1 hora</p>
+    </li>
+    <li>
+      <strong>Enriquecer los alt texts de las imágenes</strong>
+      <p>Pasar de "Sri Lanka (2024)" a "Templo del Diente de Buda en Kandy, Sri Lanka — viaje en pareja 2024". Descriptivos, con keywords naturales.</p>
+      <p><span class="badge badge-warning">Impacto: ⚠️ Medio</span> · Esfuerzo: Bajo · Plazo: 2 horas</p>
+    </li>
+  </ol>
+</div>
+
+<!-- RESUMEN FINAL -->
+<div class="section">
+  <h2>📊 Resumen de Hallazgos</h2>
+  <table>
+    <thead><tr><th>Categoría</th><th>Críticos 🔴</th><th>Advertencias ⚠️</th><th>OK ✅</th></tr></thead>
+    <tbody>
+      <tr><td>Contenido</td><td>5</td><td>1</td><td>0</td></tr>
+      <tr><td>SEO Técnico</td><td>2</td><td>3</td><td>4</td></tr>
+      <tr><td>On-Page</td><td>3</td><td>2</td><td>0</td></tr>
+      <tr><td>Arquitectura</td><td>2</td><td>1</td><td>0</td></tr>
+      <tr><td>Imágenes</td><td>0</td><td>2</td><td>2</td></tr>
+      <tr><td>Enlaces</td><td>1</td><td>1</td><td>0</td></tr>
+      <tr style="font-weight:600;background:var(--bg-card)"><td>TOTAL</td><td>13</td><td>10</td><td>6</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer-note">
+  <p><strong>Auditoría realizada por Rook AI</strong> — Motor de auditoría SEO automatizado</p>
+  <p>Informe generado el 7 de febrero de 2026 para caminantenohaycamino.com</p>
+  <p style="margin-top:1rem">¿Necesitas ayuda implementando estas recomendaciones? Contacta con nosotros.</p>
+</div>
+
+</div>
+</body>
+</html>

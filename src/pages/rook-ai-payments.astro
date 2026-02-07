@@ -1,0 +1,322 @@
+---
+const title = "Comparativa de Plataformas de Pago — Rook AI";
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <style>
+    :root { --bg: #0a0a0a; --card: #141414; --border: #2a2a2a; --text: #e0e0e0; --muted: #888; --accent: #6ee7b7; --warn: #fbbf24; --bad: #f87171; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; line-height: 1.7; padding: 2rem 1rem; max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; color: white; }
+    h2 { font-size: 1.4rem; margin: 2.5rem 0 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: white; }
+    p, li { color: var(--text); }
+    .subtitle { color: var(--muted); margin-bottom: 2rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card h3 { margin-top: 0; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-left: 8px; }
+    .badge-mor { background: #065f4620; color: #6ee7b7; border: 1px solid #6ee7b744; }
+    .badge-no { background: #7f1d1d20; color: #f87171; border: 1px solid #f8717144; }
+    .badge-rec { background: #1e3a5f40; color: #60a5fa; border: 1px solid #60a5fa44; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent); font-weight: 600; white-space: nowrap; }
+    td:first-child { font-weight: 500; white-space: nowrap; }
+    .highlight { background: #6ee7b710; }
+    ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+    li { margin-bottom: 0.3rem; }
+    .verdict { background: linear-gradient(135deg, #065f4630, #1e3a5f30); border: 1px solid #6ee7b744; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+    .verdict h2 { border: none; margin-top: 0; }
+    .sim-good { color: var(--accent); }
+    .sim-ok { color: var(--warn); }
+    .sim-bad { color: var(--bad); }
+    .fee-cell { font-family: 'JetBrains Mono', monospace; }
+    @media (max-width: 600px) { body { padding: 1rem 0.5rem; } table { font-size: 0.8rem; } th, td { padding: 6px 8px; } }
+  </style>
+</head>
+<body>
+
+<h1>💳 Comparativa de Plataformas de Pago</h1>
+<p class="subtitle">Rook AI — Productos digitales (PDFs, auditorías, servicios de contenido) · UK · Feb 2026</p>
+
+<h2>📊 Resumen Rápido</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Plataforma</th>
+      <th>Comisión</th>
+      <th>Cuota mensual</th>
+      <th>MoR</th>
+      <th>IVA/VAT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gumroad</td>
+      <td class="fee-cell">10% flat</td>
+      <td>$0</td>
+      <td>❌</td>
+      <td>Tú</td>
+    </tr>
+    <tr class="highlight">
+      <td>Stripe</td>
+      <td class="fee-cell">1.5% + 20p (UK)<br/>2.5% + 20p (EU)</td>
+      <td>$0</td>
+      <td>❌</td>
+      <td>Tú</td>
+    </tr>
+    <tr>
+      <td>Paddle</td>
+      <td class="fee-cell">5% + $0.50</td>
+      <td>$0</td>
+      <td>✅</td>
+      <td>Ellos</td>
+    </tr>
+    <tr>
+      <td>Lemon Squeezy</td>
+      <td class="fee-cell">5% + $0.50</td>
+      <td>$0</td>
+      <td>✅</td>
+      <td>Ellos</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>MoR = Merchant of Record</strong> → La plataforma es el vendedor legal. Se encarga del IVA, compliance fiscal y gestión de disputas. Tú solo recibes tu parte neta.</p>
+
+<h2>🔍 Análisis Detallado</h2>
+
+<!-- GUMROAD -->
+<div class="card">
+  <h3>🟠 Gumroad <span class="badge badge-no">No MoR</span></h3>
+  <table>
+    <tr><td>Comisión</td><td><strong>10% flat</strong> por venta (incluye procesamiento de tarjeta)</td></tr>
+    <tr><td>Cuota mensual</td><td>$0 (antes tenía planes, ahora solo % por venta)</td></tr>
+    <tr><td>KYC</td><td>Mínimo: email, cuenta bancaria, verificación de identidad básica</td></tr>
+    <tr><td>Setup</td><td>⚡ 5 minutos — pones nombre, precio, subes archivo, listo</td></tr>
+    <tr><td>Checkout</td><td>Funcional pero con marca Gumroad muy visible. No inspira "premium"</td></tr>
+    <tr><td>Cobros</td><td>Semanales vía Stripe Connect / PayPal</td></tr>
+    <tr><td>VAT</td><td>No gestionan. Responsabilidad tuya al 100%</td></tr>
+  </table>
+  <p><strong>Veredicto:</strong> Perfecto para empezar (ya lo estás usando), pero el 10% es brutal a medida que creces. Para un PDF de £14, se llevan £1.40. En Stripe serían ~£0.41.</p>
+</div>
+
+<!-- STRIPE -->
+<div class="card">
+  <h3>🟣 Stripe <span class="badge badge-no">No MoR</span> <span class="badge badge-rec">⭐ Recomendado</span></h3>
+  <table>
+    <tr><td>Comisión UK</td><td><strong>1.5% + 20p</strong> (tarjetas UK) · <strong>2.5% + 20p</strong> (tarjetas EU) · <strong>3.25% + 20p</strong> (internacionales)</td></tr>
+    <tr><td>Cuota mensual</td><td>$0 — sin coste fijo</td></tr>
+    <tr><td>KYC</td><td>Verificación de identidad completa, dirección, datos bancarios UK. Proceso robusto pero no difícil</td></tr>
+    <tr><td>Setup</td><td>Más trabajo inicial: necesitas construir checkout (Stripe Checkout hosted, o Payment Links para empezar rápido)</td></tr>
+    <tr><td>Checkout</td><td>🔥 Profesional, limpio, personalizable. Payment Links = checkout hosted sin código</td></tr>
+    <tr><td>Cobros</td><td>Rolling 2-7 días a cuenta bancaria UK</td></tr>
+    <tr><td>VAT</td><td><strong>Tú te encargas</strong> — pero Stripe Tax (0.5% adicional) puede calcular automáticamente</td></tr>
+  </table>
+  <p><strong>Veredicto:</strong> Las comisiones más bajas con diferencia. Payment Links te da un checkout profesional sin código. La pega: el VAT es tu responsabilidad (ver sección HMRC abajo).</p>
+</div>
+
+<!-- PADDLE -->
+<div class="card">
+  <h3>🟢 Paddle <span class="badge badge-mor">✅ Merchant of Record</span></h3>
+  <table>
+    <tr><td>Comisión</td><td><strong>5% + $0.50</strong> (~40p) por transacción</td></tr>
+    <tr><td>Cuota mensual</td><td>$0</td></tr>
+    <tr><td>KYC</td><td>Proceso de onboarding más estricto: verificación de empresa/producto, puede tardar días</td></tr>
+    <tr><td>Setup</td><td>Orientado a SaaS/software. Productos digitales simples funcionan, pero no es su foco</td></tr>
+    <tr><td>Checkout</td><td>Overlay profesional. Buena experiencia pero menos personalizable</td></tr>
+    <tr><td>Cobros</td><td>Mensuales (NET 15 tras fin de mes) — más lento que Stripe</td></tr>
+    <tr><td>VAT</td><td>✅ <strong>Ellos se encargan de todo.</strong> Paddle es el vendedor legal. Gestionan VAT global, remesas fiscales, facturas</td></tr>
+  </table>
+  <p><strong>Veredicto:</strong> Excelente si quieres olvidarte del VAT. Pero el $0.50 fijo por transacción duele mucho en productos baratos (£9 = 5.8% solo en fijo). Cobros mensuales = peor cashflow.</p>
+  <p>⚠️ <strong>Ojo:</strong> Paddle puede rechazar productos que no sean software/digital. Auditorías y servicios de contenido podrían no encajar.</p>
+</div>
+
+<!-- LEMON SQUEEZY -->
+<div class="card">
+  <h3>🍋 Lemon Squeezy <span class="badge badge-mor">✅ Merchant of Record</span></h3>
+  <table>
+    <tr><td>Comisión</td><td><strong>5% + $0.50</strong> (~40p) por transacción</td></tr>
+    <tr><td>Cuota mensual</td><td>$0</td></tr>
+    <tr><td>KYC</td><td>Verificación de identidad. Más rápido que Paddle, proceso online</td></tr>
+    <tr><td>Setup</td><td>⚡ Rápido y sencillo. Diseñado para creadores independientes y productos digitales</td></tr>
+    <tr><td>Checkout</td><td>Moderno, limpio. Checkout overlay bien diseñado. Mejor que Gumroad</td></tr>
+    <tr><td>Cobros</td><td>Cada 2 semanas vía PayPal o cuenta bancaria</td></tr>
+    <tr><td>VAT</td><td>✅ <strong>Ellos se encargan.</strong> MoR completo — impuestos, compliance, facturas</td></tr>
+  </table>
+  <p><strong>Veredicto:</strong> La mejor opción MoR para productos digitales simples. Mismas comisiones que Paddle pero mejor enfocado a tu caso de uso. Si el VAT te da pereza, esta es tu opción.</p>
+</div>
+
+<h2>💰 Simulación de Ingresos</h2>
+<p>Producto medio: <strong>£20</strong> · Mayoría de compradores UK (tarjeta UK en Stripe)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ventas/mes</th>
+      <th>Ingreso bruto</th>
+      <th>Gumroad (10%)</th>
+      <th>Stripe (1.5%+20p)</th>
+      <th>Paddle/LS (5%+40p)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td>£200</td>
+      <td class="fee-cell sim-bad">-£20.00 (10.0%)</td>
+      <td class="fee-cell sim-good">-£5.00 (2.5%)</td>
+      <td class="fee-cell sim-ok">-£14.00 (7.0%)</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>£1,000</td>
+      <td class="fee-cell sim-bad">-£100.00 (10.0%)</td>
+      <td class="fee-cell sim-good">-£25.00 (2.5%)</td>
+      <td class="fee-cell sim-ok">-£70.00 (7.0%)</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>£2,000</td>
+      <td class="fee-cell sim-bad">-£200.00 (10.0%)</td>
+      <td class="fee-cell sim-good">-£50.00 (2.5%)</td>
+      <td class="fee-cell sim-ok">-£140.00 (7.0%)</td>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>£4,000</td>
+      <td class="fee-cell sim-bad">-£400.00 (10.0%)</td>
+      <td class="fee-cell sim-good">-£100.00 (2.5%)</td>
+      <td class="fee-cell sim-ok">-£280.00 (7.0%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Con producto barato (£9)</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Ventas/mes</th>
+      <th>Ingreso bruto</th>
+      <th>Gumroad</th>
+      <th>Stripe</th>
+      <th>Paddle/LS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>100</td>
+      <td>£900</td>
+      <td class="fee-cell sim-bad">-£90 (10.0%)</td>
+      <td class="fee-cell sim-good">-£33.50 (3.7%)</td>
+      <td class="fee-cell sim-ok">-£85 (9.4%)</td>
+    </tr>
+  </tbody>
+</table>
+<p>⚠️ En productos baratos, el fijo de $0.50 de Paddle/LS casi iguala a Gumroad. Stripe gana por goleada.</p>
+
+<h3>Con producto premium (£499)</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Ventas/mes</th>
+      <th>Ingreso bruto</th>
+      <th>Gumroad</th>
+      <th>Stripe</th>
+      <th>Paddle/LS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td>£4,990</td>
+      <td class="fee-cell sim-bad">-£499 (10.0%)</td>
+      <td class="fee-cell sim-good">-£76.85 (1.5%)</td>
+      <td class="fee-cell sim-ok">-£253.50 (5.1%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>💡 Ahorro anual: Stripe vs Gumroad</h3>
+<table>
+  <thead>
+    <tr><th>Escenario</th><th>Ahorro anual con Stripe</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>50 ventas/mes × £20</td><td class="sim-good"><strong>£900/año</strong></td></tr>
+    <tr><td>100 ventas/mes × £20</td><td class="sim-good"><strong>£1,800/año</strong></td></tr>
+    <tr><td>200 ventas/mes × £20</td><td class="sim-good"><strong>£3,600/año</strong></td></tr>
+  </tbody>
+</table>
+
+<h2>🇬🇧 VAT / HMRC — Lo que necesitas saber con Stripe</h2>
+
+<div class="card">
+  <h3>Si NO usas MoR (Stripe, Gumroad)</h3>
+  <ul>
+    <li><strong>Umbral VAT UK: £90,000/año.</strong> Por debajo, no necesitas registrarte obligatoriamente</li>
+    <li>Puedes registrarte voluntariamente (ventaja: recuperas IVA de gastos de negocio)</li>
+    <li><strong>Ventas B2C a clientes EU:</strong> Si vendes productos digitales a consumidores en la UE, técnicamente debes cobrar el IVA del país del comprador (OSS scheme). Esto aplica desde la primera venta</li>
+    <li><strong>Ventas B2C UK:</strong> Sin VAT registration = sin IVA que cobrar ni declarar</li>
+    <li><strong>Ventas B2B:</strong> Reverse charge aplica en muchos casos (el cliente declara el IVA)</li>
+    <li><strong>Self Assessment:</strong> Debes declarar ingresos a HMRC como sole trader / self-employed</li>
+    <li><strong>Stripe Tax (opcional):</strong> Por 0.5% adicional, Stripe calcula y muestra el VAT automáticamente en el checkout</li>
+  </ul>
+
+  <h3>En la práctica para Rook AI (fase inicial)</h3>
+  <ul>
+    <li>Con ingresos &lt;£90k, <strong>no necesitas registro VAT</strong></li>
+    <li>Registra tus ingresos para Self Assessment (año fiscal abril-abril)</li>
+    <li>Si vendes mucho a la UE, considera <a href="https://www.gov.uk/guidance/register-for-vat">registro voluntario + OSS</a> o simplemente usa Lemon Squeezy para esas ventas</li>
+    <li>Guarda facturas/recibos de todos los gastos del negocio (herramientas AI, hosting, etc.)</li>
+  </ul>
+
+  <h3>Si SÍ usas MoR (Paddle, Lemon Squeezy)</h3>
+  <ul>
+    <li>✅ Ellos son el vendedor legal — gestionan todo el VAT global</li>
+    <li>✅ Tú recibes pagos netos como "proveedor" del MoR</li>
+    <li>⚠️ Sigues necesitando declarar estos ingresos a HMRC como income</li>
+    <li>La gran ventaja: cero quebraderos de cabeza con VAT de 40+ países</li>
+  </ul>
+</div>
+
+<h2>🏆 Veredicto Final</h2>
+
+<div class="verdict">
+  <h2>Recomendación: Stripe (con Payment Links)</h2>
+  <p><strong>¿Por qué?</strong></p>
+  <ul>
+    <li>💰 <strong>Comisiones 4-7× menores</strong> que Gumroad/MoR en productos típicos</li>
+    <li>🎨 <strong>Checkout profesional</strong> con Payment Links (sin código, listo en minutos)</li>
+    <li>⚡ <strong>Cobros en 2-7 días</strong> vs mensual en Paddle</li>
+    <li>🔧 <strong>API potente</strong> si quieres automatizar con tu stack AI</li>
+    <li>🇬🇧 <strong>VAT no es problema</strong> bajo £90k — solo Self Assessment normal</li>
+  </ul>
+
+  <h3>Plan de migración sugerido</h3>
+  <ol>
+    <li>Crea cuenta Stripe (verificación ~24-48h)</li>
+    <li>Configura Payment Links para cada producto</li>
+    <li>Actualiza enlaces en therookai.gumroad.com → apunta a Stripe checkout</li>
+    <li>Mantén Gumroad activo para ventas existentes (no romper enlaces viejos)</li>
+    <li>Cuando tengas web propia, integra Stripe Checkout directamente</li>
+  </ol>
+
+  <h3>¿Cuándo considerar Lemon Squeezy?</h3>
+  <ul>
+    <li>Si el volumen de ventas EU crece mucho y el VAT se vuelve un dolor</li>
+    <li>Si prefieres cero gestión fiscal a cambio de pagar 3-5% más</li>
+    <li>Podrías usar <strong>ambos</strong>: Stripe para UK/US + Lemon Squeezy para EU</li>
+  </ul>
+</div>
+
+<p style="color: var(--muted); margin-top: 3rem; font-size: 0.85rem; text-align: center;">
+  Generado por Rook AI · Feb 2026 · Datos verificados a fecha de publicación
+</p>
+
+</body>
+</html>

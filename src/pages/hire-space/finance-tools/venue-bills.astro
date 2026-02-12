@@ -1,0 +1,177 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Venue Bill Processing — Finance Tools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; }
+    .nav { background: #f5f5f5; border-bottom: 1px solid #e2e8f0; padding: 12px 40px; font-size: 13px; }
+    .nav a { color: #2563eb; text-decoration: none; margin-right: 16px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    .desc { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .card h3 { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 10px; background: #e2e8f0; font-weight: 600; font-size: 12px; color: #64748b; }
+    td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+    input, select { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 13px; }
+    .todo { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 8px 0; border-radius: 0 4px 4px 0; }
+    .upload-zone { border: 2px dashed #e2e8f0; border-radius: 8px; padding: 32px; text-align: center; color: #94a3b8; font-size: 13px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .diagnostic { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 12px; color: #475569; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/hire-space/finance-tools/">← All Wireframes</a>
+    <a href="/hire-space/finance-tools/booking-overview">Overview</a>
+    <a href="/hire-space/finance-tools/additions">Additions</a>
+    <a href="/hire-space/finance-tools/credit-notes">Credit Notes</a>
+    <a href="/hire-space/finance-tools/das-payment">DAS Payment</a>
+    <a href="/hire-space/finance-tools/payment-run">Payment Run</a>
+    <a href="/hire-space/finance-tools/reconciliation">Reconciliation</a>
+  </div>
+  <div class="container">
+    <h1>Venue Bill Processing</h1>
+    <p class="desc">Upload and process incoming venue bills. Match to bookings, code to correct Xero accounts, and view VenueSupplierPayments for diagnostic matching. Doc Appendix A item 1.</p>
+
+    <!-- Upload -->
+    <div class="card">
+      <h3>Upload Venue Bill</h3>
+      <div class="upload-zone">
+        📄 Drag & drop venue bill PDF, or click to browse<br/>
+        <span style="font-size: 11px; margin-top: 4px; display: inline-block;">Supports PDF, JPG, PNG. Also processes Dext-forwarded bills.</span>
+      </div>
+      <div class="todo">[TODO] Should this integrate with Dext inbox directly, or require manual upload? (See automation item 9: Block Dext auto-reject)</div>
+    </div>
+
+    <!-- Queue -->
+    <div class="card">
+      <h3>Bills Pending Processing</h3>
+      <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+        <input type="text" placeholder="Filter by venue or booking..." style="flex: 1;" />
+        <select>
+          <option>All statuses</option>
+          <option>Unmatched</option>
+          <option>Matched — needs coding</option>
+          <option>Ready to approve</option>
+        </select>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Bill</th><th>Venue</th><th>Amount</th><th>Date</th><th>Matched Booking</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr style="background: #fefce8;">
+            <td><strong>VB-4821-001</strong></td>
+            <td>The Grand Ballroom</td>
+            <td>£27,916.20</td>
+            <td>16 Mar 2026</td>
+            <td><span class="badge badge-green">HS-2026-04821 ✓</span></td>
+            <td><span class="badge badge-yellow">Needs Coding</span></td>
+            <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Process</button></td>
+          </tr>
+          <tr>
+            <td><strong>VB-4799-001</strong></td>
+            <td>One Marylebone</td>
+            <td>£9,360.00</td>
+            <td>14 Mar 2026</td>
+            <td><span class="badge badge-green">HS-2026-04799 ✓</span></td>
+            <td><span class="badge badge-green">Ready</span></td>
+            <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Process</button></td>
+          </tr>
+          <tr>
+            <td><strong>VB-UNMATCHED-003</strong></td>
+            <td>Tobacco Dock</td>
+            <td>£4,200.00</td>
+            <td>12 Mar 2026</td>
+            <td><span class="badge badge-red">No match ✗</span></td>
+            <td><span class="badge badge-red">Unmatched</span></td>
+            <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Match</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Processing Detail -->
+    <div class="card">
+      <h3>Processing: VB-4821-001 — The Grand Ballroom</h3>
+      <div class="grid2">
+        <div>
+          <h4 style="font-size: 13px; margin-bottom: 8px;">Bill Line Items</h4>
+          <table>
+            <thead><tr><th>Description</th><th>Amount</th><th>Xero Account</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Room hire</td>
+                <td>£7,225.00</td>
+                <td>
+                  <select style="width: 140px;">
+                    <option selected>[352] Client Funds</option>
+                    <option>[353] Venue Payable</option>
+                    <option>[400] Revenue</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Catering</td>
+                <td>£15,488.00</td>
+                <td><select style="width: 140px;"><option selected>[352] Client Funds</option></select></td>
+              </tr>
+              <tr>
+                <td>AV & lighting</td>
+                <td>£2,880.00</td>
+                <td><select style="width: 140px;"><option selected>[352] Client Funds</option></select></td>
+              </tr>
+              <tr>
+                <td>Drinks reception</td>
+                <td>£2,323.20</td>
+                <td><select style="width: 140px;"><option selected>[352] Client Funds</option></select></td>
+              </tr>
+              <tr style="font-weight: 600;">
+                <td>Total</td>
+                <td>£27,916.20</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="todo">[TODO] Auto-suggest account codes based on booking type (DAS vs DAC) and line item category?</div>
+        </div>
+        <div>
+          <h4 style="font-size: 13px; margin-bottom: 8px;">🔍 Diagnostic: VenueSupplierPayments</h4>
+          <div class="diagnostic">
+            <div style="margin-bottom: 6px;"><strong>Booking:</strong> HS-2026-04821</div>
+            <div style="margin-bottom: 6px;"><strong>Venue:</strong> The Grand Ballroom (ID: VSP-1847)</div>
+            <div style="margin-bottom: 6px;"><strong>Contract total:</strong> £31,940.00</div>
+            <div style="margin-bottom: 6px;"><strong>Commission (DAS):</strong> £4,023.80</div>
+            <div style="margin-bottom: 6px;"><strong>Expected venue payment:</strong> £27,916.20</div>
+            <div style="margin-bottom: 6px;"><strong>Bill amount:</strong> £27,916.20</div>
+            <div style="color: #166534; font-weight: bold;">✓ Amounts match — bill = contract - commission</div>
+          </div>
+          <div style="margin-top: 12px;">
+            <h4 style="font-size: 13px; margin-bottom: 8px;">Matching Confidence</h4>
+            <div style="background: #dcfce7; border-radius: 4px; padding: 8px 12px; font-size: 13px;">
+              <strong style="color: #166534;">HIGH</strong> — Venue name matches, amount matches expected, date within 7 days of event
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 16px;">
+        <button class="btn btn-primary">Approve & Create Xero Bill</button>
+        <button class="btn btn-outline">Flag for Review</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

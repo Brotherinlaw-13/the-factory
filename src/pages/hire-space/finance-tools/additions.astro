@@ -1,0 +1,201 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pre-Event Additions — Finance Tools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; }
+    .nav { background: #f5f5f5; border-bottom: 1px solid #e2e8f0; padding: 12px 40px; font-size: 13px; }
+    .nav a { color: #2563eb; text-decoration: none; margin-right: 16px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    .desc { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .card h3 { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 10px; background: #e2e8f0; font-weight: 600; font-size: 12px; color: #64748b; }
+    td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-gray { background: #f1f5f9; color: #64748b; }
+    .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+    .upload-zone { border: 2px dashed #e2e8f0; border-radius: 8px; padding: 32px; text-align: center; color: #94a3b8; font-size: 13px; }
+    input, select { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 13px; }
+    .todo { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 8px 0; border-radius: 0 4px 4px 0; }
+    .steps { display: flex; gap: 0; margin-bottom: 24px; }
+    .step { flex: 1; padding: 12px 16px; background: #f5f5f5; border: 1px solid #e2e8f0; text-align: center; font-size: 13px; color: #64748b; position: relative; }
+    .step.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .step.done { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+    .step:first-child { border-radius: 6px 0 0 6px; }
+    .step:last-child { border-radius: 0 6px 6px 0; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/hire-space/finance-tools/">← All Wireframes</a>
+    <a href="/hire-space/finance-tools/booking-overview">Overview</a>
+    <a href="/hire-space/finance-tools/credit-notes">Credit Notes</a>
+    <a href="/hire-space/finance-tools/venue-bills">Venue Bills</a>
+    <a href="/hire-space/finance-tools/das-payment">DAS Payment</a>
+    <a href="/hire-space/finance-tools/payment-run">Payment Run</a>
+    <a href="/hire-space/finance-tools/reconciliation">Reconciliation</a>
+  </div>
+  <div class="container">
+    <h1>Pre-Event Additions</h1>
+    <p class="desc">Upload a supplier invoice for additional items, classify line items, preview the Xero bill, and create costs/journals. Combines spreadsheet item 3 with doc Appendix A item 2.</p>
+
+    <!-- Booking context bar -->
+    <div style="background: #f0f9ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 12px 16px; margin-bottom: 24px; font-size: 13px; display: flex; justify-content: space-between;">
+      <span><strong>Booking:</strong> HS-2026-04821 · Moody's Corp · The Grand Ballroom · 15 Mar 2026</span>
+      <span class="badge badge-blue">DAS — Handled</span>
+    </div>
+
+    <!-- Workflow Steps -->
+    <div class="steps">
+      <div class="step done">① Upload Invoice</div>
+      <div class="step active">② Identify Line Items</div>
+      <div class="step">③ Preview Xero Bill</div>
+      <div class="step">④ Create & Confirm</div>
+    </div>
+
+    <!-- Step 1: Upload (shown as completed) -->
+    <div class="card">
+      <h3>① Uploaded Invoice</h3>
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+        <span style="font-size: 24px;">📄</span>
+        <div>
+          <strong>Grand_Ballroom_Additional_AV_Feb2026.pdf</strong><br/>
+          <span style="color: #64748b;">Uploaded 12 Feb 2026 · 2 pages · The Grand Ballroom</span>
+        </div>
+        <span class="badge badge-green" style="margin-left: auto;">Parsed ✓</span>
+      </div>
+    </div>
+
+    <!-- Step 2: Line Items -->
+    <div class="card">
+      <h3>② Identify Line Items</h3>
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Classify each line item as <strong>Pass-through</strong> (no commission) or <strong>Commissionable</strong> (commission applies). Items auto-detected from PDF.</p>
+      <div class="todo">[TODO] Should we auto-detect pass-through vs commissionable based on item category, or always require manual classification?</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Line Item (from invoice)</th>
+            <th>Amount (ex VAT)</th>
+            <th>VAT</th>
+            <th>Classification</th>
+            <th>Commission %</th>
+            <th>Commission £</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Additional wireless microphones × 4</td>
+            <td>£480.00</td>
+            <td>£96.00</td>
+            <td>
+              <select style="width: 160px;">
+                <option selected>Commissionable</option>
+                <option>Pass-through</option>
+              </select>
+            </td>
+            <td><input type="text" value="12%" style="width: 60px;" /></td>
+            <td>£57.60</td>
+          </tr>
+          <tr>
+            <td>Projector upgrade (4K)</td>
+            <td>£350.00</td>
+            <td>£70.00</td>
+            <td>
+              <select style="width: 160px;">
+                <option selected>Commissionable</option>
+                <option>Pass-through</option>
+              </select>
+            </td>
+            <td><input type="text" value="12%" style="width: 60px;" /></td>
+            <td>£42.00</td>
+          </tr>
+          <tr>
+            <td>Technician overtime (4 hrs)</td>
+            <td>£220.00</td>
+            <td>£44.00</td>
+            <td>
+              <select style="width: 160px;">
+                <option>Commissionable</option>
+                <option selected>Pass-through</option>
+              </select>
+            </td>
+            <td><span style="color: #94a3b8;">n/a</span></td>
+            <td>£0.00</td>
+          </tr>
+          <tr style="background: #f0f9ff; font-weight: 600;">
+            <td>TOTAL</td>
+            <td>£1,050.00</td>
+            <td>£210.00</td>
+            <td></td>
+            <td></td>
+            <td>£99.60</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 12px; display: flex; gap: 8px;">
+        <button class="btn btn-outline">+ Add Line Item Manually</button>
+        <button class="btn btn-primary" style="margin-left: auto;">Next: Preview Xero Bill →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Xero Bill Preview -->
+    <div class="card">
+      <h3>③ Xero Bill Preview</h3>
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">This is what will be created in Xero. The uploaded PDF will be attached automatically.</p>
+      <div class="grid2">
+        <div>
+          <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Contact:</span> The Grand Ballroom Ltd</div>
+          <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Reference:</span> HS-2026-04821-ADD-001</div>
+          <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Date:</span> 12 Feb 2026</div>
+          <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Due Date:</span> 14 Mar 2026</div>
+        </div>
+        <div>
+          <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Account Code:</span> [352] Client Funds Held</div>
+          <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Tracking:</span> Booking HS-2026-04821</div>
+          <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Attachment:</span> 📎 Grand_Ballroom_Additional_AV_Feb2026.pdf</div>
+        </div>
+      </div>
+      <div class="todo">[TODO] Which Xero account codes for pass-through vs commissionable additions? Same [352] or different?</div>
+      <table style="margin-top: 12px;">
+        <thead>
+          <tr><th>Description</th><th>Account</th><th>Amount</th><th>VAT</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Additional wireless microphones × 4</td><td>[352]</td><td>£480.00</td><td>20%</td></tr>
+          <tr><td>Projector upgrade (4K)</td><td>[352]</td><td>£350.00</td><td>20%</td></tr>
+          <tr><td>Technician overtime (4 hrs) [pass-through]</td><td>[352]</td><td>£220.00</td><td>20%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Step 4: Create -->
+    <div class="card">
+      <h3>④ Create & Confirm</h3>
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">This will create the following in one action:</p>
+      <ul style="font-size: 13px; margin-left: 20px; margin-bottom: 16px; line-height: 2;">
+        <li>✅ Xero Bill (draft) — £1,260.00 inc VAT</li>
+        <li>✅ Cost records on booking for commissionable items</li>
+        <li>✅ Journal entries for commission accrual (£99.60)</li>
+        <li>✅ PDF attachment on Xero bill</li>
+      </ul>
+      <div class="todo">[TODO] Should bills be created as Draft or Awaiting Approval in Xero? Who approves?</div>
+      <div style="display: flex; gap: 8px; margin-top: 12px;">
+        <button class="btn btn-outline">← Back to Line Items</button>
+        <button class="btn btn-primary">Create Xero Bill + Costs + Journals</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

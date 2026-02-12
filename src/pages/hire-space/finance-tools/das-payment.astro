@@ -1,0 +1,154 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>1-Click DAS Payment — Finance Tools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; }
+    .nav { background: #f5f5f5; border-bottom: 1px solid #e2e8f0; padding: 12px 40px; font-size: 13px; }
+    .nav a { color: #2563eb; text-decoration: none; margin-right: 16px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    .desc { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .card h3 { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 10px; background: #e2e8f0; font-weight: 600; font-size: 12px; color: #64748b; }
+    td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-lg { padding: 14px 32px; font-size: 16px; border-radius: 8px; }
+    .btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+    .todo { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 8px 0; border-radius: 0 4px 4px 0; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .kv { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+    .kv .label { color: #64748b; }
+    .big-number { font-size: 28px; font-weight: 700; color: #2563eb; }
+    .flow-arrow { text-align: center; font-size: 24px; color: #94a3b8; padding: 16px 0; }
+    .action-box { border: 2px solid #2563eb; border-radius: 8px; padding: 16px; background: #eff6ff; text-align: center; }
+    .notification { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 16px; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/hire-space/finance-tools/">← All Wireframes</a>
+    <a href="/hire-space/finance-tools/booking-overview">Overview</a>
+    <a href="/hire-space/finance-tools/additions">Additions</a>
+    <a href="/hire-space/finance-tools/credit-notes">Credit Notes</a>
+    <a href="/hire-space/finance-tools/venue-bills">Venue Bills</a>
+    <a href="/hire-space/finance-tools/payment-run">Payment Run</a>
+    <a href="/hire-space/finance-tools/reconciliation">Reconciliation</a>
+  </div>
+  <div class="container">
+    <h1>1-Click DAS Payment</h1>
+    <p class="desc">For DAS (Deduct at Source) bookings: view the final bill, calculate commission, preview deduction, and generate commission invoice + venue payment + transfer — all in one action. Doc items 3 & 8.</p>
+
+    <!-- Booking context -->
+    <div style="background: #f0f9ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 12px 16px; margin-bottom: 24px; font-size: 13px; display: flex; justify-content: space-between;">
+      <span><strong>Booking:</strong> HS-2026-04821 · Moody's Corp · The Grand Ballroom · 15 Mar 2026</span>
+      <span class="badge badge-blue">DAS — Handled</span>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="grid3" style="margin-bottom: 24px;">
+      <div class="card" style="text-align: center;">
+        <h3>Client Paid</h3>
+        <div class="big-number">£38,328.00</div>
+        <span style="font-size: 12px; color: #64748b;">inc VAT · received in [352]</span>
+      </div>
+      <div class="card" style="text-align: center;">
+        <h3>HS Commission</h3>
+        <div class="big-number" style="color: #166534;">£4,023.80</div>
+        <span style="font-size: 12px; color: #64748b;">ex VAT · deducted at source</span>
+      </div>
+      <div class="card" style="text-align: center;">
+        <h3>Venue Payment</h3>
+        <div class="big-number" style="color: #64748b;">£27,916.20</div>
+        <span style="font-size: 12px; color: #64748b;">ex VAT · net to venue</span>
+      </div>
+    </div>
+
+    <!-- Commission Breakdown -->
+    <div class="card">
+      <h3>Commission Calculation</h3>
+      <table>
+        <thead>
+          <tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Commission %</th><th>Commission £</th><th>Venue Gets</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Room hire</td><td>£8,500.00</td><td>15%</td><td>£1,275.00</td><td>£7,225.00</td></tr>
+          <tr><td>Catering</td><td>£17,600.00</td><td>12%</td><td>£2,112.00</td><td>£15,488.00</td></tr>
+          <tr><td>AV & lighting</td><td>£3,200.00</td><td>10%</td><td>£320.00</td><td>£2,880.00</td></tr>
+          <tr><td>Drinks reception</td><td>£2,640.00</td><td>12%</td><td>£316.80</td><td>£2,323.20</td></tr>
+          <tr style="font-weight: 700; background: #f0f9ff;">
+            <td>TOTAL</td><td>£31,940.00</td><td>—</td><td>£4,023.80</td><td>£27,916.20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- What 1-Click Does -->
+    <div class="card">
+      <h3>Preview: What "1-Click Pay" Will Create</h3>
+      <div class="todo">[TODO] Should each of these be individually reviewable/editable before confirming, or truly 1-click?</div>
+      <div class="grid3" style="margin-top: 12px;">
+        <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff;">
+          <strong style="font-size: 12px; color: #2563eb;">① Commission Invoice</strong>
+          <div style="font-size: 12px; margin-top: 8px; color: #64748b;">
+            <div>To: The Grand Ballroom Ltd</div>
+            <div>Amount: £4,828.56 (inc VAT)</div>
+            <div>Ref: COMM-HS-2026-04821</div>
+            <div>Account: [400] Commission Revenue</div>
+          </div>
+        </div>
+        <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff;">
+          <strong style="font-size: 12px; color: #2563eb;">② Venue Payment</strong>
+          <div style="font-size: 12px; margin-top: 8px; color: #64748b;">
+            <div>To: The Grand Ballroom Ltd</div>
+            <div>Amount: £33,499.44 (inc VAT)</div>
+            <div>From: [352] Client Funds Held</div>
+            <div>Bank: Barclays ****4821</div>
+          </div>
+        </div>
+        <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff;">
+          <strong style="font-size: 12px; color: #2563eb;">③ Internal Transfer</strong>
+          <div style="font-size: 12px; margin-top: 8px; color: #64748b;">
+            <div>£4,828.56 from [352]</div>
+            <div>→ [400] Commission Revenue</div>
+            <div>Journal: JNL-DAS-04821</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1-Click Button -->
+    <div class="action-box" style="margin-bottom: 24px;">
+      <p style="font-size: 14px; color: #1e40af; margin-bottom: 12px;">All checks passed. Ready to process DAS payment.</p>
+      <button class="btn btn-primary btn-lg">⚡ 1-Click: Generate All & Pay Venue</button>
+      <p style="font-size: 11px; color: #64748b; margin-top: 8px;">Creates commission invoice, schedules venue payment, and posts journal entries.</p>
+    </div>
+
+    <!-- DAS Pre-Payment Notification -->
+    <div class="notification">
+      <h3 style="color: #166534; font-size: 14px; margin-bottom: 8px;">📧 DAS Pre-Payment Notification (Automation Item 8)</h3>
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">This email will be sent to the venue automatically before payment is processed.</p>
+      <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; font-size: 13px;">
+        <div style="color: #64748b; margin-bottom: 4px;"><strong>To:</strong> accounts@granballroom-example.com</div>
+        <div style="color: #64748b; margin-bottom: 4px;"><strong>Subject:</strong> Hire Space — Payment Notification for HS-2026-04821</div>
+        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 8px 0;" />
+        <p>Dear Grand Ballroom team,</p>
+        <p style="margin-top: 8px;">We are processing payment for booking HS-2026-04821 (Moody's Corp, 15 Mar 2026). As per our DAS agreement, our commission of <strong>£4,023.80 + VAT</strong> has been deducted at source. You will receive <strong>£33,499.44</strong> (inc VAT) within 3 working days.</p>
+        <p style="margin-top: 8px;">A self-billing invoice (COMM-HS-2026-04821) is attached for your records.</p>
+      </div>
+      <div class="todo">[TODO] Should notification send automatically on 1-click, or require separate confirmation? How many days before payment?</div>
+    </div>
+  </div>
+</body>
+</html>

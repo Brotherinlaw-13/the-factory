@@ -1,0 +1,67 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hire Space — Finance Tools Wireframes</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; padding: 40px; max-width: 1100px; margin: 0 auto; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    .subtitle { color: #64748b; margin-bottom: 32px; font-size: 15px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; text-decoration: none; color: inherit; transition: box-shadow 0.15s; }
+    .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 17px; color: #2563eb; margin-bottom: 6px; }
+    .card p { font-size: 13px; color: #64748b; line-height: 1.5; }
+    .card .tag { display: inline-block; background: #e2e8f0; color: #64748b; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-top: 10px; margin-right: 4px; }
+    .legend { margin-top: 32px; padding: 16px; background: #f5f5f5; border-radius: 8px; font-size: 13px; color: #64748b; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <h1>💷 Finance Tools — Wireframes</h1>
+  <p class="subtitle">Low-fidelity mockups for discussion. Items marked [TODO] need decisions. Last updated: Feb 2026.</p>
+
+  <div class="grid">
+    <a class="card" href="/hire-space/finance-tools/booking-overview">
+      <h2>1. Booking Overview & Winning</h2>
+      <p>Booking details, contract status, commission summary (£ + %), Juro countersign, guard rails before marking as won.</p>
+      <span class="tag">Overview</span><span class="tag">Winning</span><span class="tag">Commissions</span>
+    </a>
+    <a class="card" href="/hire-space/finance-tools/additions">
+      <h2>2. Pre-Event Additions</h2>
+      <p>Upload supplier invoice, identify line items (pass-through vs commissionable), preview Xero bill, create costs & journals.</p>
+      <span class="tag">Additions</span><span class="tag">Xero Bills</span>
+    </a>
+    <a class="card" href="/hire-space/finance-tools/credit-notes">
+      <h2>3. Credit Notes</h2>
+      <p>Edit line item descriptions, add PO number rows, change contacts, upload attachments. For Commercial Ops.</p>
+      <span class="tag">Credit Notes</span><span class="tag">Commercial Ops</span>
+    </a>
+    <a class="card" href="/hire-space/finance-tools/venue-bills">
+      <h2>4. Venue Bill Processing</h2>
+      <p>Upload/view incoming venue bills, match to bookings, code to Xero accounts. Diagnostic view of VenueSupplierPayments.</p>
+      <span class="tag">Venue Bills</span><span class="tag">Matching</span>
+    </a>
+    <a class="card" href="/hire-space/finance-tools/das-payment">
+      <h2>5. 1-Click DAS Payment</h2>
+      <p>Final bill → commission calc → deduction preview → generates commission invoice, venue payment & transfer in one click.</p>
+      <span class="tag">DAS</span><span class="tag">Payments</span>
+    </a>
+    <a class="card" href="/hire-space/finance-tools/payment-run">
+      <h2>6. Payment Run Dashboard</h2>
+      <p>Expected-but-missing invoices, funded bills, invoice status / DAS check list. Pre-loaded commission terms.</p>
+      <span class="tag">Payment Run</span><span class="tag">Missing Invoices</span>
+    </a>
+    <a class="card" href="/hire-space/finance-tools/reconciliation">
+      <h2>7. Reconciliation</h2>
+      <p>Balance sheet check ([352]/[353]/[354]), client invoices vs contract, venue bills vs contract, VAT & commission checks.</p>
+      <span class="tag">Reconciliation</span><span class="tag">Post-Event</span>
+    </a>
+  </div>
+
+  <div class="legend">
+    <strong>Source mapping:</strong> Items 1-2-4 from pipeline → Booking Overview · Item 3 + Doc item 2 → Additions · Item 5 → Credit Notes · Doc item 1 → Venue Bills · Doc items 3+8 → DAS Payment · Doc items 4+5+6 → Payment Run · Doc item 7 → Reconciliation
+  </div>
+</body>
+</html>

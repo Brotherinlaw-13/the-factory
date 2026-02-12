@@ -1,0 +1,179 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Credit Notes — Finance Tools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; }
+    .nav { background: #f5f5f5; border-bottom: 1px solid #e2e8f0; padding: 12px 40px; font-size: 13px; }
+    .nav a { color: #2563eb; text-decoration: none; margin-right: 16px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    .desc { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .card h3 { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 10px; background: #e2e8f0; font-weight: 600; font-size: 12px; color: #64748b; }
+    td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+    .btn-danger { background: #fff; color: #dc2626; border: 1px solid #dc2626; }
+    input, select, textarea { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 13px; font-family: inherit; }
+    .todo { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 8px 0; border-radius: 0 4px 4px 0; }
+    .upload-zone { border: 2px dashed #e2e8f0; border-radius: 8px; padding: 20px; text-align: center; color: #94a3b8; font-size: 13px; }
+    .warning { background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 12px 16px; font-size: 12px; color: #92400e; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/hire-space/finance-tools/">← All Wireframes</a>
+    <a href="/hire-space/finance-tools/booking-overview">Overview</a>
+    <a href="/hire-space/finance-tools/additions">Additions</a>
+    <a href="/hire-space/finance-tools/venue-bills">Venue Bills</a>
+    <a href="/hire-space/finance-tools/das-payment">DAS Payment</a>
+    <a href="/hire-space/finance-tools/payment-run">Payment Run</a>
+    <a href="/hire-space/finance-tools/reconciliation">Reconciliation</a>
+  </div>
+  <div class="container">
+    <h1>Credit Notes — Commercial Ops</h1>
+    <p class="desc">Edit invoice line items, add descriptive rows (PO numbers), change contacts, upload attachments. For Commercial Ops use only — NOT account-level changes. Spreadsheet item 5.</p>
+
+    <div class="warning">
+      ⚠️ <strong>Scope limitation:</strong> This tool edits line-item descriptions and contacts only. It does NOT allow changes to account codes, amounts, or VAT rates. Those require Finance team approval.
+    </div>
+
+    <!-- Search / Select Invoice -->
+    <div class="card">
+      <h3>Select Invoice to Edit</h3>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <input type="text" placeholder="Search by invoice #, booking ID, or client name..." style="flex: 1;" />
+        <button class="btn btn-primary">Search</button>
+      </div>
+      <table style="margin-top: 16px;">
+        <thead>
+          <tr><th>Invoice #</th><th>Client</th><th>Booking</th><th>Amount</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr style="background: #eff6ff;">
+            <td><strong>INV-2026-1847</strong></td>
+            <td>Moody's Corp</td>
+            <td>HS-2026-04821</td>
+            <td>£38,328.00</td>
+            <td><span class="badge badge-green">Sent</span></td>
+            <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Select</button></td>
+          </tr>
+          <tr>
+            <td>INV-2026-1832</td>
+            <td>Deloitte UK</td>
+            <td>HS-2026-04799</td>
+            <td>£12,480.00</td>
+            <td><span class="badge badge-yellow">Draft</span></td>
+            <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Select</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Editing Area -->
+    <div class="card">
+      <h3>Edit Line Items — INV-2026-1847</h3>
+      <div class="todo">[TODO] Should edits create a new version of the invoice, or modify in-place? Audit trail implications.</div>
+      <table>
+        <thead>
+          <tr><th style="width: 40px;">#</th><th>Description (editable)</th><th>Amount</th><th>VAT</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><input type="text" value="Room hire — The Grand Ballroom, 15 Mar 2026" style="width: 100%;" /></td>
+            <td style="color: #94a3b8;">£10,200.00</td>
+            <td style="color: #94a3b8;">20%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><input type="text" value="Catering — 3-course dinner × 220 guests" style="width: 100%;" /></td>
+            <td style="color: #94a3b8;">£21,120.00</td>
+            <td style="color: #94a3b8;">20%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><input type="text" value="AV & lighting package" style="width: 100%;" /></td>
+            <td style="color: #94a3b8;">£3,840.00</td>
+            <td style="color: #94a3b8;">20%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><input type="text" value="Drinks reception (champagne)" style="width: 100%;" /></td>
+            <td style="color: #94a3b8;">£3,168.00</td>
+            <td style="color: #94a3b8;">20%</td>
+            <td></td>
+          </tr>
+          <tr style="background: #fefce8;">
+            <td>—</td>
+            <td><input type="text" value="PO Reference: PO-MOD-2026-4421" style="width: 100%; border-color: #f59e0b;" /></td>
+            <td style="color: #94a3b8;">—</td>
+            <td style="color: #94a3b8;">—</td>
+            <td><button class="btn-danger btn" style="padding: 3px 8px; font-size: 11px;">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 12px;">
+        <button class="btn btn-outline" style="font-size: 12px;">+ Add Descriptive Row (PO number, reference, etc.)</button>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+      <h3>Invoice Contact</h3>
+      <div class="todo">[TODO] Should contact changes sync back to Xero contact record, or just this invoice?</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
+        <div>
+          <label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Contact Name</label>
+          <input type="text" value="Accounts Payable — Moody's Corp" style="width: 100%;" />
+        </div>
+        <div>
+          <label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Email</label>
+          <input type="text" value="ap@moodys-example.com" style="width: 100%;" />
+        </div>
+        <div>
+          <label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Attention</label>
+          <input type="text" value="James Whitfield" style="width: 100%;" />
+        </div>
+        <div>
+          <label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Reference</label>
+          <input type="text" value="PO-MOD-2026-4421" style="width: 100%;" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Attachments -->
+    <div class="card">
+      <h3>Attachments</h3>
+      <div style="font-size: 13px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e2e8f0;">
+          📎 <span>Original_Contract_HS-2026-04821.pdf</span>
+          <span class="badge badge-green" style="margin-left: auto;">Existing</span>
+        </div>
+      </div>
+      <div class="upload-zone">📎 Drag & drop additional attachments (PO documents, correspondence, etc.)</div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display: flex; gap: 12px; margin-top: 8px;">
+      <button class="btn btn-outline">Preview Changes</button>
+      <button class="btn btn-primary">Save & Update Invoice in Xero</button>
+      <button class="btn btn-danger" style="margin-left: auto;">Discard Changes</button>
+    </div>
+  </div>
+</body>
+</html>

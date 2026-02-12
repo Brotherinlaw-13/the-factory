@@ -1,0 +1,173 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reconciliation — Finance Tools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; }
+    .nav { background: #f5f5f5; border-bottom: 1px solid #e2e8f0; padding: 12px 40px; font-size: 13px; }
+    .nav a { color: #2563eb; text-decoration: none; margin-right: 16px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    .desc { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .card h3 { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 10px; background: #e2e8f0; font-weight: 600; font-size: 12px; color: #64748b; }
+    td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+    .btn-success { background: #16a34a; color: #fff; }
+    .todo { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 8px 0; border-radius: 0 4px 4px 0; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .check-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+    .check-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .check-pass { background: #dcfce7; color: #166534; }
+    .check-fail { background: #fee2e2; color: #991b1b; }
+    .check-warn { background: #fef9c3; color: #854d0e; }
+    .account-box { border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff; text-align: center; }
+    .account-box .code { font-size: 18px; font-weight: 700; color: #2563eb; }
+    .account-box .name { font-size: 11px; color: #64748b; }
+    .account-box .bal { font-size: 16px; font-weight: 600; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/hire-space/finance-tools/">← All Wireframes</a>
+    <a href="/hire-space/finance-tools/booking-overview">Overview</a>
+    <a href="/hire-space/finance-tools/additions">Additions</a>
+    <a href="/hire-space/finance-tools/credit-notes">Credit Notes</a>
+    <a href="/hire-space/finance-tools/venue-bills">Venue Bills</a>
+    <a href="/hire-space/finance-tools/das-payment">DAS Payment</a>
+    <a href="/hire-space/finance-tools/payment-run">Payment Run</a>
+  </div>
+  <div class="container">
+    <h1>Post-Event Reconciliation</h1>
+    <p class="desc">Balance sheet check, client invoices vs contract, venue bills vs contract, VAT reconciliation, commission check. Mark as fully reconciled. Doc Appendix A item 7.</p>
+
+    <!-- Booking context -->
+    <div style="background: #f0f9ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 12px 16px; margin-bottom: 24px; font-size: 13px; display: flex; justify-content: space-between;">
+      <span><strong>Booking:</strong> HS-2026-04821 · Moody's Corp · The Grand Ballroom · 15 Mar 2026</span>
+      <span class="badge badge-yellow">Pending Reconciliation</span>
+    </div>
+
+    <!-- Balance Sheet Accounts -->
+    <div class="card">
+      <h3>Balance Sheet Check</h3>
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">All three balance sheet accounts should net to £0.00 for a fully reconciled booking.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="account-box">
+          <div class="code">[352]</div>
+          <div class="name">Client Funds Held</div>
+          <div class="bal" style="color: #166534;">£0.00</div>
+          <span class="badge badge-green">Cleared ✓</span>
+        </div>
+        <div class="account-box">
+          <div class="code">[353]</div>
+          <div class="name">Venue Payable</div>
+          <div class="bal" style="color: #166534;">£0.00</div>
+          <span class="badge badge-green">Cleared ✓</span>
+        </div>
+        <div class="account-box">
+          <div class="code">[354]</div>
+          <div class="name">Deferred Commission</div>
+          <div class="bal" style="color: #dc2626;">-£42.30</div>
+          <span class="badge badge-red">Discrepancy</span>
+        </div>
+      </div>
+      <div class="todo">[TODO] What tolerance is acceptable for rounding discrepancies? £1? £5? Should auto-journal small amounts?</div>
+    </div>
+
+    <!-- Reconciliation Checks -->
+    <div class="card">
+      <h3>Reconciliation Checks</h3>
+      <div class="check-row">
+        <div class="check-icon check-pass">✓</div>
+        <div style="flex: 1;"><strong>Client invoices vs contract</strong><br/><span style="color: #64748b; font-size: 12px;">Invoice total £38,328.00 = Contract £31,940.00 + VAT £6,388.00 ✓</span></div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-pass">✓</div>
+        <div style="flex: 1;"><strong>Venue bills vs contract</strong><br/><span style="color: #64748b; font-size: 12px;">Venue bill £27,916.20 = Contract £31,940.00 − Commission £4,023.80 ✓</span></div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-pass">✓</div>
+        <div style="flex: 1;"><strong>Commission check</strong><br/><span style="color: #64748b; font-size: 12px;">Commission invoice £4,828.56 = £4,023.80 + VAT £804.76 ✓</span></div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-pass">✓</div>
+        <div style="flex: 1;"><strong>Client payment received</strong><br/><span style="color: #64748b; font-size: 12px;">£38,328.00 received 10 Mar 2026 via BACS ✓</span></div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-pass">✓</div>
+        <div style="flex: 1;"><strong>Venue payment sent</strong><br/><span style="color: #64748b; font-size: 12px;">£33,499.44 (inc VAT) paid 18 Mar 2026 ✓</span></div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-warn">!</div>
+        <div style="flex: 1;"><strong>VAT reconciliation</strong><br/><span style="color: #854d0e; font-size: 12px;">Input VAT £5,583.24 vs Output VAT £6,388.00. Difference £804.76 = commission VAT. ✓ But [354] has -£42.30 residual — likely rounding on additions.</span></div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-pass">✓</div>
+        <div style="flex: 1;"><strong>Additions reconciled</strong><br/><span style="color: #64748b; font-size: 12px;">1 addition (£1,050.00 + VAT) — invoiced, billed, and paid ✓</span></div>
+      </div>
+    </div>
+
+    <!-- Detailed Breakdown -->
+    <div class="grid2">
+      <div class="card">
+        <h3>Client Side</h3>
+        <table>
+          <thead><tr><th>Document</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>INV-2026-1847 (main)</td><td>£38,328.00</td><td><span class="badge badge-green">Paid</span></td></tr>
+            <tr><td>INV-2026-1891 (addition)</td><td>£1,260.00</td><td><span class="badge badge-green">Paid</span></td></tr>
+            <tr style="font-weight: 600;"><td>Total from client</td><td>£39,588.00</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Venue Side</h3>
+        <table>
+          <thead><tr><th>Document</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>VB-4821-001 (main)</td><td>£33,499.44</td><td><span class="badge badge-green">Paid</span></td></tr>
+            <tr><td>VB-4821-002 (addition)</td><td>£1,140.48</td><td><span class="badge badge-green">Paid</span></td></tr>
+            <tr><td>COMM-HS-2026-04821</td><td>£4,948.08</td><td><span class="badge badge-green">Recognised</span></td></tr>
+            <tr style="font-weight: 600;"><td>Total out</td><td>£39,588.00</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Resolution & Actions -->
+    <div class="card">
+      <h3>Resolve Discrepancies</h3>
+      <table>
+        <thead><tr><th>Issue</th><th>Amount</th><th>Suggested Action</th><th></th></tr></thead>
+        <tbody>
+          <tr>
+            <td>[354] Deferred Commission residual</td>
+            <td>-£42.30</td>
+            <td>Auto-journal to [400] (rounding adjustment)</td>
+            <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Apply</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="todo">[TODO] Who can approve auto-journals for discrepancies? Finance only, or CS managers too?</div>
+    </div>
+
+    <!-- Final Action -->
+    <div style="display: flex; gap: 12px; align-items: center; margin-top: 8px;">
+      <button class="btn btn-success" style="padding: 12px 24px; font-size: 15px;">✅ Mark as Fully Reconciled</button>
+      <button class="btn btn-outline">Flag for Finance Review</button>
+      <span style="font-size: 12px; color: #64748b; margin-left: auto;">1 discrepancy remaining — resolve before marking reconciled</span>
+    </div>
+  </div>
+</body>
+</html>

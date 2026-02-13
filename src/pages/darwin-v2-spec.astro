@@ -1,0 +1,425 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Darwin V2 — Product Specification" description="Comprehensive product specification for Darwin V2: AI-powered autonomous A/B testing with auto-tagging, Brain engine, and source-code integration.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">🧬</span>
+      <div>
+        <div class="flex items-center gap-3">
+          <h1 class="text-4xl md:text-5xl font-black text-white">Darwin V2</h1>
+          <span class="px-3 py-1 bg-blue-500/15 text-blue-400 rounded-full text-xs font-bold uppercase tracking-wider">Spec</span>
+        </div>
+        <p class="text-amber-400 font-medium mt-1">Product Specification — February 2026</p>
+      </div>
+    </div>
+
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mb-6">
+      The only A/B testing tool that generates mutations autonomously with AI.
+      Paste one script tag → Darwin optimises your pages automatically → winners get committed to your source code.
+    </p>
+
+    <div class="flex gap-3 flex-wrap">
+      <a href="https://darwin.page" target="_blank" rel="noopener" class="btn-primary">darwin.page →</a>
+      <a href="/darwin" class="px-4 py-2 rounded-lg border border-navy-600 text-gray-400 hover:text-white hover:border-navy-500 transition-colors text-sm font-medium">← Back to Darwin</a>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <!-- Table of Contents -->
+      <div class="card !p-6 mb-10">
+        <h3 class="text-amber-400 font-bold mb-3">📋 Table of Contents</h3>
+        <ol class="text-gray-400 text-sm space-y-1 list-decimal list-inside">
+          <li><a href="#overview" class="hover:text-amber-400 transition-colors">Overview & Vision</a></li>
+          <li><a href="#architecture" class="hover:text-amber-400 transition-colors">Architecture (4 Components)</a></li>
+          <li><a href="#sdk" class="hover:text-amber-400 transition-colors">SDK V2 — Client-Side Engine</a></li>
+          <li><a href="#portal" class="hover:text-amber-400 transition-colors">Portal — Dashboard</a></li>
+          <li><a href="#brain" class="hover:text-amber-400 transition-colors">Brain — AI Engine</a></li>
+          <li><a href="#integrations" class="hover:text-amber-400 transition-colors">Integrations — Source Commit</a></li>
+          <li><a href="#differentiators" class="hover:text-amber-400 transition-colors">Key Differentiators</a></li>
+          <li><a href="#performance" class="hover:text-amber-400 transition-colors">Performance Budget</a></li>
+          <li><a href="#seo" class="hover:text-amber-400 transition-colors">SEO Considerations</a></li>
+          <li><a href="#pricing" class="hover:text-amber-400 transition-colors">Pricing</a></li>
+          <li><a href="#tech-stack" class="hover:text-amber-400 transition-colors">Tech Stack</a></li>
+          <li><a href="#roadmap" class="hover:text-amber-400 transition-colors">Build Roadmap</a></li>
+        </ol>
+      </div>
+
+      <!-- 1. Overview -->
+      <h2 id="overview">1. Overview & Vision</h2>
+
+      <p>
+        Darwin is an <strong>AI-powered, autonomous A/B testing tool</strong>. Unlike every existing solution (VWO, Optimizely, AB Tasty), Darwin doesn't require humans to create variants. The AI Brain generates mutations, the SDK tests them on real visitors, statistical analysis declares winners, and those winners get committed directly to the client's source code.
+      </p>
+
+      <p>The core loop:</p>
+
+      <div class="card !p-5 my-6">
+        <div class="flex flex-wrap items-center justify-center gap-2 text-sm font-mono">
+          <span class="px-3 py-1 bg-emerald-500/15 text-emerald-400 rounded">SDK maps page</span>
+          <span class="text-gray-600">→</span>
+          <span class="px-3 py-1 bg-blue-500/15 text-blue-400 rounded">Brain generates mutations</span>
+          <span class="text-gray-600">→</span>
+          <span class="px-3 py-1 bg-purple-500/15 text-purple-400 rounded">SDK tests on visitors</span>
+          <span class="text-gray-600">→</span>
+          <span class="px-3 py-1 bg-amber-500/15 text-amber-400 rounded">Winner declared</span>
+          <span class="text-gray-600">→</span>
+          <span class="px-3 py-1 bg-red-500/15 text-red-400 rounded">Committed to source</span>
+          <span class="text-gray-600">→</span>
+          <span class="text-gray-500 italic">repeat</span>
+        </div>
+      </div>
+
+      <p><strong>Tagline:</strong> <em>"Test temporarily, commit permanently."</em></p>
+      <p>The SDK is temporary infrastructure. Winners become permanent code. When all experiments conclude, the script tag can be removed — the client keeps every improvement.</p>
+
+      <!-- 2. Architecture -->
+      <h2 id="architecture">2. Architecture (4 Components)</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+        <div class="card !p-5">
+          <span class="text-2xl mb-2 block">⚡</span>
+          <h3 class="text-white font-bold text-sm mb-1">SDK V2</h3>
+          <p class="text-gray-400 text-xs">Client-side JS. Sync loader + async tracker. Maps the DOM, applies mutations, tracks conversions.</p>
+        </div>
+        <div class="card !p-5">
+          <span class="text-2xl mb-2 block">🖥️</span>
+          <h3 class="text-white font-bold text-sm mb-1">Portal</h3>
+          <p class="text-gray-400 text-xs">Dashboard for managing sites, viewing experiments, configuring Brain behaviour, and exporting winners.</p>
+        </div>
+        <div class="card !p-5">
+          <span class="text-2xl mb-2 block">🧠</span>
+          <h3 class="text-white font-bold text-sm mb-1">Brain</h3>
+          <p class="text-gray-400 text-xs">AI engine. Takes page map + objective → outputs mutation instructions. Runs statistical analysis.</p>
+        </div>
+        <div class="card !p-5">
+          <span class="text-2xl mb-2 block">🔗</span>
+          <h3 class="text-white font-bold text-sm mb-1">Integrations</h3>
+          <p class="text-gray-400 text-xs">WordPress REST API, GitHub PRs, Shopify. Commits winning mutations to actual source code.</p>
+        </div>
+      </div>
+
+      <!-- 3. SDK V2 -->
+      <h2 id="sdk">3. SDK V2 — Client-Side Engine</h2>
+
+      <p>Complete rewrite of current <code>evolve.js</code> (5.7KB async). V2 splits into two parts for optimal performance.</p>
+
+      <h3>3.1 Synchronous Loader (in &lt;head&gt;)</h3>
+      <ul>
+        <li><strong>Size target:</strong> ~2-3KB</li>
+        <li>Placed in <code>&lt;head&gt;</code> as a blocking script</li>
+        <li>Reads experiment config from <code>localStorage</code> / cookie</li>
+        <li>Applies all <strong>confirmed winners</strong> (100% traffic) immediately</li>
+        <li>Assigns visitor to active experiment variant</li>
+        <li>Blocks render to <strong>prevent flicker</strong> — hides target elements until modified, then reveals</li>
+        <li>Render block duration: <strong>~10-20ms</strong> (less than Google Fonts)</li>
+      </ul>
+
+      <h3>3.2 Async Tracker</h3>
+      <ul>
+        <li>Loaded asynchronously, non-blocking</li>
+        <li>Handles: event tracking, conversion tracking, backend communication</li>
+        <li>Sends DOM map updates to backend</li>
+      </ul>
+
+      <h3>3.3 Auto-Tagging (DOM Mapping)</h3>
+      <p>This is the key innovation that enables zero-config operation:</p>
+
+      <div class="card !p-5 my-6 border-l-4 border-amber-500">
+        <p class="text-gray-300 text-sm mb-3">On first page load, the SDK:</p>
+        <ol class="text-gray-400 text-sm space-y-2 list-decimal list-inside">
+          <li>Scans the entire DOM</li>
+          <li>Assigns <code>data-darwin-id</code> to all visible/interactive elements</li>
+          <li>Creates a <strong>fingerprint</strong> for each element (text content, position, tag, attributes)</li>
+          <li>Builds a complete <strong>"map"</strong> of the page</li>
+          <li>Sends map to backend for the Brain to consume</li>
+        </ol>
+        <p class="text-gray-500 text-xs mt-3 italic">Fingerprints allow elements to be re-identified even if DOM structure changes between deploys. No access to source code needed — everything happens in-memory in the visitor's browser.</p>
+      </div>
+
+      <h3>3.4 Winner Accumulation</h3>
+      <ul>
+        <li>SDK manages a stack of confirmed winners</li>
+        <li>On each page load: apply all winners (100% traffic) + active experiment variant</li>
+        <li>When winners accumulate (especially heavy mutations like layout changes), they should be <strong>committed to source code</strong> via integrations</li>
+        <li>After commit, SDK resets and starts testing the next batch</li>
+      </ul>
+
+      <h3>3.5 Anti-Flicker Strategy</h3>
+      <ul>
+        <li>Sync loader hides target elements before first paint</li>
+        <li>Mutations applied in-memory</li>
+        <li>Elements revealed after modification</li>
+        <li>Total DOM operation time for 50 text/style mutations: <strong>~5-10ms</strong></li>
+      </ul>
+
+      <!-- 4. Portal -->
+      <h2 id="portal">4. Portal — Dashboard</h2>
+
+      <h3>4.1 Authentication</h3>
+      <ul>
+        <li>Email/password</li>
+        <li>Google OAuth</li>
+      </ul>
+
+      <h3>4.2 Multi-Site Management</h3>
+      <ul>
+        <li>One account → multiple sites</li>
+        <li>Per site: list of active/concluded experiments, timeline of changes</li>
+      </ul>
+
+      <h3>4.3 Experiment View</h3>
+      <ul>
+        <li>Variants with live preview</li>
+        <li>Impressions and conversions per variant</li>
+        <li>Statistical confidence indicator</li>
+        <li>Temporal graph (performance over time)</li>
+      </ul>
+
+      <h3>4.4 Brain Controls</h3>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-navy-700">
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Control</th>
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Description</th>
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Options</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300">
+            <tr class="border-b border-navy-800"><td class="py-2 px-3 font-mono text-amber-400">objective</td><td class="py-2 px-3">What to optimise for</td><td class="py-2 px-3">More signups, clicks, scroll depth, etc.</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3 font-mono text-amber-400">aggressiveness</td><td class="py-2 px-3">How bold mutations can be</td><td class="py-2 px-3">Conservative (text only) → Aggressive (layout changes)</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3 font-mono text-amber-400">frequency</td><td class="py-2 px-3">How often new mutations are generated</td><td class="py-2 px-3">Configurable interval</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4.5 Winner History</h3>
+      <ul>
+        <li>Full history of all winning mutations</li>
+        <li><strong>Exportable code</strong> — client can extract all winners as HTML/CSS patches</li>
+        <li>Zero lock-in: leave Darwin, keep every improvement</li>
+      </ul>
+
+      <h3>4.6 Integration Config</h3>
+      <ul>
+        <li>WordPress credentials (REST API)</li>
+        <li>GitHub repo connection</li>
+        <li>Shopify (future, based on demand)</li>
+      </ul>
+
+      <h3>4.7 V2 Future: Visual Editor</h3>
+      <p>Point-and-click interface where clients select specific elements to optimise. The Brain focuses mutation generation on those elements.</p>
+
+      <!-- 5. Brain -->
+      <h2 id="brain">5. Brain — AI Engine</h2>
+
+      <h3>5.1 Inputs</h3>
+      <ul>
+        <li>Page DOM map (from SDK auto-tagging)</li>
+        <li>Page screenshot</li>
+        <li>Objective (from Portal config)</li>
+        <li>Aggressiveness level</li>
+        <li>History of previous experiments and results</li>
+      </ul>
+
+      <h3>5.2 Outputs</h3>
+      <p>Mutation instructions for the SDK, as structured JSON:</p>
+
+      <div class="card !p-5 my-6 font-mono text-sm">
+        <pre class="text-gray-300 overflow-x-auto"><code>{
+  "darwinId": "d7",
+  "action": "replaceText",
+  "value": "Stop guessing. Start evolving."
+}
+
+{
+  "darwinId": "d12",
+  "action": "replaceHTML",
+  "value": "&lt;div class='hero-new'&gt;...new layout...&lt;/div&gt;"
+}</code></pre>
+      </div>
+
+      <h3>5.3 Statistical Analysis</h3>
+      <ul>
+        <li><strong>Z-test for proportions</strong> to determine experiment winners</li>
+        <li>Automatic conclusion when statistical confidence threshold is met</li>
+        <li>No human intervention required</li>
+      </ul>
+
+      <h3>5.4 "What to Test Next" Logic</h3>
+      <ul>
+        <li>Analyses previous experiment results</li>
+        <li>Identifies high-impact areas that haven't been tested</li>
+        <li>Avoids re-testing similar mutations</li>
+        <li>Balances exploration (new areas) vs exploitation (refining winners)</li>
+      </ul>
+
+      <h3>5.5 V1 Implementation</h3>
+      <p>Single LLM agent with carefully crafted prompting. Multi-agent architecture planned for later versions.</p>
+
+      <!-- 6. Integrations -->
+      <h2 id="integrations">6. Integrations — Committing Winners to Source</h2>
+
+      <p><strong>Why integrate?</strong> Accumulated heavy mutations (layout changes, HTML blocks) don't scale as SDK-only runtime patches. Winners should be committed to source code periodically so the SDK can reset and test the next batch.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
+        <div class="card !p-5 text-center">
+          <span class="text-3xl mb-2 block">📝</span>
+          <h3 class="text-white font-bold text-sm mb-1">WordPress</h3>
+          <p class="text-gray-400 text-xs mb-2">REST API — commit winners directly to content</p>
+          <span class="text-emerald-400 font-mono text-xs font-bold">~60% market</span>
+        </div>
+        <div class="card !p-5 text-center">
+          <span class="text-3xl mb-2 block">🐙</span>
+          <h3 class="text-white font-bold text-sm mb-1">GitHub</h3>
+          <p class="text-gray-400 text-xs mb-2">Open PR with winning changes</p>
+          <span class="text-blue-400 font-mono text-xs font-bold">~20-25% market</span>
+        </div>
+        <div class="card !p-5 text-center">
+          <span class="text-3xl mb-2 block">🛍️</span>
+          <h3 class="text-white font-bold text-sm mb-1">Shopify</h3>
+          <p class="text-gray-400 text-xs mb-2">Third integration, based on demand</p>
+          <span class="text-purple-400 font-mono text-xs font-bold">Future</span>
+        </div>
+      </div>
+
+      <p><strong>Total coverage:</strong> WordPress + GitHub = ~80-85% of the market. Remaining: manual export (client downloads winning code and applies it themselves).</p>
+
+      <!-- 7. Differentiators -->
+      <h2 id="differentiators">7. Key Differentiators</h2>
+
+      <div class="card !p-6 my-6 border-l-4 border-emerald-500">
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <li>🏆 <strong>Only A/B testing tool that generates mutations autonomously with AI</strong> — competitors (VWO, Optimizely, AB Tasty) all require manual variant creation</li>
+          <li>🌐 <strong>Works on any platform</strong> via a single <code>&lt;script&gt;</code> tag</li>
+          <li>⚡ <strong>Zero config:</strong> paste script → Darwin optimises automatically (auto-tagging eliminates setup)</li>
+          <li>🔓 <strong>Zero lock-in:</strong> winners exportable as code — client keeps every improvement even if they cancel</li>
+          <li>🔄 <strong>Test temporarily, commit permanently:</strong> SDK tests actively → winners get committed to CMS/repo → SDK resets and tests next batch</li>
+          <li>💰 <strong>Price:</strong> £29/mo vs £199+/mo for competitors</li>
+        </ul>
+      </div>
+
+      <!-- 8. Performance -->
+      <h2 id="performance">8. Performance Budget</h2>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-navy-700">
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Metric</th>
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Target</th>
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Context</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300">
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">Sync loader size</td><td class="py-2 px-3 font-mono text-emerald-400">~2-3KB</td><td class="py-2 px-3">Blocking, in &lt;head&gt;</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">Render block duration</td><td class="py-2 px-3 font-mono text-emerald-400">~10-20ms</td><td class="py-2 px-3">Less than Google Fonts</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">50 text/style mutations</td><td class="py-2 px-3 font-mono text-emerald-400">~5-10ms</td><td class="py-2 px-3">DOM operations</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">Heavy mutations (layout)</td><td class="py-2 px-3 font-mono text-amber-400">Commit to source</td><td class="py-2 px-3">Don't accumulate in SDK</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 9. SEO -->
+      <h2 id="seo">9. SEO Considerations</h2>
+
+      <div class="card !p-5 my-6">
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><strong>JS-dependent crawlers</strong> (Googlebot): See mutations — experiments are visible to Google</li>
+          <li><strong>Non-JS crawlers</strong> (ChatGPT, Perplexity, older bots): See original HTML only</li>
+          <li><strong>Solution:</strong> Commit winners to source code → all crawlers see the optimised version</li>
+          <li><strong>Canonical tags:</strong> Present on all variant pages to prevent duplicate content issues</li>
+          <li><strong>Net effect:</strong> Darwin <em>improves</em> SEO over time by committing better-performing content to source</li>
+        </ul>
+      </div>
+
+      <!-- 10. Pricing -->
+      <h2 id="pricing">10. Pricing</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
+        <div class="card !p-5 text-center">
+          <h3 class="text-white font-bold mb-1">Pro</h3>
+          <p class="text-3xl font-black text-amber-400 mb-2">£29<span class="text-sm text-gray-500 font-normal">/mo</span></p>
+          <p class="text-gray-400 text-xs">14-day free trial</p>
+        </div>
+        <div class="card !p-5 text-center border border-amber-500/30">
+          <h3 class="text-white font-bold mb-1">Growth</h3>
+          <p class="text-3xl font-black text-amber-400 mb-2">£99<span class="text-sm text-gray-500 font-normal">/mo</span></p>
+          <p class="text-gray-400 text-xs">Multi-site, priority Brain</p>
+        </div>
+        <div class="card !p-5 text-center">
+          <h3 class="text-white font-bold mb-1">Enterprise</h3>
+          <p class="text-3xl font-black text-white mb-2">Custom</p>
+          <p class="text-gray-400 text-xs">Dedicated, SLA, integrations</p>
+        </div>
+      </div>
+
+      <!-- 11. Tech Stack -->
+      <h2 id="tech-stack">11. Tech Stack</h2>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-navy-700">
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Component</th>
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Technology</th>
+              <th class="text-left text-gray-400 py-2 px-3 font-medium">Notes</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300">
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">SDK</td><td class="py-2 px-3 font-mono">Vanilla JS</td><td class="py-2 px-3">Zero dependencies</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">Portal</td><td class="py-2 px-3 font-mono">Next.js + Tailwind</td><td class="py-2 px-3">Or Astro</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">Backend/API</td><td class="py-2 px-3 font-mono">Node.js / Python</td><td class="py-2 px-3">Firestore (existing)</td></tr>
+            <tr class="border-b border-navy-800"><td class="py-2 px-3">Brain</td><td class="py-2 px-3 font-mono">Python + Claude API</td><td class="py-2 px-3">V1: single agent</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 12. Roadmap -->
+      <h2 id="roadmap">12. Build Roadmap — Weekend Hackathon</h2>
+
+      <div class="space-y-4 my-8">
+        <div class="card !p-5 border-l-4 border-purple-500">
+          <h3 class="text-white font-bold text-sm mb-2">🌙 Friday Night</h3>
+          <ul class="text-gray-400 text-xs space-y-1">
+            <li>✅ Product specification document (this page)</li>
+            <li>🔨 SDK V2 development started</li>
+          </ul>
+        </div>
+        <div class="card !p-5 border-l-4 border-blue-500">
+          <h3 class="text-white font-bold text-sm mb-2">☀️ Saturday</h3>
+          <ul class="text-gray-400 text-xs space-y-1">
+            <li>SDK V2 complete</li>
+            <li>Brain V1 (single LLM agent)</li>
+            <li>Minimal backend/API</li>
+          </ul>
+        </div>
+        <div class="card !p-5 border-l-4 border-emerald-500">
+          <h3 class="text-white font-bold text-sm mb-2">🚀 Sunday</h3>
+          <ul class="text-gray-400 text-xs space-y-1">
+            <li>Basic portal</li>
+            <li>Brain in auto loop</li>
+            <li>End-to-end demo working</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="card !p-6 mt-12 text-center">
+        <p class="text-gray-400 text-sm">
+          <strong class="text-white">Darwin V2</strong> — Built at The Factory 🏰
+        </p>
+        <p class="text-gray-500 text-xs mt-2">
+          Last updated: February 2026 · <a href="https://darwin.page" class="text-amber-400 hover:text-amber-300">darwin.page</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</Layout>

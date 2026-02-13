@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Prime 2.0 — Product & Technical Overview">
+  <article class="doc">
+    <h1>Prime 2.0 — Product & Technical Overview</h1>
+    <p class="meta">Hire Space · February 2026 · Internal Document</p>
+
+    <section>
+      <h2>1. What is Prime 2.0?</h2>
+      <p>
+        Prime is Hire Space's premium venue product. Historically, Prime campaign management (blog placements, Google Ads scheduling, search boosting) has been entirely manual, relying on spreadsheets and ad hoc coordination between the Growth team and venue partners.
+      </p>
+      <p>
+        <strong>Prime 2.0</strong> replaces that manual process with a self-service interface inside Venues HS, giving Prime venues direct control over how and where they appear across the platform. The result: less operational overhead for the team, faster turnaround for venues, and a more scalable product.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. The Three Modules</h2>
+
+      <h3>2.1 Search Boost</h3>
+      <p><strong>Status:</strong> ✅ Complete</p>
+      <p>
+        Each Prime venue can select up to <strong>3 keywords</strong> (e.g. "christmas party", "private dining", "conference") via a new section in Venues HS. Selecting a keyword boosts that venue's visibility across:
+      </p>
+      <ul>
+        <li>Platform search results</li>
+        <li>Category pages (powered by search)</li>
+        <li>Blog content matching those keywords</li>
+        <li>Any search-driven surface on the site</li>
+      </ul>
+      <p>
+        This gives venues meaningful control over their discoverability without requiring any manual intervention from the Hire Space team.
+      </p>
+
+      <h3>2.2 Blog Campaigns</h3>
+      <p><strong>Status:</strong> 🔄 In code review</p>
+      <p>
+        Hire Space publishes a scheduled calendar of themed blog posts throughout the year (e.g. "Best Christmas Party Venues in London", "Top Summer Party Spaces"). Prime venues can sign up for up to <strong>3 blog placements per year</strong>.
+      </p>
+      <p>How it works:</p>
+      <ol>
+        <li>Venue browses available blog slots in Venues HS, filtered by theme/event type</li>
+        <li>Venue selects the blogs they want to appear in</li>
+        <li>On execution, the backend calls the <code>blogCreation</code> endpoint, which generates the blog content via Ghost CMS, automatically including the venue's listing alongside other relevant venues</li>
+      </ol>
+      <p>
+        Blogs are populated with a mix of Prime venue selections and algorithmically matched venues to fill remaining slots, ensuring quality and relevance.
+      </p>
+
+      <h3>2.3 Google Ads Campaigns</h3>
+      <p><strong>Status:</strong> 🔄 In code review</p>
+      <p>
+        Prime venues can schedule Google Display Ads campaigns directly from Venues HS. Each venue gets up to <strong>~2 campaigns per year</strong>.
+      </p>
+      <p>How it works:</p>
+      <ol>
+        <li>Venue selects an event type and preferred week</li>
+        <li>Campaigns run Monday to Friday (5 days)</li>
+        <li>A weekly cron job (Saturday morning) locks campaigns and triggers the <code>scheduleGoogleAd</code> endpoint</li>
+        <li>After the campaign completes, results (impressions, clicks) are fetched via the <code>fetchAdResults</code> endpoint and displayed to the venue</li>
+      </ol>
+      <p>Key constraints:</p>
+      <ul>
+        <li>Maximum ~8 campaigns per week across all venues</li>
+        <li>Start date must always be a Monday</li>
+        <li>Campaigns cannot be scheduled too far in advance (Google Ads reliability issue)</li>
+        <li>Campaign names must be unique, following the format: <code>Prime - [Venue Name] - [Month Year] - [Event Type] - [Unique ID]</code></li>
+        <li>Campaigns are locked for editing at close of play Friday</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Technical Architecture</h2>
+
+      <h3>Backend (Marketing Team)</h3>
+      <p>
+        All backend endpoints have been built and are owned by the Marketing/Growth team. Product has not built any of the backend infrastructure. The services run as Google Cloud Functions:
+      </p>
+      <ul>
+        <li><strong>scheduleGoogleAd</strong> — creates Display campaigns in Google Ads, returns campaign ID and preview images</li>
+        <li><strong>fetchAdResults</strong> — retrieves impressions and clicks for completed campaigns</li>
+        <li><strong>blogCreation</strong> — generates blog posts in Ghost CMS with venue recommendations, meta descriptions, and tags</li>
+      </ul>
+
+      <h3>Frontend (Product Team)</h3>
+      <p>
+        The Product team is responsible for the Venues HS interface that venues use to manage their Prime features:
+      </p>
+      <ul>
+        <li>Keyword selection UI (Search Boost) — <strong>complete</strong></li>
+        <li>Blog slot browser and sign-up flow — <strong>in code review</strong></li>
+        <li>Google Ads campaign scheduling and results dashboard — <strong>in code review</strong></li>
+      </ul>
+
+      <h3>Integrations</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>Purpose</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google Ads API</td>
+            <td>Campaign creation and results</td>
+            <td>Marketing</td>
+          </tr>
+          <tr>
+            <td>Ghost CMS</td>
+            <td>Blog generation and publishing</td>
+            <td>Marketing</td>
+          </tr>
+          <tr>
+            <td>MongoDB</td>
+            <td>Campaign data, scheduling, venue config</td>
+            <td>Product</td>
+          </tr>
+          <tr>
+            <td>Venues HS</td>
+            <td>Venue-facing UI for all three modules</td>
+            <td>Product</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>4. Available Event Types</h2>
+      <p>The following event types are supported across all campaign modules:</p>
+      <ul class="event-types">
+        <li>Away Day</li>
+        <li>Christmas Party</li>
+        <li>Conference</li>
+        <li>Corporate Party</li>
+        <li>Private Dining</li>
+        <li>Gala Dinner</li>
+        <li>Award Ceremony</li>
+        <li>Meeting</li>
+        <li>Pop-up</li>
+        <li>Product Launch</li>
+        <li>Summer Party</li>
+        <li>Wedding</li>
+        <li>Birthday Party</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Social Shoutout Campaigns</h2>
+      <p>
+        In addition to the three self-service modules, Prime includes quarterly social media shoutout campaigns. These are managed ad hoc by the Growth team (no API endpoint) and involve:
+      </p>
+      <ul>
+        <li>A pre-planned database of campaign slots across the year</li>
+        <li>Filming sessions with venues, with content locked 2 weeks before end of quarter</li>
+        <li>Scheduling based on city/location validation</li>
+      </ul>
+      <p>
+        These are not part of the self-service UI and remain a manual, Growth-led process.
+      </p>
+    </section>
+
+  </article>
+
+  <style>
+    .doc {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .meta {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #e5e5e5;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.3rem;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      border: 1px solid #ddd;
+    }
+    th {
+      background: #f5f5f5;
+      font-weight: 600;
+    }
+    .event-types {
+      columns: 2;
+    }
+  </style>
+</Layout>

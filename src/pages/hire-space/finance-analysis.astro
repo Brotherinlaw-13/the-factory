@@ -1,0 +1,460 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hire Space — Finance Ops Analysis (6 PM Frameworks)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; padding: 40px; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+    h1 { font-size: 28px; margin-bottom: 4px; }
+    h2 { font-size: 22px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #2563eb; color: #1e293b; }
+    h3 { font-size: 17px; margin: 24px 0 10px; color: #334155; }
+    h4 { font-size: 14px; margin: 16px 0 6px; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+    p, li { font-size: 14px; color: #334155; }
+    .subtitle { color: #64748b; margin-bottom: 32px; font-size: 14px; }
+    .dashboard { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0; }
+    .stat { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; text-align: center; }
+    .stat .num { font-size: 28px; font-weight: 700; color: #2563eb; }
+    .stat .label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+    .box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 16px 0; }
+    .box-warn { border-left: 4px solid #f59e0b; }
+    .box-red { border-left: 4px solid #ef4444; }
+    .box-green { border-left: 4px solid #22c55e; }
+    .box-blue { border-left: 4px solid #2563eb; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th { background: #f1f5f9; text-align: left; padding: 10px 12px; font-weight: 600; color: #475569; border-bottom: 2px solid #e2e8f0; }
+    td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; }
+    .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+    .tag-now { background: #dcfce7; color: #166534; }
+    .tag-test { background: #fef3c7; color: #92400e; }
+    .tag-later { background: #e2e8f0; color: #475569; }
+    .tag-s { background: #dbeafe; color: #1e40af; }
+    .tag-m { background: #fef3c7; color: #92400e; }
+    .tag-l { background: #fee2e2; color: #991b1b; }
+    ul { padding-left: 20px; margin: 8px 0; }
+    li { margin: 4px 0; }
+    .score-bar { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+    .score-track { flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+    .score-fill { height: 100%; border-radius: 4px; }
+    .score-label { font-size: 13px; font-weight: 600; min-width: 40px; }
+    .hmw { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: 15px; font-style: italic; color: #1e40af; }
+    .rank { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #2563eb; color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; margin-right: 8px; }
+    a { color: #2563eb; }
+    .toc { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 20px; margin: 20px 0; }
+    .toc a { text-decoration: none; font-size: 13px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>💷 Finance Ops Analysis</h1>
+  <p class="subtitle">6 Product Management frameworks applied to Hire Space's finance/booking system backlog. February 2026.</p>
+
+  <!-- EXECUTIVE DASHBOARD -->
+  <div class="dashboard">
+    <div class="stat">
+      <div class="num" style="color:#ef4444;">3/10</div>
+      <div class="label">Finance Health Score</div>
+    </div>
+    <div class="stat">
+      <div class="num">8</div>
+      <div class="label">Tools Assessed</div>
+    </div>
+    <div class="stat">
+      <div class="num" style="color:#22c55e;">3</div>
+      <div class="label">Build Now</div>
+    </div>
+    <div class="stat">
+      <div class="num">90 days</div>
+      <div class="label">Fix Plan Horizon</div>
+    </div>
+  </div>
+
+  <div class="box box-red">
+    <strong>Bottom line:</strong> Hire Space is leaking revenue through disabled auto-invoicing (DAC), a 150% markup bug, and manual processes that introduce errors at every step. Three tools should be built immediately: Generate Commission (fix the revenue engine), 1-Click DAS Payment (eliminate the biggest manual bottleneck), and Reconciliation (make leaks visible). The rest can follow.
+  </div>
+
+  <div class="toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#f1">Problem Framing Canvas</a></li>
+      <li><a href="#f2">Feature Investment Advisor</a></li>
+      <li><a href="#f3">Prioritisation Advisor</a></li>
+      <li><a href="#f4">Finance Metrics Quick Reference</a></li>
+      <li><a href="#f5">Business Health Diagnostic</a></li>
+      <li><a href="#f6">Finance-Based Pricing Advisor</a></li>
+    </ol>
+  </div>
+
+  <!-- FRAMEWORK 1: PROBLEM FRAMING CANVAS -->
+  <h2 id="f1">1. Problem Framing Canvas</h2>
+  <p>Framing the #1 problem: <strong>"Finance tools are manual, error-prone, and leak revenue."</strong></p>
+
+  <h3>Look Inward — Why haven't we solved it?</h3>
+  <div class="box box-warn">
+    <ul>
+      <li><strong>Product team focused on growth, not ops.</strong> Revenue-generating features (marketplace, search, venue onboarding) always won priority over internal tooling. Finance tools were built piecemeal, patched with spreadsheets and workarounds.</li>
+      <li><strong>Tribal knowledge.</strong> The finance lifecycle (contracts → invoices → bills → payment runs → reconciliation) lives in the heads of 2-3 people. No single system of record means no one sees the full picture.</li>
+      <li><strong>Technical debt.</strong> The 150% auto-markup bug and disabled DAC auto-invoicing are symptoms of code nobody wants to touch. Fear of breaking things means bugs persist.</li>
+      <li><strong>Xero as crutch.</strong> Pushing complexity to Xero means Hire Space's own system doesn't track what it needs to. The data model is incomplete.</li>
+      <li><strong>Misaligned incentives.</strong> Finance ops errors are invisible until month-end. Nobody's KPI is "zero revenue leakage" so it doesn't get prioritised.</li>
+    </ul>
+  </div>
+
+  <h3>Look Outward — Who experiences the pain?</h3>
+  <div class="box">
+    <table>
+      <tr><th>Stakeholder</th><th>Pain</th><th>Impact</th></tr>
+      <tr><td><strong>Finance team</strong> (2-3 people)</td><td>Manual data entry, reconciliation in spreadsheets, chasing missing invoices</td><td>20+ hours/week of avoidable work, errors at month-end close</td></tr>
+      <tr><td><strong>Venue Experts</strong> (sales team)</td><td>Can't see commission status, don't know if venues have been paid, get complaints from venues</td><td>Relationship damage, time spent on support queries</td></tr>
+      <tr><td><strong>Venues</strong> (suppliers)</td><td>Slow payments, opaque process, occasional wrong amounts</td><td>Churn risk, reduced trust in Hire Space as a partner</td></tr>
+      <tr><td><strong>CEO/CFO</strong></td><td>No visibility into revenue leakage until forensic investigation</td><td>Strategic decisions made on incomplete financial data</td></tr>
+    </table>
+  </div>
+
+  <h3>Reframe</h3>
+  <div class="box box-blue">
+    <h4>Problem Statement</h4>
+    <p>Hire Space's finance operations depend on manual processes, disconnected tools, and tribal knowledge, resulting in unbilled commissions, delayed venue payments, and an inability to close books accurately or quickly. The system doesn't fail loudly — it fails silently, leaking revenue that nobody measures.</p>
+  </div>
+
+  <div class="hmw">
+    How might we build a finance pipeline where every booking's commission is automatically tracked from contract to bank, making revenue leakage visible and manual intervention the exception rather than the rule?
+  </div>
+
+  <!-- FRAMEWORK 2: FEATURE INVESTMENT ADVISOR -->
+  <h2 id="f2">2. Feature Investment Advisor</h2>
+  <p>Each of the 8 tools assessed for revenue connection, cost, ROI, and build recommendation.</p>
+
+  <table>
+    <tr>
+      <th>Tool</th>
+      <th>Revenue Connection</th>
+      <th>Dev Cost</th>
+      <th>ROI</th>
+      <th>Recommendation</th>
+    </tr>
+    <tr>
+      <td><strong>Generate Commission</strong></td>
+      <td>Direct revenue recovery. Fixes DAC auto-invoicing + 150% markup bug. Every unbilled commission is lost revenue.</td>
+      <td><span class="tag tag-m">M</span></td>
+      <td>Very High</td>
+      <td><span class="tag tag-now">Build Now</span></td>
+    </tr>
+    <tr>
+      <td><strong>1-Click DAS Payment</strong></td>
+      <td>Eliminates multi-step manual payment process. Reduces errors in commission deductions, speeds venue payments.</td>
+      <td><span class="tag tag-m">M</span></td>
+      <td>High</td>
+      <td><span class="tag tag-now">Build Now</span></td>
+    </tr>
+    <tr>
+      <td><strong>Reconciliation</strong></td>
+      <td>Makes leakage visible. Without it, you can't measure what you're losing. Foundation for every other improvement.</td>
+      <td><span class="tag tag-m">M</span></td>
+      <td>High</td>
+      <td><span class="tag tag-now">Build Now</span></td>
+    </tr>
+    <tr>
+      <td><strong>Booking Overview</strong></td>
+      <td>Consolidates booking data for finance team. Reduces lookup time. Low direct revenue impact but high efficiency gain.</td>
+      <td><span class="tag tag-s">S</span></td>
+      <td>Medium</td>
+      <td><span class="tag tag-test">Test First</span></td>
+    </tr>
+    <tr>
+      <td><strong>Payment Run Dashboard</strong></td>
+      <td>Batch payment visibility. Prevents duplicate payments, missed payments. Moderate revenue protection.</td>
+      <td><span class="tag tag-s">S</span></td>
+      <td>Medium</td>
+      <td><span class="tag tag-test">Test First</span></td>
+    </tr>
+    <tr>
+      <td><strong>Venue Bills Processing</strong></td>
+      <td>Streamlines bill matching to bookings. Prevents overpayment to venues. Moderate savings.</td>
+      <td><span class="tag tag-m">M</span></td>
+      <td>Medium</td>
+      <td><span class="tag tag-test">Test First</span></td>
+    </tr>
+    <tr>
+      <td><strong>Additions Screen</strong></td>
+      <td>Pre-event cost capture. Missing additions = unbilled commissionable items. Some revenue protection.</td>
+      <td><span class="tag tag-s">S</span></td>
+      <td>Low-Medium</td>
+      <td><span class="tag tag-later">Later</span></td>
+    </tr>
+    <tr>
+      <td><strong>Credit Notes</strong></td>
+      <td>Operational convenience. Reduces time to issue credit notes. Minimal direct revenue impact.</td>
+      <td><span class="tag tag-s">S</span></td>
+      <td>Low</td>
+      <td><span class="tag tag-later">Later</span></td>
+    </tr>
+  </table>
+
+  <div class="box box-green">
+    <strong>Investment summary:</strong> Concentrate the first sprint on the revenue engine (Generate Commission + 1-Click DAS Payment) and the measurement layer (Reconciliation). These three tools address ~70% of the financial pain. The remaining five are efficiency improvements that can layer on once the foundation is solid.
+  </div>
+
+  <!-- FRAMEWORK 3: PRIORITISATION ADVISOR -->
+  <h2 id="f3">3. Prioritisation Advisor</h2>
+
+  <h3>Framework Selection</h3>
+  <div class="box box-blue">
+    <p><strong>Recommended framework: RICE (Reach, Impact, Confidence, Effort)</strong></p>
+    <p>Why RICE over alternatives:</p>
+    <ul>
+      <li><strong>Not WSJF</strong> — you don't have good cost-of-delay data for internal tools</li>
+      <li><strong>Not MoSCoW</strong> — too subjective for a small team with misaligned priorities; you need numbers</li>
+      <li><strong>Not Kano</strong> — this is internal tooling, not customer-facing feature satisfaction</li>
+      <li><strong>RICE works</strong> because you have rough estimates, a small team (effort matters a lot), and need an objective tiebreaker when stakeholders disagree</li>
+    </ul>
+  </div>
+
+  <h3>RICE Scoring</h3>
+  <p>Reach = finance team members affected per quarter. Impact = 0.25 (minimal) to 3 (massive). Confidence = %. Effort = person-weeks.</p>
+
+  <table>
+    <tr><th>#</th><th>Tool</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE Score</th></tr>
+    <tr><td><span class="rank">1</span></td><td>Generate Commission</td><td>50</td><td>3</td><td>90%</td><td>3w</td><td><strong>45.0</strong></td></tr>
+    <tr><td><span class="rank">2</span></td><td>1-Click DAS Payment</td><td>50</td><td>3</td><td>80%</td><td>3w</td><td><strong>40.0</strong></td></tr>
+    <tr><td><span class="rank">3</span></td><td>Reconciliation</td><td>10</td><td>3</td><td>85%</td><td>3w</td><td><strong>8.5</strong></td></tr>
+    <tr><td><span class="rank">4</span></td><td>Booking Overview</td><td>30</td><td>1</td><td>80%</td><td>1.5w</td><td><strong>16.0</strong></td></tr>
+    <tr><td><span class="rank">5</span></td><td>Payment Run Dashboard</td><td>10</td><td>2</td><td>75%</td><td>1.5w</td><td><strong>10.0</strong></td></tr>
+    <tr><td><span class="rank">6</span></td><td>Venue Bills Processing</td><td>10</td><td>2</td><td>70%</td><td>3w</td><td><strong>4.7</strong></td></tr>
+    <tr><td><span class="rank">7</span></td><td>Additions Screen</td><td>20</td><td>1</td><td>70%</td><td>1.5w</td><td><strong>9.3</strong></td></tr>
+    <tr><td><span class="rank">8</span></td><td>Credit Notes</td><td>10</td><td>0.5</td><td>80%</td><td>1w</td><td><strong>4.0</strong></td></tr>
+  </table>
+
+  <div class="box box-warn">
+    <strong>Note on Reach:</strong> "50" for Generate Commission and DAS Payment reflects that every handled booking (all venue experts + finance team) is affected by these tools. Reconciliation has low reach (only finance team) but maximum impact because it's the only way to measure whether everything else is working.
+  </div>
+
+  <h3>Recommended Build Order</h3>
+  <ol>
+    <li><strong>Generate Commission</strong> — fix the revenue engine first</li>
+    <li><strong>1-Click DAS Payment</strong> — eliminate the biggest manual bottleneck</li>
+    <li><strong>Reconciliation</strong> — make leakage visible (build in parallel if possible)</li>
+    <li><strong>Booking Overview</strong> — quick win, small effort, improves daily workflow</li>
+    <li><strong>Payment Run Dashboard</strong> — complements DAS Payment</li>
+    <li><strong>Additions Screen</strong> — captures missed commissionable items</li>
+    <li><strong>Venue Bills Processing</strong> — useful but complex, wait for data from Reconciliation</li>
+    <li><strong>Credit Notes</strong> — convenience, do last</li>
+  </ol>
+
+  <!-- FRAMEWORK 4: FINANCE METRICS -->
+  <h2 id="f4">4. Finance Metrics Quick Reference</h2>
+  <p>Five metrics to track finance ops health. Measure these before building anything, then track weekly.</p>
+
+  <table>
+    <tr><th>Metric</th><th>Formula</th><th>Target</th><th>Current (est.)</th><th>Why It Matters</th></tr>
+    <tr>
+      <td><strong>Revenue Leakage Rate</strong></td>
+      <td>Unbilled commissions / total commissions due</td>
+      <td>&lt; 1%</td>
+      <td style="color:#ef4444; font-weight:600;">5-15% (unknown)</td>
+      <td>The core metric. With DAC auto-invoicing disabled and the markup bug, real leakage is unknown — which is itself a red flag.</td>
+    </tr>
+    <tr>
+      <td><strong>Manual Intervention Rate</strong></td>
+      <td>Bookings requiring manual finance steps / total bookings</td>
+      <td>&lt; 10%</td>
+      <td style="color:#ef4444; font-weight:600;">~80%+</td>
+      <td>Almost every booking requires manual touchpoints. This drives error rates and scales linearly with booking volume.</td>
+    </tr>
+    <tr>
+      <td><strong>Payment Cycle Time</strong></td>
+      <td>Days from booking completion to venue receiving payment</td>
+      <td>&lt; 14 days</td>
+      <td style="color:#f59e0b; font-weight:600;">30-60 days (est.)</td>
+      <td>Slow payments damage venue relationships. DAS venues expect faster payment as part of the proposition.</td>
+    </tr>
+    <tr>
+      <td><strong>Error Rate</strong></td>
+      <td>Credit notes issued / total invoices generated</td>
+      <td>&lt; 2%</td>
+      <td style="color:#f59e0b; font-weight:600;">Unknown</td>
+      <td>High credit note volume signals upstream errors in commission calculation or invoicing.</td>
+    </tr>
+    <tr>
+      <td><strong>Reconciliation Lag</strong></td>
+      <td>Business days to close monthly books</td>
+      <td>&lt; 5 days</td>
+      <td style="color:#ef4444; font-weight:600;">15-20 days (est.)</td>
+      <td>Slow close means leadership makes decisions on stale data. Also signals process fragility.</td>
+    </tr>
+  </table>
+
+  <div class="box box-blue">
+    <strong>Measurement plan:</strong> Before building any tool, instrument these 5 metrics from existing Xero data and the Hire Space database. Even rough baselines give you a "before" snapshot to measure improvement against. The Reconciliation tool itself becomes the primary measurement instrument.
+  </div>
+
+  <!-- FRAMEWORK 5: BUSINESS HEALTH DIAGNOSTIC -->
+  <h2 id="f5">5. Business Health Diagnostic</h2>
+  <p>Assessing the health of Hire Space's finance operations specifically.</p>
+
+  <h3>Overall Score: 3/10</h3>
+
+  <div style="margin: 20px 0;">
+    <div class="score-bar">
+      <span style="width:160px; font-size:13px;">Automation</span>
+      <div class="score-track"><div class="score-fill" style="width:15%; background:#ef4444;"></div></div>
+      <span class="score-label" style="color:#ef4444;">1.5/10</span>
+    </div>
+    <div class="score-bar">
+      <span style="width:160px; font-size:13px;">Data Integrity</span>
+      <div class="score-track"><div class="score-fill" style="width:30%; background:#f59e0b;"></div></div>
+      <span class="score-label" style="color:#f59e0b;">3/10</span>
+    </div>
+    <div class="score-bar">
+      <span style="width:160px; font-size:13px;">Visibility</span>
+      <div class="score-track"><div class="score-fill" style="width:20%; background:#ef4444;"></div></div>
+      <span class="score-label" style="color:#ef4444;">2/10</span>
+    </div>
+    <div class="score-bar">
+      <span style="width:160px; font-size:13px;">Speed</span>
+      <div class="score-track"><div class="score-fill" style="width:25%; background:#f59e0b;"></div></div>
+      <span class="score-label" style="color:#f59e0b;">2.5/10</span>
+    </div>
+    <div class="score-bar">
+      <span style="width:160px; font-size:13px;">Scalability</span>
+      <div class="score-track"><div class="score-fill" style="width:20%; background:#ef4444;"></div></div>
+      <span class="score-label" style="color:#ef4444;">2/10</span>
+    </div>
+    <div class="score-bar">
+      <span style="width:160px; font-size:13px;">Revenue Protection</span>
+      <div class="score-track"><div class="score-fill" style="width:30%; background:#f59e0b;"></div></div>
+      <span class="score-label" style="color:#f59e0b;">3/10</span>
+    </div>
+  </div>
+
+  <h3>🚩 Red Flags</h3>
+  <div class="box box-red">
+    <ol>
+      <li><strong>DAC auto-invoicing is disabled.</strong> This means an entire revenue stream (commissions on DAC bookings) requires manual invoicing. Every missed invoice is pure revenue loss.</li>
+      <li><strong>150% auto-markup bug.</strong> The system is overcharging on some bookings. This creates credit notes, venue complaints, and trust erosion — and has been known but unfixed.</li>
+      <li><strong>No reconciliation process.</strong> There is no systematic way to compare what should have been billed vs what was billed. Leakage is invisible.</li>
+      <li><strong>Tribal knowledge dependency.</strong> If the 2-3 people who understand the finance workflow leave, the process collapses.</li>
+      <li><strong>Payment cycle time.</strong> Venues waiting 30-60 days for payment is a competitive disadvantage and churn risk.</li>
+    </ol>
+  </div>
+
+  <h3>📋 90-Day Fix Plan</h3>
+  <table>
+    <tr><th>Phase</th><th>Weeks</th><th>Actions</th><th>Outcome</th></tr>
+    <tr>
+      <td><strong>1. Stop the Bleeding</strong></td>
+      <td>1-2</td>
+      <td>
+        <ul>
+          <li>Fix the 150% markup bug (hotfix)</li>
+          <li>Re-enable DAC auto-invoicing (with guards)</li>
+          <li>Baseline the 5 metrics from Xero data</li>
+        </ul>
+      </td>
+      <td>Known revenue leaks plugged. Measurement begins.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Build the Engine</strong></td>
+      <td>3-6</td>
+      <td>
+        <ul>
+          <li>Ship Generate Commission tool</li>
+          <li>Ship 1-Click DAS Payment</li>
+          <li>Begin Reconciliation tool</li>
+        </ul>
+      </td>
+      <td>Automated commission generation. DAS payments in one click. Reconciliation in progress.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Close the Loop</strong></td>
+      <td>7-10</td>
+      <td>
+        <ul>
+          <li>Ship Reconciliation tool</li>
+          <li>Ship Booking Overview</li>
+          <li>First full reconciliation cycle</li>
+        </ul>
+      </td>
+      <td>End-to-end visibility. First clean month-end close. Leakage rate measured and tracked.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Optimise</strong></td>
+      <td>11-13</td>
+      <td>
+        <ul>
+          <li>Payment Run Dashboard</li>
+          <li>Review metrics, iterate on tools</li>
+          <li>Document processes (kill tribal knowledge)</li>
+        </ul>
+      </td>
+      <td>Finance ops is systematic, measured, and documented. Team can scale without adding headcount.</td>
+    </tr>
+  </table>
+
+  <!-- FRAMEWORK 6: PRICING ADVISOR -->
+  <h2 id="f6">6. Finance-Based Pricing Advisor</h2>
+  <p>Should Hire Space charge venues differently based on payment terms?</p>
+
+  <h3>The Opportunity</h3>
+  <div class="box">
+    <p>Currently, DAS (Direct Account Sales) venues get a fundamentally different financial experience from DAC (Direct Account Commission) venues:</p>
+    <table>
+      <tr><th></th><th>DAS</th><th>DAC</th></tr>
+      <tr><td>Payment speed</td><td>Hire Space collects, then pays venue (faster control)</td><td>Venue invoices client directly, Hire Space invoices commission separately</td></tr>
+      <tr><td>Hire Space risk</td><td>Higher (holds money in transit)</td><td>Lower (commission-only)</td></tr>
+      <tr><td>Venue experience</td><td>Simpler, more "managed"</td><td>More independent, slower commission payment</td></tr>
+    </table>
+  </div>
+
+  <h3>Recommendation: Yes, but carefully</h3>
+  <div class="box box-green">
+    <h4>Tier 1: DAS Premium (higher commission rate, faster payment guarantee)</h4>
+    <ul>
+      <li>Venues pay a slightly higher commission (e.g. +2-3%) in exchange for guaranteed payment within 7 days of event completion</li>
+      <li>Hire Space handles all invoicing, collection, and payment — the venue just hosts</li>
+      <li>Positioned as "managed payments" — a premium service, not a tax</li>
+      <li><strong>Revenue impact:</strong> Higher margin per booking. Attractive to venues that value cash flow certainty.</li>
+    </ul>
+
+    <h4>Tier 2: DAC Standard (current commission rate, standard terms)</h4>
+    <ul>
+      <li>Commission invoiced after event, standard 30-day payment terms</li>
+      <li>Venue handles their own client invoicing</li>
+      <li>Lower commission rate reflects lower service level</li>
+      <li><strong>Revenue impact:</strong> Maintains current margin. Baseline offering.</li>
+    </ul>
+  </div>
+
+  <h3>Prerequisites (Do NOT launch pricing changes before these)</h3>
+  <div class="box box-warn">
+    <ol>
+      <li><strong>Fix the payment infrastructure first.</strong> You cannot promise "7-day payment" if your finance tools are manual and error-prone. Build the 3 priority tools first.</li>
+      <li><strong>Measure current payment cycle times.</strong> You need data to set realistic SLAs and to prove the premium is justified.</li>
+      <li><strong>Test with 5-10 venues.</strong> Don't roll out pricing changes across the board. Pilot with willing DAS venues, measure satisfaction and retention impact.</li>
+      <li><strong>Legal review.</strong> Changing payment terms has contractual implications. Ensure existing agreements allow for tiered pricing.</li>
+    </ol>
+  </div>
+
+  <h3>Risk Assessment</h3>
+  <table>
+    <tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr>
+    <tr><td>Venue pushback on higher DAS commission</td><td>Medium</td><td>Frame as optional premium service. Keep DAC as default.</td></tr>
+    <tr><td>Unable to deliver on payment SLAs</td><td>High (today)</td><td>Do not launch until finance tools are built. This is a Phase 4+ initiative.</td></tr>
+    <tr><td>Complexity in billing systems</td><td>Medium</td><td>Build tiered pricing into the Generate Commission tool from the start, even if not activated yet.</td></tr>
+    <tr><td>Competitive response</td><td>Low</td><td>Most competitors don't offer managed payments at all. This is differentiation.</td></tr>
+  </table>
+
+  <div class="box box-blue">
+    <strong>Timeline:</strong> This is a 6-month+ initiative. Fix the plumbing first (90-day plan above), then pilot tiered pricing with a small cohort of DAS venues. Do not attempt this before the finance tools are operational.
+  </div>
+
+  <hr style="margin: 48px 0 24px; border: none; border-top: 1px solid #e2e8f0;" />
+  <p style="font-size: 12px; color: #94a3b8; text-align: center;">
+    Generated February 2026 · <a href="/hire-space/finance-tools/">View wireframes</a> · Hire Space Finance Ops
+  </p>
+
+</body>
+</html>

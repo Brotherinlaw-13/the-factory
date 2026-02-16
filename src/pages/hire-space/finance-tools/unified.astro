@@ -1,0 +1,967 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Finance Tools — Unified View</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; }
+
+    /* === TOP NAV === */
+    .top-nav { background: #f5f5f5; border-bottom: 1px solid #e2e8f0; padding: 12px 40px; font-size: 13px; }
+    .top-nav a { color: #2563eb; text-decoration: none; margin-right: 16px; }
+
+    /* === BOOKING SEARCH === */
+    .booking-search { max-width: 1200px; margin: 0 auto; padding: 24px 40px 0; }
+    .booking-search h1 { font-size: 24px; margin-bottom: 4px; }
+    .booking-search .desc { color: #64748b; font-size: 14px; margin-bottom: 16px; }
+    .search-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .search-bar input { flex: 1; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px; }
+    .search-bar .btn { padding: 10px 20px; }
+
+    /* === BOOKING HEADER BAR === */
+    .booking-header { background: #f0f9ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+
+    /* === CONTAINER === */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px 40px; }
+
+    /* === CSS-ONLY TABS === */
+    .tab-input { display: none; }
+    .tab-labels { display: flex; border-bottom: 2px solid #e2e8f0; margin-bottom: 20px; flex-wrap: wrap; }
+    .tab-labels label { padding: 10px 18px; font-size: 13px; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; color: #64748b; white-space: nowrap; }
+    .tab-labels label:hover { color: #2563eb; }
+    .tab-content { display: none; }
+
+    #tab-overview:checked ~ .tab-labels label[for="tab-overview"],
+    #tab-commission:checked ~ .tab-labels label[for="tab-commission"],
+    #tab-additions:checked ~ .tab-labels label[for="tab-additions"],
+    #tab-bills:checked ~ .tab-labels label[for="tab-bills"],
+    #tab-paymentrun:checked ~ .tab-labels label[for="tab-paymentrun"],
+    #tab-reconciliation:checked ~ .tab-labels label[for="tab-reconciliation"],
+    #tab-creditnotes:checked ~ .tab-labels label[for="tab-creditnotes"] {
+      border-bottom-color: #2563eb; color: #2563eb; font-weight: 700;
+    }
+
+    #tab-overview:checked ~ .content-overview,
+    #tab-commission:checked ~ .content-commission,
+    #tab-additions:checked ~ .content-additions,
+    #tab-bills:checked ~ .content-bills,
+    #tab-paymentrun:checked ~ .content-paymentrun,
+    #tab-reconciliation:checked ~ .content-reconciliation,
+    #tab-creditnotes:checked ~ .content-creditnotes {
+      display: block;
+    }
+
+    /* === COMMON STYLES === */
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .card h3 { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 10px; background: #e2e8f0; font-weight: 600; font-size: 12px; color: #64748b; }
+    td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-gray { background: #f1f5f9; color: #64748b; }
+    .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-lg { padding: 14px 32px; font-size: 16px; border-radius: 8px; }
+    .btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+    .btn-green { background: #16a34a; color: #fff; }
+    .btn-success { background: #16a34a; color: #fff; }
+    .btn-danger { background: #fff; color: #dc2626; border: 1px solid #dc2626; }
+    .btn-disabled { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; }
+    .todo { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 8px 0; border-radius: 0 4px 4px 0; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .kv { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+    .kv .label { color: #64748b; }
+    .big-number { font-size: 28px; font-weight: 700; color: #2563eb; }
+    input[type="text"], input[type="number"], select, textarea { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 13px; font-family: inherit; }
+    .upload-zone { border: 2px dashed #e2e8f0; border-radius: 8px; padding: 24px; text-align: center; color: #94a3b8; font-size: 13px; margin-top: 8px; }
+    .guardrail { background: #fee2e2; border: 1px solid #fca5a5; border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; }
+    .guardrail h4 { color: #991b1b; font-size: 13px; margin-bottom: 4px; }
+    .guardrail p { font-size: 12px; color: #991b1b; }
+    .full { grid-column: 1 / -1; }
+    .action-box { border: 2px solid #2563eb; border-radius: 8px; padding: 16px; background: #eff6ff; text-align: center; }
+    .filter-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .filter-bar select, .filter-bar input { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px; }
+    .alert { border-radius: 8px; padding: 16px; margin-bottom: 20px; font-size: 13px; }
+    .alert-red { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+    .alert-green { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .notification { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 16px; }
+    .warning { background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 12px 16px; font-size: 12px; color: #92400e; margin-bottom: 16px; }
+    .diagnostic { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 12px; color: #475569; }
+    .steps { display: flex; gap: 0; margin-bottom: 24px; }
+    .step { flex: 1; padding: 12px 16px; background: #f5f5f5; border: 1px solid #e2e8f0; text-align: center; font-size: 13px; color: #64748b; }
+    .step.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .step.done { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+    .step:first-child { border-radius: 6px 0 0 6px; }
+    .step:last-child { border-radius: 0 6px 6px 0; }
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .stat { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; text-align: center; }
+    .stat .num { font-size: 24px; font-weight: 700; }
+    .stat .lbl { font-size: 12px; color: #64748b; margin-top: 4px; }
+    .check-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+    .check-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .check-pass { background: #dcfce7; color: #166534; }
+    .check-fail { background: #fee2e2; color: #991b1b; }
+    .check-warn { background: #fef9c3; color: #854d0e; }
+    .account-box { border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff; text-align: center; }
+    .account-box .code { font-size: 18px; font-weight: 700; color: #2563eb; }
+    .account-box .name { font-size: 11px; color: #64748b; }
+    .account-box .bal { font-size: 16px; font-weight: 600; margin-top: 4px; }
+    .scope-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+    .scope-booking { background: #dbeafe; color: #1e40af; }
+    .scope-cross { background: #fef3c7; color: #92400e; }
+    .info-banner { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 10px 16px; margin-bottom: 20px; font-size: 12px; color: #1e40af; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <div class="top-nav">
+    <a href="/hire-space/finance-tools/">← All Finance Tools</a>
+    <a href="/hire-space/finance-analysis">📊 Finance Analysis</a>
+  </div>
+
+  <!-- Booking Search / Selector -->
+  <div class="booking-search">
+    <h1>💷 Finance Tools — Unified View</h1>
+    <p class="desc">All finance workflows in one place. Select a booking to work on booking-level tabs, or jump directly to cross-booking views (Payment Run, Credit Notes).</p>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by booking ref, venue, or client name... (e.g. HS-2026-04821)" value="HS-2026-04821" />
+      <button class="btn btn-primary">🔍 Load Booking</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Booking Header Bar (persistent) -->
+    <div class="booking-header">
+      <span><strong>HS-2026-04821</strong> · Moody's Corp · The Grand Ballroom, London · 15 Mar 2026 · 220 guests</span>
+      <span>
+        <span class="badge badge-blue">DAS — Handled</span>
+        <span class="badge badge-yellow">Pending Win</span>
+        <span style="font-size: 12px; color: #64748b; margin-left: 8px;">CS: Sarah Mitchell</span>
+      </span>
+    </div>
+
+    <!-- CSS-only tab system -->
+    <input type="radio" name="tabs" id="tab-overview" class="tab-input" checked />
+    <input type="radio" name="tabs" id="tab-commission" class="tab-input" />
+    <input type="radio" name="tabs" id="tab-additions" class="tab-input" />
+    <input type="radio" name="tabs" id="tab-bills" class="tab-input" />
+    <input type="radio" name="tabs" id="tab-paymentrun" class="tab-input" />
+    <input type="radio" name="tabs" id="tab-reconciliation" class="tab-input" />
+    <input type="radio" name="tabs" id="tab-creditnotes" class="tab-input" />
+
+    <div class="tab-labels">
+      <label for="tab-overview">📋 Overview <span class="scope-badge scope-booking">Booking</span></label>
+      <label for="tab-commission">💰 Commission <span class="scope-badge scope-booking">Booking</span></label>
+      <label for="tab-additions">➕ Additions <span class="scope-badge scope-booking">Booking</span></label>
+      <label for="tab-bills">🧾 Bills & Payments <span class="scope-badge scope-booking">Booking</span></label>
+      <label for="tab-paymentrun">🚀 Payment Run <span class="scope-badge scope-cross">All Bookings</span></label>
+      <label for="tab-reconciliation">✅ Reconciliation <span class="scope-badge scope-booking">Booking</span></label>
+      <label for="tab-creditnotes">📝 Credit Notes <span class="scope-badge scope-cross">All Bookings</span></label>
+    </div>
+
+    <!-- ==================== TAB 1: OVERVIEW ==================== -->
+    <div class="tab-content content-overview">
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Booking Details</h3>
+          <div class="kv"><span class="label">Booking ID</span><span>HS-2026-04821</span></div>
+          <div class="kv"><span class="label">Client</span><span>Moody's Corp</span></div>
+          <div class="kv"><span class="label">Venue</span><span>The Grand Ballroom, London</span></div>
+          <div class="kv"><span class="label">Event Date</span><span>15 Mar 2026</span></div>
+          <div class="kv"><span class="label">Event Type</span><span>Annual Gala Dinner</span></div>
+          <div class="kv"><span class="label">Guests</span><span>220</span></div>
+          <div class="kv"><span class="label">Booking Type</span><span><span class="badge badge-blue">Handled — DAS</span></span></div>
+          <div class="kv"><span class="label">CS Owner</span><span>Sarah Mitchell</span></div>
+          <div class="kv"><span class="label">Status</span><span><span class="badge badge-yellow">Pending Win</span></span></div>
+        </div>
+        <div class="card">
+          <h3>Contract & Documents</h3>
+          <div class="kv"><span class="label">Juro Contract</span><span><span class="badge badge-green">Countersigned ✓</span></span></div>
+          <div class="kv"><span class="label">T&Cs Version</span><span>v4.2 (Jan 2026)</span></div>
+          <div class="kv"><span class="label">Quote Filled</span><span><span class="badge badge-green">Yes ✓</span></span></div>
+          <div class="kv"><span class="label">Venue T&Cs</span><span><span class="badge badge-yellow">Awaiting upload</span></span></div>
+          <div style="margin-top: 16px;">
+            <strong style="font-size: 12px; color: #64748b;">Upload Signed Contract / T&Cs</strong>
+            <div class="upload-zone">📎 Drag & drop or click to upload PDF</div>
+          </div>
+          <div class="todo">[TODO] Should Juro status pull automatically from Juro API, or manual confirmation?</div>
+        </div>
+      </div>
+
+      <!-- Commission Summary -->
+      <div class="card">
+        <h3>Commission Summary — Per Line Item</h3>
+        <div class="todo">[TODO] Should commission % be editable here, or locked from contract? Who can override?</div>
+        <table style="margin-top: 12px;">
+          <thead>
+            <tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Commission %</th><th>Commission £</th><th>Net to Venue</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Room hire</td><td>£8,500.00</td><td>15%</td><td>£1,275.00</td><td>£7,225.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
+            <tr><td>Catering — 3-course dinner × 220</td><td>£17,600.00</td><td>12%</td><td>£2,112.00</td><td>£15,488.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
+            <tr><td>AV & lighting package</td><td>£3,200.00</td><td>10%</td><td>£320.00</td><td>£2,880.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
+            <tr><td>Drinks reception (champagne)</td><td>£2,640.00</td><td>12%</td><td>£316.80</td><td>£2,323.20</td><td><span class="badge badge-blue">DAS</span></td></tr>
+            <tr style="background: #f0f9ff; font-weight: 600;">
+              <td>TOTAL</td><td>£31,940.00</td><td>—</td><td>£4,023.80</td><td>£27,916.20</td><td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="todo">[TODO] How to handle mixed DAS/DAC items on the same booking? Show separate totals?</div>
+      </div>
+
+      <!-- Guard Rails -->
+      <div class="card">
+        <h3>🛡️ Guard Rails — Pre-Win Checks</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">All checks must pass before the "Mark as Won" button is enabled.</p>
+        <table>
+          <thead><tr><th>Check</th><th>Status</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td>Contract countersigned in Juro</td><td><span class="badge badge-green">Pass ✓</span></td><td>Signed 10 Feb 2026</td></tr>
+            <tr><td>Quote filled with all line items</td><td><span class="badge badge-green">Pass ✓</span></td><td>4 items, £31,940 total</td></tr>
+            <tr><td>Commission % within allowed range</td><td><span class="badge badge-green">Pass ✓</span></td><td>All items 10-15% (policy: 8-20%)</td></tr>
+            <tr><td>Commission summary reviewed (£ amounts)</td><td><span class="badge badge-yellow">Pending</span></td><td>CS must click "Confirm commission"</td></tr>
+            <tr><td>Venue T&Cs uploaded</td><td><span class="badge badge-red">Fail ✗</span></td><td>Missing — upload above</td></tr>
+            <tr><td>No duplicate booking</td><td><span class="badge badge-green">Pass ✓</span></td><td>No match found</td></tr>
+          </tbody>
+        </table>
+        <div class="todo">[TODO] What are the exact commission % guardrail ranges? Should they vary by venue tier?</div>
+        <div class="todo">[TODO] Should any guard rails be soft warnings (allow override) vs hard blocks?</div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; gap: 12px; align-items: center; margin-top: 8px;">
+        <button class="btn btn-outline">Confirm Commission Summary</button>
+        <button class="btn btn-disabled" title="1 guard rail failing">🔒 Mark as Won</button>
+        <span style="font-size: 12px; color: #991b1b;">⚠ 1 guard rail failing — resolve before winning</span>
+      </div>
+
+      <div class="guardrail" style="margin-top: 24px;">
+        <h4>⚠ Cannot Win Booking</h4>
+        <p>Venue T&Cs have not been uploaded. Please upload the signed venue terms before marking this booking as won.</p>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: COMMISSION ==================== -->
+    <div class="tab-content content-commission">
+
+      <div class="alert alert-red">
+        <strong>⚠️ Background:</strong> DAC auto-invoicing was disabled due to a 150% markup bug that overcharged venues. Since then, all DAC commission invoices have been generated manually — or not at all. This tool re-enables automated commission generation with proper guards, preview, and audit trail.
+      </div>
+
+      <!-- Status Dashboard -->
+      <div class="grid3" style="margin-bottom: 24px;">
+        <div class="card" style="text-align: center;">
+          <h3>Pending Commissions</h3>
+          <div class="big-number" style="color: #ef4444;">23</div>
+          <span style="font-size: 12px; color: #64748b;">bookings with no commission invoice</span>
+        </div>
+        <div class="card" style="text-align: center;">
+          <h3>Generated This Month</h3>
+          <div class="big-number" style="color: #22c55e;">47</div>
+          <span style="font-size: 12px; color: #64748b;">commission invoices created</span>
+        </div>
+        <div class="card" style="text-align: center;">
+          <h3>Pending Value</h3>
+          <div class="big-number">£18,420</div>
+          <span style="font-size: 12px; color: #64748b;">estimated unbilled commission</span>
+        </div>
+      </div>
+
+      <div class="todo">[TODO] Should pending commissions include only post-event bookings, or also upcoming confirmed bookings? What's the trigger point for commission eligibility?</div>
+
+      <!-- Filter Bar -->
+      <div class="card">
+        <h3>Filter Bookings</h3>
+        <div class="filter-bar">
+          <select><option>All Types</option><option>DAS Only</option><option>DAC Only</option></select>
+          <select><option>Pending Commission</option><option>Generated</option><option>All Statuses</option></select>
+          <select><option>Last 30 days</option><option>Last 60 days</option><option>Last 90 days</option><option>Custom range</option></select>
+          <input type="text" placeholder="Search booking ref or venue..." style="flex: 1; min-width: 180px;" />
+          <button class="btn btn-outline">🔍 Filter</button>
+        </div>
+        <div class="todo">[TODO] Should there be a venue filter dropdown? Also: should we show bookings where event hasn't happened yet?</div>
+      </div>
+
+      <!-- Commission Queue -->
+      <div class="card">
+        <h3>Commission Queue</h3>
+        <table>
+          <thead>
+            <tr><th><input type="checkbox" title="Select all" /></th><th>Booking Ref</th><th>Venue</th><th>Event Date</th><th>Type</th><th>Booking Value (ex VAT)</th><th>Rate</th><th>Commission</th><th>Status</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" /></td><td>HS-2026-04821</td><td>The Grand Ballroom</td><td>15 Mar 2026</td><td><span class="badge badge-blue">DAS</span></td><td>£31,940.00</td><td>12.6%</td><td>£4,023.80</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn btn-primary" style="padding: 4px 10px; font-size: 11px;">Generate</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td><td>HS-2026-04799</td><td>Riverside Venue</td><td>12 Mar 2026</td><td><span class="badge badge-yellow">DAC</span></td><td>£8,500.00</td><td>15%</td><td>£1,275.00</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn btn-primary" style="padding: 4px 10px; font-size: 11px;">Generate</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td><td>HS-2026-04756</td><td>City Conference Centre</td><td>10 Mar 2026</td><td><span class="badge badge-yellow">DAC</span></td><td>£14,200.00</td><td>12%</td><td>£1,704.00</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn btn-primary" style="padding: 4px 10px; font-size: 11px;">Generate</button></td>
+            </tr>
+            <tr style="opacity: 0.6;">
+              <td><input type="checkbox" disabled /></td><td>HS-2026-04712</td><td>The Shard Events</td><td>8 Mar 2026</td><td><span class="badge badge-blue">DAS</span></td><td>£22,000.00</td><td>10%</td><td>£2,200.00</td><td><span class="badge badge-green">Generated</span></td><td><span style="font-size: 11px; color: #64748b;">INV-4712</span></td>
+            </tr>
+            <tr style="opacity: 0.6;">
+              <td><input type="checkbox" disabled /></td><td>HS-2026-04698</td><td>Merchant Taylors' Hall</td><td>5 Mar 2026</td><td><span class="badge badge-blue">DAS</span></td><td>£45,000.00</td><td>12%</td><td>£5,400.00</td><td><span class="badge badge-green">Generated</span></td><td><span style="font-size: 11px; color: #64748b;">INV-4698</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Commission Preview (expanded) -->
+      <div class="card">
+        <h3>Commission Preview — HS-2026-04799 (DAC)</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Riverside Venue · Event: 12 Mar 2026 · Client: Acme Corp</p>
+        <table>
+          <thead><tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Commission %</th><th>Commission £</th></tr></thead>
+          <tbody>
+            <tr><td>Room hire</td><td>£3,500.00</td><td>15%</td><td>£525.00</td></tr>
+            <tr><td>Catering</td><td>£4,200.00</td><td>15%</td><td>£630.00</td></tr>
+            <tr><td>AV equipment</td><td>£800.00</td><td>15%</td><td>£120.00</td></tr>
+            <tr style="font-weight: 700; background: #f0f9ff;"><td>TOTAL</td><td>£8,500.00</td><td>15%</td><td>£1,275.00</td></tr>
+          </tbody>
+        </table>
+        <div class="todo">[TODO] Commission rates vary per line item on some bookings. Should this preview pull rates from the contract, or allow manual override?</div>
+
+        <div class="grid2" style="margin-top: 16px;">
+          <div>
+            <h3 style="margin-bottom: 8px;">Invoice Preview</h3>
+            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; font-size: 12px;">
+              <div class="kv"><span class="label">To</span><span>Riverside Venue Ltd</span></div>
+              <div class="kv"><span class="label">Amount (ex VAT)</span><span>£1,275.00</span></div>
+              <div class="kv"><span class="label">VAT (20%)</span><span>£255.00</span></div>
+              <div class="kv"><span class="label">Total (inc VAT)</span><span><strong>£1,530.00</strong></span></div>
+              <div class="kv"><span class="label">Reference</span><span>COMM-HS-2026-04799</span></div>
+              <div class="kv"><span class="label">Xero Account</span><span>[400] Commission Revenue</span></div>
+              <div class="kv"><span class="label">Type</span><span><span class="badge badge-yellow">DAC — Invoice to venue</span></span></div>
+            </div>
+          </div>
+          <div>
+            <h3 style="margin-bottom: 8px;">Validation Checks</h3>
+            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; font-size: 12px;">
+              <div class="kv"><span>✅ Booking confirmed & won</span><span class="badge badge-green">Pass</span></div>
+              <div class="kv"><span>✅ Event date has passed</span><span class="badge badge-green">Pass</span></div>
+              <div class="kv"><span>✅ No existing commission invoice</span><span class="badge badge-green">Pass</span></div>
+              <div class="kv"><span>✅ Commission rate matches contract</span><span class="badge badge-green">Pass</span></div>
+              <div class="kv"><span>✅ Markup within expected range</span><span class="badge badge-green">Pass</span></div>
+            </div>
+            <div class="todo">[TODO] What validation checks are needed to prevent the 150% markup bug from recurring? Should there be a max commission % threshold?</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Batch Generation -->
+      <div class="action-box" style="margin-bottom: 24px;">
+        <p style="font-size: 14px; color: #1e40af; margin-bottom: 8px;"><strong>Batch Generation</strong> — 3 bookings selected (£7,002.80 total commission)</p>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">All validation checks passed. Commission invoices will be created in Xero.</p>
+        <button class="btn btn-green btn-lg">⚡ Generate 3 Commission Invoices</button>
+        <p style="font-size: 11px; color: #64748b; margin-top: 8px;">DAS invoices: auto-marked as paid (offset against deduction). DAC invoices: sent to venue for payment.</p>
+        <div class="todo" style="margin-top: 12px;">[TODO] Should DAS commission invoices be handled differently (auto-reconciled) vs DAC (sent to venue)? Should DAC invoices auto-send to venue email or just be created in Xero?</div>
+      </div>
+
+      <!-- DAS vs DAC explanation -->
+      <div class="card">
+        <h3>How Commission Differs by Booking Type</h3>
+        <div class="grid2">
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 16px;">
+            <strong style="color: #1e40af;">DAS (Deduct at Source)</strong>
+            <ul style="font-size: 12px; color: #334155; margin-top: 8px; padding-left: 16px;">
+              <li>Commission is deducted before venue payment</li>
+              <li>Invoice is for internal record / self-billing</li>
+              <li>Auto-marked as paid (no chasing needed)</li>
+              <li>Links to the 1-Click DAS Payment flow</li>
+            </ul>
+          </div>
+          <div style="background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 16px;">
+            <strong style="color: #854d0e;">DAC (Deduct at Conclusion)</strong>
+            <ul style="font-size: 12px; color: #334155; margin-top: 8px; padding-left: 16px;">
+              <li>Venue has already received full payment</li>
+              <li>Invoice is sent to venue for commission payment</li>
+              <li>Must be tracked and chased if overdue</li>
+              <li>Previously disabled due to 150% markup bug</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: ADDITIONS ==================== -->
+    <div class="tab-content content-additions">
+
+      <p class="desc" style="color: #64748b; font-size: 14px; margin-bottom: 24px;">Upload a supplier invoice for additional items, classify line items, preview the Xero bill, and create costs/journals. Combines spreadsheet item 3 with doc Appendix A item 2.</p>
+
+      <!-- Workflow Steps -->
+      <div class="steps">
+        <div class="step done">① Upload Invoice</div>
+        <div class="step active">② Identify Line Items</div>
+        <div class="step">③ Preview Xero Bill</div>
+        <div class="step">④ Create & Confirm</div>
+      </div>
+
+      <!-- Step 1: Upload (completed) -->
+      <div class="card">
+        <h3>① Uploaded Invoice</h3>
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+          <span style="font-size: 24px;">📄</span>
+          <div>
+            <strong>Grand_Ballroom_Additional_AV_Feb2026.pdf</strong><br/>
+            <span style="color: #64748b;">Uploaded 12 Feb 2026 · 2 pages · The Grand Ballroom</span>
+          </div>
+          <span class="badge badge-green" style="margin-left: auto;">Parsed ✓</span>
+        </div>
+      </div>
+
+      <!-- Step 2: Line Items -->
+      <div class="card">
+        <h3>② Identify Line Items</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Classify each line item as <strong>Pass-through</strong> (no commission) or <strong>Commissionable</strong> (commission applies). Items auto-detected from PDF.</p>
+        <div class="todo">[TODO] Should we auto-detect pass-through vs commissionable based on item category, or always require manual classification?</div>
+        <table>
+          <thead>
+            <tr><th>Line Item (from invoice)</th><th>Amount (ex VAT)</th><th>VAT</th><th>Classification</th><th>Commission %</th><th>Commission £</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Additional wireless microphones × 4</td><td>£480.00</td><td>£96.00</td>
+              <td><select style="width: 160px;"><option selected>Commissionable</option><option>Pass-through</option></select></td>
+              <td><input type="text" value="12%" style="width: 60px;" /></td><td>£57.60</td>
+            </tr>
+            <tr>
+              <td>Projector upgrade (4K)</td><td>£350.00</td><td>£70.00</td>
+              <td><select style="width: 160px;"><option selected>Commissionable</option><option>Pass-through</option></select></td>
+              <td><input type="text" value="12%" style="width: 60px;" /></td><td>£42.00</td>
+            </tr>
+            <tr>
+              <td>Technician overtime (4 hrs)</td><td>£220.00</td><td>£44.00</td>
+              <td><select style="width: 160px;"><option>Commissionable</option><option selected>Pass-through</option></select></td>
+              <td><span style="color: #94a3b8;">n/a</span></td><td>£0.00</td>
+            </tr>
+            <tr style="background: #f0f9ff; font-weight: 600;">
+              <td>TOTAL</td><td>£1,050.00</td><td>£210.00</td><td></td><td></td><td>£99.60</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 12px; display: flex; gap: 8px;">
+          <button class="btn btn-outline">+ Add Line Item Manually</button>
+          <button class="btn btn-primary" style="margin-left: auto;">Next: Preview Xero Bill →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Xero Bill Preview -->
+      <div class="card">
+        <h3>③ Xero Bill Preview</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">This is what will be created in Xero. The uploaded PDF will be attached automatically.</p>
+        <div class="grid2">
+          <div>
+            <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Contact:</span> The Grand Ballroom Ltd</div>
+            <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Reference:</span> HS-2026-04821-ADD-001</div>
+            <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Date:</span> 12 Feb 2026</div>
+            <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Due Date:</span> 14 Mar 2026</div>
+          </div>
+          <div>
+            <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Account Code:</span> [352] Client Funds Held</div>
+            <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Tracking:</span> Booking HS-2026-04821</div>
+            <div style="font-size: 13px; margin-bottom: 8px;"><span style="color: #64748b;">Attachment:</span> 📎 Grand_Ballroom_Additional_AV_Feb2026.pdf</div>
+          </div>
+        </div>
+        <div class="todo">[TODO] Which Xero account codes for pass-through vs commissionable additions? Same [352] or different?</div>
+        <table style="margin-top: 12px;">
+          <thead><tr><th>Description</th><th>Account</th><th>Amount</th><th>VAT</th></tr></thead>
+          <tbody>
+            <tr><td>Additional wireless microphones × 4</td><td>[352]</td><td>£480.00</td><td>20%</td></tr>
+            <tr><td>Projector upgrade (4K)</td><td>[352]</td><td>£350.00</td><td>20%</td></tr>
+            <tr><td>Technician overtime (4 hrs) [pass-through]</td><td>[352]</td><td>£220.00</td><td>20%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Step 4: Create -->
+      <div class="card">
+        <h3>④ Create & Confirm</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">This will create the following in one action:</p>
+        <ul style="font-size: 13px; margin-left: 20px; margin-bottom: 16px; line-height: 2;">
+          <li>✅ Xero Bill (draft) — £1,260.00 inc VAT</li>
+          <li>✅ Cost records on booking for commissionable items</li>
+          <li>✅ Journal entries for commission accrual (£99.60)</li>
+          <li>✅ PDF attachment on Xero bill</li>
+        </ul>
+        <div class="todo">[TODO] Should bills be created as Draft or Awaiting Approval in Xero? Who approves?</div>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <button class="btn btn-outline">← Back to Line Items</button>
+          <button class="btn btn-primary">Create Xero Bill + Costs + Journals</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 4: BILLS & PAYMENTS ==================== -->
+    <div class="tab-content content-bills">
+
+      <p class="desc" style="color: #64748b; font-size: 14px; margin-bottom: 24px;">Upload and process venue bills, match to bookings, and execute 1-click DAS payments. Combines venue bill processing with DAS payment flow.</p>
+
+      <!-- Upload -->
+      <div class="card">
+        <h3>Upload Venue Bill</h3>
+        <div class="upload-zone">
+          📄 Drag & drop venue bill PDF, or click to browse<br/>
+          <span style="font-size: 11px; margin-top: 4px; display: inline-block;">Supports PDF, JPG, PNG. Also processes Dext-forwarded bills.</span>
+        </div>
+        <div class="todo">[TODO] Should this integrate with Dext inbox directly, or require manual upload? (See automation item 9: Block Dext auto-reject)</div>
+      </div>
+
+      <!-- Queue -->
+      <div class="card">
+        <h3>Bills Pending Processing</h3>
+        <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+          <input type="text" placeholder="Filter by venue or booking..." style="flex: 1;" />
+          <select><option>All statuses</option><option>Unmatched</option><option>Matched — needs coding</option><option>Ready to approve</option></select>
+        </div>
+        <table>
+          <thead><tr><th>Bill</th><th>Venue</th><th>Amount</th><th>Date</th><th>Matched Booking</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr style="background: #fefce8;">
+              <td><strong>VB-4821-001</strong></td><td>The Grand Ballroom</td><td>£27,916.20</td><td>16 Mar 2026</td><td><span class="badge badge-green">HS-2026-04821 ✓</span></td><td><span class="badge badge-yellow">Needs Coding</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Process</button></td>
+            </tr>
+            <tr>
+              <td><strong>VB-4799-001</strong></td><td>One Marylebone</td><td>£9,360.00</td><td>14 Mar 2026</td><td><span class="badge badge-green">HS-2026-04799 ✓</span></td><td><span class="badge badge-green">Ready</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Process</button></td>
+            </tr>
+            <tr>
+              <td><strong>VB-UNMATCHED-003</strong></td><td>Tobacco Dock</td><td>£4,200.00</td><td>12 Mar 2026</td><td><span class="badge badge-red">No match ✗</span></td><td><span class="badge badge-red">Unmatched</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Match</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Processing Detail -->
+      <div class="card">
+        <h3>Processing: VB-4821-001 — The Grand Ballroom</h3>
+        <div class="grid2">
+          <div>
+            <h4 style="font-size: 13px; margin-bottom: 8px;">Bill Line Items</h4>
+            <table>
+              <thead><tr><th>Description</th><th>Amount</th><th>Xero Account</th></tr></thead>
+              <tbody>
+                <tr><td>Room hire</td><td>£7,225.00</td><td><select style="width: 140px;"><option selected>[352] Client Funds</option><option>[353] Venue Payable</option><option>[400] Revenue</option></select></td></tr>
+                <tr><td>Catering</td><td>£15,488.00</td><td><select style="width: 140px;"><option selected>[352] Client Funds</option></select></td></tr>
+                <tr><td>AV & lighting</td><td>£2,880.00</td><td><select style="width: 140px;"><option selected>[352] Client Funds</option></select></td></tr>
+                <tr><td>Drinks reception</td><td>£2,323.20</td><td><select style="width: 140px;"><option selected>[352] Client Funds</option></select></td></tr>
+                <tr style="font-weight: 600;"><td>Total</td><td>£27,916.20</td><td></td></tr>
+              </tbody>
+            </table>
+            <div class="todo">[TODO] Auto-suggest account codes based on booking type (DAS vs DAC) and line item category?</div>
+          </div>
+          <div>
+            <h4 style="font-size: 13px; margin-bottom: 8px;">🔍 Diagnostic: VenueSupplierPayments</h4>
+            <div class="diagnostic">
+              <div style="margin-bottom: 6px;"><strong>Booking:</strong> HS-2026-04821</div>
+              <div style="margin-bottom: 6px;"><strong>Venue:</strong> The Grand Ballroom (ID: VSP-1847)</div>
+              <div style="margin-bottom: 6px;"><strong>Contract total:</strong> £31,940.00</div>
+              <div style="margin-bottom: 6px;"><strong>Commission (DAS):</strong> £4,023.80</div>
+              <div style="margin-bottom: 6px;"><strong>Expected venue payment:</strong> £27,916.20</div>
+              <div style="margin-bottom: 6px;"><strong>Bill amount:</strong> £27,916.20</div>
+              <div style="color: #166534; font-weight: bold;">✓ Amounts match — bill = contract - commission</div>
+            </div>
+            <div style="margin-top: 12px;">
+              <h4 style="font-size: 13px; margin-bottom: 8px;">Matching Confidence</h4>
+              <div style="background: #dcfce7; border-radius: 4px; padding: 8px 12px; font-size: 13px;">
+                <strong style="color: #166534;">HIGH</strong> — Venue name matches, amount matches expected, date within 7 days of event
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 16px;">
+          <button class="btn btn-primary">Approve & Create Xero Bill</button>
+          <button class="btn btn-outline">Flag for Review</button>
+        </div>
+      </div>
+
+      <!-- === 1-CLICK DAS PAYMENT SECTION === -->
+      <div style="border-top: 3px solid #2563eb; margin-top: 32px; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #2563eb; margin-bottom: 16px;">⚡ 1-Click DAS Payment</h2>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">For DAS bookings: view the final bill, calculate commission, preview deduction, and generate commission invoice + venue payment + transfer — all in one action.</p>
+
+        <!-- Summary Cards -->
+        <div class="grid3" style="margin-bottom: 24px;">
+          <div class="card" style="text-align: center;">
+            <h3>Client Paid</h3>
+            <div class="big-number">£38,328.00</div>
+            <span style="font-size: 12px; color: #64748b;">inc VAT · received in [352]</span>
+          </div>
+          <div class="card" style="text-align: center;">
+            <h3>HS Commission</h3>
+            <div class="big-number" style="color: #166534;">£4,023.80</div>
+            <span style="font-size: 12px; color: #64748b;">ex VAT · deducted at source</span>
+          </div>
+          <div class="card" style="text-align: center;">
+            <h3>Venue Payment</h3>
+            <div class="big-number" style="color: #64748b;">£27,916.20</div>
+            <span style="font-size: 12px; color: #64748b;">ex VAT · net to venue</span>
+          </div>
+        </div>
+
+        <!-- Commission Breakdown -->
+        <div class="card">
+          <h3>Commission Calculation</h3>
+          <table>
+            <thead><tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Commission %</th><th>Commission £</th><th>Venue Gets</th></tr></thead>
+            <tbody>
+              <tr><td>Room hire</td><td>£8,500.00</td><td>15%</td><td>£1,275.00</td><td>£7,225.00</td></tr>
+              <tr><td>Catering</td><td>£17,600.00</td><td>12%</td><td>£2,112.00</td><td>£15,488.00</td></tr>
+              <tr><td>AV & lighting</td><td>£3,200.00</td><td>10%</td><td>£320.00</td><td>£2,880.00</td></tr>
+              <tr><td>Drinks reception</td><td>£2,640.00</td><td>12%</td><td>£316.80</td><td>£2,323.20</td></tr>
+              <tr style="font-weight: 700; background: #f0f9ff;"><td>TOTAL</td><td>£31,940.00</td><td>—</td><td>£4,023.80</td><td>£27,916.20</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- What 1-Click Does -->
+        <div class="card">
+          <h3>Preview: What "1-Click Pay" Will Create</h3>
+          <div class="todo">[TODO] Should each of these be individually reviewable/editable before confirming, or truly 1-click?</div>
+          <div class="grid3" style="margin-top: 12px;">
+            <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff;">
+              <strong style="font-size: 12px; color: #2563eb;">① Commission Invoice</strong>
+              <div style="font-size: 12px; margin-top: 8px; color: #64748b;">
+                <div>To: The Grand Ballroom Ltd</div>
+                <div>Amount: £4,828.56 (inc VAT)</div>
+                <div>Ref: COMM-HS-2026-04821</div>
+                <div>Account: [400] Commission Revenue</div>
+              </div>
+            </div>
+            <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff;">
+              <strong style="font-size: 12px; color: #2563eb;">② Venue Payment</strong>
+              <div style="font-size: 12px; margin-top: 8px; color: #64748b;">
+                <div>To: The Grand Ballroom Ltd</div>
+                <div>Amount: £33,499.44 (inc VAT)</div>
+                <div>From: [352] Client Funds Held</div>
+                <div>Bank: Barclays ****4821</div>
+              </div>
+            </div>
+            <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff;">
+              <strong style="font-size: 12px; color: #2563eb;">③ Internal Transfer</strong>
+              <div style="font-size: 12px; margin-top: 8px; color: #64748b;">
+                <div>£4,828.56 from [352]</div>
+                <div>→ [400] Commission Revenue</div>
+                <div>Journal: JNL-DAS-04821</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1-Click Button -->
+        <div class="action-box" style="margin-bottom: 24px;">
+          <p style="font-size: 14px; color: #1e40af; margin-bottom: 12px;">All checks passed. Ready to process DAS payment.</p>
+          <button class="btn btn-primary btn-lg">⚡ 1-Click: Generate All & Pay Venue</button>
+          <p style="font-size: 11px; color: #64748b; margin-top: 8px;">Creates commission invoice, schedules venue payment, and posts journal entries.</p>
+        </div>
+
+        <!-- DAS Pre-Payment Notification -->
+        <div class="notification">
+          <h3 style="color: #166534; font-size: 14px; margin-bottom: 8px;">📧 DAS Pre-Payment Notification (Automation Item 8)</h3>
+          <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">This email will be sent to the venue automatically before payment is processed.</p>
+          <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; font-size: 13px;">
+            <div style="color: #64748b; margin-bottom: 4px;"><strong>To:</strong> accounts@granballroom-example.com</div>
+            <div style="color: #64748b; margin-bottom: 4px;"><strong>Subject:</strong> Hire Space — Payment Notification for HS-2026-04821</div>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 8px 0;" />
+            <p>Dear Grand Ballroom team,</p>
+            <p style="margin-top: 8px;">We are processing payment for booking HS-2026-04821 (Moody's Corp, 15 Mar 2026). As per our DAS agreement, our commission of <strong>£4,023.80 + VAT</strong> has been deducted at source. You will receive <strong>£33,499.44</strong> (inc VAT) within 3 working days.</p>
+            <p style="margin-top: 8px;">A self-billing invoice (COMM-HS-2026-04821) is attached for your records.</p>
+          </div>
+          <div class="todo">[TODO] Should notification send automatically on 1-click, or require separate confirmation? How many days before payment?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 5: PAYMENT RUN ==================== -->
+    <div class="tab-content content-paymentrun">
+
+      <div class="info-banner">
+        ℹ️ <strong>Cross-booking view</strong> — This tab shows data across all bookings, not just the selected one. The booking selector above is not required for this tab.
+      </div>
+
+      <p class="desc" style="color: #64748b; font-size: 14px; margin-bottom: 24px;">Expected-but-missing invoices, funded bills list, and invoice status / DAS check list. Pre-loaded commission terms. Doc Appendix A items 4, 5, 6.</p>
+
+      <!-- Stats -->
+      <div class="stat-row">
+        <div class="stat"><div class="num" style="color: #dc2626;">3</div><div class="lbl">Missing Invoices</div></div>
+        <div class="stat"><div class="num" style="color: #2563eb;">8</div><div class="lbl">Funded Bills Ready</div></div>
+        <div class="stat"><div class="num" style="color: #166534;">£142,680</div><div class="lbl">Total Payable</div></div>
+        <div class="stat"><div class="num" style="color: #64748b;">5</div><div class="lbl">DAS Pending Check</div></div>
+      </div>
+
+      <!-- Missing Invoices -->
+      <div class="card">
+        <h3>⚠ Expected but Missing Invoices</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Events that have occurred but no venue bill has been received. Sorted by days overdue.</p>
+        <div class="todo">[TODO] How many days after event should we flag as "missing"? 7 days? 14 days? Configurable per venue?</div>
+        <table>
+          <thead><tr><th>Booking</th><th>Venue</th><th>Event Date</th><th>Days Since</th><th>Expected Amount</th><th>Commission Model</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr style="background: #fef2f2;">
+              <td><strong>HS-2026-04750</strong></td><td>The Shard Events</td><td>28 Feb 2026</td><td><span class="badge badge-red">12 days</span></td><td>£18,400.00</td><td><span class="badge badge-blue">DAS 14%</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Chase</button></td>
+            </tr>
+            <tr>
+              <td><strong>HS-2026-04761</strong></td><td>Banking Hall</td><td>3 Mar 2026</td><td><span class="badge badge-yellow">9 days</span></td><td>£7,200.00</td><td><span class="badge badge-blue">DAS 12%</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Chase</button></td>
+            </tr>
+            <tr>
+              <td><strong>HS-2026-04778</strong></td><td>The Brewery</td><td>5 Mar 2026</td><td><span class="badge badge-yellow">7 days</span></td><td>£24,800.00</td><td><span class="badge badge-gray">DAC 10%</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Chase</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Funded Bills -->
+      <div class="card">
+        <h3>💰 Funded Bills — Ready for Payment</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Bills where client payment has been received and funds are in [352]. Ready to pay venues.</p>
+        <table>
+          <thead><tr><th><input type="checkbox" /></th><th>Booking</th><th>Venue</th><th>Bill Type</th><th>Amount</th><th>Commission</th><th>Net to Venue</th><th>Funded Since</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" checked /></td><td>HS-2026-04821</td><td>The Grand Ballroom</td><td><span class="badge badge-blue">Final</span></td><td>£31,940.00</td><td>£4,023.80</td><td>£27,916.20</td><td>10 Mar</td><td><span class="badge badge-green">Ready</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked /></td><td>HS-2026-04799</td><td>One Marylebone</td><td><span class="badge badge-blue">Final</span></td><td>£10,400.00</td><td>£1,040.00</td><td>£9,360.00</td><td>8 Mar</td><td><span class="badge badge-green">Ready</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td><td>HS-2026-04821</td><td>The Grand Ballroom</td><td><span class="badge badge-yellow">Addition</span></td><td>£1,050.00</td><td>£99.60</td><td>£950.40</td><td>12 Mar</td><td><span class="badge badge-yellow">Pending DAS check</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked /></td><td>HS-2026-04810</td><td>Tobacco Dock</td><td><span class="badge badge-blue">Final</span></td><td>£45,600.00</td><td>£6,384.00</td><td>£39,216.00</td><td>6 Mar</td><td><span class="badge badge-green">Ready</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="display: flex; gap: 12px; margin-top: 12px; align-items: center;">
+          <button class="btn btn-primary">Process Selected (3 bills, £76,492.20)</button>
+          <button class="btn btn-outline">Export to CSV</button>
+          <span style="font-size: 12px; color: #64748b; margin-left: auto;">Showing 4 of 8 funded bills</span>
+        </div>
+      </div>
+
+      <!-- DAS Check -->
+      <div class="card">
+        <h3>🔍 Invoice Status / DAS Check List</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Verify DAS commission terms match contract before paying. Pre-loaded from booking data.</p>
+        <div class="todo">[TODO] Should DAS check be automatic (block payment if mismatch) or advisory (show warning)?</div>
+        <table>
+          <thead><tr><th>Booking</th><th>Venue</th><th>Contract Commission</th><th>Calculated Commission</th><th>Match?</th><th>Invoice Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>HS-2026-04821</td><td>The Grand Ballroom</td><td>Blended ~12.6%</td><td>12.6% (£4,023.80)</td><td><span class="badge badge-green">✓ Match</span></td><td><span class="badge badge-green">Sent</span></td><td></td></tr>
+            <tr><td>HS-2026-04810</td><td>Tobacco Dock</td><td>14% flat</td><td>14.0% (£6,384.00)</td><td><span class="badge badge-green">✓ Match</span></td><td><span class="badge badge-green">Sent</span></td><td></td></tr>
+            <tr style="background: #fef2f2;"><td>HS-2026-04835</td><td>Royal Lancaster</td><td>12% flat</td><td>15.0% (£2,880.00)</td><td><span class="badge badge-red">✗ Mismatch</span></td><td><span class="badge badge-yellow">Draft</span></td><td style="color: #dc2626; font-size: 12px;">Commission on bill is 15%, contract says 12%. Needs review.</td></tr>
+            <tr><td>HS-2026-04799</td><td>One Marylebone</td><td>10% flat</td><td>10.0% (£1,040.00)</td><td><span class="badge badge-green">✓ Match</span></td><td><span class="badge badge-green">Paid</span></td><td></td></tr>
+            <tr><td>HS-2026-04842</td><td>Nobu Hotel Portman Sq</td><td>11% flat</td><td>11.0% (£1,584.00)</td><td><span class="badge badge-green">✓ Match</span></td><td><span class="badge badge-yellow">Awaiting Approval</span></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 6: RECONCILIATION ==================== -->
+    <div class="tab-content content-reconciliation">
+
+      <p class="desc" style="color: #64748b; font-size: 14px; margin-bottom: 24px;">Balance sheet check, client invoices vs contract, venue bills vs contract, VAT reconciliation, commission check. Mark as fully reconciled. Doc Appendix A item 7.</p>
+
+      <!-- Balance Sheet Accounts -->
+      <div class="card">
+        <h3>Balance Sheet Check</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">All three balance sheet accounts should net to £0.00 for a fully reconciled booking.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div class="account-box">
+            <div class="code">[352]</div>
+            <div class="name">Client Funds Held</div>
+            <div class="bal" style="color: #166534;">£0.00</div>
+            <span class="badge badge-green">Cleared ✓</span>
+          </div>
+          <div class="account-box">
+            <div class="code">[353]</div>
+            <div class="name">Venue Payable</div>
+            <div class="bal" style="color: #166534;">£0.00</div>
+            <span class="badge badge-green">Cleared ✓</span>
+          </div>
+          <div class="account-box">
+            <div class="code">[354]</div>
+            <div class="name">Deferred Commission</div>
+            <div class="bal" style="color: #dc2626;">-£42.30</div>
+            <span class="badge badge-red">Discrepancy</span>
+          </div>
+        </div>
+        <div class="todo">[TODO] What tolerance is acceptable for rounding discrepancies? £1? £5? Should auto-journal small amounts?</div>
+      </div>
+
+      <!-- Reconciliation Checks -->
+      <div class="card">
+        <h3>Reconciliation Checks</h3>
+        <div class="check-row">
+          <div class="check-icon check-pass">✓</div>
+          <div style="flex: 1;"><strong>Client invoices vs contract</strong><br/><span style="color: #64748b; font-size: 12px;">Invoice total £38,328.00 = Contract £31,940.00 + VAT £6,388.00 ✓</span></div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon check-pass">✓</div>
+          <div style="flex: 1;"><strong>Venue bills vs contract</strong><br/><span style="color: #64748b; font-size: 12px;">Venue bill £27,916.20 = Contract £31,940.00 − Commission £4,023.80 ✓</span></div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon check-pass">✓</div>
+          <div style="flex: 1;"><strong>Commission check</strong><br/><span style="color: #64748b; font-size: 12px;">Commission invoice £4,828.56 = £4,023.80 + VAT £804.76 ✓</span></div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon check-pass">✓</div>
+          <div style="flex: 1;"><strong>Client payment received</strong><br/><span style="color: #64748b; font-size: 12px;">£38,328.00 received 10 Mar 2026 via BACS ✓</span></div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon check-pass">✓</div>
+          <div style="flex: 1;"><strong>Venue payment sent</strong><br/><span style="color: #64748b; font-size: 12px;">£33,499.44 (inc VAT) paid 18 Mar 2026 ✓</span></div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon check-warn">!</div>
+          <div style="flex: 1;"><strong>VAT reconciliation</strong><br/><span style="color: #854d0e; font-size: 12px;">Input VAT £5,583.24 vs Output VAT £6,388.00. Difference £804.76 = commission VAT. ✓ But [354] has -£42.30 residual — likely rounding on additions.</span></div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon check-pass">✓</div>
+          <div style="flex: 1;"><strong>Additions reconciled</strong><br/><span style="color: #64748b; font-size: 12px;">1 addition (£1,050.00 + VAT) — invoiced, billed, and paid ✓</span></div>
+        </div>
+      </div>
+
+      <!-- Detailed Breakdown -->
+      <div class="grid2">
+        <div class="card">
+          <h3>Client Side</h3>
+          <table>
+            <thead><tr><th>Document</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>INV-2026-1847 (main)</td><td>£38,328.00</td><td><span class="badge badge-green">Paid</span></td></tr>
+              <tr><td>INV-2026-1891 (addition)</td><td>£1,260.00</td><td><span class="badge badge-green">Paid</span></td></tr>
+              <tr style="font-weight: 600;"><td>Total from client</td><td>£39,588.00</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Venue Side</h3>
+          <table>
+            <thead><tr><th>Document</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>VB-4821-001 (main)</td><td>£33,499.44</td><td><span class="badge badge-green">Paid</span></td></tr>
+              <tr><td>VB-4821-002 (addition)</td><td>£1,140.48</td><td><span class="badge badge-green">Paid</span></td></tr>
+              <tr><td>COMM-HS-2026-04821</td><td>£4,948.08</td><td><span class="badge badge-green">Recognised</span></td></tr>
+              <tr style="font-weight: 600;"><td>Total out</td><td>£39,588.00</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Resolution -->
+      <div class="card">
+        <h3>Resolve Discrepancies</h3>
+        <table>
+          <thead><tr><th>Issue</th><th>Amount</th><th>Suggested Action</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>[354] Deferred Commission residual</td><td>-£42.30</td><td>Auto-journal to [400] (rounding adjustment)</td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Apply</button></td></tr>
+          </tbody>
+        </table>
+        <div class="todo">[TODO] Who can approve auto-journals for discrepancies? Finance only, or CS managers too?</div>
+      </div>
+
+      <!-- Final Action -->
+      <div style="display: flex; gap: 12px; align-items: center; margin-top: 8px;">
+        <button class="btn btn-success" style="padding: 12px 24px; font-size: 15px;">✅ Mark as Fully Reconciled</button>
+        <button class="btn btn-outline">Flag for Finance Review</button>
+        <span style="font-size: 12px; color: #64748b; margin-left: auto;">1 discrepancy remaining — resolve before marking reconciled</span>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 7: CREDIT NOTES ==================== -->
+    <div class="tab-content content-creditnotes">
+
+      <div class="info-banner">
+        ℹ️ <strong>Cross-booking view</strong> — This tab works across all bookings. Search for any invoice below.
+      </div>
+
+      <p class="desc" style="color: #64748b; font-size: 14px; margin-bottom: 16px;">Edit invoice line items, add descriptive rows (PO numbers), change contacts, upload attachments. For Commercial Ops use only — NOT account-level changes. Spreadsheet item 5.</p>
+
+      <div class="warning">
+        ⚠️ <strong>Scope limitation:</strong> This tool edits line-item descriptions and contacts only. It does NOT allow changes to account codes, amounts, or VAT rates. Those require Finance team approval.
+      </div>
+
+      <!-- Search Invoice -->
+      <div class="card">
+        <h3>Select Invoice to Edit</h3>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <input type="text" placeholder="Search by invoice #, booking ID, or client name..." style="flex: 1;" />
+          <button class="btn btn-primary">Search</button>
+        </div>
+        <table style="margin-top: 16px;">
+          <thead><tr><th>Invoice #</th><th>Client</th><th>Booking</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr style="background: #eff6ff;">
+              <td><strong>INV-2026-1847</strong></td><td>Moody's Corp</td><td>HS-2026-04821</td><td>£38,328.00</td><td><span class="badge badge-green">Sent</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Select</button></td>
+            </tr>
+            <tr>
+              <td>INV-2026-1832</td><td>Deloitte UK</td><td>HS-2026-04799</td><td>£12,480.00</td><td><span class="badge badge-yellow">Draft</span></td><td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Select</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Editing Area -->
+      <div class="card">
+        <h3>Edit Line Items — INV-2026-1847</h3>
+        <div class="todo">[TODO] Should edits create a new version of the invoice, or modify in-place? Audit trail implications.</div>
+        <table>
+          <thead><tr><th style="width: 40px;">#</th><th>Description (editable)</th><th>Amount</th><th>VAT</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><input type="text" value="Room hire — The Grand Ballroom, 15 Mar 2026" style="width: 100%;" /></td><td style="color: #94a3b8;">£10,200.00</td><td style="color: #94a3b8;">20%</td><td></td></tr>
+            <tr><td>2</td><td><input type="text" value="Catering — 3-course dinner × 220 guests" style="width: 100%;" /></td><td style="color: #94a3b8;">£21,120.00</td><td style="color: #94a3b8;">20%</td><td></td></tr>
+            <tr><td>3</td><td><input type="text" value="AV & lighting package" style="width: 100%;" /></td><td style="color: #94a3b8;">£3,840.00</td><td style="color: #94a3b8;">20%</td><td></td></tr>
+            <tr><td>4</td><td><input type="text" value="Drinks reception (champagne)" style="width: 100%;" /></td><td style="color: #94a3b8;">£3,168.00</td><td style="color: #94a3b8;">20%</td><td></td></tr>
+            <tr style="background: #fefce8;"><td>—</td><td><input type="text" value="PO Reference: PO-MOD-2026-4421" style="width: 100%; border-color: #f59e0b;" /></td><td style="color: #94a3b8;">—</td><td style="color: #94a3b8;">—</td><td><button class="btn-danger btn" style="padding: 3px 8px; font-size: 11px;">Remove</button></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 12px;">
+          <button class="btn btn-outline" style="font-size: 12px;">+ Add Descriptive Row (PO number, reference, etc.)</button>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="card">
+        <h3>Invoice Contact</h3>
+        <div class="todo">[TODO] Should contact changes sync back to Xero contact record, or just this invoice?</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
+          <div><label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Contact Name</label><input type="text" value="Accounts Payable — Moody's Corp" style="width: 100%;" /></div>
+          <div><label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Email</label><input type="text" value="ap@moodys-example.com" style="width: 100%;" /></div>
+          <div><label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Attention</label><input type="text" value="James Whitfield" style="width: 100%;" /></div>
+          <div><label style="color: #64748b; font-size: 12px; display: block; margin-bottom: 4px;">Reference</label><input type="text" value="PO-MOD-2026-4421" style="width: 100%;" /></div>
+        </div>
+      </div>
+
+      <!-- Attachments -->
+      <div class="card">
+        <h3>Attachments</h3>
+        <div style="font-size: 13px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e2e8f0;">
+            📎 <span>Original_Contract_HS-2026-04821.pdf</span>
+            <span class="badge badge-green" style="margin-left: auto;">Existing</span>
+          </div>
+        </div>
+        <div class="upload-zone">📎 Drag & drop additional attachments (PO documents, correspondence, etc.)</div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; gap: 12px; margin-top: 8px;">
+        <button class="btn btn-outline">Preview Changes</button>
+        <button class="btn btn-primary">Save & Update Invoice in Xero</button>
+        <button class="btn btn-danger" style="margin-left: auto;">Discard Changes</button>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</body>
+</html>

@@ -36,6 +36,10 @@ const steps = [
 ---
 
 <Layout title="Darwin" description="AI-powered A/B testing where page variants compete for survival. The fittest version wins and gets committed to your code.">
+  <Fragment slot="head">
+    <script is:inline>!function(){if(!/darwin-analyze/.test(location.search)){var s=document.createElement("style");s.id="darwin-fouc",s.textContent="body{visibility:hidden!important}",document.head.appendChild(s),setTimeout(function(){s.remove()},100)}}();</script>
+    <script is:inline src="https://cdn.darwin.page/evolve.js" data-site-id="site_kgt0iu8ysoeoox8lzhry0g"></script>
+  </Fragment>
 
   <!-- Hero -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">

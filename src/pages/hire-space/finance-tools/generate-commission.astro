@@ -1,0 +1,279 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generate Commission — Finance Tools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e293b; }
+    .nav { background: #f5f5f5; border-bottom: 1px solid #e2e8f0; padding: 12px 40px; font-size: 13px; }
+    .nav a { color: #2563eb; text-decoration: none; margin-right: 16px; }
+    .nav a.active { font-weight: 700; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    .desc { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+    .card { background: #f5f5f5; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .card h3 { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 10px; background: #e2e8f0; font-weight: 600; font-size: 12px; color: #64748b; }
+    td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-yellow { background: #fef9c3; color: #854d0e; }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .badge-gray { background: #f1f5f9; color: #64748b; }
+    .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-lg { padding: 14px 32px; font-size: 16px; border-radius: 8px; }
+    .btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+    .btn-green { background: #16a34a; color: #fff; }
+    .todo { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 8px 0; border-radius: 0 4px 4px 0; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .kv { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+    .kv .label { color: #64748b; }
+    .big-number { font-size: 28px; font-weight: 700; color: #2563eb; }
+    .action-box { border: 2px solid #2563eb; border-radius: 8px; padding: 16px; background: #eff6ff; text-align: center; }
+    .filter-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .filter-bar select, .filter-bar input { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px; }
+    .alert { border-radius: 8px; padding: 16px; margin-bottom: 20px; font-size: 13px; }
+    .alert-red { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+    .alert-green { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/hire-space/finance-tools/">← All Wireframes</a>
+    <a href="/hire-space/finance-tools/generate-commission" class="active">Generate Commission</a>
+    <a href="/hire-space/finance-tools/booking-overview">Overview</a>
+    <a href="/hire-space/finance-tools/additions">Additions</a>
+    <a href="/hire-space/finance-tools/credit-notes">Credit Notes</a>
+    <a href="/hire-space/finance-tools/venue-bills">Venue Bills</a>
+    <a href="/hire-space/finance-tools/das-payment">DAS Payment</a>
+    <a href="/hire-space/finance-tools/payment-run">Payment Run</a>
+    <a href="/hire-space/finance-tools/reconciliation">Reconciliation</a>
+  </div>
+  <div class="container">
+    <h1>Generate Commission</h1>
+    <p class="desc">Automate commission invoice generation for both DAS and DAC bookings. Fixes the disabled DAC auto-invoicing and the 150% markup bug by providing a controlled, auditable commission generation flow.</p>
+
+    <!-- Context: why this tool exists -->
+    <div class="alert alert-red">
+      <strong>⚠️ Background:</strong> DAC auto-invoicing was disabled due to a 150% markup bug that overcharged venues. Since then, all DAC commission invoices have been generated manually — or not at all. This tool re-enables automated commission generation with proper guards, preview, and audit trail.
+    </div>
+
+    <!-- Status Dashboard -->
+    <div class="grid3" style="margin-bottom: 24px;">
+      <div class="card" style="text-align: center;">
+        <h3>Pending Commissions</h3>
+        <div class="big-number" style="color: #ef4444;">23</div>
+        <span style="font-size: 12px; color: #64748b;">bookings with no commission invoice</span>
+      </div>
+      <div class="card" style="text-align: center;">
+        <h3>Generated This Month</h3>
+        <div class="big-number" style="color: #22c55e;">47</div>
+        <span style="font-size: 12px; color: #64748b;">commission invoices created</span>
+      </div>
+      <div class="card" style="text-align: center;">
+        <h3>Pending Value</h3>
+        <div class="big-number">£18,420</div>
+        <span style="font-size: 12px; color: #64748b;">estimated unbilled commission</span>
+      </div>
+    </div>
+
+    <div class="todo">[TODO] Should pending commissions include only post-event bookings, or also upcoming confirmed bookings? What's the trigger point for commission eligibility?</div>
+
+    <!-- Filter Bar -->
+    <div class="card">
+      <h3>Filter Bookings</h3>
+      <div class="filter-bar">
+        <select>
+          <option>All Types</option>
+          <option>DAS Only</option>
+          <option>DAC Only</option>
+        </select>
+        <select>
+          <option>Pending Commission</option>
+          <option>Generated</option>
+          <option>All Statuses</option>
+        </select>
+        <select>
+          <option>Last 30 days</option>
+          <option>Last 60 days</option>
+          <option>Last 90 days</option>
+          <option>Custom range</option>
+        </select>
+        <input type="text" placeholder="Search booking ref or venue..." style="flex: 1; min-width: 180px;" />
+        <button class="btn btn-outline">🔍 Filter</button>
+      </div>
+      <div class="todo">[TODO] Should there be a venue filter dropdown? Also: should we show bookings where event hasn't happened yet?</div>
+    </div>
+
+    <!-- Booking List with Commission Preview -->
+    <div class="card">
+      <h3>Commission Queue</h3>
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" title="Select all" /></th>
+            <th>Booking Ref</th>
+            <th>Venue</th>
+            <th>Event Date</th>
+            <th>Type</th>
+            <th>Booking Value (ex VAT)</th>
+            <th>Rate</th>
+            <th>Commission</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>HS-2026-04821</td>
+            <td>The Grand Ballroom</td>
+            <td>15 Mar 2026</td>
+            <td><span class="badge badge-blue">DAS</span></td>
+            <td>£31,940.00</td>
+            <td>12.6%</td>
+            <td>£4,023.80</td>
+            <td><span class="badge badge-yellow">Pending</span></td>
+            <td><button class="btn btn-primary" style="padding: 4px 10px; font-size: 11px;">Generate</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>HS-2026-04799</td>
+            <td>Riverside Venue</td>
+            <td>12 Mar 2026</td>
+            <td><span class="badge badge-yellow">DAC</span></td>
+            <td>£8,500.00</td>
+            <td>15%</td>
+            <td>£1,275.00</td>
+            <td><span class="badge badge-yellow">Pending</span></td>
+            <td><button class="btn btn-primary" style="padding: 4px 10px; font-size: 11px;">Generate</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>HS-2026-04756</td>
+            <td>City Conference Centre</td>
+            <td>10 Mar 2026</td>
+            <td><span class="badge badge-yellow">DAC</span></td>
+            <td>£14,200.00</td>
+            <td>12%</td>
+            <td>£1,704.00</td>
+            <td><span class="badge badge-yellow">Pending</span></td>
+            <td><button class="btn btn-primary" style="padding: 4px 10px; font-size: 11px;">Generate</button></td>
+          </tr>
+          <tr style="opacity: 0.6;">
+            <td><input type="checkbox" disabled /></td>
+            <td>HS-2026-04712</td>
+            <td>The Shard Events</td>
+            <td>8 Mar 2026</td>
+            <td><span class="badge badge-blue">DAS</span></td>
+            <td>£22,000.00</td>
+            <td>10%</td>
+            <td>£2,200.00</td>
+            <td><span class="badge badge-green">Generated</span></td>
+            <td><span style="font-size: 11px; color: #64748b;">INV-4712</span></td>
+          </tr>
+          <tr style="opacity: 0.6;">
+            <td><input type="checkbox" disabled /></td>
+            <td>HS-2026-04698</td>
+            <td>Merchant Taylors' Hall</td>
+            <td>5 Mar 2026</td>
+            <td><span class="badge badge-blue">DAS</span></td>
+            <td>£45,000.00</td>
+            <td>12%</td>
+            <td>£5,400.00</td>
+            <td><span class="badge badge-green">Generated</span></td>
+            <td><span style="font-size: 11px; color: #64748b;">INV-4698</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Commission Calculation Preview (expanded for a selected booking) -->
+    <div class="card">
+      <h3>Commission Preview — HS-2026-04799 (DAC)</h3>
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Riverside Venue · Event: 12 Mar 2026 · Client: Acme Corp</p>
+      <table>
+        <thead>
+          <tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Commission %</th><th>Commission £</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Room hire</td><td>£3,500.00</td><td>15%</td><td>£525.00</td></tr>
+          <tr><td>Catering</td><td>£4,200.00</td><td>15%</td><td>£630.00</td></tr>
+          <tr><td>AV equipment</td><td>£800.00</td><td>15%</td><td>£120.00</td></tr>
+          <tr style="font-weight: 700; background: #f0f9ff;">
+            <td>TOTAL</td><td>£8,500.00</td><td>15%</td><td>£1,275.00</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="todo">[TODO] Commission rates vary per line item on some bookings. Should this preview pull rates from the contract, or allow manual override?</div>
+
+      <div class="grid2" style="margin-top: 16px;">
+        <div>
+          <h3 style="margin-bottom: 8px;">Invoice Preview</h3>
+          <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; font-size: 12px;">
+            <div class="kv"><span class="label">To</span><span>Riverside Venue Ltd</span></div>
+            <div class="kv"><span class="label">Amount (ex VAT)</span><span>£1,275.00</span></div>
+            <div class="kv"><span class="label">VAT (20%)</span><span>£255.00</span></div>
+            <div class="kv"><span class="label">Total (inc VAT)</span><span><strong>£1,530.00</strong></span></div>
+            <div class="kv"><span class="label">Reference</span><span>COMM-HS-2026-04799</span></div>
+            <div class="kv"><span class="label">Xero Account</span><span>[400] Commission Revenue</span></div>
+            <div class="kv"><span class="label">Type</span><span><span class="badge badge-yellow">DAC — Invoice to venue</span></span></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 8px;">Validation Checks</h3>
+          <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; font-size: 12px;">
+            <div class="kv"><span>✅ Booking confirmed & won</span><span class="badge badge-green">Pass</span></div>
+            <div class="kv"><span>✅ Event date has passed</span><span class="badge badge-green">Pass</span></div>
+            <div class="kv"><span>✅ No existing commission invoice</span><span class="badge badge-green">Pass</span></div>
+            <div class="kv"><span>✅ Commission rate matches contract</span><span class="badge badge-green">Pass</span></div>
+            <div class="kv"><span>✅ Markup within expected range</span><span class="badge badge-green">Pass</span></div>
+          </div>
+          <div class="todo">[TODO] What validation checks are needed to prevent the 150% markup bug from recurring? Should there be a max commission % threshold?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Batch Generation -->
+    <div class="action-box" style="margin-bottom: 24px;">
+      <p style="font-size: 14px; color: #1e40af; margin-bottom: 8px;"><strong>Batch Generation</strong> — 3 bookings selected (£7,002.80 total commission)</p>
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">All validation checks passed. Commission invoices will be created in Xero.</p>
+      <button class="btn btn-green btn-lg">⚡ Generate 3 Commission Invoices</button>
+      <p style="font-size: 11px; color: #64748b; margin-top: 8px;">DAS invoices: auto-marked as paid (offset against deduction). DAC invoices: sent to venue for payment.</p>
+      <div class="todo" style="margin-top: 12px;">[TODO] Should DAS commission invoices be handled differently (auto-reconciled) vs DAC (sent to venue)? Should DAC invoices auto-send to venue email or just be created in Xero?</div>
+    </div>
+
+    <!-- DAS vs DAC handling explanation -->
+    <div class="card">
+      <h3>How Commission Differs by Booking Type</h3>
+      <div class="grid2">
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 16px;">
+          <strong style="color: #1e40af;">DAS (Deduct at Source)</strong>
+          <ul style="font-size: 12px; color: #334155; margin-top: 8px; padding-left: 16px;">
+            <li>Commission is deducted before venue payment</li>
+            <li>Invoice is for internal record / self-billing</li>
+            <li>Auto-marked as paid (no chasing needed)</li>
+            <li>Links to the 1-Click DAS Payment flow</li>
+          </ul>
+        </div>
+        <div style="background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 16px;">
+          <strong style="color: #854d0e;">DAC (Deduct at Conclusion)</strong>
+          <ul style="font-size: 12px; color: #334155; margin-top: 8px; padding-left: 16px;">
+            <li>Venue has already received full payment</li>
+            <li>Invoice is sent to venue for commission payment</li>
+            <li>Must be tracked and chased if overdue</li>
+            <li>Previously disabled due to 150% markup bug</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

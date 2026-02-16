@@ -269,7 +269,7 @@
       <td>Days from booking completion to venue receiving payment</td>
       <td>&lt; 14 days</td>
       <td style="color:#f59e0b; font-weight:600;">30-60 days (est.)</td>
-      <td>Slow payments damage venue relationships. DAS venues expect faster payment as part of the proposition.</td>
+      <td>Slow payments damage venue relationships. Venues with DAS bookings expect faster payment as part of the proposition.</td>
     </tr>
     <tr>
       <td><strong>Error Rate</strong></td>
@@ -396,59 +396,74 @@
 
   <!-- FRAMEWORK 6: PRICING ADVISOR -->
   <h2 id="f6">6. Finance-Based Pricing Advisor</h2>
-  <p>Should Hire Space charge venues differently based on payment terms?</p>
+  <p>Should Hire Space differentiate commission rates based on whether a booking is DAS or DAC?</p>
+
+  <h3>How DAS and DAC Work (Per Booking)</h3>
+  <div class="box">
+    <p>Every booking is either DAS or DAC. This is not a venue-level classification; it's set per booking.</p>
+    <table>
+      <tr><th></th><th>DAS (Deduct at Source)</th><th>DAC (Deduct at Conclusion)</th></tr>
+      <tr><td>Payment flow</td><td>Hire Space collects full payment from client, deducts commission, pays venue the remainder</td><td>Hire Space pays the full booking amount to the venue, then invoices the venue for commission afterwards</td></tr>
+      <tr><td>Commission capture</td><td>Guaranteed — deducted before venue is paid</td><td>At risk — Hire Space must chase the venue for payment</td></tr>
+      <tr><td>Hire Space cash flow risk</td><td>Low (commission secured upfront)</td><td>High (commission is owed, not held)</td></tr>
+      <tr><td>Venue experience</td><td>Receives net amount; simpler, more managed</td><td>Receives full amount; more autonomy, but then owes commission</td></tr>
+    </table>
+  </div>
 
   <h3>The Opportunity</h3>
   <div class="box">
-    <p>Currently, DAS (Direct Account Sales) venues get a fundamentally different financial experience from DAC (Direct Account Commission) venues:</p>
-    <table>
-      <tr><th></th><th>DAS</th><th>DAC</th></tr>
-      <tr><td>Payment speed</td><td>Hire Space collects, then pays venue (faster control)</td><td>Venue invoices client directly, Hire Space invoices commission separately</td></tr>
-      <tr><td>Hire Space risk</td><td>Higher (holds money in transit)</td><td>Lower (commission-only)</td></tr>
-      <tr><td>Venue experience</td><td>Simpler, more "managed"</td><td>More independent, slower commission payment</td></tr>
-    </table>
+    <p>DAS and DAC bookings carry fundamentally different risk profiles for Hire Space. With DAS, commission is guaranteed. With DAC, there's a real collection risk, plus the overhead of invoicing and chasing. Yet both currently carry the same commission rate.</p>
+    <p>This creates an opportunity: <strong>price according to the risk and service level each model requires.</strong></p>
   </div>
 
   <h3>Recommendation: Yes, but carefully</h3>
   <div class="box box-green">
-    <h4>Tier 1: DAS Premium (higher commission rate, faster payment guarantee)</h4>
+    <h4>Option A: Lower DAS commission (incentivise venues toward DAS)</h4>
     <ul>
-      <li>Venues pay a slightly higher commission (e.g. +2-3%) in exchange for guaranteed payment within 7 days of event completion</li>
-      <li>Hire Space handles all invoicing, collection, and payment — the venue just hosts</li>
-      <li>Positioned as "managed payments" — a premium service, not a tax</li>
-      <li><strong>Revenue impact:</strong> Higher margin per booking. Attractive to venues that value cash flow certainty.</li>
+      <li>Reduce commission on DAS bookings by 1-2% vs DAC</li>
+      <li>Rationale: DAS is lower risk for Hire Space (guaranteed commission capture, no chasing). The saving can be passed to venues as an incentive.</li>
+      <li>Venues that prefer managed payments get a financial reward for choosing the model that's cheaper for Hire Space to operate</li>
+      <li><strong>Revenue impact:</strong> Lower margin per DAS booking, but higher collection certainty and lower admin cost. Net positive if it shifts volume toward DAS.</li>
     </ul>
 
-    <h4>Tier 2: DAC Standard (current commission rate, standard terms)</h4>
+    <h4>Option B: Higher DAC commission (price in the collection risk)</h4>
     <ul>
-      <li>Commission invoiced after event, standard 30-day payment terms</li>
-      <li>Venue handles their own client invoicing</li>
-      <li>Lower commission rate reflects lower service level</li>
-      <li><strong>Revenue impact:</strong> Maintains current margin. Baseline offering.</li>
+      <li>Increase commission on DAC bookings by 1-2% to reflect the higher operational cost and collection risk</li>
+      <li>Venues that want to receive the full amount upfront pay a premium for that flexibility</li>
+      <li>Position as: "DAC gives you full payment control, DAS gives you a better rate"</li>
+      <li><strong>Revenue impact:</strong> Higher margin on the riskier model. May nudge some venues toward DAS.</li>
+    </ul>
+
+    <h4>Option C: Tiered DAS with payment speed SLA</h4>
+    <ul>
+      <li>Offer DAS bookings with a guaranteed payment SLA (e.g. venue paid within 7 days of event) at current commission</li>
+      <li>Standard DAS (no SLA guarantee) at a slightly lower commission</li>
+      <li>This adds value without changing the fundamental model</li>
+      <li><strong>Revenue impact:</strong> Premium for speed. Differentiates Hire Space from competitors.</li>
     </ul>
   </div>
 
   <h3>Prerequisites (Do NOT launch pricing changes before these)</h3>
   <div class="box box-warn">
     <ol>
-      <li><strong>Fix the payment infrastructure first.</strong> You cannot promise "7-day payment" if your finance tools are manual and error-prone. Build the 3 priority tools first.</li>
-      <li><strong>Measure current payment cycle times.</strong> You need data to set realistic SLAs and to prove the premium is justified.</li>
-      <li><strong>Test with 5-10 venues.</strong> Don't roll out pricing changes across the board. Pilot with willing DAS venues, measure satisfaction and retention impact.</li>
-      <li><strong>Legal review.</strong> Changing payment terms has contractual implications. Ensure existing agreements allow for tiered pricing.</li>
+      <li><strong>Fix the payment infrastructure first.</strong> You cannot promise payment SLAs if your finance tools are manual and error-prone. Build the 3 priority tools first.</li>
+      <li><strong>Measure current DAS vs DAC split.</strong> What percentage of bookings are each? What's the actual collection rate and cycle time on DAC invoices? You need this data to model the impact.</li>
+      <li><strong>Understand venue sensitivity.</strong> Talk to 5-10 venues before changing rates. Some may not care about 1-2%; others will.</li>
+      <li><strong>Legal review.</strong> Changing commission terms has contractual implications. Ensure existing agreements allow for differentiated pricing by booking type.</li>
     </ol>
   </div>
 
   <h3>Risk Assessment</h3>
   <table>
     <tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr>
-    <tr><td>Venue pushback on higher DAS commission</td><td>Medium</td><td>Frame as optional premium service. Keep DAC as default.</td></tr>
-    <tr><td>Unable to deliver on payment SLAs</td><td>High (today)</td><td>Do not launch until finance tools are built. This is a Phase 4+ initiative.</td></tr>
-    <tr><td>Complexity in billing systems</td><td>Medium</td><td>Build tiered pricing into the Generate Commission tool from the start, even if not activated yet.</td></tr>
-    <tr><td>Competitive response</td><td>Low</td><td>Most competitors don't offer managed payments at all. This is differentiation.</td></tr>
+    <tr><td>Venue pushback on differentiated rates</td><td>Medium</td><td>Frame as choice: "pick the model that suits you, pricing reflects the cost to operate each"</td></tr>
+    <tr><td>Unable to deliver on payment SLAs (Option C)</td><td>High (today)</td><td>Do not launch until finance tools are built. This is a Phase 4+ initiative.</td></tr>
+    <tr><td>Complexity in billing systems</td><td>Medium</td><td>Build per-booking commission logic into Generate Commission from the start, even if not differentiated yet.</td></tr>
+    <tr><td>Venues gaming the system (switching booking types)</td><td>Low</td><td>Booking type is set by the booking flow, not venue preference. Monitor for anomalies.</td></tr>
   </table>
 
   <div class="box box-blue">
-    <strong>Timeline:</strong> This is a 6-month+ initiative. Fix the plumbing first (90-day plan above), then pilot tiered pricing with a small cohort of DAS venues. Do not attempt this before the finance tools are operational.
+    <strong>Timeline:</strong> This is a 6-month+ initiative. Fix the plumbing first (90-day plan above), then pilot differentiated pricing with a small cohort. Do not attempt this before the finance tools are operational and you have solid data on the DAS/DAC split and DAC collection rates.
   </div>
 
   <hr style="margin: 48px 0 24px; border: none; border-top: 1px solid #e2e8f0;" />

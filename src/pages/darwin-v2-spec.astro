@@ -232,7 +232,7 @@ import Layout from '../layouts/Layout.astro';
       <p>Mutation instructions for the SDK, as structured JSON:</p>
 
       <div class="card !p-5 my-6 font-mono text-sm">
-        <pre class="text-gray-300 overflow-x-auto"><code>{
+        <pre class="text-gray-300 overflow-x-auto"><code set:html={`{
   "darwinId": "d7",
   "action": "replaceText",
   "value": "Stop guessing. Start evolving."
@@ -242,7 +242,7 @@ import Layout from '../layouts/Layout.astro';
   "darwinId": "d12",
   "action": "replaceHTML",
   "value": "&lt;div class='hero-new'&gt;...new layout...&lt;/div&gt;"
-}</code></pre>
+}`} /></pre>
       </div>
 
       <h3>5.3 Statistical Analysis</h3>

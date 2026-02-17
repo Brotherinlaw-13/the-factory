@@ -1,0 +1,535 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Synaptic — An Agentic-Native Operating System" description="Vision document for Synaptic: a new operating system built from scratch for AI agents, where humans supervise and agents execute.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">🧠</span>
+      <div>
+        <div class="flex items-center gap-3">
+          <h1 class="text-4xl md:text-5xl font-black text-white">Synaptic</h1>
+          <span class="px-3 py-1 bg-purple-500/15 text-purple-400 rounded-full text-xs font-bold uppercase tracking-wider">Vision</span>
+        </div>
+        <p class="text-amber-400 font-medium mt-1">An Agentic-Native Operating System — February 2026</p>
+      </div>
+    </div>
+
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mb-6">
+      Every operating system alive today was built for humans clicking on things.
+      We're building the first OS where AI agents are the primary citizens and humans are the supervisors.
+    </p>
+
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm">
+      <span>🔬</span>
+      <span>Pre-concept stage. This is a vision, not a product.</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <!-- Table of Contents -->
+      <div class="card !p-6 mb-10">
+        <h3 class="text-amber-400 font-bold mb-3">📋 Contents</h3>
+        <ol class="text-gray-400 text-sm space-y-1 list-decimal list-inside">
+          <li><a href="#thesis" class="hover:text-amber-400 transition-colors">Thesis: Why a New OS</a></li>
+          <li><a href="#broken" class="hover:text-amber-400 transition-colors">What's Broken</a></li>
+          <li><a href="#architecture" class="hover:text-amber-400 transition-colors">Architecture</a></li>
+          <li><a href="#primitives" class="hover:text-amber-400 transition-colors">Core Primitives</a></li>
+          <li><a href="#hardware" class="hover:text-amber-400 transition-colors">Target Hardware</a></li>
+          <li><a href="#mvp" class="hover:text-amber-400 transition-colors">MVP: What Proves It</a></li>
+          <li><a href="#landscape" class="hover:text-amber-400 transition-colors">Competitive Landscape</a></li>
+          <li><a href="#open" class="hover:text-amber-400 transition-colors">Open Questions</a></li>
+          <li><a href="#names" class="hover:text-amber-400 transition-colors">Name Candidates</a></li>
+        </ol>
+      </div>
+
+      <!-- 1. Thesis -->
+      <section id="thesis" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">01</span> Thesis: Why a New OS
+        </h2>
+        <div class="card !p-6 mb-6 border-l-4 border-purple-500">
+          <p class="text-gray-300 text-lg italic">
+            "Everyone is putting an F1 engine in a Seat Ibiza. We want to build the F1 car."
+          </p>
+        </div>
+        <div class="space-y-4 text-gray-400">
+          <p>
+            Unix was designed in 1969. Windows in 1985. macOS (as OS X) in 2001. Every major operating system
+            in use today was architected around a single assumption: <strong class="text-white">a human sits in front of a screen,
+            moves a pointer, clicks on things, and manages files in folders.</strong>
+          </p>
+          <p>
+            That assumption is now wrong. The primary "user" of a computer is increasingly an AI agent.
+            Agents read documents, send emails, write code, manage infrastructure, monitor systems,
+            and coordinate with other agents. They don't need a desktop. They don't need a file browser.
+            They don't think in folders.
+          </p>
+          <p>
+            Yet every platform, from Microsoft with Copilot to Apple with Siri, is doing the same thing:
+            <strong class="text-white">bolting AI onto an OS that was never designed for it.</strong>
+            Windows 11 26H2 will add more AI features, but the underlying architecture, the permission model,
+            the filesystem, the process model, the entire paradigm, remains human-centric.
+          </p>
+          <p>
+            This is the smartphone moment. Before the iPhone, everyone was trying to make PDAs run phone features
+            and phones run PDA features. It took a ground-up rethink to get it right. We're at that same inflection
+            point for agent computing.
+          </p>
+
+          <div class="card !p-4 bg-purple-500/5">
+            <h4 class="text-purple-400 font-bold mb-2">Why now?</h4>
+            <ul class="list-disc list-inside text-sm space-y-1">
+              <li>LLMs crossed the capability threshold for autonomous task execution (2024-2025)</li>
+              <li>Agent frameworks (LangChain, CrewAI, AutoGen) proved demand but hit OS-level walls</li>
+              <li>Security incidents (prompt injection, agent-to-agent attacks) exposed the need for OS-level isolation</li>
+              <li>Enterprise adoption is blocked by governance, audit, and compliance: all OS-level concerns</li>
+              <li>No one has built the real thing yet. The window is open.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. What's Broken -->
+      <section id="broken" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">02</span> What's Broken in Current OS for Agents
+        </h2>
+        <div class="space-y-6">
+
+          <div class="card !p-6">
+            <h3 class="text-red-400 font-bold mb-3">🔐 Permission Model</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="text-gray-500 font-bold mb-1">Unix/POSIX (current)</p>
+                <p class="text-gray-400">User → Group → Others. Read/Write/Execute. Static. Binary. Designed for humans who own files.</p>
+              </div>
+              <div>
+                <p class="text-purple-400 font-bold mb-1">What agents need</p>
+                <p class="text-gray-400">Permissions by <strong class="text-white">intent</strong> ("can send emails to known contacts"),
+                by <strong class="text-white">context</strong> ("only during business hours"),
+                by <strong class="text-white">duration</strong> ("for the next 30 minutes"),
+                by <strong class="text-white">budget</strong> ("up to £10 of API spend").</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card !p-6">
+            <h3 class="text-red-400 font-bold mb-3">📁 Filesystem</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="text-gray-500 font-bold mb-1">Hierarchical folders (current)</p>
+                <p class="text-gray-400">Tree structure. Path-based access. Named files in named directories. Designed for humans who "know where they put things."</p>
+              </div>
+              <div>
+                <p class="text-purple-400 font-bold mb-1">What agents need</p>
+                <p class="text-gray-400"><strong class="text-white">Context-oriented storage.</strong> Semantic retrieval. Tagged, access-controlled bundles of information. An agent doesn't "open /home/user/documents/q4-report.pdf". It asks for "the Q4 financial data I was working with yesterday."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card !p-6">
+            <h3 class="text-red-400 font-bold mb-3">⚙️ Process Model</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="text-gray-500 font-bold mb-1">PID-based processes (current)</p>
+                <p class="text-gray-400">Human launches process. Process runs until it exits or is killed. Processes are anonymous (just a PID). Communication via pipes and signals.</p>
+              </div>
+              <div>
+                <p class="text-purple-400 font-bold mb-1">What agents need</p>
+                <p class="text-gray-400"><strong class="text-white">Agents with identity.</strong> Autonomous lifecycle management. Supervision trees (agents watching agents). Typed message passing. Resource budgets. The ability to spawn, delegate, and terminate sub-agents with full audit trails.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card !p-6">
+            <h3 class="text-red-400 font-bold mb-3">🖥️ Interface</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="text-gray-500 font-bold mb-1">Windows, icons, menus (current)</p>
+                <p class="text-gray-400">Designed for human eyeballs. GUIs assume constant attention. Every app gets a rectangle on screen.</p>
+              </div>
+              <div>
+                <p class="text-purple-400 font-bold mb-1">What agents need</p>
+                <p class="text-gray-400"><strong class="text-white">Oversight, not interaction.</strong> Dashboards showing what agents are doing. Intervention points. Audit/replay. Alerts when human attention is needed. The human checks in periodically; they don't stare at the screen all day.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3. Architecture -->
+      <section id="architecture" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">03</span> Architecture
+        </h2>
+        <p class="text-gray-400 mb-6">
+          Synaptic runs on a Linux kernel. We're not reinventing drivers for 50,000 hardware devices.
+          Android proved you can build a genuinely new OS on top of Linux. Everything above the kernel is ours.
+        </p>
+
+        <!-- Architecture diagram -->
+        <div class="card !p-6 mb-8 font-mono text-sm">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
+              <div class="flex-1 bg-amber-500/10 border border-amber-500/20 rounded px-3 py-2 text-amber-300">
+                <strong>INTERFACE LAYER</strong> — Oversight dashboard, intervention controls, natural language interaction
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-purple-400 inline-block"></span>
+              <div class="flex-1 bg-purple-500/10 border border-purple-500/20 rounded px-3 py-2 text-purple-300">
+                <strong>RUNTIME LAYER</strong> — Agent lifecycle, message passing, shared memory, sandboxing, budgets
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-blue-400 inline-block"></span>
+              <div class="flex-1 bg-blue-500/10 border border-blue-500/20 rounded px-3 py-2 text-blue-300">
+                <strong>SYSTEM LAYER</strong> — Intent-based permissions, context store, agent identity, trust engine
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-gray-500 inline-block"></span>
+              <div class="flex-1 bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-gray-400">
+                <strong>LINUX KERNEL</strong> — Hardware, memory, networking, drivers (unchanged)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="card !p-6 border-l-4 border-blue-500">
+            <h3 class="text-blue-400 font-bold mb-3">System Layer</h3>
+            <p class="text-gray-400 mb-3">The foundation. Replaces POSIX userland concepts with agent-native ones.</p>
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+              <li><strong class="text-white">Intent-based permissions:</strong> Agents declare what they want to do ("send an email to X"), not what file they want to access. The system evaluates whether the agent has the capability, budget, and trust level to perform that intent.</li>
+              <li><strong class="text-white">Context store:</strong> Replaces the filesystem. Information stored as semantic, tagged contexts with vector embeddings for retrieval. Access controlled per-agent, per-context, with temporal scoping.</li>
+              <li><strong class="text-white">Agent identity:</strong> Every agent has a cryptographic identity, a trust level, a capability set, and a lineage (who spawned it, what it's authorised to do). Think X.509 certificates but for agents.</li>
+              <li><strong class="text-white">Trust engine:</strong> Dynamic trust scoring. Agents earn trust over time through successful, audited operations. New agents start sandboxed. Trust can be revoked instantly.</li>
+            </ul>
+          </div>
+
+          <div class="card !p-6 border-l-4 border-purple-500">
+            <h3 class="text-purple-400 font-bold mb-3">Runtime Layer</h3>
+            <p class="text-gray-400 mb-3">Where agents live, communicate, and are supervised.</p>
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+              <li><strong class="text-white">Agent lifecycle:</strong> Spawn, run, hibernate, resume, terminate. Agents can be paused mid-task, checkpointed, and resumed on different hardware. Full state serialisation.</li>
+              <li><strong class="text-white">Supervision trees:</strong> Inspired by Erlang/OTP. Every agent has a supervisor. If an agent fails, its supervisor decides: restart, escalate, or terminate. Humans are the root supervisors.</li>
+              <li><strong class="text-white">Message channels:</strong> Typed, logged, observable message streams between agents. No shared mutable state. Everything is a message. Every message is auditable.</li>
+              <li><strong class="text-white">Resource budgets:</strong> CPU time, memory, API calls, token spend, network access: all budgeted per agent. An agent can't accidentally run up a £10,000 API bill.</li>
+              <li><strong class="text-white">Sandboxing:</strong> WASM-style isolation. An agent cannot access anything outside its granted capability set. Defence in depth against prompt injection and jailbreaks.</li>
+            </ul>
+          </div>
+
+          <div class="card !p-6 border-l-4 border-amber-500">
+            <h3 class="text-amber-400 font-bold mb-3">Interface Layer</h3>
+            <p class="text-gray-400 mb-3">How humans interact with the system. Not a desktop. Not windows. An oversight console.</p>
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+              <li><strong class="text-white">Oversight dashboard:</strong> Real-time view of all running agents, their status, trust levels, resource consumption, and recent actions. Think mission control, not desktop.</li>
+              <li><strong class="text-white">Intervention points:</strong> Any agent action can be flagged for human approval. The human sees: "Agent X wants to send an email to Y. Approve/Deny/Edit." Natural language interaction for complex decisions.</li>
+              <li><strong class="text-white">Audit/replay:</strong> Every agent action is logged. Full replay capability. "Show me everything Agent X did yesterday between 3pm and 5pm." Time-travel debugging.</li>
+              <li><strong class="text-white">Surfaces:</strong> Adaptive interfaces that appear when human attention is needed and recede when it's not. Push-based, not pull-based. The OS calls you; you don't babysit it.</li>
+              <li><strong class="text-white">Natural language:</strong> The primary human interface is conversation. "Launch a research agent to find me flights to Madrid next weekend under £100. Let me know when it has options." That's it. No clicking through menus.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Core Primitives -->
+      <section id="primitives" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">04</span> Core Primitives
+        </h2>
+        <p class="text-gray-400 mb-6">
+          Every OS has primitives: the fundamental building blocks everything else is built on.
+          Unix has files, processes, and pipes. Synaptic has five new ones.
+        </p>
+
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-navy-600">
+                <th class="text-left text-gray-500 py-3 px-4 font-medium">Unix</th>
+                <th class="text-left text-gray-500 py-3 px-4 font-medium">→</th>
+                <th class="text-left text-purple-400 py-3 px-4 font-medium">Synaptic</th>
+                <th class="text-left text-gray-500 py-3 px-4 font-medium">What it means</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-400">
+              <tr class="border-b border-navy-700">
+                <td class="py-3 px-4">Files</td>
+                <td class="py-3 px-4">→</td>
+                <td class="py-3 px-4 text-white font-bold">Contexts</td>
+                <td class="py-3 px-4">Semantic, tagged, access-controlled bundles of information. Retrieved by meaning, not by path.</td>
+              </tr>
+              <tr class="border-b border-navy-700">
+                <td class="py-3 px-4">Processes</td>
+                <td class="py-3 px-4">→</td>
+                <td class="py-3 px-4 text-white font-bold">Agents</td>
+                <td class="py-3 px-4">Identifiable, supervised, budgeted autonomous entities with capabilities and trust levels.</td>
+              </tr>
+              <tr class="border-b border-navy-700">
+                <td class="py-3 px-4">Pipes/IPC</td>
+                <td class="py-3 px-4">→</td>
+                <td class="py-3 px-4 text-white font-bold">Channels</td>
+                <td class="py-3 px-4">Typed, logged, observable message streams. Every message is auditable and replayable.</td>
+              </tr>
+              <tr class="border-b border-navy-700">
+                <td class="py-3 px-4">Windows</td>
+                <td class="py-3 px-4">→</td>
+                <td class="py-3 px-4 text-white font-bold">Surfaces</td>
+                <td class="py-3 px-4">Adaptive interfaces that present relevant information when human attention is needed.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4">Commands</td>
+                <td class="py-3 px-4">→</td>
+                <td class="py-3 px-4 text-white font-bold">Intents</td>
+                <td class="py-3 px-4">Declarative requests ("book me a flight") not imperative instructions ("open browser, go to URL, click...").</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card !p-4 bg-purple-500/5 text-sm">
+          <p class="text-gray-400">
+            <strong class="text-purple-400">Design principle:</strong> In Unix, "everything is a file."
+            In Synaptic, <strong class="text-white">"everything is a message."</strong>
+            Agent-to-agent, agent-to-system, human-to-agent: all communication flows through typed, logged channels.
+            No hidden state. No shared memory. No side effects that aren't captured.
+          </p>
+        </div>
+      </section>
+
+      <!-- 5. Target Hardware -->
+      <section id="hardware" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">05</span> Target Hardware
+        </h2>
+        <div class="space-y-4 text-gray-400">
+          <p>Start small, prove the concept, then expand.</p>
+
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="card !p-4 border-l-4 border-green-500">
+              <h4 class="text-green-400 font-bold mb-2">Phase 1: Pi / Small Boxes</h4>
+              <p class="text-sm">Raspberry Pi 5, Intel NUC, mini PCs. Cheap, accessible, real hardware. Perfect for home agent servers. "Your personal agent cluster for £50."</p>
+            </div>
+            <div class="card !p-4 border-l-4 border-yellow-500">
+              <h4 class="text-yellow-400 font-bold mb-2">Phase 2: Laptops / Desktops</h4>
+              <p class="text-sm">Full workstation OS. The human oversight dashboard runs locally. Agents run locally or connect to remote agent clusters. Dual-boot or VM initially.</p>
+            </div>
+            <div class="card !p-4 border-l-4 border-red-500">
+              <h4 class="text-red-400 font-bold mb-2">Phase 3: Cloud / Edge</h4>
+              <p class="text-sm">Server images for cloud deployment. Edge devices (IoT, robots, vehicles). Kubernetes-native agent orchestration. Enterprise.</p>
+            </div>
+          </div>
+
+          <div class="card !p-4 bg-green-500/5 text-sm">
+            <p class="text-gray-400">
+              <strong class="text-green-400">Why start with Pi?</strong>
+              Low barrier to entry. Hardware hackers and developers are the early adopters.
+              A £50 Raspberry Pi running Synaptic with 3 agents (home automation, research, personal assistant) is a
+              compelling demo that anyone can try. It's also a forcing function for efficiency: if it runs well on a Pi,
+              it runs well anywhere.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. MVP -->
+      <section id="mvp" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">06</span> MVP: What Proves the Concept
+        </h2>
+        <div class="space-y-4 text-gray-400">
+          <p>The minimum viable product is a bootable image that demonstrates the core thesis: agents as first-class OS citizens.</p>
+
+          <div class="card !p-6">
+            <h3 class="text-white font-bold mb-4">MVP Scope</h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="text-green-400 mt-0.5">✓</span>
+                <span><strong class="text-white">Bootable image</strong> for Raspberry Pi 5 or QEMU VM. Linux kernel, Synaptic userland. No traditional desktop.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-400 mt-0.5">✓</span>
+                <span><strong class="text-white">3 demo agents:</strong> a home automation agent (controls lights/sensors via MQTT), a research agent (web search and summarisation), and a personal assistant (calendar, reminders, messages).</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-400 mt-0.5">✓</span>
+                <span><strong class="text-white">Agent-to-agent communication:</strong> The assistant asks the research agent to look something up. The research agent publishes results. The assistant summarises and surfaces them. All via typed channels.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-400 mt-0.5">✓</span>
+                <span><strong class="text-white">Intent-based permissions:</strong> "Agent X requested: send email to alice@example.com. This is within its capability set. Auto-approved." vs "Agent Y requested: access banking API. Not in capability set. Requires human approval."</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-400 mt-0.5">✓</span>
+                <span><strong class="text-white">Web-based oversight dashboard:</strong> Accessible from any browser on the local network. Shows agent status, message logs, trust levels, resource usage, pending approvals.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-400 mt-0.5">✓</span>
+                <span><strong class="text-white">Context store demo:</strong> Show information flowing between agents via contexts, not files. "The research agent stored findings about flights to Madrid. The assistant retrieved them by semantic query, not by filename."</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card !p-4 bg-amber-500/5 text-sm">
+            <p class="text-gray-400">
+              <strong class="text-amber-400">The demo moment:</strong> You flash an SD card. Boot a Pi. Open a browser.
+              You see three agents running. You type "find me cheap flights to Madrid next weekend" in natural language.
+              The assistant delegates to the research agent. You watch the messages flow in real time. Results come back.
+              The assistant asks: "Shall I book the Ryanair one for £47?" You approve. Done.
+              <strong class="text-white">That's the moment people get it.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Competitive Landscape -->
+      <section id="landscape" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">07</span> Competitive Landscape
+        </h2>
+        <div class="space-y-4">
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-navy-600">
+                  <th class="text-left text-gray-500 py-3 px-4 font-medium">Project</th>
+                  <th class="text-left text-gray-500 py-3 px-4 font-medium">What it is</th>
+                  <th class="text-left text-gray-500 py-3 px-4 font-medium">Why it falls short</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-400">
+                <tr class="border-b border-navy-700">
+                  <td class="py-3 px-4 text-white font-medium">AIOS (Rutgers)</td>
+                  <td class="py-3 px-4">Academic "LLM Agent Operating System". Python SDK that wraps LLM scheduling and tool access.</td>
+                  <td class="py-3 px-4">Not a real OS. It's a Python library. No kernel, no boot, no hardware. Runs on top of your existing OS.</td>
+                </tr>
+                <tr class="border-b border-navy-700">
+                  <td class="py-3 px-4 text-white font-medium">OS for Agents</td>
+                  <td class="py-3 px-4">Startup building "kernel for cognitive architectures". X.509 agent identity, WASM sandboxing, policy enforcement.</td>
+                  <td class="py-3 px-4">Closest to our vision, but focused on enterprise/cloud, not a bootable OS. More of a runtime/framework than an operating system.</td>
+                </tr>
+                <tr class="border-b border-navy-700">
+                  <td class="py-3 px-4 text-white font-medium">Microsoft Copilot / Windows AI</td>
+                  <td class="py-3 px-4">AI features bolted onto Windows 11. Copilot in taskbar, Recall, AI-powered search.</td>
+                  <td class="py-3 px-4">The definition of "F1 engine in a Seat Ibiza". Windows fundamentally assumes a human clicking on windows. Copilot is a sidecar, not a citizen.</td>
+                </tr>
+                <tr class="border-b border-navy-700">
+                  <td class="py-3 px-4 text-white font-medium">Apple Intelligence</td>
+                  <td class="py-3 px-4">On-device AI features integrated into iOS/macOS. Siri improvements, writing tools, image generation.</td>
+                  <td class="py-3 px-4">Features, not architecture. Apple is adding AI to macOS, not rethinking what an OS is. Siri is still a voice assistant, not an autonomous agent.</td>
+                </tr>
+                <tr class="border-b border-navy-700">
+                  <td class="py-3 px-4 text-white font-medium">LangChain / CrewAI / AutoGen</td>
+                  <td class="py-3 px-4">Agent orchestration frameworks. Python libraries for building multi-agent workflows.</td>
+                  <td class="py-3 px-4">Application-level, not OS-level. No isolation, no identity, no hardware awareness. Like building a web app framework and calling it an OS.</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-white font-medium">Google Fuchsia</td>
+                  <td class="py-3 px-4">New OS with custom Zircon microkernel. Capability-based security. Started 2016.</td>
+                  <td class="py-3 px-4">Right idea (new kernel, capability-based), wrong era (pre-agent). No agent primitives. 8+ years in, only runs on a Nest Hub. Cautionary tale on scope.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card !p-4 bg-purple-500/5 text-sm">
+            <p class="text-gray-400">
+              <strong class="text-purple-400">The gap:</strong> Everyone is either building
+              <strong class="text-white">frameworks</strong> (libraries that run on existing OS) or
+              <strong class="text-white">features</strong> (AI bolted onto existing OS).
+              Nobody is building the actual operating system. That's the gap.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Open Questions -->
+      <section id="open" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">08</span> Open Questions
+        </h2>
+        <p class="text-gray-400 mb-4">Things we haven't figured out yet. Being honest about these is important.</p>
+        <div class="space-y-3">
+          <div class="card !p-4">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">How do traditional apps fit in?</h4>
+            <p class="text-gray-400 text-sm">People still need browsers, text editors, media players. Do we run them in a compatibility layer (like WSL in reverse)? Or do agents mediate all "app" interactions?</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">What's the business model?</h4>
+            <p class="text-gray-400 text-sm">Open source the OS, sell hardware (like System76)? Enterprise licensing? Managed cloud instances? Agent marketplace with revenue share? All viable, none decided.</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">LLM dependency</h4>
+            <p class="text-gray-400 text-sm">Agents need LLMs. Do we bundle local models (Llama, Mistral)? Require API keys? Both? What happens when the internet goes down? The OS needs to degrade gracefully.</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">Agent trust bootstrapping</h4>
+            <p class="text-gray-400 text-sm">How does a new agent earn trust? Who vouches for it? Is there a "signed agent" ecosystem like app stores? How do you prevent a malicious agent from social-engineering its way to higher trust?</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">Multi-user, multi-device</h4>
+            <p class="text-gray-400 text-sm">A family Pi with agents for different people. A fleet of edge devices. How do agent identities and contexts span devices? How do you prevent Agent A (belonging to User 1) from accessing User 2's contexts?</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">Regulatory landscape</h4>
+            <p class="text-gray-400 text-sm">The EU AI Act, GDPR, and emerging agent liability frameworks. An OS that runs autonomous agents needs to be compliant by design, not by afterthought. This affects architecture deeply.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Name Candidates -->
+      <section id="names" class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-purple-400">09</span> Name Candidates
+        </h2>
+        <p class="text-gray-400 mb-4">Working name above is "Synaptic" but here are options. Short, memorable, evocative.</p>
+        <div class="space-y-4">
+
+          <div class="card !p-4 border-l-4 border-purple-500">
+            <h4 class="text-white font-bold">Synaptic</h4>
+            <p class="text-gray-400 text-sm">Neural connections. Agents are synapses: independent units that fire, connect, and form networks. Clean domain potential. Feels scientific but accessible.</p>
+          </div>
+          <div class="card !p-4 border-l-4 border-blue-500">
+            <h4 class="text-white font-bold">Cortex</h4>
+            <p class="text-gray-400 text-sm">The outer layer of the brain where higher thinking happens. An OS that's the "thinking layer" over Linux hardware. Short, strong, memorable. Might have trademark issues.</p>
+          </div>
+          <div class="card !p-4 border-l-4 border-green-500">
+            <h4 class="text-white font-bold">Hive</h4>
+            <p class="text-gray-400 text-sm">Agents as bees: autonomous workers with specialised roles, coordinated without central control, producing something greater than the sum. Simple, one syllable, vivid imagery.</p>
+          </div>
+          <div class="card !p-4 border-l-4 border-amber-500">
+            <h4 class="text-white font-bold">Stratum</h4>
+            <p class="text-gray-400 text-sm">A layer. The new stratum of computing between hardware and human intent. Geological: foundational, enduring. Works well technically ("the Stratum runtime", "Stratum agents").</p>
+          </div>
+          <div class="card !p-4 border-l-4 border-red-500">
+            <h4 class="text-white font-bold">Nerve</h4>
+            <p class="text-gray-400 text-sm">Direct, punchy, biological. The nervous system carries signals between brain and body; Nerve carries intents between humans and agents. "NerveOS" or just "Nerve".</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <div class="card !p-6 bg-purple-500/5 border border-purple-500/20 text-center">
+        <p class="text-gray-400 text-sm mb-2">
+          This is a vision document, not a roadmap. Everything here is open to challenge, revision, and radical rethinking.
+        </p>
+        <p class="text-purple-400 font-bold">
+          The question isn't whether agent-native OS will exist. It's who builds it first.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</Layout>

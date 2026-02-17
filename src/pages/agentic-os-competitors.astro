@@ -1,0 +1,508 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Agentic OS — Competitive Landscape" description="Deep competitive analysis of the agentic operating system space: who's building what, where the gaps are, and why no one has built the real thing yet.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">🔍</span>
+      <div>
+        <div class="flex items-center gap-3">
+          <h1 class="text-4xl md:text-5xl font-black text-white">Competitive Landscape</h1>
+          <span class="px-3 py-1 bg-purple-500/15 text-purple-400 rounded-full text-xs font-bold uppercase tracking-wider">Research</span>
+        </div>
+        <p class="text-amber-400 font-medium mt-1">Agentic OS Space — February 2026</p>
+      </div>
+    </div>
+
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mb-6">
+      Everyone is talking about "agent operating systems" but nobody means the same thing.
+      Here's who's doing what, how they compare, and where the real opportunity lives.
+    </p>
+
+    <a href="/agentic-os" class="px-4 py-2 rounded-lg border border-navy-600 text-gray-400 hover:text-white hover:border-navy-500 transition-colors text-sm font-medium">← Back to Vision Doc</a>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <!-- The Taxonomy -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">The Taxonomy: Four Lanes</h2>
+        <p class="text-gray-400 mb-6">
+          The term "Agent OS" is being used by four very different categories of project.
+          Understanding these lanes is critical because <strong class="text-white">we're proposing something in Lane 4 and almost nobody else is there.</strong>
+        </p>
+
+        <div class="space-y-4">
+          <div class="card !p-5 border-l-4 border-gray-500">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl font-black text-gray-500">1</span>
+              <h3 class="text-white font-bold">AI Features Bolted Onto Existing OS</h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-2">The incumbents. Adding AI capabilities to Windows, macOS, Android without changing the fundamental architecture.</p>
+            <p class="text-gray-500 text-xs">Players: Microsoft Copilot, Apple Intelligence, Google Gemini on Android, Xiaomi HyperOS</p>
+          </div>
+
+          <div class="card !p-5 border-l-4 border-blue-500">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl font-black text-blue-500">2</span>
+              <h3 class="text-white font-bold">Agent Orchestration Frameworks</h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-2">Python/JS libraries that call themselves "agent OS" but are really application-level orchestration. Run on your existing OS.</p>
+            <p class="text-gray-500 text-xs">Players: LangChain/LangGraph, CrewAI, AutoGen, OpenAI Agents SDK, OpenClaw</p>
+          </div>
+
+          <div class="card !p-5 border-l-4 border-amber-500">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl font-black text-amber-500">3</span>
+              <h3 class="text-white font-bold">Agent Runtime / Kernel Layers</h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-2">Middleware that adds OS-like primitives (identity, sandboxing, policy) for agents, but sits on top of an existing OS. Closest to a real agent OS without being one.</p>
+            <p class="text-gray-500 text-xs">Players: AIOS (Rutgers), OS for Agents / AControlLayer, Fluid.ai</p>
+          </div>
+
+          <div class="card !p-5 border-l-4 border-purple-500">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl font-black text-purple-500">4</span>
+              <h3 class="text-white font-bold">True Agent-Native Operating System</h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-2">A bootable OS built from scratch (on Linux kernel) where agents are the primary computing primitive. New permission model, new storage paradigm, new interface.</p>
+            <p class="text-purple-400 text-xs font-bold">Players: Nobody. This is the gap.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Detailed Competitor Profiles -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Detailed Competitor Profiles</h2>
+
+        <!-- AIOS -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">AIOS (Rutgers University)</h3>
+              <p class="text-gray-500 text-sm">Lane 3 — Agent Runtime Layer</p>
+            </div>
+            <span class="px-3 py-1 bg-amber-500/15 text-amber-400 rounded-full text-xs font-bold">ACADEMIC</span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="text-amber-400 font-bold mb-2">What it is</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Python-based "LLM Agent Operating System"</li>
+                <li>Kernel abstraction layer over the host OS</li>
+                <li>Agent Scheduler for prioritising LLM requests</li>
+                <li>Context Manager for maintaining interaction state</li>
+                <li>Memory Manager for data access and storage</li>
+                <li>Tool Manager with VM sandboxing (LiteCUA)</li>
+                <li>SDK (Cerebrum) for building agent applications</li>
+                <li>Accepted at COLM 2025, finalist at Berkeley AgentX</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-red-400 font-bold mb-2">Where it falls short</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong class="text-white">Not a real OS.</strong> It's a Python process running on Ubuntu/macOS/Windows</li>
+                <li>No boot image, no hardware, no system-level integration</li>
+                <li>No agent identity or trust model (agents are just Python objects)</li>
+                <li>No inter-agent governance or policy enforcement</li>
+                <li>Academic project, not a product. No roadmap to a real OS</li>
+                <li>Focused on LLM resource scheduling, not agent-first computing</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-purple-500/5 rounded text-sm">
+            <p class="text-gray-400"><strong class="text-purple-400">Our angle:</strong> AIOS proved that agent scheduling and resource management matters. But wrapping it in Python on top of a human OS is like building a car dashboard and calling it a car. We take the kernel concepts (scheduling, memory, context) and embed them at the system level.</p>
+          </div>
+
+          <p class="text-gray-500 text-xs mt-3">GitHub: agiresearch/AIOS | Stars: ~5K | Paper: arxiv.org/abs/2403.16971</p>
+        </div>
+
+        <!-- OS for Agents / AControlLayer -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">OS for Agents / AControlLayer</h3>
+              <p class="text-gray-500 text-sm">Lane 3 — Agent Runtime Layer</p>
+            </div>
+            <span class="px-3 py-1 bg-green-500/15 text-green-400 rounded-full text-xs font-bold">STARTUP</span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="text-amber-400 font-bold mb-2">What it is</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>"The secure kernel for cognitive architectures"</li>
+                <li>Four open standards: AIP (identity), ADP (data), PVS (policy verdicts), CTX (capabilities)</li>
+                <li>X.509 certificates for agent identity</li>
+                <li>WASM-style sandboxed execution</li>
+                <li>"The Gavel" policy engine for output governance</li>
+                <li>Blockchain-anchored identity verification (Ethereum)</li>
+                <li>Human-in-the-loop interrupt system</li>
+                <li>State versioning with time-travel and forking</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-red-400 font-bold mb-2">Where it falls short</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong class="text-white">Not an OS.</strong> It's a set of standards and a runtime framework</li>
+                <li>Enterprise/cloud focused, not consumer or hardware</li>
+                <li>Blockchain dependency adds complexity and friction</li>
+                <li>No bootable image, no system-level integration</li>
+                <li>No storage/filesystem rethink (focused on identity and policy only)</li>
+                <li>Specs-first approach may struggle with adoption</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-purple-500/5 rounded text-sm">
+            <p class="text-gray-400"><strong class="text-purple-400">Our angle:</strong> The closest in philosophy to what we're building. Their identity + policy + capability model is solid thinking. But they stopped at the standards/runtime layer. We take these ideas and embed them in an actual operating system. Their specs could potentially become part of our system layer.</p>
+          </div>
+
+          <p class="text-gray-500 text-xs mt-3">Website: osforagents.com | GitHub: AControlLayer/agent-control-specs</p>
+        </div>
+
+        <!-- Microsoft -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Microsoft (Windows + Copilot)</h3>
+              <p class="text-gray-500 text-sm">Lane 1 — AI Features on Existing OS</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-500/15 text-blue-400 rounded-full text-xs font-bold">BIG TECH</span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="text-amber-400 font-bold mb-2">What they're doing</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Windows 11 26H2 (late 2026) marketed as "AI-native"</li>
+                <li>Copilot integrated into taskbar, Start menu, settings</li>
+                <li>Recall: AI-powered activity memory (screenshot everything)</li>
+                <li>Copilot+ PCs with NPU hardware requirements</li>
+                <li>Copilot Studio for enterprise agent building</li>
+                <li>Microsoft 365 Copilot agents across Office apps</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-red-400 font-bold mb-2">Why this isn't an agent OS</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Copilot is an assistant, not an autonomous agent</li>
+                <li>Windows architecture unchanged: same NTFS, same Win32 API, same desktop metaphor</li>
+                <li>Agents can't communicate with each other at OS level</li>
+                <li>No agent identity, trust, or capability model</li>
+                <li>Recall was a privacy disaster, showing the risks of bolting AI onto old architecture</li>
+                <li>Backwards compatibility prevents radical rethinking</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-purple-500/5 rounded text-sm">
+            <p class="text-gray-400"><strong class="text-purple-400">Our angle:</strong> Microsoft can't build what we're building because they can't break Windows. 1.4 billion devices worth of backwards compatibility means the architecture stays human-centric forever. Their innovation ceiling is "better Copilot". Ours is a fundamentally different computing paradigm.</p>
+          </div>
+        </div>
+
+        <!-- Apple -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Apple Intelligence</h3>
+              <p class="text-gray-500 text-sm">Lane 1 — AI Features on Existing OS</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-500/15 text-blue-400 rounded-full text-xs font-bold">BIG TECH</span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="text-amber-400 font-bold mb-2">What they're doing</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>On-device AI models for writing, image generation, summarisation</li>
+                <li>Siri upgrades with LLM integration</li>
+                <li>App Intents framework for developer integration</li>
+                <li>Private Cloud Compute for heavier workloads</li>
+                <li>Strong privacy positioning</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-red-400 font-bold mb-2">Why this isn't an agent OS</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Siri remains a voice assistant, not an autonomous agent</li>
+                <li>No multi-agent paradigm; it's Apple's single AI helping with tasks</li>
+                <li>Walled garden prevents third-party agent ecosystems</li>
+                <li>Privacy focus actually limits agent capabilities (agents need data access)</li>
+                <li>macOS/iOS architecture fundamentally unchanged</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-purple-500/5 rounded text-sm">
+            <p class="text-gray-400"><strong class="text-purple-400">Our angle:</strong> Apple's strength (privacy, polish, hardware integration) is also their constraint. They'll never let third-party agents run autonomously on their devices. We can build for the open ecosystem Apple won't serve.</p>
+          </div>
+        </div>
+
+        <!-- Google -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Google (Gemini + Project Mariner + Fuchsia)</h3>
+              <p class="text-gray-500 text-sm">Lane 1-2 — AI Features + Agent Prototypes</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-500/15 text-blue-400 rounded-full text-xs font-bold">BIG TECH</span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="text-amber-400 font-bold mb-2">What they're doing</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Gemini integrated across Android, Chrome, Workspace</li>
+                <li>Project Mariner: browser agent (10 parallel task streams, "Teach and Repeat")</li>
+                <li>Fuchsia: new OS with Zircon microkernel and capability-based security (started 2016)</li>
+                <li>Wedbush predicts "by late 2026, browser and OS agents merge into Universal Agent Layer"</li>
+                <li>Agentic AI Foundation (AAIF) co-founded with Anthropic and OpenAI under Linux Foundation</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-red-400 font-bold mb-2">Where the gaps are</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Project Mariner is browser-only, not OS-level</li>
+                <li>Fuchsia: right idea (new kernel), wrong era (pre-agent). No agent primitives. 8+ years in, only ships on a Nest Hub</li>
+                <li>Android remains fundamentally app-centric, not agent-centric</li>
+                <li>Google's agent strategy is fragmented across too many projects</li>
+                <li>AAIF is about standards/protocols (MCP), not building an OS</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-purple-500/5 rounded text-sm">
+            <p class="text-gray-400"><strong class="text-purple-400">Our angle:</strong> Google is the most dangerous potential competitor. They have Fuchsia (new kernel expertise), Gemini (best multimodal model), Android (2B+ devices), and they co-run the AAIF. But Fuchsia proved that even Google struggles to ship a new OS. Their strength is also their curse: too many projects, no singular vision. Fuchsia could pivot to agent-native, but it hasn't in 8 years. We can move faster by building on Linux rather than starting from a new kernel.</p>
+          </div>
+        </div>
+
+        <!-- Agent Frameworks -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Agent Orchestration Frameworks</h3>
+              <p class="text-gray-500 text-sm">Lane 2 — Application-Level Libraries</p>
+            </div>
+            <span class="px-3 py-1 bg-gray-500/15 text-gray-400 rounded-full text-xs font-bold">CATEGORY</span>
+          </div>
+
+          <div class="overflow-x-auto mb-4">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-navy-600">
+                  <th class="text-left text-gray-500 py-2 px-3 font-medium">Framework</th>
+                  <th class="text-left text-gray-500 py-2 px-3 font-medium">Focus</th>
+                  <th class="text-left text-gray-500 py-2 px-3 font-medium">Funding / Backing</th>
+                  <th class="text-left text-gray-500 py-2 px-3 font-medium">Gap</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-400">
+                <tr class="border-b border-navy-700">
+                  <td class="py-2 px-3 text-white">LangChain / LangGraph</td>
+                  <td class="py-2 px-3">LLM app framework, graph-based agent workflows</td>
+                  <td class="py-2 px-3">$25M+ Series A</td>
+                  <td class="py-2 px-3">App framework, not OS. No isolation, identity, or hardware awareness</td>
+                </tr>
+                <tr class="border-b border-navy-700">
+                  <td class="py-2 px-3 text-white">CrewAI</td>
+                  <td class="py-2 px-3">Multi-agent role-based collaboration</td>
+                  <td class="py-2 px-3">$18M Series A</td>
+                  <td class="py-2 px-3">Python orchestrator. Agents are objects in a process, not system entities</td>
+                </tr>
+                <tr class="border-b border-navy-700">
+                  <td class="py-2 px-3 text-white">AutoGen (Microsoft)</td>
+                  <td class="py-2 px-3">Multi-agent conversation framework</td>
+                  <td class="py-2 px-3">Microsoft-backed</td>
+                  <td class="py-2 px-3">Research framework. No production deployment story. No system integration</td>
+                </tr>
+                <tr class="border-b border-navy-700">
+                  <td class="py-2 px-3 text-white">OpenAI Agents SDK</td>
+                  <td class="py-2 px-3">Official OpenAI agent building toolkit</td>
+                  <td class="py-2 px-3">OpenAI (just hired OpenClaw founder)</td>
+                  <td class="py-2 px-3">Tied to OpenAI models. SDK, not OS. No system-level primitives</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-3 text-white">OpenClaw</td>
+                  <td class="py-2 px-3">Local-first agentic interface for autonomous workflows</td>
+                  <td class="py-2 px-3">Open source (founder joining OpenAI)</td>
+                  <td class="py-2 px-3">Closest to "agent on your machine" but still a process on macOS/Linux, not an OS</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-4 p-3 bg-purple-500/5 rounded text-sm">
+            <p class="text-gray-400"><strong class="text-purple-400">Our angle:</strong> These frameworks solve the "how do I build an agent?" problem. We solve the "where do agents live?" problem. They're complementary: agents built with LangChain or CrewAI could run on our OS. Think of it like the difference between a web framework (Django, Rails) and an OS (Linux). One builds apps, the other runs them.</p>
+          </div>
+        </div>
+
+        <!-- Hardware Attempts -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Agent Hardware (Cautionary Tales)</h3>
+              <p class="text-gray-500 text-sm">The graveyard</p>
+            </div>
+            <span class="px-3 py-1 bg-red-500/15 text-red-400 rounded-full text-xs font-bold">⚠️ LESSONS</span>
+          </div>
+
+          <div class="space-y-4 text-sm">
+            <div class="p-3 bg-red-500/5 rounded">
+              <h4 class="text-white font-bold mb-1">Humane AI Pin — $230M raised, product flopped</h4>
+              <p class="text-gray-400">Tried to replace the smartphone with an AI-first wearable. Overheating issues, poor battery, limited functionality. The Verge: "a flawed product with an even more flawed vision." Company reportedly seeking buyer.</p>
+            </div>
+            <div class="p-3 bg-red-500/5 rounded">
+              <h4 class="text-white font-bold mb-1">Rabbit R1 — Hardware device, software problems</h4>
+              <p class="text-gray-400">"Underwhelming, underpowered, and undercooked" (The Verge). Custom "Large Action Model" couldn't deliver on promises. Turns out it was basically an Android app in a box.</p>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-purple-500/5 rounded text-sm">
+            <p class="text-gray-400"><strong class="text-purple-400">Lessons:</strong> Both failed by trying to create new hardware AND new software simultaneously. They also tried to replace the smartphone (wrong battle). Our approach is different: <strong class="text-white">use existing hardware (Pi, PCs), build new software.</strong> Don't replace the phone. Replace the OS on the devices that agents should run on: servers, home hubs, development machines.</p>
+          </div>
+        </div>
+
+        <!-- MCP / Protocol Layer -->
+        <div class="card !p-6 mb-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">MCP / Agentic AI Foundation (AAIF)</h3>
+              <p class="text-gray-500 text-sm">The Emerging Standard Layer</p>
+            </div>
+            <span class="px-3 py-1 bg-green-500/15 text-green-400 rounded-full text-xs font-bold">PROTOCOL</span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="text-amber-400 font-bold mb-2">What it is</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Model Context Protocol: standard for LLM-to-tool communication</li>
+                <li>Created by Anthropic, donated to Linux Foundation (Dec 2025)</li>
+                <li>Co-founded by Anthropic, Block, OpenAI</li>
+                <li>JSON-RPC 2.0 based, inspired by Language Server Protocol</li>
+                <li>Rapidly becoming the USB-C of agent tool connectivity</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-purple-400 font-bold mb-2">Relevance to us</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong class="text-white">We should be MCP-native.</strong> Our OS should speak MCP natively</li>
+                <li>MCP handles tool connectivity; we handle everything else (identity, permissions, lifecycle, storage)</li>
+                <li>Being MCP-compatible means instant access to the growing ecosystem of MCP servers and tools</li>
+                <li>AAIF is building protocols, not an OS. We build the OS that runs those protocols</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Gap -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">The Gap: Why No One Has Built This</h2>
+        <div class="space-y-4 text-gray-400">
+
+          <div class="card !p-5">
+            <h3 class="text-white font-bold mb-2">1. Big tech can't break their own products</h3>
+            <p class="text-sm">Microsoft, Apple, and Google have billions of devices running their current OS. Any radical architectural change breaks backwards compatibility. They're structurally incapable of building from scratch. The best they can do is add AI features to existing architecture.</p>
+          </div>
+
+          <div class="card !p-5">
+            <h3 class="text-white font-bold mb-2">2. Startups default to frameworks, not OS</h3>
+            <p class="text-sm">Building an OS is terrifying. It's easier (and more fundable) to build a Python library and call it an "Agent OS". Every VC pitch deck about "agent infrastructure" is really about orchestration frameworks. Nobody wants to tackle the hard system-level work.</p>
+          </div>
+
+          <div class="card !p-5">
+            <h3 class="text-white font-bold mb-2">3. The timing was wrong until now</h3>
+            <p class="text-sm">Before 2024, agents weren't capable enough to justify a new OS. Now they are, but the ecosystem hasn't caught up. Everyone is still in the "make agents work" phase. The "make agents work well at scale on proper infrastructure" phase is just beginning.</p>
+          </div>
+
+          <div class="card !p-5">
+            <h3 class="text-white font-bold mb-2">4. Fuchsia traumatised the industry</h3>
+            <p class="text-sm">Google spent 8+ years and enormous resources on a new OS and it runs on a Nest Hub. The lesson everyone took was "don't build new OS". But the real lesson was "don't build a new kernel when Linux works fine". We take the right lesson.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Positioning -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">Our Positioning</h2>
+
+        <div class="card !p-6 bg-purple-500/5 border border-purple-500/20">
+          <div class="text-center mb-6">
+            <p class="text-2xl text-white font-black">"The first operating system built for the age of agents."</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="text-green-400 font-bold mb-2">What we are</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>A bootable, real operating system</li>
+                <li>Linux kernel, everything above is new</li>
+                <li>Agents as first-class citizens (identity, permissions, lifecycle, communication)</li>
+                <li>New storage paradigm (contexts, not files)</li>
+                <li>New interface paradigm (oversight, not desktop)</li>
+                <li>MCP-native for tool connectivity</li>
+                <li>Hardware-first: starts on Pi, scales to cloud</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-red-400 font-bold mb-2">What we're not</h4>
+              <ul class="list-disc list-inside text-gray-400 space-y-1">
+                <li>Not a framework or library</li>
+                <li>Not a layer on top of Windows/macOS</li>
+                <li>Not a new kernel (Linux does that fine)</li>
+                <li>Not an AI assistant bolted onto a desktop</li>
+                <li>Not a hardware product</li>
+                <li>Not enterprise-only or cloud-only</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Risks -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">Key Risks</h2>
+        <div class="space-y-3">
+          <div class="card !p-4">
+            <h4 class="text-red-400 font-bold text-sm mb-1">Google pivots Fuchsia to agent-native</h4>
+            <p class="text-gray-400 text-sm">If Google redirects Fuchsia's capability-based architecture toward agent computing, they have a massive head start on kernel-level primitives. Mitigation: move fast, build community, and stay on Linux (faster iteration than a custom kernel).</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-red-400 font-bold text-sm mb-1">MCP evolves into an OS-like layer</h4>
+            <p class="text-gray-400 text-sm">The AAIF could expand MCP from a tool protocol into a full agent runtime with identity, permissions, and lifecycle. Mitigation: be MCP-native, contribute to AAIF standards, differentiate on the "real OS" angle they won't pursue.</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-red-400 font-bold text-sm mb-1">Agents don't need a new OS</h4>
+            <p class="text-gray-400 text-sm">The biggest risk. If orchestration frameworks + containers + existing OS is "good enough", there's no market for a new OS. Mitigation: the security and governance problems with current approaches will force the issue. Enterprise won't accept agents running as unsandboxed Python scripts forever.</p>
+          </div>
+          <div class="card !p-4">
+            <h4 class="text-red-400 font-bold text-sm mb-1">Adoption: the chicken-and-egg problem</h4>
+            <p class="text-gray-400 text-sm">No agents are built for our OS because nobody uses it. Nobody uses it because no agents are built for it. Mitigation: ship with compelling demo agents. Make porting from LangChain/CrewAI trivially easy. Target hardware hackers and developers first.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Summary -->
+      <div class="card !p-6 bg-purple-500/5 border border-purple-500/20 text-center">
+        <p class="text-gray-400 text-sm mb-3">
+          The market is full of "Agent OS" claims. None of them are an actual operating system.
+          Frameworks, features, runtimes, protocols: all valuable, all insufficient.
+        </p>
+        <p class="text-purple-400 font-bold text-lg">
+          The real OS hasn't been built yet. That's the opportunity.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</Layout>

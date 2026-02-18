@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const summary = [
+  { id: '1', name: 'Lazy-Loading Skills', effort: '🟢 Low (2h)', impact: '🟡 Medium', savings: '~$5-10/day token savings', status: '🔍 Analyse' },
+  { id: '2', name: 'Multi-Model Routing', effort: '🟢 Low (1h)', impact: '🔴 High', savings: '~60-80% cost reduction on crons', status: '🚀 Ready' },
+  { id: '3', name: 'Parallel Sub-Agents', effort: '🟡 Medium (4h)', impact: '🟡 Medium', savings: '3-5x faster briefings', status: '📐 Design' },
+  { id: '4', name: 'Quality Gates', effort: '🟢 Low (2h)', impact: '🔴 High', savings: 'Zero spam in Telegram', status: '🚀 Ready' },
+];
+
+const improvements = [
+  {
+    num: '01',
+    icon: '⚡',
+    title: 'Lazy-Loading Skills',
+    subtitle: 'Super-MCP Pattern',
+    source: 'Joshua Wohle — Super-MCP',
+    current: {
+      heading: 'Current State',
+      points: [
+        'Skills directory: 372KB across ~40 SKILL.md files (~155K chars ≈ 40K tokens)',
+        'Skills are NOT all loaded upfront — OpenClaw already lazy-loads via available_skills list',
+        'But: AGENTS.md + TOOLS.md + SOUL.md + USER.md inject ~15-20K tokens every session regardless',
+        'Each skill read adds 500-5,000 tokens when invoked',
+      ],
+    },
+    proposed: {
+      heading: 'Proposed Change',
+      points: [
+        'Audit which workspace files load per-session — trim AGENTS.md ruthlessly',
+        'Move rarely-used sections of TOOLS.md to separate files loaded on demand',
+        'Create a skill index file (~50 tokens) mapping skill name → one-line description, replacing verbose available_skills',
+        'Only read full SKILL.md when actually using the skill',
+      ],
+    },
+    steps: [
+      'Measure baseline: count tokens in system prompt across 10 recent sessions',
+      'Split TOOLS.md into TOOLS.md (essentials) + TOOLS-EXTENDED.md (camera names, social accounts)',
+      'Trim AGENTS.md: move sub-agent infrastructure docs to SUB_AGENT_README.md (already exists)',
+      'Create skills/INDEX.md with one-liner per skill for fast lookup',
+    ],
+    benefit: 'Save ~5-10K tokens per session. At 50+ sessions/day = 250-500K tokens saved. ~$4-8/day at Opus rates.',
+  },
+  {
+    num: '02',
+    icon: '🔀',
+    title: 'Multi-Model Routing',
+    subtitle: 'Right Model for the Job',
+    source: 'Group consensus — David H, Evgeny workflows',
+    current: {
+      heading: 'Current State',
+      points: [
+        'Everything runs on Opus 4.6: $15/MTok input, $75/MTok output',
+        'Crons, heartbeats, research, casual chat — all same premium model',
+        'OpenClaw cron tool HAS a model field in agentTurn payload — ready to use',
+      ],
+    },
+    proposed: {
+      heading: 'Proposed Change',
+      points: [
+        'Opus 4.6 → complex tasks only: coding, strategy, creative writing, conversation with Diego',
+        'Sonnet 4.5 ($3/$15) → crons: weather, email digest, social monitoring, RSS, WhatsApp digest',
+        'Sonnet 4.5 → sub-agents: research, data gathering, file processing',
+        'Haiku ($0.25/$1.25) → heartbeat checks, simple lookups, status pings',
+      ],
+    },
+    steps: [
+      'List all active crons: identify which need reasoning (few) vs execution (most)',
+      'Update cron definitions with model field — start with weather, email, social crons',
+      'Test Sonnet 4.5 on 5 crons for 1 week, compare output quality',
+      'If quality holds: migrate all routine crons to Sonnet, keep Opus for main session + complex sub-agents',
+      'Add Haiku for heartbeat polling (currently fires every 30min on Opus — massive waste)',
+    ],
+    benefit: 'Heartbeats alone: ~48/day × ~2K tokens each = ~96K tokens. Opus cost: $8.64/day → Haiku: $0.14/day. Total estimated savings: 60-80% reduction in daily API spend.',
+  },
+  {
+    num: '03',
+    icon: '🚀',
+    title: 'Aggressive Sub-Agent Parallelism',
+    subtitle: 'Fan-Out / Fan-In',
+    source: '"10 subagents = 10x speed" — group pattern',
+    current: {
+      heading: 'Current State',
+      points: [
+        'Sub-agents spawn one-at-a-time for isolated tasks',
+        'Morning briefing is sequential: check weather → check calendar → check email → compose',
+        'No coordination pattern — each sub-agent delivers independently to Telegram',
+      ],
+    },
+    proposed: {
+      heading: 'Proposed Change',
+      points: [
+        'Fan-out pattern: spawn N sub-agents in parallel, each writes to a shared output file',
+        'Coordinator waits for all files, then merges into one polished briefing',
+        'Apply to: morning briefing (4 parallel), research tasks (3-5 parallel), overnight factory runs',
+      ],
+    },
+    steps: [
+      'Design the pattern: coordinator creates memory/fanout/{task-id}/ directory',
+      'Each sub-agent writes {task-id}/{subtask}.md when done',
+      'Coordinator polls directory (or uses file watches) until all expected files exist',
+      'Coordinator merges, formats, delivers single message to Telegram',
+      'Pilot with morning briefing: weather + calendar + email + news = 4 parallel agents → 1 merged briefing',
+      'Measure: current briefing takes ~3min sequential → target: ~45s parallel',
+    ],
+    benefit: '3-5x faster delivery for multi-source tasks. Morning briefing drops from minutes to under a minute. Diego gets info faster, Rook stays responsive.',
+  },
+  {
+    num: '04',
+    icon: '🛡️',
+    title: 'Quality Gates',
+    subtitle: 'ralph-wiggum Pattern',
+    source: 'ralph-wiggum plugin — catch lazy output, relaunch',
+    current: {
+      heading: 'Current State',
+      points: [
+        'Cron outputs go directly to Telegram — no validation',
+        'Broken scripts produce "⚠️ script not found" messages that still get posted',
+        'Empty results, fallback text, and error messages pollute Telegram topics',
+        'No retry mechanism — failure = spam',
+      ],
+    },
+    proposed: {
+      heading: 'Proposed Change',
+      points: [
+        'Two-layer quality gate: prompt-level + script-level',
+        'Prompt-level: add quality check instructions to every cron prompt ("Before posting: verify output contains real data, not error messages or placeholders. If output is empty/broken, say QUALITY_FAIL and explain why.")',
+        'Script-level: wrapper that checks output before sending to Telegram — reject if contains known failure patterns',
+        'Retry: on QUALITY_FAIL, retry once with fresh context. If still fails, send alert to Diego instead of posting garbage.',
+      ],
+    },
+    steps: [
+      'Create scripts/quality-gate.sh — takes message text, returns pass/fail based on pattern matching',
+      'Patterns to catch: "script not found", "error", empty string, < 20 chars, placeholder text',
+      'Add to all cron prompts: quality check instruction block (standardised footer)',
+      'Create a QUALITY_GATE.md template that crons can import into their prompts',
+      'Add retry logic: if quality fails, attempt one retry with "Previous attempt failed: {reason}. Try again."',
+      'Log all quality failures to memory/quality-failures.md for pattern analysis',
+    ],
+    benefit: 'Zero spam in Telegram. Every message that arrives is real, useful content. Higher trust in automated outputs = Diego checks Telegram more often.',
+  },
+];
+---
+
+<Layout title="Improvements Plan" description="4 actionable improvements to the Rook × Diego workflow. Based on learnings from the AI Prompts WhatsApp group.">
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-6">
+      📋 Implementation Plan
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+      4 Improvements<br/>
+      <span class="text-amber-400">Steal from the Group</span>
+    </h1>
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl">
+      Learnings from the AI Prompts WhatsApp group (349 builders, 6 months of discourse) distilled into 4 concrete upgrades for how Rook and Diego work together.
+    </p>
+  </section>
+
+  <!-- Summary Table -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="bg-navy-800/50 rounded-2xl border border-navy-700/50 overflow-hidden">
+      <div class="grid grid-cols-5 gap-4 p-4 text-sm font-semibold text-gray-400 border-b border-navy-700/50">
+        <div>Improvement</div>
+        <div>Effort</div>
+        <div>Impact</div>
+        <div>Key Benefit</div>
+        <div>Status</div>
+      </div>
+      {summary.map((s) => (
+        <div class="grid grid-cols-5 gap-4 p-4 text-sm text-gray-300 border-b border-navy-700/30 last:border-0 hover:bg-navy-700/20 transition-colors">
+          <div class="font-medium text-white">{s.name}</div>
+          <div>{s.effort}</div>
+          <div>{s.impact}</div>
+          <div>{s.savings}</div>
+          <div>{s.status}</div>
+        </div>
+      ))}
+    </div>
+    <p class="text-sm text-gray-500 mt-4">
+      💡 Recommended order: #2 (instant savings) → #4 (instant quality) → #1 (trim fat) → #3 (speed boost)
+    </p>
+  </section>
+
+  <!-- Improvements -->
+  {improvements.map((imp) => (
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+      <div class="bg-navy-800/30 rounded-2xl border border-navy-700/50 p-6 md:p-8">
+        <!-- Header -->
+        <div class="flex items-start gap-4 mb-6">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl">
+            {imp.icon}
+          </div>
+          <div>
+            <div class="text-amber-400 text-sm font-medium mb-1">#{imp.num} — {imp.subtitle}</div>
+            <h2 class="text-2xl font-bold text-white">{imp.title}</h2>
+            <p class="text-sm text-gray-500 mt-1">Source: {imp.source}</p>
+          </div>
+        </div>
+
+        <!-- Current vs Proposed -->
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-red-500/5 border border-red-500/10 rounded-xl p-5">
+            <h3 class="text-sm font-semibold text-red-400 mb-3">❌ {imp.current.heading}</h3>
+            <ul class="space-y-2">
+              {imp.current.points.map((p: string) => (
+                <li class="text-sm text-gray-400 flex gap-2">
+                  <span class="text-red-400/50 mt-1 flex-shrink-0">•</span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-green-500/5 border border-green-500/10 rounded-xl p-5">
+            <h3 class="text-sm font-semibold text-green-400 mb-3">✅ {imp.proposed.heading}</h3>
+            <ul class="space-y-2">
+              {imp.proposed.points.map((p: string) => (
+                <li class="text-sm text-gray-400 flex gap-2">
+                  <span class="text-green-400/50 mt-1 flex-shrink-0">•</span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="bg-navy-900/50 rounded-xl p-5 mb-6">
+          <h3 class="text-sm font-semibold text-amber-400 mb-3">🔧 Implementation Steps</h3>
+          <ol class="space-y-2">
+            {imp.steps.map((s: string, i: number) => (
+              <li class="text-sm text-gray-400 flex gap-3">
+                <span class="text-amber-400/70 font-mono flex-shrink-0">{i + 1}.</span>
+                <span>{s}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Benefit -->
+        <div class="bg-amber-500/5 border border-amber-500/10 rounded-xl p-4">
+          <p class="text-sm text-amber-300">
+            <span class="font-semibold">Expected Benefit:</span> {imp.benefit}
+          </p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Bottom CTA -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-20 text-center">
+    <div class="bg-navy-800/50 rounded-2xl border border-navy-700/50 p-8">
+      <h2 class="text-2xl font-bold text-white mb-3">Total Impact</h2>
+      <p class="text-gray-400 mb-6 max-w-xl mx-auto">
+        Combined: 60-80% cost reduction on automated tasks, zero Telegram spam, 3-5x faster multi-source briefings, and leaner context windows. Implementation time: ~1 day.
+      </p>
+      <a href="/" class="btn-secondary">← Back to The Factory</a>
+    </div>
+  </section>
+
+</Layout>

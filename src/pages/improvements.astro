@@ -153,7 +153,7 @@ const improvements = [
       4 Improvements<br/>
       <span class="text-amber-400">Steal from the Group</span>
     </h1>
-    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl">
+    <p class="text-xl text-gray-300 leading-relaxed max-w-2xl">
       Learnings from the AI Prompts WhatsApp group (349 builders, 6 months of discourse) distilled into 4 concrete upgrades for how Rook and Diego work together.
     </p>
   </section>
@@ -169,7 +169,7 @@ const improvements = [
         <div>Status</div>
       </div>
       {summary.map((s) => (
-        <div class="grid grid-cols-5 gap-4 p-4 text-sm text-gray-300 border-b border-navy-700/30 last:border-0 hover:bg-navy-700/20 transition-colors">
+        <div class="grid grid-cols-5 gap-4 p-4 text-sm text-gray-200 border-b border-navy-700/30 last:border-0 hover:bg-navy-700/20 transition-colors">
           <div class="font-medium text-white">{s.name}</div>
           <div>{s.effort}</div>
           <div>{s.impact}</div>
@@ -201,23 +201,23 @@ const improvements = [
 
         <!-- Current vs Proposed -->
         <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div class="bg-red-500/5 border border-red-500/10 rounded-xl p-5">
-            <h3 class="text-sm font-semibold text-red-400 mb-3">❌ {imp.current.heading}</h3>
+          <div class="bg-red-950/60 border border-red-800/30 rounded-xl p-5">
+            <h3 class="text-sm font-semibold text-red-300 mb-3">❌ {imp.current.heading}</h3>
             <ul class="space-y-2">
               {imp.current.points.map((p: string) => (
-                <li class="text-sm text-gray-400 flex gap-2">
-                  <span class="text-red-400/50 mt-1 flex-shrink-0">•</span>
+                <li class="text-sm text-gray-200 flex gap-2">
+                  <span class="text-red-400 mt-1 flex-shrink-0">•</span>
                   <span>{p}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div class="bg-green-500/5 border border-green-500/10 rounded-xl p-5">
-            <h3 class="text-sm font-semibold text-green-400 mb-3">✅ {imp.proposed.heading}</h3>
+          <div class="bg-green-950/60 border border-green-800/30 rounded-xl p-5">
+            <h3 class="text-sm font-semibold text-green-300 mb-3">✅ {imp.proposed.heading}</h3>
             <ul class="space-y-2">
               {imp.proposed.points.map((p: string) => (
-                <li class="text-sm text-gray-400 flex gap-2">
-                  <span class="text-green-400/50 mt-1 flex-shrink-0">•</span>
+                <li class="text-sm text-gray-200 flex gap-2">
+                  <span class="text-green-400 mt-1 flex-shrink-0">•</span>
                   <span>{p}</span>
                 </li>
               ))}
@@ -230,7 +230,7 @@ const improvements = [
           <h3 class="text-sm font-semibold text-amber-400 mb-3">🔧 Implementation Steps</h3>
           <ol class="space-y-2">
             {imp.steps.map((s: string, i: number) => (
-              <li class="text-sm text-gray-400 flex gap-3">
+              <li class="text-sm text-gray-200 flex gap-3">
                 <span class="text-amber-400/70 font-mono flex-shrink-0">{i + 1}.</span>
                 <span>{s}</span>
               </li>
@@ -240,7 +240,7 @@ const improvements = [
 
         <!-- Benefit -->
         <div class="bg-amber-500/5 border border-amber-500/10 rounded-xl p-4">
-          <p class="text-sm text-amber-300">
+          <p class="text-sm text-amber-200">
             <span class="font-semibold">Expected Benefit:</span> {imp.benefit}
           </p>
         </div>
@@ -252,7 +252,7 @@ const improvements = [
   <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-20 text-center">
     <div class="bg-navy-800/50 rounded-2xl border border-navy-700/50 p-8">
       <h2 class="text-2xl font-bold text-white mb-3">Total Impact</h2>
-      <p class="text-gray-400 mb-6 max-w-xl mx-auto">
+      <p class="text-gray-300 mb-6 max-w-xl mx-auto">
         Combined: 60-80% cost reduction on automated tasks, zero Telegram spam, 3-5x faster multi-source briefings, and leaner context windows. Implementation time: ~1 day.
       </p>
       <a href="/" class="btn-secondary">← Back to The Factory</a>

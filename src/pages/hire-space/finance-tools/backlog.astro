@@ -1,0 +1,506 @@
+---
+---
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Finance System — Backlog</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f9fa;color:#1e293b;font-size:14px}
+.top-nav{background:#fff;border-bottom:1px solid #e2e8f0;padding:10px 40px;font-size:13px;display:flex;gap:16px}
+.top-nav a{color:#2563eb;text-decoration:none}
+.ctr{max-width:1100px;margin:0 auto;padding:0 40px 60px}
+.page-hdr{max-width:1100px;margin:0 auto;padding:28px 40px 0}
+.page-hdr h1{font-size:26px;font-weight:800;margin-bottom:4px}
+.page-hdr .desc{color:#64748b;font-size:14px;margin-bottom:8px}
+.stats-bar{display:flex;gap:16px;margin:20px 0 28px;flex-wrap:wrap}
+.stat-chip{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:12px 20px;text-align:center;min-width:120px}
+.stat-chip .num{font-size:22px;font-weight:700}.stat-chip .lbl{font-size:11px;color:#64748b;margin-top:2px}
+.tier{margin-bottom:32px}
+.tier-hdr{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.tier-hdr h2{font-size:18px;font-weight:700}
+.tier-hdr .cnt{background:#f1f5f9;color:#64748b;font-size:12px;font-weight:600;padding:2px 10px;border-radius:12px}
+.tier-p0 .tier-hdr{border-bottom-color:#ef4444}.tier-p0 .tier-hdr h2{color:#dc2626}
+.tier-p1 .tier-hdr{border-bottom-color:#f59e0b}.tier-p1 .tier-hdr h2{color:#d97706}
+.tier-p2 .tier-hdr{border-bottom-color:#3b82f6}.tier-p2 .tier-hdr h2{color:#2563eb}
+.tier-p3 .tier-hdr{border-bottom-color:#8b5cf6}.tier-p3 .tier-hdr h2{color:#7c3aed}
+.tier-q .tier-hdr{border-bottom-color:#64748b}.tier-q .tier-hdr h2{color:#475569}
+.ticket{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;margin-bottom:10px;display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:start;transition:box-shadow .15s}
+.ticket:hover{box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.ticket-id{font-family:'SF Mono',Menlo,monospace;font-size:12px;font-weight:700;color:#64748b;padding-top:2px}
+.ticket-body h3{font-size:14px;font-weight:600;margin-bottom:3px}
+.ticket-body p{font-size:12px;color:#64748b;line-height:1.5}
+.ticket-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:120px}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;white-space:nowrap}
+.badge-green{background:#dcfce7;color:#166534}.badge-yellow{background:#fef9c3;color:#854d0e}.badge-red{background:#fee2e2;color:#991b1b}.badge-blue{background:#dbeafe;color:#1e40af}.badge-gray{background:#f1f5f9;color:#64748b}.badge-purple{background:#f3e8ff;color:#6b21a8}.badge-orange{background:#ffedd5;color:#9a3412}
+.tag{font-size:11px;padding:2px 7px;border-radius:3px;background:#f1f5f9;color:#475569;white-space:nowrap}
+.effort{font-size:11px;font-weight:700;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#f1f5f9;color:#64748b}
+.effort-s{background:#dcfce7;color:#166534}.effort-m{background:#fef9c3;color:#854d0e}.effort-l{background:#fee2e2;color:#991b1b}
+.ticket-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.q-ticket{background:#fff;border:1px solid #e2e8f0;border-left:3px solid #f59e0b;border-radius:4px;padding:12px 16px;margin-bottom:8px}
+.q-ticket h3{font-size:13px;font-weight:600;margin-bottom:2px}.q-ticket p{font-size:12px;color:#64748b}
+.legend{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:28px;display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:#64748b}
+.legend-item{display:flex;align-items:center;gap:6px}
+@media(max-width:700px){.ticket{grid-template-columns:1fr;gap:6px}.ticket-meta{flex-direction:row;align-items:center}.stats-bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="/hire-space/finance-tools/unified/">← Unified View</a>
+  <a href="/hire-space/finance-tools/">Finance Tools</a>
+  <span style="color:#94a3b8">Backlog</span>
+</nav>
+
+<div class="page-hdr">
+  <h1>Hire Space Finance System — Backlog</h1>
+  <p class="desc">Prioritised tickets for the booking system & finance tools redesign</p>
+</div>
+
+<div class="ctr">
+
+<div class="stats-bar">
+  <div class="stat-chip"><div class="num" style="color:#dc2626">5</div><div class="lbl">P0 Critical</div></div>
+  <div class="stat-chip"><div class="num" style="color:#d97706">8</div><div class="lbl">P1 High</div></div>
+  <div class="stat-chip"><div class="num" style="color:#2563eb">8</div><div class="lbl">P2 Medium</div></div>
+  <div class="stat-chip"><div class="num" style="color:#7c3aed">4</div><div class="lbl">P3 Low</div></div>
+  <div class="stat-chip"><div class="num" style="color:#475569">17</div><div class="lbl">Open Questions</div></div>
+</div>
+
+<div class="legend">
+  <span style="font-weight:600">Areas:</span>
+  <span class="legend-item">🏆 Winning</span>
+  <span class="legend-item">💰 Commission</span>
+  <span class="legend-item">🧾 Invoicing</span>
+  <span class="legend-item">📦 Additions</span>
+  <span class="legend-item">💳 Payments</span>
+  <span class="legend-item">🔍 Reconciliation</span>
+  <span class="legend-item">📋 Contracts</span>
+  <span class="legend-item">⚙️ Operations</span>
+  <span style="margin-left:auto;font-weight:600">Effort:</span>
+  <span class="legend-item"><span class="effort effort-s">S</span> Small</span>
+  <span class="legend-item"><span class="effort effort-m">M</span> Medium</span>
+  <span class="legend-item"><span class="effort effort-l">L</span> Large</span>
+</div>
+
+<!-- ========== P0 — CRITICAL / NOW ========== -->
+<div class="tier tier-p0">
+<div class="tier-hdr"><h2>🔴 P0 — Critical / Now</h2><span class="cnt">5 tickets</span></div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-001</div>
+  <div class="ticket-body">
+    <h3>Automate DAS invoicing</h3>
+    <p>Auto-generate DAS invoices from booking data, eliminating the biggest manual time sink. Covers auto-detection of DAS items and invoice creation in Xero.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🧾 Invoicing</span></div>
+    <div class="ticket-tags"><span class="badge badge-red">Jake + Dev</span><span class="effort effort-l">L</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-002</div>
+  <div class="ticket-body">
+    <h3>Automate additions invoicing</h3>
+    <p>Auto-identify additions vs original booking items and generate invoices accordingly. Removes manual classification and invoice creation for additions.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">📦 Additions</span><span class="tag">🧾 Invoicing</span></div>
+    <div class="ticket-tags"><span class="badge badge-red">Jake + Dev</span><span class="effort effort-l">L</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-003</div>
+  <div class="ticket-body">
+    <h3>Design/spec the "winning" screen</h3>
+    <p>Design the new winning flow UI — simplify the process, add validation checks, and use captured financial info to prevent downstream errors.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🏆 Winning</span></div>
+    <div class="ticket-tags"><span class="badge badge-blue">Diego + Will</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-004</div>
+  <div class="ticket-body">
+    <h3>Streamline & simplify post-event reconciliation</h3>
+    <p>The whole post-event process takes too long due to cascading issues from earlier steps. Redesign the rec flow end-to-end to reduce manual effort.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🔍 Reconciliation</span></div>
+    <div class="ticket-tags"><span class="badge badge-red">Jake + Dev</span><span class="effort effort-l">L</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-005</div>
+  <div class="ticket-body">
+    <h3>Remove manual edits from Booking System for salespeople</h3>
+    <p>Salespeople should not have to manually edit data in the Booking System. Auto-populate fields from the winning process and contract data.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🏆 Winning</span><span class="tag">⚙️ Operations</span></div>
+    <div class="ticket-tags"><span class="badge badge-orange">Will + Dev</span><span class="effort effort-l">L</span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== P1 — HIGH / NEXT SPRINT ========== -->
+<div class="tier tier-p1">
+<div class="tier-hdr"><h2>🟡 P1 — High / Next Sprint</h2><span class="cnt">8 tickets</span></div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-006</div>
+  <div class="ticket-body">
+    <h3>Design/spec additions screen</h3>
+    <p>Design the additions management UI — clear view of what's an addition vs original, with editing and invoicing capabilities.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">📦 Additions</span></div>
+    <div class="ticket-tags"><span class="badge badge-blue">Diego + Will</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-007</div>
+  <div class="ticket-body">
+    <h3>Design/spec generate commission screen</h3>
+    <p>Design the commission calculation and generation UI with clear breakdown of commissionable costs/revenue and guardrails.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">💰 Commission</span></div>
+    <div class="ticket-tags"><span class="badge badge-blue">Diego + Will</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-008</div>
+  <div class="ticket-body">
+    <h3>Design/spec invoice/credit note edit screen</h3>
+    <p>Design the invoice and credit note editing UI for corrections and adjustments post-generation.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🧾 Invoicing</span></div>
+    <div class="ticket-tags"><span class="badge badge-blue">Diego + Will</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-009</div>
+  <div class="ticket-body">
+    <h3>Clearer commission cost/revenue breakdown</h3>
+    <p>Add a transparent breakdown of commissionable costs and revenue on the booking system so finance can verify calculations at a glance.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">💰 Commission</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Finance + Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-010</div>
+  <div class="ticket-body">
+    <h3>Fix tracking code creation process</h3>
+    <p>Tracking code creation "needs sorting" — standardise the process, add validation, and surface errors visibly when codes are missing or wrong.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">⚙️ Operations</span></div>
+    <div class="ticket-tags"><span class="badge badge-orange">Will + Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-011</div>
+  <div class="ticket-body">
+    <h3>Surface non-tracking-code errors visibly</h3>
+    <p>Currently there's no visibility when tracking codes have errors. Add dashboard alerts and validation warnings to catch these early.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">⚙️ Operations</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev</span><span class="effort effort-s">S</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-012</div>
+  <div class="ticket-body">
+    <h3>Automated venue bill follow-up</h3>
+    <p>No follow-up exists with venues to ensure we receive their bills. Add automated reminders and flag missing bills after configurable days post-event.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🔍 Reconciliation</span><span class="tag">💳 Payments</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Finance + Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-013</div>
+  <div class="ticket-body">
+    <h3>Validation checks to prevent 150% markup bug</h3>
+    <p>Add guardrails and validation logic to catch impossible markup percentages and other financial data errors before they propagate.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🏆 Winning</span><span class="tag">💰 Commission</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== P2 — MEDIUM / SOON ========== -->
+<div class="tier tier-p2">
+<div class="tier-hdr"><h2>🔵 P2 — Medium / Soon</h2><span class="cnt">8 tickets</span></div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-014</div>
+  <div class="ticket-body">
+    <h3>Automate planned payment date entry</h3>
+    <p>Adding planned payment dates is currently fully manual. Auto-calculate from contract terms and event date, allow manual override.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">💳 Payments</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev</span><span class="effort effort-s">S</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-015</div>
+  <div class="ticket-body">
+    <h3>Bridge AE ↔ 360 gap in Gemini contract process</h3>
+    <p>There's a gap between Account Executive and 360 teams during the Gemini contract process. Align handoff points and data flow.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">📋 Contracts</span></div>
+    <div class="ticket-tags"><span class="badge badge-orange">Will + Finance</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-016</div>
+  <div class="ticket-body">
+    <h3>Establish 360 contract review process</h3>
+    <p>360 team currently lacks a structured process for contract review. Define workflow, responsibilities, and checkpoints.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">📋 Contracts</span></div>
+    <div class="ticket-tags"><span class="badge badge-orange">Finance + Will</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-017</div>
+  <div class="ticket-body">
+    <h3>Juro API integration for contract status</h3>
+    <p>Pull contract status automatically from Juro rather than requiring manual status updates. Keep booking system in sync.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">📋 Contracts</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-018</div>
+  <div class="ticket-body">
+    <h3>Auto-suggest Xero account codes</h3>
+    <p>Automatically suggest the correct Xero account codes based on booking type, reducing manual selection errors.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🧾 Invoicing</span><span class="tag">⚙️ Operations</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev</span><span class="effort effort-s">S</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-019</div>
+  <div class="ticket-body">
+    <h3>Dext inbox integration</h3>
+    <p>Evaluate integrating directly with the Dext inbox for bill ingestion vs requiring manual upload of venue invoices.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🧾 Invoicing</span><span class="tag">🔍 Reconciliation</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev + Finance</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-020</div>
+  <div class="ticket-body">
+    <h3>Auto-journal for rounding discrepancies</h3>
+    <p>Automatically create journal entries for small rounding discrepancies within a defined tolerance threshold, with configurable approval.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🔍 Reconciliation</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Finance + Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-021</div>
+  <div class="ticket-body">
+    <h3>Simplify Retool creation process</h3>
+    <p>Creating items in Retool is "a bit convoluted" — streamline the UI flow and reduce the number of steps required.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">⚙️ Operations</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== P3 — LOW / LATER ========== -->
+<div class="tier tier-p3">
+<div class="tier-hdr"><h2>🟣 P3 — Low / Later</h2><span class="cnt">4 tickets</span></div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-022</div>
+  <div class="ticket-body">
+    <h3>DAS auto-reconciliation</h3>
+    <p>DAS invoices could be auto-reconciled since we control both sides. Implement matching logic to skip manual rec for DAS bookings.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🔍 Reconciliation</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev</span><span class="effort effort-m">M</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-023</div>
+  <div class="ticket-body">
+    <h3>DAS payment notification automation</h3>
+    <p>Automatically notify venues when DAS payments are sent, with option for confirmation before sending.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">💳 Payments</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Dev + Finance</span><span class="effort effort-s">S</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-024</div>
+  <div class="ticket-body">
+    <h3>Xero bill creation mode (Draft vs Awaiting Approval)</h3>
+    <p>Decide and implement whether bills should be created as Draft or Awaiting Approval in Xero based on source and confidence level.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">🧾 Invoicing</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Finance + Dev</span><span class="effort effort-s">S</span></div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-id">FIN-025</div>
+  <div class="ticket-body">
+    <h3>Pending commissions scope definition</h3>
+    <p>Define whether the pending commissions view should include only post-event commissions or also upcoming confirmed bookings.</p>
+  </div>
+  <div class="ticket-meta">
+    <div class="ticket-tags"><span class="tag">💰 Commission</span></div>
+    <div class="ticket-tags"><span class="badge badge-yellow">Finance</span><span class="effort effort-s">S</span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== OPEN QUESTIONS ========== -->
+<div class="tier tier-q">
+<div class="tier-hdr"><h2>❓ Open Questions — Decisions Needed Before Dev</h2><span class="cnt">17 questions</span></div>
+
+<div class="q-ticket">
+  <h3>Q-001 · Commission % editable or locked?</h3>
+  <p>Should commission % be editable after contract, or locked? Who can override — finance only, or also sales managers?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-002 · Mixed DAS/DAC on same booking</h3>
+  <p>How do we handle bookings that contain both DAS and DAC line items? Split invoices or single invoice with mixed terms?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-003 · Commission guardrail ranges</h3>
+  <p>What exact commission % ranges trigger warnings vs hard blocks? Should these vary by venue tier?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-004 · Guardrails: soft warnings vs hard blocks</h3>
+  <p>For financial validation, which checks should be soft warnings (proceed with note) vs hard blocks (cannot continue)?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-005 · Commission rates source</h3>
+  <p>Should commission rates always come from the contract, or allow manual override? What's the escalation path for overrides?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-006 · DAS check: block or advisory?</h3>
+  <p>Should the DAS payment check be automatic (block payment until resolved) or advisory (warning only)?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-007 · Missing invoice flag timing</h3>
+  <p>How many days after event should we flag a "missing invoice"? Should this be configurable per venue?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-008 · Rounding discrepancy tolerance</h3>
+  <p>What tolerance threshold for rounding discrepancies before requiring manual review? What's the auto-journal limit?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-009 · Auto-journal approval</h3>
+  <p>Who approves auto-journals for discrepancies? Finance manager, or auto-approve within threshold?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-010 · Juro API — auto-pull or manual?</h3>
+  <p>Should Juro contract status pull automatically via API, or keep as manual sync with notification?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-011 · Dext integration scope</h3>
+  <p>Integrate with Dext inbox directly for bill ingestion, or require manual upload? What's the reliability/cost trade-off?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-012 · Xero bill status on creation</h3>
+  <p>Should bills be created as Draft or Awaiting Approval in Xero? May depend on source confidence.</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-013 · Xero account code auto-suggestion</h3>
+  <p>Auto-suggest Xero account codes based on booking type? What's the mapping logic and fallback?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-014 · DAS notification confirmation</h3>
+  <p>Should DAS payment notifications to venues be sent automatically, or require confirmation from finance first?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-015 · Pending commissions scope</h3>
+  <p>Should the pending commissions view include only post-event commissions, or also upcoming confirmed bookings?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-016 · DAS vs DAC invoice handling</h3>
+  <p>Should DAS invoices be handled differently from DAC (e.g. auto-reconciled) given we control the DAS payment flow?</p>
+</div>
+
+<div class="q-ticket">
+  <h3>Q-017 · 150% markup validation</h3>
+  <p>What specific validation checks should prevent the 150% markup bug? Max markup %, cross-field checks, or historical comparison?</p>
+</div>
+
+</div>
+
+<div style="text-align:center;padding:40px 0 20px;color:#94a3b8;font-size:12px">
+  Last updated: 23 Feb 2025 · Generated by Rook
+</div>
+
+</div>
+</body>
+</html>

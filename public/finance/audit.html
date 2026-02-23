@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Audit - Diego</title>
+<style>
+:root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --heading: #f0f6fc; --accent: #58a6ff; --red: #f85149; --green: #3fb950; --yellow: #d29922; --orange: #db6d28; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; padding: 20px; max-width: 1200px; margin: 0 auto; }
+h1 { color: var(--heading); font-size: 2em; margin-bottom: 8px; }
+h2 { color: var(--accent); font-size: 1.4em; margin: 32px 0 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { color: var(--heading); margin: 20px 0 10px; }
+.subtitle { color: #8b949e; margin-bottom: 24px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.card .label { color: #8b949e; font-size: 0.85em; margin-bottom: 4px; }
+.card .value { font-size: 1.8em; font-weight: 700; color: var(--heading); }
+.card .value.red { color: var(--red); }
+.card .value.green { color: var(--green); }
+.card .value.yellow { color: var(--yellow); }
+.card .sub { color: #8b949e; font-size: 0.8em; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; background: var(--card); border-radius: 8px; overflow: hidden; font-size: 0.9em; }
+th { background: #1c2128; color: var(--accent); text-align: left; padding: 10px 12px; font-weight: 600; position: sticky; top: 0; }
+td { padding: 8px 12px; border-top: 1px solid var(--border); }
+tr:hover td { background: #1c2128; }
+.alert { background: #f8514922; border: 1px solid var(--red); border-radius: 8px; padding: 16px; margin: 16px 0; }
+.alert-yellow { background: #d2992222; border-color: var(--yellow); }
+.alert-green { background: #3fb95022; border-color: var(--green); }
+.bar-row { display: flex; align-items: center; margin: 6px 0; gap: 12px; }
+.bar-fill { height: 28px; border-radius: 4px; min-width: 4px; flex-shrink: 0; }
+.bar-label { font-size: 0.85em; color: var(--text); white-space: nowrap; }
+.section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
+.rec { padding: 12px 16px; margin: 8px 0; border-radius: 8px; border-left: 4px solid; }
+.rec-red { border-color: var(--red); background: #f8514911; }
+.rec-yellow { border-color: var(--yellow); background: #d2992211; }
+.rec-green { border-color: var(--green); background: #3fb95011; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+.tag-red { background: #f8514933; color: var(--red); }
+.tag-green { background: #3fb95033; color: var(--green); }
+.tag-yellow { background: #d2992233; color: var(--yellow); }
+.overflow-x { overflow-x: auto; }
+@media (max-width: 600px) { .cards { grid-template-columns: 1fr 1fr; } .card .value { font-size: 1.4em; } }
+</style>
+</head>
+<body><nav style="background:#161b22;border-bottom:1px solid #30363d;padding:10px 20px;position:sticky;top:0;z-index:100;display:flex;gap:12px;flex-wrap:wrap;font-size:0.85em"><a href="/finance/audit.html" style="color:#58a6ff;text-decoration:none">📊 Auditoría</a><a href="/finance/tiers.html" style="color:#58a6ff;text-decoration:none">💰 6 Niveles</a><a href="/finance/advisor.html" style="color:#58a6ff;text-decoration:none">🏦 Asesor</a><a href="/finance/amazon-all.html" style="color:#58a6ff;text-decoration:none">📦 Amazon Full</a><a href="/finance/amazon-2025.html" style="color:#58a6ff;text-decoration:none">📦 Amazon 2025</a></nav>
+
+<h1>🏦 Financial Audit</h1>
+<p class="subtitle">Diego Cunado Garcia · Jan 2025 – Jan 2026 · 1,882 transactions</p>
+
+<div class="cards">
+  <div class="card"><div class="label">Monthly Income</div><div class="value green">£5,914</div><div class="sub">Salary £4,263 + Raquel £1,651</div></div>
+  <div class="card"><div class="label">Monthly Expenses</div><div class="value red">£6,292</div><div class="sub">Avg across 13 months</div></div>
+  <div class="card"><div class="label">Net Monthly</div><div class="value red">-£378</div><div class="sub">Spending more than earning</div></div>
+  <div class="card"><div class="label">Savings Rate</div><div class="value red">0%</div><div class="sub">Target: 10-20%</div></div>
+  <div class="card"><div class="label">Liquid Net Worth</div><div class="value yellow">£9,401</div><div class="sub">Savings £10,200 – CC debt £799</div></div>
+  <div class="card"><div class="label">CC Interest Paid</div><div class="value red">£399</div><div class="sub">10 months of waste</div></div>
+</div>
+
+<div class="alert">
+  <strong>🚨 The Brutal Truth:</strong> You're spending more than you earn. Your savings account is slowly bleeding because you keep pulling money back. The credit card costs you £40/month in pure interest. You have ~1.5 months of expenses as buffer. One bad month could put you in real trouble.
+</div>
+
+<h2>📊 Where the Money Goes (Monthly Average)</h2>
+
+<div class="section">
+<div class="bar-row"><div class="bar-fill" style="width:100%;background:#f85149"></div><div class="bar-label"><strong>£2,000</strong> Rent <span class="tag tag-yellow">33%</span></div></div>
+<div class="bar-row"><div class="bar-fill" style="width:29%;background:#db6d28"></div><div class="bar-label"><strong>£584</strong> Childcare</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:22%;background:#d29922"></div><div class="bar-label"><strong>£449</strong> Groceries</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:20%;background:#58a6ff"></div><div class="bar-label"><strong>£400</strong> Barclaycard DD</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:16%;background:#f0883e"></div><div class="bar-label"><strong>£329</strong> Amazon 📦</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:13%;background:#bc8cff"></div><div class="bar-label"><strong>£260</strong> Eating Out + Takeaway 🍕</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:11%;background:#d29922"></div><div class="bar-label"><strong>£219</strong> Energy ⚡</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:11%;background:#8b949e"></div><div class="bar-label"><strong>£221</strong> Council Tax</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:8%;background:#58a6ff"></div><div class="bar-label"><strong>£161</strong> TfL + Transport</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:6%;background:#3fb950"></div><div class="bar-label"><strong>£124</strong> Gym (2 memberships!) 💪</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:4.5%;background:#8b949e"></div><div class="bar-label"><strong>£92</strong> Finance / Klarna / DivideBuy</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:4%;background:#bc8cff"></div><div class="bar-label"><strong>£86</strong> Health / Medical</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:3.5%;background:#d29922"></div><div class="bar-label"><strong>£72</strong> Subscriptions</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:2.5%;background:#f85149"></div><div class="bar-label"><strong>£47</strong> Kids activities</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:2.5%;background:#7ee787"></div><div class="bar-label"><strong>£47</strong> Broadband (2 providers!)</div></div>
+<div class="bar-row"><div class="bar-fill" style="width:2%;background:#8b949e"></div><div class="bar-label"><strong>£39</strong> Petrol</div></div>
+</div>
+
+<h2>🍕 Eating Out & Takeaway Deep Dive</h2>
+<div class="section">
+<p><strong>Total: £3,379/year</strong> (£260/month)</p>
+<div class="overflow-x">
+<table>
+<tr><th>Type</th><th>Annual</th><th>Monthly</th><th>Transactions</th></tr>
+<tr><td>🍽️ Restaurants (sit-down)</td><td>£1,751</td><td>£135</td><td>115</td></tr>
+<tr><td>🛵 Takeaway (Dominos, Just Eat, Deliveroo, Uber Eats)</td><td>£1,628</td><td>£125</td><td>57</td></tr>
+</table>
+</div>
+<p style="margin-top:12px;color:#8b949e">Top offenders: Dominos (£25-33 each, ~2x/month), Just Eat (£15-45, ~3x/month), McDonald's (£10-33, ~2x/month). That's roughly <strong>one takeaway every 3 days</strong>.</p>
+</div>
+
+<h2>📦 Amazon Addiction</h2>
+<div class="section">
+<p><strong>Total: £4,274/year</strong> (£329/month · 231 orders)</p>
+<p>That's <strong>almost 1 order per day</strong>. Average order: £18.50. Peak month: December £1,179 (Christmas, fair enough).</p>
+<p style="margin-top:8px">For context: you spend almost as much on Amazon as on groceries (£5,832 vs £4,274).</p>
+<div class="alert-yellow alert" style="margin-top:12px">
+  <strong>💡 The 48-hour rule:</strong> Before any non-essential Amazon purchase, wait 48 hours. If you still want it, buy it. This alone could save £100-150/month.
+</div>
+</div>
+
+<h2>💪 Gym Situation</h2>
+<div class="section">
+<table>
+<tr><th>Gym</th><th>Monthly</th><th>Annual</th></tr>
+<tr><td>Legion CF (CrossFit)</td><td>£89.50</td><td>£1,074</td></tr>
+<tr><td>David Lloyd</td><td>£61-64</td><td>£732</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>£~153</strong></td><td><strong>£1,806</strong></td></tr>
+</table>
+<p style="margin-top:12px">Plus occasional David Lloyd café charges (£10+). Two gym memberships for one person is a lot. Pick one, save £700-900/year.</p>
+</div>
+
+<h2>📱 Subscription Audit</h2>
+<div class="section">
+<div class="overflow-x">
+<table>
+<tr><th>Service</th><th>Monthly</th><th>Annual</th><th>Verdict</th></tr>
+<tr><td>YouTube Premium</td><td>£19.99</td><td>£240</td><td><span class="tag tag-yellow">Review — family plan?</span></td></tr>
+<tr><td>Netflix</td><td>£12.99</td><td>£156</td><td><span class="tag tag-green">Keep</span></td></tr>
+<tr><td>Microsoft (Game Pass?)</td><td>£9.99</td><td>£120</td><td><span class="tag tag-green">Keep</span></td></tr>
+<tr><td>Blizzard (WoW)</td><td>£9.99</td><td>£120</td><td><span class="tag tag-yellow">Playing actively?</span></td></tr>
+<tr><td>Amazon Prime</td><td>£8.99</td><td>£108</td><td><span class="tag tag-green">Keep (but feeds the habit)</span></td></tr>
+<tr><td>Uber One</td><td>£4.99</td><td>£60</td><td><span class="tag tag-red">Cancel — feeds takeaway spend</span></td></tr>
+<tr><td>Soundiiz</td><td>£5.00</td><td>£60</td><td><span class="tag tag-red">Still need this?</span></td></tr>
+<tr><td>Samsung</td><td>£3.99</td><td>£48</td><td><span class="tag tag-yellow">What is this?</span></td></tr>
+<tr><td>Emma App</td><td>£4.99</td><td>£60</td><td><span class="tag tag-red">Ironic — paying for budgeting while not budgeting</span></td></tr>
+<tr><td>Google (storage?)</td><td>£1.59</td><td>£19</td><td><span class="tag tag-green">Cheap, keep</span></td></tr>
+<tr><td>British Gas/Hive</td><td>£3.99</td><td>£48</td><td><span class="tag tag-green">Smart heating</span></td></tr>
+<tr><td>O2 Postpay</td><td>£14.48</td><td>£174</td><td><span class="tag tag-yellow">Can you get cheaper?</span></td></tr>
+<tr><td>Giffgaff x2</td><td>£20.00</td><td>£240</td><td><span class="tag tag-yellow">Two SIMs — who's the 2nd?</span></td></tr>
+<tr><td>Cloudflare</td><td>£11.10</td><td>£133</td><td><span class="tag tag-green">Work tool</span></td></tr>
+<tr><td><strong>Subtotal Digital</strong></td><td><strong>~£132</strong></td><td><strong>~£1,586</strong></td><td></td></tr>
+</table>
+</div>
+
+<h3>Other Recurring</h3>
+<table>
+<tr><th>Service</th><th>Monthly</th><th>Annual</th><th>Notes</th></tr>
+<tr><td>Klarna — The Range</td><td>£34.59</td><td>£415</td><td>How many months left?</td></tr>
+<tr><td>Klarna — Giffgaff (phone?)</td><td>£18.31</td><td>£220</td><td>How many months left?</td></tr>
+<tr><td>DivideBuy/Zopa</td><td>£33.25</td><td>£399</td><td>What was this for?</td></tr>
+<tr><td>Barclays Partner Finance</td><td>£36-73</td><td>£475</td><td>What was this for?</td></tr>
+<tr><td>McQueens Dairies</td><td>£3.75</td><td>£45</td><td><span class="tag tag-yellow">Milk delivery needed?</span></td></tr>
+<tr><td>National Trust</td><td>£13.25</td><td>£159</td><td><span class="tag tag-green">Great for kids</span></td></tr>
+<tr><td>Thames Hospice</td><td>£10.83</td><td>£130</td><td>Charity</td></tr>
+<tr><td>Guide Dogs</td><td>£6.50</td><td>£78</td><td>Charity</td></tr>
+<tr><td>Dental Plan</td><td>£17.99</td><td>£216</td><td>Keep</td></tr>
+<tr><td>Blue Rewards Fee</td><td>£5.00</td><td>£60</td><td><span class="tag tag-yellow">Worth it? £479 earned in cashback total</span></td></tr>
+</table>
+</div>
+
+<h2>💳 Credit Card Analysis</h2>
+<div class="section">
+<p><strong>Current balance:</strong> £799 at <strong>23.5% APR</strong></p>
+<p><strong>Interest paid last 10 months:</strong> £399 (wasted)</p>
+<p>You have £10,200 in savings earning ~£4/month. The credit card costs £16-24/month. <strong>You're losing £12-20/month by not paying it off.</strong></p>
+
+<div class="rec rec-red">
+<strong>🚨 Action:</strong> Transfer £799 from savings TODAY. You'll still have £9,401 in savings AND you free up the £400/month DD payment. That's £400/month back in your pocket.
+</div>
+</div>
+
+<h2>💰 Savings Flow — The Illusion</h2>
+<div class="section">
+<p>You move money to savings regularly, but you keep pulling it back. Net result:</p>
+<table>
+<tr><th>Month</th><th>→ Savings</th><th>← From Savings</th><th>Net</th></tr>
+<tr><td>Feb 25</td><td>£4,800</td><td>£4,255</td><td style="color:#3fb950">+£545</td></tr>
+<tr><td>Mar 25</td><td>£4,300</td><td>£4,381</td><td style="color:#f85149">-£81</td></tr>
+<tr><td>Apr 25</td><td>£5,000</td><td>£5,504</td><td style="color:#f85149">-£504</td></tr>
+<tr><td>May 25</td><td>£5,000</td><td>£4,630</td><td style="color:#3fb950">+£370</td></tr>
+<tr><td>Jun 25</td><td>£6,000</td><td>£6,704</td><td style="color:#f85149">-£704</td></tr>
+<tr><td>Jul 25</td><td>£4,000</td><td>£4,149</td><td style="color:#f85149">-£149</td></tr>
+<tr><td>Aug 25</td><td>£4,000</td><td>£3,950</td><td style="color:#3fb950">+£50</td></tr>
+<tr><td>Sep 25</td><td>£5,400</td><td>£5,940</td><td style="color:#f85149">-£540</td></tr>
+<tr><td>Oct 25</td><td>£4,000</td><td>£4,518</td><td style="color:#f85149">-£518</td></tr>
+<tr><td>Nov 25</td><td>£6,400</td><td>£5,403</td><td style="color:#3fb950">+£997</td></tr>
+<tr><td>Dec 25</td><td>£5,500</td><td>£7,592</td><td style="color:#f85149">-£2,092</td></tr>
+<tr><td>Jan 26</td><td>£1,000</td><td>£2,415</td><td style="color:#f85149">-£1,415</td></tr>
+</table>
+<p style="margin-top:12px"><strong>Average net savings: -£337/month.</strong> Your savings are actually shrinking over time.</p>
+</div>
+
+<h2>✈️ Holidays & Travel</h2>
+<div class="section">
+<p><strong>Total: £3,186/year</strong></p>
+<p>BA flights (June): ~£2,188 (family trip to Madrid). Booking.com: £853 (3 stays). This is family life with family in Madrid — not really cuttable, but worth budgeting for.</p>
+</div>
+
+<h2>🎯 The Action Plan</h2>
+
+<div class="rec rec-red">
+<strong>1. Pay off Barclaycard NOW</strong> (saves £288/year + frees £400/month)<br>
+Transfer £799 from savings. Done in 5 minutes on the app.
+</div>
+
+<div class="rec rec-red">
+<strong>2. One gym only</strong> (saves £700-900/year)<br>
+David Lloyd or Legion CF. Not both. You're paying £1,800/year for gym access.
+</div>
+
+<div class="rec rec-yellow">
+<strong>3. Amazon 48-hour rule</strong> (saves £1,200-1,800/year)<br>
+231 orders in 12 months. Wait 48 hours before buying anything non-essential. Target: max £150/month.
+</div>
+
+<div class="rec rec-yellow">
+<strong>4. Takeaway budget: £80/month max</strong> (saves £960-1,200/year)<br>
+Currently ~£125/month. Cut to 2x/month instead of every 3 days.
+</div>
+
+<div class="rec rec-yellow">
+<strong>5. Cancel Uber One + Emma App + Soundiiz</strong> (saves £180/year)<br>
+Uber One makes takeaway too easy. Emma App is unused. Soundiiz — do you still need it?
+</div>
+
+<div class="rec rec-green">
+<strong>6. Energy comparison</strong> (could save £300-600/year)<br>
+£219/month average is high. Run a comparison on Uswitch.
+</div>
+
+<div class="rec rec-green">
+<strong>7. Set up actual budget</strong><br>
+After paying off the CC, redirect the £400 DD: £300 → savings (non-negotiable), £100 → fun money.
+</div>
+
+<div class="alert-green alert" style="margin-top: 24px">
+<strong>💰 If you do all 7:</strong> You could save £350-550/month. That's £4,200-6,600/year. In 2 years you'd have a proper 3-month emergency fund (£18,000+) instead of watching your savings slowly drain.
+</div>
+
+<h2>📉 The Reality Check</h2>
+<div class="section">
+<p>You earn well. £4,263 net salary + £1,651 from Raquel = £5,914/month. That's a solid household income.</p>
+<p>But you're spending £6,292/month. The maths doesn't work.</p>
+<p>The good news: <strong>you don't have a spending problem, you have a discipline problem.</strong> The money is there. The big costs (rent, childcare, council tax, energy) are what they are. But the discretionary stuff — Amazon, eating out, double gym membership — that's where £400-500/month is leaking.</p>
+<p style="margin-top:12px">You're not broke. You're not in crisis. But you're on a treadmill going nowhere. These changes would get you off it.</p>
+</div>
+
+<p style="color:#8b949e;margin-top:40px;text-align:center;font-size:0.85em">Generated by Rook · 23 Feb 2026 · Data: Barclays current account + Barclaycard statements</p>
+</body>
+</html>

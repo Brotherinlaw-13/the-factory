@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savings Plan - Diego</title>
+<style>
+:root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --heading: #f0f6fc; --accent: #58a6ff; --red: #f85149; --green: #3fb950; --yellow: #d29922; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: 0 auto; }
+h1 { color: var(--heading); font-size: 1.8em; margin-bottom: 4px; }
+h2 { color: var(--accent); font-size: 1.3em; margin: 28px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.sub { color: #8b949e; margin-bottom: 20px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 16px 0; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.card .label { color: #8b949e; font-size: 0.8em; }
+.card .val { font-size: 1.6em; font-weight: 700; color: var(--heading); }
+.card .val.r { color: var(--red); } .card .val.g { color: var(--green); } .card .val.y { color: var(--yellow); }
+.card .note { color: #8b949e; font-size: 0.75em; margin-top: 2px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; background: var(--card); border-radius: 8px; overflow: hidden; font-size: 0.85em; }
+th { background: #1c2128; color: var(--accent); text-align: left; padding: 8px 10px; font-weight: 600; }
+td { padding: 7px 10px; border-top: 1px solid var(--border); }
+.section { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 16px 0; }
+.tier { border-left: 4px solid; padding: 20px; margin: 16px 0; background: var(--card); border-radius: 0 10px 10px 0; }
+.tier h3 { margin-bottom: 8px; }
+.tier-1 { border-color: #3fb950; } .tier-2 { border-color: #58a6ff; } .tier-3 { border-color: #d29922; }
+.tier-4 { border-color: #db6d28; } .tier-5 { border-color: #f85149; } .tier-6 { border-color: #ff7b72; }
+.cut { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+.cut:last-child { border: none; }
+.cut .amt { color: var(--green); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+.tot { display: flex; justify-content: space-between; padding: 10px 0; font-weight: 700; font-size: 1.05em; border-top: 2px solid var(--border); margin-top: 8px; }
+.tot .amt { color: var(--green); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7em; font-weight: 600; }
+.tag-g { background: #3fb95033; color: var(--green); } .tag-r { background: #f8514933; color: var(--red); }
+.tag-y { background: #d2992233; color: var(--yellow); } .tag-b { background: #58a6ff33; color: var(--accent); }
+.alert { background: #3fb95015; border: 1px solid var(--green); border-radius: 8px; padding: 14px; margin: 14px 0; }
+.overflow-x { overflow-x: auto; }
+.status { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.active { background: var(--green); } .cancelled { background: #8b949e; }
+</style>
+</head>
+<body><nav style="background:#161b22;border-bottom:1px solid #30363d;padding:10px 20px;position:sticky;top:0;z-index:100;display:flex;gap:12px;flex-wrap:wrap;font-size:0.85em"><a href="/finance/audit.html" style="color:#58a6ff;text-decoration:none">📊 Auditoría</a><a href="/finance/tiers.html" style="color:#58a6ff;text-decoration:none">💰 6 Niveles</a><a href="/finance/advisor.html" style="color:#58a6ff;text-decoration:none">🏦 Asesor</a><a href="/finance/amazon-all.html" style="color:#58a6ff;text-decoration:none">📦 Amazon Full</a><a href="/finance/amazon-2025.html" style="color:#58a6ff;text-decoration:none">📦 Amazon 2025</a></nav>
+
+<h1>💰 Plan de Ahorro — 6 Niveles</h1>
+<p class="sub">Diego Cunado Garcia · Feb 2026 · Basado en 1,882 transacciones</p>
+
+<div class="cards">
+  <div class="card"><div class="label">Ingresos/mes</div><div class="val g">£5,914</div><div class="note">Salary + Raquel</div></div>
+  <div class="card"><div class="label">Gastos/mes</div><div class="val r">£6,292</div><div class="note">Media últimos 13 meses</div></div>
+  <div class="card"><div class="label">Barclaycard</div><div class="val y">£799</div><div class="note">Casi liquidada ✅</div></div>
+  <div class="card"><div class="label">Ahorros</div><div class="val">£10,200</div><div class="note">Cuenta de ahorros</div></div>
+</div>
+
+<div class="alert">
+  <strong>🎉 Buenas noticias:</strong> La Barclaycard ha bajado de £2,068 → £799. Gran progreso. Una vez liquidada, los £400/mes del DD se liberan. Esa es la base de TODO el plan.
+</div>
+
+<h2>📋 Cargos Recurrentes — Estado Actual</h2>
+<div class="section overflow-x">
+<table>
+<tr><th></th><th>Cargo</th><th>Mensual</th><th>Anual</th><th>Última fecha</th><th>Estado</th></tr>
+<tr><td><span class="status active"></span></td><td>Rent (Sajad Tariq)</td><td>£2,000</td><td>£24,000</td><td>Dec 25</td><td><span class="tag tag-b">Fijo</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Barclaycard DD</td><td>£400</td><td>£4,800</td><td>Jan 26</td><td><span class="tag tag-g">Se libera pronto</span></td></tr>
+<tr><td><span class="status active"></span></td><td>OVO Energy</td><td>£234</td><td>£2,808</td><td>Jan 26</td><td><span class="tag tag-y">Revisar</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Council Tax (RBWM)</td><td>£221</td><td>£2,652</td><td>Jan 26</td><td><span class="tag tag-b">Fijo</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Legion CF (Diego gym)</td><td>£89.50</td><td>£1,074</td><td>Jan 26</td><td><span class="tag tag-b">Diego</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Esure (car insurance)</td><td>£69.66</td><td>£836</td><td>Jan 26</td><td><span class="tag tag-b">Necesario</span></td></tr>
+<tr><td><span class="status active"></span></td><td>David Lloyd (Raquel gym)</td><td>£64</td><td>£768</td><td>Jan 26</td><td><span class="tag tag-b">Raquel</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Barclays Partner Finance</td><td>£44</td><td>£528</td><td>Jan 26</td><td><span class="tag tag-y">¿Qué es?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Klarna — The Range</td><td>£34.59</td><td>£415</td><td>Jan 26</td><td><span class="tag tag-y">¿Cuánto queda?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>DivideBuy/Zopa</td><td>£33.25</td><td>£399</td><td>Jan 26</td><td><span class="tag tag-y">¿Qué es?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Zurich (life insurance)</td><td>£33.11</td><td>£397</td><td>Jan 26</td><td><span class="tag tag-b">Necesario</span></td></tr>
+<tr><td><span class="status active"></span></td><td>TOOB broadband</td><td>£29</td><td>£348</td><td>Jan 26</td><td><span class="tag tag-b">OK</span></td></tr>
+<tr><td><span class="status active"></span></td><td>YouTube Premium</td><td>£19.99</td><td>£240</td><td>Jan 26</td><td><span class="tag tag-y">¿Family plan?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Giffgaff x2</td><td>£20</td><td>£240</td><td>Jan 26</td><td><span class="tag tag-b">2 SIMs</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Dental plan</td><td>£17.99</td><td>£216</td><td>Jan 26</td><td><span class="tag tag-b">Necesario</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Klarna — Giffgaff</td><td>£18.31</td><td>£220</td><td>Jan 26</td><td><span class="tag tag-y">¿Cuánto queda?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>O2 Postpay</td><td>£14.48</td><td>£174</td><td>Jan 26</td><td><span class="tag tag-y">Revisar</span></td></tr>
+<tr><td><span class="status active"></span></td><td>National Trust</td><td>£13.25</td><td>£159</td><td>Jan 26</td><td><span class="tag tag-g">Merece la pena</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Netflix</td><td>£12.99</td><td>£156</td><td>Jan 26</td><td><span class="tag tag-b">OK</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Cloudflare</td><td>£11.10</td><td>£133</td><td>Jan 26</td><td><span class="tag tag-b">Work tool</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Thames Hospice</td><td>£10.83</td><td>£130</td><td>Jan 26</td><td><span class="tag tag-b">Charity</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Blizzard (WoW)</td><td>£9.99</td><td>£120</td><td>Jan 26</td><td><span class="tag tag-y">¿Juegas?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Microsoft (Game Pass?)</td><td>£9.99</td><td>£120</td><td>Jan 26</td><td><span class="tag tag-b">OK</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Amazon Prime</td><td>£8.99</td><td>£108</td><td>Jan 26</td><td><span class="tag tag-y">Alimenta el hábito</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Guide Dogs</td><td>£6.50</td><td>£78</td><td>Jan 26</td><td><span class="tag tag-b">Charity</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Uber One</td><td>£4.99</td><td>£60</td><td>Jan 26</td><td><span class="tag tag-r">Facilita takeaway</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Emma App</td><td>£4.99</td><td>£60</td><td>Jan 26</td><td><span class="tag tag-r">Irónico</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Blue Rewards Fee</td><td>£5</td><td>£60</td><td>Jan 26</td><td><span class="tag tag-y">¿Compensa?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Hive (smart heating)</td><td>£3.99</td><td>£48</td><td>Jan 26</td><td><span class="tag tag-b">OK</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Samsung</td><td>£3.99</td><td>£48</td><td>Jan 26</td><td><span class="tag tag-y">¿Qué es?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>McQueens Dairies</td><td>£3.75</td><td>£45</td><td>Jan 26</td><td><span class="tag tag-y">¿Necesario?</span></td></tr>
+<tr><td><span class="status active"></span></td><td>DVLA</td><td>£1.75</td><td>£21</td><td>Jan 26</td><td><span class="tag tag-b">Road tax</span></td></tr>
+<tr><td><span class="status active"></span></td><td>Google (storage)</td><td>£1.59</td><td>£19</td><td>Jan 26</td><td><span class="tag tag-b">Barato</span></td></tr>
+<tr><td colspan="6" style="background:#1c2128;color:#8b949e;font-weight:600">Cancelados recientemente</td></tr>
+<tr><td><span class="status cancelled"></span></td><td>Virgin Media</td><td>—</td><td>—</td><td>Oct 25</td><td><span class="tag tag-g">Cancelado ✓</span></td></tr>
+<tr><td><span class="status cancelled"></span></td><td>Nat Geo</td><td>—</td><td>—</td><td>Nov 25</td><td><span class="tag tag-g">Cancelado ✓</span></td></tr>
+</table>
+</div>
+
+<h2>🎯 Los 6 Niveles de Ahorro</h2>
+
+<div class="tier tier-1">
+<h3>🟢 Nivel 1: BAJO — Easy wins, cero sacrificio</h3>
+<p style="color:#8b949e;margin-bottom:12px">Cosas que puedes hacer hoy sin notar ningún cambio en tu día a día.</p>
+<div class="cut"><span>Liquidar Barclaycard (£799 de ahorros) → libera DD de £400/mes</span><span class="amt">+£400</span></div>
+<div class="cut"><span>Cancelar Emma App (app de presupuesto que no usas)</span><span class="amt">+£5</span></div>
+<div class="cut"><span>Cancelar Uber One (facilita pedir takeaway)</span><span class="amt">+£5</span></div>
+<div class="cut"><span>Cancelar Soundiiz (si ya no lo usas)</span><span class="amt">+£5</span></div>
+<div class="cut"><span>Reclamar Blue Rewards cashback (£479 acumulado)</span><span class="amt">+£479 one-off</span></div>
+<div class="cut"><span>Comparar energía en Uswitch (OVO a £234/mes es alto)</span><span class="amt">+£30-50</span></div>
+<div class="tot"><span>Total mensual</span><span class="amt">£445-465/mes</span></div>
+<p style="margin-top:8px"><strong>Anual: £5,340-5,580</strong> · Savings rate: <strong>7.5%</strong> · Vida: exactamente igual que ahora</p>
+</div>
+
+<div class="tier tier-2">
+<h3>🔵 Nivel 2: MEDIO-BAJO — Pequeños ajustes</h3>
+<p style="color:#8b949e;margin-bottom:12px">Todo lo del Nivel 1 + reducir sin eliminar.</p>
+<div class="cut"><span>Takeaway: de ~£125/mes a £75/mes (2x/semana → 1x/semana)</span><span class="amt">+£50</span></div>
+<div class="cut"><span>Amazon: regla 48h, de £329/mes a £200/mes</span><span class="amt">+£129</span></div>
+<div class="cut"><span>Café fuera: de ~£30/mes a £15/mes</span><span class="amt">+£15</span></div>
+<div class="tot"><span>Total mensual (acumulado)</span><span class="amt">£639-659/mes</span></div>
+<p style="margin-top:8px"><strong>Anual: £7,668-7,908</strong> · Savings rate: <strong>11%</strong> · Vida: un poco más de planificación, sigue cómoda</p>
+</div>
+
+<div class="tier tier-3">
+<h3>🟡 Nivel 3: MEDIO — Cambios notables</h3>
+<p style="color:#8b949e;margin-bottom:12px">Todo lo anterior + disciplina real en el día a día.</p>
+<div class="cut"><span>Amazon: de £200 a £100/mes (solo necesidades reales)</span><span class="amt">+£100</span></div>
+<div class="cut"><span>Takeaway: de £75 a £40/mes (2 pedidos máximo)</span><span class="amt">+£35</span></div>
+<div class="cut"><span>Comer fuera: de £135/mes a £60/mes (1x/semana familia)</span><span class="amt">+£75</span></div>
+<div class="cut"><span>Supermercado: meal planning, Aldi principal, de £449 a £350/mes</span><span class="amt">+£99</span></div>
+<div class="cut"><span>Llevar tupper al trabajo (2 días/semana en oficina)</span><span class="amt">+£40</span></div>
+<div class="tot"><span>Total mensual (acumulado)</span><span class="amt">£988-1,008/mes</span></div>
+<p style="margin-top:8px"><strong>Anual: £11,856-12,096</strong> · Savings rate: <strong>17%</strong> · Vida: requiere planificación semanal, menos caprichos</p>
+</div>
+
+<div class="tier tier-4">
+<h3>🟠 Nivel 4: MEDIO-ALTO — Sacrificio real</h3>
+<p style="color:#8b949e;margin-bottom:12px">Todo lo anterior + recortes que se notan en el día a día.</p>
+<div class="cut"><span>Cero comer fuera (solo ocasiones especiales)</span><span class="amt">+£60</span></div>
+<div class="cut"><span>Takeaway: £20/mes máximo (1 pedido/mes)</span><span class="amt">+£20</span></div>
+<div class="cut"><span>Cancelar Blizzard (WoW)</span><span class="amt">+£10</span></div>
+<div class="cut"><span>Cancelar Netflix (usar alternativas gratuitas)</span><span class="amt">+£13</span></div>
+<div class="cut"><span>Amazon: £50/mes máximo (estrictamente necesario)</span><span class="amt">+£50</span></div>
+<div class="cut"><span>Ropa: presupuesto £30/mes máximo</span><span class="amt">+£10</span></div>
+<div class="tot"><span>Total mensual (acumulado)</span><span class="amt">£1,151-1,171/mes</span></div>
+<p style="margin-top:8px"><strong>Anual: £13,812-14,052</strong> · Savings rate: <strong>20%</strong> · Vida: social limitada, entretenimiento en casa, requiere fuerza de voluntad</p>
+</div>
+
+<div class="tier tier-5">
+<h3>🔴 Nivel 5: ALTO — Cinturón bien apretado</h3>
+<p style="color:#8b949e;margin-bottom:12px">Todo lo anterior + eliminar casi todo lo discrecional.</p>
+<div class="cut"><span>Cancelar 1 gym (el más caro, David Lloyd £64)</span><span class="amt">+£64</span></div>
+<div class="cut"><span>Cero takeaway</span><span class="amt">+£20</span></div>
+<div class="cut"><span>Cero Amazon (solo emergencias)</span><span class="amt">+£50</span></div>
+<div class="cut"><span>Supermercado ultra-optimizado: £250/mes</span><span class="amt">+£100</span></div>
+<div class="cut"><span>Cancelar YouTube Premium (usar con anuncios)</span><span class="amt">+£20</span></div>
+<div class="cut"><span>Cancelar Game Pass</span><span class="amt">+£10</span></div>
+<div class="cut"><span>Reducir gasolina al mínimo</span><span class="amt">+£20</span></div>
+<div class="tot"><span>Total mensual (acumulado)</span><span class="amt">£1,435-1,455/mes</span></div>
+<p style="margin-top:8px"><strong>Anual: £17,220-17,460</strong> · Savings rate: <strong>25%</strong> · Vida: austera, riesgo de aislamiento social, ejercicio outdoor</p>
+</div>
+
+<div class="tier tier-6">
+<h3>⚡ Nivel 6: EXTREMO — Modo emergencia</h3>
+<p style="color:#8b949e;margin-bottom:12px">Solo si hay una emergencia financiera real. No sostenible a largo plazo.</p>
+<div class="cut"><span>Cancelar ambos gyms (ejercicio gratis: correr, calistenia)</span><span class="amt">+£90</span></div>
+<div class="cut"><span>Cancelar TODAS las suscripciones excepto 1 SIM</span><span class="amt">+£80</span></div>
+<div class="cut"><span>Supermercado supervivencia: £180/mes</span><span class="amt">+£70</span></div>
+<div class="cut"><span>Cero gasolina (bici/transporte público solo)</span><span class="amt">+£39</span></div>
+<div class="cut"><span>Calefacción mínima</span><span class="amt">+£40</span></div>
+<div class="cut"><span>Buscar ingresos extra (side work)</span><span class="amt">+£200-500</span></div>
+<div class="tot"><span>Total mensual (acumulado)</span><span class="amt">£1,954-2,274/mes</span></div>
+<p style="margin-top:8px"><strong>Anual: £23,448-27,288</strong> · Savings rate: <strong>33-38%</strong> · Vida: supervivencia. Solo para emergencias.</p>
+</div>
+
+<h2>📈 Proyecciones por Nivel</h2>
+<div class="section">
+<p style="margin-bottom:12px"><strong>Punto de partida:</strong> £10,200 ahorros, £799 deuda CC, £140 cuenta corriente</p>
+<div class="overflow-x">
+<table>
+<tr><th>Nivel</th><th>Ahorro/mes</th><th>6 meses</th><th>12 meses</th><th>24 meses</th><th>Savings Rate</th></tr>
+<tr><td>🟢 1 — Bajo</td><td>£450</td><td>£12,501</td><td>£15,201</td><td>£20,601</td><td>7.5%</td></tr>
+<tr><td>🔵 2 — Medio-bajo</td><td>£650</td><td>£13,301</td><td>£17,201</td><td>£24,801</td><td>11%</td></tr>
+<tr><td>🟡 3 — Medio</td><td>£1,000</td><td>£15,401</td><td>£21,401</td><td>£33,401</td><td>17%</td></tr>
+<tr><td>🟠 4 — Medio-alto</td><td>£1,160</td><td>£16,361</td><td>£23,321</td><td>£37,241</td><td>20%</td></tr>
+<tr><td style="color:#f85149">🔴 5 — Alto</td><td>£1,445</td><td>£18,071</td><td>£26,741</td><td>£44,081</td><td>25%</td></tr>
+<tr><td style="color:#ff7b72">⚡ 6 — Extremo</td><td>£2,000+</td><td>£21,401</td><td>£33,401</td><td>£57,401</td><td>34%+</td></tr>
+</table>
+</div>
+<p style="margin-top:12px;color:#8b949e">Nota: todos los niveles asumen que la Barclaycard se liquida el primer mes. Las proyecciones incluyen el efecto compuesto de no pagar más intereses.</p>
+</div>
+
+<h2>🎯 Mi Recomendación</h2>
+<div class="section">
+<p><strong>Fase 1 (esta semana):</strong> Nivel 1 completo. Paga la Barclaycard, cancela las 3 subs inútiles, reclama los £479 de cashback.</p>
+<p style="margin-top:8px"><strong>Fase 2 (mes 2-3):</strong> Sube a Nivel 2. Amazon 48h rule, takeaway 1x/semana.</p>
+<p style="margin-top:8px"><strong>Objetivo realista:</strong> Nivel 2-3 estable. Eso son <strong>£650-1,000/mes de ahorro</strong> sin destruir la calidad de vida. En 12 meses tendrías £17,000-21,000 en ahorros.</p>
+<p style="margin-top:12px;color:#8b949e">Los niveles 4-6 están ahí por si algún día los necesitáis, pero no los recomiendo como modo de vida. El equilibrio está en el 2-3.</p>
+</div>
+
+<h2>❓ Preguntas para Diego</h2>
+<div class="section">
+<p>Para afinar más, necesito saber:</p>
+<ul style="margin-top:8px;padding-left:20px">
+<li><strong>Barclays Partner Finance (£44/mes)</strong> — ¿qué es? ¿cuánto queda?</li>
+<li><strong>DivideBuy/Zopa (£33.25/mes)</strong> — ¿qué compraste? ¿cuánto queda?</li>
+<li><strong>Klarna The Range (£34.59/mes)</strong> — ¿cuántas cuotas quedan?</li>
+<li><strong>Klarna Giffgaff (£18.31/mes)</strong> — ¿es un teléfono a plazos?</li>
+<li><strong>Samsung (£3.99/mes)</strong> — ¿qué servicio es?</li>
+<li><strong>O2 + 2x Giffgaff</strong> — ¿3 líneas de móvil? ¿para quién?</li>
+<li><strong>Blue Rewards (£479 cashback)</strong> — ¿por qué no lo has reclamado?</li>
+</ul>
+</div>
+
+<p style="color:#8b949e;margin-top:40px;text-align:center;font-size:0.8em">Rook · 23 Feb 2026</p></body></html>

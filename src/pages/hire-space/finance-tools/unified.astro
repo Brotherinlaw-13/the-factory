@@ -39,7 +39,9 @@
     #tab-bills:checked ~ .tab-labels label[for="tab-bills"],
     #tab-paymentrun:checked ~ .tab-labels label[for="tab-paymentrun"],
     #tab-reconciliation:checked ~ .tab-labels label[for="tab-reconciliation"],
-    #tab-creditnotes:checked ~ .tab-labels label[for="tab-creditnotes"] {
+    #tab-creditnotes:checked ~ .tab-labels label[for="tab-creditnotes"],
+    #tab-detective:checked ~ .tab-labels label[for="tab-detective"],
+    #tab-contract:checked ~ .tab-labels label[for="tab-contract"] {
       border-bottom-color: #2563eb; color: #2563eb; font-weight: 700;
     }
 
@@ -49,7 +51,9 @@
     #tab-bills:checked ~ .content-bills,
     #tab-paymentrun:checked ~ .content-paymentrun,
     #tab-reconciliation:checked ~ .content-reconciliation,
-    #tab-creditnotes:checked ~ .content-creditnotes {
+    #tab-creditnotes:checked ~ .content-creditnotes,
+    #tab-detective:checked ~ .content-detective,
+    #tab-contract:checked ~ .content-contract {
       display: block;
     }
 
@@ -157,6 +161,8 @@
     <input type="radio" name="tabs" id="tab-paymentrun" class="tab-input" />
     <input type="radio" name="tabs" id="tab-reconciliation" class="tab-input" />
     <input type="radio" name="tabs" id="tab-creditnotes" class="tab-input" />
+    <input type="radio" name="tabs" id="tab-detective" class="tab-input" />
+    <input type="radio" name="tabs" id="tab-contract" class="tab-input" />
 
     <div class="tab-labels">
       <label for="tab-overview">📋 Overview <span class="scope-badge scope-booking">Booking</span></label>
@@ -166,6 +172,8 @@
       <label for="tab-paymentrun">🚀 Payment Run <span class="scope-badge scope-cross">All Bookings</span></label>
       <label for="tab-reconciliation">✅ Reconciliation <span class="scope-badge scope-booking">Booking</span></label>
       <label for="tab-creditnotes">📝 Credit Notes <span class="scope-badge scope-cross">All Bookings</span></label>
+      <label for="tab-detective">🔍 Invoice Detective <span class="scope-badge scope-cross">All Bookings</span></label>
+      <label for="tab-contract">📑 Contract & Winning <span class="scope-badge scope-booking">Booking</span></label>
     </div>
 
     <!-- ==================== TAB 1: OVERVIEW ==================== -->
@@ -959,6 +967,486 @@
         <button class="btn btn-outline">Preview Changes</button>
         <button class="btn btn-primary">Save & Update Invoice in Xero</button>
         <button class="btn btn-danger" style="margin-left: auto;">Discard Changes</button>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 8: INVOICE DETECTIVE ==================== -->
+    <div class="tab-content content-detective">
+
+      <div class="info-banner">
+        ℹ️ <strong>Cross-booking view</strong> — The Invoice Detective scans all invoices for discrepancies, mismatches, and anomalies. No booking selection required.
+      </div>
+
+      <p class="desc" style="color: #64748b; font-size: 14px; margin-bottom: 24px;">Investigate invoice discrepancies automatically. Flagged issues are auto-categorised with smart suggestions for resolution. Maintains a full audit trail of every investigation.</p>
+
+      <!-- Stats -->
+      <div class="stat-row">
+        <div class="stat"><div class="num" style="color: #dc2626;">12</div><div class="lbl">Open Flags</div></div>
+        <div class="stat"><div class="num" style="color: #f59e0b;">5</div><div class="lbl">Under Investigation</div></div>
+        <div class="stat"><div class="num" style="color: #166534;">34</div><div class="lbl">Resolved This Month</div></div>
+        <div class="stat"><div class="num" style="color: #2563eb;">£8,247</div><div class="lbl">Value at Risk</div></div>
+      </div>
+
+      <!-- Resolution Workflow -->
+      <div class="steps">
+        <div class="step done">① Flagged</div>
+        <div class="step active">② Investigate</div>
+        <div class="step">③ Classify</div>
+        <div class="step">④ Resolve</div>
+        <div class="step">⑤ Audit Trail</div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="card">
+        <h3>Filter Flags</h3>
+        <div class="filter-bar">
+          <select>
+            <option>All Categories</option>
+            <option>Amount Mismatch</option>
+            <option>Duplicate</option>
+            <option>Missing Reference</option>
+            <option>Timing Anomaly</option>
+            <option>Commission Discrepancy</option>
+          </select>
+          <select>
+            <option>All Severities</option>
+            <option>🔴 High</option>
+            <option>🟡 Medium</option>
+            <option>🟢 Low</option>
+          </select>
+          <select>
+            <option>Open</option>
+            <option>Under Investigation</option>
+            <option>Resolved</option>
+            <option>All Statuses</option>
+          </select>
+          <input type="text" placeholder="Search by invoice, booking, or venue..." style="flex: 1; min-width: 180px;" />
+          <button class="btn btn-outline">🔍 Filter</button>
+        </div>
+      </div>
+
+      <!-- Flagged Invoices Dashboard -->
+      <div class="card">
+        <h3>Flagged Invoices</h3>
+        <table>
+          <thead>
+            <tr><th>Flag</th><th>Invoice / Booking</th><th>Venue</th><th>Category</th><th>Severity</th><th>Expected</th><th>Actual</th><th>Δ</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr style="background: #fef2f2;">
+              <td>🔴</td>
+              <td><strong>INV-2026-1891</strong><br/><span style="font-size: 11px; color: #64748b;">HS-2026-04835</span></td>
+              <td>Royal Lancaster</td>
+              <td><span class="badge badge-red">Amount Mismatch</span></td>
+              <td><span class="badge badge-red">High</span></td>
+              <td>£19,200.00</td>
+              <td>£23,040.00</td>
+              <td style="color: #dc2626; font-weight: 700;">+£3,840</td>
+              <td><span class="badge badge-yellow">Investigating</span></td>
+              <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Drill Down</button></td>
+            </tr>
+            <tr style="background: #fef2f2;">
+              <td>🔴</td>
+              <td><strong>INV-2026-1903</strong><br/><span style="font-size: 11px; color: #64748b;">HS-2026-04842</span></td>
+              <td>Nobu Hotel Portman Sq</td>
+              <td><span class="badge badge-red">Duplicate</span></td>
+              <td><span class="badge badge-red">High</span></td>
+              <td>1 invoice</td>
+              <td>2 invoices</td>
+              <td style="color: #dc2626; font-weight: 700;">×2</td>
+              <td><span class="badge badge-yellow">Open</span></td>
+              <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Drill Down</button></td>
+            </tr>
+            <tr style="background: #fefce8;">
+              <td>🟡</td>
+              <td><strong>VB-4810-001</strong><br/><span style="font-size: 11px; color: #64748b;">HS-2026-04810</span></td>
+              <td>Tobacco Dock</td>
+              <td><span class="badge badge-yellow">Commission Discrepancy</span></td>
+              <td><span class="badge badge-yellow">Medium</span></td>
+              <td>14% (£6,384)</td>
+              <td>12% (£5,472)</td>
+              <td style="color: #854d0e; font-weight: 700;">-£912</td>
+              <td><span class="badge badge-yellow">Investigating</span></td>
+              <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Drill Down</button></td>
+            </tr>
+            <tr style="background: #fefce8;">
+              <td>🟡</td>
+              <td><strong>INV-2026-1878</strong><br/><span style="font-size: 11px; color: #64748b;">HS-2026-04799</span></td>
+              <td>One Marylebone</td>
+              <td><span class="badge badge-yellow">Missing Reference</span></td>
+              <td><span class="badge badge-yellow">Medium</span></td>
+              <td>PO required</td>
+              <td>No PO</td>
+              <td>—</td>
+              <td><span class="badge badge-yellow">Open</span></td>
+              <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Drill Down</button></td>
+            </tr>
+            <tr>
+              <td>🟢</td>
+              <td><strong>VB-4799-002</strong><br/><span style="font-size: 11px; color: #64748b;">HS-2026-04799</span></td>
+              <td>One Marylebone</td>
+              <td><span class="badge badge-gray">Timing Anomaly</span></td>
+              <td><span class="badge badge-gray">Low</span></td>
+              <td>Within 7 days</td>
+              <td>23 days late</td>
+              <td>—</td>
+              <td><span class="badge badge-yellow">Open</span></td>
+              <td><button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Drill Down</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Drill-Down: Side-by-Side Comparison -->
+      <div class="card">
+        <h3>🔍 Drill Down — INV-2026-1891 (Royal Lancaster)</h3>
+        <div class="grid2">
+          <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px;">
+            <h4 style="font-size: 13px; color: #2563eb; margin-bottom: 12px;">📋 Expected (from Contract)</h4>
+            <div class="kv"><span class="label">Room hire</span><span>£8,000.00</span></div>
+            <div class="kv"><span class="label">Catering (150 pax)</span><span>£9,000.00</span></div>
+            <div class="kv"><span class="label">AV package</span><span>£2,200.00</span></div>
+            <div class="kv" style="font-weight: 700; border-bottom: none;"><span>Total (ex VAT)</span><span>£19,200.00</span></div>
+            <div class="kv"><span class="label">Commission (12%)</span><span>£2,304.00</span></div>
+          </div>
+          <div style="background: #fff; border: 1px solid #fca5a5; border-radius: 6px; padding: 16px;">
+            <h4 style="font-size: 13px; color: #dc2626; margin-bottom: 12px;">🧾 Actual (from Invoice)</h4>
+            <div class="kv"><span class="label">Room hire</span><span>£8,000.00</span></div>
+            <div class="kv"><span class="label">Catering (150 pax)</span><span>£9,000.00</span></div>
+            <div class="kv"><span class="label">AV package</span><span>£2,200.00</span></div>
+            <div class="kv"><span class="label" style="color: #dc2626; font-weight: 600;">VAT (20%)</span><span style="color: #dc2626; font-weight: 600;">£3,840.00</span></div>
+            <div class="kv" style="font-weight: 700; border-bottom: none;"><span>Total (inc VAT)</span><span style="color: #dc2626;">£23,040.00</span></div>
+          </div>
+        </div>
+
+        <!-- Smart Suggestion -->
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px; margin-top: 16px;">
+          <h4 style="font-size: 13px; color: #1e40af; margin-bottom: 8px;">💡 Smart Suggestion</h4>
+          <p style="font-size: 13px; color: #334155;"><strong>This looks like a VAT-inclusive vs ex-VAT mismatch.</strong> The invoice total of £23,040.00 equals the contract total of £19,200.00 + 20% VAT. The contract figure is ex-VAT; the invoice includes VAT. Likely a data entry error — contract amount was compared against VAT-inclusive figure.</p>
+          <p style="font-size: 12px; color: #64748b; margin-top: 8px;">Confidence: <strong>92%</strong> · Similar cases resolved this way: <strong>14 of 16</strong></p>
+        </div>
+
+        <!-- Classification -->
+        <div style="margin-top: 16px;">
+          <h4 style="font-size: 13px; margin-bottom: 8px;">Classify This Issue</h4>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-outline" style="border-color: #16a34a; color: #16a34a;">✅ Data Entry Error</button>
+            <button class="btn btn-outline" style="border-color: #dc2626; color: #dc2626;">⚠️ Genuine Issue</button>
+            <button class="btn btn-outline" style="border-color: #f59e0b; color: #f59e0b;">⏱ Timing Difference</button>
+            <button class="btn btn-outline">📋 Other (add note)</button>
+          </div>
+        </div>
+
+        <!-- Resolution Actions -->
+        <div style="margin-top: 16px; display: flex; gap: 8px; align-items: center;">
+          <button class="btn btn-primary">Accept Suggestion & Resolve</button>
+          <button class="btn btn-outline">Escalate to Finance</button>
+          <textarea placeholder="Add investigation notes..." style="flex: 1; min-height: 36px; resize: vertical;"></textarea>
+        </div>
+      </div>
+
+      <!-- Smart Suggestions Summary -->
+      <div class="card">
+        <h3>💡 Common Patterns Detected</h3>
+        <table>
+          <thead><tr><th>Pattern</th><th>Occurrences</th><th>Typical Cause</th><th>Auto-Resolvable?</th></tr></thead>
+          <tbody>
+            <tr><td>VAT-inclusive vs ex-VAT mismatch</td><td>6</td><td>Data entry — comparing inc/ex VAT figures</td><td><span class="badge badge-green">Yes</span></td></tr>
+            <tr><td>Duplicate invoice from same venue, same month</td><td>3</td><td>Venue re-sent invoice; Dext created duplicate</td><td><span class="badge badge-green">Yes</span></td></tr>
+            <tr><td>Commission rate mismatch (contract vs calculated)</td><td>2</td><td>Contract amended after initial setup</td><td><span class="badge badge-yellow">Needs Review</span></td></tr>
+            <tr><td>Missing PO reference on client invoice</td><td>4</td><td>Client requires PO but CS didn't add it</td><td><span class="badge badge-yellow">Needs CS Action</span></td></tr>
+            <tr><td>Invoice received &gt;21 days after event</td><td>3</td><td>Venue delayed billing</td><td><span class="badge badge-gray">Advisory Only</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Audit Trail -->
+      <div class="card">
+        <h3>📋 Recent Audit Trail</h3>
+        <table>
+          <thead><tr><th>Date</th><th>Flag</th><th>Action</th><th>By</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>12 Mar 14:23</td><td>INV-2026-1891</td><td><span class="badge badge-yellow">Investigating</span></td><td>Sarah M.</td><td>Opened investigation — amount mismatch flagged</td></tr>
+            <tr><td>12 Mar 14:31</td><td>INV-2026-1891</td><td><span class="badge badge-blue">Classified</span></td><td>Sarah M.</td><td>Classified as data entry error (VAT mismatch)</td></tr>
+            <tr><td>11 Mar 09:15</td><td>INV-2026-1903</td><td><span class="badge badge-yellow">Flagged</span></td><td>System</td><td>Auto-flagged: duplicate invoice detected for HS-2026-04842</td></tr>
+            <tr><td>10 Mar 16:42</td><td>VB-4788-001</td><td><span class="badge badge-green">Resolved</span></td><td>James W.</td><td>Timing anomaly — venue confirmed late billing, no action needed</td></tr>
+            <tr><td>10 Mar 11:00</td><td>COMM-HS-04761</td><td><span class="badge badge-green">Resolved</span></td><td>Finance</td><td>Commission discrepancy resolved — contract updated to reflect agreed 14%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="todo">[TODO] Should the Invoice Detective run automatically on a schedule (e.g. daily scan), or only when triggered manually? What data sources should it cross-reference — Xero, Retool bookings, Juro contracts?</div>
+      <div class="todo">[TODO] Should resolved flags auto-close related tasks in the To-Do system? Integration with Slack/email notifications for high-severity flags?</div>
+    </div>
+
+    <!-- ==================== TAB 9: CONTRACT & WINNING ==================== -->
+    <div class="tab-content content-contract">
+
+      <p class="desc" style="color: #64748b; font-size: 14px; margin-bottom: 24px;">"Winning" happens at <strong>CONTRACT level</strong>, not booking level. This screen manages the full contract lifecycle, document management, and the Win Contract flow with pre-flight checks.</p>
+
+      <div class="todo">[TODO] The PDF spec emphasises contract-level winning. Currently the system wins at booking level. This is a fundamental architectural shift — needs alignment with Retool and Juro data models.</div>
+
+      <!-- Contract Lifecycle -->
+      <div class="card">
+        <h3>Contract Lifecycle</h3>
+        <div class="steps">
+          <div class="step done">Draft</div>
+          <div class="step done">Under Review</div>
+          <div class="step done">Countersigned</div>
+          <div class="step active">Won</div>
+          <div class="step">Active</div>
+          <div class="step">Complete</div>
+        </div>
+        <div class="grid2">
+          <div>
+            <div class="kv"><span class="label">Contract ID</span><span><strong>CTR-2026-00312</strong></span></div>
+            <div class="kv"><span class="label">Client</span><span>Moody's Corp</span></div>
+            <div class="kv"><span class="label">Venue</span><span>The Grand Ballroom, London</span></div>
+            <div class="kv"><span class="label">Created</span><span>18 Jan 2026</span></div>
+            <div class="kv"><span class="label">Last Updated</span><span>10 Feb 2026</span></div>
+            <div class="kv"><span class="label">CS Owner</span><span>Sarah Mitchell</span></div>
+          </div>
+          <div>
+            <div class="kv"><span class="label">Linked Bookings</span><span>HS-2026-04821</span></div>
+            <div class="kv"><span class="label">Total Value (ex VAT)</span><span><strong>£31,940.00</strong></span></div>
+            <div class="kv"><span class="label">Commission Model</span><span>DAS — blended ~12.6%</span></div>
+            <div class="kv"><span class="label">Juro Status</span><span><span class="badge badge-green">Countersigned ✓</span></span></div>
+            <div class="kv"><span class="label">Retool Record</span><span><a href="#" style="color: #2563eb; text-decoration: none;">Open in Retool ↗</a></span></div>
+            <div class="kv"><span class="label">Juro Contract</span><span><a href="#" style="color: #2563eb; text-decoration: none;">Open in Juro ↗</a></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contract Versions -->
+      <div class="card">
+        <h3>Contract Versions</h3>
+        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Track changes between contract drafts. Select two versions to compare.</p>
+        <table>
+          <thead><tr><th>Version</th><th>Date</th><th>Status</th><th>Changed By</th><th>Key Changes</th><th></th></tr></thead>
+          <tbody>
+            <tr style="background: #f0fdf4;">
+              <td><strong>v3 — Final</strong></td>
+              <td>10 Feb 2026</td>
+              <td><span class="badge badge-green">Countersigned</span></td>
+              <td>Client (Moody's)</td>
+              <td>Countersigned by client. No changes from v2.</td>
+              <td><input type="checkbox" checked /> <span style="font-size: 11px;">Compare</span></td>
+            </tr>
+            <tr>
+              <td><strong>v2 — Revised</strong></td>
+              <td>2 Feb 2026</td>
+              <td><span class="badge badge-blue">Sent to Client</span></td>
+              <td>Sarah M.</td>
+              <td>Updated catering from 200→220 pax, added drinks reception</td>
+              <td><input type="checkbox" checked /> <span style="font-size: 11px;">Compare</span></td>
+            </tr>
+            <tr>
+              <td><strong>v1 — Draft</strong></td>
+              <td>18 Jan 2026</td>
+              <td><span class="badge badge-gray">Superseded</span></td>
+              <td>Sarah M.</td>
+              <td>Initial draft: room hire + catering + AV</td>
+              <td><input type="checkbox" /> <span style="font-size: 11px;">Compare</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-outline" style="margin-top: 12px;">📊 View Diff: v2 → v3</button>
+      </div>
+
+      <!-- Version Diff Preview -->
+      <div class="card">
+        <h3>📊 Diff: v2 → v3 (Final)</h3>
+        <div style="font-size: 13px; font-family: monospace; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px;">
+          <div style="color: #64748b;">  Room hire .................. £8,500.00 (unchanged)</div>
+          <div style="color: #64748b;">  AV & lighting .............. £3,200.00 (unchanged)</div>
+          <div style="color: #64748b;">  Catering (220 pax) ......... £17,600.00 (unchanged)</div>
+          <div style="color: #64748b;">  Drinks reception ........... £2,640.00 (unchanged)</div>
+          <div style="color: #166534; margin-top: 8px;">+ Countersigned by: James Whitfield, Moody's Corp</div>
+          <div style="color: #166534;">+ Signed date: 10 Feb 2026</div>
+          <div style="color: #64748b; margin-top: 8px;">  Commission: DAS blended ~12.6% (unchanged)</div>
+          <div style="color: #64748b;">  Total: £31,940.00 ex VAT (unchanged)</div>
+        </div>
+        <div class="todo">[TODO] Should diff pull from Juro's version history API, or maintain a separate snapshot in our system?</div>
+      </div>
+
+      <!-- Document Management -->
+      <div class="card">
+        <h3>📁 Document Management</h3>
+        <table>
+          <thead><tr><th>Document</th><th>Type</th><th>Uploaded</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td>📄 CTR-2026-00312_v3_countersigned.pdf</td>
+              <td><span class="badge badge-green">Signed Contract</span></td>
+              <td>10 Feb 2026</td>
+              <td><span class="badge badge-green">✓ Verified</span></td>
+              <td><button class="btn btn-outline" style="padding: 3px 8px; font-size: 11px;">View</button></td>
+            </tr>
+            <tr>
+              <td>📄 Hire_Space_General_TCs_v4.2.pdf</td>
+              <td><span class="badge badge-blue">HS T&Cs</span></td>
+              <td>Auto-attached</td>
+              <td><span class="badge badge-green">✓ Current</span></td>
+              <td><button class="btn btn-outline" style="padding: 3px 8px; font-size: 11px;">View</button></td>
+            </tr>
+            <tr style="background: #fef2f2;">
+              <td style="color: #991b1b;">⚠ Venue T&Cs — not uploaded</td>
+              <td><span class="badge badge-red">Venue T&Cs</span></td>
+              <td>—</td>
+              <td><span class="badge badge-red">✗ Missing</span></td>
+              <td><button class="btn btn-primary" style="padding: 3px 8px; font-size: 11px;">Upload</button></td>
+            </tr>
+            <tr>
+              <td>📄 Event_specific_requirements.pdf</td>
+              <td><span class="badge badge-gray">Event Terms</span></td>
+              <td>5 Feb 2026</td>
+              <td><span class="badge badge-green">✓ Uploaded</span></td>
+              <td><button class="btn btn-outline" style="padding: 3px 8px; font-size: 11px;">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="upload-zone" style="margin-top: 12px;">📎 Drag & drop to upload: signed contracts, venue T&Cs, event-specific terms, or other documents</div>
+      </div>
+
+      <!-- ============ WIN CONTRACT MODAL ============ -->
+      <div style="border-top: 3px solid #16a34a; margin-top: 32px; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #16a34a; margin-bottom: 4px;">🏆 Win Contract</h2>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Winning is a <strong>contract-level</strong> action. All pre-flight checks must pass. Winning triggers downstream setup: booking shell creation, commission structure, tracking codes, and finance notifications.</p>
+
+        <!-- Pre-Flight Checks -->
+        <div class="card">
+          <h3>🛡️ Pre-Flight Checks</h3>
+          <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">All checks must pass before the contract can be won.</p>
+
+          <div class="check-row">
+            <div class="check-icon check-pass">✓</div>
+            <div style="flex: 1;">
+              <strong>Signed contract uploaded</strong>
+              <br/><span style="color: #64748b; font-size: 12px;">CTR-2026-00312_v3_countersigned.pdf — countersigned 10 Feb 2026</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon check-pass">✓</div>
+            <div style="flex: 1;">
+              <strong>HS General T&Cs attached</strong>
+              <br/><span style="color: #64748b; font-size: 12px;">v4.2 (Jan 2026) — auto-attached</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon check-fail">✗</div>
+            <div style="flex: 1;">
+              <strong>Venue T&Cs uploaded</strong>
+              <br/><span style="color: #991b1b; font-size: 12px;">Missing — upload venue-specific terms before winning</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon check-pass">✓</div>
+            <div style="flex: 1;">
+              <strong>Terms agreed by all parties</strong>
+              <br/><span style="color: #64748b; font-size: 12px;">Client countersigned. Venue confirmed via email 11 Feb 2026.</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon check-pass">✓</div>
+            <div style="flex: 1;">
+              <strong>Commission confirmed</strong>
+              <br/><span style="color: #64748b; font-size: 12px;">DAS blended ~12.6% — total £4,023.80 on £31,940.00</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon check-pass">✓</div>
+            <div style="flex: 1;">
+              <strong>No duplicate contracts</strong>
+              <br/><span style="color: #64748b; font-size: 12px;">No matching contracts found for this client + venue + date</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon check-pass">✓</div>
+            <div style="flex: 1;">
+              <strong>All line items priced</strong>
+              <br/><span style="color: #64748b; font-size: 12px;">4 items totalling £31,940.00 ex VAT</span>
+            </div>
+          </div>
+
+          <div class="todo">[TODO] Should venue T&Cs be a hard block or a soft warning with override? Some venues don't provide separate T&Cs.</div>
+        </div>
+
+        <!-- Financial Summary -->
+        <div class="card">
+          <h3>💷 Financial Summary (from Contract)</h3>
+          <table>
+            <thead><tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Commission %</th><th>Commission £</th><th>Net to Venue</th></tr></thead>
+            <tbody>
+              <tr><td>Room hire</td><td>£8,500.00</td><td>15%</td><td>£1,275.00</td><td>£7,225.00</td></tr>
+              <tr><td>Catering — 3-course dinner × 220</td><td>£17,600.00</td><td>12%</td><td>£2,112.00</td><td>£15,488.00</td></tr>
+              <tr><td>AV & lighting package</td><td>£3,200.00</td><td>10%</td><td>£320.00</td><td>£2,880.00</td></tr>
+              <tr><td>Drinks reception (champagne)</td><td>£2,640.00</td><td>12%</td><td>£316.80</td><td>£2,323.20</td></tr>
+              <tr style="font-weight: 700; background: #f0f9ff;"><td>TOTAL</td><td>£31,940.00</td><td>~12.6%</td><td>£4,023.80</td><td>£27,916.20</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tracking Codes (auto-created on win) -->
+        <div class="card">
+          <h3>🏷️ Tracking Codes (Auto-Created on Win)</h3>
+          <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">These Xero tracking categories will be created automatically when the contract is won.</p>
+          <div class="grid3">
+            <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff; text-align: center;">
+              <div style="font-size: 11px; color: #64748b;">Booking Code</div>
+              <div style="font-size: 16px; font-weight: 700; color: #2563eb;">HS-2026-04821</div>
+            </div>
+            <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff; text-align: center;">
+              <div style="font-size: 11px; color: #64748b;">Contract Code</div>
+              <div style="font-size: 16px; font-weight: 700; color: #2563eb;">CTR-2026-00312</div>
+            </div>
+            <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; background: #fff; text-align: center;">
+              <div style="font-size: 11px; color: #64748b;">Commission Code</div>
+              <div style="font-size: 16px; font-weight: 700; color: #2563eb;">COMM-04821</div>
+            </div>
+          </div>
+          <div class="todo">[TODO] What tracking code format does Xero use? Should codes be auto-generated or follow a specific naming convention agreed with Finance?</div>
+        </div>
+
+        <!-- Downstream Setup Preview -->
+        <div class="card">
+          <h3>⚙️ Downstream Setup (Triggered on Win)</h3>
+          <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Winning this contract will automatically trigger the following actions:</p>
+          <div class="check-row">
+            <div class="check-icon" style="background: #dbeafe; color: #1e40af;">1</div>
+            <div style="flex: 1;"><strong>Create booking shell</strong><br/><span style="color: #64748b; font-size: 12px;">HS-2026-04821 in Retool with all contract line items, dates, and parties pre-filled</span></div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon" style="background: #dbeafe; color: #1e40af;">2</div>
+            <div style="flex: 1;"><strong>Set up commission structure</strong><br/><span style="color: #64748b; font-size: 12px;">DAS blended rates per line item — room 15%, catering 12%, AV 10%, drinks 12%</span></div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon" style="background: #dbeafe; color: #1e40af;">3</div>
+            <div style="flex: 1;"><strong>Create tracking codes in Xero</strong><br/><span style="color: #64748b; font-size: 12px;">Booking, contract, and commission tracking codes for all financial transactions</span></div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon" style="background: #dbeafe; color: #1e40af;">4</div>
+            <div style="flex: 1;"><strong>Notify Finance team</strong><br/><span style="color: #64748b; font-size: 12px;">Email + Slack notification to finance@hirespace.com with contract summary and commission details</span></div>
+          </div>
+          <div class="check-row">
+            <div class="check-icon" style="background: #dbeafe; color: #1e40af;">5</div>
+            <div style="flex: 1;"><strong>Update Juro status</strong><br/><span style="color: #64748b; font-size: 12px;">Mark contract as "Won" in Juro, triggering any Juro-side automations</span></div>
+          </div>
+          <div class="todo">[TODO] Should booking shell creation happen in Retool via API, or does it need manual confirmation? What fields are required at minimum?</div>
+          <div class="todo">[TODO] Should finance notification include the full commission breakdown, or just a summary with a link?</div>
+        </div>
+
+        <!-- Win Button -->
+        <div class="guardrail" style="margin-bottom: 16px;">
+          <h4>⚠ Cannot Win Contract</h4>
+          <p>Venue T&Cs have not been uploaded. Please upload venue-specific terms before winning this contract. <a href="#" style="color: #991b1b;">Upload now ↑</a></p>
+        </div>
+
+        <div class="action-box" style="margin-bottom: 24px; border-color: #16a34a; background: #f0fdf4;">
+          <p style="font-size: 14px; color: #166534; margin-bottom: 8px;"><strong>🏆 Win Contract CTR-2026-00312</strong></p>
+          <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">This will create the booking shell, set up commission, create tracking codes, and notify finance.</p>
+          <button class="btn btn-disabled btn-lg" title="1 pre-flight check failing">🔒 Win Contract</button>
+          <p style="font-size: 11px; color: #991b1b; margin-top: 8px;">⚠ 1 pre-flight check failing — resolve before winning</p>
+        </div>
       </div>
     </div>
 

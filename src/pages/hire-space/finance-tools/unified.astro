@@ -75,6 +75,30 @@ td{padding:8px 10px;border-bottom:1px solid #f1f5f9}
 .filter-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.filter-bar select,.filter-bar input{padding:6px 10px;border:1px solid #e2e8f0;border-radius:6px;font-size:13px}
 input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radius:4px;font-size:13px;font-family:inherit}
 .alert-red{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:14px;margin-bottom:16px;font-size:13px}
+/* ── Contracts tab: compact summary header ── */
+.contract-summary-header{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:12px 20px;margin-bottom:16px}
+.csh-item{font-size:13px;color:#1e293b}.csh-label{font-size:11px;color:#64748b;display:block}
+/* ── Quick actions row ── */
+.quick-actions-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.quick-actions-row label{cursor:pointer}
+/* ── CSS-only modals (checkbox hack) ── */
+.css-modal{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center}
+#modal-versions:checked~.l1-c-contracts .css-modal#modal-overlay-versions,
+#modal-docs:checked~.l1-c-contracts .css-modal#modal-overlay-docs,
+#modal-downstream:checked~.l1-c-contracts .css-modal#modal-overlay-downstream{display:flex}
+.css-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);cursor:pointer}
+.css-modal-content{position:relative;background:#fff;border-radius:10px;padding:0;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);z-index:1}
+.css-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e2e8f0}
+.css-modal-header h3{font-size:16px;font-weight:700;color:#1e293b;margin:0;text-transform:none;letter-spacing:0}
+.css-modal-close{font-size:20px;color:#64748b;cursor:pointer;padding:4px 8px;border-radius:4px;line-height:1}
+.css-modal-close:hover{background:#f1f5f9;color:#1e293b}
+.css-modal-body{padding:20px}
+/* ── Collapsible sections (details/summary) ── */
+.collapse-section{margin-bottom:8px}
+.collapse-trigger{cursor:pointer;font-size:13px;color:#2563eb;font-weight:500;padding:6px 0;list-style:none}
+.collapse-trigger::-webkit-details-marker{display:none}
+.collapse-trigger::before{content:'▸ ';font-size:12px}
+details[open]>.collapse-trigger::before{content:'▾ '}
 </style>
 </head>
 <body>
@@ -131,65 +155,46 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 </div>
 
 <!-- ═══ CONTRACTS TAB ═══ -->
+<input type="checkbox" id="modal-versions" class="tab-input"/>
+<input type="checkbox" id="modal-docs" class="tab-input"/>
+<input type="checkbox" id="modal-downstream" class="tab-input"/>
 <div class="l1-c l1-c-contracts">
+
+<!-- Contract Lifecycle Stepper -->
 <div class="stitle">📑 Contract Lifecycle</div>
 <div class="steps" style="margin-bottom:24px">
 <div class="step done">Draft</div><div class="step done">Under Review</div><div class="step done">Countersigned</div><div class="step active">Won</div><div class="step">Active</div><div class="step">Complete</div>
 </div>
 
-<div class="card">
-<h3>Contract Versions</h3>
-<table>
-<thead><tr><th>Version</th><th>Date</th><th>Status</th><th>Changes</th><th></th></tr></thead>
-<tbody>
-<tr><td><strong>v3</strong> (current)</td><td>10 Feb 2026</td><td><span class="badge badge-green">Countersigned ✓</span></td><td>Final pricing agreed, catering updated</td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-<tr style="opacity:.6"><td>v2</td><td>28 Jan 2026</td><td><span class="badge badge-gray">Superseded</span></td><td>AV package added</td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-<tr style="opacity:.6"><td>v1</td><td>18 Jan 2026</td><td><span class="badge badge-gray">Superseded</span></td><td>Initial draft</td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-</tbody>
-</table>
+<!-- Compact Contract Summary Header -->
+<div class="contract-summary-header">
+<div class="csh-item"><span class="csh-label">Contract</span><strong>CTR-2026-00312 v3</strong></div>
+<div class="csh-item"><span class="csh-label">Client</span>Moody's Corp</div>
+<div class="csh-item"><span class="csh-label">Venue</span>The Grand Ballroom</div>
+<div class="csh-item"><span class="csh-label">Value</span><strong>£14,850.00</strong></div>
+<div class="csh-item"><span class="csh-label">Status</span><span class="badge badge-green">Countersigned ✓</span></div>
+<div class="csh-item"><a href="#" style="color:#2563eb;font-size:12px">Juro ↗</a> · <a href="#" style="color:#2563eb;font-size:12px">Retool ↗</a></div>
 </div>
 
-<div class="card">
-<h3>Contract Details — CTR-2026-00312 v3</h3>
-<div class="grid2">
-<div>
-<div class="kv"><span class="label">Contract ID</span><span><strong>CTR-2026-00312</strong></span></div>
-<div class="kv"><span class="label">Client</span><span>Moody's Corp (Rebecca Thompson)</span></div>
-<div class="kv"><span class="label">Venue</span><span>The Grand Ballroom, London</span></div>
-<div class="kv"><span class="label">Event Date</span><span>22 Mar 2026</span></div>
-<div class="kv"><span class="label">Created</span><span>18 Jan 2026</span></div>
-<div class="kv"><span class="label">CS Owner</span><span>Grace Morgan</span></div>
-</div>
-<div>
-<div class="kv"><span class="label">Linked Booking</span><span>EN-97XX</span></div>
-<div class="kv"><span class="label">Total Value (ex VAT)</span><span><strong>£14,850.00</strong></span></div>
-<div class="kv"><span class="label">Commission Model</span><span>DAS — blended ~12.9%</span></div>
-<div class="kv"><span class="label">Juro Status</span><span><span class="badge badge-green">Countersigned ✓</span></span></div>
-<div class="kv"><span class="label">Retool Record</span><span><a href="#" style="color:#2563eb">Open in Retool ↗</a></span></div>
-<div class="kv"><span class="label">Juro Contract</span><span><a href="#" style="color:#2563eb">Open in Juro ↗</a></span></div>
-</div>
-</div>
+<!-- Quick Action Links Row -->
+<div class="quick-actions-row">
+<label for="modal-versions" class="btn btn-outline btn-sm">📜 View version history</label>
+<label for="modal-docs" class="btn btn-outline btn-sm" style="position:relative">📁 Documents <span class="badge badge-red" style="margin-left:4px">3/4 — 1 missing</span></label>
+<label for="modal-downstream" class="btn btn-outline btn-sm">🔮 What happens on win?</label>
 </div>
 
-<div class="stitle">📁 Document Management</div>
-<div class="card">
-<table>
-<thead><tr><th>Document</th><th>Type</th><th>Uploaded</th><th>Status</th><th></th></tr></thead>
-<tbody>
-<tr><td>📄 CTR-2026-00312_v3_countersigned.pdf</td><td><span class="badge badge-green">Signed Contract</span></td><td>10 Feb 2026</td><td><span class="badge badge-green">✓ Verified</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-<tr><td>📄 Hire_Space_General_TCs_v4.2.pdf</td><td><span class="badge badge-blue">HS T&Cs</span></td><td>Auto-attached</td><td><span class="badge badge-green">✓ Current</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-<tr style="background:#fef2f2"><td style="color:#991b1b">⚠ Venue T&Cs — not uploaded</td><td><span class="badge badge-red">Venue T&Cs</span></td><td>—</td><td><span class="badge badge-red">✗ Missing</span></td><td><button class="btn btn-primary btn-sm">Upload</button></td></tr>
-<tr><td>📄 Event_training_requirements.pdf</td><td><span class="badge badge-gray">Event Terms</span></td><td>5 Feb 2026</td><td><span class="badge badge-green">✓ Uploaded</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-</tbody>
-</table>
-<div class="upload-zone" style="margin-top:12px">📎 Drag & drop to upload documents</div>
-</div>
-
+<!-- Commission Summary — collapsible breakdown -->
 <div class="stitle">💰 Commission Summary</div>
 <div class="todo">[TODO] Commission is defined at contract level, not booking level. How do we handle multi-booking contracts?</div>
 <div class="card">
-<h3>Per Line Item Breakdown</h3>
 <table>
+<tbody>
+<tr style="background:#f0f9ff;font-weight:600"><td>TOTAL</td><td>£14,850.00</td><td>~12.9%</td><td>£1,914.00</td><td>£12,936.00</td><td></td></tr>
+</tbody>
+</table>
+<details class="collapse-section">
+<summary class="collapse-trigger">View breakdown (5 line items)</summary>
+<table style="margin-top:8px">
 <thead><tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Comm %</th><th>Comm £</th><th>Net to Venue</th><th>Type</th></tr></thead>
 <tbody>
 <tr><td>Room hire — Ballroom B (full day)</td><td>£3,200.00</td><td>15%</td><td>£480.00</td><td>£2,720.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
@@ -197,20 +202,20 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 <tr><td>AV package (projector, PA, 4 mics)</td><td>£2,800.00</td><td>12%</td><td>£336.00</td><td>£2,464.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
 <tr><td>Tea/coffee × 85 (AM + PM)</td><td>£1,700.00</td><td>12%</td><td>£204.00</td><td>£1,496.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
 <tr><td>Breakout rooms × 3 (half day)</td><td>£1,200.00</td><td>15%</td><td>£180.00</td><td>£1,020.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr style="background:#f0f9ff;font-weight:600"><td>TOTAL</td><td>£14,850.00</td><td>~12.9%</td><td>£1,914.00</td><td>£12,936.00</td><td></td></tr>
 </tbody>
 </table>
+</details>
 <div class="todo">[TODO] How to handle mixed DAS/DAC items on the same booking?</div>
 </div>
 
-<!-- Win Contract Section -->
+<!-- Pre-Flight Checks (always visible) -->
 <div class="stitle">🏆 Win Contract</div>
 <div class="card">
 <h3>🛡️ Pre-Flight Checks</h3>
 <p style="font-size:12px;color:#64748b;margin-bottom:12px">All checks must pass before the contract can be won.</p>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Signed contract uploaded</strong><br><span style="color:#64748b;font-size:12px">Countersigned 10 Feb 2026</span></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>HS General T&Cs attached</strong><br><span style="color:#64748b;font-size:12px">v4.2 (Jan 2026)</span></div></div>
-<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Missing — upload before winning</span></div></div>
+<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Missing — <label for="modal-docs" style="color:#2563eb;cursor:pointer;text-decoration:underline">upload in Documents</label></span></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Terms agreed by all parties</strong><br><span style="color:#64748b;font-size:12px">Client countersigned. Venue confirmed via email.</span></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission confirmed</strong><br><span style="color:#64748b;font-size:12px">DAS blended ~12.9% — £1,914.00 on £14,850.00</span></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>No duplicate contracts</strong></div></div>
@@ -219,8 +224,10 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 
 <div class="guardrail"><h4>⚠ Cannot Win Contract</h4><p>Venue T&Cs not uploaded. Upload venue-specific terms before winning.</p></div>
 
-<div class="card">
-<h3>Financial Summary on Win</h3>
+<!-- Financial Summary on Win — collapsible, default closed -->
+<details class="collapse-section">
+<summary class="collapse-trigger" style="font-size:14px;font-weight:600;padding:12px 0">📊 Financial Summary on Win</summary>
+<div class="card" style="margin-top:8px">
 <div class="grid2">
 <div>
 <div class="kv"><span class="label">Contract Value (ex VAT)</span><span><strong>£14,850.00</strong></span></div>
@@ -234,26 +241,7 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 </div>
 </div>
 </div>
-
-<div class="card">
-<h3>Auto-Generated Tracking Codes</h3>
-<div class="grid3">
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: Booking<br>Value: EN-97XX</div>
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: CS Owner<br>Value: Grace Morgan</div>
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: Commission Type<br>Value: DAS</div>
-</div>
-</div>
-
-<div class="card">
-<h3>Downstream Setup Preview</h3>
-<p style="font-size:12px;color:#64748b;margin-bottom:12px">Winning this contract will automatically create:</p>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">1</div><div>Xero Contact for Moody's Corp (if not exists)</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">2</div><div>Client invoice for £17,820.00 (inc VAT) in draft</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">3</div><div>Venue bill shell for £15,523.20 (awaiting venue invoice)</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">4</div><div>Commission record — £1,914.00 DAS (deducted at source)</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">5</div><div>Tracking codes applied to all transactions</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">6</div><div>Finance team notification via Slack</div></div>
-</div>
+</details>
 
 <div class="todo">[TODO] Should winning create the client invoice immediately, or wait for CS to confirm send date? Some clients have PO requirements.</div>
 <div class="todo">[TODO] What happens if a contract is "un-won"? Reversal flow needed.</div>
@@ -264,6 +252,80 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 <button class="btn btn-disabled btn-lg">🔒 Win Contract</button>
 <p style="font-size:11px;color:#991b1b;margin-top:8px">⚠ 1 pre-flight check failing</p>
 </div>
+
+<!-- ═══ CSS-ONLY MODALS ═══ -->
+
+<!-- Modal: Contract Versions -->
+<div class="css-modal" id="modal-overlay-versions">
+<label for="modal-versions" class="css-modal-backdrop"></label>
+<div class="css-modal-content">
+<div class="css-modal-header">
+<h3>📜 Contract Versions</h3>
+<label for="modal-versions" class="css-modal-close">✕</label>
+</div>
+<div class="css-modal-body">
+<table>
+<thead><tr><th>Version</th><th>Date</th><th>Status</th><th>Changes</th><th></th></tr></thead>
+<tbody>
+<tr><td><strong>v3</strong> (current)</td><td>10 Feb 2026</td><td><span class="badge badge-green">Countersigned ✓</span></td><td>Final pricing agreed, catering updated</td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
+<tr style="opacity:.6"><td>v2</td><td>28 Jan 2026</td><td><span class="badge badge-gray">Superseded</span></td><td>AV package added</td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
+<tr style="opacity:.6"><td>v1</td><td>18 Jan 2026</td><td><span class="badge badge-gray">Superseded</span></td><td>Initial draft</td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Modal: Document Management -->
+<div class="css-modal" id="modal-overlay-docs">
+<label for="modal-docs" class="css-modal-backdrop"></label>
+<div class="css-modal-content" style="max-width:720px">
+<div class="css-modal-header">
+<h3>📁 Document Management</h3>
+<label for="modal-docs" class="css-modal-close">✕</label>
+</div>
+<div class="css-modal-body">
+<table>
+<thead><tr><th>Document</th><th>Type</th><th>Uploaded</th><th>Status</th><th></th></tr></thead>
+<tbody>
+<tr><td>📄 CTR-2026-00312_v3_countersigned.pdf</td><td><span class="badge badge-green">Signed Contract</span></td><td>10 Feb 2026</td><td><span class="badge badge-green">✓ Verified</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
+<tr><td>📄 Hire_Space_General_TCs_v4.2.pdf</td><td><span class="badge badge-blue">HS T&Cs</span></td><td>Auto-attached</td><td><span class="badge badge-green">✓ Current</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
+<tr style="background:#fef2f2"><td style="color:#991b1b">⚠ Venue T&Cs — not uploaded</td><td><span class="badge badge-red">Venue T&Cs</span></td><td>—</td><td><span class="badge badge-red">✗ Missing</span></td><td><button class="btn btn-primary btn-sm">Upload</button></td></tr>
+<tr><td>📄 Event_training_requirements.pdf</td><td><span class="badge badge-gray">Event Terms</span></td><td>5 Feb 2026</td><td><span class="badge badge-green">✓ Uploaded</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
+</tbody>
+</table>
+<div class="upload-zone" style="margin-top:12px">📎 Drag & drop to upload documents</div>
+</div>
+</div>
+</div>
+
+<!-- Modal: Downstream Setup + Tracking Codes -->
+<div class="css-modal" id="modal-overlay-downstream">
+<label for="modal-downstream" class="css-modal-backdrop"></label>
+<div class="css-modal-content" style="max-width:640px">
+<div class="css-modal-header">
+<h3>🔮 What Happens on Win?</h3>
+<label for="modal-downstream" class="css-modal-close">✕</label>
+</div>
+<div class="css-modal-body">
+<p style="font-size:12px;color:#64748b;margin-bottom:12px">Winning this contract will automatically create:</p>
+<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">1</div><div>Xero Contact for Moody's Corp (if not exists)</div></div>
+<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">2</div><div>Client invoice for £17,820.00 (inc VAT) in draft</div></div>
+<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">3</div><div>Venue bill shell for £15,523.20 (awaiting venue invoice)</div></div>
+<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">4</div><div>Commission record — £1,914.00 DAS (deducted at source)</div></div>
+<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">5</div><div>Tracking codes applied to all transactions</div></div>
+<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">6</div><div>Finance team notification via Slack</div></div>
+
+<h4 style="font-size:13px;color:#64748b;margin:16px 0 8px;border-top:1px solid #e2e8f0;padding-top:12px">Auto-Generated Tracking Codes</h4>
+<div class="grid3">
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: Booking<br>Value: EN-97XX</div>
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: CS Owner<br>Value: Grace Morgan</div>
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: Commission Type<br>Value: DAS</div>
+</div>
+</div>
+</div>
+</div>
+
 </div><!-- /contracts tab -->
 
 <!-- ═══ INVOICES TAB ═══ -->

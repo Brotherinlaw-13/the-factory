@@ -207,6 +207,20 @@ details[open]>.collapse-trigger::before{content:'▾ '}
 </details>
 </div>
 
+<!-- Confirm Commission — manual entry step -->
+<div class="stitle">✅ Confirm Commission</div>
+<div class="card">
+<div class="info-banner" style="margin-bottom:12px">🔒 <strong>Why?</strong> To ensure commission has been reviewed, please type the total commission amount without copying.</div>
+<div style="background:#f8fafc;border:2px solid #e2e8f0;border-radius:8px;padding:20px;text-align:center;margin-bottom:12px">
+<p style="font-size:13px;color:#64748b;margin-bottom:8px">Type the total commission amount (ex VAT) to confirm you've reviewed the breakdown</p>
+<div style="display:flex;align-items:center;justify-content:center;gap:12px">
+<input type="text" value="1914.00" style="font-size:18px;padding:8px 16px;width:180px;text-align:center;border:2px solid #16a34a;border-radius:6px" oncopy="return false" oncut="return false" onpaste="return false" placeholder="e.g. 1914.00"/>
+<span class="badge badge-green" style="font-size:13px;padding:6px 12px">✓ Match — £1,914.00</span>
+</div>
+<p style="font-size:11px;color:#dc2626;margin-top:8px">If mismatch, check line items above before proceeding</p>
+</div>
+</div>
+
 <!-- Pre-Win Checks (always visible) -->
 <div class="stitle">🏆 Win Booking</div>
 <div class="card">
@@ -216,7 +230,7 @@ details[open]>.collapse-trigger::before{content:'▾ '}
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>HS General T&Cs attached</strong><br><span style="color:#64748b;font-size:12px">v4.2 (Jan 2026)</span></div></div>
 <div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Missing — <label for="modal-docs" style="color:#2563eb;cursor:pointer;text-decoration:underline">upload in Documents</label></span></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Terms agreed by all parties</strong><br><span style="color:#64748b;font-size:12px">Client countersigned. Venue confirmed via email.</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission confirmed</strong><br><span style="color:#64748b;font-size:12px">DAS blended ~12.9% — £1,914.00 on £14,850.00</span></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission total manually confirmed</strong><br><span style="color:#64748b;font-size:12px">DAS blended ~12.9% — £1,914.00 on £14,850.00 (typed & matched)</span></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>No duplicate contracts</strong></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>All line items priced</strong><br><span style="color:#64748b;font-size:12px">5 items, £14,850.00 ex VAT</span></div></div>
 </div>

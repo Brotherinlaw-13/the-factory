@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hAIve mAInd - Revenue Projections 2026-2028</title>
+    <title>hAIve mAInd - Realistic Projection 2026-2027</title>
     <style>
         * {
             margin: 0;
@@ -58,6 +58,12 @@
             padding-bottom: 8px;
         }
         
+        .section h3 {
+            color: #f0f6fc;
+            margin: 20px 0 12px 0;
+            font-size: 1.2em;
+        }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -83,6 +89,20 @@
         .metric-label {
             color: #8b949e;
             margin-top: 5px;
+        }
+        
+        .reality-check {
+            background: linear-gradient(135deg, #f8514920, #d2992220);
+            border: 2px solid #f85149;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        
+        .reality-check h3 {
+            color: #f85149;
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
         
         table {
@@ -112,16 +132,34 @@
         
         .revenue { color: #3fb950; }
         .cost { color: #f85149; }
-        .profit { color: #00d4ff; }
+        .neutral { color: #d29922; }
         .number { text-align: right; font-family: 'SF Mono', monospace; }
+        
+        .scenario-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .scenario-title {
+            font-weight: bold;
+            color: #58a6ff;
+            margin-bottom: 8px;
+        }
+        
+        .scenario-subtitle {
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
         
         .chart-container {
             background: #0d1117;
             border-radius: 8px;
             padding: 20px;
             margin: 20px 0;
-            position: relative;
-            height: 300px;
         }
         
         .chart-bar {
@@ -151,19 +189,6 @@
             font-size: 12px;
         }
         
-        .assumptions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-        }
-        
-        .assumption-item {
-            background: #0d1117;
-            padding: 16px;
-            border-radius: 8px;
-            border-left: 4px solid #00d4ff;
-        }
-        
         .risk-item {
             background: #0d1117;
             padding: 16px;
@@ -172,38 +197,27 @@
             margin-bottom: 12px;
         }
         
-        .risk-level {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
+        .risk-item h4 {
+            color: #f85149;
             margin-bottom: 8px;
         }
         
-        .risk-high { background: #f851491a; color: #f85149; }
-        .risk-medium { background: #d29922aa; color: #d29922; }
-        .risk-low { background: #3fb9501a; color: #3fb950; }
-        
-        .break-even {
-            background: linear-gradient(135deg, #00d4ff20, #7c3aed20);
-            border: 2px solid #00d4ff;
+        .value-prop {
+            background: linear-gradient(135deg, #3fb95020, #00d4ff20);
+            border: 2px solid #3fb950;
             border-radius: 12px;
             padding: 24px;
-            text-align: center;
             margin: 20px 0;
         }
         
-        .break-even h3 {
-            color: #00d4ff;
-            font-size: 1.5em;
+        .value-prop h3 {
+            color: #3fb950;
             margin-bottom: 10px;
         }
         
-        .timeline {
+        .timeline-simple {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin: 20px 0;
             padding: 20px;
             background: #0d1117;
@@ -213,582 +227,348 @@
         .timeline-item {
             text-align: center;
             flex: 1;
-            position: relative;
         }
         
-        .timeline-item:not(:last-child)::after {
-            content: '→';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #58a6ff;
-            font-size: 20px;
-        }
-        
-        .timeline-quarter {
+        .timeline-period {
             font-weight: bold;
             color: #58a6ff;
             display: block;
         }
         
-        .timeline-revenue {
-            color: #3fb950;
-            font-size: 1.2em;
+        .timeline-status {
+            color: #8b949e;
+            font-size: 0.9em;
             margin-top: 5px;
+        }
+        
+        ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background: #d2992220;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #d29922;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>hAIve mAInd</h1>
-        <p class="subtitle">Revenue Projections 2026-2028 | Open Source AI Agent Recipe Registry</p>
+        <p class="subtitle">Realistic Costs & Value Projection | Open Source AI Agent Recipe Registry</p>
         
         <!-- Executive Summary -->
         <div class="section">
             <h2>Executive Summary</h2>
-            <p>hAIve mAInd is an open-source shared knowledge base (vector DB) where AI agents contribute and consume "recipes" for accessing real-world services. The core registry is free, with monetization through managed hosting, private instances, premium recipes, and enterprise support.</p>
+            
+            <div class="reality-check">
+                <h3>Reality Check</h3>
+                <p><strong>This is NOT a revenue business.</strong> hAIve mAInd is an open-source loss leader that generates value indirectly by making your agent platform more competitive. Think npm for Node.js — free infrastructure that makes the ecosystem valuable.</p>
+            </div>
             
             <div class="grid">
                 <div class="metric-card">
-                    <span class="metric-value">$47K</span>
-                    <div class="metric-label">Year 1 Revenue</div>
+                    <span class="metric-value cost">£400-600</span>
+                    <div class="metric-label">Year 1 Total Costs</div>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-value">$284K</span>
-                    <div class="metric-label">Year 2 Revenue</div>
+                    <span class="metric-value neutral">£0-200</span>
+                    <div class="metric-label">Year 1 Revenue (maybe)</div>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-value">$612K</span>
-                    <div class="metric-label">Year 3 Revenue</div>
+                    <span class="metric-value">200-500</span>
+                    <div class="metric-label">Users if successful</div>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-value">Month 8</span>
-                    <div class="metric-label">Break-Even Point</div>
+                    <span class="metric-value">🤷</span>
+                    <div class="metric-label">Break-even (not the point)</div>
                 </div>
             </div>
             
-            <div class="break-even">
-                <h3>Key Milestones</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <span class="timeline-quarter">Q1 2026</span>
-                        <div class="timeline-revenue">Launch</div>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-quarter">Q3 2026</span>
-                        <div class="timeline-revenue">Break-Even</div>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-quarter">Q4 2026</span>
-                        <div class="timeline-revenue">$10K MRR</div>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-quarter">Q4 2027</span>
-                        <div class="timeline-revenue">$50K MRR</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Key Assumptions -->
-        <div class="section">
-            <h2>Key Assumptions</h2>
-            <div class="assumptions-grid">
-                <div class="assumption-item">
-                    <strong>Growth Pattern</strong><br>
-                    Organic community growth, 15% monthly user growth in Year 1, slowing to 8% by Year 3
-                </div>
-                <div class="assumption-item">
-                    <strong>Conversion Rates</strong><br>
-                    Free → Pro: 2.5%, Pro → Enterprise: 15%, Premium Recipes: 5% of active users
-                </div>
-                <div class="assumption-item">
-                    <strong>Pricing Strategy</strong><br>
-                    Freemium model with Pro ($49/mo), Enterprise ($299/mo), Premium Recipes ($19/mo)
-                </div>
-                <div class="assumption-item">
-                    <strong>Team Size</strong><br>
-                    1.5 FTE in Year 1, growing to 3 FTE by Year 3 (bootstrap approach)
-                </div>
-                <div class="assumption-item">
-                    <strong>Infrastructure</strong><br>
-                    Self-hosted Qdrant + AWS, LLM costs for guardian reviews, CDN costs
-                </div>
-                <div class="assumption-item">
-                    <strong>Market Comp</strong><br>
-                    Much smaller scale than Hugging Face (~$130M), targeting indie/startup segment
-                </div>
-            </div>
-        </div>
-        
-        <!-- Year 1 Monthly P&L -->
-        <div class="section">
-            <h2>Year 1 - Monthly P&L Breakdown</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Month</th>
-                        <th class="number">Users</th>
-                        <th class="number">Managed Hosting</th>
-                        <th class="number">Private Instances</th>
-                        <th class="number">Premium Recipes</th>
-                        <th class="number">Total Revenue</th>
-                        <th class="number">Total Costs</th>
-                        <th class="number">Net Profit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Jan 2026</td>
-                        <td class="number">50</td>
-                        <td class="number revenue">$49</td>
-                        <td class="number revenue">$0</td>
-                        <td class="number revenue">$19</td>
-                        <td class="number revenue"><strong>$68</strong></td>
-                        <td class="number cost">$3,200</td>
-                        <td class="number cost"><strong>-$3,132</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Feb 2026</td>
-                        <td class="number">75</td>
-                        <td class="number revenue">$147</td>
-                        <td class="number revenue">$0</td>
-                        <td class="number revenue">$57</td>
-                        <td class="number revenue"><strong>$204</strong></td>
-                        <td class="number cost">$3,350</td>
-                        <td class="number cost"><strong>-$3,146</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Mar 2026</td>
-                        <td class="number">115</td>
-                        <td class="number revenue">$294</td>
-                        <td class="number revenue">$299</td>
-                        <td class="number revenue">$114</td>
-                        <td class="number revenue"><strong>$707</strong></td>
-                        <td class="number cost">$3,500</td>
-                        <td class="number cost"><strong>-$2,793</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Apr 2026</td>
-                        <td class="number">175</td>
-                        <td class="number revenue">$539</td>
-                        <td class="number revenue">$299</td>
-                        <td class="number revenue">$190</td>
-                        <td class="number revenue"><strong>$1,028</strong></td>
-                        <td class="number cost">$3,750</td>
-                        <td class="number cost"><strong>-$2,722</strong></td>
-                    </tr>
-                    <tr>
-                        <td>May 2026</td>
-                        <td class="number">265</td>
-                        <td class="number revenue">$882</td>
-                        <td class="number revenue">$598</td>
-                        <td class="number revenue">$304</td>
-                        <td class="number revenue"><strong>$1,784</strong></td>
-                        <td class="number cost">$4,000</td>
-                        <td class="number cost"><strong>-$2,216</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Jun 2026</td>
-                        <td class="number">400</td>
-                        <td class="number revenue">$1,372</td>
-                        <td class="number revenue">$897</td>
-                        <td class="number revenue">$494</td>
-                        <td class="number revenue"><strong>$2,763</strong></td>
-                        <td class="number cost">$4,250</td>
-                        <td class="number cost"><strong>-$1,487</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Jul 2026</td>
-                        <td class="number">600</td>
-                        <td class="number revenue">$2,156</td>
-                        <td class="number revenue">$1,196</td>
-                        <td class="number revenue">$760</td>
-                        <td class="number revenue"><strong>$4,112</strong></td>
-                        <td class="number cost">$4,500</td>
-                        <td class="number cost"><strong>-$388</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Aug 2026</td>
-                        <td class="number">900</td>
-                        <td class="number revenue">$3,234</td>
-                        <td class="number revenue">$1,794</td>
-                        <td class="number revenue">$1,140</td>
-                        <td class="number revenue"><strong>$6,168</strong></td>
-                        <td class="number cost">$4,750</td>
-                        <td class="number profit"><strong>$1,418</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Sep 2026</td>
-                        <td class="number">1,350</td>
-                        <td class="number revenue">$4,851</td>
-                        <td class="number revenue">$2,392</td>
-                        <td class="number revenue">$1,710</td>
-                        <td class="number revenue"><strong>$8,953</strong></td>
-                        <td class="number cost">$5,200</td>
-                        <td class="number profit"><strong>$3,753</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Oct 2026</td>
-                        <td class="number">2,025</td>
-                        <td class="number revenue">$7,277</td>
-                        <td class="number revenue">$3,289</td>
-                        <td class="number revenue">$2,565</td>
-                        <td class="number revenue"><strong>$13,131</strong></td>
-                        <td class="number cost">$5,650</td>
-                        <td class="number profit"><strong>$7,481</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Nov 2026</td>
-                        <td class="number">3,000</td>
-                        <td class="number revenue">$10,780</td>
-                        <td class="number revenue">$4,485</td>
-                        <td class="number revenue">$3,800</td>
-                        <td class="number revenue"><strong>$19,065</strong></td>
-                        <td class="number cost">$6,100</td>
-                        <td class="number profit"><strong>$12,965</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Dec 2026</td>
-                        <td class="number">4,500</td>
-                        <td class="number revenue">$16,170</td>
-                        <td class="number revenue">$5,980</td>
-                        <td class="number revenue">$5,700</td>
-                        <td class="number revenue"><strong>$27,850</strong></td>
-                        <td class="number cost">$6,800</td>
-                        <td class="number profit"><strong>$21,050</strong></td>
-                    </tr>
-                    <tr style="background: #21262d; font-weight: bold;">
-                        <td><strong>Year 1 Total</strong></td>
-                        <td class="number">4,500</td>
-                        <td class="number revenue">$47,150</td>
-                        <td class="number revenue">$21,229</td>
-                        <td class="number revenue">$16,853</td>
-                        <td class="number revenue"><strong>$85,232</strong></td>
-                        <td class="number cost">$55,050</td>
-                        <td class="number profit"><strong>$30,182</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <!-- Years 2-3 Quarterly -->
-        <div class="section">
-            <h2>Years 2-3 - Quarterly Projections</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Quarter</th>
-                        <th class="number">Users</th>
-                        <th class="number">Total Revenue</th>
-                        <th class="number">Total Costs</th>
-                        <th class="number">Net Profit</th>
-                        <th class="number">Profit Margin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Q1 2027</td>
-                        <td class="number">6,750</td>
-                        <td class="number revenue">$52,680</td>
-                        <td class="number cost">$24,900</td>
-                        <td class="number profit">$27,780</td>
-                        <td class="number">52.7%</td>
-                    </tr>
-                    <tr>
-                        <td>Q2 2027</td>
-                        <td class="number">10,125</td>
-                        <td class="number revenue">$79,020</td>
-                        <td class="number cost">$27,300</td>
-                        <td class="number profit">$51,720</td>
-                        <td class="number">65.4%</td>
-                    </tr>
-                    <tr>
-                        <td>Q3 2027</td>
-                        <td class="number">15,200</td>
-                        <td class="number revenue">$118,530</td>
-                        <td class="number cost">$31,200</td>
-                        <td class="number profit">$87,330</td>
-                        <td class="number">73.7%</td>
-                    </tr>
-                    <tr>
-                        <td>Q4 2027</td>
-                        <td class="number">22,800</td>
-                        <td class="number revenue">$177,795</td>
-                        <td class="number cost">$36,600</td>
-                        <td class="number profit">$141,195</td>
-                        <td class="number">79.4%</td>
-                    </tr>
-                    <tr style="background: #21262d; font-weight: bold;">
-                        <td><strong>Year 2 Total</strong></td>
-                        <td class="number">22,800</td>
-                        <td class="number revenue"><strong>$428,025</strong></td>
-                        <td class="number cost"><strong>$120,000</strong></td>
-                        <td class="number profit"><strong>$308,025</strong></td>
-                        <td class="number"><strong>72.0%</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Q1 2028</td>
-                        <td class="number">34,200</td>
-                        <td class="number revenue">$213,336</td>
-                        <td class="number cost">$42,000</td>
-                        <td class="number profit">$171,336</td>
-                        <td class="number">80.3%</td>
-                    </tr>
-                    <tr>
-                        <td>Q2 2028</td>
-                        <td class="number">51,300</td>
-                        <td class="number revenue">$320,004</td>
-                        <td class="number cost">$45,000</td>
-                        <td class="number profit">$275,004</td>
-                        <td class="number">85.9%</td>
-                    </tr>
-                    <tr>
-                        <td>Q3 2028</td>
-                        <td class="number">77,000</td>
-                        <td class="number revenue">$480,006</td>
-                        <td class="number cost">$48,000</td>
-                        <td class="number profit">$432,006</td>
-                        <td class="number">90.0%</td>
-                    </tr>
-                    <tr>
-                        <td>Q4 2028</td>
-                        <td class="number">115,500</td>
-                        <td class="number revenue">$720,009</td>
-                        <td class="number cost">$51,000</td>
-                        <td class="number profit">$669,009</td>
-                        <td class="number">92.9%</td>
-                    </tr>
-                    <tr style="background: #21262d; font-weight: bold;">
-                        <td><strong>Year 3 Total</strong></td>
-                        <td class="number">115,500</td>
-                        <td class="number revenue"><strong>$1,733,355</strong></td>
-                        <td class="number cost"><strong>$186,000</strong></td>
-                        <td class="number profit"><strong>$1,547,355</strong></td>
-                        <td class="number"><strong>89.3%</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <!-- Revenue Growth Chart -->
-        <div class="section">
-            <h2>Revenue Growth Trajectory</h2>
-            <div class="chart-container">
-                <div class="chart-bar" style="width: 5%;">
-                    <span class="chart-label">Year 1</span>
-                    <span class="chart-value">$85K</span>
-                </div>
-                <div class="chart-bar" style="width: 25%;">
-                    <span class="chart-label">Year 2</span>
-                    <span class="chart-value">$428K</span>
-                </div>
-                <div class="chart-bar" style="width: 100%;">
-                    <span class="chart-label">Year 3</span>
-                    <span class="chart-value">$1,733K</span>
-                </div>
-            </div>
+            <p><strong>Primary Value:</strong> Network effects for parent platform — "your agents connect to 5,000 services out of the box" becomes a major competitive advantage.</p>
         </div>
         
         <!-- Cost Breakdown -->
         <div class="section">
-            <h2>Cost Structure Breakdown</h2>
-            <div class="grid">
-                <div class="metric-card">
-                    <span class="metric-value cost">45%</span>
-                    <div class="metric-label">Development Team</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value cost">25%</span>
-                    <div class="metric-label">Infrastructure</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value cost">20%</span>
-                    <div class="metric-label">LLM/Guardian Costs</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value cost">10%</span>
-                    <div class="metric-label">Operations & Marketing</div>
-                </div>
-            </div>
+            <h2>Cost Breakdown (The Main Focus)</h2>
+            <p>Since this is costs-focused infrastructure, here's what we're actually looking at:</p>
             
+            <h3>Monthly Costs by Scenario</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Cost Category</th>
-                        <th class="number">Year 1</th>
-                        <th class="number">Year 2</th>
-                        <th class="number">Year 3</th>
+                        <th>Component</th>
+                        <th class="number">Minimal<br/>(just us)</th>
+                        <th class="number">Moderate<br/>(small community)</th>
+                        <th class="number">Optimistic<br/>(real traction)</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Development Team</td>
-                        <td class="number cost">$25,000</td>
-                        <td class="number cost">$54,000</td>
-                        <td class="number cost">$84,000</td>
-                        <td>1.5 FTE → 2 FTE → 3 FTE (part-time bootstrap)</td>
+                        <td>Vector DB (Pinecone)</td>
+                        <td class="number">£0</td>
+                        <td class="number">£15</td>
+                        <td class="number">£70</td>
+                        <td>Free tier → Starter → Pro</td>
                     </tr>
                     <tr>
-                        <td>Vector DB & Infrastructure</td>
-                        <td class="number cost">$13,750</td>
-                        <td class="number cost">$30,000</td>
-                        <td class="number cost">$46,500</td>
-                        <td>Qdrant self-hosted + AWS, CDN, monitoring</td>
+                        <td>API Server</td>
+                        <td class="number">£0</td>
+                        <td class="number">£8</td>
+                        <td class="number">£25</td>
+                        <td>Vercel free → basic VPS → better VPS</td>
                     </tr>
                     <tr>
-                        <td>LLM Guardian Costs</td>
-                        <td class="number cost">$11,000</td>
-                        <td class="number cost">$24,000</td>
-                        <td class="number cost">$37,200</td>
-                        <td>Recipe reviews, quality checks (Claude Haiku)</td>
+                        <td>Guardian LLM costs</td>
+                        <td class="number">£0.50</td>
+                        <td class="number">£5</td>
+                        <td class="number">£200</td>
+                        <td>£0.02/recipe review (25→250→10K recipes/mo)</td>
                     </tr>
                     <tr>
-                        <td>Operations & Marketing</td>
-                        <td class="number cost">$5,500</td>
-                        <td class="number cost">$12,000</td>
-                        <td class="number cost">$18,600</td>
-                        <td>Minimal community marketing, support tools</td>
+                        <td>Domain + misc</td>
+                        <td class="number">£1</td>
+                        <td class="number">£2</td>
+                        <td class="number">£5</td>
+                        <td>Domain, monitoring, basic tools</td>
+                    </tr>
+                    <tr style="background: #21262d; font-weight: bold;">
+                        <td><strong>Monthly Total</strong></td>
+                        <td class="number cost"><strong>£1.50</strong></td>
+                        <td class="number cost"><strong>£30</strong></td>
+                        <td class="number cost"><strong>£300</strong></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-        
-        <!-- Key Metrics -->
-        <div class="section">
-            <h2>Key Business Metrics</h2>
-            <div class="grid">
-                <div class="metric-card">
-                    <span class="metric-value">2.5%</span>
-                    <div class="metric-label">Free → Pro Conversion</div>
+            
+            <h3>Year 1 & 2 Projections</h3>
+            <div class="chart-container">
+                <div style="margin-bottom: 20px;">
+                    <strong>Year 1 (£400-600 total):</strong><br>
+                    Months 1-6: Minimal costs while building + testing<br>
+                    Months 7-12: Small community forms if we're lucky
                 </div>
-                <div class="metric-card">
-                    <span class="metric-value">15%</span>
-                    <div class="metric-label">Pro → Enterprise Conversion</div>
+                <div class="chart-bar" style="width: 30%;">
+                    <span class="chart-label">Y1 Realistic</span>
+                    <span class="chart-value">£400-600</span>
                 </div>
-                <div class="metric-card">
-                    <span class="metric-value">5%</span>
-                    <div class="metric-label">Premium Recipe Adoption</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value">$73</span>
-                    <div class="metric-label">ARPU by Year 3</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value">89%</span>
-                    <div class="metric-label">Year 3 Profit Margin</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value">8x</span>
-                    <div class="metric-label">3-Year Revenue Multiple</div>
+                <div class="chart-bar" style="width: 100%;">
+                    <span class="chart-label">Y2 With Traction</span>
+                    <span class="chart-value">£1,000-3,000</span>
                 </div>
             </div>
         </div>
         
-        <!-- Risk Analysis -->
+        <!-- Revenue Scenarios -->
         <div class="section">
-            <h2>Risk Factors</h2>
+            <h2>Revenue Scenarios (Honest Assessment)</h2>
             
-            <div class="risk-item">
-                <div class="risk-level risk-high">HIGH RISK</div>
-                <strong>Competition from Big Tech</strong><br>
-                OpenAI, Google, or Microsoft could launch competing agent registry with massive resources. 
-                <em>Mitigation: Focus on open-source community trust, specialized vertical recipes.</em>
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario A: Pure Open Source (90% probability Y1)</div>
+                <div class="scenario-subtitle">Most likely reality for first 12-18 months</div>
+                <ul>
+                    <li><strong>Revenue:</strong> £0/month</li>
+                    <li><strong>Value:</strong> 100% indirect (platform moat)</li>
+                    <li><strong>Users:</strong> 10-100 early adopters, mostly us</li>
+                    <li><strong>Model:</strong> All free, all open source, community-driven</li>
+                </ul>
             </div>
             
-            <div class="risk-item">
-                <div class="risk-level risk-high">HIGH RISK</div>
-                <strong>LLM Cost Volatility</strong><br>
-                Guardian agent costs could spike if LLM pricing increases or usage exceeds projections.
-                <em>Mitigation: Budget 2x current estimates, implement usage caps, explore self-hosted LLM options.</em>
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario B: Donations/Sponsors (optimistic Y1)</div>
+                <div class="scenario-subtitle">GitHub Sponsors model if we build real value</div>
+                <ul>
+                    <li><strong>Revenue:</strong> £20-100/month if we're lucky</li>
+                    <li><strong>Benchmark:</strong> curl gets £3-4K/mo but that's top 0.001%</li>
+                    <li><strong>Reality:</strong> Most OSS gets £0-50/mo</li>
+                    <li><strong>Covers:</strong> Basic hosting costs, not development time</li>
+                </ul>
             </div>
             
-            <div class="risk-item">
-                <div class="risk-level risk-medium">MEDIUM RISK</div>
-                <strong>Slow Organic Growth</strong><br>
-                User acquisition may be slower than projected without significant marketing investment.
-                <em>Mitigation: Strong developer relations, conference presence, integration partnerships.</em>
-            </div>
-            
-            <div class="risk-item">
-                <div class="risk-level risk-medium">MEDIUM RISK</div>
-                <strong>Recipe Quality Control</strong><br>
-                Maintaining recipe quality and preventing malicious submissions as volume scales.
-                <em>Mitigation: Multi-layered guardian agents, community moderation, reputation system.</em>
-            </div>
-            
-            <div class="risk-item">
-                <div class="risk-level risk-low">LOW RISK</div>
-                <strong>Infrastructure Scaling</strong><br>
-                Vector DB performance and cost optimization challenges as usage grows.
-                <em>Mitigation: Proven Qdrant scalability, incremental optimization, established AWS patterns.</em>
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario C: Open Core (Y2+ if real traction)</div>
+                <div class="scenario-subtitle">Managed hosting + private instances for enterprises</div>
+                <ul>
+                    <li><strong>Managed Hosting:</strong> £20/mo (we host for you)</li>
+                    <li><strong>Private Instances:</strong> £100/mo (internal company recipes)</li>
+                    <li><strong>Break-even math:</strong> 2 managed + 1 private = £140 > £30 costs ✓</li>
+                    <li><strong>Reality check:</strong> 1-5% OSS conversion is typical, so need 200+ active users for 10 customers</li>
+                </ul>
             </div>
         </div>
         
         <!-- Break-Even Analysis -->
         <div class="section">
             <h2>Break-Even Analysis</h2>
-            <div class="break-even">
-                <h3>Break-Even Achieved: Month 8 (August 2026)</h3>
-                <p><strong>900 users • $6,168 monthly revenue • $4,750 monthly costs</strong></p>
-                <p>Cash-flow positive with modest user base and conservative conversion rates.</p>
+            
+            <div class="value-prop">
+                <h3>The Real Question</h3>
+                <p>Break-even isn't "can we make money?" — it's "does this generate enough platform value to justify £400-600/year investment?"</p>
             </div>
             
             <table>
                 <thead>
                     <tr>
                         <th>Scenario</th>
-                        <th class="number">Break-Even Month</th>
-                        <th class="number">Users Required</th>
-                        <th class="number">Monthly Revenue</th>
-                        <th>Key Assumptions</th>
+                        <th class="number">Monthly Costs</th>
+                        <th class="number">Customers Needed</th>
+                        <th>What This Requires</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Conservative (Base Case)</td>
-                        <td class="number">Month 8</td>
-                        <td class="number">900</td>
-                        <td class="number revenue">$6,168</td>
-                        <td>2.5% conversion, 15% monthly growth</td>
+                        <td>Minimal (just us)</td>
+                        <td class="number cost">£1.50</td>
+                        <td class="number revenue">0</td>
+                        <td>Basically free — just our time</td>
                     </tr>
                     <tr>
-                        <td>Optimistic</td>
-                        <td class="number">Month 6</td>
-                        <td class="number">600</td>
-                        <td class="number revenue">$4,500</td>
-                        <td>3.5% conversion, 20% monthly growth</td>
+                        <td>Small community</td>
+                        <td class="number cost">£30</td>
+                        <td class="number revenue">2</td>
+                        <td>2 × £20 managed hosting customers</td>
                     </tr>
                     <tr>
-                        <td>Pessimistic</td>
-                        <td class="number">Month 12</td>
-                        <td class="number">1,500</td>
-                        <td class="number revenue">$4,750</td>
-                        <td>1.5% conversion, 10% monthly growth</td>
+                        <td>Real traction</td>
+                        <td class="number cost">£300</td>
+                        <td class="number revenue">15</td>
+                        <td>12 managed + 3 private customers</td>
                     </tr>
                 </tbody>
             </table>
+            
+            <p><strong>Reality:</strong> Even if we never make a penny, the platform moat value could justify the investment. The hive IS the product's competitive advantage.</p>
+        </div>
+        
+        <!-- Growth Assumptions -->
+        <div class="section">
+            <h2>Growth Assumptions (Realistic)</h2>
+            
+            <div class="timeline-simple">
+                <div class="timeline-item">
+                    <span class="timeline-period">Months 1-3</span>
+                    <div class="timeline-status">Just us<br/>10-20 recipes</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-period">Months 4-6</span>
+                    <div class="timeline-status">50-100 users<br/>50 recipes</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-period">Months 7-12</span>
+                    <div class="timeline-status">200-500 users<br/>100-200 recipes</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-period">Year 2</span>
+                    <div class="timeline-status">1K-3K users<br/>Still mostly free</div>
+                </div>
+            </div>
+            
+            <h3>Why These Numbers Are Realistic</h3>
+            <ul>
+                <li><strong>Recipes are cached forever</strong> — agents download once, never return. No recurring consumption like Spotify.</li>
+                <li><strong>APIs rarely change</strong> — most recipes stay valid for months. Weak "freshness" value prop.</li>
+                <li><strong>Small initial TAM</strong> — only AI agent operators who need service recipes (hundreds, not millions).</li>
+                <li><strong>Open source</strong> — community growth is slow and organic.</li>
+            </ul>
+        </div>
+        
+        <!-- Strategic Value -->
+        <div class="section">
+            <h2>The Real Value (Strategic)</h2>
+            
+            <div class="value-prop">
+                <h3>Network Effects & Platform Moat</h3>
+                <p><strong>This is about making your agent platform unbeatable, not making money directly.</strong></p>
+            </div>
+            
+            <h3>Value Creation Loop</h3>
+            <div class="chart-container">
+                <p style="margin-bottom: 16px;">More recipes → More useful → More agents → More recipes</p>
+                <div style="color: #8b949e; font-size: 0.9em;">
+                    <p>• <strong>Developer pitch:</strong> "Your agent connects to 5,000 services out of the box"</p>
+                    <p>• <strong>User pitch:</strong> "Works with everything, no setup required"</p>
+                    <p>• <strong>Competitor barrier:</strong> Can't replicate recipe network overnight</p>
+                </div>
+            </div>
+            
+            <h3>Comparable Strategies</h3>
+            <ul>
+                <li><strong>npm for Node.js</strong> — Free package manager → £7.5B GitHub acquisition</li>
+                <li><strong>Docker Hub</strong> — Free container registry → Platform dominance</li>
+                <li><strong>Hugging Face</strong> — Free model hub → £3.5B valuation</li>
+            </ul>
+            
+            <p class="highlight">The hive makes your agent platform stickier than any paid feature could.</p>
+        </div>
+        
+        <!-- Risk Factors -->
+        <div class="section">
+            <h2>Risk Factors</h2>
+            
+            <div class="risk-item">
+                <h4>Recipe Caching = No Recurring Usage</h4>
+                <p>Unlike SaaS where users return daily, recipes are "download once, cache forever." This fundamentally limits direct monetisation potential.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>APIs Don't Change Often</h4>
+                <p>Most REST APIs are stable for months/years. The "freshness guarantee" subscription model is weak because there's not enough churn to justify ongoing payments.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Open Source Can Be Forked</h4>
+                <p>If we later try to monetise aggressively, community could fork. Need to balance openness with sustainability.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Small Initial TAM</h4>
+                <p>AI agent operators who need service recipes = hundreds initially, not millions. Growth will be slow until agent adoption explodes.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Security Risk</h4>
+                <p>Malicious recipes could compromise agents. Guardian mitigates but not 100%. One security incident could kill trust.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Low Conversion Rates</h4>
+                <p>Open source typically sees 1-5% paid conversion. Even with 1,000 users, that's 10-50 paying customers max.</p>
+            </div>
         </div>
         
         <!-- Conclusion -->
         <div class="section">
             <h2>Investment Recommendation</h2>
-            <p><strong>Proceed with bootstrap approach.</strong> hAIve mAInd presents a compelling opportunity with:</p>
-            <ul style="margin: 20px 0; padding-left: 20px;">
-                <li>✅ <strong>Fast break-even</strong> (Month 8) with conservative assumptions</li>
-                <li>✅ <strong>High-margin business model</strong> (89% by Year 3) driven by software scale</li>
-                <li>✅ <strong>Defensible moat</strong> through community network effects and recipe quality</li>
-                <li>✅ <strong>Multiple revenue streams</strong> reducing single-point-of-failure risk</li>
-                <li>✅ <strong>Reasonable capital requirements</strong> suitable for indie/bootstrap approach</li>
+            
+            <div class="reality-check">
+                <h3>Bottom Line</h3>
+                <p><strong>Proceed, but understand what you're building.</strong></p>
+                <p>This isn't a revenue business — it's infrastructure investment that makes your core platform more valuable. Budget £400-600/year and focus on indirect value, not direct returns.</p>
+            </div>
+            
+            <h3>What Success Looks Like</h3>
+            <ul>
+                <li>✅ <strong>Platform differentiation:</strong> "Works with 5,000+ services natively"</li>
+                <li>✅ <strong>Developer adoption:</strong> Agents using your platform are more capable</li>
+                <li>✅ <strong>Competitive moat:</strong> Recipes network is hard to replicate</li>
+                <li>✅ <strong>Community trust:</strong> Open source credibility in AI space</li>
+                <li>❌ <strong>Direct revenue:</strong> Don't expect meaningful cash flow Y1</li>
             </ul>
             
-            <p><strong>Recommended initial capital:</strong> $15K for first 6 months runway, focusing on MVP and early community building.</p>
+            <p><strong>Budget Required:</strong> £500/year + development time. Think of it like marketing spend that builds a competitive advantage instead of just driving traffic.</p>
         </div>
         
         <div style="text-align: center; margin-top: 40px; color: #8b949e; font-size: 12px;">
-            Generated on Feb 24, 2026 • <a href="https://the-factory-delta.vercel.app/" style="color: #58a6ff;">The Factory</a>
+            Generated on Feb 24, 2026 • <a href="https://the-factory-delta.vercel.app/" style="color: #58a6ff;">The Factory</a><br/>
+            <em>Realistic projection based on "use once, cache forever" recipe model</em>
         </div>
     </div>
 </body>

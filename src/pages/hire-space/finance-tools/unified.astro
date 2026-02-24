@@ -84,7 +84,7 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 /* ── CSS-only modals (checkbox hack) ── */
 .css-modal{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center}
 #modal-downstream:checked~.l1-c-contracts .css-modal#modal-overlay-downstream{display:flex}
-#modal-win-ctr1:checked~.css-modal#modal-overlay-win-ctr1{display:flex}
+#modal-win-ctr1:checked+.css-modal#modal-overlay-win-ctr1{display:flex}
 .css-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);cursor:pointer}
 .css-modal-content{position:relative;background:#fff;border-radius:10px;padding:0;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);z-index:1}
 .css-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e2e8f0}
@@ -371,7 +371,7 @@ details>summary::marker{display:none}
 
 <!-- Win Contract Modal (CSS-only) -->
 <input type="checkbox" id="modal-win-ctr1" class="tab-input"/>
-<div class="css-modal" id="modal-overlay-win-ctr1" style="display:none">
+<div class="css-modal" id="modal-overlay-win-ctr1">
 <label for="modal-win-ctr1" class="css-modal-backdrop"></label>
 <div class="css-modal-content" style="max-width:700px">
 <div class="css-modal-header">

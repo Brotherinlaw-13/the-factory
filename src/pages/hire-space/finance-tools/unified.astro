@@ -185,7 +185,7 @@ details[open]>.collapse-trigger::before{content:'▾ '}
 
 <!-- Commission Summary — collapsible breakdown -->
 <div class="stitle">💰 Commission Summary</div>
-<div class="todo">[TODO] Commission is defined at contract level, not booking level. How do we handle multi-booking contracts?</div>
+<div style="font-size:12px;color:#64748b;margin-bottom:8px;font-style:italic">Costs for: The Grand Ballroom (booking line HS-U1JV)</div>
 <div class="card">
 <table>
 <tbody>
@@ -205,14 +205,13 @@ details[open]>.collapse-trigger::before{content:'▾ '}
 </tbody>
 </table>
 </details>
-<div class="todo">[TODO] How to handle mixed DAS/DAC items on the same booking?</div>
 </div>
 
-<!-- Pre-Flight Checks (always visible) -->
-<div class="stitle">🏆 Win Contract</div>
+<!-- Pre-Win Checks (always visible) -->
+<div class="stitle">🏆 Win Booking</div>
 <div class="card">
-<h3>🛡️ Pre-Flight Checks</h3>
-<p style="font-size:12px;color:#64748b;margin-bottom:12px">All checks must pass before the contract can be won.</p>
+<h3>🛡️ Pre-Win Checks</h3>
+<p style="font-size:12px;color:#64748b;margin-bottom:12px">All checks must pass before the booking can be won.</p>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Signed contract uploaded</strong><br><span style="color:#64748b;font-size:12px">Countersigned 10 Feb 2026</span></div></div>
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>HS General T&Cs attached</strong><br><span style="color:#64748b;font-size:12px">v4.2 (Jan 2026)</span></div></div>
 <div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Missing — <label for="modal-docs" style="color:#2563eb;cursor:pointer;text-decoration:underline">upload in Documents</label></span></div></div>
@@ -222,7 +221,7 @@ details[open]>.collapse-trigger::before{content:'▾ '}
 <div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>All line items priced</strong><br><span style="color:#64748b;font-size:12px">5 items, £14,850.00 ex VAT</span></div></div>
 </div>
 
-<div class="guardrail"><h4>⚠ Cannot Win Contract</h4><p>Venue T&Cs not uploaded. Upload venue-specific terms before winning.</p></div>
+<div class="guardrail"><h4>⚠ Cannot Win Booking</h4><p>Venue T&Cs not uploaded. Upload venue-specific terms before winning.</p></div>
 
 <!-- Financial Summary on Win — collapsible, default closed -->
 <details class="collapse-section">
@@ -243,13 +242,11 @@ details[open]>.collapse-trigger::before{content:'▾ '}
 </div>
 </details>
 
-<div class="todo">[TODO] Should winning create the client invoice immediately, or wait for CS to confirm send date? Some clients have PO requirements.</div>
-<div class="todo">[TODO] What happens if a contract is "un-won"? Reversal flow needed.</div>
 
 <div class="action-box" style="border-color:#16a34a;background:#f0fdf4">
-<p style="font-size:14px;color:#166534;margin-bottom:8px"><strong>🏆 Win Contract CTR-2026-00312</strong></p>
+<p style="font-size:14px;color:#166534;margin-bottom:8px"><strong>🏆 Win Booking CTR-2026-00312</strong></p>
 <p style="font-size:12px;color:#64748b;margin-bottom:12px">Creates booking shell, sets up commission, creates tracking codes, notifies finance.</p>
-<button class="btn btn-disabled btn-lg">🔒 Win Contract</button>
+<button class="btn btn-disabled btn-lg">🔒 Win Booking</button>
 <p style="font-size:11px;color:#991b1b;margin-top:8px">⚠ 1 pre-flight check failing</p>
 </div>
 

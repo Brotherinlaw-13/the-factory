@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏰 Rook's Dungeon Forge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #161b22;
+            padding: 1rem;
+            border-bottom: 2px solid #30363d;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #f0f6fc;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px #7c3aed;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #161b22;
+            padding: 1rem;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .controls input {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .controls input:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            border: none;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #30363d, #484f58);
+        }
+
+        .btn.secondary:hover {
+            box-shadow: 0 5px 15px rgba(72, 79, 88, 0.4);
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .canvas-container {
+            flex: 1;
+            background: #161b22;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            padding: 1rem;
+            position: relative;
+        }
+
+        #dungeonCanvas {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            cursor: crosshair;
+            background: #0d1117;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #161b22;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .room-info {
+            margin-bottom: 1rem;
+        }
+
+        .room-info h3 {
+            color: #f0f6fc;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .room-type-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .room-info p {
+            color: #8b949e;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .dungeon-stats {
+            background: #21262d;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .dungeon-stats h4 {
+            color: #f0f6fc;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .export-section {
+            margin-top: 1rem;
+        }
+
+        .export-textarea {
+            width: 100%;
+            height: 150px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            resize: vertical;
+        }
+
+        .legend {
+            background: #21262d;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .legend h4 {
+            color: #f0f6fc;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            border: 1px solid #30363d;
+        }
+
+        .easter-egg {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.8rem;
+            color: #484f58;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: auto;
+                order: -1;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Glow animations */
+        @keyframes treasureGlow {
+            0%, 100% { box-shadow: 0 0 5px #ffd700; }
+            50% { box-shadow: 0 0 15px #ffd700, 0 0 25px #ffd700; }
+        }
+
+        @keyframes bossGlow {
+            0%, 100% { box-shadow: 0 0 5px #dc2626; }
+            50% { box-shadow: 0 0 15px #dc2626, 0 0 25px #dc2626; }
+        }
+
+        .glow-treasure {
+            animation: treasureGlow 2s ease-in-out infinite;
+        }
+
+        .glow-boss {
+            animation: bossGlow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏰 Rook's Dungeon Forge</h1>
+        <div class="subtitle">Procedural dungeons for the discerning dungeon master</div>
+    </div>
+
+    <div class="controls">
+        <label for="seedInput">Seed:</label>
+        <input type="text" id="seedInput" placeholder="Enter seed or leave empty" maxlength="20">
+        
+        <button class="btn" onclick="generateDungeon()">⚡ Generate</button>
+        <button class="btn secondary" onclick="exportDungeon()">📋 Export ASCII</button>
+        
+        <span style="color: #8b949e; font-size: 0.9rem;">Click on rooms to explore them</span>
+    </div>
+
+    <div class="main-content">
+        <div class="canvas-container">
+            <canvas id="dungeonCanvas" width="800" height="600"></canvas>
+            <div class="easter-egg">v1.0 - "Made with ☕ and 🧙‍♂️ magic"</div>
+        </div>
+
+        <div class="sidebar">
+            <div class="legend">
+                <h4>🗺️ Legend</h4>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #22c55e;"></div>
+                    <span>Entrance</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffd700;"></div>
+                    <span>Treasure Room</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #dc2626;"></div>
+                    <span>Boss Chamber</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #6b7280;"></div>
+                    <span>Empty Room</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #374151;"></div>
+                    <span>Corridor</span>
+                </div>
+            </div>
+
+            <div class="dungeon-stats" id="dungeonStats">
+                <h4>📊 Dungeon Stats</h4>
+                <div class="stat-item">
+                    <span>Total Rooms:</span>
+                    <span id="totalRooms">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Treasure Rooms:</span>
+                    <span id="treasureRooms">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Boss Chambers:</span>
+                    <span id="bossRooms">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Current Seed:</span>
+                    <span id="currentSeed">-</span>
+                </div>
+            </div>
+
+            <div class="room-info" id="roomInfo">
+                <h3>🏛️ Welcome to the Forge</h3>
+                <p>Generate a dungeon to begin your adventure. Each room holds secrets waiting to be discovered...</p>
+                <p style="color: #7c3aed; font-weight: bold;">Pro tip: Try seeds like "rook", "dragon", or "treasure" for interesting layouts!</p>
+            </div>
+
+            <div class="export-section">
+                <h4>📜 ASCII Export</h4>
+                <textarea id="exportText" class="export-textarea" readonly placeholder="Generate a dungeon first, then click Export ASCII to see the text version here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dungeon Generator Class
+        class DungeonForge {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.width = 40; // Grid width
+                this.height = 30; // Grid height
+                this.cellSize = 20;
+                this.dungeon = [];
+                this.rooms = [];
+                this.corridors = [];
+                this.selectedRoom = null;
+                this.seed = '';
+                
+                // Initialize grid
+                this.initializeGrid();
+                this.setupEventListeners();
+                
+                // Room descriptions templates
+                this.roomDescriptions = {
+                    entrance: [
+                        "A stone archway marks the entrance to this ancient dungeon. Torch brackets line the walls, casting dancing shadows.",
+                        "Worn stone steps descend into darkness. The air is thick with the scent of old earth and forgotten secrets.",
+                        "A heavy wooden door creaks open, revealing a chamber carved from living rock. Adventure awaits beyond."
+                    ],
+                    treasure: [
+                        "Glimmering coins catch the torchlight in this opulent chamber. Ancient chests line the walls.",
+                        "A room filled with the accumulated wealth of ages. Golden artifacts rest on marble pedestals.",
+                        "Precious gems sparkle from every surface in this treasure vault. The air hums with magical energy.",
+                        "Piles of gold and silver create a dragon's hoard in miniature. Old magic protects this place."
+                    ],
+                    boss: [
+                        "An ominous throne dominates this grand chamber. Dark energy radiates from the shadows.",
+                        "Massive pillars support a vaulted ceiling in this boss arena. Ancient runes glow with malevolent power.",
+                        "A circular chamber with raised platforms suggests this was built for combat. The air crackles with tension.",
+                        "Weapon racks and battle scars mark this as a champion's domain. Something powerful dwells here."
+                    ],
+                    empty: [
+                        "A simple stone chamber with rough-hewn walls. Nothing remains but dust and echoes.",
+                        "Broken furniture and debris litter this abandoned room. Rats skitter in the corners.",
+                        "A damp chamber with moss-covered walls. The sound of dripping water echoes softly.",
+                        "Carved stone benches suggest this was once a gathering place. Now only silence remains.",
+                        "A library with empty shelves and scattered parchments. Knowledge lost to time.",
+                        "A workshop with rusted tools and cold forges. The craftsman's touch lingers still.",
+                        "A barracks with rotted bedding and fallen weapons. Ghosts of soldiers past.",
+                        "A kitchen with moldy stores and broken pottery. The hearth has long grown cold.",
+                        "A meditation chamber with worn cushions and faded murals. Peace pervades this space.",
+                        "A storage room with empty barrels and torn sacks. Even the mice have moved on."
+                    ]
+                };
+            }
+
+            initializeGrid() {
+                this.dungeon = [];
+                for (let y = 0; y < this.height; y++) {
+                    this.dungeon[y] = [];
+                    for (let x = 0; x < this.width; x++) {
+                        this.dungeon[y][x] = 0; // 0 = wall, 1 = floor, 2 = door
+                    }
+                }
+            }
+
+            setupEventListeners() {
+                this.canvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+            }
+
+            // Simple seeded random number generator
+            seededRandom(seed) {
+                let x = Math.sin(seed++) * 10000;
+                return x - Math.floor(x);
+            }
+
+            setSeed(seedStr) {
+                this.seed = seedStr || Date.now().toString();
+                this.randomSeed = this.stringToSeed(this.seed);
+            }
+
+            stringToSeed(str) {
+                let hash = 0;
+                if (str.length == 0) return hash;
+                for (let i = 0; i < str.length; i++) {
+                    let char = str.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash; // Convert to 32-bit integer
+                }
+                return Math.abs(hash);
+            }
+
+            random() {
+                this.randomSeed++;
+                return this.seededRandom(this.randomSeed);
+            }
+
+            randomInt(min, max) {
+                return Math.floor(this.random() * (max - min + 1)) + min;
+            }
+
+            randomChoice(array) {
+                return array[Math.floor(this.random() * array.length)];
+            }
+
+            generateDungeon(seedStr) {
+                this.setSeed(seedStr);
+                this.initializeGrid();
+                this.rooms = [];
+                this.corridors = [];
+                this.selectedRoom = null;
+
+                // Generate 5-12 rooms
+                const numRooms = this.randomInt(5, 12);
+                
+                // Place rooms randomly with collision detection
+                for (let i = 0; i < numRooms; i++) {
+                    this.placeRandomRoom();
+                }
+
+                // Connect all rooms with corridors
+                this.connectRooms();
+
+                // Assign room types
+                this.assignRoomTypes();
+
+                // Generate room descriptions
+                this.generateRoomDescriptions();
+
+                // Render the dungeon
+                this.render();
+
+                // Update stats
+                this.updateStats();
+            }
+
+            placeRandomRoom() {
+                const maxAttempts = 100;
+                let attempts = 0;
+
+                while (attempts < maxAttempts) {
+                    const width = this.randomInt(3, 8);
+                    const height = this.randomInt(3, 6);
+                    const x = this.randomInt(2, this.width - width - 2);
+                    const y = this.randomInt(2, this.height - height - 2);
+
+                    if (this.canPlaceRoom(x, y, width, height)) {
+                        const room = {
+                            x: x,
+                            y: y,
+                            width: width,
+                            height: height,
+                            centerX: x + Math.floor(width / 2),
+                            centerY: y + Math.floor(height / 2),
+                            type: 'empty',
+                            description: '',
+                            id: this.rooms.length
+                        };
+
+                        this.rooms.push(room);
+                        this.carveRoom(room);
+                        break;
+                    }
+                    attempts++;
+                }
+            }
+
+            canPlaceRoom(x, y, width, height) {
+                // Check if room overlaps with existing rooms (with padding)
+                for (let room of this.rooms) {
+                    if (x < room.x + room.width + 1 && 
+                        x + width + 1 > room.x && 
+                        y < room.y + room.height + 1 && 
+                        y + height + 1 > room.y) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            carveRoom(room) {
+                for (let y = room.y; y < room.y + room.height; y++) {
+                    for (let x = room.x; x < room.x + room.width; x++) {
+                        this.dungeon[y][x] = 1; // Floor
+                    }
+                }
+            }
+
+            connectRooms() {
+                // Simple connection: connect each room to the next one
+                // This ensures all rooms are reachable
+                for (let i = 0; i < this.rooms.length - 1; i++) {
+                    this.createCorridor(this.rooms[i], this.rooms[i + 1]);
+                }
+
+                // Add some extra connections for more interesting layouts
+                const extraConnections = Math.min(3, Math.floor(this.rooms.length / 3));
+                for (let i = 0; i < extraConnections; i++) {
+                    const room1 = this.randomChoice(this.rooms);
+                    const room2 = this.randomChoice(this.rooms);
+                    if (room1 !== room2) {
+                        this.createCorridor(room1, room2);
+                    }
+                }
+            }
+
+            createCorridor(room1, room2) {
+                const start = { x: room1.centerX, y: room1.centerY };
+                const end = { x: room2.centerX, y: room2.centerY };
+
+                // Create L-shaped corridor
+                if (this.random() < 0.5) {
+                    // Horizontal first, then vertical
+                    this.carveLine(start.x, start.y, end.x, start.y);
+                    this.carveLine(end.x, start.y, end.x, end.y);
+                } else {
+                    // Vertical first, then horizontal
+                    this.carveLine(start.x, start.y, start.x, end.y);
+                    this.carveLine(start.x, end.y, end.x, end.y);
+                }
+            }
+
+            carveLine(x1, y1, x2, y2) {
+                const dx = Math.sign(x2 - x1);
+                const dy = Math.sign(y2 - y1);
+                
+                let x = x1;
+                let y = y1;
+                
+                while (x !== x2 || y !== y2) {
+                    if (x >= 0 && x < this.width && y >= 0 && y < this.height) {
+                        if (this.dungeon[y][x] === 0) {
+                            this.dungeon[y][x] = 1; // Corridor floor
+                        }
+                    }
+                    
+                    if (x !== x2) x += dx;
+                    if (y !== y2) y += dy;
+                }
+            }
+
+            assignRoomTypes() {
+                if (this.rooms.length === 0) return;
+
+                // Shuffle rooms for random assignment
+                const shuffledRooms = [...this.rooms];
+                for (let i = shuffledRooms.length - 1; i > 0; i--) {
+                    const j = Math.floor(this.random() * (i + 1));
+                    [shuffledRooms[i], shuffledRooms[j]] = [shuffledRooms[j], shuffledRooms[i]];
+                }
+
+                // Assign types
+                shuffledRooms[0].type = 'entrance';
+                
+                if (shuffledRooms.length > 1) {
+                    shuffledRooms[1].type = 'boss';
+                }
+                
+                // 1-2 treasure rooms
+                const treasureCount = this.randomInt(1, Math.min(2, shuffledRooms.length - 2));
+                for (let i = 2; i < 2 + treasureCount && i < shuffledRooms.length; i++) {
+                    shuffledRooms[i].type = 'treasure';
+                }
+            }
+
+            generateRoomDescriptions() {
+                for (let room of this.rooms) {
+                    const descriptions = this.roomDescriptions[room.type];
+                    room.description = this.randomChoice(descriptions);
+                }
+            }
+
+            render() {
+                this.ctx.fillStyle = '#0d1117';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Draw grid
+                for (let y = 0; y < this.height; y++) {
+                    for (let x = 0; x < this.width; x++) {
+                        const screenX = x * this.cellSize;
+                        const screenY = y * this.cellSize;
+
+                        if (this.dungeon[y][x] === 1) {
+                            // Check if this cell is part of a room or corridor
+                            const room = this.getRoomAt(x, y);
+                            if (room) {
+                                // Room floor
+                                this.ctx.fillStyle = this.getRoomColor(room.type);
+                                this.ctx.fillRect(screenX, screenY, this.cellSize, this.cellSize);
+                                
+                                // Add glow effect for special rooms
+                                if (room.type === 'treasure' || room.type === 'boss') {
+                                    this.ctx.shadowColor = this.getRoomColor(room.type);
+                                    this.ctx.shadowBlur = 10;
+                                    this.ctx.fillRect(screenX, screenY, this.cellSize, this.cellSize);
+                                    this.ctx.shadowBlur = 0;
+                                }
+                                
+                                // Highlight selected room
+                                if (room === this.selectedRoom) {
+                                    this.ctx.strokeStyle = '#58a6ff';
+                                    this.ctx.lineWidth = 2;
+                                    this.ctx.strokeRect(screenX, screenY, this.cellSize, this.cellSize);
+                                }
+                            } else {
+                                // Corridor floor
+                                this.ctx.fillStyle = '#374151';
+                                this.ctx.fillRect(screenX, screenY, this.cellSize, this.cellSize);
+                            }
+                        } else {
+                            // Wall
+                            this.ctx.fillStyle = '#1f2937';
+                            this.ctx.fillRect(screenX, screenY, this.cellSize, this.cellSize);
+                        }
+
+                        // Draw grid lines
+                        this.ctx.strokeStyle = '#374151';
+                        this.ctx.lineWidth = 0.5;
+                        this.ctx.strokeRect(screenX, screenY, this.cellSize, this.cellSize);
+                    }
+                }
+
+                // Draw room labels
+                this.ctx.fillStyle = '#f9fafb';
+                this.ctx.font = 'bold 10px monospace';
+                this.ctx.textAlign = 'center';
+                
+                for (let room of this.rooms) {
+                    const centerX = (room.centerX * this.cellSize) + (this.cellSize / 2);
+                    const centerY = (room.centerY * this.cellSize) + (this.cellSize / 2);
+                    
+                    let symbol = '';
+                    switch (room.type) {
+                        case 'entrance': symbol = 'E'; break;
+                        case 'treasure': symbol = 'T'; break;
+                        case 'boss': symbol = 'B'; break;
+                        default: symbol = room.id.toString();
+                    }
+                    
+                    this.ctx.fillText(symbol, centerX, centerY + 3);
+                }
+            }
+
+            getRoomAt(x, y) {
+                for (let room of this.rooms) {
+                    if (x >= room.x && x < room.x + room.width &&
+                        y >= room.y && y < room.y + room.height) {
+                        return room;
+                    }
+                }
+                return null;
+            }
+
+            getRoomColor(type) {
+                switch (type) {
+                    case 'entrance': return '#22c55e';
+                    case 'treasure': return '#ffd700';
+                    case 'boss': return '#dc2626';
+                    default: return '#6b7280';
+                }
+            }
+
+            handleCanvasClick(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                const x = Math.floor((e.clientX - rect.left) / this.cellSize);
+                const y = Math.floor((e.clientY - rect.top) / this.cellSize);
+
+                const room = this.getRoomAt(x, y);
+                if (room) {
+                    this.selectedRoom = room;
+                    this.displayRoomInfo(room);
+                    this.render(); // Re-render to show selection
+                }
+            }
+
+            displayRoomInfo(room) {
+                const roomInfo = document.getElementById('roomInfo');
+                const typeNames = {
+                    entrance: 'Entrance Chamber',
+                    treasure: 'Treasure Vault',
+                    boss: 'Boss Arena',
+                    empty: 'Chamber'
+                };
+
+                roomInfo.innerHTML = `
+                    <h3>
+                        <span class="room-type-indicator" style="background: ${this.getRoomColor(room.type)};"></span>
+                        ${typeNames[room.type]} #${room.id}
+                    </h3>
+                    <p><strong>Dimensions:</strong> ${room.width} × ${room.height}</p>
+                    <p><strong>Position:</strong> (${room.x}, ${room.y})</p>
+                    <p style="margin-top: 1rem; color: #e6edf3; font-style: italic;">${room.description}</p>
+                `;
+            }
+
+            updateStats() {
+                document.getElementById('totalRooms').textContent = this.rooms.length;
+                document.getElementById('treasureRooms').textContent = this.rooms.filter(r => r.type === 'treasure').length;
+                document.getElementById('bossRooms').textContent = this.rooms.filter(r => r.type === 'boss').length;
+                document.getElementById('currentSeed').textContent = this.seed;
+            }
+
+            exportToASCII() {
+                let output = '';
+                const symbols = {
+                    0: '#',  // Wall
+                    1: '.'   // Floor
+                };
+
+                // Create ASCII representation
+                for (let y = 0; y < this.height; y++) {
+                    let line = '';
+                    for (let x = 0; x < this.width; x++) {
+                        const room = this.getRoomAt(x, y);
+                        if (room && this.dungeon[y][x] === 1) {
+                            // Use room symbols
+                            switch (room.type) {
+                                case 'entrance': line += 'E'; break;
+                                case 'treasure': line += 'T'; break;
+                                case 'boss': line += 'B'; break;
+                                default: line += '.'; break;
+                            }
+                        } else {
+                            line += symbols[this.dungeon[y][x]];
+                        }
+                    }
+                    output += line + '\n';
+                }
+
+                // Add legend
+                output += '\nLegend:\n';
+                output += '# = Wall\n';
+                output += '. = Floor/Corridor\n';
+                output += 'E = Entrance\n';
+                output += 'T = Treasure Room\n';
+                output += 'B = Boss Chamber\n';
+                output += `\nSeed: ${this.seed}\n`;
+                output += `Rooms: ${this.rooms.length}\n`;
+
+                return output;
+            }
+        }
+
+        // Global dungeon generator instance
+        let dungeonForge;
+
+        // Initialize when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            dungeonForge = new DungeonForge('dungeonCanvas');
+            
+            // Generate initial dungeon
+            generateDungeon();
+        });
+
+        function generateDungeon() {
+            const seed = document.getElementById('seedInput').value.trim();
+            dungeonForge.generateDungeon(seed);
+        }
+
+        function exportDungeon() {
+            if (dungeonForge && dungeonForge.rooms.length > 0) {
+                const asciiMap = dungeonForge.exportToASCII();
+                document.getElementById('exportText').value = asciiMap;
+                
+                // Auto-select the text for easy copying
+                document.getElementById('exportText').select();
+                
+                // Try to copy to clipboard
+                try {
+                    document.execCommand('copy');
+                    // Could add a toast notification here
+                } catch (err) {
+                    console.log('Copy to clipboard failed');
+                }
+            } else {
+                alert('Please generate a dungeon first!');
+            }
+        }
+
+        // Easter egg: Konami code
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.code);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                // Easter egg activated!
+                document.getElementById('seedInput').value = 'legendary';
+                generateDungeon();
+                
+                // Change title temporarily
+                const originalTitle = document.querySelector('h1').textContent;
+                document.querySelector('h1').textContent = '🏰 Legendary Forge Activated! 🌟';
+                setTimeout(() => {
+                    document.querySelector('h1').textContent = originalTitle;
+                }, 3000);
+                
+                konamiCode = [];
+            }
+        });
+
+        // Handle Enter key in seed input
+        document.getElementById('seedInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                generateDungeon();
+            }
+        });
+
+        // Some pre-defined interesting seeds for testing
+        const interestingSeeds = ['rook', 'dragon', 'treasure', 'dungeon', 'magic', 'forge', 'castle', 'adventure'];
+        
+        // Add a random seed generator
+        function getRandomSeed() {
+            const adjectives = ['ancient', 'dark', 'mystical', 'forgotten', 'cursed', 'hidden', 'sacred', 'lost'];
+            const nouns = ['crypt', 'vault', 'chamber', 'tomb', 'lair', 'sanctum', 'fortress', 'temple'];
+            
+            const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+            const noun = nouns[Math.floor(Math.random() * nouns.length)];
+            
+            return adj + noun + Math.floor(Math.random() * 1000);
+        }
+
+        // Right-click on generate button for random seed
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.querySelector('button[onclick="generateDungeon()"]');
+            generateBtn.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                document.getElementById('seedInput').value = getRandomSeed();
+                generateDungeon();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -380,25 +380,17 @@ details>summary::marker{display:none}
 </div>
 <div class="css-modal-body">
 
-<!-- Pre-win checklist -->
-<h4 style="font-size:13px;color:#64748b;margin-bottom:12px">Pre-Win Checks</h4>
-<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Signed contract uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload signed contract in Contract Details</span></div></div>
-<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&amp;Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload venue terms in Contract Details</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Event date confirmed</strong><br><span style="color:#64748b;font-size:12px">22 Mar 2026</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission % within allowed range</strong><br><span style="color:#64748b;font-size:12px">10% (policy: 8–20%)</span></div></div>
-<div class="todo">[TODO] Can we trigger Juro countersign directly from this screen?</div>
-
-<!-- Commission Summary (read-only) -->
-<div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:16px 0">
+<!-- Commission Summary (editable %) -->
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin-bottom:16px">
 <h4 style="font-size:13px;color:#64748b;margin-bottom:8px">Commission Summary</h4>
 <table style="font-size:13px">
 <thead><tr><th>Item</th><th>Value</th><th>Commission %</th><th>Commission £</th></tr></thead>
 <tbody>
-<tr><td>Room hire</td><td>£3,200.00</td><td>15%</td><td>£480.00</td></tr>
-<tr><td>Catering</td><td>£5,950.00</td><td>12%</td><td>£714.00</td></tr>
-<tr><td>AV package</td><td>£2,800.00</td><td>12%</td><td>£336.00</td></tr>
-<tr><td>Tea/coffee</td><td>£1,700.00</td><td>12%</td><td>£204.00</td></tr>
-<tr><td>Breakout rooms</td><td>£1,200.00</td><td>15%</td><td>£180.00</td></tr>
+<tr><td>Room hire</td><td>£3,200.00</td><td><input type="text" value="15%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£480.00</td></tr>
+<tr><td>Catering</td><td>£5,950.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£714.00</td></tr>
+<tr><td>AV package</td><td>£2,800.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£336.00</td></tr>
+<tr><td>Tea/coffee</td><td>£1,700.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£204.00</td></tr>
+<tr><td>Breakout rooms</td><td>£1,200.00</td><td><input type="text" value="15%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£180.00</td></tr>
 <tr style="font-weight:600;background:#f0f9ff"><td>Total</td><td>£14,850.00</td><td>~12.9%</td><td>£1,914.00</td></tr>
 </tbody>
 </table>

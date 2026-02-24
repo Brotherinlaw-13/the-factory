@@ -174,7 +174,8 @@ details>summary::marker{display:none}
 <div class="csh-item"><span class="csh-label">Contract</span><strong>CTR-2026-00312 v3</strong></div>
 <div class="csh-item"><span class="csh-label">Client</span>Moody's Corp</div>
 <div class="csh-item"><span class="csh-label">Venue</span>The Grand Ballroom</div>
-<div class="csh-item"><span class="csh-label">Value</span><strong>£18,350.00</strong></div>
+<div class="csh-item"><span class="csh-label">Lines</span><strong>4 booking lines</strong></div>
+<div class="csh-item"><span class="csh-label">Value</span><strong>£18,350.00</strong> <span style="font-size:11px;color:#64748b">(won lines)</span></div>
 <div class="csh-item"><span class="csh-label">Status</span><span class="badge badge-green">Countersigned ✓</span></div>
 <div class="csh-item"><a href="#" style="color:#2563eb;font-size:12px">Juro ↗</a> · <a href="#" style="color:#2563eb;font-size:12px">Retool ↗</a></div>
 </div>
@@ -186,8 +187,55 @@ details>summary::marker{display:none}
 <label for="modal-downstream" class="btn btn-outline btn-sm">🔮 What happens on win?</label>
 </div>
 
+<!-- Booking Lines — status selector -->
+<div class="stitle">📋 Booking Lines</div>
+<div class="card" style="margin-bottom:24px">
+<table>
+<thead><tr><th>Line Ref</th><th>Venue / Supplier</th><th>Type</th><th>Costs</th><th>Total Value</th><th>Status</th></tr></thead>
+<tbody>
+<tr>
+<td><span class="badge badge-gray">HS-U1JV</span></td>
+<td><strong>The Grand Ballroom</strong></td>
+<td><span class="badge badge-blue">Venue</span></td>
+<td>5</td>
+<td>£14,850.00</td>
+<td><select class="line-status-select status-won" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#dcfce7;color:#166534"><option selected>Won</option><option>Pending</option><option>Lost</option><option>Void</option></select></td>
+</tr>
+<tr>
+<td><span class="badge badge-gray">HS-U1JU</span></td>
+<td><strong>DJ Sounds Ltd</strong></td>
+<td><span class="badge badge-purple">Supplier</span></td>
+<td>2</td>
+<td>£3,500.00</td>
+<td><select class="line-status-select status-won" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#dcfce7;color:#166534"><option selected>Won</option><option>Pending</option><option>Lost</option><option>Void</option></select></td>
+</tr>
+<tr>
+<td><span class="badge badge-gray">HS-U1JW</span></td>
+<td><strong>Riverside Catering Co</strong></td>
+<td><span class="badge badge-purple">Supplier</span></td>
+<td>3</td>
+<td>£2,200.00</td>
+<td><select class="line-status-select status-lost" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#fee2e2;color:#991b1b"><option>Won</option><option>Pending</option><option selected>Lost</option><option>Void</option></select></td>
+</tr>
+<tr>
+<td><span class="badge badge-gray">HS-U1JX</span></td>
+<td><strong>Flash Photography</strong></td>
+<td><span class="badge badge-purple">Supplier</span></td>
+<td>1</td>
+<td>£800.00</td>
+<td><select class="line-status-select status-pending" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#fef9c3;color:#854d0e"><option>Won</option><option selected>Pending</option><option>Lost</option><option>Void</option></select></td>
+</tr>
+</tbody>
+</table>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0 4px;font-size:13px;border-top:2px solid #e2e8f0;margin-top:8px">
+<span><strong>2 of 4 lines won</strong> — £18,350.00 of £21,350.00 total value</span>
+</div>
+<div class="info-banner" style="margin-top:12px">ℹ️ Only lines marked as <strong>Won</strong> will appear in the commission summary below. Set the status for each line, then review and confirm commission.</div>
+</div>
+
 <!-- Commission Summary — multi-booking-line accordion -->
-<div class="stitle">💰 Commission Summary</div>
+<div class="stitle">💰 Commission Summary — Won Lines Only</div>
+<div style="font-size:12px;color:#64748b;margin:-8px 0 12px">Showing commission for 2 won booking lines. Change line status above to update.</div>
 <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px 20px;margin-bottom:16px;font-size:13px">
 <span><strong>2</strong> booking lines</span>
 <span>Total value <strong>£18,350.00</strong></span>
@@ -245,6 +293,15 @@ details>summary::marker{display:none}
 <tr style="background:#f0f9ff;font-weight:600"><td>Subtotal</td><td>£3,500.00</td><td>12%</td><td>£420.00</td><td>£3,080.00</td><td></td></tr>
 </tbody>
 </table>
+</div>
+</details>
+
+<!-- Lines not won -->
+<details style="border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px;background:#f8fafc;font-size:13px;color:#64748b">
+<summary style="padding:12px 20px;cursor:pointer;list-style:revert">2 lines not won (Lost: 1, Pending: 1)</summary>
+<div style="padding:0 20px 14px;font-size:12px">
+<div style="padding:4px 0">• HS-U1JW — Riverside Catering Co — £2,200.00 — <span style="color:#991b1b;font-weight:600">Lost</span></div>
+<div style="padding:4px 0">• HS-U1JX — Flash Photography — £800.00 — <span style="color:#854d0e;font-weight:600">Pending</span></div>
 </div>
 </details>
 

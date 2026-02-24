@@ -143,6 +143,20 @@
       </table>
     </div>
 
+    <!-- Confirm Commission — manual entry step -->
+    <div class="card section">
+      <h3>✅ Confirm Commission</h3>
+      <div class="info-banner" style="margin-bottom: 12px;">🔒 <strong>Why?</strong> To ensure commission has been reviewed, please type the total commission amount without copying.</div>
+      <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 12px;">
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 8px;">Type the total commission amount (ex VAT) to confirm you've reviewed the breakdown</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+          <input type="text" value="4023.80" style="font-size: 18px; padding: 8px 16px; width: 180px; text-align: center; border: 2px solid #16a34a; border-radius: 6px;" oncopy="return false" oncut="return false" onpaste="return false" placeholder="e.g. 4023.80"/>
+          <span class="badge badge-green" style="font-size: 13px; padding: 6px 12px;">✓ Match — £4,023.80</span>
+        </div>
+        <p style="font-size: 11px; color: #dc2626; margin-top: 8px;">If mismatch, check line items above before proceeding</p>
+      </div>
+    </div>
+
     <!-- Guard Rails -->
     <div class="card section">
       <h3>🛡️ Guard Rails — Pre-Win Checks</h3>
@@ -155,7 +169,7 @@
           <tr><td>Contract countersigned in Juro</td><td><span class="badge badge-green">Pass ✓</span></td><td>Signed 10 Feb 2026</td></tr>
           <tr><td>Quote filled with all line items</td><td><span class="badge badge-green">Pass ✓</span></td><td>4 items, £31,940 total</td></tr>
           <tr><td>Commission % within allowed range</td><td><span class="badge badge-green">Pass ✓</span></td><td>All items 10-15% (policy: 8-20%)</td></tr>
-          <tr><td>Commission summary reviewed (£ amounts)</td><td><span class="badge badge-yellow">Pending</span></td><td>CS must click "Confirm commission"</td></tr>
+          <tr><td>Commission total manually confirmed</td><td><span class="badge badge-green">Pass ✓</span></td><td>£4,023.80 typed & matched</td></tr>
           <tr><td>Venue T&Cs uploaded</td><td><span class="badge badge-red">Fail ✗</span></td><td>Missing — upload above</td></tr>
           <tr><td>No duplicate booking</td><td><span class="badge badge-green">Pass ✓</span></td><td>No match found</td></tr>
         </tbody>

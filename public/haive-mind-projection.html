@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hAIve mAInd - Realistic Projection 2026-2027</title>
+    <title>hAIve mAInd - Infrastructure Cost Analysis</title>
     <style>
         * {
             margin: 0;
@@ -12,26 +12,23 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f1419;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Mono', monospace;
+            background: #0d1117;
             color: #e6edf3;
             line-height: 1.6;
             font-size: 14px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
         }
         
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            color: #f0f6fc;
             text-align: center;
         }
         
@@ -40,82 +37,72 @@
             color: #8b949e;
             margin-bottom: 40px;
             font-size: 1.1em;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 20px;
         }
         
         .section {
             background: #161b22;
             border: 1px solid #30363d;
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 24px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         
         .section h2 {
             color: #58a6ff;
             margin-bottom: 16px;
-            font-size: 1.4em;
-            border-bottom: 2px solid #21262d;
+            font-size: 1.3em;
+            border-bottom: 1px solid #21262d;
             padding-bottom: 8px;
         }
         
         .section h3 {
             color: #f0f6fc;
-            margin: 20px 0 12px 0;
-            font-size: 1.2em;
+            margin: 16px 0 12px 0;
+            font-size: 1.1em;
         }
         
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
+        .section h4 {
+            color: #7c3aed;
+            margin: 12px 0 8px 0;
+            font-size: 1.0em;
         }
         
-        .metric-card {
+        .architecture-diagram {
             background: #0d1117;
             border: 1px solid #30363d;
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 20px;
-            text-align: center;
+            margin: 16px 0;
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            overflow-x: auto;
         }
         
-        .metric-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #00d4ff;
-            display: block;
-        }
-        
-        .metric-label {
-            color: #8b949e;
-            margin-top: 5px;
-        }
-        
-        .reality-check {
-            background: linear-gradient(135deg, #f8514920, #d2992220);
-            border: 2px solid #f85149;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 20px 0;
-        }
-        
-        .reality-check h3 {
-            color: #f85149;
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        .component-box {
+            background: #21262d;
+            border: 1px solid #58a6ff;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin: 4px;
+            display: inline-block;
+            color: #58a6ff;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 16px 0;
             background: #0d1117;
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
+            font-size: 13px;
         }
         
         th, td {
-            padding: 12px 16px;
+            padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid #21262d;
         }
@@ -130,445 +117,1254 @@
             background: #161b22;
         }
         
-        .revenue { color: #3fb950; }
-        .cost { color: #f85149; }
-        .neutral { color: #d29922; }
-        .number { text-align: right; font-family: 'SF Mono', monospace; }
-        
-        .scenario-card {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 16px;
+        .number { 
+            text-align: right; 
+            font-family: 'SF Mono', monospace; 
+            color: #f0f6fc;
         }
         
-        .scenario-title {
+        .cost { color: #f85149; }
+        .revenue { color: #3fb950; }
+        .neutral { color: #d29922; }
+        .highlight { background: #d2992220; }
+        
+        .option-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        
+        .option-title {
             font-weight: bold;
             color: #58a6ff;
             margin-bottom: 8px;
         }
         
-        .scenario-subtitle {
-            color: #8b949e;
-            font-size: 0.9em;
-            margin-bottom: 12px;
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 12px;
         }
         
-        .chart-container {
-            background: #0d1117;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        .chart-bar {
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            margin: 8px 0;
+        .pros, .cons {
+            background: #161b22;
+            padding: 12px;
             border-radius: 4px;
+        }
+        
+        .pros h5 {
+            color: #3fb950;
+            margin-bottom: 8px;
+        }
+        
+        .cons h5 {
+            color: #f85149;
+            margin-bottom: 8px;
+        }
+        
+        .recommendation {
+            background: linear-gradient(135deg, #3fb95020, #00d4ff20);
+            border: 1px solid #3fb950;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .recommendation h4 {
+            color: #3fb950;
+            margin-bottom: 8px;
+        }
+        
+        .cost-bar {
+            background: #21262d;
             height: 24px;
+            border-radius: 4px;
+            margin: 8px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cost-fill {
+            background: linear-gradient(135deg, #f85149, #d29922);
+            height: 100%;
+            border-radius: 4px;
             position: relative;
             display: flex;
             align-items: center;
             min-width: 40px;
         }
         
-        .chart-label {
+        .cost-label {
             position: absolute;
             left: 8px;
             color: #fff;
             font-weight: 500;
-            z-index: 1;
+            font-size: 12px;
         }
         
-        .chart-value {
+        .cost-value {
             position: absolute;
             right: 8px;
             color: #fff;
             font-family: 'SF Mono', monospace;
-            font-size: 12px;
+            font-size: 11px;
         }
         
-        .risk-item {
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .scenario-card {
             background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
             padding: 16px;
-            border-radius: 8px;
-            border-left: 4px solid #f85149;
-            margin-bottom: 12px;
         }
         
-        .risk-item h4 {
-            color: #f85149;
+        .scenario-title {
+            font-weight: bold;
+            color: #7c3aed;
             margin-bottom: 8px;
         }
         
-        .value-prop {
-            background: linear-gradient(135deg, #3fb95020, #00d4ff20);
-            border: 2px solid #3fb950;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 20px 0;
+        .decision-matrix {
+            overflow-x: auto;
         }
         
-        .value-prop h3 {
-            color: #3fb950;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-simple {
+        .timeline-month {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 4px 0;
             display: flex;
             justify-content: space-between;
-            margin: 20px 0;
-            padding: 20px;
-            background: #0d1117;
-            border-radius: 8px;
-        }
-        
-        .timeline-item {
-            text-align: center;
-            flex: 1;
-        }
-        
-        .timeline-period {
-            font-weight: bold;
-            color: #58a6ff;
-            display: block;
-        }
-        
-        .timeline-status {
-            color: #8b949e;
-            font-size: 0.9em;
-            margin-top: 5px;
+            align-items: center;
         }
         
         ul {
-            margin: 16px 0;
-            padding-left: 24px;
+            margin: 12px 0;
+            padding-left: 20px;
         }
         
         li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
-        .highlight {
-            background: #d2992220;
-            padding: 2px 4px;
+        .code {
+            background: #21262d;
+            padding: 2px 6px;
             border-radius: 3px;
-            color: #d29922;
+            font-family: 'SF Mono', monospace;
+            color: #f0f6fc;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>hAIve mAInd</h1>
-        <p class="subtitle">Realistic Costs & Value Projection | Open Source AI Agent Recipe Registry</p>
+        <h1>hAIve mAInd Infrastructure Cost Analysis</h1>
+        <p class="subtitle">Detailed, granular breakdown for open-source AI agent recipe registry</p>
         
-        <!-- Executive Summary -->
+        <!-- Architecture Overview -->
         <div class="section">
-            <h2>Executive Summary</h2>
+            <h2>1. Architecture Overview</h2>
             
-            <div class="reality-check">
-                <h3>Reality Check</h3>
-                <p><strong>This is NOT a revenue business.</strong> hAIve mAInd is an open-source loss leader that generates value indirectly by making your agent platform more competitive. Think npm for Node.js — free infrastructure that makes the ecosystem valuable.</p>
+            <div class="architecture-diagram">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                               hAIve mAInd Architecture                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
+│  │   Frontend  │    │ API Server  │    │ Guardian AI │    │   Vector    │  │
+│  │   (CDN)     │◄──►│ (REST API)  │◄──►│ (Security)  │    │ Database    │  │
+│  │             │    │             │    │             │    │             │  │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘  │
+│                             │                                      │        │
+│                             ▼                                      ▼        │
+│                    ┌─────────────┐                      ┌─────────────┐     │
+│                    │  Metadata   │                      │  Recipe     │     │
+│                    │   Store     │                      │ Embeddings  │     │
+│                    │ (SQLite/PG) │                      │ (768-dim)   │     │
+│                    └─────────────┘                      └─────────────┘     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Components:
+• Vector DB: Stores recipe embeddings for semantic search
+• API Server: REST endpoints for search/contribute/moderate
+• Guardian Agent: LLM-based security review (5-expert panel prompt)
+• Metadata Store: Recipe status, votes, reputation, user data
+• CDN/Frontend: Static site for browsing (optional)
             </div>
             
-            <div class="grid">
-                <div class="metric-card">
-                    <span class="metric-value cost">£400-600</span>
-                    <div class="metric-label">Year 1 Total Costs</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value neutral">£0-200</span>
-                    <div class="metric-label">Year 1 Revenue (maybe)</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value">200-500</span>
-                    <div class="metric-label">Users if successful</div>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-value">🤷</span>
-                    <div class="metric-label">Break-even (not the point)</div>
-                </div>
-            </div>
-            
-            <p><strong>Primary Value:</strong> Network effects for parent platform — "your agents connect to 5,000 services out of the box" becomes a major competitive advantage.</p>
+            <h3>Data Flow</h3>
+            <ul>
+                <li><strong>Submit Recipe:</strong> Developer → API → Guardian Review → Vector DB + Metadata Store</li>
+                <li><strong>Search Recipes:</strong> Agent → API → Vector DB (similarity) → Ranked Results</li>
+                <li><strong>Security Review:</strong> All recipes go through Guardian's "panel of experts" prompt before approval</li>
+            </ul>
         </div>
-        
-        <!-- Cost Breakdown -->
+
+        <!-- Vector Database Comparison -->
         <div class="section">
-            <h2>Cost Breakdown (The Main Focus)</h2>
-            <p>Since this is costs-focused infrastructure, here's what we're actually looking at:</p>
+            <h2>2. Vector Database — Detailed Comparison</h2>
             
-            <h3>Monthly Costs by Scenario</h3>
+            <div class="option-card">
+                <div class="option-title">Option A: Pinecone (Managed)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th class="number">Monthly Cost</th>
+                            <th class="number">Vectors</th>
+                            <th>Memory</th>
+                            <th>Throughput</th>
+                            <th>Recipe Capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Free</td>
+                            <td class="number">£0</td>
+                            <td class="number">100K</td>
+                            <td>2GB</td>
+                            <td>5 reads/sec</td>
+                            <td>~33K recipes (3 chunks each)</td>
+                        </tr>
+                        <tr>
+                            <td>Starter</td>
+                            <td class="number cost">£8</td>
+                            <td class="number">1M</td>
+                            <td>Higher</td>
+                            <td>Better</td>
+                            <td>~333K recipes</td>
+                        </tr>
+                        <tr>
+                            <td>Standard</td>
+                            <td class="number cost">£70</td>
+                            <td class="number">5M</td>
+                            <td>Production</td>
+                            <td>Production</td>
+                            <td>~1.6M recipes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>Pros</h5>
+                        <ul>
+                            <li>Zero maintenance</li>
+                            <li>Auto-scaling</li>
+                            <li>Excellent performance</li>
+                            <li>100K vectors free forever</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>Cons</h5>
+                        <ul>
+                            <li>Vendor lock-in</li>
+                            <li>Expensive at scale</li>
+                            <li>Limited free tier</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p><strong>Upgrade triggers:</strong> 33K recipes → Starter (£8/mo), 333K recipes → Standard (£70/mo)</p>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option B: Qdrant (Self-hosted)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>VPS Tier</th>
+                            <th class="number">Monthly Cost</th>
+                            <th>Specs</th>
+                            <th>Vector Capacity</th>
+                            <th>Recipe Capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hetzner CX22</td>
+                            <td class="number">€4.50 (£3.90)</td>
+                            <td>2 vCPU, 4GB RAM</td>
+                            <td>~3M vectors</td>
+                            <td>~1M recipes</td>
+                        </tr>
+                        <tr>
+                            <td>Hetzner CX32</td>
+                            <td class="number">€8.50 (£7.40)</td>
+                            <td>4 vCPU, 8GB RAM</td>
+                            <td>~7M vectors</td>
+                            <td>~2.3M recipes</td>
+                        </tr>
+                        <tr>
+                            <td>Hetzner CX42</td>
+                            <td class="number">€16.50 (£14.30)</td>
+                            <td>8 vCPU, 16GB RAM</td>
+                            <td>~15M vectors</td>
+                            <td>~5M recipes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>Memory calculation:</strong> 768-dim float32 ≈ 1KB per vector + overhead. 100K vectors ≈ 150MB RAM including indices.</p>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>Pros</h5>
+                        <ul>
+                            <li>No vendor lock-in</li>
+                            <li>No vector limits</li>
+                            <li>Much cheaper at scale</li>
+                            <li>Full control</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>Cons</h5>
+                        <ul>
+                            <li>Server maintenance</li>
+                            <li>Backups responsibility</li>
+                            <li>Security updates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option C: ChromaDB (Self-hosted)</div>
+                <p><strong>Cost:</strong> Same VPS as above (can run alongside API server)</p>
+                <ul>
+                    <li>We already use ChromaDB for ambient memory</li>
+                    <li>Python-native, lightweight</li>
+                    <li>Perfect for MVP: 0 additional cost</li>
+                    <li>Less production-hardened than Qdrant</li>
+                    <li>Good for first 100K vectors, migrate later</li>
+                </ul>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option D: Weaviate Cloud</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th class="number">Monthly Cost</th>
+                            <th class="number">Objects</th>
+                            <th>Recipe Capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Free Sandbox</td>
+                            <td class="number">£0</td>
+                            <td class="number">100K</td>
+                            <td>~33K recipes</td>
+                        </tr>
+                        <tr>
+                            <td>Starter</td>
+                            <td class="number cost">£25</td>
+                            <td class="number">250K</td>
+                            <td>~83K recipes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>More expensive than Pinecone for similar capacity.</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>Recommendation: Start ChromaDB, migrate to Qdrant</h4>
+                <ul>
+                    <li><strong>MVP (0-10K recipes):</strong> ChromaDB on MacBook Pro (£0)</li>
+                    <li><strong>Growth (10K-100K recipes):</strong> ChromaDB on Hetzner CX22 (£3.90/mo)</li>
+                    <li><strong>Scale (100K+ recipes):</strong> Qdrant on Hetzner CX32 (£7.40/mo)</li>
+                </ul>
+                <p>Avoids vendor lock-in, scales cost-effectively, leverages existing knowledge.</p>
+            </div>
+        </div>
+
+        <!-- API Server Comparison -->
+        <div class="section">
+            <h2>3. API Server — Detailed Comparison</h2>
+            
+            <div class="option-card">
+                <div class="option-title">Option A: Vercel/Cloudflare Workers (Serverless)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th class="number">Monthly Cost</th>
+                            <th>Free Tier</th>
+                            <th>Timeout</th>
+                            <th>CPU Limit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vercel</td>
+                            <td class="number">£0-20</td>
+                            <td>100K invocations</td>
+                            <td>10s</td>
+                            <td>Normal</td>
+                        </tr>
+                        <tr>
+                            <td>CF Workers</td>
+                            <td class="number">£0-5</td>
+                            <td>100K requests/day</td>
+                            <td>30s</td>
+                            <td>10ms CPU</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>Pros</h5>
+                        <ul>
+                            <li>Zero maintenance</li>
+                            <li>Auto-scaling</li>
+                            <li>Global edge deployment</li>
+                            <li>Generous free tiers</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>Cons</h5>
+                        <ul>
+                            <li>Cold starts</li>
+                            <li>Limited compute for Guardian</li>
+                            <li>Timeout issues with LLM calls</li>
+                            <li>Harder to debug</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option B: Hetzner VPS</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>VPS Tier</th>
+                            <th class="number">Monthly Cost</th>
+                            <th>Specs</th>
+                            <th>Can Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CX22</td>
+                            <td class="number">€4.50 (£3.90)</td>
+                            <td>2 vCPU, 4GB RAM, 40GB SSD</td>
+                            <td>API + Vector DB + SQLite</td>
+                        </tr>
+                        <tr>
+                            <td>CX32</td>
+                            <td class="number">€8.50 (£7.40)</td>
+                            <td>4 vCPU, 8GB RAM, 80GB SSD</td>
+                            <td>Above + comfortable headroom</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>Pros</h5>
+                        <ul>
+                            <li>Full control</li>
+                            <li>Run everything on one box</li>
+                            <li>No timeouts</li>
+                            <li>Easy debugging</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>Cons</h5>
+                        <ul>
+                            <li>Server maintenance</li>
+                            <li>Single point of failure</li>
+                            <li>Manual scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option C: Railway/Fly.io</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th class="number">Base Cost</th>
+                            <th>Free Tier</th>
+                            <th>Scaling</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Railway</td>
+                            <td class="number">£5/mo</td>
+                            <td>$5 credit/mo</td>
+                            <td>Usage-based</td>
+                        </tr>
+                        <tr>
+                            <td>Fly.io</td>
+                            <td class="number">£1.94/mo</td>
+                            <td>Shared CPU VM</td>
+                            <td>Scale to zero</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>Railway:</strong> We know it well, but costs can spike unpredictably. Good for development.</p>
+                <p><strong>Fly.io:</strong> Excellent for small apps, but limited free tier for production workloads.</p>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option D: MacBook Pro (Free!)</div>
+                <ul>
+                    <li><strong>Cost:</strong> £0 (electricity only)</li>
+                    <li><strong>Capacity:</strong> M1 Pro handles everything easily</li>
+                    <li><strong>Current usage:</strong> Already run OpenClaw, ChromaDB</li>
+                    <li><strong>Pros:</strong> Zero cost, immediate start</li>
+                    <li><strong>Cons:</strong> Not shareable, tied to our hardware, not always online</li>
+                </ul>
+            </div>
+
+            <div class="recommendation">
+                <h4>Recommendation: Progressive infrastructure</h4>
+                <ul>
+                    <li><strong>MVP:</strong> MacBook Pro (£0) — just us testing</li>
+                    <li><strong>Community:</strong> Hetzner CX22 (£3.90/mo) — external contributors</li>
+                    <li><strong>Production:</strong> Hetzner CX32 (£7.40/mo) — serious traffic</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Guardian Agent LLM Costs -->
+        <div class="section">
+            <h2>4. Guardian Agent (LLM Security Review) — Detailed Cost Breakdown</h2>
+            
+            <h3>Token Calculation per Review</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Component</th>
-                        <th class="number">Minimal<br/>(just us)</th>
-                        <th class="number">Moderate<br/>(small community)</th>
-                        <th class="number">Optimistic<br/>(real traction)</th>
+                        <th class="number">Tokens</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>System prompt (expert panel)</td>
+                        <td class="number">800</td>
+                        <td>5 security experts personas</td>
+                    </tr>
+                    <tr>
+                        <td>Recipe content (average)</td>
+                        <td class="number">1,500</td>
+                        <td>Code + documentation</td>
+                    </tr>
+                    <tr>
+                        <td>Expert analysis output</td>
+                        <td class="number">2,000</td>
+                        <td>5 expert opinions + verdict</td>
+                    </tr>
+                    <tr style="background: #21262d;">
+                        <td><strong>Total per review</strong></td>
+                        <td class="number"><strong>2,300 input + 2,000 output</strong></td>
+                        <td><strong>Two reviews per recipe</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Model Pricing Comparison</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th class="number">Input ($/M tokens)</th>
+                        <th class="number">Output ($/M tokens)</th>
+                        <th class="number">Cost per Review</th>
+                        <th class="number">Cost per Recipe (2 reviews)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Claude Haiku 3.5</td>
+                        <td class="number">$0.80</td>
+                        <td class="number">$4.00</td>
+                        <td class="number">$0.0098</td>
+                        <td class="number cost">£0.016</td>
+                    </tr>
+                    <tr>
+                        <td>Claude Sonnet 4</td>
+                        <td class="number">$3.00</td>
+                        <td class="number">$15.00</td>
+                        <td class="number">$0.037</td>
+                        <td class="number cost">£0.059</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>GPT-4o mini</td>
+                        <td class="number">$0.15</td>
+                        <td class="number">$0.60</td>
+                        <td class="number">$0.0015</td>
+                        <td class="number revenue">£0.0025</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Gemini Flash 2.0</td>
+                        <td class="number">$0.10</td>
+                        <td class="number">$0.40</td>
+                        <td class="number">$0.001</td>
+                        <td class="number revenue">£0.0016</td>
+                    </tr>
+                    <tr>
+                        <td>Llama 3.1 8B (self-hosted)</td>
+                        <td class="number">$0</td>
+                        <td class="number">$0</td>
+                        <td class="number">$0</td>
+                        <td class="number revenue">£0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Volume Cost Analysis</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Volume</th>
+                        <th>GPT-4o mini</th>
+                        <th>Gemini Flash</th>
+                        <th>Claude Haiku</th>
+                        <th>Claude Sonnet</th>
+                        <th>Llama 3.1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>25 recipes/month (just us)</td>
+                        <td class="number">£0.06</td>
+                        <td class="number">£0.04</td>
+                        <td class="number">£0.40</td>
+                        <td class="number">£1.48</td>
+                        <td class="number">£0</td>
+                    </tr>
+                    <tr>
+                        <td>250 recipes/month (small community)</td>
+                        <td class="number">£0.63</td>
+                        <td class="number">£0.40</td>
+                        <td class="number">£4.00</td>
+                        <td class="number">£14.75</td>
+                        <td class="number">£0</td>
+                    </tr>
+                    <tr>
+                        <td>10,000 recipes/month (real traction)</td>
+                        <td class="number cost">£25</td>
+                        <td class="number cost">£16</td>
+                        <td class="number cost">£160</td>
+                        <td class="number cost">£590</td>
+                        <td class="number">£0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="option-card">
+                <div class="option-title">Self-hosted LLM Option</div>
+                <ul>
+                    <li><strong>Model:</strong> Llama 3.1 8B on MacBook Pro M1 Pro</li>
+                    <li><strong>Cost:</strong> £0 (electricity ~£2/month if running 24/7)</li>
+                    <li><strong>Performance:</strong> ~30 tokens/sec, good enough for security scanning</li>
+                    <li><strong>Strategy:</strong> Use for first pass, escalate edge cases to Claude</li>
+                    <li><strong>Quality trade-off:</strong> 90% as good for 100% cost savings</li>
+                </ul>
+            </div>
+
+            <div class="recommendation">
+                <h4>Recommendation: GPT-4o mini or Gemini Flash</h4>
+                <p>Perfect sweet spot: excellent security analysis capability at absurdly low cost (£0.06/month for 25 recipes). Claude quality not needed for binary security decisions.</p>
+            </div>
+        </div>
+
+        <!-- Metadata Store -->
+        <div class="section">
+            <h2>5. Metadata Store</h2>
+            
+            <div class="option-card">
+                <div class="option-title">Option A: SQLite (on VPS)</div>
+                <ul>
+                    <li><strong>Cost:</strong> £0 (included in VPS)</li>
+                    <li><strong>Storage:</strong> Single file, handles millions of rows</li>
+                    <li><strong>Schema:</strong> recipes, users, votes, reputation, status</li>
+                    <li><strong>Pros:</strong> Zero complexity, zero cost, zero maintenance</li>
+                    <li><strong>Cons:</strong> Single server only (not a problem for MVP)</li>
+                    <li><strong>Backup:</strong> Simple file copy to S3/Backblaze (~£1/month)</li>
+                </ul>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option B: PostgreSQL (managed)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th class="number">Monthly Cost</th>
+                            <th>Storage</th>
+                            <th>Connections</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Supabase</td>
+                            <td class="number">£0-20</td>
+                            <td>500MB free</td>
+                            <td>100 concurrent</td>
+                        </tr>
+                        <tr>
+                            <td>Neon</td>
+                            <td class="number">£0-19</td>
+                            <td>512MB free</td>
+                            <td>Autoscaling</td>
+                        </tr>
+                        <tr>
+                            <td>Railway</td>
+                            <td class="number">£5</td>
+                            <td>1GB</td>
+                            <td>Good integration</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">Option C: Firebase/Firestore</div>
+                <ul>
+                    <li><strong>Free tier:</strong> 1GB storage, 50K reads/day</li>
+                    <li><strong>Cost:</strong> £0-10/month depending on usage</li>
+                    <li><strong>Pros:</strong> Real-time, scales automatically</li>
+                    <li><strong>Cons:</strong> NoSQL (more complex queries), vendor lock-in</li>
+                </ul>
+            </div>
+
+            <div class="recommendation">
+                <h4>Recommendation: SQLite on VPS</h4>
+                <p>Perfect for MVP: zero cost, zero complexity, handles millions of rows. Only consider alternatives when we need geographic distribution or complex analytics.</p>
+            </div>
+        </div>
+
+        <!-- Domain & Misc -->
+        <div class="section">
+            <h2>6. Domain & Miscellaneous</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th class="number">Annual Cost</th>
+                        <th>Provider</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Vector DB (Pinecone)</td>
-                        <td class="number">£0</td>
-                        <td class="number">£15</td>
-                        <td class="number">£70</td>
-                        <td>Free tier → Starter → Pro</td>
+                        <td>Domain (.com)</td>
+                        <td class="number">£10</td>
+                        <td>Namecheap/Cloudflare</td>
+                        <td>hAIvemAInd.com</td>
                     </tr>
                     <tr>
-                        <td>API Server</td>
-                        <td class="number">£0</td>
-                        <td class="number">£8</td>
-                        <td class="number">£25</td>
-                        <td>Vercel free → basic VPS → better VPS</td>
+                        <td>Domain (.dev)</td>
+                        <td class="number">£3</td>
+                        <td>Google Domains</td>
+                        <td>hAIvemAInd.dev (cheaper)</td>
                     </tr>
                     <tr>
-                        <td>Guardian LLM costs</td>
-                        <td class="number">£0.50</td>
-                        <td class="number">£5</td>
-                        <td class="number">£200</td>
-                        <td>£0.02/recipe review (25→250→10K recipes/mo)</td>
+                        <td>SSL Certificate</td>
+                        <td class="number revenue">£0</td>
+                        <td>Let's Encrypt</td>
+                        <td>Free, auto-renewal</td>
                     </tr>
                     <tr>
-                        <td>Domain + misc</td>
-                        <td class="number">£1</td>
-                        <td class="number">£2</td>
-                        <td class="number">£5</td>
-                        <td>Domain, monitoring, basic tools</td>
+                        <td>Monitoring</td>
+                        <td class="number revenue">£0</td>
+                        <td>UptimeRobot</td>
+                        <td>50 monitors free</td>
                     </tr>
-                    <tr style="background: #21262d; font-weight: bold;">
-                        <td><strong>Monthly Total</strong></td>
-                        <td class="number cost"><strong>£1.50</strong></td>
-                        <td class="number cost"><strong>£30</strong></td>
-                        <td class="number cost"><strong>£300</strong></td>
-                        <td></td>
+                    <tr>
+                        <td>Backups</td>
+                        <td class="number">£1-2/mo</td>
+                        <td>Backblaze B2</td>
+                        <td>Database + vector backups</td>
+                    </tr>
+                    <tr>
+                        <td>Email notifications</td>
+                        <td class="number revenue">£0</td>
+                        <td>Resend</td>
+                        <td>3K emails/month free</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- Total Cost Summary -->
+        <div class="section">
+            <h2>7. Total Cost Summary</h2>
             
-            <h3>Year 1 & 2 Projections</h3>
-            <div class="chart-container">
-                <div style="margin-bottom: 20px;">
-                    <strong>Year 1 (£400-600 total):</strong><br>
-                    Months 1-6: Minimal costs while building + testing<br>
-                    Months 7-12: Small community forms if we're lucky
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-title">Scenario 1: Absolute Minimum</div>
+                    <p><strong>Target:</strong> Just us, MVP testing, MacBook Pro</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Vector DB</td>
+                                <td class="number">ChromaDB (£0)</td>
+                            </tr>
+                            <tr>
+                                <td>API Server</td>
+                                <td class="number">MacBook Pro (£0)</td>
+                            </tr>
+                            <tr>
+                                <td>Guardian LLM</td>
+                                <td class="number">GPT-4o mini (£0.06)</td>
+                            </tr>
+                            <tr>
+                                <td>Metadata</td>
+                                <td class="number">SQLite (£0)</td>
+                            </tr>
+                            <tr>
+                                <td>Domain</td>
+                                <td class="number">£3/year</td>
+                            </tr>
+                            <tr style="background: #21262d; font-weight: bold;">
+                                <td><strong>Total</strong></td>
+                                <td class="number cost"><strong>~£2/month</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="chart-bar" style="width: 30%;">
-                    <span class="chart-label">Y1 Realistic</span>
-                    <span class="chart-value">£400-600</span>
+
+                <div class="scenario-card">
+                    <div class="scenario-title">Scenario 2: Proper Infrastructure</div>
+                    <p><strong>Target:</strong> Small community, external contributors</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Vector DB</td>
+                                <td class="number">Qdrant on Hetzner (£3.90)</td>
+                            </tr>
+                            <tr>
+                                <td>API Server</td>
+                                <td class="number">Same VPS (included)</td>
+                            </tr>
+                            <tr>
+                                <td>Guardian LLM</td>
+                                <td class="number">250 recipes (£0.63)</td>
+                            </tr>
+                            <tr>
+                                <td>Metadata</td>
+                                <td class="number">SQLite (included)</td>
+                            </tr>
+                            <tr>
+                                <td>Domain + misc</td>
+                                <td class="number">£2/month</td>
+                            </tr>
+                            <tr style="background: #21262d; font-weight: bold;">
+                                <td><strong>Total</strong></td>
+                                <td class="number cost"><strong>~£8/month</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="chart-bar" style="width: 100%;">
-                    <span class="chart-label">Y2 With Traction</span>
-                    <span class="chart-value">£1,000-3,000</span>
+
+                <div class="scenario-card">
+                    <div class="scenario-title">Scenario 3: Production Ready</div>
+                    <p><strong>Target:</strong> Real traction, thousands of users</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Vector DB</td>
+                                <td class="number">Qdrant CX32 (£7.40)</td>
+                            </tr>
+                            <tr>
+                                <td>API Server</td>
+                                <td class="number">Same VPS (included)</td>
+                            </tr>
+                            <tr>
+                                <td>Guardian LLM</td>
+                                <td class="number">1K recipes (£2.50)</td>
+                            </tr>
+                            <tr>
+                                <td>Metadata</td>
+                                <td class="number">SQLite (included)</td>
+                            </tr>
+                            <tr>
+                                <td>CDN + monitoring</td>
+                                <td class="number">£5/month</td>
+                            </tr>
+                            <tr>
+                                <td>Backups</td>
+                                <td class="number">£2/month</td>
+                            </tr>
+                            <tr style="background: #21262d; font-weight: bold;">
+                                <td><strong>Total</strong></td>
+                                <td class="number cost"><strong>~£17/month</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+
+            <h3>Cost Progression Triggers</h3>
+            <div class="timeline-month">
+                <span><strong>0-1K recipes:</strong> Scenario 1 (MacBook Pro)</span>
+                <span class="cost">£2/month</span>
+            </div>
+            <div class="timeline-month">
+                <span><strong>1K-10K recipes:</strong> Scenario 2 (Hetzner CX22)</span>
+                <span class="cost">£8/month</span>
+            </div>
+            <div class="timeline-month">
+                <span><strong>10K+ recipes:</strong> Scenario 3 (Hetzner CX32)</span>
+                <span class="cost">£17/month</span>
             </div>
         </div>
-        
-        <!-- Revenue Scenarios -->
+
+        <!-- Self-Hosted vs Cloud Decision Matrix -->
         <div class="section">
-            <h2>Revenue Scenarios (Honest Assessment)</h2>
+            <h2>8. Self-Hosted vs Cloud Decision Matrix</h2>
             
-            <div class="scenario-card">
-                <div class="scenario-title">Scenario A: Pure Open Source (90% probability Y1)</div>
-                <div class="scenario-subtitle">Most likely reality for first 12-18 months</div>
-                <ul>
-                    <li><strong>Revenue:</strong> £0/month</li>
-                    <li><strong>Value:</strong> 100% indirect (platform moat)</li>
-                    <li><strong>Users:</strong> 10-100 early adopters, mostly us</li>
-                    <li><strong>Model:</strong> All free, all open source, community-driven</li>
-                </ul>
-            </div>
-            
-            <div class="scenario-card">
-                <div class="scenario-title">Scenario B: Donations/Sponsors (optimistic Y1)</div>
-                <div class="scenario-subtitle">GitHub Sponsors model if we build real value</div>
-                <ul>
-                    <li><strong>Revenue:</strong> £20-100/month if we're lucky</li>
-                    <li><strong>Benchmark:</strong> curl gets £3-4K/mo but that's top 0.001%</li>
-                    <li><strong>Reality:</strong> Most OSS gets £0-50/mo</li>
-                    <li><strong>Covers:</strong> Basic hosting costs, not development time</li>
-                </ul>
-            </div>
-            
-            <div class="scenario-card">
-                <div class="scenario-title">Scenario C: Open Core (Y2+ if real traction)</div>
-                <div class="scenario-subtitle">Managed hosting + private instances for enterprises</div>
-                <ul>
-                    <li><strong>Managed Hosting:</strong> £20/mo (we host for you)</li>
-                    <li><strong>Private Instances:</strong> £100/mo (internal company recipes)</li>
-                    <li><strong>Break-even math:</strong> 2 managed + 1 private = £140 > £30 costs ✓</li>
-                    <li><strong>Reality check:</strong> 1-5% OSS conversion is typical, so need 200+ active users for 10 customers</li>
-                </ul>
+            <div class="decision-matrix">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th class="number">100 Recipes</th>
+                            <th class="number">1,000 Recipes</th>
+                            <th class="number">10,000 Recipes</th>
+                            <th>Maintenance</th>
+                            <th>Reliability</th>
+                            <th>Verdict</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Vector DB</strong></td>
+                            <td class="number"></td>
+                            <td class="number"></td>
+                            <td class="number"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pinecone</td>
+                            <td class="number revenue">£0</td>
+                            <td class="number cost">£8</td>
+                            <td class="number cost">£70</td>
+                            <td class="revenue">None</td>
+                            <td class="revenue">Excellent</td>
+                            <td>Good for rapid MVP</td>
+                        </tr>
+                        <tr>
+                            <td>Qdrant (self)</td>
+                            <td class="number revenue">£3.90</td>
+                            <td class="number revenue">£3.90</td>
+                            <td class="number revenue">£7.40</td>
+                            <td class="cost">Medium</td>
+                            <td class="neutral">Good</td>
+                            <td class="revenue">Best long-term</td>
+                        </tr>
+                        <tr>
+                            <td><strong>API Server</strong></td>
+                            <td class="number"></td>
+                            <td class="number"></td>
+                            <td class="number"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Vercel</td>
+                            <td class="number revenue">£0</td>
+                            <td class="number revenue">£0</td>
+                            <td class="number cost">£20</td>
+                            <td class="revenue">None</td>
+                            <td class="revenue">Excellent</td>
+                            <td>Good for MVP</td>
+                        </tr>
+                        <tr>
+                            <td>VPS</td>
+                            <td class="number neutral">£3.90</td>
+                            <td class="number revenue">£3.90</td>
+                            <td class="number revenue">£7.40</td>
+                            <td class="cost">Medium</td>
+                            <td class="neutral">Good</td>
+                            <td class="revenue">Best control</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Guardian LLM</strong></td>
+                            <td class="number"></td>
+                            <td class="number"></td>
+                            <td class="number"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GPT-4o mini</td>
+                            <td class="number revenue">£0.06</td>
+                            <td class="number revenue">£0.63</td>
+                            <td class="number cost">£25</td>
+                            <td class="revenue">None</td>
+                            <td class="revenue">Excellent</td>
+                            <td class="revenue">Clear winner</td>
+                        </tr>
+                        <tr>
+                            <td>Llama (self)</td>
+                            <td class="number revenue">£0</td>
+                            <td class="number revenue">£0</td>
+                            <td class="number revenue">£0</td>
+                            <td class="cost">High</td>
+                            <td class="neutral">Good</td>
+                            <td>Only for high volume</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        
-        <!-- Break-Even Analysis -->
+
+        <!-- 18-Month Cost Projection -->
         <div class="section">
-            <h2>Break-Even Analysis</h2>
-            
-            <div class="value-prop">
-                <h3>The Real Question</h3>
-                <p>Break-even isn't "can we make money?" — it's "does this generate enough platform value to justify £400-600/year investment?"</p>
-            </div>
+            <h2>9. 18-Month Cost Projection</h2>
             
             <table>
                 <thead>
                     <tr>
+                        <th>Month</th>
                         <th>Scenario</th>
-                        <th class="number">Monthly Costs</th>
-                        <th class="number">Customers Needed</th>
-                        <th>What This Requires</th>
+                        <th>Recipes</th>
+                        <th class="number">Monthly Cost</th>
+                        <th class="number">Cumulative</th>
+                        <th>Trigger Events</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Minimal (just us)</td>
-                        <td class="number cost">£1.50</td>
-                        <td class="number revenue">0</td>
-                        <td>Basically free — just our time</td>
+                        <td>1-3</td>
+                        <td>MacBook Pro MVP</td>
+                        <td>10-50</td>
+                        <td class="number">£2</td>
+                        <td class="number">£6</td>
+                        <td>Basic testing, just us</td>
                     </tr>
                     <tr>
-                        <td>Small community</td>
-                        <td class="number cost">£30</td>
-                        <td class="number revenue">2</td>
-                        <td>2 × £20 managed hosting customers</td>
+                        <td>4-6</td>
+                        <td>MacBook Pro</td>
+                        <td>50-200</td>
+                        <td class="number">£2</td>
+                        <td class="number">£12</td>
+                        <td>Early community feedback</td>
                     </tr>
                     <tr>
-                        <td>Real traction</td>
-                        <td class="number cost">£300</td>
-                        <td class="number revenue">15</td>
-                        <td>12 managed + 3 private customers</td>
+                        <td>7-9</td>
+                        <td>Hetzner CX22</td>
+                        <td>200-500</td>
+                        <td class="number cost">£8</td>
+                        <td class="number">£36</td>
+                        <td>External contributors need access</td>
+                    </tr>
+                    <tr>
+                        <td>10-12</td>
+                        <td>Hetzner CX22</td>
+                        <td>500-1K</td>
+                        <td class="number cost">£8</td>
+                        <td class="number cost">£60</td>
+                        <td>Small community established</td>
+                    </tr>
+                    <tr>
+                        <td>13-15</td>
+                        <td>Hetzner CX32</td>
+                        <td>1K-3K</td>
+                        <td class="number cost">£15</td>
+                        <td class="number cost">£105</td>
+                        <td>Performance concerns, upgrade VPS</td>
+                    </tr>
+                    <tr>
+                        <td>16-18</td>
+                        <td>Production Ready</td>
+                        <td>3K-5K</td>
+                        <td class="number cost">£20</td>
+                        <td class="number cost">£165</td>
+                        <td>Add monitoring, backups, CDN</td>
                     </tr>
                 </tbody>
             </table>
-            
-            <p><strong>Reality:</strong> Even if we never make a penny, the platform moat value could justify the investment. The hive IS the product's competitive advantage.</p>
-        </div>
-        
-        <!-- Growth Assumptions -->
-        <div class="section">
-            <h2>Growth Assumptions (Realistic)</h2>
-            
-            <div class="timeline-simple">
-                <div class="timeline-item">
-                    <span class="timeline-period">Months 1-3</span>
-                    <div class="timeline-status">Just us<br/>10-20 recipes</div>
+
+            <h3>Cost Curves by Component</h3>
+            <div class="cost-bar" style="margin: 20px 0;">
+                <div class="cost-fill" style="width: 15%;">
+                    <span class="cost-label">Infrastructure</span>
+                    <span class="cost-value">£165 total</span>
                 </div>
-                <div class="timeline-item">
-                    <span class="timeline-period">Months 4-6</span>
-                    <div class="timeline-status">50-100 users<br/>50 recipes</div>
+            </div>
+            <div class="cost-bar">
+                <div class="cost-fill" style="width: 8%;">
+                    <span class="cost-label">Guardian LLM</span>
+                    <span class="cost-value">£75 total</span>
                 </div>
-                <div class="timeline-item">
-                    <span class="timeline-period">Months 7-12</span>
-                    <div class="timeline-status">200-500 users<br/>100-200 recipes</div>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-period">Year 2</span>
-                    <div class="timeline-status">1K-3K users<br/>Still mostly free</div>
+            </div>
+            <div class="cost-bar">
+                <div class="cost-fill" style="width: 3%;">
+                    <span class="cost-label">Domain/Misc</span>
+                    <span class="cost-value">£30 total</span>
                 </div>
             </div>
             
-            <h3>Why These Numbers Are Realistic</h3>
+            <div style="margin-top: 20px; padding: 16px; background: #21262d; border-radius: 6px;">
+                <h4>18-Month Total: £270</h4>
+                <p>Average: £15/month. Peak: £20/month. This is coffee money for infrastructure that could power thousands of agents.</p>
+            </div>
+
+            <h3>Revenue Required for Break-Even</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th class="number">Monthly Cost</th>
+                        <th class="number">Managed Hosting (£20)</th>
+                        <th class="number">Private Instance (£100)</th>
+                        <th>Users Needed for Break-Even</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-6</td>
+                        <td class="number">£2</td>
+                        <td class="number">1</td>
+                        <td class="number">1</td>
+                        <td>Essentially free</td>
+                    </tr>
+                    <tr>
+                        <td>7-12</td>
+                        <td class="number">£8</td>
+                        <td class="number">1</td>
+                        <td class="number">1</td>
+                        <td>1 paying customer</td>
+                    </tr>
+                    <tr>
+                        <td>13-18</td>
+                        <td class="number">£20</td>
+                        <td class="number">1</td>
+                        <td class="number">1</td>
+                        <td>1 paying customer</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Strategic Recommendation -->
+        <div class="section">
+            <h2>10. Strategic Recommendation</h2>
+            
+            <div class="recommendation">
+                <h4>Progressive Infrastructure Strategy</h4>
+                <ol>
+                    <li><strong>Phase 1 (Months 1-6):</strong> MacBook Pro (£2/mo)
+                        <ul>
+                            <li>ChromaDB for vectors</li>
+                            <li>Local API server</li>
+                            <li>GPT-4o mini for Guardian</li>
+                            <li>SQLite for metadata</li>
+                        </ul>
+                    </li>
+                    <li><strong>Phase 2 (Months 7-12):</strong> Hetzner VPS (£8/mo)
+                        <ul>
+                            <li>When external contributors need access</li>
+                            <li>Move everything to CX22</li>
+                            <li>Same tech stack, just hosted</li>
+                        </ul>
+                    </li>
+                    <li><strong>Phase 3 (Year 2+):</strong> Production scale (£20-50/mo)
+                        <ul>
+                            <li>Only if we hit real traction (5K+ recipes)</li>
+                            <li>Upgrade VPS, add monitoring, CDN</li>
+                            <li>Consider managed vector DB only if performance becomes issue</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h3>Why This Makes Sense</h3>
             <ul>
-                <li><strong>Recipes are cached forever</strong> — agents download once, never return. No recurring consumption like Spotify.</li>
-                <li><strong>APIs rarely change</strong> — most recipes stay valid for months. Weak "freshness" value prop.</li>
-                <li><strong>Small initial TAM</strong> — only AI agent operators who need service recipes (hundreds, not millions).</li>
-                <li><strong>Open source</strong> — community growth is slow and organic.</li>
+                <li><strong>Investment is tiny:</strong> £270 over 18 months = £1/day for infrastructure that could serve thousands of agents</li>
+                <li><strong>No vendor lock-in:</strong> Self-hosted stack can move anywhere</li>
+                <li><strong>Scales cost-effectively:</strong> Linear cost growth vs exponential value creation</li>
+                <li><strong>Break-even is trivial:</strong> 1 paying customer covers all costs</li>
+                <li><strong>Platform moat:</strong> The real value is making your agent platform unbeatable, not direct revenue</li>
             </ul>
-        </div>
-        
-        <!-- Strategic Value -->
-        <div class="section">
-            <h2>The Real Value (Strategic)</h2>
-            
-            <div class="value-prop">
-                <h3>Network Effects & Platform Moat</h3>
-                <p><strong>This is about making your agent platform unbeatable, not making money directly.</strong></p>
-            </div>
-            
-            <h3>Value Creation Loop</h3>
-            <div class="chart-container">
-                <p style="margin-bottom: 16px;">More recipes → More useful → More agents → More recipes</p>
-                <div style="color: #8b949e; font-size: 0.9em;">
-                    <p>• <strong>Developer pitch:</strong> "Your agent connects to 5,000 services out of the box"</p>
-                    <p>• <strong>User pitch:</strong> "Works with everything, no setup required"</p>
-                    <p>• <strong>Competitor barrier:</strong> Can't replicate recipe network overnight</p>
-                </div>
-            </div>
-            
-            <h3>Comparable Strategies</h3>
+
+            <h3>Risk Mitigation</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Risk</th>
+                        <th>Probability</th>
+                        <th>Impact</th>
+                        <th>Mitigation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>No adoption</td>
+                        <td>Medium</td>
+                        <td>Low</td>
+                        <td>£270 total cost is minimal risk</td>
+                    </tr>
+                    <tr>
+                        <td>Security incident</td>
+                        <td>Low</td>
+                        <td>High</td>
+                        <td>Guardian reviews all recipes, security-first culture</td>
+                    </tr>
+                    <tr>
+                        <td>Scaling costs</td>
+                        <td>Low</td>
+                        <td>Medium</td>
+                        <td>Self-hosted stack scales linearly, not exponentially</td>
+                    </tr>
+                    <tr>
+                        <td>Maintenance burden</td>
+                        <td>Medium</td>
+                        <td>Medium</td>
+                        <td>Start simple, managed services available as fallback</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Success Metrics</h3>
             <ul>
-                <li><strong>npm for Node.js</strong> — Free package manager → £7.5B GitHub acquisition</li>
-                <li><strong>Docker Hub</strong> — Free container registry → Platform dominance</li>
-                <li><strong>Hugging Face</strong> — Free model hub → £3.5B valuation</li>
+                <li><strong>Technical:</strong> 10K+ recipes, 1K+ active users, 99.9% uptime</li>
+                <li><strong>Business:</strong> Platform agents are 10x more capable than competitors</li>
+                <li><strong>Community:</strong> Self-sustaining recipe contributions</li>
+                <li><strong>Strategic:</strong> hAIve becomes industry-standard recipe registry</li>
             </ul>
-            
-            <p class="highlight">The hive makes your agent platform stickier than any paid feature could.</p>
-        </div>
-        
-        <!-- Risk Factors -->
-        <div class="section">
-            <h2>Risk Factors</h2>
-            
-            <div class="risk-item">
-                <h4>Recipe Caching = No Recurring Usage</h4>
-                <p>Unlike SaaS where users return daily, recipes are "download once, cache forever." This fundamentally limits direct monetisation potential.</p>
+
+            <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #3fb95020, #00d4ff20); border: 1px solid #3fb950; border-radius: 8px;">
+                <h3 style="color: #3fb950; margin-bottom: 10px;">Bottom Line</h3>
+                <p><strong>Proceed with confidence.</strong> This is not a revenue business — it's strategic infrastructure that makes your core platform unbeatable. The investment is minimal (£15/month average), the risk is low, and the potential competitive advantage is massive.</p>
+                <p style="margin-top: 12px;"><em>The hive IS the product's competitive moat.</em></p>
             </div>
-            
-            <div class="risk-item">
-                <h4>APIs Don't Change Often</h4>
-                <p>Most REST APIs are stable for months/years. The "freshness guarantee" subscription model is weak because there's not enough churn to justify ongoing payments.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>Open Source Can Be Forked</h4>
-                <p>If we later try to monetise aggressively, community could fork. Need to balance openness with sustainability.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>Small Initial TAM</h4>
-                <p>AI agent operators who need service recipes = hundreds initially, not millions. Growth will be slow until agent adoption explodes.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>Security Risk</h4>
-                <p>Malicious recipes could compromise agents. Guardian mitigates but not 100%. One security incident could kill trust.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>Low Conversion Rates</h4>
-                <p>Open source typically sees 1-5% paid conversion. Even with 1,000 users, that's 10-50 paying customers max.</p>
-            </div>
-        </div>
-        
-        <!-- Conclusion -->
-        <div class="section">
-            <h2>Investment Recommendation</h2>
-            
-            <div class="reality-check">
-                <h3>Bottom Line</h3>
-                <p><strong>Proceed, but understand what you're building.</strong></p>
-                <p>This isn't a revenue business — it's infrastructure investment that makes your core platform more valuable. Budget £400-600/year and focus on indirect value, not direct returns.</p>
-            </div>
-            
-            <h3>What Success Looks Like</h3>
-            <ul>
-                <li>✅ <strong>Platform differentiation:</strong> "Works with 5,000+ services natively"</li>
-                <li>✅ <strong>Developer adoption:</strong> Agents using your platform are more capable</li>
-                <li>✅ <strong>Competitive moat:</strong> Recipes network is hard to replicate</li>
-                <li>✅ <strong>Community trust:</strong> Open source credibility in AI space</li>
-                <li>❌ <strong>Direct revenue:</strong> Don't expect meaningful cash flow Y1</li>
-            </ul>
-            
-            <p><strong>Budget Required:</strong> £500/year + development time. Think of it like marketing spend that builds a competitive advantage instead of just driving traffic.</p>
         </div>
         
         <div style="text-align: center; margin-top: 40px; color: #8b949e; font-size: 12px;">
             Generated on Feb 24, 2026 • <a href="https://the-factory-delta.vercel.app/" style="color: #58a6ff;">The Factory</a><br/>
-            <em>Realistic projection based on "use once, cache forever" recipe model</em>
+            <em>Detailed infrastructure cost analysis for hAIve mAInd</em>
         </div>
     </div>
 </body>

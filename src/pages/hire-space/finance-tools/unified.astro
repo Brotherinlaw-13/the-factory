@@ -169,287 +169,345 @@ details>summary::marker{display:none}
 <input type="checkbox" id="modal-downstream" class="tab-input"/>
 <div class="l1-c l1-c-contracts">
 
-<!-- ═══ SECTION 1: Booking Lines Overview ═══ -->
-<div class="stitle">📋 Booking Lines</div>
-<div class="card" style="margin-bottom:24px">
-<table>
-<thead><tr><th>Line Ref</th><th>Venue / Supplier</th><th>Type</th><th>Costs</th><th>Total Value</th><th>Contract</th><th>Status</th></tr></thead>
-<tbody>
-<tr>
-<td><span class="badge badge-gray">HS-U1JV</span></td>
-<td><strong>The Grand Ballroom</strong></td>
-<td><span class="badge badge-blue">Venue</span></td>
-<td>5</td>
-<td>£14,850.00</td>
-<td><span style="font-size:12px">CTR-00312 v3 <span style="color:#166534">✓</span></span></td>
-<td><select class="line-status-select status-won" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#dcfce7;color:#166534"><option selected>Won</option><option>Pending</option><option>Lost</option><option>Void</option></select></td>
-</tr>
-<tr>
-<td><span class="badge badge-gray">HS-U1JU</span></td>
-<td><strong>DJ Sounds Ltd</strong></td>
-<td><span class="badge badge-purple">Supplier</span></td>
-<td>2</td>
-<td>£3,500.00</td>
-<td><span style="font-size:12px">CTR-00415 v1 <span style="color:#166534">✓</span></span></td>
-<td><select class="line-status-select status-won" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#dcfce7;color:#166534"><option selected>Won</option><option>Pending</option><option>Lost</option><option>Void</option></select></td>
-</tr>
-<tr>
-<td><span class="badge badge-gray">HS-U1JW</span></td>
-<td><strong>Riverside Catering Co</strong></td>
-<td><span class="badge badge-purple">Supplier</span></td>
-<td>3</td>
-<td>£2,200.00</td>
-<td><span style="font-size:12px">CTR-00418 v2 <span style="color:#166534">✓</span></span></td>
-<td><select class="line-status-select status-lost" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#fee2e2;color:#991b1b"><option>Won</option><option>Pending</option><option selected>Lost</option><option>Void</option></select></td>
-</tr>
-<tr>
-<td><span class="badge badge-gray">HS-U1JX</span></td>
-<td><strong>Flash Photography</strong></td>
-<td><span class="badge badge-purple">Supplier</span></td>
-<td>1</td>
-<td>£800.00</td>
-<td><span style="font-size:12px;color:#94a3b8">No contract</span></td>
-<td><select class="line-status-select status-pending" style="padding:4px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;font-weight:600;cursor:pointer;background:#fef9c3;color:#854d0e"><option>Won</option><option selected>Pending</option><option>Lost</option><option>Void</option></select></td>
-</tr>
-</tbody>
-</table>
-<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0 4px;font-size:13px;border-top:2px solid #e2e8f0;margin-top:8px">
-<span><strong>2 of 4 lines won</strong> — £18,350.00 of £21,350.00 total value</span>
-</div>
-<div class="info-banner" style="margin-top:12px">ℹ️ Each booking line has its own contract in Juro. Expand lines below to manage contracts, documents, and commission per line.</div>
+<!-- Contract selector radios (before layout so CSS siblings work) -->
+<input type="radio" name="ctr-sel" id="ctr-sel-1" class="tab-input" checked/>
+<input type="radio" name="ctr-sel" id="ctr-sel-2" class="tab-input"/>
+
+<div class="ctr-layout">
+<!-- LEFT SIDEBAR -->
+<div class="ctr-sidebar">
+<div class="ctr-sidebar-hdr">Contracts (2)</div>
+
+<label for="ctr-sel-1" class="ctr-sidebar-item">
+<span class="ctr-name">The Grand Ballroom</span>
+<span class="ctr-meta"><span class="badge badge-yellow" style="font-size:10px">Draft</span> · £14,850</span>
+<span class="ctr-meta">Standard Event Terms</span>
+</label>
+
+<label for="ctr-sel-2" class="ctr-sidebar-item">
+<span class="ctr-name">DJ Sounds Ltd</span>
+<span class="ctr-meta"><span class="badge badge-green" style="font-size:10px">Signed</span> · £3,500</span>
+<span class="ctr-meta">Standard Event Terms</span>
+<span class="ctr-meta" style="color:#f59e0b;font-size:10px">+ Additions</span>
+</label>
 </div>
 
-<!-- ═══ SECTION 2: Per-Line Contract Details ═══ -->
-<div class="stitle">📑 Per-Line Contract Details</div>
-<div style="font-size:12px;color:#64748b;margin:-8px 0 16px">Each booking line has its own contract lifecycle, documents, and commission breakdown.</div>
+<!-- ═══ CONTRACT 1: The Grand Ballroom ═══ -->
+<div class="ctr-main ctr-main-1">
 
-<!-- Booking Line 1: The Grand Ballroom (Won — expanded) -->
-<details open class="line-contract-accordion" style="border:1px solid #e2e8f0;border-left:4px solid #2563eb;border-radius:0 8px 8px 0;margin-bottom:16px;background:#fff">
-<summary style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;cursor:pointer;font-size:13px;list-style:none">
-<strong style="font-size:14px">🏛️ The Grand Ballroom</strong>
-<span class="badge badge-gray">HS-U1JV</span>
-<span class="badge badge-blue">Venue</span>
-<span style="font-size:12px;color:#64748b">· CTR-2026-00312 v3 · <span style="color:#166534">Countersigned ✓</span> · £14,850.00 · £1,914.00 commission</span>
-</summary>
-<div style="padding:0 20px 20px">
-
-<!-- Mini Contract Lifecycle -->
-<div style="display:flex;gap:0;margin-bottom:16px">
-<div class="step-mini step-mini-done">Draft</div>
-<div class="step-mini step-mini-done">Under Review</div>
-<div class="step-mini step-mini-done">Countersigned</div>
-<div class="step-mini step-mini-active">Won</div>
-<div class="step-mini">Active</div>
-<div class="step-mini">Complete</div>
+<div class="ctr-topbar">
+<div>
+<h2>The Grand Ballroom — Contract v1</h2>
+<span class="badge badge-blue">Standard Event Terms</span>
+<span class="badge badge-yellow">Draft</span>
+<span style="font-size:13px;margin-left:8px">£14,850.00</span>
+</div>
+<div style="display:flex;gap:8px;align-items:center">
+<a href="#" style="color:#2563eb;font-size:12px">Link to Retool ↗</a>
+<a href="#" style="color:#2563eb;font-size:12px">Link to Juro ↗</a>
+</div>
 </div>
 
-<!-- Contract Details -->
-<div style="display:flex;gap:20px;flex-wrap:wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px 16px;margin-bottom:16px;font-size:12px">
-<span><strong>Contract:</strong> CTR-2026-00312</span>
-<span><strong>Client:</strong> Moody's Corp</span>
-<span><strong>Venue:</strong> The Grand Ballroom</span>
-<span><strong>Juro:</strong> <span style="color:#166534">Countersigned ✓</span></span>
-<span><a href="#" style="color:#2563eb">Juro ↗</a> · <a href="#" style="color:#2563eb">Retool ↗</a> · <a href="#" style="color:#2563eb">v3 history</a></span>
+<div style="display:flex;gap:8px;margin-bottom:20px;align-items:center">
+<button class="btn btn-outline">Signed outside Juro</button>
+<div class="todo" style="margin:0;flex:1">[TODO] Can we pull signed contract status from Juro API automatically? Allow countersigning directly from this screen.</div>
 </div>
 
-<!-- Documents (inline) -->
-<div style="margin-bottom:16px">
-<h4 style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📁 Documents</h4>
-<table>
-<thead><tr><th>Document</th><th>Type</th><th>Uploaded</th><th>Status</th><th></th></tr></thead>
-<tbody>
-<tr><td>📄 CTR-2026-00312_v3_countersigned.pdf</td><td><span class="badge badge-green">Signed Contract</span></td><td>10 Feb 2026</td><td><span class="badge badge-green">✓ Verified</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-<tr><td>📄 Hire_Space_General_TCs_v4.2.pdf</td><td><span class="badge badge-blue">HS T&Cs</span></td><td>Auto-attached</td><td><span class="badge badge-green">✓ Current</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-<tr style="background:#fef2f2"><td style="color:#991b1b">⚠ Venue T&Cs — not uploaded</td><td><span class="badge badge-red">Venue T&Cs</span></td><td>—</td><td><span class="badge badge-red">✗ Missing</span></td><td><button class="btn btn-primary btn-sm">Upload</button></td></tr>
-<tr><td>📄 Event_training_requirements.pdf</td><td><span class="badge badge-gray">Event Terms</span></td><td>5 Feb 2026</td><td><span class="badge badge-green">✓ Uploaded</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-</tbody>
-</table>
-<div class="upload-zone" style="margin-top:8px;padding:14px">📎 Drag & drop to upload documents for this line</div>
+<!-- Sub-tabs -->
+<input type="radio" name="csub" id="csub-details" class="tab-input" checked/>
+<input type="radio" name="csub" id="csub-payments" class="tab-input"/>
+<input type="radio" name="csub" id="csub-cancel" class="tab-input"/>
+<input type="radio" name="csub" id="csub-timesold" class="tab-input"/>
+
+<div class="ctr-subtabs">
+<label for="csub-details">Contract Details</label>
+<label for="csub-payments">Client Payments (£40,000)</label>
+<label for="csub-cancel">Cancellations (2)</label>
+<label for="csub-timesold">Time Sold (£400)</label>
 </div>
 
-<!-- Commission -->
-<h4 style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">💰 Commission</h4>
-<table>
-<thead><tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Comm %</th><th>Comm £</th><th>Net to Venue</th><th>Type</th></tr></thead>
-<tbody>
-<tr><td>Room hire — Ballroom B (full day)</td><td>£3,200.00</td><td>15%</td><td>£480.00</td><td>£2,720.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr><td>Catering — working lunch × 85</td><td>£5,950.00</td><td>12%</td><td>£714.00</td><td>£5,236.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr><td>AV package (projector, PA, 4 mics)</td><td>£2,800.00</td><td>12%</td><td>£336.00</td><td>£2,464.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr><td>Tea/coffee × 85 (AM + PM)</td><td>£1,700.00</td><td>12%</td><td>£204.00</td><td>£1,496.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr><td>Breakout rooms × 3 (half day)</td><td>£1,200.00</td><td>15%</td><td>£180.00</td><td>£1,020.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr style="background:#f0f9ff;font-weight:600"><td>Subtotal</td><td>£14,850.00</td><td>~12.9%</td><td>£1,914.00</td><td>£12,936.00</td><td></td></tr>
-</tbody>
-</table>
+<!-- SUB-TAB: Contract Details -->
+<div class="ctr-sub-c csub-c-details">
 
-</div>
-</details>
-
-<!-- Booking Line 2: DJ Sounds Ltd (Won — expanded) -->
-<details open class="line-contract-accordion" style="border:1px solid #e2e8f0;border-left:4px solid #7c3aed;border-radius:0 8px 8px 0;margin-bottom:16px;background:#fff">
-<summary style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;cursor:pointer;font-size:13px;list-style:none">
-<strong style="font-size:14px">🎧 DJ Sounds Ltd</strong>
-<span class="badge badge-gray">HS-U1JU</span>
-<span class="badge badge-purple">Supplier</span>
-<span style="font-size:12px;color:#64748b">· CTR-2026-00415 v1 · <span style="color:#166534">Countersigned ✓</span> · £3,500.00 · £420.00 commission</span>
-</summary>
-<div style="padding:0 20px 20px">
-
-<!-- Mini Contract Lifecycle -->
-<div style="display:flex;gap:0;margin-bottom:16px">
-<div class="step-mini step-mini-done">Draft</div>
-<div class="step-mini step-mini-done">Under Review</div>
-<div class="step-mini step-mini-active">Countersigned</div>
-<div class="step-mini">Won</div>
-<div class="step-mini">Active</div>
-<div class="step-mini">Complete</div>
-</div>
-
-<!-- Contract Details -->
-<div style="display:flex;gap:20px;flex-wrap:wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px 16px;margin-bottom:16px;font-size:12px">
-<span><strong>Contract:</strong> CTR-2026-00415</span>
-<span><strong>Supplier:</strong> DJ Sounds Ltd</span>
-<span><strong>Juro:</strong> <span style="color:#166534">Countersigned ✓</span></span>
-<span><a href="#" style="color:#2563eb">Juro ↗</a> · <a href="#" style="color:#2563eb">Retool ↗</a> · <a href="#" style="color:#2563eb">v1 history</a></span>
-</div>
-
-<!-- Documents (inline) -->
-<div style="margin-bottom:16px">
-<h4 style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📁 Documents</h4>
-<table>
-<thead><tr><th>Document</th><th>Type</th><th>Uploaded</th><th>Status</th><th></th></tr></thead>
-<tbody>
-<tr><td>📄 CTR-2026-00415_v1_countersigned.pdf</td><td><span class="badge badge-green">Signed Contract</span></td><td>14 Feb 2026</td><td><span class="badge badge-green">✓ Verified</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-<tr><td>📄 DJ_Sounds_Supplier_TCs.pdf</td><td><span class="badge badge-purple">Supplier T&Cs</span></td><td>14 Feb 2026</td><td><span class="badge badge-green">✓ Current</span></td><td><button class="btn btn-outline btn-sm">View</button></td></tr>
-</tbody>
-</table>
-<div class="upload-zone" style="margin-top:8px;padding:14px">📎 Drag & drop to upload documents for this line</div>
-</div>
-
-<!-- Commission -->
-<h4 style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">💰 Commission</h4>
-<table>
-<thead><tr><th>Line Item</th><th>Gross (ex VAT)</th><th>Comm %</th><th>Comm £</th><th>Net to Supplier</th><th>Type</th></tr></thead>
-<tbody>
-<tr><td>DJ set (evening, 4 hours)</td><td>£2,000.00</td><td>12%</td><td>£240.00</td><td>£1,760.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr><td>Lighting package (dance floor)</td><td>£1,500.00</td><td>12%</td><td>£180.00</td><td>£1,320.00</td><td><span class="badge badge-blue">DAS</span></td></tr>
-<tr style="background:#f0f9ff;font-weight:600"><td>Subtotal</td><td>£3,500.00</td><td>12%</td><td>£420.00</td><td>£3,080.00</td><td></td></tr>
-</tbody>
-</table>
-
-</div>
-</details>
-
-<!-- Booking Line 3: Riverside Catering (Lost — collapsed) -->
-<details class="line-contract-accordion" style="border:1px solid #e2e8f0;border-left:4px solid #7c3aed;border-radius:0 8px 8px 0;margin-bottom:12px;background:#f8fafc">
-<summary style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 20px;cursor:pointer;font-size:13px;list-style:none;color:#64748b">
-<strong style="font-size:13px;color:#64748b">🍽️ Riverside Catering Co</strong>
-<span class="badge badge-gray">HS-U1JW</span>
-<span class="badge badge-purple">Supplier</span>
-<span style="font-size:12px">· CTR-2026-00418 v2 · £2,200.00 · <span class="badge badge-red" style="font-size:10px">Lost</span></span>
-</summary>
-<div style="padding:0 20px 14px;font-size:12px;color:#64748b">
-<p>This line was marked as <strong>Lost</strong>. Contract CTR-2026-00418 is inactive. No commission will be calculated.</p>
-</div>
-</details>
-
-<!-- Booking Line 4: Flash Photography (Pending — collapsed) -->
-<details class="line-contract-accordion" style="border:1px solid #e2e8f0;border-left:4px solid #7c3aed;border-radius:0 8px 8px 0;margin-bottom:12px;background:#f8fafc">
-<summary style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 20px;cursor:pointer;font-size:13px;list-style:none;color:#64748b">
-<strong style="font-size:13px;color:#64748b">📸 Flash Photography</strong>
-<span class="badge badge-gray">HS-U1JX</span>
-<span class="badge badge-purple">Supplier</span>
-<span style="font-size:12px">· No contract · £800.00 · <span class="badge badge-yellow" style="font-size:10px">Pending</span></span>
-</summary>
-<div style="padding:0 20px 14px;font-size:12px;color:#64748b">
-<p>This line is <strong>Pending</strong>. No contract has been created in Juro yet.</p>
-</div>
-</details>
-
-<!-- ═══ SECTION 3: Combined Summary + Confirm Commission ═══ -->
-<div style="background:#1e293b;color:#fff;border-radius:8px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-size:14px;margin:24px 0 8px">
-<span><strong>COMBINED TOTAL</strong> (2 won lines)</span>
-<span>Value: <strong>£18,350.00</strong> &nbsp;|&nbsp; Commission: <strong>£2,334.00</strong> &nbsp;|&nbsp; Blended: <strong>~12.7%</strong></span>
-</div>
-
-<div class="stitle">✅ Confirm Commission</div>
+<!-- Event & Client + Event Specific Terms -->
+<div class="grid2" style="margin-bottom:24px">
 <div class="card">
-<div class="info-banner" style="margin-bottom:12px">🔒 <strong>Why?</strong> To ensure commission has been reviewed, please type the total commission amount without copying.</div>
-<div style="background:#f8fafc;border:2px solid #e2e8f0;border-radius:8px;padding:20px;text-align:center;margin-bottom:12px">
-<p style="font-size:13px;color:#64748b;margin-bottom:8px">Type the total commission amount (ex VAT) to confirm you've reviewed the breakdown</p>
-<div style="display:flex;align-items:center;justify-content:center;gap:12px">
-<input type="text" value="2334.00" style="font-size:18px;padding:8px 16px;width:180px;text-align:center;border:2px solid #16a34a;border-radius:6px" oncopy="return false" oncut="return false" onpaste="return false" placeholder="e.g. 2334.00"/>
-<span class="badge badge-green" style="font-size:13px;padding:6px 12px">✓ Match — £2,334.00</span>
+<h3>Event &amp; Client Details</h3>
+<div class="kv"><span class="label">Readable Event Date</span><span><input type="text" value="22 Mar 2026" style="width:140px;border:1px solid #2563eb;background:#eff6ff"/></span></div>
+<div class="kv"><span class="label">Client Contact Name</span><span>Rebecca Thompson</span></div>
+<div class="kv"><span class="label">Client Contact Email</span><span>r.thompson@moodys.com</span></div>
+<div class="kv"><span class="label">Client Contact Phone</span><span>+44 20 7772 XXXX</span></div>
+<div class="kv"><span class="label">Employers Liability</span><span><span class="badge badge-green">Confirmed</span></span></div>
+<div class="kv"><span class="label">Public Liability</span><span><span class="badge badge-green">Confirmed</span></span></div>
 </div>
-<p style="font-size:11px;color:#dc2626;margin-top:8px">If mismatch, check line items above before proceeding</p>
-</div>
-</div>
-
-<!-- ═══ SECTION 4: Global Pre-Win Checks ═══ -->
-<div class="stitle">🏆 Win Booking</div>
 <div class="card">
-<h3>🛡️ Pre-Win Checks — Aggregated Across Won Lines</h3>
-<p style="font-size:12px;color:#64748b;margin-bottom:12px">All checks must pass across all Won booking lines before the booking can be won.</p>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>All contracts countersigned</strong><br><span style="color:#64748b;font-size:12px">2/2 Won lines have countersigned contracts</span></div></div>
-<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>All T&Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Grand Ballroom: Venue T&Cs missing</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>All line items priced</strong><br><span style="color:#64748b;font-size:12px">7 costs across 2 lines, £18,350.00 total</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission confirmed</strong><br><span style="color:#64748b;font-size:12px">£2,334.00 typed & matched</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>No duplicate bookings</strong></div></div>
+<h3>Event Specific Terms</h3>
+<div class="kv"><span class="label">Maximum capacity</span><span>85 seated / 120 standing</span></div>
+<div class="kv"><span class="label">Access from</span><span>07:00 — build from 08:00</span></div>
+<div class="kv"><span class="label">Venue clear by</span><span>23:00</span></div>
+<div class="kv"><span class="label">Noise restrictions</span><span>After 22:00 — indoor only</span></div>
+<div class="todo">[TODO] These T&amp;Cs can be pulled automatically from the booking system</div>
+</div>
 </div>
 
-<div class="guardrail"><h4>⚠ Cannot Win Booking</h4><p>Grand Ballroom (HS-U1JV): Venue T&Cs not uploaded. Upload in the booking line section above.</p></div>
+<!-- Venue / Suppliers -->
+<div class="ctr-section">
+<h4>Venue / Suppliers</h4>
+<div class="card">
+<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px">
+<div>
+<span style="font-size:12px;color:#64748b">Venue:</span>
+<select style="padding:6px 12px;border:1px solid #e2e8f0;border-radius:6px;font-size:13px;font-weight:600"><option selected>The Brewery</option><option>The Grand Ballroom</option></select>
+</div>
+<div>
+<span style="font-size:12px;color:#64748b">Signed Terms:</span>
+<span style="color:#dc2626;font-weight:600;margin-left:4px">✗ Not signed</span>
+</div>
+<button class="btn btn-outline btn-sm">📄 Create Addendum</button>
+<button class="btn btn-outline btn-sm">📎 Upload T&amp;Cs</button>
+<div style="margin-left:auto">
+<span style="font-size:12px;color:#64748b">Deal Type:</span>
+<select style="padding:4px 8px;border:1px solid #e2e8f0;border-radius:4px;font-size:12px;background:#dcfce7"><option selected>Deduct at source</option><option>Deduct after collection</option></select>
+</div>
+<div>
+<span style="font-size:12px;color:#64748b">Commission:</span>
+<input type="text" value="10" style="width:40px;text-align:center;border:1px solid #e2e8f0;border-radius:4px;font-size:12px"/>
+<span style="font-size:12px;color:#64748b">%</span>
+</div>
+</div>
 
-<!-- ═══ SECTION 5: Financial Summary on Win + Win Booking ═══ -->
-<details class="collapse-section">
-<summary class="collapse-trigger" style="font-size:14px;font-weight:600;padding:12px 0">📊 Financial Summary on Win</summary>
-<div class="card" style="margin-top:8px">
 <div class="grid2">
 <div>
-<div class="kv"><span class="label">Contract Value (ex VAT)</span><span><strong>£18,350.00</strong></span></div>
-<div class="kv"><span class="label">VAT (20%)</span><span>£3,670.00</span></div>
-<div class="kv"><span class="label">Total (inc VAT)</span><span><strong>£22,020.00</strong></span></div>
+<h4 style="font-size:11px;margin-bottom:8px">Key Venue / Supplier Contact *</h4>
+<div class="contact-list">
+<div class="contact-item"><span>Charlotte Walls</span><span style="color:#94a3b8;font-size:11px;margin-left:auto">charlotte.walls@accor.c...</span></div>
+<div class="contact-item selected"><span>Jermyn Allen</span><span style="color:#94a3b8;font-size:11px;margin-left:auto">jermyn.allen@accor.com</span> <span style="color:#166534">✓</span></div>
+<div class="contact-item"><span>aa</span><span style="color:#94a3b8;font-size:11px;margin-left:auto">h5309-co@accor.com</span></div>
+</div>
 </div>
 <div>
-<div class="kv"><span class="label">Commission</span><span><strong>£2,334.00</strong></span></div>
-<div class="kv"><span class="label">Commission + VAT</span><span>£2,800.80</span></div>
-<div class="kv"><span class="label">Net to Venue(s) (inc VAT)</span><span>£19,219.20</span></div>
+<h4 style="font-size:11px;margin-bottom:8px">Documents</h4>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:12px"><span style="font-size:12px;width:140px;color:#64748b">Unsigned Contract</span><div class="upload-box">📎 Upload</div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font-size:12px;width:140px;color:#64748b">Terms and Conditions</span><div class="upload-box">📎 Upload</div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font-size:12px;width:140px;color:#64748b">Signed Contract</span><div class="upload-box">📎 Upload</div></div>
 </div>
 </div>
-</div>
-</details>
-
-<div class="action-box" style="border-color:#16a34a;background:#f0fdf4">
-<p style="font-size:14px;color:#166534;margin-bottom:8px"><strong>🏆 Win Booking EN-97XX</strong></p>
-<p style="font-size:12px;color:#64748b;margin-bottom:12px">Creates booking shell, sets up commission, creates tracking codes, notifies finance. <label for="modal-downstream" style="color:#2563eb;cursor:pointer;text-decoration:underline">🔮 What happens on win?</label></p>
-<button class="btn btn-disabled btn-lg">🔒 Win Booking</button>
-<p style="font-size:11px;color:#991b1b;margin-top:8px">⚠ 1 pre-flight check failing</p>
 </div>
 
-<!-- ═══ CSS-ONLY MODAL: What Happens on Win ═══ -->
-<div class="css-modal" id="modal-overlay-downstream">
-<label for="modal-downstream" class="css-modal-backdrop"></label>
-<div class="css-modal-content" style="max-width:640px">
-<div class="css-modal-header">
-<h3>🔮 What Happens on Win?</h3>
-<label for="modal-downstream" class="css-modal-close">✕</label>
+<div class="grid2" style="margin-top:16px">
+<div>
+<h4 style="font-size:11px;margin-bottom:8px">Deliverables</h4>
+<div class="kv"><span class="label">Full AV setup by 09:00</span></div>
+<div class="kv"><span class="label">Catering served 12:30</span></div>
+<div class="kv"><span class="label">Breakout rooms unlocked 08:30</span></div>
+<div class="kv"><span class="label">Cleanup by 23:30</span></div>
 </div>
-<div class="css-modal-body">
-<p style="font-size:12px;color:#64748b;margin-bottom:12px">Winning this booking will automatically create:</p>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">1</div><div>Xero Contact for Moody's Corp (if not exists)</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">2</div><div>Client invoice for £22,020.00 (inc VAT) in draft</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">3</div><div>Venue/supplier bill shells for £19,219.20 (awaiting invoices)</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">4</div><div>Commission record — £2,334.00 DAS (deducted at source, 2 booking lines)</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">5</div><div>Tracking codes applied to all transactions</div></div>
-<div class="check-row"><div class="check-icon" style="background:#dbeafe;color:#1e40af">6</div><div>Finance team notification via Slack</div></div>
+<div>
+<h4 style="font-size:11px;margin-bottom:8px">Venue Specific Terms</h4>
+<div class="kv"><span class="label">No confetti or glitter</span></div>
+<div class="kv"><span class="label">No naked flames</span></div>
+<div class="kv"><span class="label">Security deposit £500</span></div>
+<div class="kv"><span class="label">Insurance required</span></div>
+</div>
+</div>
+</div>
+</div>
 
-<h4 style="font-size:13px;color:#64748b;margin:16px 0 8px;border-top:1px solid #e2e8f0;padding-top:12px">Auto-Generated Tracking Codes</h4>
-<div class="grid3">
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: Booking<br>Value: EN-97XX</div>
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: CS Owner<br>Value: Grace Morgan</div>
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;font-size:12px"><strong>Xero Tracking</strong><br>Category: Commission Type<br>Value: DAS</div>
+<!-- Payments -->
+<div class="ctr-section">
+<h4>Payments</h4>
+<div class="card">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+<span style="font-size:12px;color:#64748b">Payout Currency:</span>
+<select style="padding:4px 8px;border:1px solid #e2e8f0;border-radius:4px;font-size:12px"><option selected>GBP</option><option>EUR</option><option>USD</option></select>
+</div>
+<table>
+<thead><tr><th>Amount</th><th>Due Date</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>£5,940.00</td><td>22 Feb 2026</td><td><span class="badge badge-green">Paid</span></td></tr>
+<tr><td>£5,940.00</td><td>8 Mar 2026</td><td><span class="badge badge-yellow">Pending</span></td></tr>
+<tr><td>£5,940.00</td><td>22 Mar 2026</td><td><span class="badge badge-yellow">Pending</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- Contract Items -->
+<div class="ctr-section">
+<h4>Contract Items</h4>
+<div class="card">
+<table>
+<thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>VAT Rate</th><th>Total (Net)</th><th>Total (Gross)</th></tr></thead>
+<tbody>
+<tr><td><input type="text" value="Room hire — Ballroom B" style="width:170px"/></td><td><input type="text" value="1" style="width:36px;text-align:center"/></td><td><input type="text" value="£3,200" style="width:80px"/></td><td><input type="text" value="0%" style="width:44px"/></td><td><input type="text" value="20%" style="width:44px"/></td><td>£3,200.00</td><td>£3,840.00</td></tr>
+<tr><td><input type="text" value="Catering — lunch × 85" style="width:170px"/></td><td><input type="text" value="85" style="width:36px;text-align:center"/></td><td><input type="text" value="£70" style="width:80px"/></td><td><input type="text" value="0%" style="width:44px"/></td><td><input type="text" value="20%" style="width:44px"/></td><td>£5,950.00</td><td>£7,140.00</td></tr>
+<tr><td><input type="text" value="AV package" style="width:170px"/></td><td><input type="text" value="1" style="width:36px;text-align:center"/></td><td><input type="text" value="£2,800" style="width:80px"/></td><td><input type="text" value="0%" style="width:44px"/></td><td><input type="text" value="20%" style="width:44px"/></td><td>£2,800.00</td><td>£3,360.00</td></tr>
+<tr><td><input type="text" value="Tea/coffee × 85" style="width:170px"/></td><td><input type="text" value="85" style="width:36px;text-align:center"/></td><td><input type="text" value="£20" style="width:80px"/></td><td><input type="text" value="0%" style="width:44px"/></td><td><input type="text" value="20%" style="width:44px"/></td><td>£1,700.00</td><td>£2,040.00</td></tr>
+<tr><td><input type="text" value="Breakout rooms × 3" style="width:170px"/></td><td><input type="text" value="3" style="width:36px;text-align:center"/></td><td><input type="text" value="£400" style="width:80px"/></td><td><input type="text" value="0%" style="width:44px"/></td><td><input type="text" value="20%" style="width:44px"/></td><td>£1,200.00</td><td>£1,440.00</td></tr>
+<tr style="background:#f0f9ff;font-weight:600"><td>TOTAL</td><td></td><td></td><td></td><td></td><td>£14,850.00</td><td>£17,820.00</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- 🏆 WIN THIS CONTRACT -->
+<div class="win-contract-box">
+<h3 style="color:#166534;font-size:16px;margin-bottom:16px">🏆 Win This Contract</h3>
+
+<div style="margin-bottom:16px">
+<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Signed contract uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload signed contract in Documents section above</span></div></div>
+<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&amp;Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload venue terms above</span></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Event date confirmed</strong><br><span style="color:#64748b;font-size:12px">22 Mar 2026 (editable above)</span></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Juro contract countersigned</strong><br><span style="color:#64748b;font-size:12px">Or marked as "Signed outside Juro"</span></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission % within allowed range</strong><br><span style="color:#64748b;font-size:12px">10% (policy: 8–20%)</span></div></div>
+<div class="todo">[TODO] Can we trigger Juro countersign directly from this screen?</div>
+</div>
+
+<!-- Commission guard rail with editable % -->
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin-bottom:16px">
+<h4 style="font-size:13px;color:#64748b;margin-bottom:8px">Commission Summary</h4>
+<table style="font-size:13px">
+<thead><tr><th>Item</th><th>Value</th><th>Comm %</th><th>Comm £</th></tr></thead>
+<tbody>
+<tr><td>Room hire</td><td>£3,200.00</td><td><input type="text" value="15%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£480.00</td></tr>
+<tr><td>Catering</td><td>£5,950.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£714.00</td></tr>
+<tr><td>AV package</td><td>£2,800.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£336.00</td></tr>
+<tr><td>Tea/coffee</td><td>£1,700.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£204.00</td></tr>
+<tr><td>Breakout rooms</td><td>£1,200.00</td><td><input type="text" value="15%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£180.00</td></tr>
+<tr style="font-weight:600;background:#f0f9ff"><td>Total</td><td>£14,850.00</td><td>~12.9%</td><td>£1,914.00</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- Manual commission confirmation -->
+<div style="background:#f8fafc;border:2px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px">
+<p style="font-size:13px;color:#64748b;margin-bottom:8px">Type the total commission (ex VAT) to confirm you've reviewed it</p>
+<div style="display:flex;align-items:center;justify-content:center;gap:12px">
+<input type="text" value="1914.00" style="font-size:18px;padding:8px 16px;width:160px;text-align:center;border:2px solid #16a34a;border-radius:6px" oncopy="return false" oncut="return false" onpaste="return false"/>
+<span class="badge badge-green" style="font-size:13px;padding:6px 12px">✓ Match — £1,914.00</span>
+</div>
+</div>
+
+<div style="text-align:center">
+<button class="btn btn-disabled btn-lg">🔒 Win Contract — The Grand Ballroom</button>
+<p style="font-size:11px;color:#991b1b;margin-top:8px">⚠ 2 checks failing — upload signed contract and venue T&amp;Cs</p>
+</div>
+</div>
+
+</div><!-- /csub-c-details -->
+
+<!-- SUB-TAB: Client Payments (placeholder) -->
+<div class="ctr-sub-c csub-c-payments">
+<div class="card" style="text-align:center;padding:40px;color:#94a3b8">
+<p style="font-size:16px;margin-bottom:4px">💳 Client Payments</p>
+<p style="font-size:13px">Payment schedule and tracking. Coming in next iteration.</p>
+</div>
+</div>
+
+<!-- SUB-TAB: Cancellations (placeholder) -->
+<div class="ctr-sub-c csub-c-cancel">
+<div class="card" style="text-align:center;padding:40px;color:#94a3b8">
+<p style="font-size:16px;margin-bottom:4px">🚫 Cancellations</p>
+<p style="font-size:13px">Cancellation management. Coming in next iteration.</p>
+</div>
+</div>
+
+<!-- SUB-TAB: Time Sold (placeholder) -->
+<div class="ctr-sub-c csub-c-timesold">
+<div class="card" style="text-align:center;padding:40px;color:#94a3b8">
+<p style="font-size:16px;margin-bottom:4px">⏱️ Time Sold</p>
+<p style="font-size:13px">Time sold tracking. Coming in next iteration.</p>
+</div>
+</div>
+
+</div><!-- /ctr-main-1 -->
+
+<!-- ═══ CONTRACT 2: DJ Sounds Ltd ═══ -->
+<div class="ctr-main ctr-main-2">
+
+<div class="ctr-topbar">
+<div>
+<h2>DJ Sounds Ltd — Contract v1</h2>
+<span class="badge badge-purple">Standard Event Terms</span>
+<span class="badge badge-green">Signed</span>
+<span style="font-size:13px;margin-left:8px">£3,500.00</span>
+</div>
+<div style="display:flex;gap:8px;align-items:center">
+<a href="#" style="color:#2563eb;font-size:12px">Link to Retool ↗</a>
+<a href="#" style="color:#2563eb;font-size:12px">Link to Juro ↗</a>
+</div>
+</div>
+
+<div class="card" style="margin-bottom:20px">
+<h3>Contract Details</h3>
+<div class="grid2">
+<div>
+<div class="kv"><span class="label">Event Date</span><span>22 Mar 2026</span></div>
+<div class="kv"><span class="label">Supplier Contact</span><span>Mike D — mike@djsounds.com</span></div>
+<div class="kv"><span class="label">Signed Terms</span><span style="color:#166534;font-weight:600">✓ Signed</span></div>
+<div class="kv"><span class="label">Deal Type</span><span><span class="badge badge-blue">DAS</span> · 12%</span></div>
+</div>
+<div>
+<div class="kv"><span class="label">Supplier T&amp;Cs</span><span class="badge badge-green">✓ Uploaded</span></div>
+<div class="kv"><span class="label">Signed Contract</span><span class="badge badge-green">✓ Uploaded</span></div>
+<div class="kv"><span class="label">Public Liability</span><span class="badge badge-green">Confirmed</span></div>
 </div>
 </div>
 </div>
+
+<div class="card" style="margin-bottom:20px">
+<h3>Contract Items</h3>
+<table>
+<thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>VAT Rate</th><th>Total (Net)</th><th>Total (Gross)</th></tr></thead>
+<tbody>
+<tr><td>DJ set (evening, 4 hours)</td><td>1</td><td>£2,000.00</td><td>0%</td><td>20%</td><td>£2,000.00</td><td>£2,400.00</td></tr>
+<tr><td>Lighting package (dance floor)</td><td>1</td><td>£1,500.00</td><td>0%</td><td>20%</td><td>£1,500.00</td><td>£1,800.00</td></tr>
+<tr style="background:#f0f9ff;font-weight:600"><td>TOTAL</td><td></td><td></td><td></td><td></td><td>£3,500.00</td><td>£4,200.00</td></tr>
+</tbody>
+</table>
 </div>
+
+<!-- Win this contract -->
+<div class="win-contract-box">
+<h3 style="color:#166534;font-size:16px;margin-bottom:16px">🏆 Win This Contract</h3>
+
+<div style="margin-bottom:16px">
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Signed contract uploaded</strong></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Supplier T&amp;Cs uploaded</strong></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Event date confirmed</strong><br><span style="color:#64748b;font-size:12px">22 Mar 2026</span></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission % within allowed range</strong><br><span style="color:#64748b;font-size:12px">12% (policy: 8–20%)</span></div></div>
+</div>
+
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin-bottom:16px">
+<h4 style="font-size:13px;color:#64748b;margin-bottom:8px">Commission Summary</h4>
+<table style="font-size:13px">
+<thead><tr><th>Item</th><th>Value</th><th>Comm %</th><th>Comm £</th></tr></thead>
+<tbody>
+<tr><td>DJ set</td><td>£2,000.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£240.00</td></tr>
+<tr><td>Lighting</td><td>£1,500.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£180.00</td></tr>
+<tr style="font-weight:600;background:#f0f9ff"><td>Total</td><td>£3,500.00</td><td>12%</td><td>£420.00</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="background:#f8fafc;border:2px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px">
+<p style="font-size:13px;color:#64748b;margin-bottom:8px">Type the total commission (ex VAT) to confirm</p>
+<div style="display:flex;align-items:center;justify-content:center;gap:12px">
+<input type="text" value="420.00" style="font-size:18px;padding:8px 16px;width:160px;text-align:center;border:2px solid #16a34a;border-radius:6px" oncopy="return false" oncut="return false" onpaste="return false"/>
+<span class="badge badge-green" style="font-size:13px;padding:6px 12px">✓ Match — £420.00</span>
+</div>
+</div>
+
+<div style="text-align:center">
+<button class="btn btn-green btn-lg">🏆 Win Contract — DJ Sounds Ltd</button>
+<p style="font-size:11px;color:#166534;margin-top:8px">✓ All checks passed</p>
+</div>
+</div>
+
+</div><!-- /ctr-main-2 -->
+
+</div><!-- /ctr-layout -->
 
 </div><!-- /contracts tab -->
 

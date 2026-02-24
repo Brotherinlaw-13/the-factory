@@ -261,7 +261,7 @@ details>summary::marker{display:none}
 <div class="grid2" style="margin-bottom:24px">
 <div class="card">
 <h4 style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Event & Client Details</h4>
-<div class="kv"><span class="label">Readable Event Date</span><span><input type="text" value="22 Mar 2026" style="width:140px;border:1px solid #2563eb;background:#eff6ff"/></span></div>
+<div class="kv"><span class="label">Readable Event Date</span><span><input type="text" value="" placeholder="e.g. 22 Mar 2026" style="width:160px;border:2px solid #f59e0b;background:#fefce8;border-radius:4px;padding:4px 8px"/> <span style="font-size:11px;color:#94a3b8">Suggested: 22 Mar 2026</span></span></div>
 <div class="kv"><span class="label">Client Contact Name</span><span>Rebecca Thompson</span></div>
 <div class="kv"><span class="label">Client Contact Email</span><span>r.thompson@moodys.com</span></div>
 <div class="kv"><span class="label">Client Contact Phone</span><span>+44 20 7772 XXXX</span></div>
@@ -285,7 +285,7 @@ details>summary::marker{display:none}
 <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px">
 <div>
 <span style="font-size:12px;color:#64748b">Venue:</span>
-<select style="padding:6px 12px;border:1px solid #e2e8f0;border-radius:6px;font-size:13px;font-weight:600"><option selected>The Brewery</option><option>The Grand Ballroom</option></select>
+<span style="font-size:13px;font-weight:600;padding:6px 12px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;display:inline-block">The Brewery</span>
 </div>
 <div>
 <span style="font-size:12px;color:#64748b">Signed Terms:</span>
@@ -293,11 +293,11 @@ details>summary::marker{display:none}
 </div>
 <button class="btn btn-outline btn-sm">📄 Create Addendum</button>
 <button class="btn btn-outline btn-sm">📎 Upload T&Cs</button>
-<div style="margin-left:auto">
+<div style="margin-left:auto;display:flex;align-items:center;gap:6px">
 <span style="font-size:12px;color:#64748b">Deal Type:</span>
-<select style="padding:4px 8px;border:1px solid #e2e8f0;border-radius:4px;font-size:12px;background:#dcfce7"><option selected>Deduct at source</option><option>Deduct after collection</option></select>
+<span class="badge badge-green" style="font-size:12px;padding:4px 10px">Deduct at source</span>
+<span title="Deal type is locked once the contract is created. To change DAS ↔ DAC, contact finance to create a new contract." style="cursor:pointer;font-size:14px;color:#f59e0b">⚠️</span>
 </div>
-<div class="todo" style="margin:0">[TODO] Should users be able to change DAS ↔ DAC after contract creation? What are the implications for existing invoices/payments?</div>
 <div>
 <span style="font-size:12px;color:#64748b">Commission:</span>
 <input type="text" value="10" style="width:40px;text-align:center;border:1px solid #e2e8f0;border-radius:4px;font-size:12px"/>

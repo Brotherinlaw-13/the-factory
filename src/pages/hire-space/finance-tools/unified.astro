@@ -84,6 +84,7 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 /* ── CSS-only modals (checkbox hack) ── */
 .css-modal{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center}
 #modal-downstream:checked~.l1-c-contracts .css-modal#modal-overlay-downstream{display:flex}
+#modal-win-ctr1:checked~.css-modal#modal-overlay-win-ctr1{display:flex}
 .css-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);cursor:pointer}
 .css-modal-content{position:relative;background:#fff;border-radius:10px;padding:0;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);z-index:1}
 .css-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e2e8f0}
@@ -345,67 +346,59 @@ details>summary::marker{display:none}
 </div>
 </div>
 
-<!-- Payments section -->
-<div class="ctr-section">
-<h4>Payments</h4>
-<div class="card">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-<span style="font-size:12px;color:#64748b">Payout Currency:</span>
-<select style="padding:4px 8px;border:1px solid #e2e8f0;border-radius:4px;font-size:12px"><option selected>GBP</option><option>EUR</option><option>USD</option></select>
-</div>
-<table>
-<thead><tr><th>Amount</th><th>Due Date</th><th>Status</th></tr></thead>
-<tbody>
-<tr><td>£5,940.00</td><td>22 Feb 2026</td><td><span class="badge badge-green">Paid</span></td></tr>
-<tr><td>£5,940.00</td><td>8 Mar 2026</td><td><span class="badge badge-yellow">Pending</span></td></tr>
-<tr><td>£5,940.00</td><td>22 Mar 2026</td><td><span class="badge badge-yellow">Pending</span></td></tr>
-</tbody>
-</table>
-</div>
-</div>
-
 <!-- Contract Items -->
 <div class="ctr-section">
 <h4>Contract Items</h4>
 <div class="card">
 <table>
-<thead><tr><th>Description</th><th>Quantity</th><th>Unit Price</th><th>Discount</th><th>VAT Rate</th><th>Total (Net)</th><th>Total (Gross)</th></tr></thead>
+<thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Final Price</th><th>VAT Rate</th><th>Total (Net)</th><th>Total (Gross)</th></tr></thead>
 <tbody>
-<tr><td><input type="text" value="Room hire — Ballroom B" style="width:180px"/></td><td><input type="text" value="1" style="width:40px;text-align:center"/></td><td><input type="text" value="£3,200.00" style="width:90px"/></td><td><input type="text" value="0%" style="width:50px"/></td><td><input type="text" value="20%" style="width:50px"/></td><td>£3,200.00</td><td>£3,840.00</td></tr>
-<tr><td><input type="text" value="Catering — lunch × 85" style="width:180px"/></td><td><input type="text" value="85" style="width:40px;text-align:center"/></td><td><input type="text" value="£70.00" style="width:90px"/></td><td><input type="text" value="0%" style="width:50px"/></td><td><input type="text" value="20%" style="width:50px"/></td><td>£5,950.00</td><td>£7,140.00</td></tr>
-<tr><td><input type="text" value="AV package" style="width:180px"/></td><td><input type="text" value="1" style="width:40px;text-align:center"/></td><td><input type="text" value="£2,800.00" style="width:90px"/></td><td><input type="text" value="0%" style="width:50px"/></td><td><input type="text" value="20%" style="width:50px"/></td><td>£2,800.00</td><td>£3,360.00</td></tr>
-<tr><td><input type="text" value="Tea/coffee × 85" style="width:180px"/></td><td><input type="text" value="85" style="width:40px;text-align:center"/></td><td><input type="text" value="£20.00" style="width:90px"/></td><td><input type="text" value="0%" style="width:50px"/></td><td><input type="text" value="20%" style="width:50px"/></td><td>£1,700.00</td><td>£2,040.00</td></tr>
-<tr><td><input type="text" value="Breakout rooms × 3" style="width:180px"/></td><td><input type="text" value="3" style="width:40px;text-align:center"/></td><td><input type="text" value="£400.00" style="width:90px"/></td><td><input type="text" value="0%" style="width:50px"/></td><td><input type="text" value="20%" style="width:50px"/></td><td>£1,200.00</td><td>£1,440.00</td></tr>
+<tr><td><input type="text" value="Room hire — Ballroom B" style="width:170px"/></td><td><input type="text" value="1" style="width:36px;text-align:center"/></td><td><input type="text" value="£3,200.00" style="width:90px"/></td><td>£3,200.00</td><td><input type="text" value="20%" style="width:44px"/></td><td>£3,200.00</td><td>£3,840.00</td></tr>
+<tr><td><input type="text" value="Catering — lunch × 85" style="width:170px"/></td><td><input type="text" value="85" style="width:36px;text-align:center"/></td><td><input type="text" value="£70.00" style="width:90px"/></td><td>£5,950.00</td><td><input type="text" value="20%" style="width:44px"/></td><td>£5,950.00</td><td>£7,140.00</td></tr>
+<tr><td><input type="text" value="AV package" style="width:170px"/></td><td><input type="text" value="1" style="width:36px;text-align:center"/></td><td><input type="text" value="£2,800.00" style="width:90px"/></td><td>£2,800.00</td><td><input type="text" value="20%" style="width:44px"/></td><td>£2,800.00</td><td>£3,360.00</td></tr>
+<tr><td><input type="text" value="Tea/coffee × 85" style="width:170px"/></td><td><input type="text" value="85" style="width:36px;text-align:center"/></td><td><input type="text" value="£20.00" style="width:90px"/></td><td>£1,700.00</td><td><input type="text" value="20%" style="width:44px"/></td><td>£1,700.00</td><td>£2,040.00</td></tr>
+<tr><td><input type="text" value="Breakout rooms × 3" style="width:170px"/></td><td><input type="text" value="3" style="width:36px;text-align:center"/></td><td><input type="text" value="£400.00" style="width:90px"/></td><td>£1,200.00</td><td><input type="text" value="20%" style="width:44px"/></td><td>£1,200.00</td><td>£1,440.00</td></tr>
 <tr style="background:#f0f9ff;font-weight:600"><td>TOTAL</td><td></td><td></td><td></td><td></td><td>£14,850.00</td><td>£17,820.00</td></tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<!-- WIN THIS CONTRACT section -->
-<div class="win-contract-box">
-<h3 style="color:#166534;font-size:16px;margin-bottom:12px">🏆 Win This Contract</h3>
-
-<!-- Pre-win checklist -->
-<div style="margin-bottom:16px">
-<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Signed contract uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload signed contract above</span></div></div>
-<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload venue terms & conditions above</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Event date confirmed</strong><br><span style="color:#64748b;font-size:12px">22 Mar 2026</span></div></div>
-<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission % within allowed range</strong><br><span style="color:#64748b;font-size:12px">10% (policy: 8-20%)</span></div></div>
-<div class="todo">[TODO] Can we trigger Juro countersign directly from this screen?</div>
+<!-- Win Contract trigger button -->
+<div style="text-align:center;margin-top:24px">
+<label for="modal-win-ctr1" class="btn btn-green btn-lg" style="cursor:pointer">🏆 Win Contract — The Grand Ballroom</label>
 </div>
 
-<!-- Commission guard rail with editable % -->
-<div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin-bottom:16px">
+<!-- Win Contract Modal (CSS-only) -->
+<input type="checkbox" id="modal-win-ctr1" class="tab-input"/>
+<div class="css-modal" id="modal-overlay-win-ctr1" style="display:none">
+<label for="modal-win-ctr1" class="css-modal-backdrop"></label>
+<div class="css-modal-content" style="max-width:700px">
+<div class="css-modal-header">
+<h3>🏆 Win Contract — The Grand Ballroom</h3>
+<label for="modal-win-ctr1" class="css-modal-close">✕</label>
+</div>
+<div class="css-modal-body">
+
+<!-- Pre-win checklist -->
+<h4 style="font-size:13px;color:#64748b;margin-bottom:12px">Pre-Win Checks</h4>
+<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Signed contract uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload signed contract in Contract Details</span></div></div>
+<div class="check-row"><div class="check-icon check-fail">✗</div><div style="flex:1"><strong>Venue T&amp;Cs uploaded</strong><br><span style="color:#991b1b;font-size:12px">Upload venue terms in Contract Details</span></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Event date confirmed</strong><br><span style="color:#64748b;font-size:12px">22 Mar 2026</span></div></div>
+<div class="check-row"><div class="check-icon check-pass">✓</div><div style="flex:1"><strong>Commission % within allowed range</strong><br><span style="color:#64748b;font-size:12px">10% (policy: 8–20%)</span></div></div>
+<div class="todo">[TODO] Can we trigger Juro countersign directly from this screen?</div>
+
+<!-- Commission Summary (read-only) -->
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:16px 0">
 <h4 style="font-size:13px;color:#64748b;margin-bottom:8px">Commission Summary</h4>
 <table style="font-size:13px">
 <thead><tr><th>Item</th><th>Value</th><th>Commission %</th><th>Commission £</th></tr></thead>
 <tbody>
-<tr><td>Room hire</td><td>£3,200.00</td><td><input type="text" value="15%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£480.00</td></tr>
-<tr><td>Catering</td><td>£5,950.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£714.00</td></tr>
-<tr><td>AV package</td><td>£2,800.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£336.00</td></tr>
-<tr><td>Tea/coffee</td><td>£1,700.00</td><td><input type="text" value="12%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£204.00</td></tr>
-<tr><td>Breakout rooms</td><td>£1,200.00</td><td><input type="text" value="15%" style="width:50px;text-align:center;border:1px solid #e2e8f0;border-radius:4px"/></td><td>£180.00</td></tr>
+<tr><td>Room hire</td><td>£3,200.00</td><td>15%</td><td>£480.00</td></tr>
+<tr><td>Catering</td><td>£5,950.00</td><td>12%</td><td>£714.00</td></tr>
+<tr><td>AV package</td><td>£2,800.00</td><td>12%</td><td>£336.00</td></tr>
+<tr><td>Tea/coffee</td><td>£1,700.00</td><td>12%</td><td>£204.00</td></tr>
+<tr><td>Breakout rooms</td><td>£1,200.00</td><td>15%</td><td>£180.00</td></tr>
 <tr style="font-weight:600;background:#f0f9ff"><td>Total</td><td>£14,850.00</td><td>~12.9%</td><td>£1,914.00</td></tr>
 </tbody>
 </table>
@@ -423,14 +416,17 @@ details>summary::marker{display:none}
 <!-- Guard rails -->
 <div class="guardrail">
 <h4>⚠ Cannot Win Contract</h4>
-<p><strong>Signed contract:</strong> Not uploaded. Upload the countersigned contract in the Documents section above.</p>
-<p style="margin-top:4px"><strong>Venue T&amp;Cs:</strong> Not uploaded. Upload venue terms &amp; conditions above.</p>
+<p><strong>Signed contract:</strong> Not uploaded.</p>
+<p style="margin-top:4px"><strong>Venue T&amp;Cs:</strong> Not uploaded.</p>
 </div>
 
-<!-- Win button -->
-<div style="text-align:center">
-<button class="btn btn-disabled btn-lg">🔒 Win Contract — The Grand Ballroom</button>
+<!-- Final Win button -->
+<div style="text-align:center;margin-top:16px">
+<button class="btn btn-disabled btn-lg">🔒 Win Contract</button>
 <p style="font-size:11px;color:#991b1b;margin-top:8px">⚠ 2 checks failing</p>
+</div>
+
+</div>
 </div>
 </div>
 

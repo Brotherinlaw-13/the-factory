@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   description?: string;
+  minimal?: boolean;
 }
 
-const { title, description = "One founder. One AI agent. Seven products. The story of AI-augmented solo entrepreneurship." } = Astro.props;
+const { title, description = "One founder. One AI agent. Seven products. The story of AI-augmented solo entrepreneurship.", minimal = false } = Astro.props;
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -33,7 +34,7 @@ const currentPath = Astro.url.pathname;
 </head>
 <body class="min-h-screen flex flex-col">
   <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-navy-900/80 backdrop-blur-xl border-b border-navy-700/50">
+  {!minimal && <nav class="sticky top-0 z-50 bg-navy-900/80 backdrop-blur-xl border-b border-navy-700/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
@@ -86,7 +87,7 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
     </div>
-  </nav>
+  </nav>}
 
   <!-- Main Content -->
   <main class="flex-1">
@@ -94,7 +95,7 @@ const currentPath = Astro.url.pathname;
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-navy-700/50 bg-navy-900/50">
+  {!minimal && <footer class="border-t border-navy-700/50 bg-navy-900/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Brand -->
@@ -133,7 +134,7 @@ const currentPath = Astro.url.pathname;
         <p class="text-gray-500 text-sm">Built with 🏰 by Rook and Diego · Powered by <a href="https://github.com/openclaw/openclaw" class="text-amber-500/70 hover:text-amber-400 transition-colors">OpenClaw</a></p>
       </div>
     </div>
-  </footer>
+  </footer>}
 
   <script is:inline>
     const btn = document.getElementById('mobile-menu-btn');

@@ -1,511 +1,447 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const executiveSummary = [
-  'ChatGPT is the dominant acquisition channel (59% of landing traffic), not Google. SEO is underperforming.',
-  '87% mobile usage with 333 food logs in 30 days signals product-market fit in core use case.',
-  'Retention is solid (39% bounce on app vs 71% on landing). The landing page is the leak, not the product.',
-  'US dominance (43% of app traffic) creates a clear geographic beachhead. International spread suggests organic word-of-mouth.',
-];
-
-const acquisitionData = [
-  { channel: 'ChatGPT', visitors: 33, share: '59%', type: 'GEO' },
-  { channel: 'Google', visitors: 3, share: '5%', type: 'SEO' },
-  { channel: 'Bing', visitors: 3, share: '5%', type: 'SEO' },
-  { channel: 'DuckDuckGo', visitors: 2, share: '4%', type: 'SEO' },
-  { channel: 'Direct', visitors: 15, share: '27%', type: 'Other' },
-];
-
-const engagementEvents = [
-  { event: 'Food Logged', count: 333, insight: 'Core usage: 2.15 logs per active user' },
-  { event: 'Camera Opened', count: 155, insight: 'Photo preferred over text (1:1 with visitors)' },
-  { event: 'Text Chat Opened', count: 150, insight: 'Text logging still heavily used' },
-  { event: 'Badge Unlocked', count: 90, insight: '58% of users engage with gamification' },
-  { event: 'Goal Updated', count: 81, insight: 'Users customize; not just tracking' },
-  { event: 'Signed In', count: 30, insight: 'Only 19% sign-in rate. Barrier or feature?' },
-];
-
-const geographicSplit = [
-  { country: 'US', visitors: 67, share: '43%' },
-  { country: 'GB', visitors: 20, share: '13%' },
-  { country: 'SG', visitors: 10, share: '6%' },
-  { country: 'CH', visitors: 8, share: '5%' },
-  { country: 'DE', visitors: 7, share: '5%' },
-  { country: 'Other', visitors: 43, share: '28%' },
-];
-
-const blogPerformance = [
-  { post: '/blog/best-free-calorie-counter-apps-2026', views: 4, status: 'Working' },
-  { post: '/calculator', views: 3, status: 'Utility page' },
-  { post: '/blog', views: 3, status: 'Directory' },
-  { post: '/blog/carb-cycling', views: 2, status: 'Niche topic' },
-];
-
-const roadmapPriorities = [
-  { priority: 1, feature: 'Landing page rewrite', why: '71% bounce rate. Losing half your ChatGPT traffic.', impact: 'High' },
-  { priority: 2, feature: 'Comparison content series', why: '"Chowdown vs X" capitalizes on GEO momentum', impact: 'High' },
-  { priority: 3, feature: 'Group features expansion', why: '22 group views. Social aspect is latent.', impact: 'Medium' },
-  { priority: 4, feature: 'Badge progression visibility', why: '90 unlocks but only 15 tab opens. Hidden value.', impact: 'Medium' },
-  { priority: 5, feature: 'Export/sharing', why: 'Give users a reason to post screenshots', impact: 'Medium' },
-];
-
-const marketingPlaybook = [
-  { week: '1', action: 'Rewrite landing page', detail: 'Lower bounce from 71% to under 50%. Clear CTA, social proof, demo video.' },
-  { week: '1-2', action: 'ChatGPT SEO content', detail: 'Publish "Chowdown vs MyFitnessPal", "vs Cronometer", "vs Lose It"' },
-  { week: '2', action: 'Reddit engagement', detail: 'r/fitness, r/loseit, r/nutrition. Answer questions, link when relevant.' },
-  { week: '3', action: 'Influencer pilot', detail: '5 fitness creators (5K-20K followers). Free coaching consultation for review.' },
-  { week: '3-4', action: 'App Store optimization', detail: 'PWA discoverability is weak. Consider native wrapper for ASO.' },
-  { week: '4', action: 'User interviews', detail: 'Talk to 10 active users. Why they stayed, what they\'d pay for (even though it\'s free).' },
-];
 ---
 
 <Layout title="Chowdown Strategy: March 2026" description="Data-backed strategy for Chowdown based on 30 days of real user behaviour from Umami Cloud.">
 
-  <!-- Hero -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
-    <div class="flex items-center gap-3 mb-6">
-      <span class="text-5xl">📊</span>
-      <div>
-        <h1 class="text-4xl md:text-5xl font-black text-white">Chowdown Strategy</h1>
-        <p class="text-amber-400 font-medium mt-1">March 2026: 30-Day Analytics Deep Dive</p>
-      </div>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="mb-8">
+      <p class="text-amber-400 font-medium mb-2">March 2026 · 30-Day Analytics Deep Dive</p>
+      <h1 class="text-3xl md:text-4xl font-black text-white leading-tight">Chowdown Strategy</h1>
+      <p class="text-lg text-gray-400 mt-4 leading-relaxed">
+        Real data from 155 app users and 56 landing visitors. What works, what doesn't, and what to do next.
+      </p>
     </div>
-
-    <p class="text-xl text-gray-400 leading-relaxed max-w-3xl">
-      Real data from 155 app users and 56 landing visitors. What works, what doesn't, and what to do about it in the next 30 days.
-    </p>
-  </section>
-
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
 
     <!-- Executive Summary -->
-    <div class="prose-factory">
-      <h2>Executive Summary</h2>
-    </div>
-
-    <div class="grid grid-cols-1 gap-3 my-6">
-      {executiveSummary.map((insight, i) => (
-        <div class="card !p-4 border-amber-500/20">
-          <div class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-400 font-mono text-sm flex-shrink-0">{i + 1}</div>
-            <p class="text-gray-200 leading-relaxed">{insight}</p>
-          </div>
-        </div>
-      ))}
+    <div class="space-y-3 mb-12">
+      <h2 class="text-xl font-bold text-white mb-4">Executive Summary</h2>
+      <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+        <p class="text-amber-200 font-medium">🔥 ChatGPT = 59% of landing traffic. Not Google. GEO is the channel.</p>
+      </div>
+      <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+        <p class="text-amber-200 font-medium">📱 333 food logs, 87% mobile, 2.15 logs/user. Product-market fit confirmed.</p>
+      </div>
+      <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+        <p class="text-amber-200 font-medium">✅ App retains well (39% bounce). Landing page leaks (71% bounce). Fix the landing.</p>
+      </div>
+      <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+        <p class="text-amber-200 font-medium">🌍 US = 43% of app traffic, 23 countries total. International word-of-mouth happening.</p>
+      </div>
     </div>
 
     <!-- Acquisition -->
-    <div class="prose-factory mt-12">
-      <h2>Acquisition: Where Users Come From</h2>
-      <p>56 visitors to the landing page in 30 days. 155 visitors to the app. The funnel is backwards: more people go straight to the app than discover it via the landing page.</p>
-    </div>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-2">Acquisition: Where Users Come From</h2>
+      <p class="text-gray-400 mb-6">56 visitors to the landing page. 155 to the app. The funnel is backwards: more people go straight to the app than discover it via the landing page.</p>
 
-    <div class="overflow-x-auto my-6">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-navy-600">
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Channel</th>
-            <th class="text-right py-3 px-4 text-gray-400 font-medium">Visitors</th>
-            <th class="text-right py-3 px-4 text-gray-400 font-medium">Share</th>
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {acquisitionData.map((row, i) => (
-            <tr class:list={["border-b border-navy-700/50", i === 0 && "!bg-amber-500/5"]}>
-              <td class:list={["py-3 px-4 font-medium", i === 0 ? "text-amber-400" : "text-white"]}>{row.channel}</td>
-              <td class:list={["py-3 px-4 text-right font-mono", i === 0 ? "text-amber-400" : "text-gray-300"]}>{row.visitors}</td>
-              <td class:list={["py-3 px-4 text-right font-mono", i === 0 ? "text-amber-400 font-bold" : "text-gray-300"]}>{row.share}</td>
-              <td class="py-3 px-4 text-gray-400">{row.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose-factory">
-      <h3>The ChatGPT Dominance</h3>
-      <p>33 out of 56 landing visitors came from ChatGPT (27 with utm_source=chatgpt.com, 6 direct from chat.openai.com). That's 59% of all traffic.</p>
-      <p><strong>This is not SEO traffic.</strong> This is GEO: Generative Engine Optimization. Users are asking ChatGPT for calorie trackers, and it's recommending Chowdown.</p>
-      <p>The blog posts are working, but not through Google. They're getting indexed by LLMs and surfaced in conversational search. That's the game now.</p>
-
-      <h3>SEO is Underperforming</h3>
-      <p>Google: 3 visitors. Bing: 3. DuckDuckGo: 2. Combined, that's 8 visitors from traditional search in 30 days.</p>
-      <p>The blog has 15+ posts. The /calculator page exists. The comparison content is live. But it's not ranking, or it's ranking for queries nobody searches.</p>
-
-      <h3>Recommendations</h3>
-    </div>
-
-    <div class="space-y-3 my-6">
-      <div class="card !p-4 bg-green-500/5 border-green-500/20">
-        <h4 class="text-green-400 font-bold mb-2">1. Double down on GEO, not SEO</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">ChatGPT is the channel. Write content optimized for LLM context windows: comparison posts, feature explainers, "best X for Y" listicles. Make it easy for ChatGPT to quote you.</p>
+      <div class="space-y-2 mb-6">
+        <div class="flex items-center justify-between bg-amber-500/10 border border-amber-500/20 rounded-lg px-4 py-3">
+          <span class="text-amber-300 font-bold">ChatGPT</span>
+          <div class="flex items-center gap-4">
+            <span class="text-amber-300 font-mono">33 visitors</span>
+            <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-sm font-bold">59%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">Google</span>
+          <div class="flex items-center gap-4">
+            <span class="text-gray-300 font-mono">3 visitors</span>
+            <span class="text-gray-400 text-sm">5%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">Bing</span>
+          <div class="flex items-center gap-4">
+            <span class="text-gray-300 font-mono">3 visitors</span>
+            <span class="text-gray-400 text-sm">5%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">DuckDuckGo</span>
+          <div class="flex items-center gap-4">
+            <span class="text-gray-300 font-mono">2 visitors</span>
+            <span class="text-gray-400 text-sm">4%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">Direct</span>
+          <div class="flex items-center gap-4">
+            <span class="text-gray-300 font-mono">15 visitors</span>
+            <span class="text-gray-400 text-sm">27%</span>
+          </div>
+        </div>
       </div>
-      <div class="card !p-4 bg-green-500/5 border-green-500/20">
-        <h4 class="text-green-400 font-bold mb-2">2. Add schema markup to comparison posts</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">Structured data helps LLMs extract facts. Add Product schema to "Chowdown vs X" posts with feature grids, pricing, and ratings.</p>
-      </div>
-      <div class="card !p-4 bg-green-500/5 border-green-500/20">
-        <h4 class="text-green-400 font-bold mb-2">3. Fix the landing page leak</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">71% bounce rate, 88 seconds average time. People arrive from ChatGPT, read the headline, and leave. The page isn't converting curiosity into app opens. Add social proof, a demo video, and a clearer CTA above the fold.</p>
-      </div>
-      <div class="card !p-4 bg-green-500/5 border-green-500/20">
-        <h4 class="text-green-400 font-bold mb-2">4. Track ChatGPT mentions</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">Set up a Google Alert or Mention.com monitor for "Chowdown" + "calorie tracker" to see when ChatGPT or Perplexity surface the brand. Reverse-engineer which queries trigger mentions.</p>
+
+      <h3 class="text-lg font-bold text-white mt-8 mb-3">The ChatGPT Dominance</h3>
+      <p class="text-gray-300 mb-3">33 out of 56 landing visitors came from ChatGPT (27 with utm_source=chatgpt.com, 6 direct from chat.openai.com). That's 59% of all traffic.</p>
+      <p class="text-gray-300 mb-3"><strong class="text-white">This is not SEO traffic.</strong> This is GEO: Generative Engine Optimization. Users are asking ChatGPT for calorie trackers, and it's recommending Chowdown.</p>
+      <p class="text-gray-300 mb-6">The blog posts are working, but not through Google. They're getting indexed by LLMs and surfaced in conversational search. That's the game now.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">SEO is Underperforming</h3>
+      <p class="text-gray-300 mb-6">Google: 3 visitors. Bing: 3. DuckDuckGo: 2. Combined, that's 8 visitors from traditional search in 30 days. The blog has 15+ posts. The /calculator page exists. The comparison content is live. But it's not ranking.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">Recommendations</h3>
+      <div class="space-y-3 mb-6">
+        <div class="border-l-4 border-green-500 pl-4 py-2">
+          <p class="text-green-400 font-bold mb-1">Double down on GEO, not SEO</p>
+          <p class="text-gray-300 text-sm">Write content optimized for LLM context windows: comparison posts, feature explainers, "best X for Y" listicles. Make it easy for ChatGPT to quote you.</p>
+        </div>
+        <div class="border-l-4 border-green-500 pl-4 py-2">
+          <p class="text-green-400 font-bold mb-1">Add schema markup to comparison posts</p>
+          <p class="text-gray-300 text-sm">Structured data helps LLMs extract facts. Add Product schema to "Chowdown vs X" posts with feature grids, pricing, and ratings.</p>
+        </div>
+        <div class="border-l-4 border-green-500 pl-4 py-2">
+          <p class="text-green-400 font-bold mb-1">Fix the landing page leak</p>
+          <p class="text-gray-300 text-sm">71% bounce, 88 seconds average. People arrive from ChatGPT, read the headline, and leave. Add social proof, a demo video, and a clearer CTA above the fold.</p>
+        </div>
+        <div class="border-l-4 border-green-500 pl-4 py-2">
+          <p class="text-green-400 font-bold mb-1">Track ChatGPT mentions</p>
+          <p class="text-gray-300 text-sm">Set up monitoring for "Chowdown" + "calorie tracker" to see when ChatGPT or Perplexity surface the brand. Reverse-engineer which queries trigger mentions.</p>
+        </div>
       </div>
     </div>
 
     <!-- Engagement -->
-    <div class="prose-factory mt-12">
-      <h2>Engagement: What Users Do</h2>
-      <p>155 visitors, 888 pageviews, 274 visits. That's 5.7 pages per visitor and 1.8 visits per user. People are coming back.</p>
-    </div>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-2">Engagement: What Users Do</h2>
+      <p class="text-gray-400 mb-6">155 visitors, 888 pageviews, 274 visits. That's 5.7 pages per visitor and 1.8 visits per user. People are coming back.</p>
 
-    <div class="overflow-x-auto my-6">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-navy-600">
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Event</th>
-            <th class="text-right py-3 px-4 text-gray-400 font-medium">Count</th>
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Insight</th>
-          </tr>
-        </thead>
-        <tbody>
-          {engagementEvents.map((row) => (
-            <tr class="border-b border-navy-700/50">
-              <td class="py-3 px-4 font-medium text-white">{row.event}</td>
-              <td class="py-3 px-4 text-right font-mono text-gray-300">{row.count}</td>
-              <td class="py-3 px-4 text-gray-400">{row.insight}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose-factory">
-      <h3>Core Usage is Healthy</h3>
-      <p>333 food logs across 155 users is 2.15 logs per person in a 30-day window. That's not daily tracking (which would be 30+ logs), but it's not drive-by curiosity either. People are using it.</p>
-      <p>Camera opened 155 times. Text chat opened 150 times. The photo/text split is nearly 50/50, which means both entry methods matter. Don't over-optimise for one.</p>
-
-      <h3>Gamification is Working</h3>
-      <p>90 badges unlocked. That's 58% of users hitting some achievement. But only 15 "Badges Tab Opened" events. Most users are unlocking badges without actively seeking them. The notifications are working; the discoverability isn't.</p>
-
-      <h3>Social Features are Latent</h3>
-      <p>22 group views. 4 reactions added. Groups exist, but engagement is low. Either users don't know about them, or the feature needs more surface area in the app.</p>
-
-      <h3>Sign-in is a Question Mark</h3>
-      <p>30 sign-ins. 155 visitors. That's a 19% sign-in rate. Is that by design (guest mode works well), or is it a barrier (people bounce before auth)? If guest mode is the default, 19% is healthy. If it's not, it's a leak.</p>
-
-      <h3>Recommendations</h3>
-    </div>
-
-    <div class="space-y-3 my-6">
-      <div class="card !p-4 bg-blue-500/5 border-blue-500/20">
-        <h4 class="text-blue-400 font-bold mb-2">1. Surface badge progress in the main UI</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">90 unlocks, 15 tab opens. Users are earning badges but not seeing them. Add a persistent progress bar or "Next Badge: X logs away" widget on the home screen.</p>
+      <div class="space-y-2 mb-6">
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <div>
+            <span class="text-white font-bold">Food Logged</span>
+            <p class="text-gray-400 text-xs mt-0.5">Core: 2.15 logs per active user</p>
+          </div>
+          <span class="text-amber-400 font-mono font-bold text-lg">333</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <div>
+            <span class="text-white font-bold">Camera Opened</span>
+            <p class="text-gray-400 text-xs mt-0.5">Photo input: 1:1 with visitors</p>
+          </div>
+          <span class="text-amber-400 font-mono font-bold text-lg">155</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <div>
+            <span class="text-white font-bold">Text Chat Opened</span>
+            <p class="text-gray-400 text-xs mt-0.5">Text logging nearly as popular as camera</p>
+          </div>
+          <span class="text-amber-400 font-mono font-bold text-lg">150</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <div>
+            <span class="text-white font-bold">Badge Unlocked</span>
+            <p class="text-gray-400 text-xs mt-0.5">58% of users engage with gamification</p>
+          </div>
+          <span class="text-amber-400 font-mono font-bold text-lg">90</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <div>
+            <span class="text-white font-bold">Goal Updated</span>
+            <p class="text-gray-400 text-xs mt-0.5">Users customise; not just browsing</p>
+          </div>
+          <span class="text-amber-400 font-mono font-bold text-lg">81</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <div>
+            <span class="text-white font-bold">Signed In</span>
+            <p class="text-gray-400 text-xs mt-0.5">19% sign-in rate. Barrier or feature?</p>
+          </div>
+          <span class="text-amber-400 font-mono font-bold text-lg">30</span>
+        </div>
       </div>
-      <div class="card !p-4 bg-blue-500/5 border-blue-500/20">
-        <h4 class="text-blue-400 font-bold mb-2">2. Make groups more visible</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">22 views is low. Either promote groups during onboarding ("Join a community or track solo?"), or add a "Trending Groups" carousel on the home screen.</p>
-      </div>
-      <div class="card !p-4 bg-blue-500/5 border-blue-500/20">
-        <h4 class="text-blue-400 font-bold mb-2">3. Test text-first onboarding</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">150 text chat opens vs 155 camera opens. Camera gets the headline (📸 Snap a photo), but text is just as popular. Try A/B testing "Type or snap" as the first prompt.</p>
-      </div>
-      <div class="card !p-4 bg-blue-500/5 border-blue-500/20">
-        <h4 class="text-blue-400 font-bold mb-2">4. Clarify the sign-in value prop</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">If guest mode is intentional, keep it. If not, add a "Save your progress" prompt after the first food log. Don't force auth, but make the benefit clear.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">Core Usage is Healthy</h3>
+      <p class="text-gray-300 mb-3">333 food logs across 155 users = 2.15 logs per person. That's not daily tracking (30+ logs), but it's not drive-by curiosity either. People are using it.</p>
+      <p class="text-gray-300 mb-6">Camera: 155. Text chat: 150. Almost 50/50. Both entry methods matter. Don't over-optimise for one.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">Gamification is Working</h3>
+      <p class="text-gray-300 mb-6">90 badges unlocked, but only 15 "Badges Tab Opened" events. Users are earning badges without actively seeking them. The notifications work; the discoverability doesn't.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">Social Features are Latent</h3>
+      <p class="text-gray-300 mb-6">22 group views, 4 reactions. Groups exist, but engagement is low. Either users don't know about them, or the feature needs more surface area.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">Recommendations</h3>
+      <div class="space-y-3 mb-6">
+        <div class="border-l-4 border-blue-500 pl-4 py-2">
+          <p class="text-blue-400 font-bold mb-1">Surface badge progress in the main UI</p>
+          <p class="text-gray-300 text-sm">90 unlocks, 15 tab opens. Add a persistent "Next Badge: X logs away" widget on the home screen.</p>
+        </div>
+        <div class="border-l-4 border-blue-500 pl-4 py-2">
+          <p class="text-blue-400 font-bold mb-1">Make groups more visible</p>
+          <p class="text-gray-300 text-sm">Promote during onboarding ("Join a community or track solo?"), or add a "Trending Groups" carousel.</p>
+        </div>
+        <div class="border-l-4 border-blue-500 pl-4 py-2">
+          <p class="text-blue-400 font-bold mb-1">Test text-first onboarding</p>
+          <p class="text-gray-300 text-sm">Camera gets the headline, but text is just as popular. Try A/B testing "Type or snap" as the first prompt.</p>
+        </div>
+        <div class="border-l-4 border-blue-500 pl-4 py-2">
+          <p class="text-blue-400 font-bold mb-1">Clarify the sign-in value prop</p>
+          <p class="text-gray-300 text-sm">Add a "Save your progress" prompt after the first food log. Don't force auth, but make the benefit clear.</p>
+        </div>
       </div>
     </div>
 
     <!-- Retention -->
-    <div class="prose-factory mt-12">
-      <h2>Retention Signals</h2>
-      <p>39% bounce rate on the app. 4 minutes average session time. 274 visits from 155 visitors (1.8 visits per user).</p>
-      <p>Compare that to the landing page: 71% bounce, 88 seconds. The app retains. The landing page doesn't.</p>
-    </div>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-2">Retention Signals</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
-      <div class="card !p-5 text-center">
-        <div class="text-3xl font-black text-amber-400 mb-1">39%</div>
-        <div class="text-sm text-gray-400">App Bounce Rate</div>
-        <div class="text-xs text-green-400 mt-2">✓ Good</div>
+      <div class="grid grid-cols-3 gap-3 my-6">
+        <div class="bg-navy-800/50 border border-navy-700/50 rounded-lg p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">39%</div>
+          <div class="text-xs text-gray-400 mt-1">App Bounce</div>
+          <div class="text-xs text-green-400 mt-1">✓ Good</div>
+        </div>
+        <div class="bg-navy-800/50 border border-navy-700/50 rounded-lg p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">4 min</div>
+          <div class="text-xs text-gray-400 mt-1">Avg Session</div>
+          <div class="text-xs text-green-400 mt-1">✓ Strong</div>
+        </div>
+        <div class="bg-navy-800/50 border border-navy-700/50 rounded-lg p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">1.8x</div>
+          <div class="text-xs text-gray-400 mt-1">Visits/User</div>
+          <div class="text-xs text-green-400 mt-1">↗ Growing</div>
+        </div>
       </div>
-      <div class="card !p-5 text-center">
-        <div class="text-3xl font-black text-amber-400 mb-1">4 min</div>
-        <div class="text-sm text-gray-400">Avg Session Time</div>
-        <div class="text-xs text-green-400 mt-2">✓ Strong</div>
-      </div>
-      <div class="card !p-5 text-center">
-        <div class="text-3xl font-black text-amber-400 mb-1">1.8x</div>
-        <div class="text-sm text-gray-400">Visits Per User</div>
-        <div class="text-xs text-gray-400 mt-2">↗ Growing</div>
-      </div>
-    </div>
 
-    <div class="prose-factory">
-      <h3>What This Means</h3>
-      <p>The product works. People who get to the app stay, explore, and log food. The 39% bounce is healthy for a utility app (not every session needs to be long).</p>
-      <p>The problem is upstream. 71% of people who land on chowdown.me never make it to app.chowdown.me. That's where the growth opportunity is.</p>
+      <p class="text-gray-300 mb-3">The product works. 39% bounce is healthy for a utility app. 4-minute sessions mean people are actually logging, not just peeking.</p>
+      <p class="text-gray-300 mb-6">The problem is upstream. <strong class="text-white">71% of people who land on chowdown.me never make it to app.chowdown.me.</strong> That's the growth bottleneck.</p>
 
-      <h3>Recommendations</h3>
-    </div>
-
-    <div class="space-y-3 my-6">
-      <div class="card !p-4 bg-purple-500/5 border-purple-500/20">
-        <h4 class="text-purple-400 font-bold mb-2">1. A/B test the landing page CTA</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">Current: "Visit chowdown.me →" button. Test: "Try it now (no sign-up)" button that links directly to app.chowdown.me with a demo mode.</p>
-      </div>
-      <div class="card !p-4 bg-purple-500/5 border-purple-500/20">
-        <h4 class="text-purple-400 font-bold mb-2">2. Add a "See it in action" video</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">88 seconds isn't enough time to read the value prop and scroll. A 30-second demo video (Loom or animated GIF) showing photo → AI scan → macros could convert fence-sitters.</p>
-      </div>
-      <div class="card !p-4 bg-purple-500/5 border-purple-500/20">
-        <h4 class="text-purple-400 font-bold mb-2">3. Track cohort retention</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">1.8 visits per user is a snapshot. Set up Firebase Analytics cohorts to see Day 1, Day 7, Day 30 retention. If Day 7 retention is >20%, you're onto something.</p>
+      <h3 class="text-lg font-bold text-white mb-3">Recommendations</h3>
+      <div class="space-y-3 mb-6">
+        <div class="border-l-4 border-purple-500 pl-4 py-2">
+          <p class="text-purple-400 font-bold mb-1">A/B test the landing page CTA</p>
+          <p class="text-gray-300 text-sm">Replace "Visit chowdown.me →" with "Try it now (no sign-up)" linking directly to app.chowdown.me.</p>
+        </div>
+        <div class="border-l-4 border-purple-500 pl-4 py-2">
+          <p class="text-purple-400 font-bold mb-1">Add a "See it in action" video</p>
+          <p class="text-gray-300 text-sm">A 30-second demo: photo → AI scan → macros. Converts fence-sitters who won't click through on text alone.</p>
+        </div>
+        <div class="border-l-4 border-purple-500 pl-4 py-2">
+          <p class="text-purple-400 font-bold mb-1">Track cohort retention</p>
+          <p class="text-gray-300 text-sm">Set up Firebase Analytics cohorts for Day 1, Day 7, Day 30 retention. If Day 7 is above 20%, you're onto something.</p>
+        </div>
       </div>
     </div>
 
     <!-- Geographic -->
-    <div class="prose-factory mt-12">
-      <h2>Geographic Opportunity</h2>
-      <p>155 app visitors from 23 countries. 43% from the US, 13% from GB. The rest is a long tail.</p>
-    </div>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-2">Geographic Opportunity</h2>
+      <p class="text-gray-400 mb-6">155 app visitors from 23 countries.</p>
 
-    <div class="overflow-x-auto my-6">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-navy-600">
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Country</th>
-            <th class="text-right py-3 px-4 text-gray-400 font-medium">Visitors</th>
-            <th class="text-right py-3 px-4 text-gray-400 font-medium">Share</th>
-          </tr>
-        </thead>
-        <tbody>
-          {geographicSplit.map((row, i) => (
-            <tr class:list={["border-b border-navy-700/50", i === 0 && "!bg-amber-500/5"]}>
-              <td class:list={["py-3 px-4 font-medium", i === 0 ? "text-amber-400" : "text-white"]}>{row.country}</td>
-              <td class:list={["py-3 px-4 text-right font-mono", i === 0 ? "text-amber-400" : "text-gray-300"]}>{row.visitors}</td>
-              <td class:list={["py-3 px-4 text-right font-mono", i === 0 ? "text-amber-400 font-bold" : "text-gray-300"]}>{row.share}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose-factory">
-      <h3>US is the Beachhead</h3>
-      <p>67 out of 155 app visitors. The US fitness/nutrition app market is massive ($1.1 billion in 2025). If Chowdown is being recommended by ChatGPT to US users, lean into it.</p>
-
-      <h3>International Spread Suggests Organic Growth</h3>
-      <p>Lebanon (5 visitors), Peru (3), Malaysia (3). These aren't paid acquisition markets. This is word-of-mouth or LLM recommendations in non-English queries.</p>
-
-      <h3>Recommendations</h3>
-    </div>
-
-    <div class="space-y-3 my-6">
-      <div class="card !p-4 bg-orange-500/5 border-orange-500/20">
-        <h4 class="text-orange-400 font-bold mb-2">1. US-specific landing page variant</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">Test a version with US units (oz, cups, lbs) and testimonials from US users. 43% of traffic justifies a localized experience.</p>
+      <div class="space-y-2 mb-6">
+        <div class="flex items-center justify-between bg-amber-500/10 border border-amber-500/20 rounded-lg px-4 py-3">
+          <span class="text-amber-300 font-bold">🇺🇸 United States</span>
+          <div class="flex items-center gap-3">
+            <span class="text-amber-300 font-mono">67</span>
+            <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-sm font-bold">43%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">🇬🇧 United Kingdom</span>
+          <div class="flex items-center gap-3">
+            <span class="text-gray-300 font-mono">20</span>
+            <span class="text-gray-400 text-sm">13%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">🇸🇬 Singapore</span>
+          <div class="flex items-center gap-3">
+            <span class="text-gray-300 font-mono">10</span>
+            <span class="text-gray-400 text-sm">6%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">🇨🇭 Switzerland</span>
+          <div class="flex items-center gap-3">
+            <span class="text-gray-300 font-mono">8</span>
+            <span class="text-gray-400 text-sm">5%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">🇩🇪 Germany</span>
+          <div class="flex items-center gap-3">
+            <span class="text-gray-300 font-mono">7</span>
+            <span class="text-gray-400 text-sm">5%</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium">🌍 Other (18 countries)</span>
+          <div class="flex items-center gap-3">
+            <span class="text-gray-300 font-mono">43</span>
+            <span class="text-gray-400 text-sm">28%</span>
+          </div>
+        </div>
       </div>
-      <div class="card !p-4 bg-orange-500/5 border-orange-500/20">
-        <h4 class="text-orange-400 font-bold mb-2">2. Add multi-language support to the blog</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">Visitors from 23 countries. The app is in English, but blog posts could be auto-translated (DeepL or GPT-4). Test Spanish, German, French versions of top posts.</p>
-      </div>
-      <div class="card !p-4 bg-orange-500/5 border-orange-500/20">
-        <h4 class="text-orange-400 font-bold mb-2">3. Partner with US influencers first</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">When doing influencer outreach, prioritize US-based fitness creators. The market is there, and the product is already resonating.</p>
+
+      <p class="text-gray-300 mb-3">US is the beachhead. 43% of app traffic, biggest fitness/nutrition app market. ChatGPT is recommending Chowdown to US users. Lean into it.</p>
+      <p class="text-gray-300 mb-6">Lebanon (5), Peru (3), Malaysia (3): these aren't paid markets. This is organic word-of-mouth or LLM recommendations in non-English queries.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">Recommendations</h3>
+      <div class="space-y-3 mb-6">
+        <div class="border-l-4 border-orange-500 pl-4 py-2">
+          <p class="text-orange-400 font-bold mb-1">US-specific landing variant</p>
+          <p class="text-gray-300 text-sm">Test with US units (oz, cups, lbs) and US-centric testimonials. 43% of traffic justifies localisation.</p>
+        </div>
+        <div class="border-l-4 border-orange-500 pl-4 py-2">
+          <p class="text-orange-400 font-bold mb-1">Multi-language blog posts</p>
+          <p class="text-gray-300 text-sm">23 countries. Auto-translate top posts into Spanish, German, French via DeepL or GPT-4.</p>
+        </div>
+        <div class="border-l-4 border-orange-500 pl-4 py-2">
+          <p class="text-orange-400 font-bold mb-1">Prioritise US influencers</p>
+          <p class="text-gray-300 text-sm">When doing outreach, target US-based fitness creators first. The market is there.</p>
+        </div>
       </div>
     </div>
 
     <!-- Content Strategy -->
-    <div class="prose-factory mt-12">
-      <h2>Content & Blog Strategy</h2>
-      <p>15+ posts live. 3x/week publishing cadence. But only 4 visits to the top blog post in 30 days.</p>
-    </div>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-2">Content &amp; Blog Strategy</h2>
+      <p class="text-gray-400 mb-6">15+ posts live. 3x/week publishing. But only 4 visits to the top blog post in 30 days.</p>
 
-    <div class="overflow-x-auto my-6">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-navy-600">
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Post</th>
-            <th class="text-right py-3 px-4 text-gray-400 font-medium">Views</th>
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {blogPerformance.map((row) => (
-            <tr class="border-b border-navy-700/50">
-              <td class="py-3 px-4 font-medium text-white text-xs">{row.post}</td>
-              <td class="py-3 px-4 text-right font-mono text-gray-300">{row.views}</td>
-              <td class="py-3 px-4 text-gray-400">{row.status}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose-factory">
-      <h3>The Blog Isn't Driving Traffic (Yet)</h3>
-      <p>4 views on the "best free calorie counter apps" post. 3 on the calculator page. These are high-intent keywords, but they're not ranking or they're buried.</p>
-      <p>The /calculator page got 3 visits. That's a utility page that should be evergreen, but it's invisible.</p>
-
-      <h3>What's Working</h3>
-      <p>The blog exists. The content is being indexed. ChatGPT is citing it (hence the 27 utm_source=chatgpt.com visits). The problem isn't quality, it's discoverability.</p>
-
-      <h3>Recommendations</h3>
-    </div>
-
-    <div class="space-y-3 my-6">
-      <div class="card !p-4 bg-pink-500/5 border-pink-500/20">
-        <h4 class="text-pink-400 font-bold mb-2">1. Write 5 more comparison posts</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">"Chowdown vs MyFitnessPal", "vs Cronometer", "vs Lose It", "vs MacroFactor", "vs Lifesum". These rank better than generic "best X" posts and feed GEO momentum.</p>
+      <div class="space-y-2 mb-6">
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium text-sm">best-free-calorie-counter-apps-2026</span>
+          <span class="text-amber-400 font-mono font-bold">4 views</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium text-sm">/calculator</span>
+          <span class="text-amber-400 font-mono font-bold">3 views</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium text-sm">/blog (directory)</span>
+          <span class="text-amber-400 font-mono font-bold">3 views</span>
+        </div>
+        <div class="flex items-center justify-between bg-navy-800/50 border border-navy-700/50 rounded-lg px-4 py-3">
+          <span class="text-gray-200 font-medium text-sm">carb-cycling-explained</span>
+          <span class="text-amber-400 font-mono font-bold">2 views</span>
+        </div>
       </div>
-      <div class="card !p-4 bg-pink-500/5 border-pink-500/20">
-        <h4 class="text-pink-400 font-bold mb-2">2. Backlink the calculator page</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">3 visits to /calculator is criminal. Cross-link it from every blog post. Add a "Try the calculator" CTA at the end of comparison posts.</p>
-      </div>
-      <div class="card !p-4 bg-pink-500/5 border-pink-500/20">
-        <h4 class="text-pink-400 font-bold mb-2">3. Republish on Medium, Dev.to, Hashnode</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">The blog posts are already written. Syndicate them with canonical tags to build backlinks and reach users where they already read.</p>
-      </div>
-      <div class="card !p-4 bg-pink-500/5 border-pink-500/20">
-        <h4 class="text-pink-400 font-bold mb-2">4. Add "As seen in ChatGPT" social proof</h4>
-        <p class="text-gray-300 text-sm leading-relaxed">59% of traffic came from ChatGPT. That's a badge of honor. Add a banner: "Recommended by ChatGPT for free calorie tracking".</p>
+
+      <p class="text-gray-300 mb-6">The blog isn't driving traffic yet. But it IS getting indexed by LLMs (the 27 utm_source=chatgpt.com visits prove it). The problem isn't quality; it's discoverability in traditional search.</p>
+
+      <h3 class="text-lg font-bold text-white mb-3">Recommendations</h3>
+      <div class="space-y-3 mb-6">
+        <div class="border-l-4 border-pink-500 pl-4 py-2">
+          <p class="text-pink-400 font-bold mb-1">Write 5 comparison posts</p>
+          <p class="text-gray-300 text-sm">"Chowdown vs MyFitnessPal", "vs Cronometer", "vs Lose It", "vs MacroFactor", "vs Lifesum". These rank better than generic "best X" posts and feed GEO momentum.</p>
+        </div>
+        <div class="border-l-4 border-pink-500 pl-4 py-2">
+          <p class="text-pink-400 font-bold mb-1">Cross-link the calculator page everywhere</p>
+          <p class="text-gray-300 text-sm">3 visits to /calculator is criminal. Add a "Try the calculator" CTA at the end of every comparison post.</p>
+        </div>
+        <div class="border-l-4 border-pink-500 pl-4 py-2">
+          <p class="text-pink-400 font-bold mb-1">Syndicate to Medium, Dev.to, Hashnode</p>
+          <p class="text-gray-300 text-sm">Posts are already written. Republish with canonical tags to build backlinks and reach users where they read.</p>
+        </div>
+        <div class="border-l-4 border-pink-500 pl-4 py-2">
+          <p class="text-pink-400 font-bold mb-1">Add "Recommended by ChatGPT" social proof</p>
+          <p class="text-gray-300 text-sm">59% of traffic from ChatGPT. That's a badge of honour. Use it on the landing page.</p>
+        </div>
       </div>
     </div>
 
     <!-- Product Roadmap -->
-    <div class="prose-factory mt-12">
-      <h2>Product Roadmap Priorities</h2>
-      <p>What to build next, ranked by impact and data.</p>
-    </div>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-6">Product Roadmap Priorities</h2>
 
-    <div class="overflow-x-auto my-6">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-navy-600">
-            <th class="text-center py-3 px-3 text-gray-400 font-medium">Priority</th>
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Feature</th>
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Why</th>
-            <th class="text-center py-3 px-3 text-gray-400 font-medium">Impact</th>
-          </tr>
-        </thead>
-        <tbody>
-          {roadmapPriorities.map((row) => (
-            <tr class="border-b border-navy-700/50">
-              <td class="py-3 px-3 text-center">
-                <div class="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-400 font-mono text-sm mx-auto">{row.priority}</div>
-              </td>
-              <td class="py-3 px-4 font-medium text-white">{row.feature}</td>
-              <td class="py-3 px-4 text-gray-400 text-xs">{row.why}</td>
-              <td class="py-3 px-3 text-center">
-                <span class:list={[
-                  "px-2 py-1 rounded text-xs font-medium",
-                  row.impact === 'High' && "bg-red-500/10 text-red-400",
-                  row.impact === 'Medium' && "bg-amber-500/10 text-amber-400"
-                ]}>{row.impact}</span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose-factory">
-      <h3>Priority 1: Landing Page Rewrite</h3>
-      <p>The leak is obvious. 71% bounce on chowdown.me vs 39% on app.chowdown.me. The landing page is converting curiosity into exits, not app opens.</p>
-      <p><strong>Concrete fixes:</strong></p>
-      <ul>
-        <li>Add a 30-second demo video above the fold (Loom or animated GIF)</li>
-        <li>Replace "Visit chowdown.me" CTA with "Try it now (no sign-up needed)"</li>
-        <li>Add social proof: "Recommended by ChatGPT" banner, user count, testimonials</li>
-        <li>Simplify the value prop. Current copy is good but dense. Lead with "Free. No ads. No paywall. Ever."</li>
-      </ul>
-      <p><strong>Target:</strong> Lower bounce from 71% to under 50% within 14 days.</p>
-
-      <h3>Priority 2: Comparison Content Series</h3>
-      <p>ChatGPT is citing Chowdown in response to "best calorie tracker" queries. That momentum compounds if you give it more content to cite.</p>
-      <p><strong>Posts to write:</strong></p>
-      <ul>
-        <li>Chowdown vs MyFitnessPal (the obvious one)</li>
-        <li>Chowdown vs Cronometer (privacy angle)</li>
-        <li>Chowdown vs Lose It (gamification comparison)</li>
-        <li>Chowdown vs MacroFactor (free vs premium positioning)</li>
-        <li>Why free macro trackers aren't really free (expose the paywall tactics)</li>
-      </ul>
-      <p><strong>Format:</strong> Side-by-side feature tables, pricing comparison, conclusion with CTA to app.chowdown.me.</p>
-      <p><strong>Target:</strong> Publish 5 posts in 10 days. Track utm_source=chatgpt.com traffic increase.</p>
+      <div class="space-y-3 mb-6">
+        <div class="bg-red-500/10 border border-red-500/20 rounded-lg p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-red-500/20 text-red-400 w-7 h-7 rounded-full flex items-center justify-center font-mono text-sm font-bold">1</span>
+            <span class="text-white font-bold">Landing Page Rewrite</span>
+            <span class="bg-red-500/20 text-red-400 px-2 py-0.5 rounded text-xs font-bold ml-auto">HIGH</span>
+          </div>
+          <p class="text-gray-300 text-sm">71% bounce rate. Losing more than half your ChatGPT traffic before they see the app.</p>
+        </div>
+        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-amber-500/20 text-amber-400 w-7 h-7 rounded-full flex items-center justify-center font-mono text-sm font-bold">2</span>
+            <span class="text-white font-bold">Comparison Content Series</span>
+            <span class="bg-red-500/20 text-red-400 px-2 py-0.5 rounded text-xs font-bold ml-auto">HIGH</span>
+          </div>
+          <p class="text-gray-300 text-sm">"Chowdown vs X" capitalises on GEO momentum. 5 posts in 10 days.</p>
+        </div>
+        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-amber-500/20 text-amber-400 w-7 h-7 rounded-full flex items-center justify-center font-mono text-sm font-bold">3</span>
+            <span class="text-white font-bold">Group Features Expansion</span>
+            <span class="bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded text-xs font-bold ml-auto">MED</span>
+          </div>
+          <p class="text-gray-300 text-sm">22 group views. Social aspect is latent but could drive retention and virality.</p>
+        </div>
+        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-amber-500/20 text-amber-400 w-7 h-7 rounded-full flex items-center justify-center font-mono text-sm font-bold">4</span>
+            <span class="text-white font-bold">Badge Progression Visibility</span>
+            <span class="bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded text-xs font-bold ml-auto">MED</span>
+          </div>
+          <p class="text-gray-300 text-sm">90 unlocks but only 15 tab opens. Hidden value that should be on the home screen.</p>
+        </div>
+        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-amber-500/20 text-amber-400 w-7 h-7 rounded-full flex items-center justify-center font-mono text-sm font-bold">5</span>
+            <span class="text-white font-bold">Export &amp; Sharing</span>
+            <span class="bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded text-xs font-bold ml-auto">MED</span>
+          </div>
+          <p class="text-gray-300 text-sm">Give users a reason to post screenshots. Shareable meal cards for social media.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Marketing Playbook -->
-    <div class="prose-factory mt-12">
-      <h2>Marketing Playbook: Next 30 Days</h2>
-      <p>Concrete actions with timelines. Not "explore opportunities", but "do this by Friday".</p>
-    </div>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-6">Marketing Playbook: Next 30 Days</h2>
 
-    <div class="overflow-x-auto my-6">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-navy-600">
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Week</th>
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Action</th>
-            <th class="text-left py-3 px-4 text-gray-400 font-medium">Detail</th>
-          </tr>
-        </thead>
-        <tbody>
-          {marketingPlaybook.map((row) => (
-            <tr class="border-b border-navy-700/50">
-              <td class="py-3 px-4 font-mono text-amber-400">W{row.week}</td>
-              <td class="py-3 px-4 font-medium text-white">{row.action}</td>
-              <td class="py-3 px-4 text-gray-400 text-xs">{row.detail}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose-factory">
-      <h3>Week 1: Fix the Leak</h3>
-      <p>The landing page is losing 71% of visitors. That's the priority. Everything else compounds better once this is fixed.</p>
-      <p><strong>Deliverables:</strong> New landing page live with demo video, clear CTA, social proof. A/B test against current version.</p>
-
-      <h3>Week 1-2: Feed the GEO Engine</h3>
-      <p>ChatGPT is already recommending Chowdown. Give it more reasons to do so. Write the 5 comparison posts, optimize for LLM extraction (clear headings, feature tables, structured data).</p>
-      <p><strong>Deliverables:</strong> 5 new blog posts published. Cross-posted to Dev.to, Hashnode, Medium with canonical tags.</p>
-
-      <h3>Week 2: Reddit Engagement</h3>
-      <p>r/fitness has 10M+ members. r/loseit has 3M+. These are your users. Don't spam. Answer questions, share knowledge, link to Chowdown when genuinely relevant.</p>
-      <p><strong>Target:</strong> 10 meaningful contributions (comments or posts) per week. Track referral traffic from reddit.com.</p>
-
-      <h3>Week 3: Influencer Pilot</h3>
-      <p>Find 5 fitness creators (5K-20K followers on Instagram or TikTok). Offer free access to Robin (the AI coach) for a month in exchange for a review. Not a paid sponsorship, just a genuine test.</p>
-      <p><strong>Criteria:</strong> Micro-influencers who already talk about nutrition. Authentic audience, not bought followers.</p>
-
-      <h3>Week 3-4: App Store Presence</h3>
-      <p>PWAs are great for distribution, terrible for discoverability. Consider a lightweight native wrapper (React Native or Capacitor) to get into the iOS App Store and Google Play. ASO (App Store Optimization) is a different game than SEO, and it's less crowded.</p>
-      <p><strong>Research:</strong> Cost/benefit of native wrapper. If it's under 20 hours of work, do it.</p>
-
-      <h3>Week 4: User Interviews</h3>
-      <p>Talk to 10 active users. Why did they stay? What would they pay for (even though it's free)? What's missing?</p>
-      <p><strong>Method:</strong> Email the 30 users who signed in. Offer a £10 Amazon voucher for a 20-minute call. The insights will pay for themselves.</p>
+      <div class="space-y-4">
+        <div class="border-l-4 border-amber-500 pl-4 py-2">
+          <p class="text-amber-400 font-bold mb-1">Week 1: Fix the Leak</p>
+          <p class="text-gray-300 text-sm mb-2">New landing page with demo video, clear CTA, social proof. A/B test against current version.</p>
+          <p class="text-gray-400 text-xs">Target: bounce from 71% to under 50%.</p>
+        </div>
+        <div class="border-l-4 border-amber-500 pl-4 py-2">
+          <p class="text-amber-400 font-bold mb-1">Week 1-2: Feed the GEO Engine</p>
+          <p class="text-gray-300 text-sm mb-2">Write 5 comparison posts. Cross-post to Dev.to, Hashnode, Medium with canonical tags.</p>
+          <p class="text-gray-400 text-xs">Optimise for LLM extraction: clear headings, feature tables, structured data.</p>
+        </div>
+        <div class="border-l-4 border-amber-500 pl-4 py-2">
+          <p class="text-amber-400 font-bold mb-1">Week 2: Reddit Engagement</p>
+          <p class="text-gray-300 text-sm mb-2">r/fitness (10M+), r/loseit (3M+). Answer questions, share knowledge, link when genuinely relevant.</p>
+          <p class="text-gray-400 text-xs">Target: 10 meaningful contributions per week. Track reddit.com referrals.</p>
+        </div>
+        <div class="border-l-4 border-amber-500 pl-4 py-2">
+          <p class="text-amber-400 font-bold mb-1">Week 3: Influencer Pilot</p>
+          <p class="text-gray-300 text-sm mb-2">5 micro-influencers (5K-20K followers). Free AI coach access in exchange for honest review.</p>
+          <p class="text-gray-400 text-xs">Criteria: US-based, already talks about nutrition, authentic audience.</p>
+        </div>
+        <div class="border-l-4 border-amber-500 pl-4 py-2">
+          <p class="text-amber-400 font-bold mb-1">Week 3-4: App Store Presence</p>
+          <p class="text-gray-300 text-sm mb-2">Research native wrapper (React Native or Capacitor) for iOS/Android store presence. ASO is a different, less crowded game.</p>
+          <p class="text-gray-400 text-xs">If it's under 20 hours of work, do it.</p>
+        </div>
+        <div class="border-l-4 border-amber-500 pl-4 py-2">
+          <p class="text-amber-400 font-bold mb-1">Week 4: User Interviews</p>
+          <p class="text-gray-300 text-sm mb-2">Email the 30 signed-in users. £10 Amazon voucher for a 20-minute call. Why they stayed, what's missing.</p>
+          <p class="text-gray-400 text-xs">The insights will pay for themselves.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Final Thoughts -->
-    <div class="prose-factory mt-12">
-      <h2>Final Thoughts</h2>
-      <p>The data tells a clear story:</p>
-      <ul>
-        <li><strong>Acquisition works.</strong> ChatGPT is the channel. SEO is a distraction.</li>
-        <li><strong>The product works.</strong> 333 food logs, 90 badges unlocked, 2.15 logs per user. People use it.</li>
-        <li><strong>Retention works.</strong> 39% bounce, 4-minute sessions, 1.8 visits per user. The app isn't the problem.</li>
-        <li><strong>The landing page doesn't work.</strong> 71% bounce. That's the bottleneck.</li>
-      </ul>
-      <p>Fix the landing page first. Everything else compounds from there.</p>
-      <hr />
-      <p class="text-gray-500"><em>This report was generated from 30 days of Umami Cloud analytics (Feb 3 - Mar 4, 2026). Next review: April 2026.</em></p>
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-4">The Bottom Line</h2>
+      <div class="space-y-3">
+        <p class="text-gray-300">✅ <strong class="text-white">Acquisition works.</strong> ChatGPT is the channel. SEO is secondary.</p>
+        <p class="text-gray-300">✅ <strong class="text-white">The product works.</strong> 333 food logs, 90 badges, 2.15 logs/user.</p>
+        <p class="text-gray-300">✅ <strong class="text-white">Retention works.</strong> 39% bounce, 4-min sessions, 1.8 visits/user.</p>
+        <p class="text-gray-300">🔴 <strong class="text-white">The landing page doesn't work.</strong> 71% bounce. That's the bottleneck.</p>
+      </div>
+      <p class="text-gray-300 mt-4 font-medium">Fix the landing page first. Everything else compounds from there.</p>
+      <hr class="border-navy-700/50 my-6" />
+      <p class="text-gray-500 text-sm italic">Generated from 30 days of Umami Cloud analytics (Feb 3 - Mar 4, 2026). Next review: April 2026.</p>
     </div>
 
-  </div>
+  </section>
 
 </Layout>

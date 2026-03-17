@@ -505,6 +505,50 @@ details>summary::marker{display:none}
 <label for="modal-payment-run" class="btn btn-green btn-sm" style="margin-left:8px;cursor:pointer">View Payment Run Details</label>
 </div>
 
+<!-- 3. NEW: Proposal Summary -->
+<div class="stitle">📋 Proposal Summary</div>
+<div class="card" style="margin-bottom:20px">
+<h3>Proposed vs Actual Spend Flow</h3>
+<div class="grid2" style="margin-bottom:16px">
+<div>
+<div class="kv"><span class="label">Proposed Total</span><span style="font-weight:600">£18,500.00</span></div>
+<div class="kv"><span class="label">Contracted Total</span><span style="font-weight:600">£17,820.00</span></div>
+<div class="kv"><span class="label">Invoiced Total</span><span style="font-weight:600">£17,820.00</span></div>
+<div class="kv"><span class="label">Paid Total</span><span style="font-weight:600">£17,820.00</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;font-size:12px">
+<span style="color:#64748b">Proposed</span>
+<div style="width:8px;height:8px;background:#94a3b8;border-radius:50%"></div>
+<span style="font-weight:600">£18,500</span>
+</div>
+<div style="color:#64748b">→</div>
+<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;font-size:12px">
+<span style="color:#854d0e">Contracted</span>
+<div style="width:8px;height:8px;background:#f59e0b;border-radius:50%"></div>
+<span style="font-weight:600">£17,820</span>
+<span class="badge badge-yellow" style="font-size:10px;margin-left:4px">-£680</span>
+</div>
+<div style="color:#64748b">→</div>
+<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#eff6ff;border:1px solid #2563eb;border-radius:6px;font-size:12px">
+<span style="color:#2563eb">Invoiced</span>
+<div style="width:8px;height:8px;background:#2563eb;border-radius:50%"></div>
+<span style="font-weight:600">£17,820</span>
+<span class="badge badge-green" style="font-size:10px;margin-left:4px">✓ Match</span>
+</div>
+<div style="color:#64748b">→</div>
+<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#dcfce7;border:1px solid #16a34a;border-radius:6px;font-size:12px">
+<span style="color:#166534">Paid</span>
+<div style="width:8px;height:8px;background:#16a34a;border-radius:50%"></div>
+<span style="font-weight:600">£17,820</span>
+<span class="badge badge-green" style="font-size:10px;margin-left:4px">✓ Match</span>
+</div>
+</div>
+<div style="font-size:11px;color:#64748b;margin-top:12px">
+<strong>Variances:</strong> Proposed to Contracted: -£680 (3.7% reduction during negotiation)
+</div>
+</div>
+
 <div class="stitle">💰 Cash Balance Summary</div>
 <div class="grid3" style="margin-bottom:20px">
 <div class="card" style="text-align:center"><h3>Client Paid</h3><div class="big-number">£17,820.00</div><span style="font-size:12px;color:#64748b">inc VAT · received in [352]</span></div>
@@ -535,7 +579,7 @@ details>summary::marker{display:none}
 <table>
 <thead><tr><th>Ref</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
 <tbody>
-<tr><td>INV-2026-2201</td><td>£17,820.00</td><td><span class="badge badge-green">Paid</span></td><td>5 Mar 2026</td></tr>
+<tr><td>INV-2026-2201 <a href="https://go.xero.com/AccountsReceivable/View.aspx?InvoiceID=PLACEHOLDER" style="font-size:11px;color:#2563eb;text-decoration:none;margin-left:4px">🔗 View in Xero</a></td><td>£17,820.00</td><td><span class="badge badge-green">Paid</span></td><td>5 Mar 2026</td></tr>
 <tr style="font-weight:600"><td>Total</td><td>£17,820.00</td><td></td><td></td></tr>
 </tbody>
 </table>
@@ -546,7 +590,7 @@ details>summary::marker{display:none}
 <thead><tr><th>Ref</th><th>Expected</th><th>Received</th><th>Status</th><th>Date</th><th>Validation</th></tr></thead>
 <tbody>
 <tr>
-<td>VB-97XX-001</td>
+<td>VB-97XX-001 <a href="https://go.xero.com/AccountsReceivable/View.aspx?InvoiceID=PLACEHOLDER" style="font-size:11px;color:#2563eb;text-decoration:none;margin-left:4px">🔗 View in Xero</a></td>
 <td>£15,523.20</td>
 <td>£15,200.00</td>
 <td><span class="badge badge-yellow">Expected</span></td>
@@ -571,17 +615,30 @@ details>summary::marker{display:none}
 <div class="todo" style="margin-top:8px">TODO: This replaces the manual Dext workflow. Bill will be auto-categorized and linked to the venue's Xero contact.</div>
 </div>
 <div class="card" style="border-left:3px solid #16a34a">
-<h3>Commission</h3>
+<h3>Commission: Expected vs Billed</h3>
 <table>
-<thead><tr><th>Ref</th><th>Amount</th><th>Status</th></tr></thead>
+<thead><tr><th>Ref</th><th>Expected (from journal)</th><th>Billed (from Xero)</th><th>Paid</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td>COMM-EN-97XX</td><td>£2,296.80</td><td><span class="badge badge-green">Recognised</span></td></tr>
+<tr>
+<td>COMM-EN-97XX <a href="https://go.xero.com/AccountsReceivable/View.aspx?InvoiceID=PLACEHOLDER" style="font-size:11px;color:#2563eb;text-decoration:none;margin-left:4px">🔗 View in Xero</a></td>
+<td style="font-weight:600">£1,914.00</td>
+<td>
+<div>£2,296.80 (inc VAT)</div>
+<div style="font-size:11px;color:#64748b">£1,914.00 (exc VAT)</div>
+</td>
+<td>£0.00</td>
+<td><span class="badge badge-green">Recognised ✅</span></td>
+</tr>
 </tbody>
 </table>
-<div style="margin-top:12px;font-size:12px;color:#64748b">
-<div class="kv"><span class="label">Contracted</span><span>£1,914.00</span></div>
-<div class="kv"><span class="label">Invoiced</span><span>£2,296.80 (inc VAT)</span></div>
-<div class="kv"><span class="label">Paid</span><span>£0.00</span></div>
+<div style="margin-top:12px;font-size:12px;background:#dcfce7;border:1px solid #86efac;border-radius:6px;padding:8px">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+<span style="color:#166534;font-weight:600">✅ Commission Match</span>
+<span class="badge badge-green" style="font-size:10px">Expected = Billed (exc VAT)</span>
+</div>
+<div style="font-size:11px;color:#64748b">
+Expected £1,914.00 = Billed £1,914.00 (exc VAT) | Difference: £0.00
+</div>
 </div>
 </div>
 </div>

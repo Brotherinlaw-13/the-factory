@@ -85,6 +85,7 @@ input[type="text"],select{padding:6px 10px;border:1px solid #e2e8f0;border-radiu
 .css-modal{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center}
 #modal-downstream:checked~.l1-c-contracts .css-modal#modal-overlay-downstream{display:flex}
 #modal-win-ctr1:checked~.l1-c-contracts .css-modal#modal-overlay-win-ctr1{display:flex}
+#modal-payment-run:checked~.l1-c-invoices .css-modal#modal-overlay-payment-run{display:flex}
 .css-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);cursor:pointer}
 .css-modal-content{position:relative;background:#fff;border-radius:10px;padding:0;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);z-index:1}
 .css-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e2e8f0}
@@ -484,6 +485,7 @@ details>summary::marker{display:none}
 </div><!-- /contracts tab -->
 
 <!-- ═══ INVOICES TAB ═══ -->
+<input type="checkbox" id="modal-payment-run" class="tab-input"/>
 <div class="l1-c l1-c-invoices">
 <input type="radio" name="l2" id="l2-overview" class="tab-input" checked/>
 <input type="radio" name="l2" id="l2-additions" class="tab-input"/>
@@ -496,11 +498,34 @@ details>summary::marker{display:none}
 
 <!-- ── Overview Sub-tab ── -->
 <div class="l2-c l2-c-overview">
+
+<!-- 3. Ready for Payment Run Banner -->
+<div class="info-banner" style="background:#dcfce7;border:1px solid #86efac;color:#166534">
+<strong>🚀 Ready for Payment Run</strong> — Client has paid AND venue bill exists. 
+<label for="modal-payment-run" class="btn btn-green btn-sm" style="margin-left:8px;cursor:pointer">View Payment Run Details</label>
+</div>
+
 <div class="stitle">💰 Cash Balance Summary</div>
 <div class="grid3" style="margin-bottom:20px">
 <div class="card" style="text-align:center"><h3>Client Paid</h3><div class="big-number">£17,820.00</div><span style="font-size:12px;color:#64748b">inc VAT · received in [352]</span></div>
 <div class="card" style="text-align:center"><h3>HS Commission</h3><div class="big-number" style="color:#166534">£1,914.00</div><span style="font-size:12px;color:#64748b">ex VAT · deducted at source</span></div>
 <div class="card" style="text-align:center"><h3>Venue Payment</h3><div class="big-number" style="color:#64748b">£15,523.20</div><span style="font-size:12px;color:#64748b">inc VAT · net to venue</span></div>
+</div>
+
+<!-- 1. VAT Reconciliation Section -->
+<div class="stitle">🧾 VAT Reconciliation</div>
+<div class="card">
+<h3>Final VAT Invoice</h3>
+<div style="display:flex;align-items:center;gap:16px">
+<div class="upload-zone" style="flex:0 0 200px">
+📎 Click to upload final VAT invoice
+</div>
+<div style="flex:1">
+<div style="font-size:13px;color:#64748b;margin-bottom:4px">Status:</div>
+<span class="badge badge-red">Not uploaded</span>
+</div>
+<div class="todo">Upload your final VAT bill here for reconciliation. This enables finance to cross-check against calculated VAT.</div>
+</div>
 </div>
 
 <div class="stitle">🧾 Client Invoices | Venue Bills | Commission</div>
@@ -518,12 +543,32 @@ details>summary::marker{display:none}
 <div class="card" style="border-left:3px solid #f59e0b">
 <h3>Venue Bills</h3>
 <table>
-<thead><tr><th>Ref</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+<thead><tr><th>Ref</th><th>Expected</th><th>Received</th><th>Status</th><th>Date</th><th>Validation</th></tr></thead>
 <tbody>
-<tr><td>VB-97XX-001</td><td>£15,523.20</td><td><span class="badge badge-yellow">Expected</span></td><td>—</td></tr>
-<tr style="font-weight:600"><td>Total</td><td>£15,523.20</td><td></td><td></td></tr>
+<tr>
+<td>VB-97XX-001</td>
+<td>£15,523.20</td>
+<td>£15,200.00</td>
+<td><span class="badge badge-yellow">Expected</span></td>
+<td>—</td>
+<td><span class="badge badge-red">⚠️ Mismatch -£323.20</span></td>
+</tr>
+<tr style="font-weight:600">
+<td>Total</td>
+<td>£15,523.20</td>
+<td>£15,200.00</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<!-- 2. Venue Bills Upload → Xero -->
+<div style="margin-top:12px">
+<button class="btn btn-primary btn-sm">📎 Upload Venue Bill</button>
+<span style="margin-left:8px;font-size:12px;color:#64748b">Auto-assigns account code (353-a-month) & links to Xero contact</span>
+</div>
+<div class="todo" style="margin-top:8px">TODO: This replaces the manual Dext workflow. Bill will be auto-categorized and linked to the venue's Xero contact.</div>
 </div>
 <div class="card" style="border-left:3px solid #16a34a">
 <h3>Commission</h3>
@@ -542,6 +587,48 @@ details>summary::marker{display:none}
 </div>
 
 <div class="info-banner">📋 <strong>DAS</strong> — Deducted At Source. Commission is withheld from client payment before paying venue. This booking uses DAS.</div>
+
+<!-- 4. Payment Run Modal -->
+<div class="css-modal" id="modal-overlay-payment-run">
+<label for="modal-payment-run" class="css-modal-backdrop"></label>
+<div class="css-modal-content">
+<div class="css-modal-header">
+<h3>🚀 Payment Run Details - EN-97XX</h3>
+<label for="modal-payment-run" class="css-modal-close">✕</label>
+</div>
+<div class="css-modal-body">
+<div class="grid3" style="margin-bottom:16px">
+<div>
+<h4 style="font-size:12px;color:#64748b;margin-bottom:8px">Expected Invoices</h4>
+<div style="font-size:13px">£17,820.00 (Client invoice)</div>
+<span class="badge badge-green">✓ Received</span>
+</div>
+<div>
+<h4 style="font-size:12px;color:#64748b;margin-bottom:8px">Client Payments</h4>
+<div style="font-size:13px">£17,820.00</div>
+<span class="badge badge-green">✓ Received</span>
+</div>
+<div>
+<h4 style="font-size:12px;color:#64748b;margin-bottom:8px">Venue Bills</h4>
+<div style="font-size:13px">£15,200.00 (received)</div>
+<span class="badge badge-yellow">⚠️ Amount mismatch</span>
+</div>
+</div>
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:16px;margin-bottom:16px">
+<h4 style="font-size:13px;margin-bottom:8px">Payment Calculation</h4>
+<div class="kv"><span class="label">Client payment received</span><span>£17,820.00</span></div>
+<div class="kv"><span class="label">HS Commission (DAS)</span><span>-£1,914.00</span></div>
+<div class="kv"><span class="label">Net to venue</span><span style="font-weight:700">£15,906.00</span></div>
+<div class="kv"><span class="label">Venue bill received</span><span style="color:#dc2626">£15,200.00</span></div>
+<div class="kv"><span class="label">Discrepancy</span><span style="color:#dc2626;font-weight:700">+£706.00</span></div>
+</div>
+<div style="text-align:center">
+<button class="btn btn-disabled btn-lg">🔒 Send to Payment Run</button>
+<p style="font-size:11px;color:#991b1b;margin-top:8px">⚠️ Cannot proceed - amount validation failed</p>
+</div>
+</div>
+</div>
+
 </div><!-- /overview -->
 
 <!-- ── Additions Sub-tab ── -->

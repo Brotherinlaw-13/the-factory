@@ -633,11 +633,17 @@ details>summary::marker{display:none}
 
 <!-- ── Additions Sub-tab ── -->
 <div class="l2-c l2-c-additions">
+
+<!-- AI Classification Banner -->
+<div class="info-banner">
+🤖 <strong>AI Classification:</strong> Items are auto-classified as existing or new based on the original contract. Review and adjust as needed.
+</div>
+
 <div class="stitle">➕ Upload Addition Invoice</div>
 <div class="steps">
 <div class="step done">① Upload PDF</div>
-<div class="step active">② Identify & Classify</div>
-<div class="step">③ Preview Xero Bill</div>
+<div class="step active">② Compare & Classify</div>
+<div class="step">③ Preview Billing</div>
 <div class="step">④ Create & Confirm</div>
 </div>
 
@@ -650,46 +656,230 @@ details>summary::marker{display:none}
 </div>
 </div>
 
+<!-- TODO: v2 feature - Auto-compare against original contract items -->
+<div class="todo">
+<strong>v2:</strong> Auto-compare against original contract items. Show differences: new items, changed quantities, changed prices.
+</div>
+
+<!-- Comparison View: Original vs New -->
 <div class="card">
-<h3>② Identify & Classify Line Items</h3>
-<p style="font-size:12px;color:#64748b;margin-bottom:12px">Classify each as <strong>Pass-through</strong> (no commission) or <strong>Commissionable</strong>.</p>
-<table>
-<thead><tr><th>Line Item</th><th>Amount (ex VAT)</th><th>VAT</th><th>Classification</th><th>Comm %</th><th>Comm £</th></tr></thead>
+<h3>② Compare: Original Contract vs New Bill</h3>
+<div class="grid2" style="gap:24px">
+<!-- LEFT: Original Contract Items -->
+<div style="border:1px solid #e2e8f0;border-radius:6px;padding:16px;background:#f8fafc">
+<h4 style="font-size:13px;color:#64748b;margin-bottom:12px;text-align:center">📋 Original Contract Items</h4>
+<table style="font-size:12px">
+<thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Total</th></tr></thead>
 <tbody>
-<tr><td>Extra wireless microphones × 2</td><td>£240.00</td><td>£48.00</td><td><select style="width:140px"><option selected>Commissionable</option><option>Pass-through</option></select></td><td><input type="text" value="12%" style="width:50px"/></td><td>£28.80</td></tr>
-<tr><td>Flipchart easels × 4</td><td>£120.00</td><td>£24.00</td><td><select style="width:140px"><option selected>Commissionable</option><option>Pass-through</option></select></td><td><input type="text" value="12%" style="width:50px"/></td><td>£14.40</td></tr>
-<tr><td>Technician overtime (2 hrs)</td><td>£110.00</td><td>£22.00</td><td><select style="width:140px"><option>Commissionable</option><option selected>Pass-through</option></select></td><td><span style="color:#94a3b8">n/a</span></td><td>£0.00</td></tr>
-<tr style="background:#f0f9ff;font-weight:600"><td>TOTAL</td><td>£470.00</td><td>£94.00</td><td></td><td></td><td>£43.20</td></tr>
+<tr><td>Room hire — Ballroom B</td><td>1</td><td>£3,200.00</td><td>£3,200.00</td></tr>
+<tr><td>Catering — lunch</td><td>85</td><td>£70.00</td><td>£5,950.00</td></tr>
+<tr><td>AV package (basic)</td><td>1</td><td>£2,800.00</td><td>£2,800.00</td></tr>
+<tr><td>Tea/coffee</td><td>85</td><td>£20.00</td><td>£1,700.00</td></tr>
+<tr><td>Breakout rooms</td><td>3</td><td>£400.00</td><td>£1,200.00</td></tr>
+<tr style="font-weight:600;background:#f0f9ff"><td>Total</td><td></td><td></td><td>£14,850.00</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- RIGHT: New Bill Items -->
+<div style="border:1px solid #f59e0b;border-radius:6px;padding:16px;background:#fefce8">
+<h4 style="font-size:13px;color:#854d0e;margin-bottom:12px;text-align:center">🧾 New Bill Items</h4>
+<table style="font-size:12px">
+<thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Total</th><th>Status</th></tr></thead>
+<tbody>
+<tr style="background:#f0f9ff"><td>Room hire — Ballroom B</td><td>1</td><td>£3,200.00</td><td>£3,200.00</td><td><span class="badge badge-gray" style="font-size:10px">Already Invoiced</span></td></tr>
+<tr style="background:#f0f9ff"><td>Catering — lunch</td><td>85</td><td>£70.00</td><td>£5,950.00</td><td><span class="badge badge-gray" style="font-size:10px">Already Invoiced</span></td></tr>
+<tr style="background:#dcfce7"><td>Extra wireless microphones</td><td>2</td><td>£120.00</td><td>£240.00</td><td><span class="badge badge-green" style="font-size:10px">New Addition</span></td></tr>
+<tr style="background:#dcfce7"><td>Flipchart easels</td><td>4</td><td>£30.00</td><td>£120.00</td><td><span class="badge badge-green" style="font-size:10px">New Addition</span></td></tr>
+<tr style="background:#dcfce7"><td>Technician overtime</td><td>2</td><td>£55.00</td><td>£110.00</td><td><span class="badge badge-green" style="font-size:10px">New Addition</span></td></tr>
+<tr style="font-weight:600;background:#f0f9ff"><td>Total</td><td></td><td></td><td>£15,320.00</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Enhanced Line Item Classification -->
+<div class="card">
+<h3>③ Classify & Configure Line Items</h3>
+<p style="font-size:12px;color:#64748b;margin-bottom:12px">For each addition, specify classification, commission status, and already invoiced amounts.</p>
+<table>
+<thead>
+<tr>
+<th>Item Description</th>
+<th>Qty</th>
+<th>Unit Price</th>
+<th>Total</th>
+<th>Classification</th>
+<th>Commissionable?</th>
+<th>Comm %</th>
+<th>Already Invoiced</th>
+<th>To Invoice</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:#dcfce7">
+<td><input type="text" value="Extra wireless microphones" style="width:150px"/></td>
+<td><input type="text" value="2" style="width:40px;text-align:center"/></td>
+<td><input type="text" value="£120.00" style="width:70px"/></td>
+<td>£240.00</td>
+<td>
+<select style="width:120px">
+<option selected>New Addition</option>
+<option>Already Invoiced</option>
+</select>
+</td>
+<td>
+<select style="width:80px">
+<option selected>Yes</option>
+<option>No</option>
+</select>
+</td>
+<td><input type="text" value="12%" style="width:50px"/></td>
+<td><input type="text" value="£0.00" style="width:70px"/></td>
+<td style="font-weight:600">£240.00</td>
+</tr>
+<tr style="background:#dcfce7">
+<td><input type="text" value="Flipchart easels" style="width:150px"/></td>
+<td><input type="text" value="4" style="width:40px;text-align:center"/></td>
+<td><input type="text" value="£30.00" style="width:70px"/></td>
+<td>£120.00</td>
+<td>
+<select style="width:120px">
+<option selected>New Addition</option>
+<option>Already Invoiced</option>
+</select>
+</td>
+<td>
+<select style="width:80px">
+<option selected>Yes</option>
+<option>No</option>
+</select>
+</td>
+<td><input type="text" value="12%" style="width:50px"/></td>
+<td><input type="text" value="£0.00" style="width:70px"/></td>
+<td style="font-weight:600">£120.00</td>
+</tr>
+<tr style="background:#dcfce7">
+<td><input type="text" value="Technician overtime (2 hrs)" style="width:150px"/></td>
+<td><input type="text" value="2" style="width:40px;text-align:center"/></td>
+<td><input type="text" value="£55.00" style="width:70px"/></td>
+<td>£110.00</td>
+<td>
+<select style="width:120px">
+<option selected>New Addition</option>
+<option>Already Invoiced</option>
+</select>
+</td>
+<td>
+<select style="width:80px">
+<option>Yes</option>
+<option selected>No</option>
+</select>
+</td>
+<td><span style="color:#94a3b8">n/a</span></td>
+<td><input type="text" value="£0.00" style="width:70px"/></td>
+<td style="font-weight:600">£110.00</td>
+</tr>
+<tr style="background:#f0f9ff;font-weight:600">
+<td><strong>TOTALS</strong></td>
+<td></td>
+<td></td>
+<td>£470.00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>£0.00</td>
+<td>£470.00</td>
+</tr>
 </tbody>
 </table>
 <div style="margin-top:12px;display:flex;gap:8px">
 <button class="btn btn-outline">+ Add Line Item</button>
-<button class="btn btn-primary" style="margin-left:auto">Next: Preview Xero Bill →</button>
+<button class="btn btn-primary" style="margin-left:auto">Next: Preview Billing →</button>
 </div>
+</div>
+
+<!-- Addition Summary -->
+<div class="card">
+<h3>📊 Addition Summary</h3>
+<div class="grid3" style="margin-bottom:16px">
+<div style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:12px;text-align:center">
+<div style="font-size:14px;color:#64748b">Already invoiced</div>
+<div style="font-size:20px;font-weight:700;color:#64748b">£0.00</div>
+<span style="font-size:11px;color:#94a3b8">(greyed out, not charged)</span>
+</div>
+<div style="background:#dcfce7;border:1px solid #86efac;border-radius:6px;padding:12px;text-align:center">
+<div style="font-size:14px;color:#166534">New additions to invoice</div>
+<div style="font-size:20px;font-weight:700;color:#166534">£470.00</div>
+<span style="font-size:11px;color:#166534">(to be invoiced to client)</span>
+</div>
+<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:12px;text-align:center">
+<div style="font-size:14px;color:#2563eb">Commission on additions</div>
+<div style="font-size:20px;font-weight:700;color:#2563eb">£43.20</div>
+<span style="font-size:11px;color:#2563eb">(F&B commissionable, AV not)</span>
+</div>
+</div>
+</div>
+
+<!-- Auto-detection TODO -->
+<div class="todo">
+<strong>TODO:</strong> Auto-detection from invoicing quirks — some items are commissionable (F&B) and some aren't (AV). Currently manual selection.
+</div>
+
+<!-- What will be generated -->
+<div class="card">
+<h3>④ What Will Be Generated</h3>
+<div class="info-banner">
+<strong>On creation, this will generate:</strong> Venue bill in Xero, Commission journal (12%), Client invoice for new items
+</div>
+<div class="grid3" style="margin-top:12px">
+<div style="border:1px solid #e2e8f0;border-radius:6px;padding:12px;background:#fff">
+<strong style="font-size:12px;color:#2563eb">① Venue Bill (Xero)</strong>
+<div style="font-size:12px;margin-top:8px;color:#64748b">
+<div>Contact: The Grand Ballroom Ltd</div>
+<div>Reference: EN-97XX-ADD-001</div>
+<div>Account: [353-a-mar] Venue Payable (March)</div>
+<div>Amount: £564.00 (inc VAT)</div>
+</div>
+</div>
+<div style="border:1px solid #e2e8f0;border-radius:6px;padding:12px;background:#fff">
+<strong style="font-size:12px;color:#2563eb">② Commission Journal</strong>
+<div style="font-size:12px;margin-top:8px;color:#64748b">
+<div>Provision for event costs</div>
+<div>Commission: £43.20 (12%)</div>
+<div>Journal: JNL-ADD-EN-97XX</div>
+<div>Code: Per month of event</div>
+</div>
+</div>
+<div style="border:1px solid #e2e8f0;border-radius:6px;padding:12px;background:#fff">
+<strong style="font-size:12px;color:#2563eb">③ Client Invoice</strong>
+<div style="font-size:12px;margin-top:8px;color:#64748b">
+<div>To: Rebecca Thompson / Moody's</div>
+<div>New items only: £470.00</div>
+<div>+ VAT: £564.00 total</div>
+<div>Ref: INV-2026-ADD-2201</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- DAS Special Case -->
+<div class="todo">
+<strong>TODO:</strong> For DAS bookings, creating the addition might also create the DAS invoice and pay it off at the same time. Auto-flow integration needed.
 </div>
 
 <div class="card">
-<h3>③ Xero Bill Preview</h3>
-<div class="grid2">
-<div>
-<div style="font-size:13px;margin-bottom:8px"><span style="color:#64748b">Contact:</span> The Grand Ballroom Ltd</div>
-<div style="font-size:13px;margin-bottom:8px"><span style="color:#64748b">Reference:</span> EN-97XX-ADD-001</div>
-<div style="font-size:13px;margin-bottom:8px"><span style="color:#64748b">Date:</span> 15 Mar 2026</div>
-</div>
-<div>
-<div style="font-size:13px;margin-bottom:8px"><span style="color:#64748b">Account Code:</span> [352] Client Funds Held</div>
-<div style="font-size:13px;margin-bottom:8px"><span style="color:#64748b">Tracking:</span> Booking EN-97XX</div>
-<div style="font-size:13px;margin-bottom:8px"><span style="color:#64748b">Total:</span> £564.00 (inc VAT)</div>
-</div>
-</div>
+<h3>⚡ Create Addition</h3>
 <div style="display:flex;gap:8px;margin-top:12px">
-<button class="btn btn-outline">← Back</button>
-<button class="btn btn-primary">Create Xero Bill + Journals</button>
+<button class="btn btn-outline">← Back to Classification</button>
+<button class="btn btn-primary btn-lg">Create Xero Bill + Commission Journal + Client Invoice</button>
 </div>
+<p style="font-size:11px;color:#64748b;margin-top:8px;text-align:center">
+Creates venue bill, commission provision, and client invoice for new items only
+</p>
 </div>
 
-<div class="todo">[TODO] Should additions auto-update the commission record, or require manual approval? Risk of commission creep on pass-through items.</div>
-<div class="todo">[TODO] What if the venue sends a credit note for an addition? Reversal flow needed.</div>
 </div><!-- /additions -->
 
 <!-- ── Pay & Reconcile Sub-tab ── -->

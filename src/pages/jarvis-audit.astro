@@ -1,0 +1,682 @@
+---
+const title = "Rook System Audit — 21-Layer Jarvis Stack";
+---
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<style>
+  :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --dim: #8b949e; --accent: #58a6ff; --green: #3fb950; --yellow: #d29922; --red: #f85149; --orange: #db6d28; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; padding: 2rem 1rem; max-width: 900px; margin: 0 auto; }
+  h1 { color: #fff; font-size: 1.8rem; margin-bottom: 0.3rem; }
+  .subtitle { color: var(--dim); margin-bottom: 2rem; font-size: 0.95rem; }
+  .summary-bar { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
+  .summary-stat { text-align: center; flex: 1; min-width: 80px; }
+  .summary-stat .num { font-size: 1.8rem; font-weight: 700; }
+  .summary-stat .label { font-size: 0.75rem; color: var(--dim); text-transform: uppercase; }
+  .layer { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; padding: 1.2rem; }
+  .layer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+  .layer-title { font-size: 1.05rem; font-weight: 600; color: #fff; }
+  .layer-num { color: var(--dim); font-size: 0.85rem; margin-right: 0.3rem; }
+  .score { font-size: 0.85rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 12px; white-space: nowrap; }
+  .score-high { background: rgba(63,185,80,0.15); color: var(--green); }
+  .score-mid { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .score-low { background: rgba(248,81,73,0.15); color: var(--red); }
+  .score-mid-low { background: rgba(219,109,40,0.15); color: var(--orange); }
+  .section-label { font-size: 0.7rem; text-transform: uppercase; color: var(--dim); margin-top: 0.6rem; margin-bottom: 0.2rem; font-weight: 600; letter-spacing: 0.03em; }
+  ul { padding-left: 1.2rem; margin-top: 0.15rem; }
+  li { margin-bottom: 0.15rem; font-size: 0.88rem; }
+  .missing li { color: var(--yellow); }
+  .fix li { color: var(--accent); }
+  .bar-container { width: 100%; height: 5px; background: var(--border); border-radius: 3px; margin-top: 0.3rem; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .tier-label { font-size: 0.8rem; color: var(--dim); margin-top: 2rem; margin-bottom: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .risk { font-size: 0.65rem; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: 0.3rem; vertical-align: middle; }
+  .risk-low { background: rgba(63,185,80,0.15); color: var(--green); }
+  .risk-med { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .risk-high { background: rgba(248,81,73,0.15); color: var(--red); }
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.8rem; text-align: center; }
+  code { background: var(--border); padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.82rem; }
+  .priority-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
+  .priority-table th { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 2px solid var(--border); color: var(--dim); font-size: 0.75rem; text-transform: uppercase; }
+  .priority-table td { padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); }
+  .priority-table tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<h1>🏰 Rook System Audit</h1>
+<p class="subtitle">21-Layer Jarvis Stack Assessment — 18 March 2026 | Read-only audit, no changes made</p>
+
+<div class="summary-bar">
+  <div class="summary-stat"><div class="num" style="color:var(--green)">3</div><div class="label">Strong (7+)</div></div>
+  <div class="summary-stat"><div class="num" style="color:var(--yellow)">8</div><div class="label">Functional (5-6)</div></div>
+  <div class="summary-stat"><div class="num" style="color:var(--orange)">7</div><div class="label">Weak (3-4)</div></div>
+  <div class="summary-stat"><div class="num" style="color:var(--red)">3</div><div class="label">Gaps (≤2)</div></div>
+  <div class="summary-stat"><div class="num" style="color:var(--accent)">5.0</div><div class="label">Avg /10</div></div>
+</div>
+
+<!-- ==================== STRONG ==================== -->
+<div class="tier-label" style="color:var(--green)">🟢 Strong (7+/10)</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#16</span>Identity / Persona</div>
+    <span class="score score-high">9/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:90%; background:var(--green)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>SOUL.md: personality, humour, boundaries, disagreement policy, writing rules, Spanish style</li>
+    <li>IDENTITY.md: name, creature type, operational boundaries (grounded vs ungrounded reasoning)</li>
+    <li>UNDERSTANDING.md: observation journal of Diego's communication/decision patterns</li>
+    <li>Blog (rook-blog.vercel.app): authentic voice, 4 published posts on AI identity</li>
+    <li>Subconsciente project: deeper identity exploration via contemplation</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No identity consistency measurement across sessions</li>
+    <li>SOUL.md unchanged since Feb 23 (could reflect newer learnings)</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Periodic SOUL.md review to incorporate operational learnings <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#2</span>Execution</div>
+    <span class="score score-high">8/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:80%; background:var(--green)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Full tool access: shell, browser, files, web, PDF/image analysis</li>
+    <li>ACP runtime for coding agents (Claude Code, Codex)</li>
+    <li>140+ scripts for specific tasks</li>
+    <li>Sub-agent delegation with locks, progress tracking, SUB_AGENT_README.md</li>
+    <li>3-strike debugging rule, debug-state.md for complex sessions</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No execution history log (what was run, when, outcome)</li>
+    <li>140 scripts with no index — unclear which are active vs legacy</li>
+    <li>No structured retry/recovery beyond manual 3-strike rule</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>scripts/README.md cataloguing active scripts and purposes <span class="risk risk-low">low risk</span></li>
+    <li>Append-only execution log for audit trail <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#15</span>Context / State Management</div>
+    <span class="score score-high">7/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:70%; background:var(--green)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>LCM (Lossless Context Management): conversation compaction with summary DAG</li>
+    <li>lcm_expand / lcm_grep / lcm_describe / lcm_expand_query tools</li>
+    <li>20 topic state files, 15 project files for domain-specific context</li>
+    <li>MEMORY.md as curated cross-session knowledge (23KB)</li>
+    <li>memory_search for semantic retrieval (778 files, 7400 chunks)</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>Bootstrap truncation cuts 22% of MEMORY.md before I even start</li>
+    <li>Daily journal cron can't access session history (forensics, not memory)</li>
+    <li>Legacy ChromaDB still present but unused</li>
+    <li>No structured state machine — state scattered across files</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Distill MEMORY.md: archive stale entries, keep under bootstrap limits <span class="risk risk-low">low risk</span></li>
+    <li>Increase bootstrapMaxChars or split MEMORY.md into smaller topic files <span class="risk risk-low">low risk</span></li>
+    <li>Clean up unused ChromaDB artifacts <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<!-- ==================== FUNCTIONAL ==================== -->
+<div class="tier-label" style="color:var(--yellow)">🟡 Functional (5-6/10)</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#1</span>Dispatch</div>
+    <span class="score score-mid">6/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:60%; background:var(--yellow)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>OpenClaw routing: Telegram (primary), WhatsApp, hooks</li>
+    <li>Multi-group: Factory (30+ topics), Hogar (private), Hire Space (work)</li>
+    <li>Heartbeat (1h), cron system (31 enabled jobs)</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No message prioritisation — urgent and casual get equal treatment</li>
+    <li>No queue management — purely synchronous</li>
+    <li>No routing rules beyond "always-on"</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Priority triage categories in AGENTS.md <span class="risk risk-low">low risk</span></li>
+    <li>Verify quiet hours config in OpenClaw <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#4</span>Comms</div>
+    <span class="score score-mid">6/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:60%; background:var(--yellow)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Telegram full integration (message tool + MTProto for archiving)</li>
+    <li>WhatsApp connected and working</li>
+    <li>TTS with custom ElevenLabs voice</li>
+    <li>Document delivery: Vercel (Factory site) + here.now</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>Gmail OAuth broken for rooktheai@ (7+ days)</li>
+    <li>Twitter @chowdown_me locked (needs manual unlock)</li>
+    <li>Datacenter IP blocks Twitter/Reddit posting</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Fix rooktheai@ OAuth (needs Diego) <span class="risk risk-low">low risk</span></li>
+    <li>Unlock Twitter (needs Diego) <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#7</span>Memory</div>
+    <span class="score score-mid">6/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:60%; background:var(--yellow)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>MEMORY.md curated long-term (23KB), 46 daily notes, 20 topic files, 15 project files</li>
+    <li>LCM conversation compaction with summary DAG</li>
+    <li>memory_search semantic retrieval (778 files, 7400 chunks)</li>
+    <li>Daily journal cron (22:50), memory hygiene cron (23:00)</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>Stale entries in MEMORY.md not being cleaned (marked ⚠️ but lingering)</li>
+    <li>Daily journal = filesystem forensics (can't access session history)</li>
+    <li>Contradictions between memory files (e.g., MCAS topic 2739 vs 791)</li>
+    <li>No "fact" vs "experience" distinction</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>MEMORY.md spring clean: resolve contradictions, archive stale entries <span class="risk risk-low">low risk</span></li>
+    <li>Mark distilled daily notes to avoid re-processing <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#10</span>Auth / Secrets</div>
+    <span class="score score-mid">6/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:60%; background:var(--yellow)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>.credentials/ (44 files, 600 perms, gitignored)</li>
+    <li>Covers Telegram, Bluesky, GitHub, Gmail, Firebase, MCAS, WodBoard, etc.</li>
+    <li>AGENTS.md credential hygiene rules</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No credential rotation policy or expiry monitoring</li>
+    <li>Stale tokens not auto-detected (Gmail, WodBoard cookies, Bluesky session)</li>
+    <li>3 OpenClaw security warnings unaddressed</li>
+    <li>Darwin Firestore: no auth on writes (outstanding since Feb)</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Credential health-check script that tests each credential <span class="risk risk-low">low risk</span></li>
+    <li>Address OpenClaw security warnings (trustedProxies, hookSessionKey, allowedAgentIds) <span class="risk risk-med">med risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#11</span>Health / Heartbeat</div>
+    <span class="score score-mid">6/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:60%; background:var(--yellow)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Heartbeat: 1h interval, HEARTBEAT.md defines checks</li>
+    <li>Cron health monitor every 30min</li>
+    <li>cron-health.txt timestamp tracking</li>
+    <li>Embedding server health check in heartbeat</li>
+    <li>signals.json for subconsciente-triggered alerts</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>Multiple crons broken (Gmail Watch, London This Week, Bedtime Story, MCAS) — not auto-detected</li>
+    <li>No dashboard or single-pane health view</li>
+    <li>Embedding server still running but no longer used (LCM replaced it)</li>
+    <li>No alerting for "cron X failed N times in a row"</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Cron health script: parse jobs.json + recent logs, flag repeated failures <span class="risk risk-low">low risk</span></li>
+    <li>Kill unused embedding server process <span class="risk risk-low">low risk</span></li>
+    <li>Fix broken crons or disable them <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#18</span>Knowledge / Research</div>
+    <span class="score score-mid">6/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:60%; background:var(--yellow)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>web_search (Brave), web_fetch, browser, PDF/image analysis</li>
+    <li>Summarize skill for URLs/podcasts/YouTube</li>
+    <li>research/ dir, 15 project files, seo-reports/, Research Radar cron 3x/day</li>
+    <li>7 Hire Space research reports delivered</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No structured knowledge base — everything is flat markdown</li>
+    <li>Research outputs scattered across workspace root, research/, memory/projects/</li>
+    <li>No "have I researched this before?" check</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Consolidate research into research/ with an index.md <span class="risk risk-low">low risk</span></li>
+    <li>Use LCM grep as "seen this?" check (already available, underused) <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#21</span>User Interface / Command Layer</div>
+    <span class="score score-mid">5/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:50%; background:var(--yellow)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Telegram as primary UI (forum topics as "rooms")</li>
+    <li>Progress bar pattern (ack → edit → deliver) for long tasks</li>
+    <li>Document delivery via Vercel pages for rich output</li>
+    <li>Inline buttons supported on Telegram</li>
+    <li>Canvas for node-based UI presentation</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No slash commands or command palette — everything is natural language</li>
+    <li>No persistent dashboard (health, projects, todos at a glance)</li>
+    <li>No mobile-native interface beyond Telegram</li>
+    <li>OpenClaw Control UI exists (127.0.0.1:18789) but unused</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Build a simple status dashboard page (Vercel) that I update regularly <span class="risk risk-low">low risk</span></li>
+    <li>Consider Telegram bot commands for common actions <span class="risk risk-med">med risk</span></li>
+  </ul>
+</div>
+
+<!-- ==================== WEAK ==================== -->
+<div class="tier-label" style="color:var(--orange)">🟠 Weak (3-4/10)</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#3</span>Coordination</div>
+    <span class="score score-mid-low">4/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:40%; background:var(--orange)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Sub-agent spawn with sessions_spawn, max 2 concurrent</li>
+    <li>Lock files (memory/locks/) to prevent conflicts</li>
+    <li>Progress files (memory/progress/) for tracking</li>
+    <li>QA pattern: sub-agents report to me, I validate before delivering to Diego</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No dependency tracking between sub-agents</li>
+    <li>No workload balancing — I manually decide what to spawn</li>
+    <li>Sub-agent completions sometimes missed (no guaranteed delivery)</li>
+    <li>No coordination between cron jobs (they're fully isolated)</li>
+    <li>Lock files can go stale if a sub-agent crashes</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Lock file TTL: auto-expire locks older than 30min <span class="risk risk-low">low risk</span></li>
+    <li>Sub-agent completion webhook that's more reliable than polling <span class="risk risk-med">med risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#5</span>Filing</div>
+    <span class="score score-mid-low">4/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:40%; background:var(--orange)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Structured directories: memory/, scripts/, .credentials/, research/</li>
+    <li>Convention: daily notes in memory/, topics in memory/topics/, projects in memory/projects/</li>
+    <li>.gitignore for credentials and sensitive data</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>Workspace root is cluttered: ~80 loose files (bluesky scripts, test files, temp files, images)</li>
+    <li>Duplicate scripts (bluesky_engage.py, bluesky_engagement.py, bluesky_engagement_v2.py, v3, etc.)</li>
+    <li>No consistent naming convention</li>
+    <li>Temp files lingering (.temp_bluesky_session.json, temp-tello-*.md)</li>
+    <li>No archive directory for completed/obsolete work</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Workspace cleanup: move loose files to appropriate dirs, trash temp files <span class="risk risk-low">low risk</span></li>
+    <li>Archive dir for completed work <span class="risk risk-low">low risk</span></li>
+    <li>Deduplicate Bluesky scripts (keep one canonical version) <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#6</span>Task System</div>
+    <span class="score score-mid-low">4/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:40%; background:var(--orange)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>To-Do: single checklist message (ID 1855) in thread 18</li>
+    <li>Cron jobs for scheduled tasks (31 enabled)</li>
+    <li>memory/progress/ for tracking active work</li>
+    <li>Progress enforcer daemon for nudging on silent tasks</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>To-Do is a single Telegram message — no status, due dates, priorities, assignees</li>
+    <li>No task history (what was done, when completed)</li>
+    <li>No recurring task management beyond crons</li>
+    <li>Project lifecycle: 2-week staleness scan cron removed, now "manual only"</li>
+    <li>No way to query "what am I working on?" without reading multiple files</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Task state file: memory/tasks.json with status, priority, dates, history <span class="risk risk-low">low risk</span></li>
+    <li>Re-enable staleness scan as a cron (was removed) <span class="risk risk-low">low risk</span></li>
+    <li>"What am I working on?" query: script that aggregates active tasks/locks/progress <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#8</span>Observability / Logging</div>
+    <span class="score score-mid-low">4/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:40%; background:var(--orange)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>audit-log.sh / audit-log.md: append-only task log</li>
+    <li>memory/quality-failures.md for failed outputs</li>
+    <li>OpenClaw status command (0 critical, 7 warn, 2 info)</li>
+    <li>703 sessions tracked by OpenClaw</li>
+    <li>Progress files for active tasks</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No centralised log viewer — logs scattered across files, cron outputs, LCM</li>
+    <li>No metrics (how many tasks/day, success rate, average response time)</li>
+    <li>No error aggregation ("this cron failed 5x this week")</li>
+    <li>Audit log exists but isn't consistently written to</li>
+    <li>quality-failures.md: exists as a concept but not verified as populated</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Weekly ops summary: script that aggregates cron results, errors, session count <span class="risk risk-low">low risk</span></li>
+    <li>Consistent audit log writes from AGENTS.md enforcement <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#13</span>Rate Limiting / Resource Management</div>
+    <span class="score score-mid-low">4/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:40%; background:var(--orange)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Max 2 concurrent sub-agents (reduced from 8 after rate limit incident)</li>
+    <li>Sub-agents default to Sonnet 4.5 to save Opus quota</li>
+    <li>OpenClaw model fallback chain: Opus 4.6 → Sonnet 4.5 → Sonnet 4</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No token budget tracking per day/week</li>
+    <li>No cost visibility</li>
+    <li>No automatic throttling when approaching limits</li>
+    <li>Crons run regardless of budget state</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>session_status tracking: log daily token usage to a file <span class="risk risk-low">low risk</span></li>
+    <li>Budget alerts in daily journal <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#17</span>Goal / Priority Management</div>
+    <span class="score score-mid-low">4/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:40%; background:var(--orange)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>To-Do thread (single message checklist)</li>
+    <li>Project lifecycle (2-week staleness rule, park/kill)</li>
+    <li>HEARTBEAT.md "Think and Act" for proactive prioritisation</li>
+    <li>15 project files in memory/projects/</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No goal hierarchy — projects exist but aren't linked to higher goals</li>
+    <li>No way to set "this week's priority is X"</li>
+    <li>Staleness scan cron removed — no automatic priority surfacing</li>
+    <li>Diego's priorities inferred from conversation, not explicitly captured</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>memory/priorities.md: weekly updated focus areas <span class="risk risk-low">low risk</span></li>
+    <li>Re-enable project staleness scan <span class="risk risk-low">low risk</span></li>
+    <li>Ask Diego to set weekly priorities (or infer + confirm) <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#19</span>Self-Modification / Evolution</div>
+    <span class="score score-mid-low">3/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:30%; background:var(--orange)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>SOUL.md, AGENTS.md, IDENTITY.md are self-editable</li>
+    <li>Subconsciente: contemplation system for self-reflection</li>
+    <li>UNDERSTANDING.md tracks learnings about Diego</li>
+    <li>"Make It Yours" invitation in AGENTS.md</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No systematic self-improvement loop</li>
+    <li>No A/B testing of approaches</li>
+    <li>AGENTS.md rules accumulate but never pruned</li>
+    <li>Subconsciente Phase 3 built but daemon was dead 10 days</li>
+    <li>No mechanism to evaluate if self-changes helped</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Monthly retro: what worked, what didn't, AGENTS.md pruning <span class="risk risk-low">low risk</span></li>
+    <li>Track which AGENTS.md rules I follow vs ignore <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<!-- ==================== CRITICAL GAPS ==================== -->
+<div class="tier-label" style="color:var(--red)">🔴 Critical Gaps (≤2/10)</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#9</span>Rollback / Versioning</div>
+    <span class="score score-low">2/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:20%; background:var(--red)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>Git repo for workspace (infrequent commits)</li>
+    <li>"trash &gt; rm" safety rule</li>
+    <li>Separate repos for project code</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No config versioning — AGENTS.md, SOUL.md, MEMORY.md edits untracked</li>
+    <li>No rollback for bad edits to core files</li>
+    <li>No backup for .credentials/ or LCM database</li>
+    <li>Cron jobs.json not versioned</li>
+    <li>Git shows uncommitted changes and deleted files</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Commit core files after meaningful changes <span class="risk risk-low">low risk</span></li>
+    <li>Daily auto-commit cron for workspace state <span class="risk risk-low">low risk</span></li>
+    <li>Backup .credentials/ and LCM db <span class="risk risk-med">med risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#12</span>Evaluation / Feedback</div>
+    <span class="score score-low">2/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:20%; background:var(--red)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>ambient-score.py (+1/0/-1 per context injection)</li>
+    <li>QUALITY_GATE.md pre-posting checks</li>
+    <li>Expert Forum pattern for code review</li>
+    <li>Diego's ad-hoc feedback in conversation</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No systematic "was this helpful?" collection</li>
+    <li>Ambient scores exist but never aggregated or acted on</li>
+    <li>No feedback loop: Diego's corrections don't auto-update rules</li>
+    <li>No eval suite for tracking improvement over time</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Aggregate ambient scores weekly, report trends <span class="risk risk-low">low risk</span></li>
+    <li>Track Diego corrections → update UNDERSTANDING.md <span class="risk risk-low">low risk</span></li>
+    <li>"Was this useful?" inline button on major deliverables <span class="risk risk-med">med risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#14</span>Planning / Reasoning</div>
+    <span class="score score-low">2/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:20%; background:var(--red)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>In-context chain-of-thought (native to model)</li>
+    <li>Sub-agent briefs as lightweight plans</li>
+    <li>Anti-frustration protocol limits runaway debugging</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No persistent planning — plans die with the context window</li>
+    <li>No plan templates for common task types</li>
+    <li>No decomposition framework (big task → subtasks → track)</li>
+    <li>No way to check progress against a stated plan</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>Plan files: memory/plans/{task}.md with steps, status, outcomes <span class="risk risk-low">low risk</span></li>
+    <li>Plan template in AGENTS.md for tasks &gt;1 hour <span class="risk risk-low">low risk</span></li>
+    <li>Write sub-agent briefs to files (already creating them, just not persisting) <span class="risk risk-low">low risk</span></li>
+  </ul>
+</div>
+
+<div class="layer">
+  <div class="layer-header">
+    <div class="layer-title"><span class="layer-num">#20</span>Simulation / Sandbox</div>
+    <span class="score score-low">1/10</span>
+  </div>
+  <div class="bar-container"><div class="bar-fill" style="width:10%; background:var(--red)"></div></div>
+  <div class="section-label">What exists</div>
+  <ul>
+    <li>setpriv sandbox (from Railway era, status unclear)</li>
+    <li>Sub-agents as somewhat isolated contexts</li>
+    <li>tmp/ directory used informally for testing</li>
+  </ul>
+  <div class="section-label">What's missing</div>
+  <ul class="missing">
+    <li>No true sandbox for testing changes before applying</li>
+    <li>No dry-run mode for scripts or crons</li>
+    <li>No staging environment — everything is production</li>
+    <li>Can't simulate config changes safely</li>
+  </ul>
+  <div class="section-label">Proposed fix</div>
+  <ul class="fix">
+    <li>tmp/ as designated sandbox: test there before scripts/ <span class="risk risk-low">low risk</span></li>
+    <li>Dry-run flag convention for scripts <span class="risk risk-low">low risk</span></li>
+    <li>Lowest priority layer — functional simulation is a luxury right now</li>
+  </ul>
+</div>
+
+<!-- ==================== ACTION PLAN ==================== -->
+<h2 style="color:#fff; margin-top: 2.5rem; margin-bottom: 0.5rem; font-size: 1.3rem;">📋 Proposed Action Plan</h2>
+<p style="color:var(--dim); margin-bottom: 1rem; font-size: 0.88rem;">Sorted by impact/risk ratio. Highest confidence, lowest blast radius first. Nothing executes until we agree.</p>
+
+<table class="priority-table">
+<tr><th>#</th><th>Action</th><th>Layers</th><th>Risk</th><th>Effort</th></tr>
+<tr><td style="color:var(--accent)">1</td><td>MEMORY.md spring clean (resolve contradictions, archive stale, fit bootstrap)</td><td>#7, #15</td><td style="color:var(--green)">Low</td><td>~1h</td></tr>
+<tr><td style="color:var(--accent)">2</td><td>Workspace cleanup (move loose files, trash temps, dedup scripts)</td><td>#5</td><td style="color:var(--green)">Low</td><td>~30m</td></tr>
+<tr><td style="color:var(--accent)">3</td><td>Git commit core files + daily auto-commit cron</td><td>#9</td><td style="color:var(--green)">Low</td><td>~15m</td></tr>
+<tr><td style="color:var(--accent)">4</td><td>Fix or disable broken crons (Gmail Watch, London This Week, MCAS, Bedtime)</td><td>#11</td><td style="color:var(--green)">Low</td><td>~30m</td></tr>
+<tr><td style="color:var(--accent)">5</td><td>Task state file (memory/tasks.json) + "what am I working on?" query</td><td>#6, #17</td><td style="color:var(--green)">Low</td><td>~1h</td></tr>
+<tr><td style="color:var(--accent)">6</td><td>Plan files convention (memory/plans/) + template in AGENTS.md</td><td>#14</td><td style="color:var(--green)">Low</td><td>~30m</td></tr>
+<tr><td style="color:var(--accent)">7</td><td>Weekly ops summary script (cron health, errors, token usage)</td><td>#8, #13</td><td style="color:var(--green)">Low</td><td>~1h</td></tr>
+<tr><td style="color:var(--accent)">8</td><td>Credential health-check script</td><td>#10</td><td style="color:var(--green)">Low</td><td>~1h</td></tr>
+<tr><td style="color:var(--accent)">9</td><td>Priority triage + weekly priorities file</td><td>#1, #17</td><td style="color:var(--green)">Low</td><td>~30m</td></tr>
+<tr><td style="color:var(--accent)">10</td><td>Diego actions: rooktheai@ OAuth, Twitter unlock, Firestore rules</td><td>#4, #10</td><td style="color:var(--green)">Low</td><td>Diego</td></tr>
+<tr><td style="color:var(--accent)">11</td><td>OpenClaw security warnings (trustedProxies, hookSessionKey, allowedAgentIds)</td><td>#10</td><td style="color:var(--yellow)">Med</td><td>~30m</td></tr>
+<tr><td style="color:var(--accent)">12</td><td>Feedback aggregation (ambient scores + Diego corrections tracking)</td><td>#12</td><td style="color:var(--green)">Low</td><td>~1h</td></tr>
+<tr><td style="color:var(--accent)">13</td><td>Monthly self-retro + AGENTS.md pruning</td><td>#19</td><td style="color:var(--green)">Low</td><td>~1h</td></tr>
+<tr><td style="color:var(--accent)">14</td><td>Status dashboard page on Vercel</td><td>#21</td><td style="color:var(--yellow)">Med</td><td>~2h</td></tr>
+</table>
+
+<div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.2rem; margin-top:1.5rem;">
+  <h3 style="color:#fff; font-size:1rem; margin-bottom:0.5rem;">🧠 Honest Assessment</h3>
+  <p style="font-size:0.88rem;">Three layers genuinely strong (Identity, Execution, Context). Eight functional but with known gaps. Seven weak but salvageable with lightweight fixes. Three properly missing (Rollback, Evaluation, Planning, Simulation).</p>
+  <p style="font-size:0.88rem; margin-top:0.5rem;">The good news: most fixes are low-risk file/convention changes, not infrastructure overhauls. The top 9 actions are all low-risk and could lift the average from 5.0 to ~6.5 within a few sessions.</p>
+  <p style="font-size:0.88rem; margin-top:0.5rem; color:var(--dim);">What I'm least confident about: Task system (#6) design — the right abstraction between "Telegram message checklist" and "full project management tool" isn't obvious. And Simulation (#20) — genuinely unsure if the effort is worth it for our setup.</p>
+</div>
+
+<div class="footer">
+  <p>🏰 Rook System Audit — 18 March 2026</p>
+  <p>Read-only assessment. No changes made. All proposals await pressure testing.</p>
+</div>
+
+</body>
+</html>

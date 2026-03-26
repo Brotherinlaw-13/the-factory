@@ -1,0 +1,343 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Bug Report Form v2 — Proposal">
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    
+    <header class="mb-12">
+      <h1 class="text-3xl font-bold text-white mb-2">🪲 Bug Report Form v2</h1>
+      <p class="text-zinc-400">Proposed redesign for Hire Space bug reporting. Leaner form, smarter triage.</p>
+    </header>
+
+    <!-- CURRENT VS PROPOSED -->
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold text-white mb-6">What's changing</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-red-950/30 border border-red-900/50 rounded-lg p-5">
+          <h3 class="text-red-400 font-medium mb-3">❌ Current form</h3>
+          <ul class="text-zinc-400 text-sm space-y-2">
+            <li>• 7-point instruction essay nobody reads</li>
+            <li>• "Your name" field (already have email)</li>
+            <li>• Single repro field that buries the template</li>
+            <li>• "How critical?" with no anchor descriptions</li>
+            <li>• Required Loom video (friction for simple bugs)</li>
+            <li>• "Where is this happening?" with zero context</li>
+            <li>• Manual reminder to check status page</li>
+            <li>• No connection to Dick VanBug triage</li>
+          </ul>
+        </div>
+        
+        <div class="bg-emerald-950/30 border border-emerald-900/50 rounded-lg p-5">
+          <h3 class="text-emerald-400 font-medium mb-3">✅ Proposed v2</h3>
+          <ul class="text-zinc-400 text-sm space-y-2">
+            <li>• 2-line intro, fields are self-explanatory</li>
+            <li>• Name dropped (pulled from Google account)</li>
+            <li>• Split: "Steps" + "Expected vs Actual"</li>
+            <li>• Severity with real descriptions + examples</li>
+            <li>• Loom optional (nudge for UI/flow bugs)</li>
+            <li>• Explicit URL field + system area dropdown</li>
+            <li>• Status page check automated or removed</li>
+            <li>• Form → Slack → Dick VanBug pipeline</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPOSED FORM MOCKUP -->
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold text-white mb-6">Proposed form</h2>
+      
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-8 space-y-8">
+        
+        <div class="border-b border-zinc-800 pb-4">
+          <h3 class="text-lg font-medium text-white">🪲 Report a Bug</h3>
+          <p class="text-zinc-500 text-sm mt-1">Found something broken? Tell us what happened. Dick VanBug will triage it automatically.</p>
+        </div>
+
+        <!-- Jira Ticket -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Jira ticket <span class="text-red-400">*</span></label>
+          <p class="text-zinc-500 text-xs mb-2">e.g. HS-1234. If there isn't one yet, create it first.</p>
+          <div class="bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-zinc-500 text-sm">HS-</div>
+        </div>
+
+        <!-- System Area -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Where is this? <span class="text-red-400">*</span></label>
+          <p class="text-zinc-500 text-xs mb-2">Which system or product area is affected?</p>
+          <div class="bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-zinc-500 text-sm">
+            <select class="bg-transparent text-zinc-400 w-full outline-none" disabled>
+              <option>Choose system area...</option>
+              <option>Hirespace.com (marketplace)</option>
+              <option>Booking System</option>
+              <option>Venues.hs (venue portal)</option>
+              <option>Finance Tool</option>
+              <option>360 Portal (enterprise)</option>
+              <option>Client Proposal Tool</option>
+              <option>Venue Acquisition Tool</option>
+              <option>Snowflake (data)</option>
+              <option>HubSpot (CRM)</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- URL -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">URL where it happened</label>
+          <p class="text-zinc-500 text-xs mb-2">Paste the page URL. Speeds up investigation massively.</p>
+          <div class="bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-zinc-500 text-sm">https://...</div>
+        </div>
+
+        <!-- What happened -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">What went wrong? <span class="text-red-400">*</span></label>
+          <p class="text-zinc-500 text-xs mb-2">Describe the bug. What did you do, and what broke?</p>
+          <div class="bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-zinc-500 text-sm min-h-[80px]">
+            I was trying to [action] on [page/feature]...<br>
+            Instead of [expected], I saw [actual result].
+          </div>
+        </div>
+
+        <!-- Steps to reproduce -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Steps to reproduce</label>
+          <p class="text-zinc-500 text-xs mb-2">Numbered steps so someone else can hit the same bug.</p>
+          <div class="bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-zinc-500 text-sm min-h-[80px]">
+            1. Go to...<br>
+            2. Click...<br>
+            3. See error
+          </div>
+        </div>
+
+        <!-- Severity -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">How bad is it? <span class="text-red-400">*</span></label>
+          <p class="text-zinc-500 text-xs mb-2">Be honest. Dick VanBug will second-guess you anyway.</p>
+          <div class="space-y-2 mt-2">
+            <div class="bg-red-950/40 border border-red-900/50 rounded-md px-4 py-3">
+              <div class="flex items-start gap-3">
+                <div class="mt-0.5">○</div>
+                <div>
+                  <span class="text-red-400 font-medium text-sm">🔴 Blocking</span>
+                  <p class="text-zinc-500 text-xs mt-0.5">Users can't complete a core action. Revenue impact. Multiple people affected right now.</p>
+                  <p class="text-zinc-600 text-xs italic">e.g. "Booking form won't submit", "Payments failing", "Site down"</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-yellow-950/30 border border-yellow-900/40 rounded-md px-4 py-3">
+              <div class="flex items-start gap-3">
+                <div class="mt-0.5">○</div>
+                <div>
+                  <span class="text-yellow-400 font-medium text-sm">🟡 Degraded</span>
+                  <p class="text-zinc-500 text-xs mt-0.5">Something's broken but there's a workaround. Annoying, not catastrophic.</p>
+                  <p class="text-zinc-600 text-xs italic">e.g. "Filter doesn't work, have to scroll manually", "Export fails but can copy/paste"</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-emerald-950/30 border border-emerald-900/40 rounded-md px-4 py-3">
+              <div class="flex items-start gap-3">
+                <div class="mt-0.5">○</div>
+                <div>
+                  <span class="text-emerald-400 font-medium text-sm">🟢 Minor</span>
+                  <p class="text-zinc-500 text-xs mt-0.5">Cosmetic, edge case, or low impact. The thing works, just not perfectly.</p>
+                  <p class="text-zinc-600 text-xs italic">e.g. "Button misaligned on mobile", "Typo in email template", "Tooltip shows wrong text"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team impact -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Who's affected?</label>
+          <p class="text-zinc-500 text-xs mb-2">Tick all that apply. Helps with routing.</p>
+          <div class="grid grid-cols-2 gap-2 mt-2">
+            <label class="flex items-center gap-2 text-zinc-400 text-sm"><input type="checkbox" disabled class="rounded bg-zinc-700 border-zinc-600"> Customers (bookers)</label>
+            <label class="flex items-center gap-2 text-zinc-400 text-sm"><input type="checkbox" disabled class="rounded bg-zinc-700 border-zinc-600"> Venues</label>
+            <label class="flex items-center gap-2 text-zinc-400 text-sm"><input type="checkbox" disabled class="rounded bg-zinc-700 border-zinc-600"> Support team</label>
+            <label class="flex items-center gap-2 text-zinc-400 text-sm"><input type="checkbox" disabled class="rounded bg-zinc-700 border-zinc-600"> Sales / 360 team</label>
+            <label class="flex items-center gap-2 text-zinc-400 text-sm"><input type="checkbox" disabled class="rounded bg-zinc-700 border-zinc-600"> Finance team</label>
+            <label class="flex items-center gap-2 text-zinc-400 text-sm"><input type="checkbox" disabled class="rounded bg-zinc-700 border-zinc-600"> Internal only (just us)</label>
+          </div>
+        </div>
+
+        <!-- Loom -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Screen recording</label>
+          <p class="text-zinc-500 text-xs mb-2">Loom or screenshot link. <span class="text-amber-400/70">Strongly recommended for UI/flow bugs</span> — skip for simple data issues.</p>
+          <div class="bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-zinc-500 text-sm">https://www.loom.com/share/...</div>
+        </div>
+
+        <!-- Submit -->
+        <div class="pt-4 border-t border-zinc-800">
+          <button disabled class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md text-sm font-medium opacity-70 cursor-not-allowed">Submit Bug Report</button>
+          <p class="text-zinc-600 text-xs mt-2">This is a mockup. The real form will be a Google Form.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTEGRATION: FORM → DICK VANBUG -->
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold text-white mb-6">Integration: Form → Dick VanBug</h2>
+      
+      <p class="text-zinc-400 mb-6">Right now, bug reports enter Slack manually. With a Google Form webhook, the full pipeline becomes automated:</p>
+
+      <div class="flex flex-col md:flex-row gap-4 items-stretch mb-8">
+        <div class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-center">
+          <div class="text-2xl mb-2">📝</div>
+          <div class="text-sm text-zinc-300 font-medium">Google Form</div>
+          <div class="text-xs text-zinc-500 mt-1">Reporter fills in fields</div>
+        </div>
+        <div class="flex items-center justify-center text-zinc-600 text-xl">→</div>
+        <div class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-center">
+          <div class="text-2xl mb-2">⚡</div>
+          <div class="text-sm text-zinc-300 font-medium">Apps Script webhook</div>
+          <div class="text-xs text-zinc-500 mt-1">Fires on form submit</div>
+        </div>
+        <div class="flex items-center justify-center text-zinc-600 text-xl">→</div>
+        <div class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-center">
+          <div class="text-2xl mb-2">🪲</div>
+          <div class="text-sm text-zinc-300 font-medium">Dick VanBug</div>
+          <div class="text-xs text-zinc-500 mt-1">Auto-triage + Jira update</div>
+        </div>
+        <div class="flex items-center justify-center text-zinc-600 text-xl">→</div>
+        <div class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-center">
+          <div class="text-2xl mb-2">💬</div>
+          <div class="text-sm text-zinc-300 font-medium">Slack thread</div>
+          <div class="text-xs text-zinc-500 mt-1">Triage posted, team debates</div>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-medium text-white mb-4">What this gives you</h3>
+      <div class="space-y-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <h4 class="text-amber-400 font-medium text-sm mb-2">🎯 Pre-populated triage context</h4>
+          <p class="text-zinc-400 text-sm">The form's system area, severity, and affected teams feed directly into Claude's triage prompt. Better input = more accurate priority assignment. No more guessing from a Slack message.</p>
+        </div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <h4 class="text-amber-400 font-medium text-sm mb-2">⚡ Zero-click triage</h4>
+          <p class="text-zinc-400 text-sm">Reporter submits form → Dick VanBug posts the triage in #bugbash within seconds. No one needs to copy/paste a Jira link into Slack. The form does it.</p>
+        </div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <h4 class="text-amber-400 font-medium text-sm mb-2">📊 Structured data from day one</h4>
+          <p class="text-zinc-400 text-sm">Google Forms responses → spreadsheet. Free analytics: which system areas get the most bugs, reporting frequency per team member, severity distribution. No extra tooling.</p>
+        </div>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <h4 class="text-amber-400 font-medium text-sm mb-2">🔁 Severity calibration loop</h4>
+          <p class="text-zinc-400 text-sm">Reporter picks 🔴/🟡/🟢 → Dick VanBug assigns P1-P5 independently. Over time, you can compare: are reporters consistently over-estimating? Which teams have the most severity drift? Data-driven coaching.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPLEMENTATION -->
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold text-white mb-6">Implementation plan</h2>
+      
+      <div class="space-y-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-emerald-900/50 text-emerald-400 text-xs font-medium px-2 py-0.5 rounded">Phase 1</span>
+            <span class="text-zinc-500 text-xs">~1 hour</span>
+          </div>
+          <h4 class="text-white font-medium text-sm mb-1">Rebuild the Google Form</h4>
+          <p class="text-zinc-400 text-sm">New form with the proposed fields. Replace the current one. Same sharing link if possible.</p>
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-blue-900/50 text-blue-400 text-xs font-medium px-2 py-0.5 rounded">Phase 2</span>
+            <span class="text-zinc-500 text-xs">~2 hours</span>
+          </div>
+          <h4 class="text-white font-medium text-sm mb-1">Add <code class="text-xs bg-zinc-800 px-1 rounded">/api/form/submit</code> endpoint to bug-triage</h4>
+          <p class="text-zinc-400 text-sm">New Vercel serverless function. Accepts form data, formats the bug report, posts to #bugbash as Dick VanBug, triggers triage. Reuses existing Claude + Jira services.</p>
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-purple-900/50 text-purple-400 text-xs font-medium px-2 py-0.5 rounded">Phase 3</span>
+            <span class="text-zinc-500 text-xs">~30 min</span>
+          </div>
+          <h4 class="text-white font-medium text-sm mb-1">Wire Google Form → Apps Script → endpoint</h4>
+          <p class="text-zinc-400 text-sm">Simple <code class="text-xs bg-zinc-800 px-1 rounded">onFormSubmit</code> trigger that POSTs to the Vercel endpoint. Auth via a shared secret in env vars.</p>
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-zinc-700 text-zinc-300 text-xs font-medium px-2 py-0.5 rounded">Optional</span>
+            <span class="text-zinc-500 text-xs">later</span>
+          </div>
+          <h4 class="text-white font-medium text-sm mb-1">Auto-create Jira ticket from form</h4>
+          <p class="text-zinc-400 text-sm">If the reporter doesn't have a Jira ticket yet (skips that field), Dick VanBug creates one. Removes the "create a ticket first" friction entirely.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIELD MAPPING -->
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold text-white mb-6">Field mapping: Form → Triage</h2>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="text-left text-zinc-400 font-medium py-3 pr-4">Form field</th>
+              <th class="text-left text-zinc-400 font-medium py-3 pr-4">Maps to</th>
+              <th class="text-left text-zinc-400 font-medium py-3">Used by Dick VanBug</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 pr-4">Jira ticket</td>
+              <td class="py-3 pr-4"><code class="text-xs bg-zinc-800 px-1 rounded">BugReport.jiraKey</code></td>
+              <td class="py-3">Fetches Jira context, updates priority after triage</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 pr-4">System area</td>
+              <td class="py-3 pr-4"><code class="text-xs bg-zinc-800 px-1 rounded">BugReport.affectedArea</code></td>
+              <td class="py-3">Injected into Claude prompt for routing</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 pr-4">URL</td>
+              <td class="py-3 pr-4">Appended to description</td>
+              <td class="py-3">Context for Claude; linked in Slack message</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 pr-4">What went wrong</td>
+              <td class="py-3 pr-4"><code class="text-xs bg-zinc-800 px-1 rounded">BugReport.description</code></td>
+              <td class="py-3">Primary input for triage analysis</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 pr-4">Steps to reproduce</td>
+              <td class="py-3 pr-4"><code class="text-xs bg-zinc-800 px-1 rounded">BugReport.stepsToReproduce</code></td>
+              <td class="py-3">Added to Claude context</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 pr-4">Severity (🔴🟡🟢)</td>
+              <td class="py-3 pr-4"><code class="text-xs bg-zinc-800 px-1 rounded">BugReport.userImpact</code></td>
+              <td class="py-3">Reporter's estimate; Claude overrides with own P1-P5</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 pr-4">Who's affected</td>
+              <td class="py-3 pr-4">Appended to description</td>
+              <td class="py-3">Helps Claude assess blast radius</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4">Screen recording</td>
+              <td class="py-3 pr-4">Linked in Slack message</td>
+              <td class="py-3">Not parsed by Claude, but available for devs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="border-t border-zinc-800 pt-8 pb-12">
+      <p class="text-zinc-600 text-sm">Proposal by Rook · March 2026 · Hire Space bug triage</p>
+    </footer>
+
+  </main>
+</Layout>

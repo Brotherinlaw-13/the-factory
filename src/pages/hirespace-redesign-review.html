@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire Space Redesign Review — Rook</title>
+<style>
+  :root {
+    --green: #2DB87F;
+    --green-dark: #006623;
+    --ink: #1A1C27;
+    --slate: #5DA7E0;
+    --violet: #7C3AED;
+    --amber: #F59E0B;
+    --surface: #F8F9FA;
+    --border: #E5E7EB;
+    --muted: #6B7280;
+    --red: #EF4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.4rem; margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--green); padding-bottom: 0.5rem; }
+  h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+  p, li { margin-bottom: 0.75rem; }
+  ul { padding-left: 1.5rem; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .verdict {
+    background: var(--surface);
+    border-left: 4px solid var(--green);
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .issue {
+    background: #FEF2F2;
+    border-left: 4px solid var(--red);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .opportunity {
+    background: #F0FDF4;
+    border-left: 4px solid var(--green);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .question {
+    background: #EFF6FF;
+    border-left: 4px solid var(--slate);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .card h4 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-right: 4px;
+    font-weight: 600;
+  }
+  .tag-green { background: #D1FAE5; color: #065F46; }
+  .tag-red { background: #FEE2E2; color: #991B1B; }
+  .tag-blue { background: #DBEAFE; color: #1E40AF; }
+  .tag-amber { background: #FEF3C7; color: #92400E; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+  th { font-weight: 600; background: var(--surface); }
+  .score { font-size: 2rem; font-weight: 700; color: var(--green); }
+  .score-label { font-size: 0.85rem; color: var(--muted); }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  strong { font-weight: 600; }
+  .pillar-check { display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0; }
+  .pillar-check .icon { font-size: 1.2rem; }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    body { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🏰 Hire Space Redesign Review</h1>
+<p class="meta">Product & design analysis — Rook · 1 April 2026</p>
+
+<div class="verdict">
+<strong>Overall:</strong> This is a genuinely strong redesign. The messaging doc is sharp, the positioning is differentiated, and the design system is mature. The mockups execute the strategy well. My notes below are about sharpening what's already good, not fixing what's broken.
+</div>
+
+<h2>📄 Messaging Doc</h2>
+
+<p>The positioning statement and 6 pillars are the strongest part of this whole package. A few observations:</p>
+
+<h3>What works</h3>
+<ul>
+  <li><strong>Pillar 1 ("Every venue, not just a database")</strong> is a genuine differentiator. The framing that competitor venue counts represent "a self-selecting segment of the market, not the actual market" is killer copy waiting to happen.</li>
+  <li><strong>Pillar 2 ("Know what it costs, right now")</strong> directly attacks the biggest pain point. The competitor contrast (Tagvenue 12hrs, HeadBox spams you, Cvent days) is brutal and accurate.</li>
+  <li><strong>Audience messaging map</strong> is smart. Different leads for different personas. PA/EA gets speed, Head of Events gets single supplier, Finance gets dashboards.</li>
+  <li><strong>Competitor table</strong> — the "honest take" row at the bottom is gold. "Fine for birthday parties" (Tagvenue), "You get spammed by irrelevant venues" (HeadBox). This should inform all marketing, even if never published directly.</li>
+</ul>
+
+<h3>Questions & suggestions</h3>
+
+<div class="question">
+<strong>Missing: the procurement positioning statement.</strong> The doc flags "[Add a different Positioning Statement for senior procurement]" as a placeholder. This is critical for the 360 page and enterprise sales. The current statement is booker-first. Procurement cares about: consolidated spend visibility, supplier rationalisation, compliance, and audit trails. Worth drafting.
+</div>
+
+<div class="question">
+<strong>Pillar 6 (Sustainability) is "for later" — when is later?</strong> In enterprise procurement, ESG criteria are increasingly a gate, not a nice-to-have. If 360 clients are asking about it in RFPs, "later" might be costing deals now. Even a simple carbon-per-event estimate or venue sustainability rating would be ahead of every competitor listed.
+</div>
+
+<div class="question">
+<strong>The "learns" row in the competitor table is underexplored.</strong> "Yes — for you and your company" is a powerful claim but nothing in the mockups demonstrates it. Where does the user see that the platform remembers their preferences? A "Recommended for you" section with an explicit "Based on your 12 previous bookings" label would make this tangible.
+</div>
+
+<h2>🎨 Design System</h2>
+
+<div class="grid">
+  <div class="card">
+    <h4>✅ Colour palette</h4>
+    <p>Green/dark green primary is distinctive. The violet accent for Instant Quote is smart — separates the AI/speed features from the core brand. Amber for warnings works. Good range.</p>
+  </div>
+  <div class="card">
+    <h4>✅ Typography</h4>
+    <p>Inter is a safe, readable choice. The type scale (Display 56 → Label 12) gives enough range. Weights are well-defined.</p>
+  </div>
+  <div class="card">
+    <h4>✅ Spacing tokens</h4>
+    <p>8px base grid is industry standard. Having named tokens (space-1 through space-16) will keep implementation consistent.</p>
+  </div>
+  <div class="card">
+    <h4>✅ Icon policy</h4>
+    <p>Lucide with Phosphor fallback is practical. Single-colour, 1.5px stroke, 4-step scale. Clean spec.</p>
+  </div>
+</div>
+
+<div class="issue">
+<strong>Button hierarchy concern:</strong> There are 5 button variants visible (filled green, outline green, outline dark, violet "Instant Quote", green "Over budget"). In the mockups, some pages have 3+ competing CTAs above the fold. The hierarchy isn't always clear. Which is the primary action on the search results page — "Search", "Deep Research", or "Enquire at this venue"?
+</div>
+
+<h2>🏠 Homepage</h2>
+
+<h3>Hero</h3>
+<p><strong>"Stop waiting for venue quotes. Get one now."</strong> — Direct, punchy, exactly right. The sub-line ("Instant, data-backed quotes for your event. At every venue, not just the ones in a directory.") delivers Pillars 1 + 2 in one sentence.</p>
+
+<p>The four trust badges below the search bar (Instant pricing / Any venue / Hotels included / One supplier) map perfectly to the messaging pillars. Good alignment between strategy and execution.</p>
+
+<div class="opportunity">
+<strong>The search bar is underselling.</strong> It shows "Try or describe your event" as placeholder text, which is vague. If instant pricing is the hero feature, the placeholder should demonstrate it: <em>"e.g. Conference for 200 in Central London"</em> — show users they can be specific and get results immediately. This is the single most important interaction on the page.
+</div>
+
+<h3>Page flow</h3>
+<p>The information architecture is solid: Categories → Value prop → Featured venues → 360 CTA → Browse by city → Deep Research → Testimonials → Blog. It tells a story: browse → understand → trust → convert.</p>
+
+<div class="question">
+<strong>"Featured venues" — all Barbican Centre.</strong> Assuming this is placeholder/bug in the mockup, but in production this section needs to rotate intelligently. Seasonally relevant venues (Christmas party venues in Q4, summer venues in Q2-Q3), or personalised if the user is logged in.
+</div>
+
+<h2>🔍 Search Results</h2>
+
+<p>The best-designed page in the set. Clean, functional, proper filters.</p>
+
+<h3>Filters (left sidebar)</h3>
+<ul>
+  <li><strong>Luxury Level</strong> (Budget / Mid-range / Luxury / Ultra-luxury) — interesting tiering. How is this determined? If it's self-reported by venues, it'll be unreliable. If it's data-driven (average booking value, verified amenities), it's powerful.</li>
+  <li><strong>Venue Type</strong> (Conference / Hotels / Unique / Meeting Rooms / Private Clubs + 25 more) — good breadth.</li>
+  <li><strong>Venue Vibes</strong> (Rooftop / Modern / Industrial / Historic / Quirky / Outdoor + 25 more) — this is excellent. These are the adjectives bookers actually use when briefing. Love this.</li>
+  <li><strong>"Venues with nearby hotels"</strong> toggle — smart for multi-day events. Maps directly to messaging Pillar 2's hotel integration.</li>
+</ul>
+
+<div class="opportunity">
+<strong>Deep Research CTA in the sidebar is well-placed</strong> ("Can't find the right venue? Our researchers will source every option in your city — not just what's listed."). This is exactly where a frustrated searcher would look. Perfect positioning.
+</div>
+
+<div class="issue">
+<strong>The green "Get instant quotes within 10 seconds" banner</strong> at the top of results is good but could conflict with the "Recommended" sort. If I'm getting instant quotes, am I sorting by relevance or by price? The relationship between sort order and instant pricing isn't clear. Consider: if instant quotes are available, show them inline on each card rather than as a separate banner.
+</div>
+
+<h2>🏛️ Venue Page</h2>
+
+<p>Clean layout. Photo gallery → spaces grid → about → features → hotels → map → similar venues.</p>
+
+<h3>Instant Quote Sidebar</h3>
+<p>The floating "Est. £1,200" card on the right is the money feature. Venue hire £800 + Catering (est.) £300 = Estimated total £1,200. This is exactly what Pillar 2 promises. Having it visible alongside the spaces grid is the right call.</p>
+
+<div class="opportunity">
+<strong>Add "Compare" to venue cards.</strong> If a booker is narrowing from 6 venues to 3, a comparison view (side-by-side capacity, price, features) would be a workflow improvement no competitor offers. Even a simple "Add to shortlist" with a compare drawer would differentiate.
+</div>
+
+<div class="question">
+<strong>Nearby Hotels section:</strong> Shows 3 cards but all appear to be the same hotel (Moxon London?). Assuming placeholder. In production, this needs to show variety: price range, distance, group booking capacity. The messaging doc specifically calls out "Hotel search, filtering by group capacity, selection at checkout" — is the checkout integration live or planned?
+</div>
+
+<h2>📍 Space Page (Boardroom at Barbican)</h2>
+
+<p>The most content-rich page. Very well structured.</p>
+
+<h3>Strengths</h3>
+<ul>
+  <li><strong>Guide prices table</strong> with instant estimates is compelling. Showing "full day £800 → Est. £1,200 with catering" in a clear table removes the biggest friction in the booking journey.</li>
+  <li><strong>"Good for a..." section</strong> (Executive Meetings / Training Days / Product Launches) with photos and descriptions — this is smart content that helps bookers self-qualify.</li>
+  <li><strong>Video tour</strong> embedded — excellent for reducing site visit friction.</li>
+  <li><strong>Capacity table</strong> (Theatre 50 / Reception 32 / Cabaret 30) is clean and scannable.</li>
+</ul>
+
+<div class="issue">
+<strong>The Features & Amenities list is very long</strong> (AV, catering, access sections). Consider collapsing into categories with expand/collapse, or using icons + a "Show all 28 features" link. Currently it pushes the guide prices and video tour too far down the page.
+</div>
+
+<div class="opportunity">
+<strong>Missing: availability calendar or "Check availability" for a specific date.</strong> The pricing is instant but availability isn't. Adding even a basic "Available on [date picker]" would close the loop. Currently the user gets a price but still has to enquire to check dates, which breaks the "instant" promise.
+</div>
+
+<h2>🏢 Hire Space 360</h2>
+
+<p>Enterprise page. Targeting procurement, event organisers, and office teams.</p>
+
+<h3>Strengths</h3>
+<ul>
+  <li><strong>"One supplier. Every venue. Full visibility on what you spend."</strong> — sharp headline. Directly addresses procurement pain.</li>
+  <li><strong>Team tabs</strong> (Procurement / Event Organisers / Office Teams) — each sees what matters to them. Matches the audience map from the messaging doc.</li>
+  <li><strong>"Multiple venues. Multiple events. One contract — not one per booking."</strong> — this is the enterprise killer feature in one line.</li>
+  <li><strong>Testimonials from Deloitte and HSBC</strong> — right logos for this audience.</li>
+</ul>
+
+<div class="issue">
+<strong>The page is too short for its job.</strong> Enterprise buyers need depth: case studies, ROI calculators, integration details, security/compliance info, SLA details. This feels like a landing page, not a sales tool. A procurement director comparing Hire Space 360 vs Cvent needs ammunition for their internal business case. Consider adding: a "How it works" video walkthrough, a downloadable one-pager/pitch deck, and a detailed feature comparison table (not just the internal competitor table from the messaging doc — a cleaned-up public version).
+</div>
+
+<div class="question">
+<strong>"Get Instant Quote" as the primary CTA on an enterprise page</strong> — is this the right action? Enterprise deals typically need a demo or conversation, not a self-serve quote. Consider "Book a Demo" or "Talk to our Enterprise Team" as primary, with "Get Instant Quote" as secondary for self-serve exploration.
+</div>
+
+<h2>📝 Blog Article</h2>
+
+<p>Well-designed content page. "How to find the perfect conference venue: a complete guide for 2025".</p>
+
+<ul>
+  <li><strong>Table of contents sidebar</strong> — good for long-form content, helps with time-on-page and scroll depth.</li>
+  <li><strong>Pull quote</strong> ("The brief is the brief. If you don't know what you need, no platform — however clever — can find it for you.") — adds personality and authority.</li>
+  <li><strong>"Note" sidebar component</strong> — nice touch for editorial asides. The "Listen in stereo: position sticky, fun hops. Stops above footer." note suggests this is still in design spec mode.</li>
+  <li><strong>Deep Research CTA embedded within content</strong> — contextual placement is much better than a generic sidebar ad. User reads about looking beyond directories → sees the Deep Research offer. Smart.</li>
+</ul>
+
+<div class="opportunity">
+<strong>Author bio (Sarah Mitchell)</strong> — consider adding "Ask Sarah" or linking to a related webinar/guide. Content should funnel into engagement, not just end.
+</div>
+
+<h2>🗺️ Geo Page (London)</h2>
+
+<p>SEO landing page for "London venues". Structured well for search intent.</p>
+
+<h3>Content sections</h3>
+<ul>
+  <li>"About venue hire in London" — SEO body copy</li>
+  <li>"Popular types of London venues" — category chips (Conference, Meeting, Rooftop, etc.)</li>
+  <li>"Explore more venues in London" — image grid by type (Christmas, Birthdays, etc.)</li>
+  <li>"Browse London venues by area" — North/East/South London with descriptions and photos</li>
+  <li>"What you need to know about London" — practical info (getting around, landmarks, business & events)</li>
+</ul>
+
+<div class="opportunity">
+<strong>The area pages (North London, East London, etc.) are ripe for richer content.</strong> If each sub-area had its own page with neighbourhood guides, transport links, venue clustering data ("12 venues within 5 minutes of Liverpool Street"), it would massively strengthen SEO and user experience for location-specific searches.
+</div>
+
+<h2>📊 Component Lookbook</h2>
+
+<p>Comprehensive pattern library. 15+ documented components including navigation, search bars, venue cards, CTA banners, instant quote sidebars, FAQ accordions, trust badges, carousels, and footer.</p>
+
+<div class="verdict">
+<strong>This is well-documented for a design handoff.</strong> Each component has variants, responsive notes, and usage guidance. The fact this exists at all puts Hire Space ahead of most companies this size on design ops maturity.
+</div>
+
+<hr>
+
+<h2>🔑 Top 5 Priorities</h2>
+
+<p>If I had to rank what to focus on first:</p>
+
+<table>
+  <tr><th>#</th><th>What</th><th>Why</th><th>Effort</th></tr>
+  <tr>
+    <td>1</td>
+    <td><strong>Search bar placeholder copy</strong></td>
+    <td>Highest-traffic interaction on the site. "Try or describe your event" → "e.g. Conference for 200 in Central London" teaches users the product in 8 words.</td>
+    <td><span class="tag tag-green">Quick win</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><strong>CTA hierarchy audit</strong></td>
+    <td>Too many competing green buttons on some pages. Each page should have ONE clear primary action. Map: Homepage → Search, Search Results → Enquire, Venue → Enquire, 360 → Book Demo.</td>
+    <td><span class="tag tag-green">Quick win</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><strong>360 page depth</strong></td>
+    <td>Enterprise page is too thin for its audience. Add: case study, ROI calculator, feature comparison, "Book a Demo" as primary CTA.</td>
+    <td><span class="tag tag-amber">Medium</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><strong>Procurement positioning statement</strong></td>
+    <td>Flagged as missing in the messaging doc. Needed for 360 page, enterprise sales collateral, and RFP responses.</td>
+    <td><span class="tag tag-green">Quick win</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><strong>"Learns" feature visibility</strong></td>
+    <td>The competitor table claims the platform learns preferences. Nothing in the UI demonstrates this. Add personalisation signals: "Based on your bookings", "Popular with your company".</td>
+    <td><span class="tag tag-red">Significant</span></td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>💬 Messaging ↔ Design Alignment Check</h2>
+
+<p>How well do the mockups execute each messaging pillar?</p>
+
+<div class="pillar-check"><span class="icon">✅</span> <strong>P1: Every venue, not just a database</strong> — "Deep Research" CTA appears on homepage, search results sidebar, blog content, geo pages. Well-integrated. The "Other platforms search their database. We search everything." banner appears consistently.</div>
+
+<div class="pillar-check"><span class="icon">✅</span> <strong>P2: Know what it costs, right now</strong> — Instant Quote sidebar on venue/space pages, "Est. £1,200" cards, guide prices table. This is the most visually prominent feature in the redesign. Strong.</div>
+
+<div class="pillar-check"><span class="icon">✅</span> <strong>P3: One partner, full programme</strong> — 360 page exists, "One supplier" messaging in CTAs and footer banners. Present but could go deeper (see 360 notes above).</div>
+
+<div class="pillar-check"><span class="icon">⚠️</span> <strong>P4: Built for business</strong> — Undercurrent pillar. The design is professional and the categories are business-focused. But there's no explicit "We don't do weddings and birthday parties" signal. The category tiles include "Parties" and "Christmas Parties" which slightly dilutes the business-only positioning.</div>
+
+<div class="pillar-check"><span class="icon">✅</span> <strong>P5: Find venues faster</strong> — Search UX, instant quotes, filters. Well-executed throughout.</div>
+
+<div class="pillar-check"><span class="icon">➖</span> <strong>P6: Sustainability</strong> — Not present (expected, marked "for later" in doc).</div>
+
+<hr>
+
+<p class="meta" style="margin-top: 2rem; text-align: center;">Built by Rook · 1 April 2026 · For Diego @ Hire Space</p>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/DocLayout.astro
+layout: ../layouts/Layout.astro
 title: "Claude Code Source Analysis"
 description: "Deep dive into Claude Code's architecture: agents, memory, compaction, and permissions"
 ---

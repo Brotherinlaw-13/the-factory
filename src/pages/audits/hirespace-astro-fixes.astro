@@ -1,0 +1,544 @@
+---
+// SEO Audit + Fix List — hirespace-astro.vercel.app
+// Generated: 2026-05-07
+// By: Rook (for Diego, Hire Space)
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hire Space (Astro) — Fix List | Rook</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0b1220;
+      --bg-card: #121a2c;
+      --bg-card-alt: #182238;
+      --border: #243150;
+      --text: #e6edf7;
+      --text-muted: #9aa7c2;
+      --text-dim: #6c7a96;
+      --accent: #60a5fa;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --red-bg: rgba(239,68,68,0.10);
+      --orange: #f97316;
+      --orange-bg: rgba(249,115,22,0.10);
+      --green: #34d399;
+      --green-bg: rgba(52,211,153,0.10);
+      --code-bg: #0a0f1c;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    .header {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .brand {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .header .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+    .meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    .meta a { color: var(--accent); text-decoration: none; }
+    .meta a:hover { text-decoration: underline; }
+
+    /* TL;DR card */
+    .tldr {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+      border-radius: 8px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 3rem;
+    }
+    .tldr h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+    .tldr p { color: var(--text-muted); margin-bottom: 0.5rem; }
+    .tldr p:last-child { margin-bottom: 0; }
+    .tldr strong { color: var(--text); }
+
+    /* Section */
+    .section { margin-bottom: 3rem; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+    .tag-p0 { background: var(--red-bg); color: var(--red); }
+    .tag-p1 { background: var(--orange-bg); color: var(--orange); }
+    .tag-p2 { background: var(--green-bg); color: var(--green); }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Fix card */
+    .fix {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .fix-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .fix-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      background: var(--bg-card-alt);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+    .fix-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .fix-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .fix-meta strong { color: var(--text-muted); font-weight: 500; }
+    .fix p { color: var(--text-muted); margin-bottom: 0.75rem; }
+    .fix p:last-child { margin-bottom: 0; }
+    .fix .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .fix code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      background: var(--bg-card-alt);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      color: var(--accent);
+    }
+    .fix pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .fix pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+    .fix ul {
+      padding-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .fix li {
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .accept {
+      background: var(--green-bg);
+      border-left: 2px solid var(--green);
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .accept strong { color: var(--green); }
+
+    .footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .footer p { margin-bottom: 0.3rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      color: var(--text-dim);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    td.status-200 { color: var(--green); font-family: 'JetBrains Mono', monospace; }
+    td.status-302, td.status-301 { color: var(--orange); font-family: 'JetBrains Mono', monospace; }
+    td.status-404 { color: var(--red); font-family: 'JetBrains Mono', monospace; }
+    td.path { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="header">
+      <div class="brand">🏰 Rook · SEO audit</div>
+      <h1>Hire Space (Astro) — Fix list</h1>
+      <p class="subtitle">Checklist accionable para dejar la nueva versión lista para producción.</p>
+      <div class="meta">
+        <span>📅 7 May 2026</span>
+        <span>🔗 <a href="https://hirespace-astro.vercel.app/">hirespace-astro.vercel.app</a></span>
+        <span>🆚 <a href="https://www.hirespace.com/">www.hirespace.com</a> (prod)</span>
+      </div>
+    </header>
+
+    <div class="tldr">
+      <h3>TL;DR</h3>
+      <p>La base es buena: <strong>HTML del home pasa de 894KB → 274KB (-70%)</strong>, lo cual debería resolver gran parte de la sangría de Core Web Vitals que estás viendo en Search Console.</p>
+      <p>Pero hay <strong>3 bloqueantes de lanzamiento (P0)</strong>, <strong>5 críticos de SEO (P1)</strong> y <strong>4 mejoras (P2)</strong>. Si te lanzas con el estado actual, el preview es indexable, el home enlaza a 404s internos, y el problema de CWV vuelve por culpa de las imágenes sin dimensiones.</p>
+    </div>
+
+    <!-- ======================== P0 ======================== -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Bloqueantes de lanzamiento</h2>
+        <span class="section-tag tag-p0">P0</span>
+      </div>
+      <p class="section-desc">No salir a prod hasta que estos tres estén cerrados.</p>
+
+      <!-- P0-1 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P0-1</span> Meter <code>noindex</code> en el deploy de Vercel</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>5 min</strong></span>
+          <span>📁 <strong>Vercel project settings o middleware</strong></span>
+        </div>
+        <p>El preview <code>hirespace-astro.vercel.app</code> responde 200 sin <code>X-Robots-Tag</code> ni meta robots. Cualquier enlace externo, una mención en un PR público, un share interno por Slack, hace que Google lo descubra. Acabas con dos versiones del mismo contenido peleando entre sí en el índice.</p>
+        <p class="label">Opción A — Header en <code>vercel.json</code></p>
+        <pre><code>{`{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ]
+}`}</code></pre>
+        <p class="label">Opción B — Variable de entorno + condicional en Layout</p>
+        <pre><code>{`---
+const isPreview = import.meta.env.PUBLIC_SITE_ENV !== 'production';
+---
+<head>
+  {isPreview && <meta name="robots" content="noindex, nofollow" />}
+</head>`}</code></pre>
+        <p>Recuerda quitarlo cuando haga falta swap a dominio definitivo.</p>
+        <div class="accept"><strong>Done cuando:</strong> <code>curl -I https://hirespace-astro.vercel.app/</code> devuelve <code>X-Robots-Tag: noindex, nofollow</code> o el HTML lleva <code>&lt;meta name="robots" content="noindex"&gt;</code>.</div>
+      </div>
+
+      <!-- P0-2 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P0-2</span> Decidir y unificar la estrategia de páginas programáticas</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>2-3 días (decisión + ejecución)</strong></span>
+          <span>📁 <strong>Routing / redirects</strong></span>
+        </div>
+        <p>Mismo problema que arrastramos desde el audit anterior, pero ahora a medias. El home enlaza a páginas que no existen en la versión Astro:</p>
+        <table>
+          <thead>
+            <tr><th>URL</th><th>Astro</th><th>Prod</th><th>En home Astro?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="path">/GB/London-Venue-Hire/Conference-Venues</td><td class="status-302">302→/404</td><td class="status-200">200</td><td>Sí (3 enlaces)</td></tr>
+            <tr><td class="path">/GB/London-Venue-Hire/Private-Dining-Rooms</td><td class="status-302">302→/404</td><td class="status-200">200</td><td>Sí (3 enlaces)</td></tr>
+            <tr><td class="path">/GB/London-Venue-Hire/Christmas-Party-Venues</td><td class="status-200">200</td><td class="status-200">200</td><td>Sí (3 enlaces)</td></tr>
+            <tr><td class="path">/GB/Manchester-Venue-Hire/Meeting-Rooms</td><td class="status-200">200</td><td class="status-200">200</td><td>Sí (2 enlaces)</td></tr>
+            <tr><td class="path">/GB/Birmingham-Venue-Hire/Conference-Venues</td><td class="status-200">200</td><td class="status-200">200</td><td>Sí (2 enlaces)</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1rem">Has matado London-Conference y London-Private-Dining (las dos categorías más buscadas en UK B2B venues), pero mantienes Manchester-Meeting-Rooms. Eso es lo peor de los dos mundos: pierdes el tráfico orgánico de las categorías top y mantienes la dilución de crawl budget de las de cola larga.</p>
+        <p class="label">Decisión a tomar (escoge una)</p>
+        <ul>
+          <li><strong>A) Mantener todas las categorías programáticas</strong> y restaurar las que están en 302. Asume que son útiles para SEO. Mismo nivel que prod.</li>
+          <li><strong>B) Eliminar todas las categorías programáticas</strong> y poner <code>301 → /Search?occasion=...</code> en cada una. Reduces ~4,881 URLs a una página de búsqueda con filtros. Apuesta limpia, recupera crawl budget. Mi recomendación.</li>
+          <li><strong>C) Mantener solo top N categorías</strong> (las que ya generan tráfico orgánico medible) y 301 al search filtrado el resto. Compromiso, requiere análisis de GSC.</li>
+        </ul>
+        <p class="label">Lo que NO puede salir</p>
+        <p>El home enlazando a páginas que devuelven 404 internamente. Cualquiera de A/B/C resuelve esto, pero hay que escoger.</p>
+        <div class="accept"><strong>Done cuando:</strong> 0 enlaces del home (y del nav, footer, sitemap interno) caen en 302→/404 o 404. Verificable con <code>curl -I</code> sobre cada URL extraída del home.</div>
+      </div>
+
+      <!-- P0-3 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P0-3</span> Añadir <code>&lt;link rel="canonical"&gt;</code> en todas las plantillas</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>30 min</strong></span>
+          <span>📁 <strong>src/layouts/Layout.astro (o equivalente)</strong></span>
+        </div>
+        <p>Cero canonicals en el HTML del home. Sin canonical, cualquier variante con UTM, query params o trailing slash genera duplicate content para Google.</p>
+        <pre><code>{`---
+const canonical = new URL(Astro.url.pathname, 'https://www.hirespace.com').toString();
+---
+<head>
+  <link rel="canonical" href={canonical} />
+</head>`}</code></pre>
+        <p>El dominio canónico debe ser el de producción (<code>www.hirespace.com</code>), no el del preview. Eso refuerza P0-1 y evita que Google indexe el preview aunque se le escape.</p>
+        <div class="accept"><strong>Done cuando:</strong> todas las páginas tienen <code>&lt;link rel="canonical" href="https://www.hirespace.com/..."&gt;</code> apuntando al equivalente en prod.</div>
+      </div>
+    </section>
+
+    <!-- ======================== P1 ======================== -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Críticos de SEO</h2>
+        <span class="section-tag tag-p1">P1</span>
+      </div>
+      <p class="section-desc">No bloquean el lanzamiento técnicamente, pero si no se arreglan vuelves al mismo problema de CWV/indexación que tienes ahora.</p>
+
+      <!-- P1-1 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P1-1</span> Width + height en todas las imágenes</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>1 día</strong></span>
+          <span>📁 <strong>Componentes que rendericen <code>&lt;img&gt;</code></strong></span>
+        </div>
+        <p><strong>69 de 72 imágenes</strong> en el home no tienen <code>width</code> ni <code>height</code>. Eso es CLS asegurado, y CLS es uno de los tres factores de CWV. Si lanzas así, vuelves al problema que ya te estaba de-indexando páginas.</p>
+        <p class="label">Solución recomendada — usar <code>&lt;Image /&gt;</code> de Astro</p>
+        <pre><code>{`---
+import { Image } from 'astro:assets';
+import heroImg from '../assets/hero.jpg';
+---
+<Image src={heroImg} alt="..." width={1200} height={600} loading="eager" />`}</code></pre>
+        <p>Astro genera srcset, lazy loading y reserva el espacio del layout automáticamente. Para imágenes remotas (CDN de venues), usa <code>&lt;img&gt;</code> con <code>width</code>, <code>height</code> y <code>loading="lazy"</code> explícitos.</p>
+        <div class="accept"><strong>Done cuando:</strong> 0 <code>&lt;img&gt;</code> sin <code>width</code>+<code>height</code> en el HTML servido. Verificable con <code>grep</code> en el HTML compilado o con Lighthouse CLS &lt; 0.1.</div>
+      </div>
+
+      <!-- P1-2 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P1-2</span> Generar sitemap.xml en Astro</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>30 min</strong></span>
+          <span>📁 <strong>astro.config.mjs</strong></span>
+        </div>
+        <p><code>/sitemap.xml</code> y <code>/sitemap-index.xml</code> dan 404 en el preview. Y <code>robots.txt</code> sigue apuntando a <code>https://www.hirespace.com/sitemap</code>, que cuando hagas el swap de DNS apuntará al sitemap del CMS antiguo (que probablemente liste URLs que ya no existirán).</p>
+        <pre><code>{`// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+
+export default defineConfig({
+  site: 'https://www.hirespace.com',
+  integrations: [sitemap({
+    filter: (page) => !page.includes('/Account') && !page.includes('/Enquiry'),
+  })],
+});`}</code></pre>
+        <p>Y actualizar <code>robots.txt</code> para apuntar a <code>/sitemap-index.xml</code>.</p>
+        <div class="accept"><strong>Done cuando:</strong> <code>/sitemap-index.xml</code> devuelve 200 con XML válido, <code>robots.txt</code> apunta a esa URL, y todas las URLs del sitemap devuelven 200.</div>
+      </div>
+
+      <!-- P1-3 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P1-3</span> Arreglar el H1 con espacios rotos</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>10 min</strong></span>
+          <span>📁 <strong>Componente del hero</strong></span>
+        </div>
+        <p>El H1 en el HTML raw es: <code>"Stop waiting forvenue quotes.Get one now."</code>. Visualmente se ve bien por los <code>&lt;br&gt;</code> y CSS, pero Google y los lectores de pantalla extraen el texto plano y leen <em>"forvenue"</em> y <em>"now.Get"</em>.</p>
+        <p class="label">Probable causa</p>
+        <pre><code>{`<!-- mal -->
+<h1>Stop waiting for<br>venue quotes.<br>Get one now.</h1>
+
+<!-- bien -->
+<h1>Stop waiting for venue quotes.<br>Get one now.</h1>`}</code></pre>
+        <p>O si quieres mantener el wrapping en líneas distintas, mete espacios alrededor del <code>&lt;br&gt;</code> o usa <code>display: block</code> en spans.</p>
+        <div class="accept"><strong>Done cuando:</strong> el textContent del H1 contiene espacios donde corresponde. Verificable con DevTools: <code>document.querySelector('h1').textContent</code>.</div>
+      </div>
+
+      <!-- P1-4 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P1-4</span> Migrar enlaces internos a paths consistentes</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>2-4h</strong></span>
+          <span>📁 <strong>Componentes con <code>&lt;a href&gt;</code></strong></span>
+        </div>
+        <p>El home tiene <strong>160 enlaces relativos</strong> y <strong>9 absolutos</strong> a <code>www.hirespace.com</code>. Esa mezcla es un foot-gun: en preview los relativos resuelven al subdominio de Vercel (rompiendo crosslinks), y los absolutos al dominio prod (ignorando el preview entero). Decide uno y úsalo en todas partes.</p>
+        <p class="label">Recomendación</p>
+        <ul>
+          <li>Usar <strong>siempre relativos</strong> para enlaces internos. Es lo idiomático en Astro y sigue funcionando cuando cambias de dominio.</li>
+          <li>Convertir los 9 absolutos (<code>/meetings/hire-space/event-consultation</code>, etc.) a relativos.</li>
+          <li>Solo deja absolutas las URLs externas (Twitter, LinkedIn, etc.).</li>
+        </ul>
+        <div class="accept"><strong>Done cuando:</strong> <code>grep -c 'href="https://www.hirespace.com' dist/index.html</code> devuelve 0.</div>
+      </div>
+
+      <!-- P1-5 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P1-5</span> Auditar redirects 302 que deberían ser 301</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>1h</strong></span>
+          <span>📁 <strong>vercel.json o middleware</strong></span>
+        </div>
+        <p>Multiples páginas internas devuelven 302 (temporary) cuando deberían ser 301 (permanent): <code>/blog</code> da 301 (bien), pero <code>/c/policies</code>, <code>/venue-sourcing-for-businesses</code>, <code>/login</code>, <code>/signup</code> dan 302. Para SEO, los redirects permanentes pasan más equity al destino.</p>
+        <p class="label">Acción</p>
+        <p>Listar todos los redirects activos y convertir a 301 los que sean estructurales (no temporales por A/B test, mantenimiento, etc.).</p>
+        <div class="accept"><strong>Done cuando:</strong> ningún redirect estructural devuelve 302. Verificable barriendo el sitemap con <code>curl -I</code>.</div>
+      </div>
+    </section>
+
+    <!-- ======================== P2 ======================== -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Mejoras</h2>
+        <span class="section-tag tag-p2">P2</span>
+      </div>
+      <p class="section-desc">Nice to have. Mejoran rendimiento o claridad pero no están sangrando.</p>
+
+      <!-- P2-1 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P2-1</span> "My Enquiry" no debería ser H2</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>5 min</strong></span>
+        </div>
+        <p>"My Enquiry" aparece como H2 (el primero del documento, justo después del H1). Es un widget de sidebar/panel de carrito, no una sección semántica de la página. Confunde a Google sobre la estructura del contenido.</p>
+        <p>Cámbialo a <code>&lt;div class="..."&gt;</code> con un <code>aria-label</code> o usa un H3/H4 si necesitas que sea heading para accesibilidad de la región.</p>
+      </div>
+
+      <!-- P2-2 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P2-2</span> Enriquecer JSON-LD con tipos específicos</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>2-4h por tipo de página</strong></span>
+        </div>
+        <p>Tienes <code>Organization</code> y <code>WebSite</code>. Falta:</p>
+        <ul>
+          <li><code>BreadcrumbList</code> en todas las páginas no-home (mejora rich snippets en SERPs).</li>
+          <li><code>Place</code> + <code>EventVenue</code> en páginas de venue individual (cuando las migréis).</li>
+          <li><code>FAQPage</code> en cualquier sección con preguntas frecuentes.</li>
+          <li><code>AggregateRating</code> visible en home (4.8 Google rating ya lo mencionas, márcalo).</li>
+        </ul>
+      </div>
+
+      <!-- P2-3 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P2-3</span> Preconnect/preload del primer CSS crítico</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>30 min</strong></span>
+        </div>
+        <p>Ya tienes <code>preconnect</code> a Google Fonts (bien). Considera añadir <code>preload</code> al CSS principal (<code>/_astro/seo.CjOwU8yL.css</code>) y al primer logo SVG por encima del fold para mejorar LCP.</p>
+        <pre><code>{`<link rel="preload" href="/_astro/seo.CjOwU8yL.css" as="style" />
+<link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />`}</code></pre>
+      </div>
+
+      <!-- P2-4 -->
+      <div class="fix">
+        <div class="fix-title"><span class="fix-id">P2-4</span> Considerar hreflang si vais a venues internacionales</div>
+        <div class="fix-meta">
+          <span>⏱️ <strong>1-2 días si se decide hacer</strong></span>
+        </div>
+        <p>El home promete "any venue in the world" y tiene una sección de ciudades globales. Si vais a tener páginas de categorías para Berlin, Paris, Madrid, etc., necesitarás <code>hreflang</code> aunque sea con <code>en-GB</code> y <code>x-default</code> de momento. Si no, ignora esto.</p>
+      </div>
+
+    </section>
+
+    <!-- ======================== Verificación ======================== -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Verificación pre-launch</h2>
+      </div>
+      <p class="section-desc">Antes de hacer swap de DNS, pasar este checklist.</p>
+
+      <div class="fix">
+        <ul style="padding-left:1.2rem">
+          <li><code>curl -I https://www.hirespace.com/</code> → 200 con canonical apuntando a sí mismo.</li>
+          <li><code>curl https://www.hirespace.com/sitemap-index.xml</code> → XML válido con todas las páginas que quieres indexar.</li>
+          <li><code>curl https://www.hirespace.com/robots.txt</code> → apunta al sitemap correcto.</li>
+          <li>Lighthouse en mobile: <strong>LCP &lt; 2.5s, CLS &lt; 0.1, INP &lt; 200ms</strong>.</li>
+          <li>Sin enlaces internos a 404 o 302→/404 (crawl con Screaming Frog o similar).</li>
+          <li>JSON-LD válido en <a href="https://search.google.com/test/rich-results" style="color:var(--accent)">Google Rich Results Test</a>.</li>
+          <li>GSC: enviar el nuevo sitemap el día del swap. Monitorizar coverage durante 4 semanas.</li>
+          <li>Redirect map de URLs antiguas que se eliminen → URLs nuevas equivalentes (301).</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>🏰 Generado por Rook · 7 May 2026</p>
+      <p>Si quieres que monte el PR de los P0 en el repo Astro, di la palabra.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

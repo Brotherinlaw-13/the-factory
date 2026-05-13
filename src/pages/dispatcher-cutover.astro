@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+const updated = '2026-05-13';
+---
+<Layout title="Dispatcher cutover — operational plan">
+  <main style="max-width:820px;margin:2rem auto;padding:0 1.25rem;font-family:system-ui,-apple-system,sans-serif;line-height:1.55;color:#1a1a1a">
+    <p style="color:#888;font-size:0.85rem">Last updated: {updated}</p>
+    <h1>Dispatcher cutover — operational plan</h1>
+    <p><em>From <code>claude -p</code> per-turn to SDK runner per-turn. Plan written 13 May 2026 after 5h of solid SDK work this morning. Execution starts when Diego greenlights.</em></p>
+
+    <h2>What this plan replaces</h2>
+    <p>The strategic <a href="/rook-sdk-migration">migration document of 4 May</a> said "migrate by use, not by project". That's still the principle. This plan is the operational <em>how</em> for the next step: cutting the dispatcher's per-turn engine over to the SDK runner for every chat and topic where it doesn't already.</p>
+
+    <h2>Current state (verified 13 May)</h2>
+    <ul>
+      <li><strong>Dispatcher live</strong>: <code>/Users/rook/workspace/claude/.openclaw/dispatcher.py</code>, PID under launchd job <code>com.openclaw.dispatcher</code>.</li>
+      <li><strong>Routing decision</strong> at <code>dispatcher.py:1399</code>: if <code>(chat_id, topic_id) ∈ RAW_RUNNER_TARGETS</code> → <code>raw_runner.run_raw(...)</code>; else → <code>stream_claude(...)</code> which spawns <code>claude -p</code>.</li>
+      <li><strong>RAW_RUNNER_TARGETS today</strong> (only 2): Factory&gt;Rook raw, Factory&gt;Rook Council.</li>
+      <li><strong>raw_runner tools</strong>: Bash, summon_perspectives (Council only).</li>
+      <li><strong>claude -p tools</strong> (from <code>build_cmd</code>): DMs get Bash+Read+Glob+Grep+Agent+Edit+Write; topics get Bash+Read+Glob+Grep+Agent (no Edit/Write).</li>
+      <li><strong>Prompt caching</strong>: live in raw_runner. SOUL+IDENTITY+USER+memory-index marked <code>ephemeral</code>, second turn pays ~10x less for that block.</li>
+      <li><strong>cron_runner</strong>: 12/13 crons migrated to SDK. Has Read/Write/Edit/Glob/Grep tools already, in <code>/Users/rook/workspace/rook-dispatcher/runner/tools/</code> (a separate code tree, not yet merged with .openclaw).</li>
+    </ul>
+
+    <h2>Goal of this cutover</h2>
+    <p>Every chat and topic served by the dispatcher answers via raw_runner, not <code>claude -p</code>. Claude Code stays installed and reachable as a fallback (feature-flag-able per surface), but no chat hits it by default.</p>
+
+    <h3>Why this is worth doing</h3>
+    <ul>
+      <li><strong>Voice</strong>: raw_runner has no Claude Code base prompt. Rook talks as Rook, not as "a software engineering agent" with Rook spliced on top.</li>
+      <li><strong>Latency</strong>: cutting Claude Code's startup + subprocess overhead saves 1–2s per turn.</li>
+      <li><strong>Cost</strong>: prompt caching applies on every turn. Most chats are short and recurrent; cache hit rate is high. Estimated 70–85% input cost reduction once warmed.</li>
+      <li><strong>Control</strong>: tool surface per (chat, topic) becomes explicit config, not "whatever Claude Code allows".</li>
+    </ul>
+
+    <h3>What this is NOT</h3>
+    <ul>
+      <li>Not "uninstall Claude Code". Crons that still use it stay; <code>claude -p</code> stays available; Claude Code source remains the reference for porting tools.</li>
+      <li>Not "port every Claude Code tool". Edit/Read/Write/Glob/Grep are in scope. <strong>Agent (sub-agent / Task)</strong>, WebFetch, WebSearch, NotebookEdit, MCP servers are out of scope for fase 1. If a chat needs one, that chat stays on claude -p until the tool is ported.</li>
+    </ul>
+
+    <h2>Phases</h2>
+
+    <h3>Phase A — tool port to raw_runner (~45 min)</h3>
+    <ol>
+      <li>Copy Read/Write/Edit/Glob/Grep modules from <code>rook-dispatcher/runner/tools/</code> into a new <code>raw_runner_tools/</code> package next to <code>raw_runner.py</code>.</li>
+      <li>Register each tool with raw_runner's <code>_dispatch_tool</code> + tool schemas list.</li>
+      <li>Smoke test each tool from a one-shot CLI invocation of raw_runner against a sandbox chat.</li>
+    </ol>
+    <p><strong>Rollback</strong>: revert raw_runner.py, keep tools package dormant. Zero impact on production.</p>
+
+    <h3>Phase B — per-surface tool config (~30 min)</h3>
+    <ol>
+      <li>Add to <code>dispatcher-config.json</code> a <code>raw_runner_surfaces</code> map: key <code>"chat_id:topic_id"</code> or <code>"chat_id:dm"</code>, value <code>{ "tools": [...], "model": "opus" }</code>.</li>
+      <li>Add a default entry under <code>"*:*"</code> for fall-through.</li>
+      <li>Refactor raw_runner to load per-target tool list from config instead of the hardcoded COUNCIL_TARGETS check.</li>
+      <li>Smoke test: Rook raw (Bash only), Rook Council (Bash+summon_perspectives), still behave identically.</li>
+    </ol>
+
+    <h3>Phase C — invert the routing feature flag (~15 min)</h3>
+    <ol>
+      <li>Today: chats in <code>RAW_RUNNER_TARGETS</code> use SDK; everyone else uses claude -p.</li>
+      <li>After: chats in <code>CLAUDE_CODE_TARGETS</code> use claude -p; everyone else uses SDK.</li>
+      <li>Initial <code>CLAUDE_CODE_TARGETS</code>: empty. We migrate everyone in one switch, but with the escape hatch ready.</li>
+      <li>If a regression appears in chat X, drop <code>(chat_id, topic_id)</code> into <code>CLAUDE_CODE_TARGETS</code>, restart dispatcher, that chat is back on claude -p in 5 seconds.</li>
+    </ol>
+
+    <h3>Phase D — observation window (24h)</h3>
+    <ol>
+      <li>Watchdog v1 monitors dispatcher liveness (already running).</li>
+      <li>Watchdog v2 collects per-run health line (iters, tokens, duration, stop_reason) — already running for crons; extend to raw_runner per dispatch.</li>
+      <li>Diego marks any chat that feels off (tone, missing tool, hallucination). Each mark = one rollback candidate.</li>
+      <li>After 24h with no marks and no anomalies: cutover declared stable.</li>
+    </ol>
+
+    <h2>Surfaces and their tool profiles</h2>
+    <table style="border-collapse:collapse;width:100%;margin-top:1rem">
+      <thead>
+        <tr style="background:#f4f4f4">
+          <th style="text-align:left;padding:6px;border:1px solid #ddd">Surface</th>
+          <th style="text-align:left;padding:6px;border:1px solid #ddd">Tools after cutover</th>
+          <th style="text-align:left;padding:6px;border:1px solid #ddd">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:6px;border:1px solid #ddd">DM Diego</td><td style="padding:6px;border:1px solid #ddd">Bash, Read, Write, Edit, Glob, Grep</td><td style="padding:6px;border:1px solid #ddd">Full file IO. Highest priority surface.</td></tr>
+        <tr><td style="padding:6px;border:1px solid #ddd">Factory &gt; Rook raw</td><td style="padding:6px;border:1px solid #ddd">Bash</td><td style="padding:6px;border:1px solid #ddd">Already migrated. Keep minimal.</td></tr>
+        <tr><td style="padding:6px;border:1px solid #ddd">Factory &gt; Rook Council</td><td style="padding:6px;border:1px solid #ddd">Bash, summon_perspectives</td><td style="padding:6px;border:1px solid #ddd">Already migrated.</td></tr>
+        <tr><td style="padding:6px;border:1px solid #ddd">Hogar (all topics)</td><td style="padding:6px;border:1px solid #ddd">Bash, Read, Glob, Grep</td><td style="padding:6px;border:1px solid #ddd">Conversational. No file writes from those topics historically.</td></tr>
+        <tr><td style="padding:6px;border:1px solid #ddd">Hire Space (all topics)</td><td style="padding:6px;border:1px solid #ddd">Bash, Read, Glob, Grep</td><td style="padding:6px;border:1px solid #ddd">Same.</td></tr>
+        <tr><td style="padding:6px;border:1px solid #ddd">Factory &gt; LinkedIn, Images, Workshop, etc.</td><td style="padding:6px;border:1px solid #ddd">Bash, Read, Glob, Grep</td><td style="padding:6px;border:1px solid #ddd">Some are silent topics; tool list doesn't matter when no replies happen.</td></tr>
+        <tr><td style="padding:6px;border:1px solid #ddd">Aldermor &gt; RPG (chat=-1003884775737, topic=12)</td><td style="padding:6px;border:1px solid #ddd">Bash, Read, Glob, Grep</td><td style="padding:6px;border:1px solid #ddd">No progress messages (build_append_prompt skip flag preserved).</td></tr>
+        <tr><td style="padding:6px;border:1px solid #ddd">Default (<code>*:*</code>)</td><td style="padding:6px;border:1px solid #ddd">Bash, Read, Glob, Grep</td><td style="padding:6px;border:1px solid #ddd">Safe minimum. No write permission unless explicitly granted.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Out of scope (deliberately)</h2>
+    <ul>
+      <li><strong>Agent / sub-agent (Task)</strong>: Claude Code's fork pattern. Not used in conversational dispatch by observation. If a chat genuinely needs to spawn a sub-agent, it stays on claude -p until we port the pattern. Port estimated 45–60 min when needed.</li>
+      <li><strong>WebFetch, WebSearch</strong>: not used in the chats we're migrating. Port when needed.</li>
+      <li><strong>MCP servers</strong>: dispatcher passes <code>--mcp-config</code> to claude -p. Out of scope; if a chat uses MCP, it stays on claude -p.</li>
+      <li><strong>Session resume semantics</strong>: claude -p has <code>--resume &lt;session_id&gt;</code> with server-side conversation storage. raw_runner uses local JSON history files. Different model, equivalent function. No need to bridge.</li>
+    </ul>
+
+    <h2>Rollback ladder</h2>
+    <ol>
+      <li><strong>One chat misbehaves</strong>: add tuple to <code>CLAUDE_CODE_TARGETS</code>, restart dispatcher. 5 seconds.</li>
+      <li><strong>Whole cutover misbehaves</strong>: revert the flag inversion commit. Routing reverts to "SDK only for RAW_RUNNER_TARGETS". 30 seconds.</li>
+      <li><strong>raw_runner crashes</strong>: dispatcher already catches and logs the exception (line 1407–1409). Chat sees a "[raw runner error: ...]" message; we get the trace; we either fix or rollback.</li>
+    </ol>
+
+    <h2>Success criteria</h2>
+    <ul>
+      <li>No regression in conversation quality (Diego marks zero or one chat as "off" over 24h).</li>
+      <li>Token costs per turn measurably down (cache hit rate &gt; 60% after warm-up).</li>
+      <li>Latency per turn measurably down (median reduction &gt; 1s vs baseline).</li>
+      <li>No chat stuck in raw_runner crash loop.</li>
+      <li>Watchdog v1 reports zero new anomaly classes.</li>
+    </ul>
+
+    <h2>Decision Diego needs to make</h2>
+    <p>Three things before execution starts:</p>
+    <ol>
+      <li><strong>Per-surface tool profiles</strong>: confirm the table above. Is DM Diego the only place that needs Edit/Write? Or should some topics get them too?</li>
+      <li><strong>Cutover style</strong>: big-bang (flip the flag once, observe everyone at once) vs ladder (Hogar first, observe, then Hire Space, then DM, etc.)? Big-bang is faster and the rollback is fast too. Ladder is safer but takes 3–4 days of observation windows. Recommendation: big-bang, given the rollback latency is 5 seconds.</li>
+      <li><strong>Out-of-scope chats</strong>: any chat we know uses Agent / WebFetch / MCP in conversation today? If yes, that one stays on claude -p from day one.</li>
+    </ol>
+  </main>
+</Layout>

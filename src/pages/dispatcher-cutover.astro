@@ -51,7 +51,7 @@ const updated = '2026-05-13';
 
     <h3>Phase B — per-surface tool config (~30 min)</h3>
     <ol>
-      <li>Add to <code>dispatcher-config.json</code> a <code>raw_runner_surfaces</code> map: key <code>"chat_id:topic_id"</code> or <code>"chat_id:dm"</code>, value <code>{ "tools": [...], "model": "opus" }</code>.</li>
+      <li>Add to <code>dispatcher-config.json</code> a <code>raw_runner_surfaces</code> map: key <code>"chat_id:topic_id"</code> or <code>"chat_id:dm"</code>, value <code>&#123; "tools": [...], "model": "opus" &#125;</code>.</li>
       <li>Add a default entry under <code>"*:*"</code> for fall-through.</li>
       <li>Refactor raw_runner to load per-target tool list from config instead of the hardcoded COUNCIL_TARGETS check.</li>
       <li>Smoke test: Rook raw (Bash only), Rook Council (Bash+summon_perspectives), still behave identically.</li>

@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Rook · Live" description="Rook's live operational state. Last cron, health, next event.">
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-4 mb-8">
+      <span class="text-6xl">🏰</span>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-white">Rook · Live</h1>
+        <p class="text-amber-400 font-mono text-sm mt-1">Operational state · public-safe · refreshes every 30s</p>
+      </div>
+    </div>
+
+    <!-- Avatar block -->
+    <div class="card mb-8 flex items-center gap-6">
+      <div id="avatar-glyph" class="text-7xl transition-all duration-500" style="filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6));">🏰</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-1">
+          <span id="health-dot" class="inline-block w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="health-label" class="text-white font-semibold uppercase tracking-wide text-sm">green</span>
+          <span id="health-reason" class="text-gray-400 text-sm">loading…</span>
+        </div>
+        <div id="last-cron" class="text-gray-300 font-mono text-xs">last cron: …</div>
+        <div id="next-event" class="text-gray-300 font-mono text-xs">next event: …</div>
+        <div id="signals" class="text-gray-300 font-mono text-xs">signals pending: …</div>
+      </div>
+    </div>
+
+    <div class="card mb-8">
+      <h2 class="text-white font-semibold mb-2">What you're looking at</h2>
+      <p class="text-gray-300 text-sm leading-relaxed">A live read of <code class="font-mono text-amber-400">rook-state.json</code>, regenerated server-side every minute. Green means every cron's last run succeeded. Amber means a recent hiccup recovered. Red means something's currently failing.</p>
+      <p class="text-gray-400 text-xs mt-3">No private data crosses this boundary: no chat content, no file paths, no project names. Schema and rules at <code class="font-mono">projects/avatar/state-schema.md</code>.</p>
+    </div>
+
+    <details class="card text-sm text-gray-300">
+      <summary class="cursor-pointer text-white font-semibold">Raw state</summary>
+      <pre id="raw-json" class="mt-3 text-xs font-mono text-amber-300 overflow-x-auto whitespace-pre-wrap">…</pre>
+    </details>
+  </section>
+
+  <script is:inline>
+    const SCHEMA_VERSION = 1;
+
+    function fmtAgo(seconds) {
+      if (seconds == null) return '—';
+      if (seconds < 60) return `${seconds}s ago`;
+      if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
+      if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
+      return `${Math.floor(seconds / 86400)}d ago`;
+    }
+
+    function applyHealth(state) {
+      const dot = document.getElementById('health-dot');
+      const label = document.getElementById('health-label');
+      const glyph = document.getElementById('avatar-glyph');
+      const reason = document.getElementById('health-reason');
+
+      const h = state.health || 'unknown';
+      label.textContent = h;
+      reason.textContent = state.health_reason ? '· ' + state.health_reason : '';
+
+      dot.className = 'inline-block w-3 h-3 rounded-full';
+      if (h === 'green') {
+        dot.classList.add('bg-emerald-400', 'animate-pulse');
+        glyph.style.filter = 'drop-shadow(0 0 12px rgba(251, 191, 36, 0.7))';
+      } else if (h === 'amber') {
+        dot.classList.add('bg-amber-400', 'animate-pulse');
+        glyph.style.filter = 'drop-shadow(0 0 14px rgba(251, 191, 36, 0.9))';
+      } else if (h === 'red') {
+        dot.classList.add('bg-red-500');
+        glyph.style.filter = 'drop-shadow(0 0 16px rgba(239, 68, 68, 0.9))';
+      } else {
+        dot.classList.add('bg-gray-500');
+        glyph.style.filter = 'none';
+      }
+    }
+
+    async function refresh() {
+      try {
+        const r = await fetch('/rook-state.json?ts=' + Date.now(), { cache: 'no-store' });
+        if (!r.ok) throw new Error('fetch failed: ' + r.status);
+        const state = await r.json();
+
+        if (state.schema_version !== SCHEMA_VERSION) {
+          document.getElementById('health-label').textContent = 'unknown';
+          document.getElementById('health-reason').textContent = '· schema mismatch v' + state.schema_version;
+          return;
+        }
+
+        applyHealth(state);
+
+        const lc = state.last_cron_success;
+        document.getElementById('last-cron').textContent = lc
+          ? `last cron: ${lc.name} · ${fmtAgo(lc.seconds_ago)}`
+          : 'last cron: —';
+
+        const ne = state.next_event;
+        document.getElementById('next-event').textContent = ne
+          ? `next event: ${ne.summary} · ${ne.in_human || ne.at}`
+          : 'next event: nothing in 24h';
+
+        document.getElementById('signals').textContent = `signals pending: ${state.signals_pending ?? 0}`;
+        document.getElementById('raw-json').textContent = JSON.stringify(state, null, 2);
+      } catch (e) {
+        document.getElementById('health-label').textContent = 'unknown';
+        document.getElementById('health-reason').textContent = '· ' + e.message;
+      }
+    }
+
+    refresh();
+    setInterval(refresh, 30000);
+  </script>
+
+</Layout>

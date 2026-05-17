@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  minimal?: boolean;
+}
+
+const { title, description = "One founder. One AI agent. Seven products. The story of AI-augmented solo entrepreneurship.", minimal = false } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#8B5CF6" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏰</text></svg>" />
+  <title>{title} — The Factory</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <slot name="head" />
+
+  <style is:global>
+    /* Chowdown theme colors as CSS variables */
+    :root {
+      --color-white: #FFFFFF;
+      --color-snow: #F8FAFC;
+      --color-cloud: #F1F5F9;
+      --color-mist: #E2E8F0;
+      --color-stone: #64748B;
+      --color-graphite: #0F172A;
+
+      --color-primary: #8B5CF6;
+      --color-primary-light: #A78BFA;
+      --color-primary-dark: #7C3AED;
+      --color-primary-deep: #6D28D9;
+      --color-primary-soft: rgba(139, 92, 246, 0.12);
+
+      --color-success: #10B981;
+      --color-warning: #F59E0B;
+      --color-energy: #EC4899;
+      --color-error: #EF4444;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    ::selection {
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--color-graphite);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+  <!-- Minimal nav: just a "← The Factory" link -->
+  {!minimal && (
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b" style="border-color: var(--color-mist);">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center gap-2 font-bold text-lg transition-colors" style="color: var(--color-graphite);">
+            <span class="text-2xl">🏰</span>
+            <span>The Factory</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  )}
+
+  <!-- Main Content -->
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Light footer -->
+  {!minimal && (
+    <footer class="border-t bg-white" style="border-color: var(--color-mist);">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        <div class="text-center">
+          <p class="text-sm" style="color: var(--color-stone);">
+            Built with ❤️ by Diego & Rook 🏰
+          </p>
+        </div>
+      </div>
+    </footer>
+  )}
+</body>
+</html>

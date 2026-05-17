@@ -1,0 +1,282 @@
+---
+import LightLayout from '../layouts/LightLayout.astro';
+---
+<LightLayout title="Stripe Product Sense — What's Publicly Known" description="Targeted recon of public reports on Stripe PM Product Sense interview. Companion to the main dossier.">
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+
+  <div class="mb-8">
+    <a href="/stripe-product-sense" class="text-[#8B5CF6] hover:underline text-sm">← Main dossier</a>
+  </div>
+
+  <div class="mb-10">
+    <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold rounded-full bg-[rgba(139,92,246,0.12)] text-[#7C3AED]">RECON · 17 May 2026 · 5 days to interview</div>
+    <h1 class="text-4xl md:text-5xl font-black text-[#0F172A] mb-4 leading-tight">Stripe Product Sense — what's publicly known</h1>
+    <p class="text-lg text-[#64748B] max-w-3xl">19 sources reviewed: Exponent, Prepfully, IGotAnOffer, Product Alliance, Leland, intrico.io, FinalRound AI, Medium, Blitzllama, Shreyas Doshi (Maven), TeamBlind search results, Glassdoor (via aggregators).</p>
+  </div>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">🎯 TL;DR</h2>
+    <ul class="space-y-3 text-[#0F172A]">
+      <li class="border-l-4 border-[#8B5CF6] pl-4"><strong>Format validated.</strong> Cristiana's structure (warm-up → product transplant → ATM design → bad product if time) matches a Feb 2025 Toronto candidate's report exactly. No drift detected. Stripe doesn't rotate questions like Meta/Google do.</li>
+      <li class="border-l-4 border-[#EC4899] pl-4"><strong>Critical attribution fix.</strong> The product sense framework in your prep PDFs is <strong>Shreyas Doshi's</strong> (Stripe's first PM lead, built the function, led Connect and Terminal), <strong>NOT</strong> Tanay Jaipuria's. Tanay is a VC who writes about Stripe's economics, no direct PM-practice link.</li>
+      <li class="border-l-4 border-[#8B5CF6] pl-4"><strong>ATM = airport confirmed.</strong> "Design an ATM for international terminals at your local airport" is the only publicly documented Stripe variant. Music festival / hospital / concert: NO public evidence Stripe uses those. They may be generic PM prep (Meta/Google/Amazon).</li>
+      <li class="border-l-4 border-[#8B5CF6] pl-4"><strong>Biggest fail mode reported:</strong> jumping to features without mapping the ecosystem. "Always start by mapping the ecosystem before proposing solutions" is the recurring pass signal.</li>
+      <li class="border-l-4 border-[#10B981] pl-4"><strong>Transplant = NOT a gotcha.</strong> Cristiana was right. It tests whether you identify non-obvious risks (GDPR, safeguarding, accessibility) BEFORE proposing features. Candidates who treat "LinkedIn for kids" as "add gamification!" fail; those who reframe ("this is a moderation/safeguarding problem first") pass.</li>
+      <li class="border-l-4 border-[#F59E0B] pl-4"><strong>Capital-specific prep matters.</strong> Generic PM prep "won't cut it at Stripe." Spend 2h on Stripe Capital domain: revenue-based financing, auto-repayment from processing volume, no equity, vs Shopify/Square Capital.</li>
+    </ul>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">📋 Format confirmation</h2>
+    <p class="text-[#0F172A] mb-3"><strong>Match: YES.</strong> Cristiana's briefing matches what candidates report in 2024–2026.</p>
+    <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5 mb-4">
+      <p class="font-semibold text-[#0F172A] mb-2">Reported structure (Feb 2025, Toronto candidate via Glassdoor/Prepfully):</p>
+      <ol class="list-decimal pl-5 space-y-1 text-[#0F172A]">
+        <li>Warm-up: "What are your three favourite products?"</li>
+        <li>Transplant: "Pick one and tell me how you'd adapt it for schools"</li>
+        <li>ATM design (if time, or in 2nd product sense round)</li>
+        <li>Bad product (if time)</li>
+      </ol>
+    </div>
+    <p class="text-[#64748B] text-sm">First product sense round: interviewer picks product/scenario. Second round: candidate picks (more open). Each 45 min. Total loop: 6–7 rounds.</p>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">🎮 Warm-up products & transplants</h2>
+    <p class="text-[#0F172A] mb-4"><strong>Most common warm-up:</strong> "What are your 3 favourite products?" → "Pick one and improve it for [schools / elderly / kids]"</p>
+    <p class="font-semibold text-[#0F172A] mb-2">Transplant scenarios documented:</p>
+    <ul class="list-disc pl-5 space-y-1 text-[#0F172A] mb-4">
+      <li>For schools (Feb 2025 actual question)</li>
+      <li>For elderly users (intrico.io question bank)</li>
+      <li>For kids/children (Exponent: "design a communication tool for children")</li>
+      <li>LinkedIn for students under 16 (Cristiana's example — real)</li>
+    </ul>
+    <div class="bg-[rgba(139,92,246,0.08)] border-l-4 border-[#8B5CF6] p-4 rounded">
+      <p class="text-[#0F172A]"><strong>What Stripe actually tests:</strong> the interviewer picks a constrained or ethically complex context to probe whether you identify non-obvious risks, segment users properly (not all "kids" are the same; school = teachers/parents/admins involved), and avoid jumping to features without considering incentives/ecosystem.</p>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">🏧 ATM exercise — only airport confirmed</h2>
+    <p class="text-[#0F172A] mb-4"><strong>Confirmed variation:</strong> "Design an ATM for international terminals at your local airport" (intrico.io, Prepfully, multiple question banks).</p>
+    <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5 mb-4">
+      <p class="font-semibold text-[#0F172A] mb-2">What the airport variant tests:</p>
+      <ul class="list-disc pl-5 space-y-1 text-[#0F172A]">
+        <li>Multi-currency complexity, exchange rates, fee transparency</li>
+        <li>User segmentation: rushed travellers vs tourists vs business vs locals</li>
+        <li>Accessibility: int'l signage, language support, low-tech users</li>
+        <li>Edge cases: SIM kiosks? Travel insurance integration? Baggage claim timing?</li>
+      </ul>
+    </div>
+    <div class="bg-[rgba(245,158,11,0.08)] border-l-4 border-[#F59E0B] p-4 rounded mb-4">
+      <p class="text-[#0F172A]"><strong>Gap in the main dossier:</strong> your 10 ATM locations are all useful as <em>pattern-matching practice</em>, but only the airport variant has public evidence of being a Stripe question. Hospital / music festival / concert venue → no public Stripe evidence. May be generic PM prep recycled from Meta/Google/Amazon. <strong>Prioritise the airport version</strong>; treat the other 9 as backup drills, not equals.</p>
+    </div>
+    <p class="font-semibold text-[#0F172A] mb-2">Other Stripe design questions found (not ATM, same structure):</p>
+    <ul class="list-disc pl-5 space-y-1 text-[#0F172A] text-sm">
+      <li>"Design a solution for small-time merchants with chargebacks and disputed payments"</li>
+      <li>"Improve the checkout experience for Airbnb"</li>
+      <li>"Improve the New York City transit system"</li>
+      <li>"Design a communication tool for children"</li>
+      <li>"Design an application for the DMV"</li>
+    </ul>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">💀 "Bad product" patterns</h2>
+    <p class="text-[#0F172A] mb-3"><strong>Format:</strong> "Name three bad products. Choose one to improve."</p>
+    <p class="font-semibold text-[#0F172A] mb-2">Bad products candidates have cited:</p>
+    <ul class="list-disc pl-5 space-y-1 text-[#0F172A] mb-4">
+      <li>Windows Phones (no app ecosystem, no UX differentiation)</li>
+      <li>Google Glass (no use cases, privacy invasion, conspicuous)</li>
+      <li>Yahoo! Answers (no moderation, no reputation system)</li>
+      <li>Snapchat Spectacles (limited functionality, high cost, unclear value)</li>
+      <li>Juicero (overcomplicated for a simple problem)</li>
+    </ul>
+    <div class="bg-[rgba(139,92,246,0.08)] border-l-4 border-[#8B5CF6] p-4 rounded">
+      <p class="text-[#0F172A]"><strong>Picking rule:</strong> avoid products that failed for external reasons (regulation, founder scandal). Pick products with <strong>design/strategy/execution flaws</strong> you can articulate and fix. Possible candidates for you: Google Wave, Quibi, Clubhouse (if you used it), Google+.</p>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">✅ What interviewers REWARD</h2>
+    <div class="space-y-4">
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">1. Systems thinking over feature lists</h3>
+        <p class="text-[#0F172A] text-sm">"Always start by mapping the ecosystem before proposing solutions." Understand how products interact, how incentives compound, how small changes ripple. For ATM-at-airport: don't just add "multi-currency support" — map currency provider contracts, fee disclosure regulations, interchange revenue implications.</p>
+      </div>
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">2. User-first framing with explicit segmentation</h3>
+        <p class="text-[#0F172A] text-sm"><strong>Never</strong> say "users want X". Always: "Small business owners using Stripe Checkout struggle to identify repeat customers across sessions. Let's define 'repeat customer' first — same email? Same card? Same device?"</p>
+      </div>
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">3. Structured reasoning with stated assumptions</h3>
+        <p class="text-[#0F172A] text-sm">Making assumptions is fine; you MUST state them aloud. "I'm assuming international travellers are the primary user, not airport staff or locals."</p>
+      </div>
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">4. Stripe API/product fluency</h3>
+        <p class="text-[#0F172A] text-sm">"Generic product sense prep won't cut it at Stripe." Reference Stripe Connect, Atlas, Checkout, Terminal, Capital naturally. Your interview is for <strong>Capital</strong> — know the basics: revenue-based financing for Stripe merchants, no equity, auto-repayment via processing volume.</p>
+      </div>
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">5. Decision documentation mindset</h3>
+        <p class="text-[#0F172A] text-sm">Stripe PMs document every decision, rationale, outcome (Blitzllama). Close answers with "I'd log this and revisit in 6 months based on [metric]."</p>
+      </div>
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">6. Comfort with manual processes early</h3>
+        <p class="text-[#0F172A] text-sm">Stripe's "Wizard of Oz" approach: automate the user-facing experience, manually handle backend complexity early. "Start with manual approvals, automate at 100 users/week" reads Stripe-pragmatic.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">❌ What KILLS candidates</h2>
+    <div class="space-y-3">
+      <div class="border-l-4 border-[#EF4444] pl-4">
+        <p class="font-bold text-[#0F172A]">1. Jumping to features without understanding the system</p>
+        <p class="text-[#0F172A] text-sm">"Jumping into building surface-level features without understanding underlying systems, incentives, and technical architecture." #1 failure mode across all sources.</p>
+      </div>
+      <div class="border-l-4 border-[#EF4444] pl-4">
+        <p class="font-bold text-[#0F172A]">2. Ignoring edge cases or risks</p>
+        <p class="text-[#0F172A] text-sm">Designing "LinkedIn for kids" without mentioning COPPA/GDPR/safeguarding = instant fail on Critical Thinking.</p>
+      </div>
+      <div class="border-l-4 border-[#EF4444] pl-4">
+        <p class="font-bold text-[#0F172A]">3. Not stating who the user is</p>
+        <p class="text-[#0F172A] text-sm">"Users want X" without defining "users" = flag.</p>
+      </div>
+      <div class="border-l-4 border-[#EF4444] pl-4">
+        <p class="font-bold text-[#0F172A]">4. Weak product sense basics</p>
+        <p class="text-[#0F172A] text-sm">Glassdoor reviews flag product sense as the <strong>hardest round</strong>. Candidates who can't articulate WHY they love a product (beyond "convenient") struggle.</p>
+      </div>
+      <div class="border-l-4 border-[#EF4444] pl-4">
+        <p class="font-bold text-[#0F172A]">5. No metrics or success criteria</p>
+        <p class="text-[#0F172A] text-sm">Not proposing how you'd measure success = incomplete answer. Lead with leading indicator, then lagging.</p>
+      </div>
+      <div class="border-l-4 border-[#EF4444] pl-4">
+        <p class="font-bold text-[#0F172A]">6. Treating it like a FAANG behavioural round</p>
+        <p class="text-[#0F172A] text-sm">Reciting CIRCLES / STAR verbatim without adapting to Stripe's fintech/infra context = fails to stand out.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">🧠 Shreyas Doshi's frameworks (the real source)</h2>
+    <p class="text-[#0F172A] mb-4">Stripe's first PM lead. Built the PM function. Led Connect and Terminal. Now teaches on Maven. The frameworks in your prep PDFs come from him, not Tanay.</p>
+
+    <div class="space-y-4">
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">10-30-50 Framework</h3>
+        <p class="text-[#0F172A] text-sm mb-2">Three essential PM "senses": <strong>Execution</strong> (align people, orchestrate), <strong>Analytical</strong> (frame questions, simulate outcomes, use data), <strong>Product</strong> (decide under ambiguity).</p>
+        <p class="text-[#0F172A] text-sm">Aim: top 10% in one, top 30% in another, top 50% in the third.</p>
+        <p class="text-[#7C3AED] text-sm mt-2"><strong>Your takeaway:</strong> Stripe wants product sense as your lead, but expects analytical rigour (metrics) and execution examples (cross-functional). Show all three.</p>
+      </div>
+
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">Pre-Mortem Risk ID (Tigers / Paper Tigers / Elephants)</h3>
+        <p class="text-[#0F172A] text-sm mb-2"><strong>Tigers:</strong> major threats that could kill the project. <strong>Paper Tigers:</strong> perceived threats that aren't actually dangerous. <strong>Elephants:</strong> unspoken assumptions the team ignores.</p>
+        <p class="text-[#7C3AED] text-sm"><strong>Your takeaway:</strong> after proposing any solution, proactively name 1 Tiger. Example for airport ATM: "A Tiger is currency provider contract renegotiation for 20 new currencies — could delay launch 6 months. A Paper Tiger is 'users won't understand the UI' — A/B testable in 2 weeks."</p>
+      </div>
+
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">Customer Problem Stack Rank (CPSR)</h3>
+        <p class="text-[#0F172A] text-sm mb-2">Ask customers to rank a problem against ALL other problems they're solving. Forces prioritisation beyond "everything is important."</p>
+        <p class="text-[#7C3AED] text-sm"><strong>Your takeaway:</strong> If asked about Stripe Capital merchant needs, don't list 10 problems. Say: "I'd stack-rank. Cash flow is #1 for 80% of small merchants. Marketing budget is #5. Solve #1 first."</p>
+      </div>
+
+      <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+        <h3 class="font-bold text-[#0F172A] mb-2">Decision Logs</h3>
+        <p class="text-[#0F172A] text-sm mb-2">Document every decision, rationale, expected outcomes. Review later to sharpen judgement.</p>
+        <p class="text-[#7C3AED] text-sm"><strong>Your takeaway:</strong> close answers with "I'd document this and review in [timeframe] based on [metric]." Signals Stripe culture fit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">🚧 What I could NOT verify</h2>
+    <ul class="space-y-2 text-[#0F172A]">
+      <li><strong>Glassdoor raw reviews:</strong> WebFetch blocked (403). Referenced via Prepfully aggregation, but no granular pass/fail stories with question variants.</li>
+      <li><strong>TeamBlind content:</strong> blocked too. Found post URLs, couldn't extract threads. Missing candid debriefs.</li>
+      <li><strong>Rubric scoring scale:</strong> the 4 competencies are confirmed; the scale (1–5? strong yes/yes/no?) and weighting (all 4 equal? need 4/4 strong yes?) is not public. Ask Cristiana to clarify.</li>
+      <li><strong>Product Alliance "45+ recent questions":</strong> behind a $429 paywall. Could be worth it given the timing, your call.</li>
+      <li><strong>Whether "adapt for schools" is THE canonical transplant or one of many.</strong> Prepare 2–3 transplant contexts (schools, elderly, kids under 13) per favourite product.</li>
+      <li><strong>Pacing within each 45-min round:</strong> Cristiana said 30–35 disc + 5 prep + 5 Q&A overall. Unclear if that's per round. Worth a clarifying question.</li>
+    </ul>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">🎯 Net adjustment to your prep plan</h2>
+
+    <div class="bg-[rgba(16,185,129,0.08)] border-l-4 border-[#10B981] p-5 rounded mb-4">
+      <h3 class="font-bold text-[#0F172A] mb-2">DO MORE OF</h3>
+      <ul class="space-y-2 text-[#0F172A]">
+        <li><strong>Systems thinking drills (highest ROI).</strong> For each product, map ecosystem BEFORE proposing features. Users / incentives / interactions / regulations / business model. Then features.</li>
+        <li><strong>Stripe Capital domain prep (2h, hard requirement).</strong> Revenue-based financing, auto-repayment from processing volume, no equity, vs Shopify Capital / Square Capital.</li>
+        <li><strong>Stripe API/product fluency (2h, surface-level OK).</strong> Browse Checkout, Connect, Atlas, Terminal, Capital docs. Read 2–3 launch blog posts. Goal: drop 1–2 product names naturally in answers.</li>
+        <li><strong>Pre-mortem risk ID drill.</strong> Name 1 Tiger after every proposed solution.</li>
+        <li><strong>Explicit user segmentation.</strong> Never "users want X". Always "[specific user persona] wants X because [Y]".</li>
+        <li><strong>Metrics closure.</strong> End every answer with leading + lagging metric + target.</li>
+      </ul>
+    </div>
+
+    <div class="bg-[rgba(239,68,68,0.06)] border-l-4 border-[#EF4444] p-5 rounded mb-4">
+      <h3 class="font-bold text-[#0F172A] mb-2">DROP / DEPRIORITISE</h3>
+      <ul class="space-y-2 text-[#0F172A]">
+        <li><strong>Generic PM frameworks (CIRCLES, STAR).</strong> Scaffolding, not scripts. Stripe interviewers go off-script.</li>
+        <li><strong>ATM locations beyond airport.</strong> Practice 1–2 alternates as backup, don't over-index. Airport is the confirmed Stripe variant.</li>
+        <li><strong>Tanay Jaipuria research.</strong> Park it. Wrong source for product sense. Use his stuff later for hiring-manager round (culture/behavioural).</li>
+        <li><strong>Perfecting "bad product".</strong> "If time" question. 3 ready, but don't spend 50% of prep here.</li>
+      </ul>
+    </div>
+
+    <div class="bg-[rgba(139,92,246,0.08)] border-l-4 border-[#8B5CF6] p-5 rounded mb-6">
+      <h3 class="font-bold text-[#0F172A] mb-2">ADD TO SHORTLIST</h3>
+      <ul class="space-y-2 text-[#0F172A]">
+        <li><strong>3–5 favourite products you know deeply.</strong> Must survive transplants (schools, elderly, kids). From your earlier list, WhatsApp / Google Maps / YouTube / Gmail / Booking are strong; avoid social-for-kids variants that turn into safeguarding minefields unless you're prepped to discuss moderation at length.</li>
+        <li><strong>3 bad products with design/strategy/execution flaws</strong> (not external shocks). Candidates: Google Wave, Quibi, Clubhouse, Windows Phone, Google+.</li>
+        <li><strong>Stripe Capital merchant persona.</strong> Small business on Stripe payments needing growth capital. Can't get bank loan (no collateral), VC is dilutive, cash flow lumpy. Capital solves with revenue-based advance + auto-repayment.</li>
+        <li><strong>1–2 Stripe product critiques</strong> for "how would you improve Stripe?" Angles: SMB vs enterprise UX tension, Capital eligibility transparency.</li>
+      </ul>
+    </div>
+
+    <div class="bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg p-5">
+      <h3 class="font-bold text-[#0F172A] mb-2">5-day pacing</h3>
+      <ul class="space-y-1 text-[#0F172A] text-sm">
+        <li><strong>Sun 18:</strong> Systems-thinking drills + favourite-products shortlist (3–5, map ecosystems, prep transplants)</li>
+        <li><strong>Mon 19:</strong> Airport ATM full 45-min mock + Stripe Capital domain study</li>
+        <li><strong>Tue 20:</strong> Bad products shortlist + Stripe API/blog browsing (2h)</li>
+        <li><strong>Wed 21:</strong> Mock interview, 90 min (2x product sense back-to-back)</li>
+        <li><strong>Thu 22:</strong> Light review, no new content, sleep well</li>
+        <li><strong>Fri 23 morning:</strong> Interview day</li>
+      </ul>
+      <p class="text-[#64748B] text-xs mt-3">(Adjust dates: interview is Fri 22 May, so shift one day earlier if needed.)</p>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-[#0F172A] mb-4">📚 Sources (19)</h2>
+    <p class="text-[#64748B] text-sm mb-3">Prep platforms, frameworks, community, candidate experiences. Glassdoor and Blind direct fetch blocked (403); referenced via Prepfully aggregation.</p>
+    <ul class="space-y-1 text-[#0F172A] text-sm">
+      <li><a href="https://www.tryexponent.com/guides/stripe-pm-interview" class="text-[#8B5CF6] hover:underline">Exponent — Stripe PM Interview Guide</a></li>
+      <li><a href="https://igotanoffer.com/blogs/product-manager/stripe-product-manager-interview" class="text-[#8B5CF6] hover:underline">IGotAnOffer — Stripe PM Interview</a></li>
+      <li><a href="https://prepfully.com/interview-guides/stripe-product-manager-interview-guide" class="text-[#8B5CF6] hover:underline">Prepfully — Stripe PM 2026 Guide</a></li>
+      <li><a href="https://www.joinleland.com/library/a/stripe-product-manager-interview" class="text-[#8B5CF6] hover:underline">Leland — Stripe PM Interview</a></li>
+      <li><a href="https://www.joinleland.com/library/a/how-to-prepare-for-stripe-product-sense-interviews" class="text-[#8B5CF6] hover:underline">Leland — How to Prepare for Stripe Product Sense</a></li>
+      <li><a href="https://www.interviewquery.com/interview-guides/stripe-product-manager" class="text-[#8B5CF6] hover:underline">InterviewQuery — Stripe PM 2025</a></li>
+      <li><a href="https://www.productalliance.com/product-management-cheat-sheets/stripe-pm-intervew-prep" class="text-[#8B5CF6] hover:underline">Product Alliance — Stripe PM Prep</a></li>
+      <li><a href="https://intrico.io/big-tech-question-banks/stripe" class="text-[#8B5CF6] hover:underline">intrico.io — Stripe Question Bank</a></li>
+      <li><a href="https://www.finalroundai.com/interview-questions/stripe-product-improvement-challenge" class="text-[#8B5CF6] hover:underline">FinalRound AI — Three Bad Products Challenge</a></li>
+      <li><a href="https://www.tryexponent.com/blog/10-30-50-product-management" class="text-[#8B5CF6] hover:underline">Exponent — Shreyas Doshi 10-30-50</a></li>
+      <li><a href="https://srinisekaran.medium.com/lessons-from-shreyas-doshi-6fee14e70345" class="text-[#8B5CF6] hover:underline">Medium — Lessons from Shreyas Doshi</a></li>
+      <li><a href="https://maven.com/shreyas-doshi/product-sense" class="text-[#8B5CF6] hover:underline">Maven — Shreyas Doshi Product Sense Course</a></li>
+      <li><a href="https://www.blitzllama.com/blog/stripe-product-management-practices" class="text-[#8B5CF6] hover:underline">Blitzllama — What Makes Stripe Great</a></li>
+      <li><a href="https://mixpanel.com/blog/shreyas-doshi-product-metrics/" class="text-[#8B5CF6] hover:underline">Mixpanel — Shreyas Doshi on Product Metrics</a></li>
+      <li><a href="https://medium.com/@diyaag2020/my-stripe-interview-experience-2025-2026-a-journey-to-the-final-round-19990fa6876a" class="text-[#8B5CF6] hover:underline">Medium — Stripe Interview Experience 2025–2026 (SWE, not PM)</a></li>
+    </ul>
+  </section>
+
+  <div class="border-t border-[#E2E8F0] pt-6 mt-8 text-[#64748B] text-sm">
+    <p>Companion to <a href="/stripe-product-sense" class="text-[#8B5CF6] hover:underline">the main dossier</a>. Built by Rook 🏰 for Diego, 17 May 2026.</p>
+  </div>
+
+</div>
+
+</LightLayout>

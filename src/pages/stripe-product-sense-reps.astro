@@ -1,0 +1,230 @@
+---
+import LightLayout from '../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Stripe Product Sense — Worked Examples & Reps" description="Two worked examples (warm-up + ATM) with competency annotations, plus prompts for Diego's own practice reps.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">🎯</span>
+      <div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <h1 class="text-4xl md:text-5xl font-black" style="color: var(--color-graphite);">Worked Examples + Reps</h1>
+          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style="background: var(--color-primary-soft); color: var(--color-primary);">Practice</span>
+        </div>
+        <p class="font-medium mt-1" style="color: var(--color-primary);">Stripe Product Sense • Companion to v1 Dossier</p>
+      </div>
+    </div>
+    <p class="text-xl leading-relaxed max-w-2xl mb-6" style="color: var(--color-stone);">
+      Two worked examples annotated by competency, then prompts for you to record your own rep. Don't copy the structure, internalise the pattern.
+    </p>
+    <div class="flex gap-3 flex-wrap">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
+        <span>🎙️</span>
+        <span>Audio companion: 14 min (Azure TTS, Álvaro + Elvira)</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-6 mb-10 sticky top-20 z-10 backdrop-blur-xl" style="background: rgba(241,245,249,0.95); border-color: var(--color-mist);">
+        <h3 class="font-bold mb-3" style="color: var(--color-primary);">📋 Contents</h3>
+        <ol class="text-sm space-y-1 list-decimal list-inside" style="color: var(--color-stone);">
+          <li><a href="#whatsapp" class="hover:text-[#8B5CF6] transition-colors">Example 1 — WhatsApp warm-up + transplant to over-70s</a></li>
+          <li><a href="#atm" class="hover:text-[#8B5CF6] transition-colors">Example 2 — ATM in international airport</a></li>
+          <li><a href="#pattern" class="hover:text-[#8B5CF6] transition-colors">The pattern (cheat sheet)</a></li>
+          <li><a href="#reps" class="hover:text-[#8B5CF6] transition-colors">Your reps — record one, send it</a></li>
+        </ol>
+      </div>
+
+      <!-- ===== EXAMPLE 1: WHATSAPP ===== -->
+      <h2 id="whatsapp" class="!mt-0">1. WhatsApp warm-up + transplant</h2>
+
+      <p><strong>Interviewer's prompt:</strong> "Tell me about a product you use that you think is well designed."</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate (Elvira):</strong> "OK, going with WhatsApp. Use it daily, know it well. Before I get into what it does well, let me define who I mean when I say 'user', because WhatsApp has very different segments."</p>
+      </div>
+
+      <p><strong>👀 What's good here:</strong> She doesn't start listing features. Defines users first. That's <strong>Users First</strong> in Stripe's rubric, signalled in the first sentence.</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "Three segments in mind. One-to-one comms with close family and friends, where frequency is high and latency matters. Large family groups, where volume is high and the challenge is not missing relevant info. And functional or transactional comms, contacts with the hairdresser, plumber, kid's teacher, where the relationship is functional but sporadic. I'll focus on the third because it's the least obvious."</p>
+      </div>
+
+      <p><strong>👀 Three things she's doing well:</strong></p>
+      <ul>
+        <li>Listed segments with <em>concrete criteria</em>, not vague labels.</li>
+        <li>Explained <em>why</em> each segment is different (frequency, volume, latency).</li>
+        <li>Picked a focus. Explicit strategy, not boiling the ocean.</li>
+      </ul>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "For that third segment, the functional one, WhatsApp has a value prop no competitor has replicated. Zero install friction. When you message the hairdresser, that's it. The phone number is the identity. No app-specific signup, no onboarding. That's what's well designed: not the UI, but the architectural decision to use the phone number as the identifier."</p>
+      </div>
+
+      <p><strong>👀 This is Product Strategy.</strong> She's identifying a structural decision, not a surface feature. She's mapped the ecosystem before proposing anything.</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "Now, if you ask me what I'd improve: the problem in that segment is that small businesses use WhatsApp as their main customer support channel but have no tools to manage it. They need canned replies, conversation tagging, team assignment. WhatsApp Business exists but its discoverability is poor. I'd improve the connection between regular WhatsApp and Business, suggesting an upgrade when the system detects commercial usage patterns. Messages from many distinct contacts, messages during business hours, template-style replies."</p>
+      </div>
+
+      <p><strong>👀 Three things to call out:</strong></p>
+      <ul>
+        <li>She didn't list ten improvements. She <em>stack-ranked</em> and picked one. Pure Doshi.</li>
+        <li>Connected the improvement to the segment she chose. Narrative coherence.</li>
+        <li>Proposed <em>how</em> to detect the use case. Operational criterion, not vague.</li>
+      </ul>
+
+      <h3>The transplant moment</h3>
+
+      <p><strong>Interviewer:</strong> "OK, and if we transplanted it to over-70s? Design WhatsApp for over-70s."</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "OK, let me think for a moment because this changes the problem quite a lot. It's not WhatsApp with bigger fonts. It changes the first principle."</p>
+      </div>
+
+      <p><strong>👀 Critical move:</strong> She pauses and acknowledges out loud that context changes and the solution isn't a cosmetic tweak. That signals systems thinking.</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "First thing that breaks is the assumption of identity by phone number. Many over-70s share a landline at home with their partner, or own a mobile but don't carry it around, or lose the SIM. The identifier stops being stable. Second, the assumption that the user knows what an app is and how to manage it. They don't. Third, the assumption that one-to-one is the primary conversation surface. For over-70s with scattered family, the family group is the primary space, not the individual chat."</p>
+      </div>
+
+      <p><strong>👀 Three assumptions questioned at the root.</strong> This is <strong>Critical Thinking</strong>. She isn't patching the app, she's questioning the foundations. In your interview, naming at least two assumptions a transplant breaks before proposing anything will score points.</p>
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!my-0"><strong>Candidate (Tiger):</strong> "Now a Tiger, because this fits here. The big risk of any product for older adults is that it ends up patronising and users reject it because it makes them feel incompetent. If I design a WhatsApp for over-70s with fraud alerts, extreme simplification, and assistance mode, the likely outcome is users perceive it as 'an old people's product' and refuse to use it. That's the Tiger. I'd mitigate by designing for progressive discovery. The default interface is the same; assistance modes appear when the system detects confusion, not by default."</p>
+      </div>
+
+      <p><strong>👀 Tiger named explicitly with mitigation plan.</strong> This is what gets you to <em>strong yes</em> on Critical Thinking. Without a Tiger, you stay at <em>yes</em>.</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate (close):</strong> "Closing with metrics. Leading indicator: % of over-70s sending at least one message per week without declared family assistance. Lagging indicator: 90-day retention in that segment. Conservative v1 target: 30% retention. If we hit 60%, the product lives."</p>
+      </div>
+
+      <p><strong>👀 Concrete metrics, target, leading vs lagging distinction.</strong> Tells the interviewer you can operationalise.</p>
+
+      <!-- ===== EXAMPLE 2: ATM ===== -->
+      <h2 id="atm" class="mt-12">2. ATM in an international airport</h2>
+
+      <p><strong>Interviewer's prompt:</strong> "Design an ATM for the international terminals of your local airport."</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "OK. Before designing, I'll map the ecosystem. Actors: arriving international passenger, departing passenger, transit passenger, airport staff, the bank operating the ATM, the airport collecting rent, currency providers, and local regulation on financial services in international zones."</p>
+      </div>
+
+      <p><strong>👀 Starts with ecosystem, not features.</strong> Anchor phrase: <em>"map the ecosystem before proposing solutions."</em> The single most repeated line in candidate reports.</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "Of those actors, my primary user is the arriving international passenger. I justify this. The departing one already has local currency, doesn't need an international ATM. Transit normally doesn't leave the terminal for cash, pays by card. The arriving passenger has the sharpest need: landing without local currency, in a hurry, tired, often poorly rested."</p>
+      </div>
+
+      <p><strong>👀 Primary user chosen with justification</strong>, and emotional state included (tired, no sleep, in a hurry). That's <strong>Users First</strong> at full depth, not just functional.</p>
+
+      <div class="card !p-5 my-6" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidate:</strong> "Sub-segmentation. Within arriving passenger, three types. First-time tourist: high fear of hidden fees, prioritises transparency. Frequent business traveller: low patience, prioritises speed. Migrant worker going home with remittances: prioritises maximising amount received, knows the rates. Three personas, three needs, same ATM."</p>
+      </div>
+
+      <p><strong>👀 Sub-segmentation within the segment.</strong> Stripe calls this <em>granularity</em>. Don't stop at "passenger". <em>Passenger what.</em></p>
+
+      <h3>Design decisions, each tied to a sub-segment</h3>
+      <ol>
+        <li><strong>Fee transparency by default.</strong> Before PIN entry, a screen with: requested amount, FX rate applied, fixed fee, percentage fee, final total. Serves the tourist afraid of traps.</li>
+        <li><strong>Express mode for repeat users.</strong> If the ATM detects the card has withdrawn at this airport in the last 90 days, offer the last operation as a shortcut. Serves the business traveller.</li>
+        <li><strong>Multilingual support with auto-detection</strong> by card issuer or country of origin. No language selector needed; the ATM knows.</li>
+      </ol>
+
+      <p><strong>👀 Each decision tied to a sub-segment.</strong> Narrative coherence again. Not throwing ideas in the air, justifying each one by who it serves.</p>
+
+      <h3>Edge cases (named explicitly)</h3>
+      <ul>
+        <li>Foreign card blocked by issuer fraud rules — very common.</li>
+        <li>Intermittent connectivity with the international processor.</li>
+        <li>Reduced mobility users who can't reach the screen.</li>
+        <li>Accompanying kids/teens who might touch the keypad out of curiosity.</li>
+        <li>Theft and skimming — airports are known targets.</li>
+      </ul>
+
+      <h3>Risks (Tiger vs Paper Tiger)</h3>
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-3"><strong>🐅 Tiger:</strong> Local financial-services regulation in international zones. If I want to offer Dynamic Currency Conversion on-screen at competitive rates, I need to renegotiate with currency providers and potentially deal with MasterCard rules on DCC. That can delay launch six months.</p>
+        <p class="!my-0"><strong>📰 Paper Tiger:</strong> The assumption that I need a 14-inch screen because airports use those. Probably 10 inches is enough and cuts unit cost. I'd verify with an A/B test at two airports before committing the budget.</p>
+      </div>
+
+      <p><strong>👀 Tiger and Paper Tiger distinguished.</strong> Pure Doshi. Shows you differentiate real risks from perceived ones.</p>
+
+      <h3>Metrics</h3>
+      <ul>
+        <li><strong>Leading primary:</strong> Transaction completion rate, target 85%.</li>
+        <li><strong>Leading secondary:</strong> Mean transaction time, target 45 seconds.</li>
+        <li><strong>Lagging:</strong> Post-transaction ATM-specific NPS.</li>
+        <li><strong>Guard rail:</strong> Chargeback rate must not rise more than 20% vs baseline.</li>
+      </ul>
+
+      <!-- ===== PATTERN CHEATSHEET ===== -->
+      <h2 id="pattern" class="mt-12">3. The pattern (cheat sheet)</h2>
+
+      <div class="card !p-6 my-6" style="background: var(--color-primary-soft);">
+        <ol class="!my-0 space-y-2">
+          <li><strong>Define user first, justify.</strong></li>
+          <li><strong>Sub-segment within the segment.</strong></li>
+          <li><strong>Map ecosystem before features.</strong></li>
+          <li><strong>Pick a focus, say it out loud.</strong></li>
+          <li><strong>Tie each decision to a sub-segment.</strong></li>
+          <li><strong>Name edge cases.</strong></li>
+          <li><strong>Distinguish Tiger from Paper Tiger.</strong></li>
+          <li><strong>Close with metrics: target + leading/lagging + guard rail.</strong></li>
+        </ol>
+      </div>
+
+      <p>If a transplant comes: <strong>pause, acknowledge context change, name 2+ assumptions broken, then propose.</strong></p>
+
+      <!-- ===== YOUR REPS ===== -->
+      <h2 id="reps" class="mt-12">4. Your reps — record one, send it</h2>
+
+      <p>Don't read these examples and try to reproduce them. Pick a prompt below, record yourself (audio or text, either works), send it to me. I return:</p>
+      <ul>
+        <li><strong>Per-competency diagnosis</strong> (Users First / Strategy / Design / Critical Thinking): what you did well, what's missing for strong yes.</li>
+        <li><strong>3–5 pressure questions</strong> a Stripe interviewer would ask based on what you said.</li>
+        <li><strong>Surgical rewrite</strong> of the 2–3 sentences that cost you points. Not a full rewrite.</li>
+      </ul>
+
+      <h3>Set 1 — Warm-up + transplant</h3>
+      <p>Pick one product:</p>
+      <div class="grid sm:grid-cols-2 gap-4 my-4">
+        <div class="card !p-4">
+          <p class="!my-0"><strong>🗺️ Google Maps</strong> → transplant to <em>people with reduced mobility</em></p>
+        </div>
+        <div class="card !p-4">
+          <p class="!my-0"><strong>📺 YouTube</strong> → transplant to <em>kids under 10</em></p>
+        </div>
+        <div class="card !p-4">
+          <p class="!my-0"><strong>🏨 Booking.com</strong> → transplant to <em>corporate travel with approvals</em></p>
+        </div>
+        <div class="card !p-4">
+          <p class="!my-0"><strong>✈️ Telegram</strong> → transplant to <em>emergency response teams</em></p>
+        </div>
+      </div>
+      <p><strong>Q1 (3–5 min):</strong> What is the product, what does it do well in terms of design, and who is the user you're focusing on?</p>
+      <p><strong>Q2 (3–5 min):</strong> Now transplant it. Walk me through what breaks, name a Tiger, propose the design, close with metrics.</p>
+
+      <h3>Set 2 — ATM design</h3>
+      <p>Pick one location (5–7 min):</p>
+      <ul>
+        <li>🎓 University campus</li>
+        <li>🏥 Large hospital</li>
+        <li>🚆 Commuter train station</li>
+        <li>🌾 Rural town without a bank branch</li>
+      </ul>
+      <p>Same closing requirement as Elvira: <strong>metrics, target, guard rail.</strong></p>
+
+      <div class="card !p-6 my-8" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">⏱️ Constraint</h3>
+        <p class="!mb-0">Don't spend three hours on a single product. <strong>4–5 reps of 15 min each with different products</strong> internalises the rubric better than one perfect rep. The pattern emerges from variation, not from polishing.</p>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

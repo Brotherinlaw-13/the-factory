@@ -1,0 +1,129 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock Interview — ATM Aeropuerto" description="Worked example: ATM design for international airport terminals. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">✈️</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">ATM Aeropuerto</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Diseña un cajero para terminales internacionales</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Worked example</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">~6 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">ATM-style design exercise</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Lo que tienes que internalizar</h3>
+        <ol class="!mb-0 space-y-1">
+          <li><strong>"Mapea el ecosistema antes de proponer soluciones."</strong> Frase ancla. La más repetida en reports de candidatos que pasaron.</li>
+          <li><strong>Sub-segmenta dentro del segmento.</strong> No te quedes en "pasajero". <em>Pasajero qué.</em></li>
+          <li><strong>Tiger vs Paper Tiger.</strong> Si solo nombras Tigers grandes pareces alarmista. Si solo Paper Tigers, ingenuo. La distinción es lo que demuestra critical thinking.</li>
+        </ol>
+      </div>
+
+      <h2 class="!mt-8">El prompt</h2>
+      <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 1rem;">"Design an ATM for the international terminals of your local airport."</blockquote>
+
+      <h2>Apertura · Ecosistema, no features</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "OK. Antes de diseñar, voy a mapear el ecosistema. Actores: pasajero que llega del extranjero, pasajero que sale, pasajero en tránsito, personal del aeropuerto, el banco operador del cajero, el aeropuerto que cobra rent, los proveedores de divisa, y la regulación local de servicios financieros en zona internacional."</p>
+      </div>
+
+      <p>👀 Empieza por ecosistema, no por features. <strong>Frase ancla a memorizar:</strong> "mapea el ecosistema antes de proponer soluciones".</p>
+
+      <h2>Elección de usuario primario con justificación</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "De esos actores, mi usuario primario es el pasajero que llega del extranjero. Lo justifico. El que sale ya tiene la moneda local, no necesita cajero internacional. El de tránsito normalmente no sale a por divisa, gasta con tarjeta. El que llega es el que tiene la necesidad más aguda: aterrizando sin moneda local, con prisa, cansado, muchas veces sin haber dormido bien."</p>
+      </div>
+
+      <p>👀 Dos cosas:</p>
+      <ul>
+        <li>Elige usuario primario <strong>con justificación</strong>, no con afirmación.</li>
+        <li>Incluye <strong>estado emocional</strong>: cansado, sin dormir, con prisa. Esto es Users First nivel completo.</li>
+      </ul>
+
+      <h2>Sub-segmentación</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "Dentro del pasajero que llega, tres tipos. <strong>Turista por primera vez</strong>: alto miedo a comisión oculta, prioriza transparencia. <strong>Viajero frecuente de negocios</strong>: baja paciencia, prioriza rapidez. <strong>Trabajador migrante con remesas</strong>: prioriza recibir lo máximo posible, conoce los tipos de cambio. Tres personas, tres necesidades, mismo cajero."</p>
+      </div>
+
+      <p>👀 <strong>Granularidad.</strong> Stripe lo llama así. No te quedes en "pasajero", <em>pasajero qué</em>.</p>
+
+      <h2>Decisiones de diseño · Cada una atada a un sub-segmento</h2>
+
+      <ol>
+        <li><strong>Transparencia de comisión por defecto.</strong> Antes de meter PIN: cantidad solicitada, tipo de cambio, comisión fija, comisión %, total final. <em>Cubre al turista que teme las trampas.</em></li>
+        <li><strong>Modo rápido para repetidos.</strong> Si la tarjeta sacó dinero en este aeropuerto en últimos 90 días, ofrece la última operación como atajo. <em>Cubre al viajero de negocios.</em></li>
+        <li><strong>Soporte multiidioma con detección automática</strong> por idioma de tarjeta o país emisor. No hace falta seleccionar idioma, el cajero ya sabe.</li>
+      </ol>
+
+      <p>👀 <strong>Coherencia narrativa.</strong> Cada decisión justificada con el sub-segmento al que sirve. No está soltando ideas al aire.</p>
+
+      <h2>Edge cases</h2>
+
+      <ul>
+        <li>Tarjeta extranjera bloqueada por seguridad del banco emisor (muy común)</li>
+        <li>Conectividad intermitente con el procesador internacional</li>
+        <li>Movilidad reducida: no alcanzan la pantalla</li>
+        <li>Niños/adolescentes acompañantes tocando el teclado por curiosidad</li>
+        <li>Robo y skimming: aeropuerto es objetivo conocido</li>
+      </ul>
+
+      <p>👀 Sube la nota porque demuestra que piensas más allá del happy path.</p>
+
+      <h2>Riesgos · Tiger vs Paper Tiger</h2>
+
+      <div class="card !p-5 my-4" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-3"><strong>🐅 Tiger:</strong> Regulación local de servicios financieros en zona internacional. Para ofrecer Dynamic Currency Conversion en pantalla con tipo competitivo, hay que renegociar con proveedores de divisa y potencialmente lidiar con reglas de MasterCard sobre DCC. Eso puede retrasar lanzamiento 6 meses.</p>
+        <p class="!my-0"><strong>📰 Paper Tiger:</strong> La asunción de que necesito pantalla de 14 pulgadas porque los aeropuertos lo usan. Probablemente con 10 es suficiente y reduce coste por unidad. Lo verificaría con A/B en dos aeropuertos antes de comprometer presupuesto.</p>
+      </div>
+
+      <p>👀 <strong>Doshi puro.</strong> Diferencia riesgos reales de percibidos.</p>
+
+      <h2>Métricas</h2>
+      <ul>
+        <li><strong>Leading primario:</strong> Tasa de finalización de transacción, target 85%.</li>
+        <li><strong>Leading secundario:</strong> Tiempo medio de transacción, target 45 segundos.</li>
+        <li><strong>Lagging:</strong> NPS específico del cajero post-operación.</li>
+        <li><strong>Guard rail:</strong> Tasa de chargeback no debe subir más del 20% respecto a baseline.</li>
+      </ul>
+
+      <p>👀 Métricas con target, leading/lagging y guard rail. Ejecución profesional.</p>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Justificación de primary + sub-segmentación + estado emocional.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Cada decisión atada a sub-segmento.</li>
+          <li><strong>Product Design:</strong> Strong yes. Decisiones específicas, no genéricas.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Edge cases + Tiger/Paper + guard rail en métricas.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/whatsapp" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Anterior: WhatsApp</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/claude-code" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: Claude Code →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

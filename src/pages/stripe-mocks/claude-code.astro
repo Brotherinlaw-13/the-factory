@@ -1,0 +1,175 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock Interview — Claude Code" description="Full interview transcript: Claude Code warm-up + transplant to non-developers. With pressure moments annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">⚡</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Claude Code</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Warm-up + Trasplante a non-developers</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Entrevista completa · 45 turnos</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">~13 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Producto técnico</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Lo que tienes que internalizar de esta entrevista</h3>
+        <ol class="!mb-0 space-y-1">
+          <li><strong>Defender foco contra el "donde está el dinero".</strong> Si eliges segmento menor, el entrevistador te va a presionar. Tienes que tener una respuesta sobre "donde se gana la batalla competitiva".</li>
+          <li><strong>Slip + auto-recuperación.</strong> Vas a meter la pata mid-respuesta. La diferencia entre yes y strong yes es cómo te recuperas sin defenderte ni minimizar.</li>
+          <li><strong>Reuso de argumentos entre bloques.</strong> Si en warm-up dijiste algo bueno, en trasplante puedes reusarlo. Coherencia narrativa = puntos.</li>
+        </ol>
+      </div>
+
+      <h2 class="!mt-8">Apertura</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos (entrevistador):</strong> Hola Elvira. Gracias por sacar el tiempo. Soy Marcos, PM en el equipo de Issuing en Stripe. Antes de nada, ¿cómo estás?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Bien, gracias. Un poco con el corazón a mil pero contenta de estar aquí.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vamos al lío. Entrevista de product sense de unos 40 minutos. Te voy a pedir que hablemos de un producto que uses y te parezca bien diseñado. Después igual lo trasplantamos. No hay respuesta correcta, me interesa cómo piensas.</p></div>
+
+      <h2>Bloque 1 · Warm-up</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Dime un producto que uses y te parezca bien diseñado.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Voy con Claude Code. Es el agente de coding de Anthropic, lo uso a diario para trabajar en mi terminal. Antes de entrar en qué hace bien, déjame definir de qué hablamos cuando digo usuario, porque es un producto con segmentos muy distintos.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Tres usuarios. <strong>(1) Developer profesional en empresa</strong>, ya tiene IDE y stack, Claude Code es herramienta más. <strong>(2) Indie hacker o emprendedor técnico</strong>, construye en solitario, Claude Code es a veces el 80% del equipo. <strong>(3) Non-developer técnicamente curioso</strong>, sabe lo justo de la terminal y quiere construir sin pasar por IDE. Voy a centrarme en el segundo porque es el que más diferencia a Claude Code de Copilot o Cursor.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 1 · Presión sobre la elección de foco</strong></p>
+        <p class="!my-0"><strong>Marcos:</strong> Interesante. ¿Por qué crees que ese segmento diferencia a Claude Code más que el primero? <em>Podrías argumentar que el developer profesional es donde está el dinero.</em></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Buena pregunta. El developer profesional ya tiene Copilot en su IDE, Cursor si quiere algo más agéntico. Para captarlo, Claude Code compite en superficie ya ocupada. El indie hacker no está atado a un IDE concreto, vive más en terminal, y necesita un agente que <em>ejecute tareas largas</em>, no que autocomplete líneas. Ese es un job to be done distinto. Donde está el dinero a largo plazo importa, pero <strong>donde el producto gana la batalla competitiva</strong> es lo que define la estrategia ahora.</p></div>
+
+      <p>👀 <strong>Cómo defiende el foco.</strong> No niega que el profesional tenga dinero. Reformula la pregunta: no es <em>"a quién llegas primero"</em>, es <em>"dónde ganas la batalla competitiva"</em>. Esa reformulación es lo que te saca del aprieto sin ceder.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vale, me convence. ¿Qué hace bien Claude Code para ese indie hacker?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Lo que está bien diseñado no es una feature, es una decisión arquitectónica. Claude Code corre en terminal, no en IDE, y eso es a propósito. La terminal es el sistema operativo del developer indie. Ahí está tu git, tu shell, tus procesos, tus logs. Meter el agente <em>en</em> la terminal y no <em>encima</em> de la terminal es la diferencia entre un asistente y un colaborador.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Para. Eso último, asistente vs colaborador, ¿qué quieres decir exactamente?</p></div>
+
+      <p>👀 <strong>El entrevistador tira del hilo.</strong> Aquí Marcos no está siguiendo guion, está siguiendo lo que ha sonado jugoso. Ese es el formato real de Stripe. <strong>Si sueltas algo interesante, prepárate para ahondar en ello.</strong></p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Un asistente te sugiere y tú decides. Un colaborador toma decisiones, ejecuta, te informa. Cursor sugiere autocompletado, tú aceptas. Claude Code abre archivos, edita, corre tests, hace commits, y tú revisas. La unidad de trabajo es la <strong>tarea</strong>, no la <strong>línea</strong>.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira (ejemplo):</strong> Si quiero migrar mi código de Express a Hono, en Cursor abro archivo a archivo. En Claude Code le digo "migra todo a Hono manteniendo los tests pasando" y se va 20 minutos solo. Vuelvo, reviso, ajusto. El cambio no es productividad por minuto, es <strong>qué tareas puedo delegar</strong>.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 2 · Presión sobre el modelo agéntico</strong></p>
+        <p class="!my-0"><strong>Marcos:</strong> Has dicho "se va 20 minutos solo". ¿Qué pasa cuando se equivoca durante esos 20 minutos sin supervisión?</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Esa es la tensión central y donde Claude Code mete su mejor decisión. Cada acción que toca el sistema pasa por <strong>permiso explícito por defecto</strong>. Tú decides si lo apruebas. Y después tienes modos de confianza progresiva donde le das acceso a más cosas según vas viendo que se porta. Es exactamente el patrón de descubrimiento progresivo del que hablábamos en el ejemplo de WhatsApp para mayores, pero aplicado a confianza, no a complejidad.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Espera, ¿de qué ejemplo hablas? Es la primera vez que hablamos.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 3 · El slip y la auto-recuperación</strong></p>
+        <p class="!my-0">Acaba de hacer una referencia a algo que no existe en esta conversación. Es un error que ocurre cuando piensas más rápido de lo que recuerdas el contexto. Mira cómo se sale:</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Perdón, mezclé contextos. Lo que quiero decir es que el patrón es: empiezas con permisos restrictivos, el usuario va relajando según gana confianza. Eso es bueno porque el coste de un error agéntico, borrar un archivo importante, hacer un push a main, es alto, y el sistema no asume confianza que no se ha ganado.</p></div>
+
+      <p>👀 <strong>Tres cosas para clavar.</strong></p>
+      <ol>
+        <li><strong>Reconoce el error sin disculpas largas.</strong> "Perdón, mezclé contextos" y sigue. No "ay perdona qué vergüenza déjame empezar de nuevo".</li>
+        <li><strong>Reformula la idea sin la referencia rota.</strong> El punto era válido, lo recupera limpio.</li>
+        <li><strong>No para a explicar de dónde venía la confusión.</strong> Eso es el trampa, sigue adelante.</li>
+      </ol>
+      <p><em>Marcos responde "bien recuperado". Eso es real: en Stripe valoran cómo te recompones bajo error tanto como cómo respondes bien.</em></p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Si tuvieras que decirme una cosa que Claude Code hace mal, que tú como PM mejorarías, ¿qué sería?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Déjame pensar un momento porque no quiero soltar lo primero que se me venga. Tengo varias en mente pero quiero priorizar. Vale. <strong>Lo más roto es la gestión de contexto a largo plazo en una sesión.</strong> Si trabajo dos horas en una tarea grande, el modelo empieza a olvidar decisiones que tomamos al principio. La compactación automática ayuda pero no es transparente. Eso para una tarea de delegación larga, que es el caso de uso central que defendí antes, rompe la promesa.</p></div>
+
+      <p>👀 <strong>Coherencia narrativa.</strong> Conecta la mejora con el segmento del principio. Ya no es una crítica suelta, es un argumento estructural.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Cómo lo resolverías?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Como <strong>workspace persistente, no sesión</strong>. Cuando empiezo un proyecto, Claude Code crea un memory del proyecto: decisiones, convenciones, archivos clave. Antes de cada turno relevante, ese memory se inyecta en el contexto sin gastar todo el budget de tokens. La unidad de trabajo no es la sesión, es el proyecto. Eso conecta con cómo trabajan los indie hackers, porque ellos viven en un producto durante meses.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Si implementas eso, ¿qué Tiger te preocupa?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Coste por sesión. Inyectar memory consume tokens, y Claude Code ya es caro relativo a Copilot. Si subes el coste medio 30%, parte de los indie hackers, sensibles a precio, se van. Mitigación: el memory no se inyecta entero, se hace <strong>retrieval semántico</strong> de las piezas relevantes. Y mido activamente <strong>coste medio por tarea completada</strong>, no por sesión, porque si la tarea termina antes, el coste total puede bajar incluso subiendo el coste por turno.</p></div>
+
+      <p>👀 <strong>Distinción crítica:</strong> coste por turno vs coste por tarea completada. Ese tipo de reframing de métrica es Critical Thinking de manual.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Cómo medirías el éxito de esa feature?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Leading primario:</strong> tasa de tareas completadas sin intervención del usuario en sesiones >30 min. De 40% a 60% sería el target. <strong>Leading secundario:</strong> turnos por tarea completada (debe bajar). <strong>Lagging:</strong> retención a 30 días en indie hackers. <strong>Guard rail:</strong> coste medio por tarea no puede subir más del 20%.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 4 · La pregunta clásica de priorización</strong></p>
+        <p class="!my-0"><strong>Marcos:</strong> Si tuvieras que elegir entre lanzar esto en 6 meses listo para indie hackers, o en 3 meses una versión más limitada pero que llegue también al developer profesional, ¿qué eliges?</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> 6 meses para indie hacker. Justifico. Lanzar en 3 meses al profesional significa competir donde Copilot y Cursor ya son fuertes, y la versión limitada no diferenciará. Lanzar en 6 meses al indie hacker significa diferenciar en un job to be done que los otros no están sirviendo bien, y construir un foso que después se extiende al profesional con menos resistencia. <strong>La pregunta no es a quién llegas antes, es dónde ganas la batalla competitiva. Si gano en indie hacker, el profesional viene detrás. Al revés, no.</strong></p></div>
+
+      <p>👀 <strong>Cierre brillante.</strong> Reusa el frame del primer bloque ("donde se gana la batalla competitiva"). Demuestra estructura mental coherente, no improvisación.</p>
+
+      <h2>Bloque 2 · Trasplante</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Cambio. ¿Cómo diseñarías Claude Code para non-developers?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Vale, déjame pensar porque esto no es Claude Code con menos texto técnico. Cambia el primer principio.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Tres supuestos rotos. <strong>(1)</strong> El usuario sabe qué es la terminal y cómo invocar comandos. No. <strong>(2)</strong> El usuario tiene proyecto previo, archivos, git, dependencias. No, parte de cero. <strong>(3)</strong> El usuario puede revisar el código del agente. No puede, o no quiere. La unidad de trabajo deja de ser código, pasa a ser <strong>aplicación funcional</strong>.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Eso último me interesa. La unidad es la aplicación, no el código. Desarrolla.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Si el usuario no lee código, el output útil no es un diff, es algo que funcione y se vea. La interfaz ya no es terminal con permisos, es conversación con previews en vivo. Empiezas a hablar de la aplicación que quieres, el agente construye, tú ves el resultado corriendo, no el código que lo produce. Si quieres cambiar algo, lo describes, no editas líneas.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 5 · El competidor obvio</strong></p>
+        <p class="!my-0"><strong>Marcos:</strong> Esto ya suena a Replit Agent, a Lovable, a v0. ¿En qué se diferenciaría?</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Ahí está la pregunta. Y te confieso que no tengo una respuesta limpia todavía, déjame pensar. Vale. Replit, Lovable y v0 están optimizados para arrancar rápido, construir una demo, lanzar un MVP. El non-developer que yo tengo en mente es uno distinto, <strong>el que después de tener la demo necesita mantener la aplicación, añadirle cosas, lidiar con un bug en producción</strong>. Ahí ninguno de esos es bueno. Claude Code para non-developers podría especializarse en el segundo capítulo, no en el primero. En <strong>convivir con tu aplicación a lo largo del tiempo</strong>, no en parir un MVP. Eso conecta de nuevo con el patrón del workspace persistente que defendía antes.</p></div>
+
+      <p>👀 <strong>Tres cosas aquí, todas oro.</strong></p>
+      <ol>
+        <li><strong>"No tengo respuesta limpia todavía, déjame pensar"</strong> en lugar de inventar. Demuestra honestidad bajo presión.</li>
+        <li><strong>Encuentra un hueco competitivo no obvio:</strong> no compite en el primer capítulo (MVP), compite en el segundo (mantenimiento).</li>
+        <li><strong>Reusa workspace persistente.</strong> Tercera vez que aparece. Eso es coherencia narrativa de manual.</li>
+      </ol>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Tiger para esta versión.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Responsabilidad.</strong> Si un non-developer construye aplicación que cobra dinero o maneja datos personales, y el agente comete error de seguridad, ¿quién es responsable? El usuario no entiende el código, el agente lo escribió. Problema legal y reputacional serio. Mitigación, no total, construir guardarraíles fuertes en gestión de credenciales, validación de inputs, manejo de PII, donde el agente avisa o bloquea decisiones de riesgo aunque el usuario insista. <strong>El Tiger no se elimina, se gestiona.</strong> Esa es conversación legal que habría que tener al lanzar, no después.</p></div>
+
+      <p>👀 <strong>"El Tiger no se elimina, se gestiona"</strong> es una frase para guardar. Demuestra que entiendes que algunos riesgos no tienen mitigación completa, solo políticas de gestión. Eso es senior thinking.</p>
+
+      <h2>Cierre</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Nos quedan 5 minutos, son para tus preguntas.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Dos preguntas si te parece. Una, ¿qué decisión de producto te ha generado más debate interno en los últimos 6 meses en Issuing? Dos, ¿qué busca Stripe en un PM al año (no al mes) que la mayoría de candidatos no entrega?</p></div>
+
+      <p>👀 <strong>Por qué estas preguntas funcionan:</strong></p>
+      <ul>
+        <li>"Debate interno" en lugar de "qué retos hay" → señaliza que entiendes que las decisiones de producto son políticas.</li>
+        <li>"Al año, no al mes" → señaliza que piensas en trayectoria, no en onboarding.</li>
+      </ul>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Tres segmentos con criterios, elección justificada, estado emocional del indie hacker implícito.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. "Donde se gana la batalla competitiva" como frame que reusa en cierre.</li>
+          <li><strong>Product Design:</strong> Strong yes. Workspace persistente + retrieval semántico = solución arquitectónica concreta.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Slip + recuperación, Tiger gestionado vs eliminado, hueco competitivo no obvio.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/atm-aeropuerto" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Anterior: ATM</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/youtube" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: YouTube →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

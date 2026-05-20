@@ -1,0 +1,119 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock Interview — WhatsApp" description="Worked example: WhatsApp warm-up + transplant to over-70s. Annotated transcript.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">💬</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">WhatsApp</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Warm-up + Trasplante a mayores de 70</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Worked example</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">~8 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Strong yes en 4 competencias</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Lo que tienes que internalizar de esta entrevista</h3>
+        <ol class="!mb-0 space-y-1">
+          <li><strong>Define usuario antes de hablar de features.</strong> Primera frase debe decir "déjame definir de quién hablamos".</li>
+          <li><strong>El stack-rank en mejoras.</strong> No listas diez, eliges una y justificas por qué esa.</li>
+          <li><strong>En trasplante, identifica supuestos rotos.</strong> Tres mínimo, dos te clavan strong yes.</li>
+        </ol>
+      </div>
+
+      <h2 class="!mt-8">El prompt</h2>
+      <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 1rem;">"Tell me about a product you use that you think is well designed."</blockquote>
+
+      <h2>Bloque 1 · Warm-up</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "OK, voy con WhatsApp. Lo uso a diario, lo conozco bien. Antes de hablar de qué hace bien, déjame definir de quién hablamos cuando digo usuario, porque WhatsApp tiene segmentos muy distintos."</p>
+      </div>
+
+      <p>👀 <strong>Primera cosa que hace correcta.</strong> No empieza a soltar features. Para a definir usuarios primero. Esto es <strong>Users First</strong> en la rúbrica de Stripe, señalizado en la primera frase.</p>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "Tres segmentos en mente. Comunicación 1:1 con familia y amigos cercanos, frecuencia alta y latencia importa. Grupos familiares grandes, volumen alto y el reto es no perderse información. Y comunicación funcional o transaccional, contactos con peluquería, fontanero, profesor del cole, relación funcional pero esporádica. Voy a centrarme en el tercero porque es el menos obvio."</p>
+      </div>
+
+      <p>👀 <strong>Tres cosas que está haciendo bien:</strong></p>
+      <ul>
+        <li>Lista segmentos con <em>criterios concretos</em>, no etiquetas vagas.</li>
+        <li>Explica <em>por qué</em> cada segmento es distinto (frecuencia, volumen, latencia).</li>
+        <li>Elige foco. Estrategia explícita, no intentar abarcar todo.</li>
+      </ul>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "Para ese tercer segmento, WhatsApp tiene una propuesta que ningún competidor ha replicado. Cero fricción de instalación. El número de teléfono es la identidad. No hay app específica, no hay registro, no hay onboarding. Eso es lo que está bien diseñado: no la interfaz, sino la decisión arquitectónica de usar el número como identificador."</p>
+      </div>
+
+      <p>👀 <strong>Product Strategy.</strong> Está identificando una decisión estructural, no una feature de superficie. Ha mapeado el ecosistema antes de proponer nada.</p>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "Si me preguntas qué mejoraría: los negocios pequeños usan WhatsApp como canal principal de atención al cliente pero no tienen herramientas para gestionarlo. Respuestas guardadas, etiquetado, asignación a equipos. WhatsApp Business existe pero su discoverability es mala. Mejoraría la conexión entre WhatsApp normal y Business, sugiriendo upgrade cuando detecte patrones de uso comercial."</p>
+      </div>
+
+      <p>👀 <strong>No lista diez mejoras, stack-ranks y elige una.</strong> Doshi puro. Y conecta la mejora con el segmento que eligió al principio: coherencia narrativa.</p>
+
+      <h2>Bloque 2 · Trasplante</h2>
+
+      <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 1rem;">"OK, ¿y si lo trasplantamos a mayores de 70? Diseña WhatsApp para mayores de 70."</blockquote>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "OK, déjame pensar un momento porque esto cambia bastante el problema. No es WhatsApp con letra más grande. Cambia el primer principio."</p>
+      </div>
+
+      <div class="card !p-5 my-4" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!my-0"><strong>🎯 Momento clave</strong>: la pausa explícita + reconocer que el contexto cambia. Eso le señaliza al entrevistador que piensas en sistemas, no parches.</p>
+      </div>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata:</strong> "Tres supuestos rotos. Uno, identidad por número de teléfono: muchos mayores comparten teléfono fijo, o tienen móvil pero no lo llevan, o pierden la SIM. Dos, el supuesto de que el usuario sabe qué es una app y cómo gestionarla. No lo sabe. Tres, el supuesto de que la conversación 1:1 es la primaria. Para mayores con familia distribuida, el grupo familiar es el espacio principal."</p>
+      </div>
+
+      <p>👀 <strong>Critical Thinking.</strong> No está parcheando la app, está cuestionando los cimientos. En tu entrevista, nombrar al menos dos supuestos que el trasplante rompe antes de proponer nada va a sumar puntos.</p>
+
+      <div class="card !p-5 my-4" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!my-0"><strong>🐅 Tiger:</strong> "El riesgo grande de cualquier producto para mayores es que termina siendo paternalista y los usuarios lo rechazan porque les hace sentir incompetentes. Si lo diseño con avisos de fraude, simplificación extrema y modo asistencia, lo más probable es que lo perciban como 'producto de viejos'. La mitigación: descubrimiento progresivo. La interfaz por defecto es la misma, los modos asistenciales aparecen cuando el sistema detecta confusión, no por defecto."</p>
+      </div>
+
+      <p>👀 <strong>Tiger nombrado explícitamente y con plan de mitigación.</strong> Esto es lo que te lleva a strong yes en Critical Thinking. Sin Tiger te quedas en yes.</p>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Candidata (cierre):</strong> "Métricas. Leading: % de mayores de 70 que envían al menos un mensaje a la semana sin asistencia familiar declarada. Lagging: retención a 90 días en ese segmento. Target conservador v1: 30% retención. Si llegamos a 60%, el producto vive."</p>
+      </div>
+
+      <p>👀 Métricas concretas, con target, con distinción leading/lagging. Le dice al entrevistador que sabes operativizar.</p>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Cómo se vería la rúbrica aquí</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Segmentos con criterios + foco elegido + estado emocional implícito.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Decisión arquitectónica identificada, stack-rank, coherencia entre warm-up y trasplante.</li>
+          <li><strong>Product Design:</strong> Strong yes. Descubrimiento progresivo es solución elegante a un problema social complejo.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Supuestos cuestionados a la raíz, Tiger + mitigación, métricas con target.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/atm-aeropuerto" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: ATM Aeropuerto →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

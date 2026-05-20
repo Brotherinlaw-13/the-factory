@@ -1,0 +1,119 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+
+const interviews = [
+  {
+    slug: 'whatsapp',
+    title: 'WhatsApp',
+    transplant: 'Mayores de 70',
+    icon: '💬',
+    format: 'Worked example',
+    duration: '~8 min lectura',
+    summary: 'Identidad por número de teléfono, segmentación funcional, trasplante que cuestiona supuestos de raíz.',
+    highlights: ['Users First explícito desde la primera frase', 'Stack-rank de mejoras (Doshi)', 'Tiger del paternalismo + mitigación'],
+  },
+  {
+    slug: 'atm-aeropuerto',
+    title: 'ATM Aeropuerto',
+    transplant: 'Diseño from scratch',
+    icon: '✈️',
+    format: 'Worked example',
+    duration: '~6 min lectura',
+    summary: 'Mapeo de ecosistema, sub-segmentación (turista / business / migrante), Tiger vs Paper Tiger.',
+    highlights: ['Ecosistema antes que features', 'Sub-segmentación con criterios concretos', 'Métricas con guard rail'],
+  },
+  {
+    slug: 'claude-code',
+    title: 'Claude Code',
+    transplant: 'Non-developers',
+    icon: '⚡',
+    format: 'Entrevista completa',
+    duration: '~13 min · 45 turnos',
+    summary: 'Producto técnico. Indie hacker vs developer profesional. Workspace persistente como decisión estructural.',
+    highlights: ['Defiende foco en indie hacker contra el "donde está el dinero"', 'Slip menor + auto-recuperación elegante', 'Reuso de argumento entre warm-up y trasplante'],
+  },
+  {
+    slug: 'youtube',
+    title: 'YouTube',
+    transplant: 'Niños menores de 10',
+    icon: '📺',
+    format: 'Entrevista completa',
+    duration: '~12 min · 42 turnos',
+    summary: 'Cuatro segmentos contradictorios. Recomendaciones por sesión. Trasplante con momento de presión real (consumer vs decisor).',
+    highlights: ['Honestidad sobre lo éticamente cuestionable', 'Momento de presión: reformula primary user bajo desafío', 'Cambio de modelo de negocio entero defendible'],
+  },
+];
+---
+
+<LightLayout title="Stripe Product Sense — Mock Interviews" description="Hub navegable de mock interviews y worked examples para la entrevista de Stripe Product Sense del 22 may 2026.">
+
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-8">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">🎙️</span>
+      <div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <h1 class="text-4xl md:text-5xl font-black" style="color: var(--color-graphite);">Mock Interviews Hub</h1>
+          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style="background: var(--color-primary-soft); color: var(--color-primary);">Stripe Prep</span>
+        </div>
+        <p class="font-medium mt-1" style="color: var(--color-primary);">Friday 22 May 2026 • 4 productos · navegables</p>
+      </div>
+    </div>
+
+    <p class="text-xl leading-relaxed max-w-3xl mb-8" style="color: var(--color-stone);">
+      Cuatro entrevistas mock con transcripción anotada, puntos fuertes destacados y los momentos clave. Cada una es una página independiente. Léelas sueltas, en cualquier orden, no hay secuencia obligatoria.
+    </p>
+
+    <div class="flex gap-3 flex-wrap mb-8">
+      <a href="/stripe-product-sense" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm hover:opacity-80" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
+        <span>📋</span><span>Dossier completo</span>
+      </a>
+      <a href="/stripe-product-sense-leaks" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm hover:opacity-80" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
+        <span>🔍</span><span>Reconnaissance</span>
+      </a>
+      <a href="/stripe-product-sense-reps" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm hover:opacity-80" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
+        <span>🎯</span><span>Reps</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="grid md:grid-cols-2 gap-6">
+      {interviews.map(iv => (
+        <a href={`/stripe-mocks/${iv.slug}`} class="card !p-6 hover:!shadow-lg transition-all block no-underline" style="text-decoration: none;">
+          <div class="flex items-start gap-4 mb-3">
+            <span class="text-4xl">{iv.icon}</span>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold !my-0" style="color: var(--color-graphite);">{iv.title}</h3>
+              <p class="text-sm !my-1" style="color: var(--color-primary);">Trasplante: <strong>{iv.transplant}</strong></p>
+            </div>
+          </div>
+          <div class="flex gap-2 flex-wrap mb-3 text-xs">
+            <span class="px-2 py-0.5 rounded" style="background: var(--color-mist); color: var(--color-stone);">{iv.format}</span>
+            <span class="px-2 py-0.5 rounded" style="background: var(--color-mist); color: var(--color-stone);">{iv.duration}</span>
+          </div>
+          <p class="text-sm mb-3" style="color: var(--color-stone);">{iv.summary}</p>
+          <ul class="text-xs space-y-1 list-disc list-inside" style="color: var(--color-stone);">
+            {iv.highlights.map(h => <li>{h}</li>)}
+          </ul>
+          <p class="text-sm font-medium mt-4 mb-0" style="color: var(--color-primary);">Leer entrevista →</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="card !p-6 mt-10" style="background: var(--color-primary-soft);">
+      <h3 class="!mt-0">El patrón común a las 4</h3>
+      <ol class="text-sm space-y-1 !mb-0 list-decimal list-inside" style="color: var(--color-stone);">
+        <li>Define usuario primero, justifica.</li>
+        <li>Sub-segmenta dentro del segmento.</li>
+        <li>Mapea ecosistema antes que features.</li>
+        <li>Pick a focus, dilo en voz alta.</li>
+        <li>Conecta cada decisión con un sub-segmento.</li>
+        <li>Nombra edge cases.</li>
+        <li>Distingue Tiger de Paper Tiger.</li>
+        <li>Cierra con métricas: target + leading/lagging + guard rail.</li>
+        <li><strong>Si viene un trasplante:</strong> pausa, reconoce que el contexto cambia, nombra 2+ supuestos que se rompen.</li>
+        <li><strong>Si te presionan:</strong> reformula con distinción más fina (consumer vs decisor, coste por turno vs por tarea), no defiendas la frase original.</li>
+      </ol>
+    </div>
+  </div>
+</LightLayout>

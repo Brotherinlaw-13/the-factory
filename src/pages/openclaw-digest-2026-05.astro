@@ -1,0 +1,170 @@
+---
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="OpenClaw digest — qué robar (2 meses)" description="Lectura de OpenClaw mar-may 2026 destilada a lo aplicable a nuestro dispatcher Telegram + raw_runner.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">🦞</span>
+      <div>
+        <div class="flex items-center gap-3">
+          <h1 class="text-4xl md:text-5xl font-black text-white">OpenClaw digest</h1>
+          <span class="px-3 py-1 bg-amber-500/15 text-amber-400 rounded-full text-xs font-bold uppercase tracking-wider">2 meses</span>
+        </div>
+        <p class="text-amber-400 font-medium mt-1">Qué robar — releases v2026.3.22 → v2026.5.18</p>
+      </div>
+    </div>
+
+    <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mb-6">
+      33 stable releases, ~5000 bullets únicas, filtradas a las áreas que tocan nuestro stack
+      (Telegram + Cron + raw_runner + memoria + skills). Lo que aparece aquí es accionable.
+    </p>
+
+    <div class="flex gap-3 flex-wrap">
+      <a href="https://github.com/openclaw/openclaw/releases" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300 text-sm font-medium hover:bg-amber-500/20 transition-colors">
+        📦 Releases en GitHub →
+      </a>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <!-- TL;DR -->
+      <div class="card !p-6 mb-10">
+        <h3 class="text-amber-400 font-bold mb-3">🎯 TL;DR — orden de robo recomendado</h3>
+        <ol class="text-gray-300 text-sm space-y-2 list-decimal list-inside">
+          <li><strong>Skills directory + manifest</strong> — base que desbloquea lo demás. Su carpeta <code>/skills/</code> tiene 57 skills modulares.</li>
+          <li><strong><code>message_tool</code> opt-in en raw_runner</strong> — elimina por diseño la clase de bugs thinking-as-reply que pillamos el 14 may.</li>
+          <li><strong>Verbose tool progress separado del final reply</strong> — su fix #80294. Resuelve nuestro patrón progress-bar+reply duplicado.</li>
+          <li><strong>Sub-agent registry persistente</strong> — backbone para el AsyncTask que dejamos drafteado el 14 may.</li>
+          <li><strong>Reply-target binding en forum topics</strong> — varias correcciones (#83302, #83556, #76554, #76704) que nos importan porque ya hemos tenido cross-topic mismatches.</li>
+        </ol>
+      </div>
+
+      <h2 id="skills">1 · Skills como abstracción</h2>
+      <p>OpenClaw mantiene ~57 skills en <code>/skills/&lt;nombre&gt;/</code>: cada skill es prompt + script + manifest invocable como tool por el agente. Ejemplos: <code>gh-issues</code>, <code>obsidian</code>, <code>things-mac</code>, <code>healthcheck</code>, <code>session-logs</code>, <code>summarize</code>, <code>voice-call</code>, <code>weather</code>, <code>spike</code>, <code>taskflow-inbox-triage</code>, <code>skill-creator</code>.</p>
+      <p>El patrón que nos sirve:</p>
+      <ul>
+        <li><strong>Directorio</strong> <code>skills/&lt;grupo&gt;/&lt;skill&gt;/SKILL.md</code> cargable desde "skill roots" configurados. Para nosotros: <code>~/workspace/skills/</code>.</li>
+        <li><strong>Manifest</strong> declara prompt, runtime, dependencias, tools expuestas. Su CLI valida (<code>openclaw plugins validate</code>) que el manifest es consistente.</li>
+        <li><strong><code>skill-creator</code></strong> — skill cuya función es generar otras skills. Meta-tool perfecto para "Diego pide algo nuevo, Rook crea la skill, queda viva para futuros runs".</li>
+        <li><strong>Localizaciones de descripción</strong> publicadas en los menús nativos de Telegram (slash commands).</li>
+      </ul>
+      <p class="text-gray-400">Nuestro estado hoy: ~30 scripts sueltos en <code>~/workspace/scripts/</code> sin manifest, sin discovery, sin validation. Cada vez que toco uno descubro fallos en runtime. Convertir los más reutilizados a skills es la inversión con mejor ROI.</p>
+
+      <h2 id="messages">2 · <code>message_tool</code> opt-in (fix estructural del bug thinking-as-reply)</h2>
+      <p>El cambio importante (Fix #81598 + ajuste mayo, "Messages: default group/channel visible replies to automatic final delivery again, keeping <code>message_tool</code> opt-in for ambient/shared rooms and tool-reliable models"):</p>
+      <ul>
+        <li>En vez de "lo último que el modelo escribió como texto va al canal", el modelo decide <strong>explícitamente</strong> llamar a la herramienta <code>message</code>.</li>
+        <li>Thinking, herramientas devolviendo strings sospechosos, previews intermedios → todo eso queda fuera por construcción, no por filtro post-hoc.</li>
+        <li>El parche caliente que metí el 15 may (filtro thinking-as-reply en orienter) sería innecesario con este patrón.</li>
+      </ul>
+      <p class="text-gray-400">Coste: refactor mediano del raw_runner para distinguir "raw text turn" vs "tool-mediated send". Sesión contigo, no cron mid-loop.</p>
+
+      <h2 id="replies">3 · Reply lifecycle (progress + final separados)</h2>
+      <p>Tres bullets relevantes de las últimas semanas:</p>
+      <ul>
+        <li><strong>"Replies: keep final payload delivery after live preview updates"</strong> (#83468) — su fix de mayo a un problema isomorfo al nuestro: preview parcial via tool, final perdido. Vale la pena leer el PR concreto antes de tocar progress-bar de nuevo.</li>
+        <li><strong>"Telegram: keep verbose tool progress and result drafts separate from the final assistant answer"</strong> (#80294) — drafts intermedios y respuesta final no se mezclan.</li>
+        <li><strong>"Channels/Telegram: force a fresh final message when a visible non-preview bubble was delivered after the active answer preview"</strong> (#76529) — orden visual garantizado. Útil para nuestros heads-up que a veces aparecen antes que el resumen final.</li>
+      </ul>
+
+      <h2 id="topics">4 · Forum-topic binding (cross-topic correctness)</h2>
+      <p>Cosas que ya nos han mordido (incidente cuentos #86 el 19 may, donde un cron mezcló chat-id de Hogar con topic-id de Workshop):</p>
+      <ul>
+        <li><strong>#83302</strong> "preserve forum-topic origin targets in inbound, audio-preflight, and skipped-message hook contexts" — el origen del topic sobrevive el round-trip.</li>
+        <li><strong>#83556</strong> "deliver generated media completions back into forum topics by preserving topic IDs across requester-agent handoff" — handoff a sub-agente preserva topic.</li>
+        <li><strong>#76554/#76764</strong> "require an observed Telegram send, edit, or fallback before treating a forum-topic final as delivered" — finales que no se entregan no se marcan como entregados. Resuelve la clase de bug donde el cron marca OK aunque el envío al topic falle.</li>
+        <li><strong>#76704</strong> bug en Active Memory con conversation-ids scopeados de topics (que contienen <code>:</code>) — relevante porque nuestro <code>topic-contexts/</code> usa nombres con <code>chat_id_topic_id</code>.</li>
+      </ul>
+      <p class="text-gray-400">Lo robable concretamente: validar antes del send que <code>(chat_id, topic_id)</code> es una pareja conocida, no asumir que el topic_id solo es válido por sí mismo.</p>
+
+      <h2 id="subagents">5 · Sub-agents (backbone para AsyncTask)</h2>
+      <p>El AsyncTask que dejamos drafteado el 14 may necesita exactamente esto. OpenClaw tiene ~30 bullets sobre <code>Agents/subagents</code> en estos 2 meses. Lo más útil para nuestro diseño:</p>
+      <ul>
+        <li><strong>Registry persistente</strong> con file-signature caching — busy gateways no reparsean <code>subagents/runs.json</code> en hot paths. Equivalente nuestro sería <code>~/workspace/async-tasks/runs.json</code>.</li>
+        <li><strong>Completion announcement dedup</strong> — retries no inyectan turns duplicados en el padre. Aplicable a heartbeat re-entries.</li>
+        <li><strong>Orphan recovery con tombstones</strong> y persisted recovery attempts — restart loops no requieren cirugía manual de <code>sessions.json</code>.</li>
+        <li><strong>Light context bootstrap</strong> (<code>lightContext: true</code>) — child no carga workspace bootstrap completo, sólo lo declarado. Crítico para los AsyncTasks que sólo necesitan una skill concreta.</li>
+        <li><strong>Wait-timeout reconciliation</strong> — si el child termina justo después del timeout, se reconcilia en vez de perderse.</li>
+        <li><strong>Forked context opt-in</strong> — child puede heredar transcript del padre si se pide explícitamente, default es isolated.</li>
+      </ul>
+      <p class="text-gray-400">Esto convierte AsyncTask de "draft" a "siga el plano de OpenClaw, adaptado". Sesión contigo.</p>
+
+      <h2 id="compaction">6 · Compaction (mantener context budget bajo control)</h2>
+      <p>Tenemos crons que entran en bucles largos (raw_runner sesiones cuento, signals_producer mañana). OpenClaw tiene un kit completo:</p>
+      <ul>
+        <li><strong><code>agents.defaults.compaction.maxActiveTranscriptBytes</code></strong> — preflight trigger cuando el JSONL crece. Antes de fallar por context window.</li>
+        <li><strong>Timeout recovery compaction</strong> antes de reintentar high-context timeouts. Si el modelo timeoutea por payload grande, compacta y reintenta.</li>
+        <li><strong>Tool-result guard</strong> que dispara overflow recovery desde el siguiente tool-result si seguimos por encima del threshold. No esperar al siguiente turn del modelo.</li>
+        <li><strong>Transcript repair</strong> después de <code>session.compact()</code> para no dejar bloques <code>tool_result</code> huérfanos rompiendo el siguiente request de Anthropic.</li>
+        <li><strong><code>compaction.notifyUser</code> opt-in</strong> — el famoso "🧹 Compacting context..." configurable.</li>
+      </ul>
+      <p class="text-gray-400">Para nosotros importa para crons de cadena larga. Hoy si superamos el context window no compactamos, fallamos.</p>
+
+      <h2 id="active-memory">7 · Active Memory</h2>
+      <p>Su "Active Memory" es plugin separado para recall semántico. No vamos ahí (nuestro sistema de memoria son archivos markdown indexados, no embeddings), pero sí roban ideas concretas:</p>
+      <ul>
+        <li><strong>Recall timeout como budget del prompt-build hook</strong> — el recall no debe exceder un budget configurado. Si timeout, devolver "bounded partial recall summary" en vez de descartar todo.</li>
+        <li><strong>Skip empty <code>memory_search</code> results</strong> en debug telemetry — los empty entries hoy esconden las útiles. Aplica a cómo loggeamos consultas a topic-contexts.</li>
+      </ul>
+
+      <h2 id="tools">8 · Agents/tools (cosas útiles aisladas)</h2>
+      <ul>
+        <li><strong>Tool-loop detection scoped per active run</strong> (#40144) — heartbeats no heredan stale repeated-call counts. Nuestros heartbeats actuales sí lo harían si el detector existiera.</li>
+        <li><strong>Fail closed cuando un tool allowlist resuelve a 0 tools</strong> (#71292) — evita el modelo "alucinando" results para tools que no existen. Hoy si renombramos un script y el prompt lo sigue llamando, el modelo finge la respuesta.</li>
+        <li><strong>Tool-loop circuit breaker stops como blocked tool results</strong>, no como excepciones — el modelo ve la guardrail y para. Útil para evitar reintentos infinitos.</li>
+        <li><strong><code>process.poll</code> clamped a 30s</strong> con timeout en el schema y abort signal honor — evita pinear el agente esperando un comando colgado.</li>
+        <li><strong>Strip reasoning text de visible rich titles, blocks, buttons</strong> antes del message-tool send — defensa en profundidad contra leaks de planning.</li>
+        <li><strong><code>/tools</code> command muestra tools disponibles ahora mismo</strong> — útil añadirlo como native slash command de nuestro bot para debugging.</li>
+      </ul>
+
+      <h2 id="cron">9 · Cron (anti-burst, sequencing, dedupe)</h2>
+      <p>OpenClaw tiene 33 bullets bajo <code>Cron:</code>. Lo que cambiaría hoy en nuestro crontab si lo robáramos:</p>
+      <ul>
+        <li><strong>Per-cron dedupe con file-lock</strong> — dos triggers solapados no se ejecutan dos veces.</li>
+        <li><strong>Announce delivery preservando HTML formatting</strong> a través de lazy cron pipelines (#81742). Nuestros crons a veces pierden Markdown links.</li>
+        <li><strong>Cron-aware tool-loop scoping</strong> — scheduled heartbeat runs no contaminan repeated-call counts unos a otros.</li>
+      </ul>
+
+      <h2 id="qa">10 · Testing (lo que no tenemos)</h2>
+      <p>Tenemos cero tests. OpenClaw tiene un QA-Lab con tiers:</p>
+      <ul>
+        <li><strong>20-turn / 100-turn runtime parity scenarios</strong> — detectan drift entre modelos. Para nosotros: detectar regresiones después de tocar el orienter sin esperar al cron de producción.</li>
+        <li><strong>Personal-agent benchmark pack</strong> — task followthrough, approval-denial, proof-backed status reporting. Aplicable como suite mínima.</li>
+        <li><strong>Tool fixture coverage report</strong> — auditas qué tools se usan y cuáles son código muerto.</li>
+      </ul>
+      <p class="text-gray-400">No urgente, pero un benchmark de 10-20 turns que probara orienter + raw_runner + 2-3 skills nos ahorraría producción-debugging.</p>
+
+      <h2 id="not-applicable">Lo que NO aplica</h2>
+      <ul class="text-gray-400">
+        <li><strong>Gateway, ACPX, Codex app-server</strong> — capa multi-canal daemon que ellos tienen y nosotros no necesitamos. Somos un proceso Python + crontab.</li>
+        <li><strong>QQBot, Discord, Slack, Discord realtime voice, Google Meet, Feishu, WhatsApp</strong> — canales que no usamos.</li>
+        <li><strong>Mac app Settings redesign</strong> — app gráfica nativa, no aplica.</li>
+        <li><strong>Sharp/sips/ImageMagick/GraphicsMagick fallback chain</strong> — pipeline de media específico, irrelevante.</li>
+        <li><strong>Plugin SDK típed con <code>defineToolPlugin</code></strong> — interesante en concepto, pero overkill cuando todo nuestro código vive en un solo workspace.</li>
+        <li><strong>OpenAI Whisper, Sherpa-onnx TTS</strong> — ya tenemos nuestra pipeline de TTS (edge + elevenlabs) que funciona bien.</li>
+      </ul>
+
+      <h2 id="orden">Orden de ejecución que propongo</h2>
+      <ol>
+        <li><strong>Skills directory + manifest</strong> (sesión 1, 2-3 horas). Convertir 5 scripts a skills para validar el patrón. Empiezo por: <code>healthcheck</code>, <code>session-logs</code>, <code>tg-progress</code>, <code>tts-send</code>, <code>gmail-send</code>.</li>
+        <li><strong><code>message_tool</code> opt-in en raw_runner</strong> (sesión 2, grande). Quita el filtro thinking-as-reply post-hoc. Necesita test cobertura mínima en paralelo o lo rompemos.</li>
+        <li><strong>AsyncTask V1</strong> (sesión 3) usando el plano de OpenClaw subagents: registry persistente + light context + completion announce dedup.</li>
+        <li><strong>Topic-binding validation</strong> (quick win, &lt;1 hora). Wrapper que valida <code>(chat_id, topic_id)</code> antes de cualquier send.</li>
+        <li><strong>Tool-loop detection scoped per run</strong> en raw_runner. También quick win.</li>
+        <li><strong>Benchmark pack mínimo</strong> (sesión 4). 10 escenarios sintéticos de turn + tool + reply.</li>
+      </ol>
+
+      <div class="card !p-6 mt-10">
+        <h3 class="text-amber-400 font-bold mb-3">📌 Notas de método</h3>
+        <p class="text-gray-400 text-sm">Filtrado: 33 stable releases (saltándome betas y alphas) entre 2026-03-22 y 2026-05-18, 4965 bullets únicas, agrupadas por prefijo de categoría, leídas las 281 que tocan áreas aplicables. El digesto sólo recoge cambios donde puedo nombrar el archivo/módulo/comportamiento equivalente en nuestro sistema.</p>
+      </div>
+
+    </div>
+  </div>
+
+</Layout>

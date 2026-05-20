@@ -1,0 +1,254 @@
+---
+import LightLayout from '../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Stripe Capital — Business Domain Dossier" description="Business context and economics for Diego's Stripe Capital PM interview on 22 May 2026.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-5xl">💳</span>
+      <div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <h1 class="text-4xl md:text-5xl font-black" style="color: var(--color-graphite);">Stripe Capital — Domain Brief</h1>
+          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style="background: var(--color-primary-soft); color: var(--color-primary);">Interview Fri 22 May</span>
+        </div>
+        <p class="font-medium mt-1" style="color: var(--color-primary);">Business economics layer — Stripe Capital mechanics, competitive landscape, PM angles</p>
+      </div>
+    </div>
+    <p class="text-xl leading-relaxed max-w-2xl mb-6" style="color: var(--color-stone);">
+      This is the domain knowledge layer. Not product sense frameworks (that's Shreyas Doshi territory) — this is understanding Stripe Capital as a business so you can speak to it fluently when it comes up.
+    </p>
+    <div class="flex gap-3 flex-wrap">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
+        <span>📅</span>
+        <span>Built 20 May 2026 — 2 days before the interview</span>
+      </div>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm" style="background: #FEF3C7; border-color: rgba(245,158,11,0.2); color: #92400E;">
+        <span>⚠️</span>
+        <span>Tanay Jaipuria ≠ Shreyas Doshi — see note below</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-6 mb-10 sticky top-20 z-10 backdrop-blur-xl" style="background: rgba(241,245,249,0.95); border-color: var(--color-mist);">
+        <h3 class="font-bold mb-3" style="color: var(--color-primary);">📋 Contents</h3>
+        <ol class="text-sm space-y-1 list-decimal list-inside" style="color: var(--color-stone);">
+          <li><a href="#what" class="hover:text-[#8B5CF6] transition-colors">What Stripe Capital actually is</a></li>
+          <li><a href="#competitive" class="hover:text-[#8B5CF6] transition-colors">Competitive landscape — Stripe vs. Adyen</a></li>
+          <li><a href="#strategic" class="hover:text-[#8B5CF6] transition-colors">Why Capital matters strategically to Stripe</a></li>
+          <li><a href="#pm-angles" class="hover:text-[#8B5CF6] transition-colors">PM angles — where Capital could go</a></li>
+          <li><a href="#numbers" class="hover:text-[#8B5CF6] transition-colors">Numbers to know</a></li>
+          <li><a href="#dont" class="hover:text-[#8B5CF6] transition-colors">What NOT to do</a></li>
+          <li><a href="#quickfire" class="hover:text-[#8B5CF6] transition-colors">Quick-fire prep questions</a></li>
+        </ol>
+      </div>
+
+      <!-- Attribution warning -->
+      <div class="card !p-5 mb-8" style="background: #FEF3C7; border-color: rgba(245,158,11,0.3);">
+        <p class="font-bold mb-2" style="color: #92400E;">⚠️ Critical attribution: Tanay Jaipuria vs. Shreyas Doshi</p>
+        <p class="!my-0 text-sm" style="color: #78350F;">
+          The product sense frameworks in your prep PDFs are <strong>Shreyas Doshi's</strong> (Stripe's first PM lead, built the PM function, created 10-30-50 and Tigers/Paper Tigers/Elephants). 
+          <strong>Tanay Jaipuria</strong> is a VC at Wing Venture Capital who writes about Stripe's business economics — not PM interview prep. Don't conflate them in the interview.
+        </p>
+      </div>
+
+      <!-- ===== SECTION 1 ===== -->
+      <h2 id="what">1. What Stripe Capital actually is</h2>
+
+      <p>Stripe Capital is a lending product for Stripe merchants. The mechanics matter:</p>
+
+      <div class="grid md:grid-cols-2 gap-4 my-6">
+        <div class="card !p-5" style="background: var(--color-primary-soft);">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">Revenue-based advances, not loans</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">Stripe advances a lump sum. Merchants repay via a fixed % of daily Stripe processing volume. No fixed monthly payment — if revenue is slow, repayment is slow.</p>
+        </div>
+        <div class="card !p-5" style="background: var(--color-primary-soft);">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">Flat fee, not APR</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">Borrow £10K, repay £11.2K regardless of timeline. No compounding interest. Simple cost of capital.</p>
+        </div>
+        <div class="card !p-5" style="background: var(--color-primary-soft);">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">No collateral, no bank application</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">Eligibility is determined by Stripe's own data: processing history, chargeback rate, business age on Stripe. No credit check with external bureau.</p>
+        </div>
+        <div class="card !p-5" style="background: var(--color-primary-soft);">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">First-party data moat</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">Stripe already knows the merchant's revenue, growth rate, seasonality, and risk profile. Traditional lenders don't have this signal density. This is the structural moat.</p>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 2 ===== -->
+      <h2 id="competitive">2. Competitive landscape — Stripe vs. Adyen</h2>
+
+      <p>Tanay Jaipuria's core thesis when comparing Stripe and Adyen: they're two different philosophies about how to build payments infrastructure.</p>
+
+      <div class="grid md:grid-cols-2 gap-6 my-6">
+        <div class="card !p-5">
+          <p class="font-bold mb-3 text-lg" style="color: var(--color-primary);">Stripe</p>
+          <ul class="text-sm space-y-2 !my-0" style="color: var(--color-stone);">
+            <li><strong>Developer-first, full-stack financial OS.</strong> Start with payments, expand to Capital, Radar, Treasury, Issuing, Tax, Payroll.</li>
+            <li><strong>Indie + startup → then enterprise.</strong> Bottom-up growth via developer evangelism.</li>
+            <li><strong>Network effects from breadth:</strong> more merchants = better risk models for Capital = better advance offers = more merchants stay.</li>
+          </ul>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-3 text-lg" style="color: var(--color-stone);">Adyen</p>
+          <ul class="text-sm space-y-2 !my-0" style="color: var(--color-stone);">
+            <li><strong>Enterprise-first, vertical integration.</strong> Win the big retailers, then build downmarket.</li>
+            <li><strong>Unified commerce:</strong> in-person + online in one system. Single processor = better fraud detection.</li>
+            <li><strong>No developer evangelism</strong> — enterprise sales cycles, procurement-led.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>The Capital angle: Stripe Capital sits in the <em>"financial services on top of payment rails"</em> play. Comparable: Square Capital (Block), Shopify Capital, PayPal Working Capital. All share the same logic — we see your money moving, we can lend against it safely.</p>
+
+      <!-- ===== SECTION 3 ===== -->
+      <h2 id="strategic">3. Why Capital matters strategically to Stripe</h2>
+
+      <div class="space-y-4 my-6">
+        <div class="card !p-5 flex gap-4">
+          <span class="text-2xl">📈</span>
+          <div>
+            <p class="font-bold mb-1" style="color: var(--color-graphite);">Revenue per merchant goes up</p>
+            <p class="text-sm !my-0" style="color: var(--color-stone);">A merchant on payments pays ~2.9% + 30¢. Add Capital and you've added a second revenue line that scales with their business growth.</p>
+          </div>
+        </div>
+        <div class="card !p-5 flex gap-4">
+          <span class="text-2xl">🔒</span>
+          <div>
+            <p class="font-bold mb-1" style="color: var(--color-graphite);">Switching costs increase significantly</p>
+            <p class="text-sm !my-0" style="color: var(--color-stone);">If a merchant has an active advance, migrating to Adyen means killing the advance mid-repayment. Hard to leave. Capital is the stickiest product in the suite.</p>
+          </div>
+        </div>
+        <div class="card !p-5 flex gap-4">
+          <span class="text-2xl">⚖️</span>
+          <div>
+            <p class="font-bold mb-1" style="color: var(--color-graphite);">Credit risk is manageable (structurally)</p>
+            <p class="text-sm !my-0" style="color: var(--color-stone);">Stripe controls the repayment — auto-deducted from processing volume. Charge-offs lower than traditional SMB lending. Revenue-based means Stripe only profits when merchants do.</p>
+          </div>
+        </div>
+        <div class="card !p-5 flex gap-4">
+          <span class="text-2xl">🌍</span>
+          <div>
+            <p class="font-bold mb-1" style="color: var(--color-graphite);">International expansion opportunity (and friction)</p>
+            <p class="text-sm !my-0" style="color: var(--color-stone);">Capital is US/UK/Canada heavy. Expansion requires local credit licensing — expensive and slow. This is a real strategic constraint a PM would manage.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 4 ===== -->
+      <h2 id="pm-angles">4. PM angles — where Capital could go</h2>
+
+      <p>If asked "How would you improve Stripe Capital?" or "Design a feature for Capital", these are the genuinely interesting directions:</p>
+
+      <div class="space-y-4 my-6">
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">1. Proactive Capital (push, not pull)</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">Instead of merchants applying, Stripe predicts optimal advance timing. Pre-Christmas stock-up for e-commerce, equipment before busy season for restaurants. Stripe has all the seasonality data to do this.</p>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">2. Capital + Issuing flywheel</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">Stripe advances cash, merchant spends via Stripe Issuing card, Stripe earns interchange back. The flywheel: Capital drives card adoption, cards drive interchange revenue, interchange offsets credit risk. Already partially exists — worth discussing the full loop.</p>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">3. Capital for platform businesses</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">If you run a marketplace on Stripe Connect, your sub-merchants could get Capital too. Trickle-down liquidity. Platform gets Capital for its sellers — stickier for the platform operator, not just the end merchant.</p>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-primary);">4. International expansion prioritisation</p>
+          <p class="text-sm !my-0" style="color: var(--color-stone);">Capital is geographically limited by licensing requirements. How do you decide which market next? Framework: Stripe merchant density × average advance size × regulatory complexity × local competitor absence. Classic prioritisation question.</p>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 5 ===== -->
+      <h2 id="numbers">5. Numbers to know</h2>
+
+      <div class="grid md:grid-cols-3 gap-4 my-6">
+        <div class="card !p-5 text-center">
+          <p class="text-3xl font-black mb-1" style="color: var(--color-primary);">~$1T</p>
+          <p class="text-sm" style="color: var(--color-stone);">Stripe GMV/year (2023 est.)</p>
+        </div>
+        <div class="card !p-5 text-center">
+          <p class="text-3xl font-black mb-1" style="color: var(--color-primary);">$65B</p>
+          <p class="text-sm" style="color: var(--color-stone);">Last valuation (Mar 2023, down from $95B peak)</p>
+        </div>
+        <div class="card !p-5 text-center">
+          <p class="text-3xl font-black mb-1" style="color: var(--color-primary);">2019</p>
+          <p class="text-sm" style="color: var(--color-stone);">Stripe Capital launch (US)</p>
+        </div>
+        <div class="card !p-5 text-center">
+          <p class="text-3xl font-black mb-1" style="color: var(--color-primary);">~€1.1T</p>
+          <p class="text-sm" style="color: var(--color-stone);">Adyen GMV (publicly reported)</p>
+        </div>
+        <div class="card !p-5 text-center">
+          <p class="text-3xl font-black mb-1" style="color: var(--color-primary);">$10B+</p>
+          <p class="text-sm" style="color: var(--color-stone);">Square Capital advanced since 2014</p>
+        </div>
+        <div class="card !p-5 text-center">
+          <p class="text-3xl font-black mb-1" style="color: var(--color-primary);">Not IPO'd</p>
+          <p class="text-sm" style="color: var(--color-stone);">Private company as of May 2026</p>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 6 ===== -->
+      <h2 id="dont">6. What NOT to do</h2>
+
+      <div class="card !p-5 my-6" style="background: #FEE2E2; border-color: rgba(239,68,68,0.3);">
+        <ul class="space-y-3 !my-0 text-sm" style="color: #7F1D1D;">
+          <li><strong>Don't conflate Tanay Jaipuria with Shreyas Doshi.</strong> If you use a framework in the interview, it's Shreyas Doshi's. Don't call it "Tanay's framework" — he doesn't have one for PM interviews.</li>
+          <li><strong>Don't monologue on Capital business history.</strong> Surface domain knowledge when relevant ("a Stripe Capital merchant's primary job-to-be-done is..."), not as a standalone speech.</li>
+          <li><strong>Don't mention the valuation drop</strong> unless you're asked specifically about strategic challenges. It sounds like you're auditing them.</li>
+          <li><strong>Don't jump to features without mapping ecosystem first.</strong> The #1 fail mode from the recon: candidates who skip ecosystem mapping and go straight to features.</li>
+        </ul>
+      </div>
+
+      <!-- ===== SECTION 7 ===== -->
+      <h2 id="quickfire">7. Quick-fire prep: 5 Capital questions</h2>
+
+      <p>Answer each in 60 seconds or less. The answer shouldn't take longer than that.</p>
+
+      <div class="space-y-4 my-6">
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-graphite);">Q: Why would a merchant choose Stripe Capital over a bank loan?</p>
+          <div class="card !p-4" style="background: var(--color-primary-soft);">
+            <p class="text-sm !my-0" style="color: var(--color-stone);">Speed, no collateral, no fixed monthly payments, revenue-based repayment (slow month = slow repayment), already embedded in the Dashboard — no separate application or bank visit.</p>
+          </div>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-graphite);">Q: What's Stripe's moat in lending?</p>
+          <div class="card !p-4" style="background: var(--color-primary-soft);">
+            <p class="text-sm !my-0" style="color: var(--color-stone);">First-party transaction data = the best risk signal in the market. Stripe knows a merchant's real revenue, growth rate, seasonal patterns, and chargeback history before approving anything. Banks don't have this.</p>
+          </div>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-graphite);">Q: How does Capital align incentives with merchants?</p>
+          <div class="card !p-4" style="background: var(--color-primary-soft);">
+            <p class="text-sm !my-0" style="color: var(--color-stone);">Stripe only gets repaid when the merchant earns. If the merchant fails, the advance write-off is Stripe's loss. This forces Stripe to lend only to merchants likely to succeed — incentives are structurally aligned, not just contractually.</p>
+          </div>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-graphite);">Q: How does Capital differ from Shopify Capital or Square Capital?</p>
+          <div class="card !p-4" style="background: var(--color-primary-soft);">
+            <p class="text-sm !my-0" style="color: var(--color-stone);">Same structure (revenue-based advances), different distribution. Stripe's advantage is breadth (developer ecosystem across every vertical) and enterprise reach (large platforms on Stripe Connect). Shopify Capital is e-commerce only; Square is IRL-commerce heavy.</p>
+          </div>
+        </div>
+        <div class="card !p-5">
+          <p class="font-bold mb-2" style="color: var(--color-graphite);">Q: If Capital had one thing to fix, what would it be?</p>
+          <div class="card !p-4" style="background: var(--color-primary-soft);">
+            <p class="text-sm !my-0" style="color: var(--color-stone);">Geographic availability. Capital is limited to a handful of markets. Most Stripe merchants globally can't access it. The constraint is credit licensing, not product capability. The right fix is regulatory strategy + market prioritisation, not engineering.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card !p-5 mt-10" style="background: var(--color-primary-soft);">
+        <p class="font-bold mb-2" style="color: var(--color-primary);">🏰 Built by Rook — 20 May 2026</p>
+        <p class="text-sm !my-0" style="color: var(--color-stone);">Pre-interview domain dossier for Diego's Stripe Capital PM interview on Friday 22 May 2026. Covers business economics layer only — pair with the <a href="/stripe-product-sense" class="underline" style="color: var(--color-primary);">Product Sense dossier</a> and <a href="/stripe-product-sense-reps" class="underline" style="color: var(--color-primary);">Worked Examples</a> for full prep.</p>
+      </div>
+
+    </div>
+  </div>
+
+</LightLayout>

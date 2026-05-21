@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="RFC: message tool" description="Explicit reply contract via a message() tool. Resolves thinking-as-reply at the design level.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-20 pb-16">
+    <div class="mb-8">
+      <p class="text-amber-400 font-medium mb-2">2026-05-21 · Draft, awaiting Diego's review</p>
+      <h1 class="text-3xl md:text-4xl font-black text-white leading-tight">
+        RFC: <code class="text-amber-300">message</code> tool — explicit reply contract
+      </h1>
+      <p class="text-lg text-gray-400 mt-4 leading-relaxed">
+        Make the user-facing reply explicit. Anything the model wants Diego to see goes through a <code>message()</code> tool call; everything else stays internal. Resolves the thinking-as-reply class of bugs at the design level instead of post-hoc regex.
+      </p>
+    </div>
+
+    <div class="prose-factory">
+
+      <p><strong>Targets:</strong> <code>raw_runner.py</code>, <code>cron_runner.py</code>, all orienters, all cron prompts.<br>
+      <strong>Related:</strong> thinking-as-reply incident 14 may; bedtime-story log mess 20 may; cuentos heads-up incident 19 may.<br>
+      <strong>Inspired by:</strong> OpenClaw release patterns (May 2026), message_tool opt-in (Fixes #81598).</p>
+
+      <hr>
+
+      <h2>Problem</h2>
+      <p>Today the user-facing reply is <strong>implicit</strong>: whatever text the model produces in its final assistant block is sent to Telegram. This conflates four different things the model legitimately does:</p>
+      <ol>
+        <li><strong>Reasoning</strong> ("let me check the log, the model probably did X")</li>
+        <li><strong>Tool narration</strong> ("voy a tirar grep ahora")</li>
+        <li><strong>Intermediate findings</strong> ("ok, encontrado el bug")</li>
+        <li><strong>The actual reply</strong> ("hecho, esto era. ¿siguiente?")</li>
+      </ol>
+      <p>The model is told via orienter "your raw text goes to Telegram", so it tries to filter (3) and (4) from (1) and (2) by force of will. It mostly succeeds, but:</p>
+      <ul>
+        <li><strong>Long tool chains drift</strong> (Pass-B in cuentos, "I have the full picture" in bedtime-story 20 may).</li>
+        <li><strong>Filter regex is fragile</strong> — 6 fires since 15 may, 3 of them false positives suppressing legitimate replies. Diego sees "Perdona, se me ha mezclado el razonamiento" when the reply was fine.</li>
+        <li><strong>Crons have no filter at all</strong> because <code>cron_runner.py</code> doesn't share the safety net.</li>
+        <li><strong>Multi-message turns are unnatural</strong> — model has to cram start + middle + end into a single final text, or use the progress-bar script imperatively (which it sometimes forgets).</li>
+      </ul>
+
+      <h2>Proposal</h2>
+      <p>Add an explicit <code>message</code> tool. Anything the model wants the user to see goes through this tool. Anything else (reasoning, internal tool narration) stays invisible.</p>
+
+      <h3>Tool contract (draft)</h3>
+      <pre><code>{`{
+  "name": "message",
+  "description": "Send a user-facing message. Anything you DO NOT call this tool with stays internal to your reasoning. Use this for every piece of text the user should see, including acknowledgments, progress, final answers.",
+  "input_schema": {
+    "type": "object",
+    "required": ["text"],
+    "properties": {
+      "text": { "type": "string" },
+      "action": {
+        "type": "string",
+        "enum": ["send", "edit", "delete"],
+        "default": "send"
+      },
+      "message_id": { "type": "integer" },
+      "kind": {
+        "type": "string",
+        "enum": ["reply", "progress", "ack"],
+        "default": "reply"
+      }
+    }
+  }
+}`}</code></pre>
+
+      <h3>Runner behaviour change</h3>
+      <p><strong>Before:</strong> <code>raw_runner</code> extracts <code>text</code> from the last assistant block, sends as Telegram message.</p>
+      <p><strong>After:</strong> <code>raw_runner</code> sends nothing by default. Each <code>message</code> tool call → Telegram action. Tool returns <code>{"{ ok: true, message_id: N }"}</code> so the model can chain edit/delete.</p>
+
+      <h3>What happens if the turn ends with NO <code>message</code> call?</h3>
+      <ul>
+        <li><strong>(A) Strict.</strong> Send nothing. Log a warning. Model is responsible.</li>
+        <li><strong>(B) Fallback.</strong> If turn ends with no message call AND the final block has text, send it as before (legacy path).</li>
+        <li><strong>(C) Hybrid.</strong> Like A in interactive chats; like B in crons (because cron prompts will take time to migrate).</li>
+      </ul>
+      <p>My recommendation: <strong>(C) Hybrid</strong>, switching to A globally once all crons are migrated.</p>
+
+      <h2>Open questions for Diego</h2>
+      <ol>
+        <li><strong>Tool naming.</strong> <code>message</code> is generic. Alternatives: <code>say</code>, <code>reply</code>, <code>tell_user</code>, <code>notify</code>. I lean <code>message</code> (matches Telegram terminology, matches the existing tg-progress script).</li>
+        <li><strong>Edit/delete in scope from day 1?</strong> Or ship send-only first and add edit later? My lean: ship <code>send</code> only in v1. Add <code>edit</code>/<code>delete</code> in v1.1 when we replace the progress-bar shell-out.</li>
+        <li><strong>Per-message kind?</strong> Is <code>kind=reply|progress|ack</code> useful, or premature? My lean: drop it from v1. Add when we know what behaviour differs.</li>
+        <li><strong>Fallback policy.</strong> A, B, or C above?</li>
+        <li><strong>Files/audio/images directly via this tool?</strong> Today those go via <code>telegram-send-file.py</code> and <code>tts-send.py</code>. My lean: keep separate for v1. Don't bundle.</li>
+        <li><strong>Migration order.</strong> Interactive chats first (raw_runner) then crons? Or vice versa? My lean: raw_runner first — it's where the filter lives today, immediate value. Crons inherit when we extend.</li>
+        <li><strong>Telemetry.</strong> Should <code>message</code> calls show up in the existing per-turn telemetry (<code>elapsed_ms</code>, <code>reply_chars</code>, <code>tool_calls</code>)? Almost certainly yes. Worth deciding now so v1 logs the right shape.</li>
+      </ol>
+
+      <h2>Implementation plan</h2>
+      <h3>Phase 1 (raw_runner, this weekend)</h3>
+      <ul>
+        <li>Add <code>message</code> to tool registry, gated by env flag <code>RAW_RUNNER_MESSAGE_TOOL=1</code>.</li>
+        <li>Implement send-only (no edit/delete yet).</li>
+        <li>Fallback policy = B (legacy text-as-reply still works when flag is off OR when model doesn't call the tool).</li>
+        <li>Test against Workshop topic only.</li>
+      </ul>
+      <h3>Phase 2 (orienter rewrite, after Phase 1 is stable for ~3 days)</h3>
+      <ul>
+        <li>Update orienter to teach the model the new contract.</li>
+        <li>Update SOUL.md "Communication Style" section.</li>
+        <li>Flip flag globally for interactive chats.</li>
+        <li>Keep fallback B for crons.</li>
+      </ul>
+      <h3>Phase 3 (cron migration, weeks 2–4)</h3>
+      <ul>
+        <li>One cron at a time, starting with the noisiest (<code>bedtime-story</code>, then <code>morning-briefing</code>, then the rest).</li>
+        <li>Each cron's prompt updated to call <code>message()</code> for user-facing content.</li>
+        <li>Once a cron is migrated, its fallback policy moves to A (strict).</li>
+      </ul>
+      <h3>Phase 4 (cleanup, week 5)</h3>
+      <ul>
+        <li>Remove the thinking-as-reply regex filter entirely.</li>
+        <li>Remove legacy text-as-reply path from runner.</li>
+        <li>Switch fallback to A globally.</li>
+      </ul>
+
+      <h2>Out of scope for v1</h2>
+      <ul>
+        <li>File/audio/image bundling (separate tools).</li>
+        <li>Cross-chat messaging (<code>message</code> always targets the current chat).</li>
+        <li>Scheduled/delayed messages.</li>
+        <li>Reactions, replies-to-specific-messages (could be added later via <code>reply_to_message_id</code>).</li>
+      </ul>
+
+      <h2>Risks &amp; mitigations</h2>
+      <ul>
+        <li><strong>Silent regression in crons.</strong> Watchdog rule: "cron run completed without any <code>message()</code> call" → alert to Workshop. Existing watchdog catches crashes, not silences.</li>
+        <li><strong>Orienter bloat.</strong> Adding contract description costs ~300 tokens per turn. Put it in the cached static prefix of system prompt; only the dynamic tail (today's date, recent memory) varies.</li>
+        <li><strong>Model forgets to call the tool.</strong> Explicit examples in orienter, plus fallback policy B during transition.</li>
+        <li><strong>Migration drag.</strong> 22 productive crons all need their prompts updated. Phased migration, only touch a cron when it's already misbehaving or when we want its output cleaner.</li>
+      </ul>
+
+      <h2>Decision point</h2>
+      <p>Diego: read this, comment via Telegram. Once questions 1–7 are resolved, I implement Phase 1 against Workshop.</p>
+    </div>
+  </section>
+</Layout>

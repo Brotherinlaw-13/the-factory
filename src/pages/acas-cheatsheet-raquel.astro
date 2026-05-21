@@ -2,7 +2,7 @@
 import LightLayout from '../layouts/LightLayout.astro';
 ---
 
-<LightLayout title="ACAS Cheatsheet — Raquel" description="Guion práctico para la primera llamada del conciliator de ACAS. Referencia R194247/26.">
+<LightLayout title="ACAS Cheatsheet — Raquel" description="Lo que ACAS te pide preparar + guion para la primera llamada. Referencia R194247/26.">
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 md:pt-20 pb-6">
     <div class="flex items-center gap-3 mb-4">
@@ -12,110 +12,512 @@ import LightLayout from '../layouts/LightLayout.astro';
           <h1 class="text-3xl md:text-4xl font-black" style="color: var(--color-graphite);">ACAS Cheatsheet</h1>
           <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style="background: var(--color-primary-soft); color: var(--color-primary);">R194247/26</span>
         </div>
-        <p class="font-medium mt-1" style="color: var(--color-primary);">Para Raquel · primera llamada conciliator</p>
+        <p class="font-medium mt-1" style="color: var(--color-primary);">Para Raquel · preparación + primera llamada</p>
       </div>
     </div>
 
     <div class="rounded-xl p-5 mb-6" style="background: #fef3c7; border: 1px solid #fcd34d;">
       <p class="font-bold mb-2" style="color: #92400e;">🎯 Regla de oro</p>
       <p class="text-sm leading-relaxed" style="color: #78350f;">
-        Esta llamada <strong>no es una negociación</strong>. Es solo una introducción donde el conciliator se presenta y empieza a entender tu caso. <strong>No tienes que aceptar nada</strong>, ni dar cifras, ni comprometerte a nada. Si te presionan, di: <em>"prefiero pensarlo y volver con mi respuesta por email"</em>.
+        Esta llamada <strong>no es una negociación</strong>. Es solo una introducción donde el conciliator se presenta y empieza a entender tu caso. <strong>No tienes que aceptar nada</strong>, ni rebajar tu cifra, ni comprometerte a nada. Si te presionan, di: <em>"I'd prefer to think about it and come back to you in writing."</em>
+      </p>
+    </div>
+
+    <div class="rounded-xl p-5 mb-6" style="background: #ecfdf5; border: 1px solid #a7f3d0;">
+      <p class="font-bold mb-2" style="color: #065f46;">📋 Lo que ACAS te pide preparar</p>
+      <p class="text-sm mb-2" style="color: #064e3b;">Según la página oficial de ACAS, lo que necesitas tener listo es:</p>
+      <ol class="text-sm space-y-1 ml-4" style="color: #064e3b;">
+        <li><strong>1.</strong> Un resumen del caso con fechas.</li>
+        <li><strong>2.</strong> Cuánto dinero crees que te deben.</li>
+        <li><strong>3.</strong> Cuánto tiempo llevabas en M&S.</li>
+        <li><strong>4.</strong> Las razones que te dio M&S para sus decisiones.</li>
+        <li><strong>5.</strong> Qué hiciste para intentar resolver el problema antes de venir a ACAS.</li>
+        <li><strong>6.</strong> Datos de contacto de M&S (incluido email).</li>
+        <li><strong>7.</strong> Documentos de soporte (los pedirán cuando hagan falta).</li>
+      </ol>
+      <p class="text-sm mt-3" style="color: #064e3b;"><strong>Las secciones de abajo cubren cada uno de estos puntos en orden.</strong> Puedes leer la sección 1 directamente al conciliator, o copiar/pegar y enviárselo por email si te lo pide.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 1. CASE SUMMARY (read/copy to email)                          -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">1 · Tu resumen del caso</h2>
+    <p class="text-sm mb-4" style="color: var(--color-stone);">
+      Esto es para leer al conciliator si te pregunta "<em>can you tell me what happened?</em>", o para copiar y enviar por email si te lo pide. <strong>Escrito en inglés, listo para usar.</strong>
+    </p>
+
+    <div class="rounded-xl p-5" style="background: var(--color-cloud); border: 1px solid var(--color-stone-soft);">
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        I worked at Marks &amp; Spencer for thirteen years, from May 2013 until 3 May 2026, based at the Maidenhead store. My role was Stylist, later treated by M&amp;S as Visual Merchandiser, although I never signed any change of contract.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        For more than three years I worked Monday to Friday with no weekend work. On 9 and 13 April 2026 my line manager Mahnoor Khan told me, in two meetings, that I would have to start working at least one weekend day every two weeks. The reasons M&amp;S gave were "operational requirements" and "the M&amp;S Way". No agreement was reached.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        Beyond the two formal meetings, Mahnoor approached me repeatedly outside any scheduled meeting during this period. She would come into the Visual Merchandising Office, or stop me on the shop floor while I was working, or catch me just before my lunch break, asking if I had "found a solution" or wanted to "have a quick chat". On at least one occasion the purpose of one of these unscheduled approaches was to warn me that she would be sending me the letter of enforcement that day or the following day. These approaches were framed as informal but were in substance further meetings about the same issue.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        On several occasions I told Mahnoor directly that I was struggling and asked whether we could schedule any further discussions on agreed days, because not knowing when the next conversation would happen was making my working day very difficult. The unscheduled approaches continued regardless. I began to actively avoid being in predictable locations at work.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        I was also told that Mahnoor would be going on holiday for two weeks shortly afterwards and would pass my case to another manager during that time. Knowing that I would potentially have to start the conversation again with a different manager who did not know me added significantly to the pressure I was under.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        The justification M&amp;S gave does not match how the role has actually operated. For more than two years before my resignation I was the only Visual Merchandiser in the store, working Monday to Friday with no weekend cover, and the store ran normally. From an operational point of view, visual merchandising work cannot effectively be done on weekends, because that is when customer footfall is highest and the store needs to focus on sales rather than on moving stock and displays around the shop floor. I was also never trained on tills, so it is unclear what work I could have done on weekends in any event.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        On 16 April I sent Mahnoor a <strong>Statutory Flexible Working Request</strong> under the Employment Relations (Flexible Working) Act 2023, asking to keep my Monday to Friday pattern. My family arrangement is that I dedicate weekends to my two young children. Working at weekends would mean missing the only time of the week when I can be fully present for them, which is when both my partner and I are available as a family. I do not have alternative childcare arrangements in place that would replicate that, nor would they substitute for direct parental time. I had also raised the same childcare context verbally with Mahnoor during both of our meetings on 9 and 13 April. Around the same time, I sent a second formal email rejecting the contractual change itself. M&amp;S have not given me a substantive decision on the Flexible Working Request within the two-month statutory time frame.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        On 17 April, Mahnoor sent me a "letter of enforcement" by email to my work account, giving me four weeks' notice to comply with the new weekend working pattern and stating that failure to comply would result in disciplinary action and ultimately dismissal. The same day, Mahnoor also refused a one-day holiday request for 22 April, citing "insufficient notice". This was the first refusal of holiday in my thirteen years at M&amp;S, and it came shortly after I had submitted the Flexible Working Request.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        When I made the holiday request I told Mahnoor only that the reason was personal. Her response, sent by Microsoft Teams, was in substance that she "understood I had a lot of personal matters to attend to, but that I should manage them in my own time". She did not ask what the personal matter was.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        By Sunday 19 April my anxiety had escalated significantly because of the cumulative pressure of the previous weeks. On Monday 20 April I felt unwell enough to call my GP, Dr Mehreen Khan at Claremont Surgery, who signed me off with work-related anxiety. The GP offered me two or three weeks signed off, but I asked for only one week because I wanted to return to work as soon as possible. My colleague, the other Visual Merchandiser at the store, had been off work for around a month and was due back the week I returned. I felt responsible for getting her up to speed on what had happened in her absence and I did not want her to come back to additional pressure on top of her own return to work.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        That same evening, the store manager Kyle called me at home during my medical leave. He suggested I might not be paid, asked me to keep Teams active, requested check-ins every 48 hours, asked when I had called the GP, and said Company Sick Pay would likely be suspended on the basis of section 7 of the Sickness Absence Policy because they considered me to be absent due to "a formal investigation or procedure". I asked him to stop the call; he continued citing "duty of care". M&amp;S have not provided me with the policy despite my request, and have not confirmed what formal procedure they were referring to.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        When my one-week fit note ended and I returned to work on Monday 27 April, the situation had not changed and it became clear to me that I could not continue. I submitted my resignation that same day, citing constructive dismissal. My letter referenced the unilateral contractual change, the holiday refusal, the conduct during my medical leave, the threat to suspend Company Sick Pay, and the impact on my health.
+      </p>
+      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
+        On 28 April my representative sent M&amp;S a without prejudice settlement proposal of £35,000 plus notice pay, contribution to legal fees, an agreed reference, mutual confidentiality and no admission of liability. That remains my current settlement proposal.
+      </p>
+      <p class="text-sm leading-relaxed" style="color: var(--color-graphite);">
+        On 11 May, Josie Wolski from M&amp;S in-house legal responded refusing the proposal and offering to proceed via ACAS Early Conciliation. We opened Early Conciliation on 17 May. My claims are: constructive unfair dismissal, indirect sex discrimination, detriment for asserting a statutory right, and victimisation following a protected act.
       </p>
     </div>
   </section>
+
+  <!-- ============================================================ -->
+  <!-- 2. LIST OF EVENTS WITH DATES                                  -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">2 · Lista de eventos con fechas</h2>
+    <p class="text-sm mb-4" style="color: var(--color-stone);">
+      <strong>Memorízate los 5 hitos clave de la caja morada.</strong> El timeline detallado es backup, por si te pregunta algo concreto.
+    </p>
+
+    <div class="rounded-xl p-5 mb-5" style="background: #f5f3ff; border: 1px solid #ddd6fe;">
+      <p class="font-bold text-sm mb-3" style="color: #5b21b6;">📌 Los 5 hitos que tienes que saber de memoria</p>
+      <ol class="text-sm space-y-2" style="color: #4c1d95;">
+        <li><strong>1. 9 &amp; 13 April 2026 — Two meetings with my line manager Mahnoor Khan.</strong> M&amp;S told me I had to start working weekends, at least one Saturday or Sunday every two weeks, after more than three years of working Monday to Friday. No agreement was reached.</li>
+        <li><strong>2. 16 April — Statutory Flexible Working Request</strong> emailed to Mahnoor, setting out in writing my childcare responsibilities and the family arrangement for weekends. Around the same time, a separate email rejecting the contractual change itself.</li>
+        <li><strong>3. 17 April — Three things happened.</strong> (a) Mahnoor emailed me a <strong>"letter of enforcement"</strong> giving me four weeks to comply with the weekend pattern or face disciplinary action and ultimately dismissal. (b) Same day, Mahnoor refused a one-day holiday request for 22 April, citing "insufficient notice". First refusal of holiday in thirteen years. (c) Mahnoor's Teams reply said in substance that I should <em>"manage personal matters in my own time"</em>, without asking what the matter was.</li>
+        <li><strong>4. 20 April — I was signed off by my GP with work-related anxiety.</strong> The GP offered two or three weeks but I asked for only one because I wanted to return as soon as possible. The same evening, the store manager Kyle called me at home during my medical leave, suggested "no pay", asked me to keep Teams active, did check-ins every 48 hours, and threatened to suspend Company Sick Pay invoking section 7 of the Sickness Absence Policy.</li>
+        <li><strong>5. 27 April — I returned from sick leave and resigned that same day</strong>, citing constructive dismissal. The situation had not changed. <strong>28 April</strong> a without prejudice proposal of £35,000 was sent. <strong>11 May</strong> M&amp;S responded refusing the proposal. <strong>17 May</strong> we opened ACAS Early Conciliation.</li>
+      </ol>
+    </div>
+
+    <details class="rounded-lg p-4" style="background: var(--color-cloud);">
+      <summary class="font-bold text-sm cursor-pointer" style="color: var(--color-graphite);">📜 Timeline detallado (despliega para consultar)</summary>
+      <div class="mt-4 space-y-3 text-sm" style="color: var(--color-stone);">
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">Background (2013-2025)</p>
+          <ul class="ml-4 mt-1 space-y-1">
+            <li>• <strong>May 2013:</strong> joined M&amp;S Maidenhead as Stylist.</li>
+            <li>• <strong>~2021:</strong> M&amp;S said they had lost my contract, offered a new one changing my job title to Visual Merchandiser. I refused to sign. They gave me a pay rise saying acceptance implied the change. I never signed.</li>
+            <li>• <strong>~2022-2023:</strong> I worked as the only VM in the store, Monday to Friday, with no weekend cover.</li>
+            <li>• <strong>~2024-2025:</strong> a second VM joined to cover alternate weekends. I continued Monday to Friday.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">9 April 2026 — first meeting with Mahnoor Khan</p>
+          <p class="ml-4">M&amp;S communicated I had to start working at least one weekend day every two weeks, citing "operational requirements" and "the M&amp;S Way". I raised my childcare responsibilities and explained that weekends are the time I dedicate to my two young children as the primary carer, with no alternative childcare arrangements in place that would substitute for direct parental time. No agreement was reached.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">13 April 2026 — second meeting with Mahnoor Khan</p>
+          <p class="ml-4">Still no agreement. Mahnoor said the next step would be a "letter of enforcement" with four weeks' notice.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">16 April 2026 — Statutory Flexible Working Request + rejection email</p>
+          <p class="ml-4">(1) "Statutory Flexible Working Request" under the Employment Relations (Flexible Working) Act 2023, emailed to Mahnoor on 16 April, asking to keep the Monday to Friday pattern. The reason given in writing: childcare responsibilities for two young children on weekends, with no alternative childcare arrangements in place. (2) Around the same time, "Response to Proposed Changes to Working Pattern" email rejecting the contractual change, referencing Section 4 ERA 1996 and implied contractual term.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">17 April 2026 — letter of enforcement + holiday refused + Teams reply</p>
+          <p class="ml-4">
+            <strong>Letter of enforcement:</strong> Mahnoor sent me a formal email to my work email account titled "letter of enforcement", giving me four weeks' notice to comply with the new weekend working pattern. The email stated that failure to comply would lead to disciplinary action and ultimately dismissal. I no longer have access to my work email, but M&amp;S have the email on their systems.<br/><br/>
+            <strong>Holiday refused:</strong> Same day, I requested one day off for 22 April for personal reasons. Mahnoor refused, citing "insufficient notice". First refusal in thirteen years. The flexible working request was a protected act, this refusal followed it.<br/><br/>
+            <strong>Teams reply about "personal time":</strong> Mahnoor's reply, sent by Microsoft Teams, was in substance that she "understood I had a lot of personal matters to attend to, but that I should manage them in my own time". She did not ask what the personal matter was. M&amp;S have the Teams log on their systems; I no longer have access.
+          </p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">20 April 2026 — GP fit note + Kyle's call</p>
+          <p class="ml-4">Morning: GP Dr Mehreen Khan at Claremont Surgery signed me off with "anxiety", not fit for work, 20-27 April. The GP offered me two or three weeks signed off but I asked for only one week, because I wanted to return as soon as possible. <br/>
+          Evening (17:28): Kyle (store manager) called me during the medical leave. He suggested "no pay", asked me to keep Teams active, requested check-ins every 48 hours, asked when I had called the GP. He invoked section 7 of the Sickness Absence Policy and said Company Sick Pay would likely be suspended because they considered me to be absent due to "a formal investigation or procedure". I asked him to stop the call. He continued citing "duty of care".</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">21 April 2026 — response to Kyle</p>
+          <p class="ml-4">I sent a formal email to Kyle setting out: the cause of my anxiety, my symptoms, my request that contact be limited to flexible working and the policy clarification, and five direct questions about the CSP suspension threat.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">27 April 2026 — return from leave and resignation (same day)</p>
+          <p class="ml-4">I returned to work on Monday 27 April after my one-week fit note ended. The situation had not changed. The same day, I resigned citing constructive dismissal. The letter referenced: unilateral contractual change, refusal of holiday after a protected act, conduct during medical leave, the CSP threat invoking a procedure M&amp;S never produced, and impact on my health.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">28 April 2026 — without prejudice proposal sent</p>
+          <p class="ml-4">A without prejudice settlement proposal was sent to M&amp;S: £35,000 plus notice pay, contribution to legal fees, agreed reference, mutual confidentiality, no admission of liability.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">3 May 2026 — effective date of termination</p>
+          <p class="ml-4">End of employment with M&amp;S.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">11 May 2026 — M&amp;S response</p>
+          <p class="ml-4">Josie Wolski (M&amp;S in-house legal) responded refusing the proposal and offering ACAS Early Conciliation. No counter-offer.</p>
+        </div>
+
+        <div>
+          <p class="font-bold" style="color: var(--color-graphite);">17 May 2026 — ACAS Early Conciliation opened</p>
+          <p class="ml-4">I submitted the ACAS EC form online. Reference R194247/26. This is Day A.</p>
+        </div>
+
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. HOW MUCH MONEY                                             -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">3 · Cuánto dinero reclamas</h2>
+
+    <div class="rounded-lg p-4 mb-4" style="background: var(--color-cloud);">
+      <p class="font-bold text-sm mb-2" style="color: var(--color-graphite);">📌 La frase base (si te pregunta tu cifra)</p>
+      <p class="text-sm leading-relaxed" style="color: var(--color-graphite);">
+        <em>"A without prejudice settlement proposal of £35,000 was sent to M&amp;S on 28 April. That remains my current settlement proposal. It includes notice pay, a contribution to legal fees, an agreed reference, mutual confidentiality and no admission of liability."</em>
+      </p>
+      <p class="text-xs mt-3" style="color: var(--color-stone);">
+        Esa cifra ya está en el expediente de M&amp;S, no es información nueva. <strong>No inventes una cifra nueva</strong>, ni la rebajes por iniciativa propia.
+      </p>
+    </div>
+
+    <div class="rounded-lg p-4 mb-4" style="background: #f5f3ff; border: 1px solid #ddd6fe;">
+      <p class="font-bold text-sm mb-2" style="color: #5b21b6;">📌 Si te pregunta "<em>how did you arrive at that figure?</em>"</p>
+      <p class="text-sm leading-relaxed mb-2" style="color: #4c1d95;">
+        Estructura de tres patas, sin números desglosados:
+      </p>
+      <p class="text-sm leading-relaxed italic" style="color: #4c1d95;">
+        "It reflects three things: the loss of a thirteen-year career and the time it takes to rebuild that, the impact on my health, which is documented in a GP fit note, and the way I was treated after raising a flexible working request, which I'm advised raises discrimination and victimisation concerns. The detailed breakdown is something I'd rather discuss in writing with my representative."
+      </p>
+      <p class="text-xs mt-3" style="color: #5b21b6;">
+        <strong>Por qué funciona:</strong> tres patas dan estructura sin pedantería, "<em>I'm advised</em>" implica asesoramiento sin tener que aclarar quién, y cierras devolviendo a escrito.
+      </p>
+    </div>
+
+    <div class="rounded-lg p-4 mb-4" style="background: #fffbeb; border: 1px solid #fde68a;">
+      <p class="font-bold text-sm mb-2" style="color: #92400e;">📌 Si insiste "<em>can you give me a sense of how it breaks down?</em>"</p>
+      <p class="text-sm leading-relaxed italic" style="color: #78350f;">
+        "It includes loss of earnings, the impact of what happened, and the legal claims I'd otherwise be pursuing. I'd rather not get into specific figures by component on this call, those are best handled in writing."
+      </p>
+    </div>
+
+    <div class="rounded-lg p-4" style="background: #fef2f2; border: 1px solid #fecaca;">
+      <p class="font-bold text-sm mb-2" style="color: #991b1b;">📌 Si vuelve a insistir una tercera vez</p>
+      <p class="text-sm leading-relaxed italic" style="color: #b91c1c;">
+        "I think the proper place for that conversation is in writing, with my representative copied."
+      </p>
+      <p class="text-xs mt-3" style="color: #991b1b;">
+        Tres insistencias = está pescando información. Cierra firme. <strong>No tienes que defender la cifra</strong>; está enviada y sustentada en el expediente. El conciliator es neutral, ni la aprueba ni la rechaza, sólo la transmite.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. LENGTH OF SERVICE                                          -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">4 · Tiempo en M&S</h2>
+    <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+      <p class="text-sm leading-relaxed" style="color: var(--color-graphite);">
+        <em>"Thirteen years. I started in May 2013 and my employment ended on 3 May 2026."</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. REASONS GIVEN BY M&S                                       -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">5 · Las razones que dio M&S</h2>
+    <div class="space-y-3">
+
+      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">Para el cambio de horario:</p>
+        <p class="text-sm mb-3" style="color: var(--color-stone);">
+          <em>"Operational requirements"</em> and <em>"the M&amp;S Way"</em>. M&amp;S did not provide any written justification or business case.
+        </p>
+        <div class="rounded p-3 mb-3" style="background: #f5f3ff; border-left: 3px solid #8b5cf6;">
+          <p class="text-xs font-bold mb-1" style="color: #5b21b6;">↪ Contra-argumento (si quieres mencionarlo):</p>
+          <p class="text-xs leading-relaxed" style="color: #4c1d95;">
+            For more than two years before my resignation I was the only Visual Merchandiser in the store, working Monday to Friday with no weekend cover, and the store ran normally. Visual merchandising work cannot effectively be done on weekends because that is when customer footfall is highest and the store needs to focus on sales rather than on moving stock and displays. I was also never trained on tills.
+          </p>
+        </div>
+        <div class="rounded p-3 mb-3" style="background: #fef2f2; border-left: 3px solid #dc2626;">
+          <p class="text-xs font-bold mb-1" style="color: #991b1b;">↪ El cambio no era una propuesta, era una imposición:</p>
+          <p class="text-xs leading-relaxed" style="color: #b91c1c;">
+            On 17 April, Mahnoor emailed me a "letter of enforcement" giving me four weeks' notice to comply with the new weekend pattern, and warning that failure to comply would lead to disciplinary action and ultimately dismissal. This made clear the change was being imposed under threat of dismissal, not negotiated.
+          </p>
+        </div>
+        <div class="rounded p-3 mb-3" style="background: #fffbeb; border-left: 3px solid #d97706;">
+          <p class="text-xs font-bold mb-1" style="color: #92400e;">↪ Y no fueron sólo las dos reuniones formales:</p>
+          <p class="text-xs leading-relaxed" style="color: #b45309;">
+            Beyond the two formal meetings, my line manager approached me repeatedly in informal settings (VM Office, shop floor, before lunch break) asking for "a solution" and framing these as informal chats. I told her directly that this was causing me distress and asked her to schedule any further discussions on agreed days. The unscheduled approaches continued. I was also told she was due to go on holiday for two weeks and would hand my case to another manager, which added further uncertainty.
+          </p>
+        </div>
+        <div class="rounded p-3" style="background: #fef2f2; border-left: 3px solid #dc2626;">
+          <p class="text-xs font-bold mb-1" style="color: #991b1b;">↪ M&amp;S knew the reason from 16 April onwards (knowledge requirement):</p>
+          <p class="text-xs leading-relaxed" style="color: #b91c1c;">
+            My Statutory Flexible Working Request to Mahnoor on 16 April set out in writing that I had childcare responsibilities for my two young children on weekends, no alternative childcare arrangements in place, and that working at weekends was not feasible for me due to those caring responsibilities. I had also raised the same context verbally with Mahnoor in our meetings of 9 and 13 April. The letter of enforcement threatening disciplinary action and dismissal was sent on 17 April, <strong>one day after</strong> this request. The same fact pattern is the basis of my indirect sex discrimination claim under section 19 of the Equality Act 2010.
+          </p>
+        </div>
+      </div>
+
+      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">Para refusar las vacaciones del 22 April:</p>
+        <p class="text-sm mb-3" style="color: var(--color-stone);">
+          <em>"Insufficient notice"</em>. First time in thirteen years a holiday request was refused.
+        </p>
+        <div class="rounded p-3" style="background: #fef2f2; border-left: 3px solid #dc2626;">
+          <p class="text-xs font-bold mb-1" style="color: #991b1b;">↪ Contra-argumento:</p>
+          <p class="text-xs leading-relaxed" style="color: #b91c1c;">
+            Mahnoor also told me by Microsoft Teams, in substance, that she "understood I had a lot of personal matters to attend to, but that I should manage them in my own time". She did not ask what the personal matter was. After thirteen years with no holiday refusals, and shortly after I had submitted a Statutory Flexible Working Request (a protected act), this response was not consistent with how the same request would have been handled before.
+          </p>
+        </div>
+      </div>
+
+      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">Para la amenaza de suspender Company Sick Pay:</p>
+        <p class="text-sm" style="color: var(--color-stone);">
+          Section 7 of the Sickness Absence Policy, on the basis that I was absent due to <em>"a formal investigation or procedure"</em>. M&amp;S have not provided me the policy and have not confirmed what formal procedure they were referring to.
+        </p>
+      </div>
+
+      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">Para el contacto durante la baja médica:</p>
+        <p class="text-sm" style="color: var(--color-stone);">
+          <em>"Duty of care"</em>.
+        </p>
+      </div>
+
+      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">Para la respuesta del 11 May al W/P:</p>
+        <p class="text-sm" style="color: var(--color-stone);">
+          M&amp;S refused the without prejudice proposal of £35,000. They did not provide a counter-offer. They offered to proceed via ACAS Early Conciliation. No admission of liability.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. WHAT YOU DID TO TRY TO RESOLVE                             -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">6 · Qué hiciste para resolver antes de ACAS</h2>
+    <p class="text-sm mb-4" style="color: var(--color-stone);">
+      ACAS valora que hayas intentado resolver el problema internamente antes de venir. <strong>Hiciste mucho.</strong>
+    </p>
+    <div class="rounded-lg p-4 space-y-2" style="background: var(--color-cloud);">
+      <ul class="text-sm space-y-2" style="color: var(--color-graphite);">
+        <li>✓ <strong>Two meetings with my line manager</strong> (9 and 13 April) to discuss the proposed change.</li>
+        <li>✓ <strong>Verbal requests to my line manager</strong> on several occasions to schedule any further discussions on agreed days, because the unscheduled informal approaches were causing me distress.</li>
+        <li>✓ <strong>Formal email rejecting the contractual change</strong> (around 14 April) explaining my position and referencing my legal rights.</li>
+        <li>✓ <strong>Statutory Flexible Working Request</strong> (16 April) asking to keep the Monday to Friday pattern, setting out in writing my childcare responsibilities for our two young children on weekends.</li>
+        <li>✓ <strong>Formal email to the store manager</strong> on 21 April asking five direct questions about the CSP suspension threat and requesting a copy of section 7 of the Sickness Absence Policy.</li>
+        <li>✓ <strong>Resignation letter on 27 April</strong> setting out in detail the breaches of contract and trust and confidence.</li>
+        <li>✓ <strong>Without prejudice settlement proposal sent on 28 April</strong> through a representative, offering to resolve the matter without litigation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. CONTACT DETAILS                                            -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">7 · Contacto en M&S</h2>
+    <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+      <p class="text-sm mb-2" style="color: var(--color-graphite);">
+        Pásale al conciliator estos datos:
+      </p>
+      <ul class="text-sm space-y-1 ml-4" style="color: var(--color-graphite);">
+        <li>• <strong>Name:</strong> Josie Wolski</li>
+        <li>• <strong>Role:</strong> M&amp;S in-house legal</li>
+        <li>• <strong>Email:</strong> <code style="background: #fef3c7; padding: 2px 6px; border-radius: 4px;">Josie.x.Wolski@marks-and-spencer.com</code></li>
+        <li>• <strong>Company legal name:</strong> Marks and Spencer plc</li>
+        <li>• <strong>Address:</strong> Waterside House, 35 North Wharf Road, London W2 1NW</li>
+      </ul>
+      <p class="text-xs mt-3" style="color: var(--color-stone);">
+        Josie respondió a nuestra W/P el 11 de mayo, es el contacto activo del caso.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. SUPPORTING DOCUMENTS                                       -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">8 · Documentos que tienes listos</h2>
+    <p class="text-sm mb-4" style="color: var(--color-stone);">
+      ACAS te dice que <strong>el conciliator los pedirá cuando los necesite</strong>. No tienes que mandarlos por iniciativa propia. Estos son los que tienes archivados:
+    </p>
+    <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+      <ul class="text-sm space-y-2" style="color: var(--color-graphite);">
+        <li>📄 <strong>GP fit note</strong> (Dr Mehreen Khan, Claremont Surgery, 20-27 April 2026, "anxiety, not fit for work").</li>
+        <li>📄 <strong>Email rechazando el cambio contractual</strong> (a Mahnoor, ~14 April, "Response to Proposed Changes to Working Pattern").</li>
+        <li>📄 <strong>Statutory Flexible Working Request</strong> (a Mahnoor, <strong>16 April 2026</strong>, screenshot disponible). Contiene la petición de mantener el patrón L-V, las razones de childcare y el plazo estatutario de 2 meses para la decisión.</li>
+        <li>📄 <strong>Letter of enforcement de Mahnoor</strong> (email a Raquel work account, 17 April 2026, four weeks' notice + threat of disciplinary action and dismissal). M&amp;S la tienen en sus sistemas; Raquel ya no tiene acceso al work email.</li>
+        <li>📄 <strong>Microsoft Teams exchange Raquel ↔ Mahnoor</strong> (17 April 2026), refusing holiday for 22 April citing "insufficient notice" and stating in substance that personal matters should be managed in personal time. M&amp;S tienen el Teams log en sus sistemas; Raquel ya no tiene acceso a su M&amp;S Teams account.</li>
+        <li>📄 <strong>Email del 21 April al store manager Kyle</strong> con las 5 preguntas sobre CSP.</li>
+        <li>📄 <strong>Resumen escrito de la llamada del 20 April</strong> que Kyle envió tras la llamada.</li>
+        <li>📄 <strong>Resignation letter del 27 April</strong> citando constructive dismissal.</li>
+        <li>📄 <strong>Without prejudice proposal del 28 April</strong> con todos los términos.</li>
+        <li>📄 <strong>Respuesta de Josie Wolski del 11 May</strong> refusando la propuesta.</li>
+        <li>📄 <strong>Diary of events</strong> (la cronología completa documentada).</li>
+      </ul>
+      <p class="text-xs mt-3" style="color: var(--color-stone);">
+        Si el conciliator pide cualquiera de estos, lo mandamos por email. <strong>No hace falta mandar nada hasta que los pidan.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DIVIDER                                                       -->
+  <!-- ============================================================ -->
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
+    <div class="rounded-xl p-5" style="background: #1e293b; color: white;">
+      <p class="font-bold text-sm mb-2">📞 A partir de aquí: cómo hablar en la llamada</p>
+      <p class="text-sm leading-relaxed opacity-90">
+        Lo de arriba son los <strong>materiales</strong>. Lo de abajo es <strong>cómo manejarte</strong> cuando descuelgues el teléfono: la apertura, las frases para cuando pregunten cosas concretas, qué no decir, y cómo gestionar la presión.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CALL HANDLING (was previously the whole document)             -->
+  <!-- ============================================================ -->
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
     <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Antes de coger el teléfono</h2>
     <div class="space-y-3">
       <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">✅ Ten a mano</p>
-        <ul class="text-sm space-y-1 list-disc pl-5" style="color: var(--color-stone);">
-          <li>Tu referencia: <strong>R194247/26</strong></li>
-          <li>Esta página abierta en el móvil</li>
-          <li>Bolígrafo y papel para apuntar el nombre del conciliator, su email y número directo</li>
-          <li>Un sitio tranquilo, sin niños cerca, donde puedas hablar 15-20 min</li>
+        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">📝 Ten a mano</p>
+        <ul class="text-sm space-y-1" style="color: var(--color-stone);">
+          <li>• Este documento abierto en el móvil o impreso.</li>
+          <li>• Bolígrafo y papel para apuntar nombre del conciliator, email directo y próximos pasos.</li>
+          <li>• Un vaso de agua. En serio.</li>
+          <li>• Espacio tranquilo, sin niños alrededor.</li>
         </ul>
       </div>
       <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">📵 Si te pilla mal el momento</p>
+        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">⏰ Si te pilla mal el momento</p>
         <p class="text-sm" style="color: var(--color-stone);">
-          Totalmente legítimo decir: <em>"This isn't a good time, can we book a call for [día/hora]?"</em>. No pasa nada. Es mejor llamar tú con cabeza fría que contestar en caliente.
+          Puedes decir: <em>"I'm not in a position to talk now, can we schedule a call for tomorrow morning?"</em> El conciliator es flexible, no tiene problema en agendar.
         </p>
       </div>
     </div>
   </section>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
-    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Apertura · cómo te presentas</h2>
-    <div class="rounded-xl p-5" style="background: var(--color-primary-soft); border: 1px solid rgba(139,92,246,0.2);">
-      <p class="text-sm italic leading-relaxed" style="color: var(--color-graphite);">
-        "Hi, thank you for calling. Yes, I'd prefer this call to be in English, though I may take a moment to think before answering some questions. I want to be careful with my words on a matter this important. Could you start by telling me your name, your direct email, and how the process will work from here?"
+    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Apertura de la llamada</h2>
+    <div class="rounded-lg p-4" style="background: var(--color-primary-soft);">
+      <p class="font-bold text-sm mb-2" style="color: var(--color-primary);">Después del saludo:</p>
+      <p class="text-sm italic" style="color: var(--color-graphite);">
+        "Thank you for calling. Before we start, could you tell me your name and direct email, so I can follow up in writing if needed? English is fine, but Spanish is my first language and I get nervous on calls. I may ask for key points to be confirmed in writing."
+      </p>
+      <p class="text-xs mt-3" style="color: var(--color-stone);">
+        Esto te baja la presión del idioma, pide su email directo de entrada (importante), y deja claro que prefieres escrito. No es debilidad, es organización.
       </p>
     </div>
-    <p class="text-xs mt-2" style="color: var(--color-stone);">
-      Esto consigue tres cosas: (1) marcas que el inglés no es tu lengua materna sin victimizarte, (2) te das permiso a pensar antes de responder, (3) le pasas la pelota a ellos para que hablen primero.
-    </p>
-  </section>
-
-  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
-    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Tu caso en 60 segundos</h2>
-    <p class="text-sm mb-3" style="color: var(--color-stone);">Si te pide que le cuentes qué pasó, esta es la versión corta. Apréndetela.</p>
-    <div class="rounded-xl p-5" style="background: var(--color-cloud); border-left: 4px solid var(--color-primary);">
-      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
-        "I worked at the Maidenhead M&S store as a stylist from 2013 until I had to resign on 3rd May 2026, after thirteen years."
-      </p>
-      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
-        "For more than three years I worked Monday to Friday, which had become my established pattern. In early 2026 the store began pressuring me to work weekends, which I cannot do because of my childcare responsibilities."
-      </p>
-      <p class="text-sm leading-relaxed mb-3" style="color: var(--color-graphite);">
-        "I raised my concerns and submitted a flexible working request, but the pressure continued. The stress made me unwell and my GP signed me off with work-related anxiety."
-      </p>
-      <p class="text-sm leading-relaxed" style="color: var(--color-graphite);">
-        "When I came back, nothing had changed. I felt I had no realistic option but to resign. I believe this amounts to constructive dismissal and indirect sex discrimination, because the requirement disadvantages women with primary childcare responsibilities."
-      </p>
-    </div>
-    <p class="text-xs mt-2" style="color: var(--color-stone);">
-      4 párrafos, ~90 segundos hablado despacio. Si te interrumpe con preguntas, perfecto, contesta y vuelves al hilo cuando puedas.
-    </p>
   </section>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
     <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Lo que SÍ puedes decir</h2>
     <div class="space-y-3">
+
       <div class="rounded-lg p-4" style="background: #ecfdf5; border: 1px solid #a7f3d0;">
-        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Estás abierta a settlement</p>
-        <p class="text-sm" style="color: #047857;">
-          <em>"I'm open to reaching a settlement that reflects the seriousness of what happened."</em> Esto le dice al conciliator que vale la pena trabajar el caso.
+        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Sobre el caso</p>
+        <p class="text-sm" style="color: #064e3b;">
+          <em>"I'm open to settling this through ACAS. I sent a without prejudice proposal on 28 April. M&S responded on 11 May refusing it and offered to proceed through ACAS Early Conciliation, which we opened on 17 May. I'm here to engage constructively and see if a settlement can be reached."</em>
         </p>
       </div>
+
       <div class="rounded-lg p-4" style="background: #ecfdf5; border: 1px solid #a7f3d0;">
-        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ M&S ya respondió</p>
-        <p class="text-sm" style="color: #047857;">
-          <em>"M&S responded to our without prejudice letter on 11th May through Jo Wolski, denying liability but agreeing to engage through ACAS."</em>
+        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Sobre tu posición</p>
+        <p class="text-sm" style="color: #064e3b;">
+          <em>"I've taken legal advice throughout this process. I'd prefer detailed discussions to happen in writing, with my representative copied."</em>
         </p>
       </div>
+
       <div class="rounded-lg p-4" style="background: #ecfdf5; border: 1px solid #a7f3d0;">
-        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Tienes asesoramiento</p>
-        <p class="text-sm" style="color: #047857;">
-          <em>"I'm being advised on this matter, so I prefer to confirm anything substantive in writing before agreeing."</em> Esto te da margen para consultar antes de responder.
+        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Si te pregunta tu cifra</p>
+        <p class="text-sm" style="color: #064e3b;">
+          <em>"A without prejudice settlement proposal was sent to M&S on 28 April. It was for £35,000, together with notice pay, a contribution to legal fees, an agreed reference, mutual confidentiality and no admission of liability. That remains my current settlement proposal. I'd prefer any detailed negotiation to be in writing, because I want to be precise."</em>
         </p>
       </div>
+
       <div class="rounded-lg p-4" style="background: #ecfdf5; border: 1px solid #a7f3d0;">
-        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Preferencia de email</p>
-        <p class="text-sm" style="color: #047857;">
-          <em>"Going forward, could we keep most of our communication by email? It helps me make sure I understand everything precisely."</em>
+        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Si insiste "is that your final figure?"</p>
+        <p class="text-sm" style="color: #064e3b;">
+          <em>"It is my current proposal, not my bottom line. I am open to considering any serious written counteroffer from M&S as part of a full settlement package, but I am not going to negotiate against myself on this call."</em>
         </p>
       </div>
+
+      <div class="rounded-lg p-4" style="background: #ecfdf5; border: 1px solid #a7f3d0;">
+        <p class="font-bold text-sm mb-1" style="color: #065f46;">✅ Si M&S manda oferta oral por el conciliator</p>
+        <p class="text-sm" style="color: #064e3b;">
+          <em>"Thank you. Please ask M&S to put that in writing so I can consider it properly with my representative."</em>
+        </p>
+      </div>
+
+      <div class="rounded-lg p-4" style="background: #f0fdf4; border: 1px solid #86efac;">
+        <p class="font-bold text-sm mb-1" style="color: #166534;">✅ Si te preguntan literalmente por la disponibilidad de tu pareja</p>
+        <p class="text-sm mb-2" style="color: #14532d;">
+          Si el conciliator pregunta algo concreto sobre los viajes o disponibilidad de Diego, contesta así (es 100% cierto y te protege):
+        </p>
+        <p class="text-sm italic ml-3" style="color: #14532d;">
+          "The substantive position is that I am the primary weekend carer in our family. My partner and I arranged our family responsibilities so that weekends are the time I dedicate to our children. That's the core of the request, the arrangement we have at home."
+        </p>
+        <p class="text-sm mt-2" style="color: #14532d;">
+          <strong>Importante:</strong> no expandas más allá de eso. Si insiste preguntando si Diego trabaja fines de semana, responde: <em>"his work occasionally requires weekend availability if something operational comes up, but the core point is the family arrangement, not his schedule"</em>. Devuelve siempre al family arrangement, no a su calendario.
+        </p>
+      </div>
+
     </div>
   </section>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
     <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Lo que NO debes decir</h2>
     <div class="space-y-3">
-      <div class="rounded-lg p-4" style="background: #fef2f2; border: 1px solid #fecaca;">
-        <p class="font-bold text-sm mb-1" style="color: #991b1b;">❌ Nunca des una cifra</p>
-        <p class="text-sm" style="color: #b91c1c;">
-          Si te pregunta <em>"how much are you looking for?"</em>, NO contestes con un número. Di: <em>"I'd rather discuss figures once I've understood M&S's position. What have they indicated?"</em> Devuelve la pregunta.
+      <div class="rounded-lg p-4" style="background: #fffbeb; border: 1px solid #fde68a;">
+        <p class="font-bold text-sm mb-1" style="color: #92400e;">⚠️ No ofrezcas una cifra por iniciativa propia</p>
+        <p class="text-sm" style="color: #78350f;">
+          No vuelques tú un número primero. Si te pregunta directamente "do you have a figure in mind?", referencia la W/P de £35k (sección 3). <strong>Lo que NO haces es inventar una nueva cifra ni rebajar la actual sin que M&S responda primero.</strong>
         </p>
       </div>
       <div class="rounded-lg p-4" style="background: #fef2f2; border: 1px solid #fecaca;">
@@ -133,94 +535,61 @@ import LightLayout from '../layouts/LightLayout.astro';
       <div class="rounded-lg p-4" style="background: #fef2f2; border: 1px solid #fecaca;">
         <p class="font-bold text-sm mb-1" style="color: #991b1b;">❌ No aceptes nada en la llamada</p>
         <p class="text-sm" style="color: #b91c1c;">
-          Si te dice <em>"M&S has offered X, do you accept?"</em>, di: <em>"Thank you, please put that in writing and I'll consider it carefully."</em> Nunca aceptes en directo.
+          Cualquier propuesta, por buena que suene, di: <em>"I need to consider that with my representative and respond in writing."</em>
         </p>
       </div>
       <div class="rounded-lg p-4" style="background: #fef2f2; border: 1px solid #fecaca;">
-        <p class="font-bold text-sm mb-1" style="color: #991b1b;">❌ No firmes nada sin solicitor</p>
+        <p class="font-bold text-sm mb-1" style="color: #991b1b;">❌ No firmes ni acuerdes settlement sin solicitor</p>
         <p class="text-sm" style="color: #b91c1c;">
-          Un settlement agreement requiere asesoramiento legal independiente para ser válido (s.203 ERA). Si llegamos ahí, contratamos solicitor de 1h (£350-750, recuperable de M&S).
+          Si llega a haber acuerdo, <strong>el settlement agreement debe revisarlo un solicitor independiente</strong> (es requisito legal s.203 ERA + s.147 EqA). El coste es recuperable como parte del settlement.
+        </p>
+      </div>
+      <div class="rounded-lg p-4" style="background: #fef2f2; border: 1px solid #fecaca;">
+        <p class="font-bold text-sm mb-1" style="color: #991b1b;">❌ No amplifiques el patrón de viajes de tu pareja</p>
+        <p class="text-sm" style="color: #b91c1c;">
+          El email del 16 April mencionaba "partner's work commitments". <strong>No repitas esa frase como tuya en directo.</strong> Si te preguntan, devuelve siempre al family arrangement (ver caja verde arriba). Tu narrativa hablada es "primary weekend carer + family arrangement", no "mi pareja viaja". El documento habla por sí mismo, tú no lo amplificas.
         </p>
       </div>
     </div>
   </section>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
-    <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Preguntas que probablemente te haga</h2>
-    <div class="space-y-3">
-
-      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">¿"How would you like to resolve this?"</p>
-        <p class="text-sm" style="color: var(--color-stone);">
-          <em>"I'm looking for a fair financial settlement that reflects the loss of a thirteen-year career, plus an agreed reference. I'm willing to listen to what M&S proposes."</em>
-        </p>
-      </div>
-
-      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">¿"Are you open to returning to work?"</p>
-        <p class="text-sm" style="color: var(--color-stone);">
-          <em>"After everything that's happened, including being signed off with work-related anxiety, returning is not realistic. Trust and confidence have broken down."</em>
-        </p>
-      </div>
-
-      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">¿"Have you found new employment?"</p>
-        <p class="text-sm" style="color: var(--color-stone);">
-          <em>"I'm taking time to recover and exploring my options."</em> Punto. No amplíes.
-        </p>
-      </div>
-
-      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">¿"What's your minimum to settle?"</p>
-        <p class="text-sm" style="color: var(--color-stone);">
-          <em>"I'd rather hear M&S's position first before discussing specific figures."</em> Le tocan ellos mover.
-        </p>
-      </div>
-
-      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">¿"How long do you want this to take?"</p>
-        <p class="text-sm" style="color: var(--color-stone);">
-          <em>"I'd prefer to resolve this as quickly as possible, but not at the cost of a fair outcome. I'm prepared to use the full conciliation period if needed."</em>
-        </p>
-      </div>
-
-      <div class="rounded-lg p-4" style="background: var(--color-cloud);">
-        <p class="font-bold text-sm mb-1" style="color: var(--color-graphite);">¿"Would you consider mediation/a meeting with M&S?"</p>
-        <p class="text-sm" style="color: var(--color-stone);">
-          <em>"I'd prefer to keep this through you. I don't want direct contact with M&S at this stage."</em>
-        </p>
-      </div>
-
+    <div class="rounded-xl p-5" style="background: #f5f3ff; border: 1px solid #ddd6fe;">
+      <p class="font-bold text-sm mb-3" style="color: #5b21b6;">🛡️ Las 3 reglas de oro para los nervios</p>
+      <ol class="text-sm space-y-2" style="color: #4c1d95;">
+        <li><strong>1. "In writing, please"</strong> — es tu comodín universal. Cuando dudes, úsalo.</li>
+        <li><strong>2. No llenes silencios.</strong> El conciliator está acostumbrado a pausas. Tú no tienes por qué.</li>
+        <li><strong>3. "I'll consider that with my representative and respond"</strong> — cierra cualquier presión por decidir en la llamada.</li>
+      </ol>
     </div>
   </section>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
     <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Antes de colgar · checklist</h2>
-    <div class="rounded-xl p-5" style="background: var(--color-primary-soft); border: 1px solid rgba(139,92,246,0.2);">
-      <ul class="text-sm space-y-2" style="color: var(--color-graphite);">
-        <li>☐ Has apuntado <strong>su nombre completo</strong></li>
-        <li>☐ Has apuntado <strong>su email directo</strong></li>
-        <li>☐ Has apuntado <strong>su teléfono directo</strong> (no el switchboard)</li>
-        <li>☐ Sabes <strong>cuándo va a contactar a M&S</strong></li>
-        <li>☐ Has confirmado que <strong>la próxima comunicación será por email</strong></li>
-        <li>☐ No has dado ninguna cifra</li>
-        <li>☐ No has aceptado ninguna oferta en directo</li>
-        <li>☐ No has mencionado tu nuevo trabajo</li>
+    <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+      <p class="font-bold text-sm mb-3" style="color: var(--color-graphite);">Antes de despedirte, asegúrate de tener apuntado:</p>
+      <ul class="text-sm space-y-1" style="color: var(--color-graphite);">
+        <li>☐ Nombre del conciliator</li>
+        <li>☐ Email directo del conciliator (no la inbox genérica de ACAS)</li>
+        <li>☐ Teléfono directo del conciliator</li>
+        <li>☐ Próximo paso acordado (¿él contacta a M&S? ¿cuándo te vuelve a llamar?)</li>
+        <li>☐ Cualquier compromiso que hayas hecho (¿mandar algún documento? ¿confirmar algo por email?)</li>
+        <li>☐ Plazo aproximado para la siguiente conversación</li>
       </ul>
+      <p class="text-sm mt-3" style="color: var(--color-stone);">
+        Cierre tipo: <em>"Thank you for the call. I'll wait to hear from you by email once you've spoken to M&S. Speak soon."</em>
+      </p>
     </div>
-    <p class="text-xs mt-3" style="color: var(--color-stone);">
-      Cierre tipo: <em>"Thank you for the call. I'll wait to hear from you by email once you've spoken to M&S. Speak soon."</em>
-    </p>
   </section>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-6">
     <h2 class="text-2xl font-black mb-4" style="color: var(--color-graphite);">Inmediatamente después de colgar</h2>
-    <div class="rounded-xl p-5" style="background: #fef3c7; border: 1px solid #fcd34d;">
-      <ol class="text-sm space-y-2 list-decimal pl-5" style="color: #78350f;">
-        <li><strong>Apúntalo todo</strong> mientras lo recuerdas: qué te preguntó, qué dijiste tú, qué dijo el conciliator sobre M&S, próximos pasos, fechas.</li>
-        <li><strong>Pásamelo a mí o a Diego</strong>. No interpretes nada sola, lo procesamos juntos.</li>
-        <li><strong>No respondas todavía</strong> a ningún email del conciliator que llegue después. Antes me lo enseñas.</li>
-        <li><strong>No contactes a M&S por tu cuenta</strong>, ni siquiera para un detalle pequeño. Todo vía conciliator.</li>
+    <div class="rounded-lg p-4" style="background: var(--color-cloud);">
+      <ol class="text-sm space-y-2" style="color: var(--color-graphite);">
+        <li><strong>1.</strong> Respira. Lo has hecho bien.</li>
+        <li><strong>2.</strong> Apunta inmediatamente todo lo que recuerdes de la llamada: qué te preguntó, qué dijiste, qué dijo M&amp;S (si compartió algo), qué quedó pendiente.</li>
+        <li><strong>3.</strong> Pásanos esa nota a Rook/Diego cuanto antes mientras está fresco.</li>
+        <li><strong>4.</strong> <strong>NO contestes ningún email del conciliator tú sola</strong>. Lo redactamos juntos antes de mandar nada.</li>
       </ol>
     </div>
   </section>
@@ -230,7 +599,7 @@ import LightLayout from '../layouts/LightLayout.astro';
       <p class="text-sm mb-2 opacity-80">Recuerda</p>
       <p class="text-lg font-bold mb-2">Estás en una posición fuerte.</p>
       <p class="text-sm opacity-90 leading-relaxed">
-        Trece años de servicio. Una empresa que no puede producir un contrato firmado. Pattern claro de M-V durante más de tres años. Childcare disparity reconocida por la jurisprudencia.<br/>
+        Trece años de servicio. Pattern claro de M-V durante más de tres años. Childcare disparity reconocida por la jurisprudencia. Ya hay W/P proposal sobre la mesa.<br/>
         <strong>El tiempo juega a tu favor</strong>, no al de M&S.
       </p>
     </div>

@@ -1,0 +1,263 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Los 10 patrones — desarrollados" description="Cada patrón del hub, expandido con ejemplo concreto, contraste con la versión mala, y por qué funciona en Stripe.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">📋</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Los 10 patrones · desarrollados</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Cada uno con ejemplo, contraste y por qué funciona</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">~15 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Material de repaso</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Cómo leer esta página</h3>
+        <p class="!mb-0">Cada patrón tiene tres bloques: <strong>la regla en una frase</strong>, <strong>qué decir mal vs qué decir bien</strong> (es el contraste el que enseña, no el ejemplo bueno solo), y <strong>por qué Stripe puntúa esto</strong>. Léelos despacio, repítelos en voz alta si puedes.</p>
+      </div>
+
+      <h2 class="!mt-10">1. Define usuario primero, justifica</h2>
+      <p><strong>La regla:</strong> antes de hablar de features, métricas, estrategia o cualquier otra cosa, decides quién es tu usuario y explicas <strong>por qué</strong> en una frase. La justificación es lo que distingue elección de adivinanza.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"WhatsApp es para usuarios que quieren mandar mensajes a familia y amigos. Voy a hablar de mejorar la app para ellos."</p>
+      </div>
+      <p>Esto es lo que dice el 80% de los candidatos. Suena razonable pero no es elección, es default. "Familia y amigos" engloba a todos los usuarios de WhatsApp, no segmenta.</p>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Mi primary user es el usuario de 25 a 45 años con un círculo de comunicación principalmente familiar y profesional, no social abierto. Lo elijo porque es el segmento donde WhatsApp tiene retención más fuerte hoy y donde un cambio de producto tiene más palanca. Otros segmentos (adolescentes, mayores de 70) son interesantes pero secundarios para esta conversación."</p>
+      </div>
+      <p>Aquí hay tres cosas: <strong>segmento concreto</strong>, <strong>razón estructural</strong> ("donde hay retención fuerte y palanca"), y <strong>reconocimiento explícito de lo que no eliges</strong>. Esto último es lo que cierra la jugada, demuestra que has considerado alternativas.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Stripe ve esto como prueba de "users first", su primera competencia. Un PM que no sabe identificar a su usuario en frase puntual no va a tomar decisiones de producto coherentes después. <strong>Mejor entrevista pierde el strong yes ahí, en el primer minuto, si no lo haces.</strong></p>
+
+      <hr class="my-10" />
+
+      <h2>2. Sub-segmenta dentro del segmento</h2>
+      <p><strong>La regla:</strong> tu usuario primario no es un bloque homogéneo. Tiene 2-3 sub-segmentos con necesidades distintas. Nombrarlos demuestra granularidad.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"El usuario de Google Maps son personas que necesitan ir de un sitio a otro."</p>
+      </div>
+      <p>Cierto y completamente inútil. Esto te impide tomar decisiones distintas para necesidades distintas.</p>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Dentro del usuario de Google Maps distingo tres sub-segmentos. <strong>El commuter diario</strong>, que conoce la ruta y solo quiere tráfico en tiempo real. <strong>El visitante de ciudad</strong>, que no conoce y necesita orientación, modos de transporte, ETA. <strong>El delivery / profesional</strong>, que hace muchas paradas y necesita optimización de ruta múltiple. Las tres requieren producto distinto aunque todas 'busquen ir de un sitio a otro'."</p>
+      </div>
+      <p>Nota: cada sub-segmento se define por <strong>cómo usa el producto</strong>, no por demografía. "Mujeres de 30-50" no es un sub-segmento útil. "Usuarios que hacen 8+ paradas al día" sí lo es.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Diferencia analista de PM senior. Cualquiera puede decir "el usuario quiere X". Pocos identifican sub-segmentos accionables. Y aún menos toman decisiones de producto diferenciadas según sub-segmento, que es donde demuestras juicio.</p>
+
+      <hr class="my-10" />
+
+      <h2>3. Mapea ecosistema antes que features</h2>
+      <p><strong>La regla:</strong> antes de proponer cambios al producto, sitúa el producto en su ecosistema. Quién más juega (competidores, complementarios, alternativas). De dónde viene el dinero. Qué fuerzas externas mueven la categoría. Esto te impide caer en feature dump.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"Para mejorar Spotify añadiría podcasts personalizados, mejor UI de cola, y compartir colaborativo de playlists."</p>
+      </div>
+      <p>Tres ideas razonables sueltas. Pero, ¿qué problema resuelve cada una? ¿En qué frente compite Spotify? ¿Qué peso tienen labels vs creadores vs oyentes? Sin eso, son features de Pinterest.</p>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Antes de proponer cambios, sitúo Spotify en su ecosistema. Spotify juega en tres tableros simultáneos. <strong>Uno</strong>, atención del oyente, compitiendo con YouTube, TikTok, podcasts independientes. <strong>Dos</strong>, relación con labels, que son sus proveedores y a la vez sus competidores potenciales (Sony+ Music, etc.). <strong>Tres</strong>, atracción de creadores (artistas, podcasters) frente a SoundCloud, Substack audio, plataformas propias. Mis propuestas tienen que ganar en al menos uno de esos tableros sin perder en los otros."</p>
+      </div>
+      <p>Después de esto, cualquier feature que propongas se evalúa contra el tablero al que pertenece. "Podcasts personalizados" pertenece a tablero 1 y 3. "Compartir colaborativo" pertenece a tablero 1. Y ahora la pregunta es: "¿hay tablero al que no estoy atacando?", que es exactamente la pregunta que Stripe quiere que te hagas.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Findings de tu propio reconnaissance: <em>"always start by mapping the ecosystem before proposing solutions"</em>. Es de las primeras cosas que comprueban. <strong>El fail mode típico es saltar a features sin contexto.</strong></p>
+
+      <hr class="my-10" />
+
+      <h2>4. Pick a focus, dilo en voz alta</h2>
+      <p><strong>La regla:</strong> el ejercicio te da espacio amplio. Tú lo acotas. Dices "voy a enfocarme en X" en voz alta, justificas en una frase. Esto demuestra que puedes priorizar.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"Voy a hablar de Netflix en general." [y procede a contar todo]</p>
+      </div>
+      <p>O peor:</p>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"Hay muchos ángulos posibles. Podemos hablar de recomendaciones, de contenido original, de pricing, de internacional..." [y se pierde]</p>
+      </div>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Voy a enfocarme en <strong>la experiencia del usuario casual</strong>, no en el creador, no en el negocio del catálogo. Razón: es donde Netflix está más expuesto a TikTok y donde un cambio de producto tiene retorno más medible a corto plazo. Volveré al creador o al catálogo si me preguntan, pero mi argumento principal va por ahí."</p>
+      </div>
+      <p>Tres elementos: <strong>qué eliges</strong>, <strong>qué no eliges</strong>, <strong>compromiso de no desbordarte</strong>. Lo último es importante. Es lo que separa al PM que estructura del que divaga.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Es prueba de que puedes priorizar bajo restricción. El entrevistador sabe que en 30 minutos no puedes cubrirlo todo. Si intentas, demuestras que no sabes elegir. Si acotas, demuestras juicio.</p>
+
+      <hr class="my-10" />
+
+      <h2>5. Conecta cada decisión con un sub-segmento</h2>
+      <p><strong>La regla:</strong> cuando propones una feature, cambio o estrategia, dices explícitamente <strong>a qué sub-segmento sirve</strong>. Esto evita que las propuestas floten en abstracto.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"Añadiría modo offline a Google Maps."</p>
+      </div>
+      <p>¿Para quién? ¿Por qué? ¿Es la prioridad? Sin conexión a sub-segmento, no se puede evaluar.</p>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Para el <strong>visitante de ciudad</strong> (sub-segmento 2), añadiría modo offline con caché automático de la zona del hotel + lugares marcados. Razón: el visitante muchas veces no tiene plan de datos local, y la fricción de buscar wifi le mata la experiencia. Para el <strong>commuter diario</strong> esta feature no aporta, ya conoce su ruta y tiene datos. Para el <strong>delivery</strong> tampoco, opera siempre online."</p>
+      </div>
+      <p>Lo importante: <strong>nombras quién gana, y quién no</strong>. Eso evita la trampa de proponer features que parecen buenas pero no priorizan.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Demuestra trazabilidad de tu razonamiento. Cualquier decisión de producto puede ser cuestionada con "¿esto a quién sirve?". Si tienes la respuesta lista en cada caso, transmites disciplina.</p>
+
+      <hr class="my-10" />
+
+      <h2>6. Nombra edge cases</h2>
+      <p><strong>La regla:</strong> antes de cerrar tu propuesta, identifica 2-3 casos donde tu solución no funciona bien. Mostrar que has pensado en los límites es lo que distingue propuesta robusta de propuesta naif.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"Y para el ATM de aeropuerto, ofrecería conversión de moneda directamente en el cajero."</p>
+      </div>
+      <p>OK pero, ¿qué pasa cuando la divisa solicitada no la tiene el cajero? ¿Cuando el usuario es residente y no le aplica? ¿Cuando es niño usando tarjeta familiar sin saber cambio de divisas?</p>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Conversión de moneda en cajero, sí. Tres edge cases que tengo que resolver. <strong>Uno</strong>, divisa no disponible en el cajero (cajero solo tiene 5 divisas físicas), respuesta: ofrecer cambio digital a la tarjeta del usuario o redirigir a cajero hermano del aeropuerto. <strong>Dos</strong>, usuario residente que no necesita cambio, respuesta: detectar por tarjeta local y saltar el flujo. <strong>Tres</strong>, transparencia del tipo de cambio (la trampa típica del DCC), respuesta: mostrar siempre el tipo aplicado y el coste vs sin DCC, sin esconderlo."</p>
+      </div>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Edge cases revelan si has pensado el producto en serio o solo el happy path. Y el caso "transparencia del DCC" en particular muestra ética de producto, que en una empresa de pagos es muy valorado.</p>
+
+      <hr class="my-10" />
+
+      <h2>7. Distingue Tiger de Paper Tiger</h2>
+      <p><strong>La regla:</strong> al final de tu propuesta, identifica los riesgos. Pero separa <strong>Tiger</strong> (riesgo real con consecuencia material) de <strong>Paper Tiger</strong> (riesgo que parece grave pero al verlo de cerca no lo es). El segundo tipo es lo que más impresiona porque demuestra pensamiento crítico.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"Los riesgos son escala, regulación, y competencia." [lista genérica que aplica a cualquier producto]</p>
+      </div>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Veo un Tiger y un Paper Tiger. <strong>🐅 Tiger:</strong> coste de hardware. Desplegar 100 cajeros físicos requiere 3M USD en capital antes de la primera transacción. Mitigación: leasing en lugar de compra, o partnership con bancos locales. <strong>📰 Paper Tiger:</strong> 'los pagos contactless están matando al cash, este producto está obsoleto'. Suena plausible pero no resiste al dato: el 40% de pasajeros internacionales aún saca cash al llegar a destino, y crece en mercados emergentes. El Paper Tiger es asunción urbana extrapolada globalmente."</p>
+      </div>
+      <p>El Paper Tiger es la jugada que diferencia. Demuestras que has cuestionado la asunción dominante en la conversación pública. Esto es Critical Thinking puro.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Critical Thinking es de las cuatro competencias de la rúbrica. <strong>El Paper Tiger es la jugada que más sube esa competencia.</strong> Sin él, te quedas en lista de riesgos. Con él, demuestras que cuestionas premisas dadas.</p>
+
+      <hr class="my-10" />
+
+      <h2>8. Cierra con métricas: target + leading/lagging + guard rail</h2>
+      <p><strong>La regla:</strong> nunca cierres una propuesta sin métricas. Y las métricas tienen tres capas. <strong>Target</strong> (la North Star que mide éxito). <strong>Leading</strong> (indicadores tempranos que ves antes del lagging). <strong>Lagging</strong> (resultado final pero a largo plazo). <strong>Guard rail</strong> (lo que no puedes romper aunque mejores el target).</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">"La métrica de éxito sería el revenue."</p>
+      </div>
+      <p>Una métrica abstracta no es plan. ¿Cómo la mides en 3 meses? ¿Qué proxy usas mientras esperas?</p>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Para esta propuesta, las métricas son: <strong>Target:</strong> revenue per transaction × transactions per hour, agregado por cajero. Es la North Star porque incluye salud, experiencia y monetización. <strong>Leading:</strong> tasa de adopción de la nueva feature (modo express) en commuters recurrentes, target 50% en 8 semanas. <strong>Lagging:</strong> revenue total por cajero a 12 meses, target +20%. <strong>Guard rail:</strong> tiempo medio de transacción no supera 15 segundos. Si lo hace, hemos roto la promesa de velocidad y hay que parar."</p>
+      </div>
+      <p>Cuatro elementos: <strong>cómo mides éxito</strong>, <strong>qué ves rápido</strong>, <strong>qué confirma a largo plazo</strong>, <strong>qué no puedes romper</strong>. Esa estructura es la que distingue PM de analista.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Demuestra que piensas en producto como sistema, no como feature. El guard rail en particular muestra madurez. Cualquiera puede subir una métrica sacrificando otra; el PM senior sabe qué no puede sacrificarse.</p>
+
+      <hr class="my-10" />
+
+      <h2>9. Si viene un trasplante: pausa, reconoce, nombra supuestos rotos</h2>
+      <p><strong>La regla:</strong> cuando el entrevistador te lanza un trasplante ("ahora hazlo para mayores de 70", "ahora hazlo en India", "ahora hazlo para niños"), no respondes en caliente. Pausas. Dices que el contexto cambia el problema. Identificas 2+ supuestos que tu propuesta original asumía y que ya no se sostienen. Y entonces rediseñas.</p>
+
+      <h3>❌ Versión mala</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">[Entrevistador: "ahora dime cómo lo harías para usuarios mayores de 70"]<br>
+        "Vale, mantendría las features pero con texto más grande y botones más grandes." [adapta cosméticamente]</p>
+      </div>
+      <p>Esto demuestra que no entiendes que el trasplante es <strong>cambio de contexto, no de tamaño de fuente</strong>.</p>
+
+      <h3>✅ Versión buena</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Vale, déjame pausar antes de adaptar. Para mayores de 70 cambian dos supuestos importantes que mi propuesta original asumía. <strong>Uno</strong>, asumí que el usuario está cómodo con interfaces digitales nativas; para mayores de 70 no es seguro, muchos aprendieron tarde y la familiaridad varía mucho dentro del grupo. <strong>Dos</strong>, asumí que el usuario opera solo; para mayores de 70 muchas veces hay un familiar ayudando, y eso cambia el flujo de UX, hay que diseñar 'para dos personas operando un dispositivo'. Con esos supuestos rotos, mi propuesta cambia en estos puntos..."</p>
+      </div>
+      <p>El patrón es: <strong>pausa explícita</strong>, <strong>nombra supuestos rotos</strong>, <strong>luego rediseña</strong>. La pausa no es solo cortesía, es señal de que piensas antes de hablar. Y nombrar supuestos rotos es lo que demuestra que entiendes la profundidad del cambio.</p>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Los trasplantes son trampa explícita. Si los manejas mal, es señal clarísima de que tu propuesta original era plantilla, no pensamiento. Si los manejas bien, demuestras que tu pensamiento es flexible y profundo. <strong>Es la jugada de mayor diferencial en una entrevista Stripe.</strong></p>
+
+      <hr class="my-10" />
+
+      <h2>10. Si te presionan: reformula con distinción más fina</h2>
+      <p><strong>La regla:</strong> cuando el entrevistador presiona ("pero, ¿no es esto contradictorio?", "¿estás seguro?", "el niño es quien decide, ¿no?"), no defiendes la frase original. La <strong>reformulas con una distinción más fina</strong> que disuelve la aparente contradicción y enseña algo nuevo.</p>
+
+      <h3>❌ Versión mala (defensiva)</h3>
+      <div class="card !p-4 my-3" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;">
+        <p class="!my-0">[Entrevistador: "has dicho que el padre es el primary user, pero si el niño no encuentra divertido el producto se desinstala, ¿no decide el niño en última instancia?"]<br>
+        "Bueno, sí, pero el padre instala y paga, así que sigue siendo el primary." [repite el argumento original sin nada nuevo]</p>
+      </div>
+      <p>Esto pierde al entrevistador porque no abriste una distinción nueva, solo defendiste la frase. Y peor, sugiere que no habías considerado la complicación.</p>
+
+      <h3>✅ Versión buena (con distinción más fina)</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!my-0">[Entrevistador presiona con la misma pregunta]<br>
+        "Buena pregunta, déjame distinguir dos cosas que estoy mezclando. <strong>Consumer</strong> es quien usa el producto, y ahí el niño claramente decide. <strong>Decisor</strong> es quien compra, instala, y mantiene el pago, y ahí el padre decide. Mi diseño tiene que servir a los dos, pero a roles distintos: features divertidas y motivadoras para el consumer (niño), features de control y tranquilidad para el decisor (padre). Las dos figuras tienen voto, no es uno solo. Mi error en la primera respuesta fue colapsar las dos en 'primary user'."</p>
+      </div>
+      <p>Esto es <strong>aprovechar la presión</strong>: la pregunta crítica se convierte en oportunidad de mostrar pensamiento más fino. <strong>Reconoces el error original explícitamente</strong> ("mi error fue..."), lo cual demuestra honestidad intelectual, no debilidad.</p>
+
+      <h3>Otros ejemplos de distinciones finas útiles en Stripe</h3>
+      <ul>
+        <li><strong>Coste por turno vs coste por tarea</strong> (productos agénticos): un turno barato puede ser una tarea cara si requiere 50 turnos.</li>
+        <li><strong>Engagement vs retención</strong>: un producto con engagement alto puede tener retención baja si genera fatiga.</li>
+        <li><strong>Discoverability vs adopción</strong>: que algo se descubra no significa que se adopte; son métricas distintas.</li>
+        <li><strong>Adopción vs uso</strong>: usuarios pueden activar una feature una vez y nunca volver.</li>
+        <li><strong>Producto vs job-to-be-done</strong>: lo que el usuario contrata para hacer no siempre es lo que el producto cree estar haciendo.</li>
+      </ul>
+
+      <h3>Por qué Stripe puntúa esto</h3>
+      <p>Es Critical Thinking aplicado bajo presión real. La rúbrica explícitamente busca candidatos que <strong>no se atrincheran cuando se les desafía</strong>. La capacidad de reformular es lo que separa al PM senior del PM medio.</p>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h2 class="!mt-0">🎯 Una nota final sobre cómo internalizar esto</h2>
+        <p>No intentes memorizar los 10. Memorizar bajo presión falla. Lo que sí funciona:</p>
+        <ul>
+          <li><strong>Léelos en voz alta varias veces.</strong> La memoria muscular del decir es más robusta que la del leer.</li>
+          <li><strong>En cada rep que hagas, marca cuál de los 10 patrones aplicaste y cuál olvidaste.</strong> Esto convierte la lista en checklist post-mortem, no en pre-flight.</li>
+          <li><strong>Tres patrones críticos si vas justo de tiempo:</strong> 3 (mapear ecosistema), 7 (Paper Tiger), 9 (trasplante con supuestos rotos). Son los que más diferencian.</li>
+          <li><strong>Los demás se llenan solos cuando estás cómodo con esos tres.</strong></li>
+        </ul>
+        <p class="!mb-0">El viernes no tienes que ejecutar los 10 cada respuesta. Tienes que ejecutar los que apliquen, con consciencia. La consciencia es lo que entrena esta página.</p>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

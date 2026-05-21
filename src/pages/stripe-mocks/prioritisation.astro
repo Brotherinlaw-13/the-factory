@@ -1,0 +1,151 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Prioritisation · Stripe Product Sense" description="What to say when they ask 'how would you prioritise this?' Answers, frames, and traps to avoid.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Back to hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🎯</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Prioritisation</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">What to say when they ask "how would you prioritise this?"</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 The trap to avoid</h3>
+        <p class="!mb-0">Most candidates hear "prioritise" and reach for <strong>RICE / MoSCoW / Kano</strong> as a recitation. That signals "I read PM books", not "I think like a senior PM". Stripe doesn't want the framework name, they want <strong>the reasoning that produces a ranking</strong>. Frameworks are scaffolding, not the answer.</p>
+      </div>
+
+      <h2>The structural answer (memorise the shape, not the words)</h2>
+
+      <p>Whenever they ask you to prioritise, walk through four moves in this order. The order matters because each move depends on the previous one.</p>
+
+      <ol>
+        <li><strong>State the objective</strong> the prioritisation serves. "Before I rank these, I want to be explicit about what I'm optimising for in this case."</li>
+        <li><strong>Name 2-3 axes</strong> that matter <em>for this specific objective</em>. Not RICE because RICE is generic. Pick axes tied to the product moment.</li>
+        <li><strong>Rank, explaining trade-offs.</strong> Not "A then B then C", but "A first because of X, even though it loses on Y; B second because Z".</li>
+        <li><strong>Name what falls below the line</strong> and why you'd revisit it later (not "never", "later under condition X").</li>
+      </ol>
+
+      <h2>Anchor sentences in English (use them literally)</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"Before I rank these, let me be explicit about what I'm optimising for, because the order changes depending on the goal."</p>
+      </div>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"I'll use three axes here, not RICE, because RICE flattens trade-offs I want to keep visible: <strong>[axis 1]</strong>, <strong>[axis 2]</strong>, <strong>[axis 3]</strong>."</p>
+      </div>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"I'd rank this way, knowing that I'm trading off X for Y. If we're wrong about [assumption], the ranking flips."</p>
+      </div>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0">"What I'm consciously not doing first is [thing]. It's not low value, it's high uncertainty until we've learned from the first wave."</p>
+      </div>
+
+      <h2>Axes to pick depending on the product moment</h2>
+
+      <p>The interviewer's follow-up will probably be "and how did you choose those axes?". Have a default set per situation.</p>
+
+      <h3>If the product is in growth phase (acquisition, retention)</h3>
+      <ul>
+        <li><strong>Leverage on activation funnel</strong> (which step has the biggest drop, what unlocks the most users).</li>
+        <li><strong>Reversibility</strong> (can we ship it, test, and roll back cheaply, or is it a one-way door?).</li>
+        <li><strong>Cost to learn</strong> (how much do we know after shipping? A/B testable in 2 weeks vs needs 6 months of signal).</li>
+      </ul>
+
+      <h3>If the product is mature (efficiency, expansion)</h3>
+      <ul>
+        <li><strong>Revenue impact</strong> (concentrated by segment: which 10% of users move 80% of the metric).</li>
+        <li><strong>Operational risk</strong> (what breaks if this fails: just this feature, the whole product, customer trust).</li>
+        <li><strong>Strategic positioning</strong> (does it defend a moat, attack a competitor, open a new market).</li>
+      </ul>
+
+      <h3>If the product has a hard constraint (regulation, infra, ethics)</h3>
+      <ul>
+        <li><strong>Constraint compliance</strong> (this is a gate, not a knob).</li>
+        <li><strong>User trust impact</strong> (what's the perception cost of getting this wrong).</li>
+        <li><strong>Value created per unit of risk</strong> (not "highest value", "best value/risk ratio").</li>
+      </ul>
+
+      <h2>Worked example: "How would you prioritise improvements to YouTube?"</h2>
+
+      <p>"Before I rank, let me state the objective. I'm going to assume we're optimising for <strong>passive-consumer retention at 12 months</strong>, because that's the segment I identified as the revenue base. If the goal were creator retention instead, the order would be different."</p>
+
+      <p>"With that objective, three axes matter."</p>
+      <ul>
+        <li><strong>Effect on the consumer's session quality</strong> (does this make a long session feel better or worse?)."</li>
+        <li><strong>Defensibility against TikTok-style fragmentation</strong> (does this protect the long-session moat?)."</li>
+        <li><strong>Reversibility</strong> (can we roll this back in 2 weeks if signals are bad?)."</li>
+      </ul>
+
+      <p>"Ranking from these four hypothetical improvements:"</p>
+      <ol>
+        <li>"<strong>Recommendation modes</strong> first. Highest effect on session quality, defensible against fragmentation, reversible. Strong on three axes."</li>
+        <li>"<strong>Reducing ad load in 'learn' mode</strong> second. Lower direct retention impact but high signal value: tells us how much consumers value lower interruption versus our assumption that engagement matters most."</li>
+        <li>"<strong>Premium subscription bundling</strong> third. High revenue potential but low session-quality differentiation in the short term, and reversibility is bad (once you bundle, unbundling is painful)."</li>
+        <li>"<strong>New creator-payment model</strong> last for this exercise. High strategic value but serves a different segment from the one I'm optimising for. If we re-state the goal as creator retention, this jumps to first."</li>
+      </ol>
+
+      <p>"What I'm consciously not doing first is the creator-payment model. It's not low value, it's serving a different objective. Putting it in this list at all is a mistake unless we clarify priorities across segments."</p>
+
+      <h2>If they push back on the framework</h2>
+
+      <p>Likely pushback: <em>"why not just use RICE?"</em></p>
+
+      <p>"RICE is fine when you have rough numerical estimates and want a defensible ranking quickly. Two reasons I don't reach for it first here. <strong>One</strong>, RICE flattens dimensions that should stay visible (reversibility is not effort, ad-revenue risk is not just impact). <strong>Two</strong>, RICE gives a false sense of precision when the input estimates are guesses. I'd rather expose the trade-off explicitly than hide it in a score. That said, RICE is useful as a sanity check after I've reasoned the ranking, to catch obvious miscalibrations."</p>
+
+      <h2>If they ask about sequencing across quarters</h2>
+
+      <p>Different question, different answer. Don't reuse the single-list framing.</p>
+
+      <p>"Sequencing across quarters is a different problem from ranking within a list. Three lenses I'd use:"</p>
+      <ul>
+        <li><strong>Dependencies.</strong> Some items unlock others. Doing them out of order wastes work."</li>
+        <li><strong>Team capacity over time.</strong> Hiring, ramp-up, and seasonal load shape what's actually possible in Q1 vs Q3."</li>
+        <li><strong>Learning compounding.</strong> Front-load things whose signal informs later decisions. Back-load things that benefit from accumulated context."</li>
+      </ul>
+
+      <p>"So Q1 might not be the highest-impact item in absolute terms, it's often the highest-leverage item to learn from before committing to the bigger bet in Q2 or Q3."</p>
+
+      <h2>Three lines to keep ready under pressure</h2>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <ol class="!mb-0">
+          <li><strong>"The order depends on the objective; let me state mine first."</strong></li>
+          <li><strong>"I'd rather expose the trade-off explicitly than hide it in a score."</strong></li>
+          <li><strong>"What I'm consciously not doing first isn't low value, it's serving a different objective."</strong></li>
+        </ol>
+      </div>
+
+      <h2>What this looks like in the rubric</h2>
+
+      <table class="text-sm">
+        <thead><tr><th>Competency</th><th>What this approach signals</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Strategy</strong></td><td>You think in objectives, not feature lists. You know that ranking depends on what you're optimising for.</td></tr>
+          <tr><td><strong>Critical Thinking</strong></td><td>You don't hide behind frameworks. You expose trade-offs and assumptions.</td></tr>
+          <tr><td><strong>Users First</strong></td><td>The axes you pick are tied to a specific user segment, not generic.</td></tr>
+          <tr><td><strong>Design</strong></td><td>Less directly relevant here, but the "reversibility" axis signals systems thinking.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/patterns" class="text-sm hover:opacity-80" style="color: var(--color-primary);">10 patterns →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

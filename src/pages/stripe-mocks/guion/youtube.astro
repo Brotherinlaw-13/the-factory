@@ -1,0 +1,120 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Guion · YouTube" description="Guion estructurado por bloques para Stripe Product Sense.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">📺</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Guion · YouTube</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">~7 min · marketplace de tres lados, segmentación contradictoria</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Cómo usar este guion</h3>
+        <p class="!mb-0">YouTube es el ejemplo perfecto de marketplace con intereses contradictorios entre lados. La pieza fuerte: <strong>"implementación brillante ≠ decisión ética"</strong>. Y la distinción bajo presión <strong>"consumer vs decisor"</strong> en el trasplante a niños.</p>
+      </div>
+
+      <h2>[USUARIO]</h2>
+      <p>"Voy a hablar de <strong>YouTube</strong>, que uso a diario. Mi usuario primario no es 'gente que ve vídeos', porque eso engloba a 2 mil millones. <strong>Mi primary user es el adulto que consume YouTube como TV de fondo y como motor de búsqueda audiovisual</strong>, no como red social."</p>
+      <p>"Lo elijo porque es el segmento que sostiene el modelo publicitario de YouTube: sesiones largas, recomendaciones que importan, perfiles publicitarios densos. Otros usuarios los voy a tocar como contraste: creadores, niños menores de 13, usuarios casuales que llegan por links."</p>
+
+      <h2>[SUB-SEGMENTOS]</h2>
+      <ul>
+        <li>"<strong>El consumidor pasivo.</strong> Ve YouTube como TV: deja autoplay, valora flujo continuo, no busca activamente. Sesiones largas, decisión casi nula."</li>
+        <li>"<strong>El consumidor de tareas.</strong> Llega a YouTube buscando algo específico: tutorial, review, explicación. Sesión corta y decidida. Métrica clave: encontró lo que buscaba."</li>
+        <li>"<strong>El consumidor educativo.</strong> Ve YouTube como universidad: cursos largos, lecturas, podcasts grabados. Sesiones medianas-largas, alta intencionalidad."</li>
+      </ul>
+      <p>"Voy a centrarme en <strong>el consumidor pasivo</strong>, porque es el sub-segmento que más revenue publicitario genera, y donde las decisiones de recomendación tienen impacto más grande."</p>
+
+      <h2>[ECOSISTEMA]</h2>
+      <p>"YouTube juega en tres tableros simultáneos, y cada uno tiene incentivos diferentes."</p>
+      <ul>
+        <li>"<strong>Atención del consumidor</strong>, compitiendo con TikTok, Netflix, Spotify (cuando es audio), Twitch, podcasts."</li>
+        <li>"<strong>Relación con creadores</strong>, que son sus proveedores. Compiten con TikTok, Patreon, Substack, Twitch para retener a quien produce contenido."</li>
+        <li>"<strong>Negocio publicitario</strong>, donde compiten con Meta Ads, Google Search Ads, TikTok Ads por presupuesto de marcas."</li>
+      </ul>
+      <p>"Lo importante: <strong>los tres lados tienen incentivos que a veces se contradicen</strong>. Más anuncios sube revenue publicitario pero degrada consumidor. Mejor pago a creadores reduce margen pero los retiene. Una recomendación adictiva sube engagement pero puede dañar al consumidor de tarea que solo quería una cosa."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Frase ancla. "Los tres lados tienen incentivos contradictorios". Esto te diferencia del candidato que ve YouTube como producto simple de un solo eje.</p>
+      </div>
+
+      <h2>[IMPLEMENTACIÓN BRILLANTE NO IGUAL A DECISIÓN ÉTICA]</h2>
+      <p>"Antes de proponer, una observación. El sistema de recomendaciones de YouTube es <strong>técnicamente brillante</strong>: usa deep learning sobre billones de señales, optimiza en tiempo real, predice engagement con precisión que era inimaginable hace 10 años. Es ingeniería de primer nivel."</p>
+      <p>"Pero <strong>la decisión de qué optimizar</strong> (tiempo de visualización agregado) es una decisión de producto, no técnica. Y esa decisión, aunque brillantemente ejecutada, ha generado efectos secundarios documentados: radicalización de contenido político, túneles de conspiración, hábitos de consumo problemáticos. La implementación brillante no exime a la decisión de optimización de escrutinio ético."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Frase ancla. "Implementación brillante ≠ decisión ética". Esta frase te marca como PM con criterio, no como tech bro. En Stripe importa.</p>
+      </div>
+
+      <h2>[PROPUESTA]</h2>
+      <p>"Mi propuesta: <strong>modos de recomendación elegidos por el usuario</strong>. Hoy YouTube optimiza por engagement implícitamente. Mi cambio: el usuario elige explícitamente qué quiere de la sesión actual (descansar, aprender algo, buscar algo concreto, descubrir nuevo). YouTube ajusta recomendaciones según el modo elegido y muestra cuál está usando."</p>
+      <p>"Conecta con el consumidor pasivo (mi sub-segmento) porque le da control en un canal donde hoy no lo tiene. Y separa los intereses: en modo 'descansar' YouTube puede priorizar engagement; en modo 'aprender' YouTube debería priorizar finalización de vídeo largo, completitud, no salto entre temas."</p>
+
+      <h2>[EDGE CASES]</h2>
+      <ul>
+        <li>"<strong>Uno</strong>, fricción adicional. Si pido al usuario que elija modo cada sesión, baja engagement total. Solución: modo persistente con cambio rápido, no obligación por sesión."</li>
+        <li>"<strong>Dos</strong>, usuario que no cambia nunca de modo y se queda en 'descansar' (que es el modo más engagement). Solución: nudges suaves cuando detecto patrón ('estás viendo tutoriales, ¿activar modo aprender?')."</li>
+        <li>"<strong>Tres</strong>, modo 'aprender' baja revenue publicitario porque no es donde están los anuncios premium. Solución: anuncios de mayor calidad y menor frecuencia en modos de baja interrupción, justificable comercialmente porque atrae a anunciantes diferentes."</li>
+      </ul>
+
+      <h2>[RIESGOS: TIGER + PAPER TIGER]</h2>
+      <p>"<strong>🐅 Tiger:</strong> revenue publicitario en modos no-engagement. El modo 'aprender' o 'buscar' inherentemente tiene menos espacio publicitario que el modo 'descansar'. Mitigación: el target no es revenue per sesión, es retención de usuario a largo plazo. Un consumidor que confía en YouTube usa más YouTube."</p>
+      <p>"<strong>📰 Paper Tiger:</strong> 'TikTok va a comer a YouTube en consumer time'. Aparente pero no real para mi sub-segmento. TikTok compite por atención fragmentada de sesiones cortas. YouTube domina sesión larga con contenido educativo, podcast en vídeo, gaming streams. Son dos productos distintos en dos longitudes de atención distintas. El consumidor pasivo de YouTube no es el usuario marginal de TikTok, son perfiles diferentes."</p>
+
+      <h2>[MÉTRICAS]</h2>
+      <ul>
+        <li>"<strong>Target:</strong> retención de usuario a 12 meses por sub-segmento. North Star porque mide salud relacional, no engagement extractivo."</li>
+        <li>"<strong>Leading:</strong> tasa de adopción del modo elegido en primeras 4 semanas. Target 30%."</li>
+        <li>"<strong>Lagging:</strong> tiempo de visualización agregado a 12 meses. Target estable o ligeramente positivo (la hipótesis es que no se cae aunque cambiemos optimization)."</li>
+        <li>"<strong>Guard rail:</strong> revenue publicitario per usuario activo. No puede caer más del 8%. Si lo hace, el modelo es insostenible para YouTube como negocio."</li>
+      </ul>
+
+      <h2>[TRASPLANTE]</h2>
+      <p>"Imagina: 'vale, ahora hazlo para niños menores de 10 años'."</p>
+      <p>"<strong>Vale, déjame parar. El contexto cambia radicalmente.</strong>"</p>
+      <ul>
+        <li>"<strong>Uno</strong>, asumí autoridad del usuario sobre su consumo. Para niño menor de 10, la autoridad está en el padre / cuidador, no en el niño. El consumer y el decisor son personas distintas, ya no son la misma."</li>
+        <li>"<strong>Dos</strong>, asumí capacidad de evaluar contenido. El niño no puede juzgar si un vídeo es educativo, comercial encubierto, o problemático. El filtrado tiene que ser estricto y no negociable, no opcional."</li>
+        <li>"<strong>Tres</strong>, asumí modelo publicitario aceptable. Para menores de 13 hay regulación (COPPA en EE.UU., similares en Europa). El modelo de revenue tiene que cambiar a suscripción o a anuncios estrictamente regulados."</li>
+      </ul>
+      <p>"Con esos supuestos rotos, mi propuesta cambia. En lugar de 'modos elegidos por el usuario', propondría <strong>catálogo curado con tiempo asignado por el padre</strong>. El padre configura qué categorías están permitidas (educativo, entretenimiento limitado), cuánto tiempo total por día, y qué señales recibe (qué vio el niño, cuánto). YouTube Kids ya existe, pero mi propuesta es ir más lejos en granularidad de control parental."</p>
+
+      <h2>[SI TE PRESIONAN]</h2>
+      <p>"Imagina: 'has dicho que el padre es el primary user, pero si el niño no encuentra divertido el producto se desinstala, ¿no decide el niño en última instancia?'"</p>
+      <p>"Buena pregunta. Déjame distinguir dos cosas que estaba mezclando. <strong>Consumer</strong> es quien usa el producto, y ahí el niño claramente decide: si no se divierte, se va. <strong>Decisor</strong> es quien compra, instala, mantiene, paga, decide quitar la app. Y ahí el padre decide. El diseño tiene que servir a los dos pero con roles distintos: features divertidas y motivadoras para el consumer (niño), features de control, tranquilidad y reporte para el decisor (padre). Ambas figuras tienen voto, no es uno solo. <strong>Mi error en la primera respuesta fue colapsar las dos figuras en 'primary user'</strong>."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 10 en su forma más fuerte. Reconocer el error explícitamente ("mi error fue...") demuestra honestidad intelectual sin debilidad. Y la distinción "consumer vs decisor" es del vocabulario formal de PM en productos para menores. Stripe la conoce.</p>
+      </div>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Las tres frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"Los tres lados de YouTube tienen incentivos contradictorios."</strong></li>
+          <li><strong>"Implementación brillante no equivale a decisión ética."</strong></li>
+          <li><strong>"Consumer vs decisor: dos figuras, dos votos, dos diseños."</strong></li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/guion/claude-code" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Claude Code</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

@@ -1,0 +1,130 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Guion · GitHub" description="Guion estructurado por bloques para Stripe Product Sense.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🐙</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Guion · GitHub</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">~7 min · B2B + developer infrastructure (cerca de Stripe)</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Cómo usar este guion</h3>
+        <p class="!mb-0">GitHub es el producto más cerca del dominio Stripe (infraestructura para developers). La pieza fuerte es <strong>"el PR como unidad atómica de comunicación entre developers en internet"</strong>. Esa frase te diferencia.</p>
+      </div>
+
+      <h2>[USUARIO]</h2>
+      <p>"Voy a hablar de <strong>GitHub</strong>, que uso a diario. Mi usuario primario es <strong>el developer profesional en equipo de 5-50 personas</strong>, no el solo dev ni el open source maintainer."</p>
+      <p>"Lo elijo porque es el segmento que sostiene el negocio de GitHub: Enterprise y Teams plans, suficiente complejidad para necesitar Actions, Codespaces, Copilot Business, pero todavía con agency individual en decisiones técnicas. Otros segmentos: el estudiante que aprende, el maintainer open source, el equipo enterprise de 500+. Los voy a tocar como contraste."</p>
+
+      <h2>[SUB-SEGMENTOS]</h2>
+      <ul>
+        <li>"<strong>El committer.</strong> Mantiene código, abre PRs, ejecuta CI. Para él GitHub es herramienta diaria de flujo de trabajo."</li>
+        <li>"<strong>El reviewer.</strong> Pasa más tiempo en PRs ajenos que en commits propios. Tech leads, staff engineers. Para él GitHub es interfaz de gobernanza."</li>
+        <li>"<strong>El orquestador.</strong> Configura Actions, gestiona settings de repo, integra herramientas externas. Para él GitHub es plataforma de automatización."</li>
+      </ul>
+      <p>"Voy a centrarme en <strong>el reviewer</strong>, porque es el sub-segmento donde GitHub tiene moat más profundo y donde un cambio de producto tiene retorno asimétrico para Enterprise."</p>
+
+      <h2>[ECOSISTEMA]</h2>
+      <ul>
+        <li>"<strong>Git hosting</strong>, compitiendo con GitLab, Bitbucket, Gitea self-hosted, y ahora con plataformas AI-first como Cursor."</li>
+        <li>"<strong>Developer infrastructure</strong>, compitiendo con CircleCI, Jenkins, Vercel, Netlify, y siendo a la vez infraestructura para todos ellos vía Actions."</li>
+        <li>"<strong>Comunidad de código abierto</strong>, no compite, es estructural. GitHub es donde vive el OSS moderno, y eso es activo que no se puede replicar."</li>
+        <li>"<strong>AI coding adyacente</strong>, donde GitHub via Copilot compite con Cursor, Replit, Lovable, Tabnine, mientras simultáneamente es la fuente de training data para todos ellos."</li>
+      </ul>
+      <p>"Una capa adicional importante: GitHub es parte de Microsoft desde 2018. Cualquier propuesta tiene que pensar la relación con Azure, con OpenAI (parcialmente Microsoft), y con la estrategia AI corporativa."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 3 con capa estratégica corporativa. Esto te separa del candidato que solo conoce GitHub como producto, sin contexto Microsoft.</p>
+      </div>
+
+      <h2>[LA UNIDAD ATÓMICA]</h2>
+      <p>"Antes de proponer, una observación: <strong>el PR es la unidad atómica de comunicación entre developers en internet</strong>. No es código, no es chat, no es ticket. Es una conversación estructurada anclada a un cambio de código concreto, con histórico inmutable, asíncrona, y indexable. Esa decisión de producto, tomada hace 15 años, es lo que convirtió GitHub en infraestructura."</p>
+      <p>"Mi propuesta va a apoyarse en esa primitiva: <strong>cuando piensas en mejorar GitHub para developers en equipo, piensas en mejorar el PR</strong>, no en añadir features adyacentes."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Frase ancla. Repítela. "Unidad atómica de comunicación" es el tipo de framing que el entrevistador va a recordar.</p>
+      </div>
+
+      <h2>[PROPUESTA]</h2>
+      <p>"Mi propuesta: <strong>contexto AI persistente por PR</strong>. Cuando abres un PR, GitHub debería entregar al reviewer un resumen generado por Copilot que incluya: qué cambia el PR funcionalmente (no archivo por archivo, sino comportamiento), qué partes del código son críticas para revisar humanos vs cuáles son boilerplate, y qué riesgos detecta basándose en historial del repo."</p>
+      <p>"Conecta con el reviewer (mi sub-segmento) directamente: su problema número uno es <strong>tiempo de review</strong>. Un reviewer senior dedica 30-50% de su semana a PRs. Si GitHub puede reducirlo en un tercio, el valor entregado por la plataforma sube exponencialmente. Y refuerza el moat AI de GitHub vs Cursor: Cursor te ayuda a escribir código, GitHub te ayuda a revisar el código que otros escriben."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 5 + 3 combinados. La propuesta sirve al sub-segmento elegido Y posiciona contra el competidor adyacente. Doble palanca.</p>
+      </div>
+
+      <h2>[EDGE CASES]</h2>
+      <ul>
+        <li>"<strong>Uno</strong>, falsos positivos del resumen AI. Si Copilot dice 'esto es boilerplate' y resulta que tenía un bug crítico, el reviewer pierde confianza. Solución: el resumen marca confianza explícita por sección, y los líderes de equipo configuran umbrales."</li>
+        <li>"<strong>Dos</strong>, código propietario sensible que la organización no quiere mandar a inferencia AI. Solución: modo on-premise / Copilot Enterprise con modelo dedicado, no API pública."</li>
+        <li>"<strong>Tres</strong>, dependencia generacional. Junior devs que aprendan a revisar PRs leyendo el resumen AI sin ver el código directamente nunca desarrollan juicio propio. Mitigación: el resumen AI no sustituye al diff, lo precede; el diff sigue siendo el documento principal."</li>
+      </ul>
+
+      <h2>[RIESGOS: TIGER + PAPER TIGER]</h2>
+      <p>"<strong>🐅 Tiger:</strong> coste de inferencia. Generar resúmenes AI por PR es caro a escala (GitHub procesa millones de PRs por día). Mitigación: tiering por plan (Free no incluye, Teams sí), caching agresivo, y modelos especializados más pequeños que GPT-4 genérico."</p>
+      <p>"<strong>📰 Paper Tiger:</strong> 'Cursor va a comer a GitHub en developer tools'. Aparente pero no real. Cursor compite en el momento de escribir código (IDE). GitHub compite en el momento de revisar, integrar, deployar. Son dos productos distintos en dos momentos distintos del ciclo. El developer profesional usa ambos. La narrativa de 'reemplazo' viene de confundir IDE con plataforma de gobernanza de código."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 El Paper Tiger contra Cursor es la jugada más relevante para Stripe, que también vive en developer infrastructure. Es la frase que va a sonar familiar y le va a gustar al entrevistador.</p>
+      </div>
+
+      <h2>[MÉTRICAS]</h2>
+      <ul>
+        <li>"<strong>Target:</strong> tiempo medio de review por PR en equipos con la feature activa. Mide valor directo al reviewer."</li>
+        <li>"<strong>Leading:</strong> tasa de adopción del resumen por reviewers en los primeros 14 días. Target 70%."</li>
+        <li>"<strong>Lagging:</strong> retención de Copilot Business a 12 meses en equipos con la feature. Target +10pp vs baseline."</li>
+        <li>"<strong>Guard rail:</strong> ratio de bugs en producción de PRs revisados con feature vs sin feature. No puede subir más del 5% relativo. Si lo hace, el resumen AI está sustituyendo review humano en lugar de complementarlo, y hay que recalibrar."</li>
+      </ul>
+
+      <h2>[TRASPLANTE]</h2>
+      <p>"Imagina: 'vale, ahora hazlo para developers con menos de 10 años de experiencia que están aprendiendo a colaborar en código por primera vez'."</p>
+      <p>"<strong>Vale, déjame parar. Cambia mucho.</strong>"</p>
+      <ul>
+        <li>"<strong>Uno</strong>, asumí experiencia de review como capacidad existente. Para junior dev aprendiendo, el problema no es 'cuánto tiempo me lleva revisar', es '¿qué tengo que mirar en un PR?'. El resumen AI estilo senior no sirve, sería paternalista. Tengo que repensar como herramienta educativa, no como atajo."</li>
+        <li>"<strong>Dos</strong>, asumí contexto profesional con presión de delivery. Para junior aprendiendo, la presión es aprender bien, no entregar rápido. El producto tiene que valorar profundidad de comprensión, no velocidad."</li>
+        <li>"<strong>Tres</strong>, asumí infraestructura organizacional (Copilot Business, repos privados, CI configurado). Para junior dev en proyectos personales o académicos, todo eso varía."</li>
+      </ul>
+      <p>"Con esos supuestos rotos, mi propuesta cambia: en lugar de 'resumen AI', propondría <strong>modo aprendizaje donde el PR se enriquece con anotaciones pedagógicas</strong>. Cuando el junior abre un PR ajeno, GitHub le sugiere preguntas que un reviewer experimentado haría ('¿qué pasa si X es null?', '¿este test cubre Y?'), no respuestas. La diferencia ontológica es <strong>de feature productiva a feature didáctica</strong>, y eso cambia todo el diseño."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 La distinción "productiva vs didáctica" es la pieza más fuerte. Demuestra que entiendes que dos sub-segmentos no necesitan la misma feature en versión escalada, necesitan dos productos distintos.</p>
+      </div>
+
+      <h2>[SI TE PRESIONAN]</h2>
+      <p>"Imagina: 'pero si el AI revisa por mí, ¿no estoy delegando responsabilidad? ¿No es problemático eso para producción?'"</p>
+      <p>"Buena pregunta. Déjame distinguir dos cosas. <strong>Delegación de juicio</strong>, donde el AI decide si mergear o no, es problemática y mi propuesta no la hace. <strong>Aceleración de comprensión</strong>, donde el AI te ayuda a entender más rápido qué cambió, sigue dejando la decisión en el reviewer humano. Mi propuesta vive en el segundo modo. Si quisiera vivir en el primero tendría que diseñar guardrails muy distintos, requerir aprobaciones humanas explícitas por sensibilidad de cada cambio. Pero ese es otro producto."</p>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Las tres frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"El PR es la unidad atómica de comunicación entre developers en internet."</strong></li>
+          <li><strong>"Cursor compite en el momento de escribir; GitHub compite en el momento de revisar."</strong></li>
+          <li><strong>"Aceleración de comprensión, no delegación de juicio."</strong></li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/guion/steam" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Steam</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/guion/whatsapp" class="text-sm hover:opacity-80" style="color: var(--color-primary);">WhatsApp →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

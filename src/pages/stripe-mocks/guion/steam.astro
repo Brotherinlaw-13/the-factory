@@ -1,0 +1,127 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Guion · Steam" description="Guion estructurado por bloques para Stripe Product Sense. Para leer en voz alta y internalizar la estructura.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🎮</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Guion · Steam</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">~7 min leído en voz alta · marketplace + plataforma + social</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Cómo usar este guion</h3>
+        <p class="!mb-0">Steam es tu producto diferencial. En Stripe no van a oír a 10 candidatos hablando de Steam ese día. Aprovecha esa ventaja. La pieza fuerte aquí es <strong>el modelo invertido del 30%</strong>: úsalo, es lo que separa la entrevista buena de la entrevista excelente.</p>
+      </div>
+
+      <h2>[USUARIO]</h2>
+      <p>"Voy a hablar de <strong>Steam</strong>, que uso a diario como gamer pero también miro como sistema de tres lados. Mi usuario primario es <strong>el gamer adulto con biblioteca acumulada</strong>, alguien que lleva 5+ años en la plataforma y tiene 50+ juegos comprados."</p>
+      <p>"Lo elijo porque es el segmento que define la economía de Steam: no son los gamers nuevos los que sostienen la plataforma, son los gamers acumulados que tienen incentivo de quedarse por historial, no por catálogo actual. Hay otros usuarios, el gamer ocasional, el creador de mods, el desarrollador indie, los voy a tocar como contraste."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 La razón "historial vs catálogo actual" es la clave del lock-in de Steam. Esto te va a servir luego para defender contra Epic Games Store.</p>
+      </div>
+
+      <h2>[SUB-SEGMENTOS]</h2>
+      <p>"Dentro del gamer adulto con biblioteca acumulada distingo tres sub-segmentos por cómo usan Steam."</p>
+      <ul>
+        <li>"<strong>El completista.</strong> Compra juegos en rebajas, los acumula, juega pocos. Steam Sales es su evento del año."</li>
+        <li>"<strong>El jugador social.</strong> Usa Steam principalmente como cliente para encontrar amigos y voice chat. Vapor de comunidad, no de transacción."</li>
+        <li>"<strong>El curador.</strong> Lee reseñas, escribe reseñas, sigue curators, ve hours-played antes de comprar. Steam es su filtro de descubrimiento."</li>
+      </ul>
+      <p>"Voy a centrarme en <strong>el curador</strong>, porque es el sub-segmento donde Steam tiene moat más profundo y donde un cambio de producto tiene retorno asimétrico."</p>
+
+      <h2>[ECOSISTEMA]</h2>
+      <p>"Steam vive en tres tableros simultáneos."</p>
+      <ul>
+        <li>"<strong>Marketplace de juegos</strong>, compitiendo con Epic Games Store, GOG, Microsoft Store, y crecientemente con consolas que entran a PC."</li>
+        <li>"<strong>Plataforma técnica</strong>, no compite, es infraestructura. Instalación, actualizaciones, cloud saves, sincronización entre máquinas. Esto es el sistema operativo del gaming PC, y Valve ha invertido en ello durante 20 años."</li>
+        <li>"<strong>Red social vertical</strong>, compitiendo con Discord para chat, con Twitch para streaming, con Reddit para comunidad. Steam es perdedor relativo en cada uno por separado, pero ganador absoluto cuando lo integra con tu biblioteca y tus amigos."</li>
+      </ul>
+      <p>"Cualquier propuesta tiene que reforzar al menos uno sin romper los otros dos."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 3. Frase ancla aquí: "Steam es el sistema operativo del gaming PC". Repítela; te da gravitas.</p>
+      </div>
+
+      <h2>[LA TENSIÓN DEL 30%]</h2>
+      <p>"Antes de proponer, quiero nombrar la tensión central de Steam: <strong>el 30% de comisión que Steam cobra a los desarrolladores</strong>. Epic Games Store entró con 12% y atacó esa tensión directamente. La narrativa pública dice que Steam es injusto y Epic es justo. Pero el dato no es tan simple."</p>
+      <p>"El 30% paga infraestructura, distribución global, anti-cheat, cloud, comunidad, descuentos masivos coordinados, y un historial de usuario que Epic no puede replicar. La pregunta real no es '¿es justo el 30%?', es '¿está creando suficiente valor el 30% para los desarrolladores que no tienen alternativa de distribución equivalente?'."</p>
+
+      <h2>[PROPUESTA]</h2>
+      <p>"Mi propuesta: <strong>modelo invertido de comisión</strong>. Steam ofrece a desarrolladores indie un tier opcional donde Steam toma 5% en lugar de 30%, pero el desarrollador paga por adelantado los servicios usados (alojamiento, anti-cheat, cloud) como suscripción mensual independiente del revenue."</p>
+      <p>"Conecta con el curador (mi sub-segmento) porque más indies aparecerían en Steam, y el curador es quien filtra ese flujo. Sirve a desarrolladores pequeños que tienen márgenes muy ajustados. Y desactiva el ataque de Epic, porque ahora Steam puede argumentar transparencia: 'no es 30% opaco, es 5% más servicios facturados como SaaS, igual que cualquier infraestructura cloud'."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Esta es la pieza diferencial de la entrevista. Steam no lo ofrece hoy, pero estructuralmente es defensible. Reformulas la pregunta de "comisión" a "modelo de valor": es la jugada que distingue al PM senior.</p>
+      </div>
+
+      <h2>[EDGE CASES]</h2>
+      <ul>
+        <li>"<strong>Uno</strong>, desarrolladores que llegan al 30% y se quedan con 5% pagando los servicios. Un AAA con $10M revenue ahorraría millones. ¿Es deseable? Solución: el modelo invertido aplica solo a desarrolladores con menos de 1M USD revenue anual, escalonado."</li>
+        <li>"<strong>Dos</strong>, el desarrollador que paga SaaS por adelantado y luego no vende. Pierde dinero. Solución: mes 1 gratis, evaluación de Sustainability check antes de migrar al modelo."</li>
+        <li>"<strong>Tres</strong>, comunicación al usuario final. El curador no necesita saber qué modelo de comisión usa cada juego. Pero el desarrollador sí necesita una página de transparencia. Solución: dashboard interno para devs, invisible al gamer."</li>
+      </ul>
+
+      <h2>[RIESGOS: TIGER + PAPER TIGER]</h2>
+      <p>"<strong>🐅 Tiger:</strong> erosión de revenue. Si el 20% del catálogo Steam se mueve al modelo invertido, Steam pierde margen sobre esos juegos. Mitigación: el modelo invertido solo se ofrece a juegos con bajo revenue absoluto, y los servicios SaaS están priced para cubrir margen objetivo."</p>
+      <p>"<strong>📰 Paper Tiger:</strong> 'Epic Games Store va a ganar la guerra eventualmente con 12%'. Suena plausible pero no resiste al dato. Epic lleva 5 años con 12% y no ha logrado pasar del 15% market share en PC. La razón no es la comisión, es la <strong>infraestructura acumulada y el historial del usuario</strong>. Un gamer con 200 juegos en Steam no se mueve a Epic por 18 puntos de comisión que ni le afectan a él. Y los devs lo saben."</p>
+
+      <h2>[MÉTRICAS]</h2>
+      <ul>
+        <li>"<strong>Target:</strong> número de juegos indies activos en Steam, agregado anual. North Star porque mide el efecto que queremos, que Steam siga siendo el destino indie principal."</li>
+        <li>"<strong>Leading:</strong> tasa de adopción del modelo invertido por desarrolladores nuevos en los primeros 6 meses. Target 30%."</li>
+        <li>"<strong>Lagging:</strong> revenue per dev en el segmento indie a 18 meses. Target +15% (más devs viables = más diversidad)."</li>
+        <li>"<strong>Guard rail:</strong> margen de plataforma total no cae más de 5%. Si lo hace, el modelo invertido se reajusta o se limita."</li>
+      </ul>
+
+      <h2>[TRASPLANTE]</h2>
+      <p>"Imagina que el entrevistador dice: 'vale, ahora hazlo para Steam mobile, en mercados emergentes'."</p>
+      <p>"<strong>Vale, déjame parar. El contexto cambia mucho.</strong> Para Steam mobile en mercados emergentes cambian al menos tres supuestos."</p>
+      <ul>
+        <li>"<strong>Uno</strong>, asumí PC como dispositivo principal y juegos como inversión de horas largas. En móvil, sesiones cortas, juegos casual, y el competidor real no es Epic, es la App Store y Google Play que tienen el ecosistema mobile ya construido."</li>
+        <li>"<strong>Dos</strong>, asumí biblioteca acumulada como moat. En mobile el usuario joven no tiene historial de Steam, está naciendo en la plataforma. La estrategia de retención por historial no aplica, hay que construir engagement desde cero."</li>
+        <li>"<strong>Tres</strong>, asumí 30% como tensión central. En mobile la comisión estándar también es 30% en App Store y Google Play, así que Steam no tiene ventaja relativa. El argumento del modelo invertido sigue siendo válido pero ya no es diferencial."</li>
+      </ul>
+      <p>"Con esos supuestos rotos, mi propuesta se transforma: en lugar del modelo invertido, propondría <strong>integración cross-play con biblioteca PC del mismo usuario</strong>. Que el gamer adulto que ya tiene 200 juegos en PC pueda jugar versiones móviles compatibles sin re-comprar. Eso usa el moat del historial que ya existe en otro contexto, en lugar de inventarlo de nuevo en mobile."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 9 limpio. Y la reformulación final ("usar el moat existente en otro contexto") es el tipo de juicio estratégico que Stripe quiere ver.</p>
+      </div>
+
+      <h2>[SI TE PRESIONAN]</h2>
+      <p>"Imagina: 'el modelo invertido fragmenta el catálogo, ¿no estás creando dos clases de juegos en Steam?'"</p>
+      <p>"Buena pregunta. Déjame distinguir dos cosas. <strong>Visibilidad al gamer</strong>, que tiene que ser igual independientemente del modelo, no quiero crear ciudadanos de primera y segunda categoría en la página de descubrimiento. <strong>Modelo de monetización al dev</strong>, que sí puede variar porque es invisible al gamer. La fragmentación legítima ocurre en backend (cómo paga el dev por usar la plataforma), no en frontend (cómo encuentra el gamer el juego). Mi error en la primera respuesta fue no separar esas dos capas explícitamente."</p>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Las tres frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"Steam es el sistema operativo del gaming PC"</strong> (situar la plataforma).</li>
+          <li><strong>"La diferencia no es comisión, es modelo de valor"</strong> (defender el 30%).</li>
+          <li><strong>"Visibilidad al gamer vs modelo de monetización al dev"</strong> (la distinción fina bajo presión).</li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/guion/google-maps" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Google Maps</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/guion/github" class="text-sm hover:opacity-80" style="color: var(--color-primary);">GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

@@ -1,0 +1,148 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Guion · Google Maps" description="Guion estructurado por bloques para Stripe Product Sense. Para leer en voz alta y internalizar la estructura.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🗺️</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Guion · Google Maps</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">~7 min leído en voz alta · 7 bloques + trasplante</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Pregunta: "Talk about a product you use"</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Cómo usar este guion</h3>
+        <p class="!mb-0">Léelo en voz alta tres veces. No memorices palabras, memoriza <strong>el orden de los bloques</strong>. Las cajas grises a la derecha son tus anotaciones internas (por qué cada movimiento funciona), <strong>no las digas en voz alta</strong>. El trasplante final es donde más vas a ganar la entrevista.</p>
+      </div>
+
+      <h2>[USUARIO]</h2>
+      <p>"Vale. Voy a hablar de <strong>Google Maps</strong>, que uso a diario. Mi usuario primario no es 'la persona que necesita ir de un sitio a otro', porque eso engloba a todos. <strong>Mi primary user es el commuter urbano</strong>, alguien que se mueve entre 2 y 5 veces al día por la misma ciudad, con rutas repetidas pero condiciones cambiantes."</p>
+      <p>"Lo elijo porque es el segmento donde Google Maps genera más uso recurrente y donde un cambio de producto tiene retorno medible. Otros segmentos, el visitante de ciudad, el conductor de delivery, los voy a tocar como contraste, pero mi foco está en el commuter."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Aplica patrón 1 (usuario definido + justificado) y patrón 4 (foco explícito). El "lo voy a tocar como contraste" cierra la jugada sin sonar inflexible.</p>
+      </div>
+
+      <h2>[SUB-SEGMENTOS]</h2>
+      <p>"Dentro del commuter urbano distingo tres sub-segmentos según cómo usan Maps."</p>
+      <ul>
+        <li>"<strong>El optimizador.</strong> Conoce las rutas pero quiere saber cuál está mejor hoy. Abre Maps 30 segundos antes de salir."</li>
+        <li>"<strong>El explorador.</strong> Conoce la ciudad pero prueba rutas nuevas, quizá por tráfico, quizá por descubrir. Abre Maps con la app abierta durante el trayecto."</li>
+        <li>"<strong>El multimodal.</strong> Cambia entre coche, bici, transporte público según el día. Necesita comparar opciones, no solo ver una."</li>
+      </ul>
+      <p>"Voy a centrarme en el optimizador, porque es el más frecuente y donde la promesa de Maps es más clara: 'dime cuál es la mejor ruta ahora'. Volveré a los otros si me preguntas."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 2: sub-segmentación por comportamiento, no por demografía. Cada sub-segmento se define por cómo usa el producto, no por edad o género.</p>
+      </div>
+
+      <h2>[ECOSISTEMA]</h2>
+      <p>"Antes de hablar de qué cambiaría, sitúo Maps en su ecosistema. Maps juega en tres tableros."</p>
+      <ul>
+        <li>"<strong>Atención del usuario</strong>, compitiendo con Apple Maps, Waze, Citymapper, y en algunas geografías con apps locales."</li>
+        <li>"<strong>Datos de calidad</strong>, compitiendo no contra apps sino contra OpenStreetMap, contra los propios usuarios que reportan, y contra los flujos de telemetría de coches conectados."</li>
+        <li>"<strong>Monetización indirecta</strong>, donde Maps es proveedor de tráfico para Google Search y Google Ads, no producto monetizado directamente. Las decisiones de producto tienen que sostenerse en ese tablero también."</li>
+      </ul>
+      <p>"Cualquier propuesta que haga tiene que ganar en al menos uno de los tres sin perder en los otros."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 3 (mapear ecosistema). Esto evita que tus propuestas suenen a feature dump. Es el patrón que más diferencia en una entrevista Stripe según el reconnaissance.</p>
+      </div>
+
+      <h2>[LA FEATURE INVISIBLE]</h2>
+      <p>"Antes de proponer, quiero nombrar una cosa que Maps hace y que pasa desapercibida: <strong>la búsqueda no es solo búsqueda</strong>. Cuando escribes 'farmacia', Maps no devuelve farmacias ordenadas por distancia, devuelve farmacias <strong>filtradas por las que están abiertas ahora</strong>. Esa decisión de producto, invisible, es la que convierte Maps en un asistente cotidiano en lugar de un mapa interactivo."</p>
+      <p>"Lo digo porque mi propuesta va a apoyarse en esa lógica: <strong>la información correcta no es la completa, es la accionable ahora</strong>."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 La "feature invisible" es tu frase ancla para Google Maps. Te diferencia de candidatos que solo describen lo obvio. Memoriza esa frase.</p>
+      </div>
+
+      <h2>[PROPUESTA]</h2>
+      <p>"Para el optimizador, propongo <strong>predicción anticipada de cambio de ruta</strong>. Hoy Maps me dice cuál es la mejor ruta cuando le pregunto. Mi propuesta: que Maps me avise 5 minutos antes de salir si la ruta habitual va a estar peor de lo normal, sin que yo pregunte."</p>
+      <p>"Conecta directamente con el sub-segmento que elegí: el optimizador no quiere abrir la app, quiere que la app le abra a él cuando importa. <strong>Y sirve a la promesa de la feature invisible: información correcta cuando es accionable</strong>, no cuando el usuario la solicita."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 5: la propuesta está atada a un sub-segmento y a una promesa de producto. No flota.</p>
+      </div>
+
+      <h2>[EDGE CASES]</h2>
+      <p>"Antes de cerrar, tres edge cases que tengo que resolver."</p>
+      <ul>
+        <li>"<strong>Uno</strong>, falsos positivos. Si el aviso suena cuando no había problema, pierdo confianza. Mitigación: umbral conservador, solo alertar cuando el delta supera, por ejemplo, 8 minutos sobre la mediana del trayecto."</li>
+        <li>"<strong>Dos</strong>, el usuario que no tiene rutas habituales (turista). El aviso no tiene sentido. Solución: la feature solo se activa cuando hay patrón detectado, no by default."</li>
+        <li>"<strong>Tres</strong>, privacidad. Para predecir patrones tengo que conocer dónde va el usuario. Solución: opt-in explícito, y procesamiento on-device cuando sea posible, no en servidor."</li>
+      </ul>
+
+      <h2>[RIESGOS: TIGER + PAPER TIGER]</h2>
+      <p>"Veo un Tiger real y un Paper Tiger."</p>
+      <p>"<strong>🐅 Tiger:</strong> notification fatigue. Si Maps empieza a mandarme avisos, aunque sean útiles, el usuario los puede desactivar a nivel sistema y perdemos el canal. Mitigación: máximo 1 aviso por trayecto, y aprender por engagement; si el usuario ignora 3 consecutivos, la feature se desactiva sola."</p>
+      <p>"<strong>📰 Paper Tiger:</strong> 'Waze ya hace esto'. Aparente pero no real. Waze alerta dentro del trayecto, no antes. La diferencia es el momento: <strong>pre-trayecto vs en-trayecto</strong>. Son dos productos distintos, no compiten en el mismo eje."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 7 ejecutado limpio. El Paper Tiger desmonta la asunción competitiva más obvia con una distinción temporal precisa. Esto sube Critical Thinking.</p>
+      </div>
+
+      <h2>[MÉTRICAS]</h2>
+      <p>"Las métricas en cuatro capas."</p>
+      <ul>
+        <li>"<strong>Target:</strong> tiempo medio ganado por usuario por semana en su commute habitual. North Star porque mide valor entregado, no engagement con la feature."</li>
+        <li>"<strong>Leading:</strong> tasa de aceptación del aviso en los primeros 7 días. Target 60%."</li>
+        <li>"<strong>Lagging:</strong> retención del optimizador a 6 meses con la feature activa vs sin ella. Target +5pp."</li>
+        <li>"<strong>Guard rail:</strong> proporción de usuarios que desactivan notificaciones de Maps a nivel sistema. No puede subir más del 1% absoluto."</li>
+      </ul>
+
+      <h2>[TRASPLANTE]</h2>
+      <p>"Imagina que ahora el entrevistador dice: 'vale, ahora hazlo para zonas rurales en países en desarrollo'."</p>
+      <p>"<strong>Vale, déjame parar aquí porque el contexto cambia el problema.</strong> Para zonas rurales en países en desarrollo cambian al menos tres supuestos que mi propuesta asumía."</p>
+      <ul>
+        <li>"<strong>Uno</strong>, asumí conectividad continua. En rural sin 4G estable, la predicción anticipada no puede depender de servidor. Tengo que repensar con modelo on-device + datos pre-cacheados."</li>
+        <li>"<strong>Dos</strong>, asumí rutas habituales recurrentes. En contexto rural muchas veces no hay 'commute' diario sino trayectos variables (mercado, hospital, escuela), con menos densidad de datos. La feature de patrón habitual no aplica."</li>
+        <li>"<strong>Tres</strong>, asumí infraestructura digital del usuario (smartphone moderno, datos suficientes, batería). En contexto rural, todo eso varía. La feature tiene que funcionar en gama baja y consumir poca batería."</li>
+      </ul>
+      <p>"Con esos supuestos rotos, mi propuesta se transforma. En lugar de 'predicción anticipada de cambio de ruta', propongo <strong>sistema de reportes de estado de carreteras geocercado, validado por usuarios locales y pre-cacheado para uso offline</strong>. Cambia de feature predictiva a feature colaborativa. Y sirve mejor al usuario rural, que tiene menos opciones cuando una ruta está cortada."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 9 en su forma más limpia. Pausa explícita, nombrar 3 supuestos rotos, rediseñar. Si haces esto bien, ganas la entrevista solo aquí.</p>
+      </div>
+
+      <h2>[SI TE PRESIONAN]</h2>
+      <p>"Imagina que el entrevistador presiona: 'pero el commuter ya tiene Waze que le avisa, ¿no estás reinventando la rueda?'"</p>
+      <p>"Buena pregunta. Déjame distinguir dos cosas que estaba mezclando. <strong>Alertar durante el trayecto</strong> es lo que hace Waze, y lo hace bien. <strong>Alertar antes del trayecto</strong>, en el momento en que el usuario aún puede cambiar de hora o de medio de transporte, es un producto distinto. La diferencia no es de feature, es de momento: el primer producto sirve para reaccionar, el segundo sirve para decidir. Mi propuesta vive en el segundo plano, no compite con el primero."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 10: reformular con distinción más fina (reaccionar vs decidir). No defiendes la frase original, abres una distinción nueva.</p>
+      </div>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Las tres frases ancla que tienes que llevarte memorizadas</h3>
+        <ol class="!mb-0">
+          <li><strong>"La información correcta no es la completa, es la accionable ahora"</strong> (la feature invisible).</li>
+          <li><strong>"Pre-trayecto vs en-trayecto son dos productos distintos"</strong> (el Paper Tiger contra Waze).</li>
+          <li><strong>"Reaccionar vs decidir"</strong> (la distinción fina bajo presión).</li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/guion/steam" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: Steam →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

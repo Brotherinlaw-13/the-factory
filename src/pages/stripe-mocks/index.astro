@@ -24,6 +24,15 @@ const atms = [
   { slug: 'atm-estacion', title: 'Estación commuter', icon: '🚆', insight: 'Subordinación total a velocidad. 15 segundos.' },
   { slug: 'atm-pueblo', title: 'Pueblo rural', icon: '🏘️', insight: 'Infraestructura social, no producto comercial' },
 ];
+
+const guiones = [
+  { slug: 'google-maps', title: 'Google Maps', icon: '🗺️', anchor: '"Información correcta = accionable ahora"' },
+  { slug: 'steam', title: 'Steam', icon: '🎮', anchor: '"Steam es el SO del gaming PC"' },
+  { slug: 'github', title: 'GitHub', icon: '🐙', anchor: '"PR = unidad atómica de comunicación"' },
+  { slug: 'whatsapp', title: 'WhatsApp', icon: '💬', anchor: '"El círculo cerrado de confianza"' },
+  { slug: 'claude-code', title: 'Claude Code', icon: '⚡', anchor: '"Colaborador, no asistente"' },
+  { slug: 'youtube', title: 'YouTube', icon: '📺', anchor: '"Implementación brillante ≠ ética"' },
+];
 ---
 
 <LightLayout title="Stripe Product Sense — Mock Interviews" description="Hub navegable de mock interviews y worked examples para la entrevista de Stripe Product Sense del 22 may 2026.">
@@ -61,6 +70,28 @@ const atms = [
   </section>
 
   <div class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+
+    <div class="card !p-5 mb-8" style="background: linear-gradient(135deg, rgba(139,92,246,0.10), rgba(236,72,153,0.10)); border: 1px solid rgba(139,92,246,0.30);">
+      <div class="flex items-start gap-3">
+        <span class="text-3xl">📝</span>
+        <div class="flex-1">
+          <h3 class="text-xl font-bold !my-0" style="color: var(--color-graphite);">Guiones estructurados <span class="text-sm font-normal" style="color: var(--color-primary);">· nuevo, para leer en voz alta</span></h3>
+          <p class="text-sm !my-2" style="color: var(--color-stone);">Bloques etiquetados (usuario → ecosistema → propuesta → riesgos → métricas → trasplante → presión), con anotaciones del patrón al margen. Lee, repite, internaliza. La estructura cuando no la voz.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
+      {guiones.map(g => (
+        <a href={`/stripe-mocks/guion/${g.slug}`} class="card !p-4 hover:!shadow-lg transition-all block no-underline" style="text-decoration: none; background: var(--color-primary-soft);">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-2xl">{g.icon}</span>
+            <h3 class="text-base font-bold !my-0" style="color: var(--color-graphite);">{g.title}</h3>
+          </div>
+          <p class="text-xs !my-0 italic" style="color: var(--color-stone);">{g.anchor}</p>
+        </a>
+      ))}
+    </div>
 
     <h2 class="text-2xl font-bold mt-4 mb-4" style="color: var(--color-graphite);">🎙️ Entrevistas completas <span class="text-base font-normal" style="color: var(--color-stone);">· warm-up + trasplante</span></h2>
     <div class="grid md:grid-cols-2 gap-4 mb-12">

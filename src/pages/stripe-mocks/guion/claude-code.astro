@@ -1,0 +1,125 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Guion · Claude Code" description="Guion estructurado por bloques para Stripe Product Sense.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">⚡</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Guion · Claude Code</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">~7 min · producto que conoces a fondo, riesgo de feature dump</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Cómo usar este guion</h3>
+        <p class="!mb-0">Conoces Claude Code a fondo (lo usas todos los días). El riesgo es que caigas en feature dump por exceso de conocimiento. La frase ancla aquí: <strong>"asistente vs colaborador"</strong>. Y bajo presión, la distinción <strong>"coste por turno vs coste por tarea"</strong>.</p>
+      </div>
+
+      <h2>[USUARIO]</h2>
+      <p>"Voy a hablar de <strong>Claude Code</strong>, que uso a diario. Mi usuario primario es <strong>el developer senior con criterio técnico</strong>, alguien que sabe qué quiere construir y necesita acelerar la ejecución, no que aprende a programar."</p>
+      <p>"Lo elijo porque es donde Claude Code tiene ventaja diferencial real: el senior puede aprovechar la profundidad de razonamiento del modelo, mientras que el junior necesita rieles y feedback inmediato que sirven mejor herramientas IDE como Copilot. Otros segmentos: el junior aprendiendo, el non-developer que pide cambios pequeños, el equipo enterprise con compliance estricto. Los tocaré como contraste."</p>
+
+      <h2>[SUB-SEGMENTOS]</h2>
+      <ul>
+        <li>"<strong>El builder solo.</strong> Trabaja en proyectos personales, side projects, prototipos. Optimiza por velocidad de iteración. Para él Claude Code es acelerador de exploración."</li>
+        <li>"<strong>El integrador profesional.</strong> Trabaja en codebase grande, en equipo. Optimiza por cambios contenidos y entendimiento del impacto. Para él Claude Code es asistente de scope estrecho."</li>
+        <li>"<strong>El orquestador de tareas largas.</strong> Lanza tareas multi-paso (refactor masivo, migración, generación de tests). Optimiza por reducir su involucración mientras la tarea está corriendo. Para él Claude Code es agente autónomo."</li>
+      </ul>
+      <p>"Voy a centrarme en <strong>el orquestador de tareas largas</strong>, porque es donde Claude Code se diferencia más de competidores IDE-first como Cursor, y donde Anthropic tiene ventaja estructural por la calidad del razonamiento de Claude en horizonte largo."</p>
+
+      <h2>[ECOSISTEMA]</h2>
+      <ul>
+        <li>"<strong>AI coding tools</strong>, compitiendo con Cursor, GitHub Copilot, Cody, Aider, Continue, y crecientemente con interfaces web como v0 o Lovable."</li>
+        <li>"<strong>Developer infrastructure</strong>, donde Claude Code se sitúa entre el IDE y la línea de comandos: CLI-first pero con contexto profundo. Compite con shells AI-augmented y con automation tooling tradicional."</li>
+        <li>"<strong>Anthropic API ecosystem</strong>, donde Claude Code es la aplicación más visible de la API de Claude, y juega un papel doble: producto de revenue y vehículo de adopción de la plataforma."</li>
+      </ul>
+      <p>"Una capa importante: el modelo de pricing de Claude Code (suscripción Anthropic o pay-per-token API) es distinto al de Cursor (suscripción fija). Eso crea tensión competitiva clara."</p>
+
+      <h2>[EL ASISTENTE VS EL COLABORADOR]</h2>
+      <p>"Antes de proponer, quiero nombrar la decisión de diseño central de Claude Code: <strong>opera como colaborador, no como asistente</strong>. Un asistente espera instrucciones específicas y las ejecuta. Un colaborador entiende el contexto, anticipa pasos, mantiene memoria del proyecto, y a veces propone cambios al plan. La diferencia se nota en cómo respondes a una petición ambigua: el asistente pide más detalle, el colaborador hace una primera versión y luego itera."</p>
+      <p>"Claude Code elige claramente el segundo modelo. Esa decisión define el resto del producto: workspace persistente, herramientas potentes (Bash, edit, search), permisos para actuar sin pedir confirmación constante."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Frase ancla. "Asistente vs colaborador" te diferencia del candidato que solo describe features. Define el producto a nivel ontológico.</p>
+      </div>
+
+      <h2>[PROPUESTA]</h2>
+      <p>"Para el orquestador de tareas largas, propongo <strong>checkpoints de progreso negociables</strong>. Cuando Claude Code está ejecutando una tarea larga (refactor, migración), debería pausar en puntos predefinidos y mostrar al usuario: qué ha hecho hasta ahora, qué cree que queda, qué decisiones difíciles ha tomado y por qué. El usuario puede aprobar, redirigir, o detener."</p>
+      <p>"Conecta con el sub-segmento porque resuelve su problema número uno: <strong>confianza en horizonte largo</strong>. El orquestador no puede revisar cada acción, pero tampoco puede confiar a ciegas. El checkpoint es el contrato: 'puedes actuar autónomamente entre puntos X e Y, pero me reportas al pasar Y'. Y diferencia frente a Cursor, que opera turn-by-turn y no tiene horizonte de tarea larga real."</p>
+
+      <h2>[EDGE CASES]</h2>
+      <ul>
+        <li>"<strong>Uno</strong>, checkpoints demasiado frecuentes degradan el valor. Si Claude Code para cada 5 minutos a reportar, el usuario pierde la ventaja de delegación. Solución: checkpoints adaptativos basados en complejidad de la decisión, no en tiempo fijo."</li>
+        <li>"<strong>Dos</strong>, divergencia entre lo que Claude Code reporta y lo que ha hecho. El reporte puede ser optimista. Solución: el checkpoint incluye diff técnico verificable, no solo descripción natural."</li>
+        <li>"<strong>Tres</strong>, tarea que el modelo no puede completar pero no lo reconoce. Solución: el checkpoint incluye señal explícita de confianza ('estoy seguro de esto' vs 'esto requiere tu juicio') basada en cobertura de tests, ambigüedad detectada, o cambios fuera del scope original."</li>
+      </ul>
+
+      <h2>[RIESGOS: TIGER + PAPER TIGER]</h2>
+      <p>"<strong>🐅 Tiger:</strong> coste de tokens. Las tareas largas con checkpoints consumen contexto exponencialmente. A medida que la tarea crece, los reportes se hacen más caros de generar bien. Mitigación: caching agresivo del contexto, comprimir historia antigua, y pricing tiered donde tareas largas cuestan más."</p>
+      <p>"<strong>📰 Paper Tiger:</strong> 'Cursor va a comer a Claude Code en developer productivity'. Aparente pero no real. Cursor compite en el momento de escribir código en un archivo concreto. Claude Code compite en el momento de orquestar cambios across files / repos. Son dos productos distintos en dos planos distintos de abstracción. El developer profesional usa los dos: Cursor para el archivo en el que está, Claude Code para la tarea que abarca 20 archivos."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Frase ancla bajo presión. "Cursor en el archivo, Claude Code en la tarea". Te separa de comparaciones simplistas.</p>
+      </div>
+
+      <h2>[MÉTRICAS]</h2>
+      <ul>
+        <li>"<strong>Target:</strong> tareas completadas autónomamente por sesión sin intervención correctiva. Mide el valor real de delegación."</li>
+        <li>"<strong>Leading:</strong> tasa de aprobación de checkpoints en primeros 14 días. Target 80%."</li>
+        <li>"<strong>Lagging:</strong> retención semanal de orquestadores a 12 semanas. Target +15pp sobre baseline sin feature."</li>
+        <li>"<strong>Guard rail:</strong> tasa de rollback de cambios committed por Claude Code. No puede subir más del 3% absoluto. Si lo hace, la autonomía está rompiendo más de lo que arregla."</li>
+      </ul>
+
+      <h2>[TRASPLANTE]</h2>
+      <p>"Imagina: 'vale, ahora hazlo para non-developers que quieren modificar código sin entenderlo a fondo'."</p>
+      <p>"<strong>Vale, déjame parar. Cambia mucho.</strong>"</p>
+      <ul>
+        <li>"<strong>Uno</strong>, asumí criterio técnico del usuario. El non-developer no puede evaluar si Claude Code ha hecho la decisión correcta en el checkpoint. El feedback loop principal se rompe."</li>
+        <li>"<strong>Dos</strong>, asumí capacidad de leer diffs. El non-developer no entiende el diff técnico; tengo que sustituirlo por descripción semántica del cambio ('he añadido un campo para email opcional al formulario de contacto')."</li>
+        <li>"<strong>Tres</strong>, asumí infraestructura del usuario: git, terminal, IDE. El non-developer probablemente está en interfaz web, sin acceso a CLI."</li>
+      </ul>
+      <p>"Con esos supuestos rotos, mi propuesta cambia. En lugar de 'checkpoints negociables con diff técnico', propondría <strong>preview visual + sandbox seguro</strong>. El non-developer hace la petición, Claude Code genera el cambio en un sandbox aislado, le muestra al usuario el comportamiento antes y después en lenguaje natural, y aplica solo si el usuario confirma. Cambia de 'autonomía con reporte técnico' a 'demostración con aprobación visual'. Y el producto deja de ser CLI, se vuelve web-first."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Cuidado aquí. El trasplante a non-developers cambia el producto a otra cosa (más cerca de Lovable o v0). Esa es la observación inteligente: no es Claude Code adaptado, es producto diferente.</p>
+      </div>
+
+      <h2>[SI TE PRESIONAN]</h2>
+      <p>"Imagina: 'los checkpoints frecuentes encarecen el producto. ¿No es eso una contradicción si tu argumento es delegación?'"</p>
+      <p>"Buena pregunta. Déjame distinguir dos cosas que estaba mezclando: <strong>coste por turno y coste por tarea</strong>. Un turno barato no es lo mismo que una tarea barata: si necesito 50 turnos para completar la tarea, una tarea con 5 turnos costosos puede ser más barata en total. Los checkpoints añaden coste por turno pero potencialmente reducen coste por tarea, porque evitan el escenario donde Claude Code va por mal camino durante 30 turnos antes de que el usuario lo note. La métrica que importa es coste por tarea completada con éxito, no coste por turno."</p>
+
+      <div class="card !p-3 my-3" style="background: var(--color-mist); border-left: 3px solid var(--color-stone);">
+        <p class="!my-0 text-sm" style="color: var(--color-stone);">👀 Patrón 10 con la distinción más fina específica de productos agénticos. "Coste por turno vs coste por tarea" es vocabulario interno de los equipos que construyen estos productos. Stripe lo va a reconocer.</p>
+      </div>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Las tres frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"Claude Code opera como colaborador, no como asistente."</strong></li>
+          <li><strong>"Cursor compite en el archivo, Claude Code compite en la tarea."</strong></li>
+          <li><strong>"La métrica que importa es coste por tarea, no coste por turno."</strong></li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/guion/whatsapp" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← WhatsApp</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/guion/youtube" class="text-sm hover:opacity-80" style="color: var(--color-primary);">YouTube →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

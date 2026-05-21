@@ -1,0 +1,119 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock Interview — Steam" description="Full interview transcript: Steam + transplant to indie creator-first platform. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🎮</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Steam</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Warm-up + Trasplante a plataforma indie creator-first</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Entrevista completa</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">~12 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Marketplace · diferencial competitivo</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Lo que tienes que internalizar de esta entrevista</h3>
+        <ol class="!mb-0 space-y-1">
+          <li><strong>Steam es marketplace + plataforma + social.</strong> Tres caras a explicar antes de hablar de features.</li>
+          <li><strong>La pregunta del 30%.</strong> Casi seguro te van a presionar sobre la comisión. Tienes que tener una respuesta pensada que no sea defensiva ni acusatoria.</li>
+          <li><strong>Diferencial vs Epic.</strong> No es "tiene más juegos", es "tiene foso de network effect que Epic no puede comprar".</li>
+        </ol>
+      </div>
+
+      <h2 class="!mt-8">Bloque 1 · Warm-up</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Dime un producto que uses y te parezca bien diseñado.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Voy con Steam. Lo uso a diario para PC gaming. Antes de hablar de qué hace bien, déjame definir el producto porque Steam es tres productos en uno y eso afecta a cómo se piensa.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>(1) Marketplace</strong>, conecta publishers/developers con gamers. <strong>(2) Plataforma</strong>, la app que gestiona instalación, updates, biblioteca, sincronización de saves, achievements, controllers. <strong>(3) Red social</strong>, friends, perfiles, reviews, foros, workshop, screenshots. Los tres se refuerzan, pero diseñar para uno no es lo mismo que diseñar para otro.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vale, ¿qué hace bien? Y dime para cuál de los tres.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Voy con la plataforma, porque ahí es donde Steam tiene el foso más profundo y la decisión más infravalorada. <strong>Steam decidió hace años convertirse en sistema operativo del gaming en PC.</strong> No es una tienda con app encima, es una capa que gestiona todo el ciclo de vida del juego en tu máquina. Instalación, parches, sincronización entre dispositivos, biblioteca compartida con familia, mods vía Workshop, transmisión a otra pantalla con Steam Link. Esa decisión, hace 15 años, era irracional desde la perspectiva de "vendamos juegos". Hoy es lo que Epic no puede replicar comprando exclusivas.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Para. ¿Por qué dices "no puede replicar"? Epic tiene dinero, tiempo, motor Unreal. ¿Qué les impide construir lo mismo?</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 1 · Presión sobre el foso competitivo</strong></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Buena pregunta. Sí podrían construir el código, no podrían construir <strong>el efecto de red acumulado en tu biblioteca</strong>. Yo tengo 200 juegos en Steam. Si mañana Epic tiene la misma plataforma técnica, no me voy. No por lealtad, por inercia, lo cual no es defendible. Pero hay tres cosas que sí lo son. Una, mods y workshop, que son productos comunitarios construidos sobre Steam y no transferibles. Dos, save data y achievements de 15 años de historial. Tres, el efecto social: mis amigos están en Steam, no en Epic. <strong>Epic puede construir la app, no puede construir mis 15 años de historial dentro de ella.</strong></p></div>
+
+      <p>👀 <strong>Tres argumentos defendibles, uno explícitamente reconocido como débil.</strong> Reconocer que la inercia no es defensa muestra honestidad analítica. Eso es lo que separa yes de strong yes.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vale. ¿Qué hace mal Steam? Si tuvieras que cambiar una cosa.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Tengo varias. Voy a priorizar. <strong>Lo más roto es el descubrimiento para indies.</strong> Steam tiene 50.000 juegos nuevos al año. Si eres un developer indie con un buen juego, casi nadie te ve. El algoritmo prioriza juegos con ventas iniciales, lo que crea un ciclo de éxito donde los grandes ganan más visibilidad y los pequeños desaparecen. Steam ha intentado arreglarlo con Steam Curators, Steam Next Fest, recomendaciones por similitud, pero ninguna de esas resuelve el problema estructural: <strong>el algoritmo está optimizado para conversión, no para descubrimiento</strong>.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Cómo lo arreglarías?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Separaría la front page en dos zonas con métricas distintas. <strong>Zona de conversión</strong>, lo que hay ahora, optimizada para que compres lo que probablemente te guste. <strong>Zona de exploración</strong>, indies de menos de 1000 reviews con buena valoración cualitativa, juegos de géneros que has comprado pero de developers que nunca has visto, juegos con menos de 6 meses en plataforma. Los KPIs de cada zona son distintos: la primera mide revenue por sesión, la segunda mide nuevos developers descubiertos por usuario al mes. <strong>El problema actual es que las dos zonas comparten el mismo algoritmo y el mismo objetivo, y eso es estructuralmente incompatible.</strong></p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Tiger.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Dos. <strong>Primero</strong>, revenue a corto plazo. Mostrar juegos que no maximizan conversión inmediata baja ingresos del trimestre. La mitigación es presupuestar la zona de exploración como inversión en supply, no como gasto en marketing, y trackearlo así internamente. <strong>Segundo</strong>, mala curación. Si la zona de exploración promueve un juego mediocre, los usuarios pierden confianza en la sección entera. La mitigación es umbral mínimo de calidad (porcentaje de reviews positivas, métricas de retención post-compra) antes de elegibilidad.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Métricas.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Leading primario:</strong> número medio de developers únicos comprados por usuario al año, target +30% en 12 meses. <strong>Leading secundario:</strong> % de revenue de la plataforma proveniente del long tail (juegos con menos de 10.000 ventas). <strong>Lagging:</strong> retención de developers indie que publican un segundo juego en plataforma. <strong>Guard rail:</strong> revenue total no debe bajar más del 3% durante el primer trimestre del cambio.</p></div>
+
+      <h2>Bloque 2 · Trasplante a plataforma indie creator-first</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Diseña Steam desde cero pensando que el creador indie es el usuario primario, no el gamer.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Pausa, déjame pensar porque esto invierte la lógica. <strong>El cambio de primary user en marketplace cambia todo el diseño del producto, no solo la interfaz del creador.</strong></p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Cuatro supuestos rotos. <strong>(1)</strong> Que el gamer paga por el producto. En creator-first, el creador es el usuario que paga (por hosting, por herramientas, por distribución). <strong>(2)</strong> Que el algoritmo decide visibilidad. En creator-first, el creador necesita predictibilidad: saber qué tiene que hacer para llegar a su público. <strong>(3)</strong> Que el modelo de comisión es 30%. En creator-first, la comisión es el ingreso del creador, no de la plataforma. <strong>(4)</strong> Que el ranking se basa en ventas. En creator-first, se basa en relación con audiencia.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Para. Has tocado la comisión, que es el tema sensible de Steam. ¿Cuál sería tu modelo?</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 2 · La pregunta del 30% que tienes que tener pensada</strong></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> En creator-first invierto el modelo. <strong>El creador paga una cuota fija por estar en plataforma</strong> (digamos 100 dólares al mes, con tier gratuito limitado), y se queda con el 95% de las ventas. La plataforma cobra la cuota fija más un 5% de comisión, no 30%. <strong>La razón es que en creator-first el creador es el cliente, no el producto.</strong> Steam tradicional tiene al gamer como cliente y al creador como supply. Creator-first invierte eso: el gamer es supply (de atención, de feedback, de comunidad), el creador es quien decide quedarse o irse, y la economía de la plataforma tiene que reflejar eso.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Cómo te aseguras de que los gamers vienen si no estás optimizando para ellos?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Diseñas la experiencia del gamer para que sea <strong>buena pero no central</strong>. La plataforma da herramientas al creador para construir su propia audiencia: páginas personalizables, capacidad de email a sus jugadores, descuentos a su comunidad específica, datos de comportamiento de sus jugadores. El gamer no viene a la plataforma a "ver qué hay", viene porque sigue a creadores específicos, igual que va a Patreon o Substack. <strong>El descubrimiento ocurre fuera de la plataforma</strong>, en redes sociales, recomendaciones, comunidades de género. La plataforma es el sitio donde el creador convierte audiencia en ingresos.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Tiger.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> El Tiger grande es <strong>cold start del gamer</strong>. Si la plataforma no descubre por ti, los gamers necesitan venir buscando algo específico, y eso requiere que los creadores ya tengan audiencia fuera. Si los creadores no la tienen, no hay tráfico, no hay ventas, los creadores se van. <strong>La mitigación es que el producto no es para todos los creadores, es para creadores que ya tienen audiencia construida en otro sitio</strong> y necesitan un sitio para vender. Es Substack para juegos, no Steam para juegos. Cambia drásticamente el TAM, pero el TAM existente se sirve mejor.</p></div>
+
+      <p>👀 <strong>Aceptar que el producto sirve a un segmento más pequeño es lo que demuestra strategic thinking</strong>. La mayoría de candidatos defenderían "podemos atraer a todos los creadores". Ella dice "no, este producto es para un subconjunto específico". Eso es maduro.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Métricas.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Leading primario:</strong> ingresos del creador medio al mes. Si esto crece, el creador se queda y atrae a otros. <strong>Leading secundario:</strong> % de creadores que crecen su audiencia mes a mes dentro de la plataforma. <strong>Lagging:</strong> retención de creadores a 12 meses, target 70%. <strong>Guard rail:</strong> % de creadores que abandonan en los primeros 3 meses no debe superar el 30%.</p></div>
+
+      <h2>Cierre</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Una pregunta. Stripe tiene productos donde el primary user no es obvio, como Stripe Connect donde el platform es cliente pero el merchant final es quien genera GMV. ¿Cómo se resuelve internamente esa tensión cuando hay que priorizar features?</p></div>
+
+      <p>👀 <strong>Aplica directamente el frame del trasplante al producto del entrevistador.</strong> Cierre que demuestra que ha estudiado Stripe.</p>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Tres caras de Steam diferenciadas. Inversión clara de primary user en trasplante.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Foso = historial acumulado, no código. Bifurcación zona conversión vs exploración.</li>
+          <li><strong>Product Design:</strong> Strong yes. Algoritmos con KPIs separados. Modelo de comisión invertido y defendible.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Reconoce que inercia no es defensa. Acepta TAM más pequeño en creator-first.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/google-maps" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Anterior: Google Maps</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/github" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

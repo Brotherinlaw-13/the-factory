@@ -1,0 +1,130 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock Interview — GitHub" description="Full interview transcript: GitHub + transplant to non-coders. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🐙</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">GitHub</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Warm-up + Trasplante a non-coders (writers, designers)</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Entrevista completa</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">~12 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">B2B · developer infrastructure (Stripe domain)</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Lo que tienes que internalizar de esta entrevista</h3>
+        <ol class="!mb-0 space-y-1">
+          <li><strong>GitHub es developer infrastructure.</strong> Mismo dominio que Stripe. Si usas frame de "infrastructure" en lugar de "tool", suenas a alguien que entiende su negocio.</li>
+          <li><strong>La adquisición por Microsoft.</strong> Pregunta casi garantizada. Tienes que tener opinión defendible (no celebratoria ni cínica).</li>
+          <li><strong>Pull Request como unidad social.</strong> El insight diferencial: PR no es solo merge mechanism, es el átomo de comunicación técnica entre humanos.</li>
+        </ol>
+      </div>
+
+      <h2 class="!mt-8">Bloque 1 · Warm-up</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Dime un producto que uses y te parezca bien diseñado.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Voy con GitHub. Lo uso a diario tanto para mis proyectos personales como para colaboración profesional. Antes de hablar de features, déjame definir qué entiendo por GitHub porque su definición ha evolucionado.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> GitHub empezó siendo <strong>hosting de repositorios git con interfaz web</strong>. Hoy es <strong>infraestructura de developer</strong>: hosting, CI/CD vía Actions, paquetes, contenedores, autenticación, identidad de developer en internet, comunidad open source, y desde hace poco IDE en navegador con Codespaces y agente con Copilot. La pregunta de qué hace bien depende de qué slice mires.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Cuál coges?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Voy con el slice social, que es donde GitHub tomó la decisión menos obvia y más diferencial. <strong>GitHub convirtió git, que es una herramienta técnica para versionado, en un protocolo social para colaboración.</strong> Git de Linus Torvalds era diff y merge. GitHub añadió encima identidades públicas, perfiles, follows, stars, issues comentables, pull requests con conversación. <strong>El insight es que la unidad de trabajo no es el commit, es el pull request, y el pull request es una conversación, no una operación técnica.</strong></p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Para. Eso último, PR como conversación. ¿Qué quieres decir?</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Un PR en GitHub no es "aquí está mi código, mergea si quieres". Es <strong>"aquí está mi propuesta, justificada en la descripción, comentable línea por línea, revisable por las personas que tú decidas, con historial inmutable de quién dijo qué y cuándo"</strong>. Eso convierte la revisión de código en un acto de comunicación técnica con audit trail. <strong>El PR es la unidad atómica de comunicación entre developers en internet hoy</strong>, igual que el tweet lo es entre periodistas o el commit lo era entre developers antes de GitHub.</p></div>
+
+      <p>👀 <strong>Frame potente: "PR es la unidad atómica de comunicación entre developers en internet."</strong> Si Marcos te pregunta por features de GitHub, esta frase es lo que te diferencia del candidato que va a hablar de Actions o Codespaces.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vale, te llevo al tema sensible. Microsoft compró GitHub en 2018. Mucha gente predijo el fin del producto. ¿Qué pasó?</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 1 · La pregunta de Microsoft</strong></p>
+        <p class="!my-0">Esta pregunta es casi garantizada. Hay tres respuestas malas: (a) "Microsoft es bueno y todo va bien" (suena ingenuo). (b) "Microsoft lo está corrompiendo" (suena conspirativo). (c) "Es complejo y no sé" (suena vago). Mira cómo se evita las tres:</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> La adquisición es uno de los casos más interesantes de M&A en tecnología, porque <strong>Microsoft hizo algo contraintuitivo: no integró GitHub en su stack, lo dejó operar de forma autónoma y le inyectó recursos</strong>. El producto no perdió identidad. Y los datos lo respaldan: GitHub creció de 28 millones de usuarios cuando fue comprado a más de 100 millones hoy, y el ecosistema open source no migró a alternativas como GitLab.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Donde sí veo tensión es en <strong>Copilot</strong>. Microsoft tiene tres frentes: GitHub Copilot, Azure AI, y la inversión en OpenAI. Eso crea una arquitectura competitiva interna donde GitHub Copilot tiene que coordinar con productos hermanos que también compiten por el mismo developer mind share. <strong>Ahí es donde la independencia de GitHub se va a poner a prueba, no en si Microsoft "respeta" GitHub, sino en si GitHub puede tomar decisiones de producto que sean óptimas para sus usuarios cuando esas decisiones compiten con otros productos del grupo.</strong></p></div>
+
+      <p>👀 <strong>Tres cosas brillantes aquí.</strong></p>
+      <ol>
+        <li>Reconoce que la adquisición fue exitosa con datos, no con narrativa.</li>
+        <li>Identifica el punto de tensión real (Copilot vs Azure AI vs OpenAI) que el entrevistador probablemente no esperaba.</li>
+        <li>Reformula "Microsoft buenos / Microsoft malos" como "tensión estructural en arquitectura competitiva interna". Ese es el lenguaje de un PM senior.</li>
+      </ol>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vale, ¿qué hace mal GitHub? Si tuvieras que cambiar una cosa.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Tengo varias. Voy a priorizar. <strong>Lo más roto es el sistema de issues para proyectos grandes.</strong> Issues en GitHub funcionan bien para un repo pequeño con 50 issues. Para repos con 5000 issues abiertos, como muchos proyectos open source grandes, el sistema colapsa. La búsqueda es débil, el etiquetado es manual, no hay forma decente de priorizar, los duplicados se acumulan, y los issues que llevan 3 años abiertos sin acción contaminan la señal. GitHub ha añadido Projects que es un layer encima, pero el fundamento sigue roto.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Cómo lo arreglarías?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Cambio el modelo mental. <strong>Los issues no son una to-do list, son una conversación distribuida sobre el estado de salud del proyecto.</strong> Diseño un layer encima del issue tradicional con tres ejes nuevos. <strong>(1) Triage assistido por IA</strong>, donde un agente sugiere duplicados, label automático, y propuesta de cierre para issues stale. <strong>(2) Estado de salud</strong>, no abierto/cerrado, sino algo como "activo / investigando / esperando información / parked / wontfix-soft / wontfix-hard". <strong>(3) Reagrupación por tema</strong>, un issue puede pertenecer a un cluster de issues relacionados, y se trabaja a nivel de cluster, no de issue individual. Ese cluster es la unidad de roadmap.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Tiger.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Dos. <strong>Primero</strong>, complejidad. Si añades 3 ejes nuevos al modelo de issue, los repos pequeños se complican. Mitigación: por defecto sigue siendo el modelo simple. Los ejes nuevos se activan opt-in en repos grandes. <strong>Segundo</strong>, falsos positivos del triage IA. Si el agente marca como duplicado algo que no lo es, frustra al contribuidor. Mitigación: el agente sugiere, no decide. Y los falsos positivos entrenan el modelo del repo.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Métricas.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Leading primario:</strong> tiempo medio desde apertura de issue hasta primera acción no automática (comentario, label, asignación). Bajar este tiempo significa que los issues están siendo atendidos. <strong>Leading secundario:</strong> ratio de issues con estado "esperando información" cuyo solicitante responde en menos de 7 días, indica claridad de la petición. <strong>Lagging:</strong> retención de contributors externos al proyecto a 6 meses. <strong>Guard rail:</strong> número de issues mal cerrados (reabiertos en menos de 30 días) no debe subir.</p></div>
+
+      <h2>Bloque 2 · Trasplante a non-coders</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Diseña GitHub para non-coders. Escritores, diseñadores, gente que colabora sobre artefactos no-código.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Pausa. Esto no es "GitHub con menos jerga técnica". Cambia algo profundo: <strong>los artefactos non-code no se diferencian igual que el código.</strong></p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Tres supuestos rotos. <strong>(1)</strong> Diff line-by-line. El código tiene líneas como unidad atómica. Un documento tiene párrafos, un diseño tiene capas, un audio tiene fragmentos temporales. Cada tipo de artefacto necesita su propia noción de unidad de cambio. <strong>(2)</strong> Merge automático. El código merge automáticamente cuando los cambios no se solapan. Una novela no, porque dos versiones de un párrafo distintas son creativamente incompatibles aunque no se solapen mecánicamente. <strong>(3)</strong> Branch como modelo mental. Los developers entienden branches. Los escritores piensan en versiones, revisiones, drafts. El vocabulario importa.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Para. Has dicho "creativamente incompatibles". Desarrolla.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 2 · Ahondamiento en lo creativo</strong></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> En código, si tú cambias la función A y yo cambio la función B, git puede unirlos automáticamente porque las funciones son independientes. En una novela, si tú reescribes el capítulo 3 con un tono melancólico y yo lo reescribo con tono irónico, no hay merge posible. Son <strong>visiones creativas alternativas</strong>, no piezas modulares. La plataforma para non-coders tiene que aceptar que muchas operaciones que en código son merge, en arte son <strong>elección entre alternativas</strong>. Esa elección tiene autor, contexto, justificación, y a veces queda abierta para siempre como dos ramas paralelas legítimas de la misma obra.</p></div>
+
+      <p>👀 <strong>Identifica un primer principio profundo</strong>: la diferencia ontológica entre artefactos modulares (código) y artefactos creativos. Esto es lo que te eleva a strong yes en Critical Thinking.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Eso es una idea fuerte. ¿Cómo lo diseñas concretamente para un escritor?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Tres decisiones. <strong>(1)</strong> Unidad de cambio: la escena o el capítulo, no la línea. La interfaz de revisión te muestra dos versiones de una escena lado a lado, no un diff. <strong>(2)</strong> Ramas como variaciones creativas, con nombre semántico (no "feature/x", sino "versión melancólica del cap 3"), y la posibilidad de mantener dos ramas vivas indefinidamente. <strong>(3)</strong> Comentarios anclados a la intención, no a la línea. Un revisor puede comentar "este capítulo pierde el ritmo entre la mitad y el final" sin tener que apuntar a una línea concreta. Y esos comentarios entran en un sistema de threading temporal, como una conversación que evoluciona con las versiones.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Tiger.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> El Tiger es <strong>cold start de comunidad</strong>. GitHub funciona porque hay 100 millones de developers ya en plataforma. Una versión non-coder empieza vacía. Y los escritores y diseñadores ya tienen herramientas que conocen (Word, Figma, Google Docs). Migrarles requiere una razón fuerte. La mitigación es no posicionar el producto como reemplazo de Word, sino como <strong>capa de versionado y colaboración encima de las herramientas que ya usan</strong>. Importas tu doc de Google Docs, lo versiona ahí, y vuelves a Google Docs para escribir. El valor diferencial es la historia y la conversación, no el editor.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Métricas.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Leading primario:</strong> número de proyectos donde dos o más usuarios contribuyen activamente al mes, target del 40% sobre proyectos activos. <strong>Leading secundario:</strong> número medio de versiones por proyecto activo, indica que la gente está aprovechando el versionado y no solo subiendo el final. <strong>Lagging:</strong> retención de contributors no-fundadores del proyecto a 90 días. <strong>Guard rail:</strong> tiempo medio para subir una primera versión de un proyecto nuevo, no debe superar 5 minutos.</p></div>
+
+      <h2>Cierre</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Una pregunta sobre infraestructura developer, que es lo que más conecta con Stripe. ¿Cómo gestiona Stripe internamente la tensión entre construir abstraction layers, que es lo que valora developer indie, y exponer flexibilidad de bajo nivel, que es lo que demanda enterprise?</p></div>
+
+      <p>👀 Pregunta perfectamente alineada con el dominio de Stripe.</p>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Diferenciación clara entre developer, contributor, mantenedor, enterprise. Diferencia creativa vs modular en trasplante.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. PR como unidad social. Adquisición Microsoft analizada con datos + tensión estructural.</li>
+          <li><strong>Product Design:</strong> Strong yes. Reformula issues como conversación de salud. Branches como variaciones creativas.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Diferencia ontológica modular vs creativo. Capa encima de herramientas existentes en cold start.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/steam" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Anterior: Steam</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

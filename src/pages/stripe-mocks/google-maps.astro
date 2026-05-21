@@ -1,0 +1,137 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock Interview — Google Maps" description="Full interview transcript: Google Maps + transplant to rural areas with poor connectivity. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🗺️</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Google Maps</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Warm-up + Trasplante a zonas rurales con mala conectividad</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Entrevista completa</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">~12 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Utility consumer · segmentos contradictorios</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Lo que tienes que internalizar de esta entrevista</h3>
+        <ol class="!mb-0 space-y-1">
+          <li><strong>Granularidad de segmentación.</strong> Google Maps tiene seis tipos de usuario que parecen el mismo, no lo son. Nombrarlos por separado mete strong yes en Users First.</li>
+          <li><strong>La feature invisible.</strong> Lo que está bien diseñado en Maps no es lo que ves, es lo que <em>no</em> ves. Esa frase ancla.</li>
+          <li><strong>Connectivity como first principle.</strong> En el trasplante, todo lo que asumes sobre red se rompe. Si no nombras eso, te quedas en parches.</li>
+        </ol>
+      </div>
+
+      <h2 class="!mt-8">Bloque 1 · Warm-up</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Dime un producto que uses y te parezca bien diseñado.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Voy con Google Maps. Lo uso a diario, en coche, andando, en transporte público y para descubrir restaurantes. Antes de hablar de qué hace bien, déjame mapear los tipos de usuario, porque Google Maps es un producto que parece uno pero son seis.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>(1) Commuter</strong>, ruta repetida diaria, lo que le importa es saber si hoy hay tráfico anormal. <strong>(2) Turista</strong>, ruta nueva, le importa entender dónde está y no perderse. <strong>(3) Conductor profesional</strong> (taxi, delivery, repartidor), múltiples paradas, optimización de orden. <strong>(4) Peatón</strong>, andar por ciudad desconocida, le importan pasos peatonales y atajos. <strong>(5) Usuario de transporte público</strong>, le importan horarios y combinaciones. <strong>(6) Explorador local</strong>, no busca ir a un sitio, busca <em>qué hay cerca</em>. Mismo mapa, seis productos.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Buen mapeo. ¿Cuál coges para hablar de qué hace bien?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> El commuter, porque es donde Google Maps mete su decisión menos obvia y más diferencial. Es el segmento mayor en volumen de sesiones, y donde lo que hace bien <strong>casi no se nota</strong>.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> "Casi no se nota". Desarrolla.</p></div>
+
+      <p>👀 <strong>El entrevistador tira del hilo</strong>. Igual que con Claude Code: si sueltas una frase intrigante, prepárate para defenderla.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> La feature mejor diseñada de Google Maps es el <strong>rerouting predictivo silencioso</strong>. Cuando vas a casa todos los días, Maps no te lleva por la misma ruta cada día. Cambia según condiciones de tráfico que ni siquiera te informa que han cambiado. Si hay un accidente a 10 minutos por delante, te mete por la lateral antes de que veas el atasco. <strong>Y la mayoría de las veces ni te das cuenta de que has tomado una ruta distinta.</strong> Esa es la decisión brillante: no informarte de la complejidad, gestionarla por ti.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 1 · Frase ancla</strong></p>
+        <p class="!my-0">"La feature invisible". Si Marcos te pregunta por features de Google Maps, esto es lo que te diferencia de los 10 candidatos que van a hablar de search, de Street View, o de listas guardadas. <em>Lo mejor diseñado en Maps no es lo que ves, es lo que no ves.</em></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Eso es contraintuitivo. ¿Por qué dices que es lo mejor? Podrías argumentar que es engaño, que el usuario debería saber qué pasa con su ruta.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 2 · Presión sobre transparencia</strong></p>
+        <p class="!my-0">Este es exactamente el patrón YouTube ("implementación brillante ≠ decisión ética"). Cómo lo maneja:</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Justa pregunta. Y la respuesta corta es <strong>depende del segmento</strong>. Para el conductor profesional, sí, debería saberlo, porque el routing afecta su tiempo y dinero. Y Maps de hecho le da esa información en el modo profesional. Para el commuter casual, decir "te he metido por la lateral porque hay tráfico" añade carga cognitiva sin valor. Lo que está bien diseñado es haber decidido <strong>quién necesita la transparencia y quién no</strong>. La feature invisible no es opacidad por defecto, es opacidad calibrada por segmento.</p></div>
+
+      <p>👀 <strong>Reframe quirúrgico.</strong> No defiende "Maps tiene razón", defiende "Maps decidió bien quién necesita qué". Critical Thinking en bruto.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vale. ¿Qué hace mal Google Maps? Si tuvieras que cambiar una cosa.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Déjame pensar porque tengo varias. Vale. <strong>Lo más roto es la experiencia para el explorador local</strong>, ese sexto segmento que mencioné. Cuando no buscas ir a un sitio sino descubrir qué hay cerca, Google Maps te empuja a la barra de búsqueda. Pero la barra de búsqueda asume que sabes qué buscas. El explorador no lo sabe. La interfaz natural para él sería "enséñame qué pasa en este barrio ahora", y eso Maps lo tiene casi escondido en la pestaña Explore.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Cómo lo arreglarías?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Detectaría intención. Si abres la app y no escribes nada durante 3 segundos, el mapa pivota a <strong>modo explorador</strong>: capas semánticas activas (restaurantes abiertos ahora con buena valoración, eventos este fin de semana, lugares que tu red ha visitado recientemente). Si empiezas a escribir, vuelve al modo búsqueda normal. <strong>La intención del usuario es legible por su comportamiento, no necesita preguntársela.</strong></p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Tiger.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> El Tiger principal es <strong>fricción para el usuario que sí sabe qué busca</strong>. Si añades capas semánticas en el primer momento, alguien que abre la app para ir al cole puede confundirse o tardar en encontrar la barra. La mitigación: el modo explorador se activa solo en sesiones donde el usuario no ha buscado nada en los primeros segundos. <strong>Y mido con un test específico</strong>: tasa de éxito de búsqueda directa no puede bajar más del 1%. Ese es el guard rail.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Métricas.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Leading primario:</strong> tasa de descubrimiento, % de sesiones donde el usuario interactúa con un sitio que no buscó. <strong>Leading secundario:</strong> tiempo medio en modo explorador. <strong>Lagging:</strong> retención del segmento de exploradores a 30 días, medido por sesiones sin búsqueda activa. <strong>Guard rail:</strong> tasa de éxito de búsqueda directa estable.</p></div>
+
+      <h2>Bloque 2 · Trasplante a zonas rurales con mala conectividad</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Cambio. Diseña Google Maps para zonas rurales con mala conectividad, pensando en países como India, partes de África, zonas rurales de Latinoamérica.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Pausa, déjame pensar. Esto no es Maps optimizado para 3G. Cambia varios primeros principios.</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 3 · Lo que se rompe</strong></p>
+        <p class="!my-0">El error típico es pensar "Maps con menos datos". Mira cómo lo descompone:</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Cuatro supuestos rotos. <strong>(1)</strong> Conectividad ambiente. Maps asume que estás online la mayor parte del tiempo. Aquí no. La sesión típica empieza con red y termina sin red, o al revés. <strong>(2)</strong> Direcciones formales. En muchas zonas no hay direcciones tipo "Calle X número Y". La gente se orienta por puntos de referencia, "la tienda de Raúl", "la curva del baobab", "después del puente". <strong>(3)</strong> Mapas actualizados. Maps confía en imágenes satelitales y data agregada. En zonas rurales, lo último puede ser de hace 5 años, y los caminos cambian con la estación. <strong>(4)</strong> Vehículo predominante. Maps optimiza para coches. Aquí muchas veces es motocicleta, bici, animal de carga, o pie.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Vale. Eso último, las direcciones por referencia, me interesa. ¿Cómo lo diseñas?</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Capa de <strong>puntos de referencia comunitarios</strong>. Los propios usuarios añaden lugares que no son negocios formales: "la casa del médico", "el árbol grande". Esos puntos no son públicos, son visibles solo en su zona y solo si tienen suficientes confirmaciones de otros vecinos. La interfaz de añadir es por voz, no por teclear, porque muchos usuarios no son alfabetizados en su idioma escrito. Y la ruta se compone como secuencia de referencias, no de calles. "Vas hasta la curva del baobab y giras hacia donde vive Raúl."</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Espera, esto es un sistema social, no un mapa. ¿Cómo previenes spam, errores, gente confundiendo referencias entre pueblos vecinos?</p></div>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-2"><strong>🎯 Momento clave 4 · Presión sobre la viabilidad social</strong></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Buen punto, voy a reformular. Tienes razón en que esto es más sistema social que cartográfico, y eso cambia el diseño. <strong>Los puntos comunitarios viven dentro de una geocerca pequeña, máximo radio de 5 km</strong>, y solo son visibles para usuarios que han estado físicamente en esa zona en los últimos 3 meses. Esa restricción mata el spam interregional y conecta la utilidad al vínculo real con el lugar. Para la calidad, cada punto requiere <strong>3 confirmaciones independientes</strong> antes de aparecer en rutas a otros, y los usuarios pueden marcar "esto ya no está aquí" para retirarlos. <strong>El sistema confía en proximidad y consenso, no en autoridad central.</strong></p></div>
+
+      <p>👀 <strong>Reformulación bajo presión.</strong> Mismo patrón que YouTube ("consumer vs decisor"). No defiende, reformula con estructura nueva. Y la frase "confía en proximidad y consenso, no en autoridad central" es el tipo de cierre que un entrevistador anota.</p>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> ¿Y la conectividad? Has dicho que la sesión empieza online y termina offline.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Pre-cacheo agresivo de tu zona habitual.</strong> Si vives en un pueblo y te mueves en 50 km a la redonda, Maps descarga esa zona entera, con sus puntos comunitarios, sus rutas conocidas y sus posibles destinos, de forma automática y silenciosa cuando estás conectado a wifi. La búsqueda online es secundaria, no primaria. La sincronización de los puntos comunitarios funciona por <strong>pull cuando aparece red</strong>, no por push constante. Y cuando hay red, la app prioriza sincronizar puntos y rutas antes que imágenes satelitales.</p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Tiger.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Dos. <strong>El primero es responsabilidad legal</strong>. Si un punto comunitario te lleva por un camino peligroso o privado, ¿Google es responsable? La mitigación es disclaimer fuerte y una capa de moderación humana en regiones donde el coste es asumible. <strong>El segundo es economía</strong>. Este producto no genera ingresos por publicidad como Maps tradicional, porque la base de usuarios tiene poco poder adquisitivo. La pregunta de "para qué hacer esto" es legítima. La respuesta es que cubrir 2 mil millones de personas que hoy no tienen mapa útil construye plataforma para servicios futuros (pagos móviles, comercio local, salud) que sí monetizan. <strong>No es producto, es infraestructura.</strong></p></div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-mist);"><p class="!my-0"><strong>Marcos:</strong> Métricas.</p></div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Leading primario:</strong> rutas completadas con éxito en modo offline, target 70% de las sesiones. <strong>Leading secundario:</strong> tasa de contribución de puntos comunitarios, % de usuarios activos que aportan al menos un punto al mes. <strong>Lagging:</strong> cobertura geográfica útil, definida como % de pueblos con al menos 10 puntos comunitarios validados. <strong>Guard rail:</strong> tasa de rutas que terminan en "no llegué a destino" debe estar por debajo del 5%.</p></div>
+
+      <h2>Cierre</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Una pregunta. ¿Cuál es el producto de Stripe donde tomar decisiones contraintuitivas, como la "feature invisible" de Maps, te ha dado más valor en los últimos 12 meses?</p></div>
+
+      <p>👀 Le pone al entrevistador en su propio terreno, usando el frame que ella estableció. Reciprocidad intelectual.</p>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. 6 segmentos diferenciados con criterios. Elección justificada del commuter.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. "Feature invisible" como frame. Calibración por segmento.</li>
+          <li><strong>Product Design:</strong> Strong yes. Detectar intención por comportamiento. Sistema social con geocercas.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Reformulación bajo presión. "Infraestructura, no producto" como cierre estratégico.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/steam" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: Steam →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

@@ -1,0 +1,140 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="YouTube — 2 ángulos extra" description="Two alternative prompts for YouTube: design Shorts from scratch, and fix monetization for medium creators.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">📺</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">YouTube · Ángulos extra</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">"Diseña Shorts from scratch" y "Arregla la monetización del mid-creator"</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">2 ángulos · ~6 min lectura</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2 class="!mt-8">Ángulo 1 · "Diseña Shorts desde cero"</h2>
+
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!mb-0"><strong>📌 Trampa de este ángulo:</strong> el candidato medio describe TikTok con otro nombre. La pregunta no es "copia TikTok", es <strong>"si YouTube no tuviera ya un producto largo, ¿cómo diseñarías Shorts?"</strong>. La respuesta diferencial empieza por reconocer la asimetría.</p>
+      </div>
+
+      <h3>Apertura</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Antes de diseñar Shorts, déjame nombrar la asimetría que define el problema. Shorts no nace en vacío, nace dentro de YouTube. <strong>Eso es ventaja en supply (creadores, ad infra) y desventaja en identidad (¿es un producto separado o feature de YouTube?)</strong>. La decisión clave es esa, antes de hablar de UX.</p></div>
+
+      <h3>Decisión clave · Identity</h3>
+      <p>Tres opciones:</p>
+      <ul>
+        <li><strong>App separada</strong> tipo Reels app. Permite diferenciación pero canibaliza la app principal.</li>
+        <li><strong>Feature dentro de la app</strong>, sin diferenciación de marca. Lo más fácil pero el menos diferenciador.</li>
+        <li><strong>Feature dentro de la app, con identidad propia y UX cerrada</strong>. Es lo que YouTube hizo. Ni separado ni mezclado. Estratégicamente correcto pero requiere disciplina de producto enorme para no contaminar.</li>
+      </ul>
+      <p>Mi decisión: <strong>la tercera, pero con una diferencia respecto a cómo lo ejecutó YouTube</strong>. El feed de Shorts debe ser <strong>un destino dentro de la app, no un swipe lateral oportunista</strong>. La fricción de entrar (un click intencional) le da identidad. Hoy YouTube tiene Shorts mezclado en el feed home y eso es ruido para el usuario que viene a contenido largo.</p>
+
+      <h3>3 decisiones de producto</h3>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Discoverability conectada con creadores existentes de YouTube.</strong></p>
+        <p class="!my-0">Cuando ves un Short, el creador tiene perfil con sus videos largos también. Esa <strong>conexión bidireccional</strong> es lo que YouTube tiene y TikTok no. Convierte Shorts en gateway a contenido largo del mismo creador, lo cual eleva monetización.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Algoritmo separado pero con señales compartidas.</strong></p>
+        <p class="!my-0">El algoritmo de Shorts optimiza para watch-to-completion ratio, no para tiempo total (que en formato corto no diferencia). Pero las señales del usuario en YouTube largo (qué temas le interesan) alimentan a Shorts y viceversa. <strong>El usuario es uno, los algoritmos son dos.</strong></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. Herramientas de creación que aprovechen YouTube Studio existente.</strong></p>
+        <p class="!my-0">El creador de Shorts no es un creador nuevo, es <strong>un creador de YouTube que también hace cortos</strong>. Las herramientas (analytics, monetización, gestión de derechos) son las mismas. Eso es ventaja competitiva enorme sobre TikTok porque el creador no necesita aprender dos plataformas.</p>
+      </div>
+
+      <h3>Tigers</h3>
+      <ul>
+        <li><strong>Canibalización del watch time del contenido largo.</strong> Real y medible. Mitigación: Shorts como gateway hacia largo del mismo creador. Y A/B testing constante: si el ratio long/short watch time baja brutalmente en un cohort, ajustar.</li>
+        <li><strong>Monetización dilutiva</strong>. CPM de Shorts es mucho menor que largo. Mitigación: revenue share específico de Shorts en lugar de pretender que es lo mismo que largo. Comunicación clara al creador.</li>
+      </ul>
+
+      <h3>Métricas</h3>
+      <ul>
+        <li><strong>Leading:</strong> % de usuarios DAU que entran a Shorts al menos una vez al día.</li>
+        <li><strong>Leading 2:</strong> % de creadores largos que publican al menos un Short al mes.</li>
+        <li><strong>Lagging:</strong> ratio de revenue de Shorts / revenue largo (debe crecer, no a costa de largo).</li>
+        <li><strong>Guard rail:</strong> watch time del contenido largo no debe bajar más del 5% por usuario después del lanzamiento de Shorts.</li>
+      </ul>
+
+      <hr class="my-12" />
+
+      <h2>Ángulo 2 · "Arregla la monetización para el creador mediano"</h2>
+
+      <h3>Diagnóstico del problema</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> El creador mediano (1K a 100K subs) es el segmento más sacrificado de YouTube. Los grandes (>1M) generan ingresos suficientes para vivir. Los pequeños no esperan monetización. Los medianos están en tierra de nadie: <strong>tienen audiencia real, ven que otros viven de esto, pero ellos mismos generan 200-500 euros al mes, no suficiente para abandonar trabajo de día</strong>. Es el segmento que más se quema y abandona, y es el pipeline natural de los grandes futuros.</p></div>
+
+      <h3>Por qué ocurre</h3>
+      <ul>
+        <li><strong>El CPM se aplica igualmente</strong>, independientemente del tamaño. Pero el creador mediano tiene audiencia más nicho, donde un anunciante pagaría más si pudiera segmentar. YouTube no le permite vender directamente a su nicho.</li>
+        <li><strong>Las features de membresía y Super Chats requieren umbral de subs alto</strong> que el mediano apenas pasa.</li>
+        <li><strong>El algoritmo de recomendaciones penaliza inconsistencia</strong>. El mediano que no puede publicar 3 veces por semana pierde visibilidad. Pero publicar 3 veces requiere dedicación full-time, que el mediano no puede permitirse.</li>
+      </ul>
+
+      <h3>3 cambios estructurales</h3>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Marketplace de sponsorship directo, gestionado por YouTube.</strong></p>
+        <p class="!my-0">YouTube conecta a marcas con creadores medianos según nicho temático, audiencia, geografía. La marca paga directamente, YouTube se lleva 10% en lugar de los 30-40% de agencias actuales. El mediano genera <strong>3x más por sponsorship que por ads</strong>, y YouTube captura una nueva fuente de revenue.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Tier de monetización por engagement, no por subs.</strong></p>
+        <p class="!my-0">Las features de membresía y Super Chats hoy se desbloquean a 1K subs. Eso es métrica vanity. Cambio: se desbloquean cuando un creador tiene un <strong>engagement rate sostenido</strong> (% de subs que ven al menos un video al mes > 30%). Eso premia al mediano con audiencia real comprometida vs el grande con subs zombie.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. "Calendario consistente" como señal positiva, no constante.</strong></p>
+        <p class="!my-0">El algoritmo actual castiga al que no publica frecuente. Cambio: premia al que publica <strong>predeciblemente</strong>, sea semanal, quincenal o mensual. Un creador que publica fielmente todos los jueves a las 18:00 sube en el algoritmo aunque no publique 3 veces por semana. <strong>La señal es fiabilidad, no frecuencia.</strong></p>
+      </div>
+
+      <h3>Tigers</h3>
+      <ul>
+        <li><strong>El marketplace de sponsorship compite con agencias existentes</strong> que ya tienen relación con marcas. Estas marcas pueden resistirse. Mitigación: empezar con sponsorship pequeño (under 10k USD) que las agencias no atienden bien, y crecer desde ahí.</li>
+        <li><strong>El cambio de algoritmo a "consistencia" puede dañar a grandes que publican mucho.</strong> Mitigación: el cambio es positivo (premia consistencia), no negativo (no castiga frecuencia). Si publicas mucho Y consistente, ganas el doble.</li>
+      </ul>
+
+      <h3>Métricas</h3>
+      <ul>
+        <li><strong>Leading:</strong> ingreso medio mensual del creador del segmento mediano. Target: subir de 300 a 800 USD en 12 meses.</li>
+        <li><strong>Leading 2:</strong> % de creadores medianos que reciben al menos un sponsorship al trimestre.</li>
+        <li><strong>Lagging:</strong> retención del creador mediano a 12 meses. Y % de medianos que se convierten en grandes (cross threshold de 100K) año a año.</li>
+        <li><strong>Guard rail:</strong> ingresos totales de la plataforma no deben bajar. Es estratégicamente importante invertir en este segmento, pero no a coste de la economía total.</li>
+      </ul>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira (cierre):</strong> Arreglar el mediano no es caridad. Es <strong>asegurar el pipeline futuro de creadores grandes y diferenciar YouTube de TikTok</strong>, que tiene un problema estructural más grave en este segmento porque ni siquiera tiene monetización directa fuerte.</p></div>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Cómo se evalúa</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Definición precisa del mediano y por qué se quema.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Pipeline argument. Identidad de Shorts no resuelta por canibalización pura.</li>
+          <li><strong>Product Design:</strong> Strong yes. Engagement vs subs. Consistencia vs frecuencia.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Identifica trampa del prompt (Shorts ≠ copia TikTok). Distingue inversión estratégica de caridad.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/youtube" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Entrevista completa</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

@@ -1,0 +1,111 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock — ATM Estación commuter" description="Design an ATM for a commuter rail station. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🚆</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">ATM Estación de tren commuter</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Design from scratch · ~6 min lectura</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 La pista clave</h3>
+        <p class="!mb-0">En estación commuter el tiempo es <strong>la restricción dura</strong>. El usuario tiene 90 segundos antes de que llegue el tren. Un cajero que tarda 60 segundos en operar es inútil. <strong>Todo el diseño se subordina a velocidad.</strong></p>
+      </div>
+
+      <h2 class="!mt-8">Ecosistema</h2>
+      <p>Commuter diario (mayoritario), viajero ocasional (fines de semana), turista que llega/sale, staff de estación, comercios de la estación.</p>
+
+      <h2>Primary user · Commuter diario</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Primary: el <strong>commuter diario en la franja de pico</strong> (7-9 AM y 17-19 PM). Razón: es donde está el volumen, donde el tiempo aprieta y donde el cajero falla más fácilmente. Si optimizo para este usuario, los demás casos heredan el beneficio.</p></div>
+
+      <h2>Sub-segmentación</h2>
+      <ul>
+        <li><strong>Commuter de prisa</strong> (90% del pico). Sabe lo que quiere, lo quiere ya.</li>
+        <li><strong>Commuter con tiempo</strong> (margen de minutos). Puede explorar opciones, redondear cantidades.</li>
+        <li><strong>Viajero ocasional</strong>. No conoce, busca claridad.</li>
+      </ul>
+
+      <h2>El insight clave · Predecibilidad sobre flexibilidad</h2>
+      <p>El commuter diario hace la misma operación todas las semanas. <strong>El cajero debe aprender ese patrón y servirlo instantáneamente.</strong> La flexibilidad de menús es contraproducente: añade tiempo y carga cognitiva donde se prima velocidad.</p>
+
+      <h2>Decisiones de diseño</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Modo "express" detectado automáticamente.</strong></p>
+        <p class="!my-0">Tarjeta reconocida que ha sacado dinero >3 veces en últimos 30 días en esta estación: <strong>ofrece directamente la operación previa</strong> (misma cantidad, mismo idioma, mismo recibo o no). PIN, confirmación, cash. 3 toques, 12 segundos.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Pre-arranque por proximidad.</strong></p>
+        <p class="!my-0">El cajero detecta acercamiento del usuario (sensor a 1.5m) y enciende pantalla con saludo + opción express visible. El usuario llega al cajero con la interfaz ya cargada, no esperando boot.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. Recibo digital por defecto.</strong></p>
+        <p class="!my-0">Recibo enviado al móvil vía vinculación previa, no impreso. Quita 3-5 segundos del flujo y evita atasco en papelera de papelitos.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>4. Recarga de tarjeta de transporte integrada.</strong></p>
+        <p class="!my-0">El cajero puede recargar la tarjeta Oyster/MetroCard/T-Mobilitat del usuario en la misma operación. Cero motivos para hacer dos colas.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>5. Pantalla con info del próximo tren.</strong></p>
+        <p class="!my-0">Mientras la transacción procesa (los 5 segundos de espera), pantalla muestra "Tu próximo tren a X sale en Y minutos del andén Z". Convierte tiempo muerto en valor.</p>
+      </div>
+
+      <h2>Edge cases</h2>
+      <ul>
+        <li><strong>El commuter de prisa que se equivoca de cantidad</strong>. La cancelación tiene que ser tan rápida como la operación. Botón cancelar siempre visible, sin diálogo de confirmación.</li>
+        <li><strong>Cola larga en pico</strong>. Pantalla externa muestra tiempo medio de espera. La detección de cola permite alertar al staff si supera umbral.</li>
+        <li><strong>Cajero vacío de cash en pico</strong>. Pesadilla operativa. Pre-alertas al equipo de reposición antes de quedarse vacío.</li>
+      </ul>
+
+      <h2>Tigers</h2>
+      <ul>
+        <li><strong>🐅 Tiger:</strong> Que la integración con tarjeta de transporte requiera convenio con el operador local (TfL, Renfe, etc.), y eso es lento y político. <strong>Mitigación:</strong> empezar por estaciones donde ya hay alianza, demostrar valor, escalar como casos de éxito.</li>
+        <li><strong>📰 Paper Tiger:</strong> "Los commuters pagan todo con contactless, no necesitan cash". Verdad parcial. Necesitan cash para tips, pequeños comercios, dar dinero a familia. Verificable con uso real, no asunción.</li>
+      </ul>
+
+      <h2>Métricas</h2>
+      <ul>
+        <li><strong>Leading primario:</strong> tiempo medio de transacción en pico. Target 15 segundos. Si sube, hay fricción.</li>
+        <li><strong>Leading 2:</strong> % de operaciones en modo express del total de operaciones de commuter recurrente.</li>
+        <li><strong>Lagging:</strong> revenue per cajero en pico. Y NPS específico del commuter.</li>
+        <li><strong>Guard rail:</strong> cola promedio en pico no debe superar 3 personas.</li>
+      </ul>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Primary y sub-segmentación con criterios temporales.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Subordinación de diseño a velocidad. Modo express como decisión arquitectónica.</li>
+          <li><strong>Product Design:</strong> Strong yes. Pre-arranque por proximidad. Recibo digital. Recarga integrada.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Paper Tiger sobre contactless. Edge case del commuter que se equivoca.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/atm-campus" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← ATM Campus</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/atm-pueblo" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: Pueblo rural →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

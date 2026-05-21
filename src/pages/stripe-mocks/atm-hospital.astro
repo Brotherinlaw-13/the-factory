@@ -1,0 +1,106 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock — ATM Hospital" description="Design an ATM for a hospital. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🏥</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">ATM Hospital</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Design from scratch · ~6 min lectura</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 La trampa de este ATM</h3>
+        <p class="!mb-0">El candidato medio asume "usuario = paciente". El hospital tiene 4-5 actores con necesidades muy distintas, y el paciente es probablemente <strong>el peor candidato a primary user</strong>.</p>
+      </div>
+
+      <h2 class="!mt-8">El prompt</h2>
+      <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 1rem;">"Design an ATM for a large hospital."</blockquote>
+
+      <h2>Ecosistema</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Mapeo de actores. <strong>Pacientes</strong> hospitalizados con poca movilidad, <strong>pacientes externos</strong> que vienen a citas o pruebas, <strong>acompañantes y familiares</strong> con muchas horas muertas en el centro, <strong>staff médico y administrativo</strong> con turnos largos, <strong>servicios externos</strong> (cafetería, parking, farmacia interna). El paciente hospitalizado en realidad <strong>no debería ser primary user</strong> porque su autonomía está reducida; no es el caso de uso central.</p></div>
+
+      <h2>Primary user · El acompañante</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Mi primary user es el <strong>acompañante o familiar</strong>. Justificación. Pasa muchas horas en el centro, en estado emocional alto (preocupación, cansancio), con necesidades materiales (pagar el parking, comprar comida, sacar cash para tareas externas mientras alguien cuida del paciente). El hospital es para él un espacio de transición prolongado, no de paso. Y a diferencia del paciente, tiene autonomía completa.</p></div>
+
+      <p>👀 <strong>Elegir al acompañante en lugar del paciente</strong> demuestra granularidad. Lo más típico es "paciente"; el acompañante es la elección no obvia.</p>
+
+      <h2>Sub-segmentación</h2>
+      <ul>
+        <li><strong>Acompañante de larga estancia</strong> (familia con hospitalización de días o semanas). Conoce el centro, busca eficiencia.</li>
+        <li><strong>Acompañante de cita puntual</strong> (consulta externa, prueba diagnóstica). No conoce, busca claridad.</li>
+        <li><strong>Acompañante en urgencias</strong>. Estado emocional muy alto, baja paciencia, alta urgencia por cualquier interacción.</li>
+      </ul>
+
+      <h2>Decisiones de diseño</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Modo "discreto" por defecto.</strong></p>
+        <p class="!my-0">Pantalla sin sonido. Texto grande pero no ruidoso. Sin música ni jingles. El hospital es entorno donde la sensibilidad al ruido es alta y donde la gente lleva al lado a otros pacientes nerviosos.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Integración con servicios del centro.</strong></p>
+        <p class="!my-0">Más allá del cash. Pago directo de parking (sin tener que volver al coche con el ticket), pago de cafetería en una sola transacción, recarga de pulsera de hospital si el centro la tiene. Es la decisión de diseño que hace el cajero <strong>infraestructura del hospital</strong>, no cajero genérico.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. Privacidad reforzada.</strong></p>
+        <p class="!my-0">Pantalla con privacidad lateral (filtros físicos como las pantallas de bancos). El acompañante puede estar haciendo trámite financiero con el paciente al lado, no quiere que el saldo sea visible. Esto es coste hardware pero alto valor percibido.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>4. Accesibilidad de primer nivel.</strong></p>
+        <p class="!my-0">El cajero está en un hospital, hay pacientes con muletas, sillas de ruedas, vista reducida, manos temblorosas. <strong>Accesibilidad no es feature, es requisito.</strong> Pantalla orientable, opción de altavoz con auriculares (no público), interfaz táctil grande, tiempo extendido entre toques.</p>
+      </div>
+
+      <h2>Edge cases</h2>
+      <ul>
+        <li><strong>Acompañante recién duelo</strong>. Acaba de recibir mala noticia. Si necesita pagar parking para irse, la interacción tiene que ser invisible. Cero fricción, pago automático por matrícula reconocida si está vinculada al ATM previamente.</li>
+        <li><strong>Robo</strong>. Hospital es entorno con muchas distracciones, gente acercándose detrás. Cajero con detección de proximidad opcional.</li>
+        <li><strong>Pacientes que el acompañante deja un momento</strong>. La transacción no debe ser tan larga que requiera dejar al paciente solo.</li>
+      </ul>
+
+      <h2>Tigers</h2>
+      <ul>
+        <li><strong>🐅 Tiger:</strong> Integración con sistemas del hospital. Pagar parking integrado, pulsera de paciente. Eso requiere acuerdo IT del centro, y cada hospital es un sistema distinto. <strong>Mitigación:</strong> empezar con uno o dos servicios estandarizables (parking primero), demostrar valor, escalar.</li>
+        <li><strong>📰 Paper Tiger:</strong> "¿Es ético cobrar comisión en un hospital?". El instinto público es decir que no. Pero el cajero compite con la opción de no haber cajero, no con uno gratis. Comisión transparente y baja es mejor que ausencia. Verificable con A/B test usando NPS post-uso.</li>
+      </ul>
+
+      <h2>Métricas</h2>
+      <ul>
+        <li><strong>Leading:</strong> tasa de uso del cajero por acompañantes (medido vía pulsera o vinculación opcional), target 40% al mes 6.</li>
+        <li><strong>Leading 2:</strong> % de transacciones que incluyen servicio integrado (parking, cafetería), no solo cash.</li>
+        <li><strong>Lagging:</strong> NPS del acompañante específico al servicio del cajero. Y retención de uso en visitas siguientes.</li>
+        <li><strong>Guard rail:</strong> tiempo medio de transacción no supera 60 segundos. Si lo hace, fricción excesiva.</li>
+      </ul>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Elección no obvia de primary (acompañante, no paciente). Sub-segmentación con criterios.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Cajero como infraestructura del hospital, no servicio genérico.</li>
+          <li><strong>Product Design:</strong> Strong yes. Modo discreto, privacidad lateral, accesibilidad como requisito.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Edge case del duelo. Paper Tiger sobre ética con razonamiento contrafactual.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/atm-campus" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: ATM Campus →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

@@ -1,47 +1,28 @@
 ---
 import LightLayout from '../../layouts/LightLayout.astro';
 
-const interviews = [
-  {
-    slug: 'whatsapp',
-    title: 'WhatsApp',
-    transplant: 'Mayores de 70',
-    icon: '💬',
-    format: 'Worked example',
-    duration: '~8 min lectura',
-    summary: 'Identidad por número de teléfono, segmentación funcional, trasplante que cuestiona supuestos de raíz.',
-    highlights: ['Users First explícito desde la primera frase', 'Stack-rank de mejoras (Doshi)', 'Tiger del paternalismo + mitigación'],
-  },
-  {
-    slug: 'atm-aeropuerto',
-    title: 'ATM Aeropuerto',
-    transplant: 'Diseño from scratch',
-    icon: '✈️',
-    format: 'Worked example',
-    duration: '~6 min lectura',
-    summary: 'Mapeo de ecosistema, sub-segmentación (turista / business / migrante), Tiger vs Paper Tiger.',
-    highlights: ['Ecosistema antes que features', 'Sub-segmentación con criterios concretos', 'Métricas con guard rail'],
-  },
-  {
-    slug: 'claude-code',
-    title: 'Claude Code',
-    transplant: 'Non-developers',
-    icon: '⚡',
-    format: 'Entrevista completa',
-    duration: '~13 min · 45 turnos',
-    summary: 'Producto técnico. Indie hacker vs developer profesional. Workspace persistente como decisión estructural.',
-    highlights: ['Defiende foco en indie hacker contra el "donde está el dinero"', 'Slip menor + auto-recuperación elegante', 'Reuso de argumento entre warm-up y trasplante'],
-  },
-  {
-    slug: 'youtube',
-    title: 'YouTube',
-    transplant: 'Niños menores de 10',
-    icon: '📺',
-    format: 'Entrevista completa',
-    duration: '~12 min · 42 turnos',
-    summary: 'Cuatro segmentos contradictorios. Recomendaciones por sesión. Trasplante con momento de presión real (consumer vs decisor).',
-    highlights: ['Honestidad sobre lo éticamente cuestionable', 'Momento de presión: reformula primary user bajo desafío', 'Cambio de modelo de negocio entero defendible'],
-  },
+const fullInterviews = [
+  { slug: 'whatsapp', title: 'WhatsApp', transplant: 'Mayores de 70', icon: '💬', summary: 'Identidad por número. Trasplante que cuestiona supuestos de raíz.' },
+  { slug: 'google-maps', title: 'Google Maps', transplant: 'Zonas rurales', icon: '🗺️', summary: '6 segmentos. La "feature invisible" como frame. Sistema social geocercado.' },
+  { slug: 'steam', title: 'Steam', transplant: 'Creator-first', icon: '🎮', summary: 'Marketplace + plataforma + social. La pregunta del 30% gestionada.' },
+  { slug: 'github', title: 'GitHub', transplant: 'Non-coders', icon: '🐙', summary: 'PR como unidad atómica. Adquisición Microsoft con datos.' },
+  { slug: 'claude-code', title: 'Claude Code', transplant: 'Non-developers', icon: '⚡', summary: 'Asistente vs colaborador. Slip + auto-recuperación elegante.' },
+  { slug: 'youtube', title: 'YouTube', transplant: 'Niños <10', icon: '📺', summary: '4 segmentos contradictorios. Momento de presión real (consumer vs decisor).' },
+];
+
+const angles = [
+  { slug: 'whatsapp-angles', title: 'WhatsApp', icon: '💬', q1: 'Improve para small business', q2: 'Kill or invest sobre Status' },
+  { slug: 'atm-angles', title: 'ATM Aeropuerto', icon: '✈️', q1: 'Métricas deep dive', q2: 'Scale to 100 airports' },
+  { slug: 'claude-code-angles', title: 'Claude Code', icon: '⚡', q1: 'Diseña pricing', q2: 'Compete con Cursor' },
+  { slug: 'youtube-angles', title: 'YouTube', icon: '📺', q1: 'Diseña Shorts from scratch', q2: 'Arregla monetización del mid-creator' },
+];
+
+const atms = [
+  { slug: 'atm-aeropuerto', title: 'Aeropuerto', icon: '✈️', insight: 'Sub-segmentación turista/business/migrante' },
+  { slug: 'atm-hospital', title: 'Hospital', icon: '🏥', insight: 'Primary user contraintuitivo: acompañante' },
+  { slug: 'atm-campus', title: 'Campus', icon: '🎓', insight: 'Reframe a hub financiero estudiantil internacional' },
+  { slug: 'atm-estacion', title: 'Estación commuter', icon: '🚆', insight: 'Subordinación total a velocidad. 15 segundos.' },
+  { slug: 'atm-pueblo', title: 'Pueblo rural', icon: '🏘️', insight: 'Infraestructura social, no producto comercial' },
 ];
 ---
 
@@ -55,53 +36,84 @@ const interviews = [
           <h1 class="text-4xl md:text-5xl font-black" style="color: var(--color-graphite);">Mock Interviews Hub</h1>
           <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style="background: var(--color-primary-soft); color: var(--color-primary);">Stripe Prep</span>
         </div>
-        <p class="font-medium mt-1" style="color: var(--color-primary);">Friday 22 May 2026 • 4 productos · navegables</p>
+        <p class="font-medium mt-1" style="color: var(--color-primary);">Viernes 22 May 2026 • 15 piezas · navegables</p>
       </div>
     </div>
 
     <p class="text-xl leading-relaxed max-w-3xl mb-8" style="color: var(--color-stone);">
-      Cuatro entrevistas mock con transcripción anotada, puntos fuertes destacados y los momentos clave. Cada una es una página independiente. Léelas sueltas, en cualquier orden, no hay secuencia obligatoria.
+      Material en tres formatos: entrevistas completas con transcripción anotada (6), ángulos alternativos sobre productos (8 mini), y ATM-style design-from-scratch (5). Léelos sueltos en el orden que prefieras.
     </p>
 
     <div class="flex gap-3 flex-wrap mb-8">
       <a href="/stripe-product-sense" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm hover:opacity-80" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
-        <span>📋</span><span>Dossier completo</span>
+        <span>📋</span><span>Dossier</span>
       </a>
       <a href="/stripe-product-sense-leaks" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm hover:opacity-80" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
-        <span>🔍</span><span>Reconnaissance</span>
+        <span>🔍</span><span>Recon</span>
       </a>
       <a href="/stripe-product-sense-reps" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm hover:opacity-80" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
         <span>🎯</span><span>Reps</span>
+      </a>
+      <a href="/stripe-capital-domain" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm hover:opacity-80" style="background: var(--color-primary-soft); border-color: rgba(139,92,246,0.2); color: var(--color-primary);">
+        <span>💳</span><span>Capital domain</span>
       </a>
     </div>
   </section>
 
   <div class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
-    <div class="grid md:grid-cols-2 gap-6">
-      {interviews.map(iv => (
-        <a href={`/stripe-mocks/${iv.slug}`} class="card !p-6 hover:!shadow-lg transition-all block no-underline" style="text-decoration: none;">
-          <div class="flex items-start gap-4 mb-3">
-            <span class="text-4xl">{iv.icon}</span>
+
+    <h2 class="text-2xl font-bold mt-4 mb-4" style="color: var(--color-graphite);">🎙️ Entrevistas completas <span class="text-base font-normal" style="color: var(--color-stone);">· warm-up + trasplante</span></h2>
+    <div class="grid md:grid-cols-2 gap-4 mb-12">
+      {fullInterviews.map(iv => (
+        <a href={`/stripe-mocks/${iv.slug}`} class="card !p-5 hover:!shadow-lg transition-all block no-underline" style="text-decoration: none;">
+          <div class="flex items-start gap-3 mb-2">
+            <span class="text-3xl">{iv.icon}</span>
             <div class="flex-1">
-              <h3 class="text-xl font-bold !my-0" style="color: var(--color-graphite);">{iv.title}</h3>
-              <p class="text-sm !my-1" style="color: var(--color-primary);">Trasplante: <strong>{iv.transplant}</strong></p>
+              <h3 class="text-lg font-bold !my-0" style="color: var(--color-graphite);">{iv.title}</h3>
+              <p class="text-xs !my-1" style="color: var(--color-primary);">Trasplante: <strong>{iv.transplant}</strong></p>
             </div>
           </div>
-          <div class="flex gap-2 flex-wrap mb-3 text-xs">
-            <span class="px-2 py-0.5 rounded" style="background: var(--color-mist); color: var(--color-stone);">{iv.format}</span>
-            <span class="px-2 py-0.5 rounded" style="background: var(--color-mist); color: var(--color-stone);">{iv.duration}</span>
-          </div>
-          <p class="text-sm mb-3" style="color: var(--color-stone);">{iv.summary}</p>
-          <ul class="text-xs space-y-1 list-disc list-inside" style="color: var(--color-stone);">
-            {iv.highlights.map(h => <li>{h}</li>)}
-          </ul>
-          <p class="text-sm font-medium mt-4 mb-0" style="color: var(--color-primary);">Leer entrevista →</p>
+          <p class="text-sm !mb-0" style="color: var(--color-stone);">{iv.summary}</p>
         </a>
       ))}
     </div>
 
-    <div class="card !p-6 mt-10" style="background: var(--color-primary-soft);">
-      <h3 class="!mt-0">El patrón común a las 4</h3>
+    <h2 class="text-2xl font-bold mt-4 mb-4" style="color: var(--color-graphite);">🎯 Ángulos sobre productos <span class="text-base font-normal" style="color: var(--color-stone);">· improve, kill/invest, pricing, compete, métricas, scale</span></h2>
+    <div class="grid md:grid-cols-2 gap-4 mb-12">
+      {angles.map(a => (
+        <a href={`/stripe-mocks/${a.slug}`} class="card !p-5 hover:!shadow-lg transition-all block no-underline" style="text-decoration: none;">
+          <div class="flex items-start gap-3 mb-2">
+            <span class="text-3xl">{a.icon}</span>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold !my-0" style="color: var(--color-graphite);">{a.title}</h3>
+              <p class="text-xs !my-1" style="color: var(--color-primary);">2 ángulos</p>
+            </div>
+          </div>
+          <ul class="text-sm !mb-0 !mt-2 space-y-1" style="color: var(--color-stone);">
+            <li>· {a.q1}</li>
+            <li>· {a.q2}</li>
+          </ul>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="text-2xl font-bold mt-4 mb-4" style="color: var(--color-graphite);">✈️ Design-from-scratch <span class="text-base font-normal" style="color: var(--color-stone);">· ATM-style en distintos contextos</span></h2>
+    <div class="grid md:grid-cols-2 gap-4 mb-12">
+      {atms.map(a => (
+        <a href={`/stripe-mocks/${a.slug}`} class="card !p-5 hover:!shadow-lg transition-all block no-underline" style="text-decoration: none;">
+          <div class="flex items-start gap-3 mb-2">
+            <span class="text-3xl">{a.icon}</span>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold !my-0" style="color: var(--color-graphite);">{a.title}</h3>
+            </div>
+          </div>
+          <p class="text-sm !mb-0" style="color: var(--color-stone);">{a.insight}</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="card !p-6 mt-4" style="background: var(--color-primary-soft);">
+      <h3 class="!mt-0">📋 El patrón común a todas</h3>
       <ol class="text-sm space-y-1 !mb-0 list-decimal list-inside" style="color: var(--color-stone);">
         <li>Define usuario primero, justifica.</li>
         <li>Sub-segmenta dentro del segmento.</li>

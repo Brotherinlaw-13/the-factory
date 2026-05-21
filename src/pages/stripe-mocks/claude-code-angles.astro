@@ -1,0 +1,138 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Claude Code — 2 ángulos extra" description="Two alternative prompts for Claude Code: design pricing, and compete with Cursor.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">⚡</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Claude Code · Ángulos extra</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">"Diseña pricing" y "Compete contra Cursor"</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">2 ángulos · ~6 min lectura</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2 class="!mt-8">Ángulo 1 · "Diseña el pricing de Claude Code"</h2>
+
+      <h3>Apertura · El frame correcto</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Pricing no es decidir un número, es <strong>decidir qué unidad cobras, a qué stakeholder y con qué psicología</strong>. Te lo planteo en tres capas.</p></div>
+
+      <h3>Capa 1 · Unidad de cobro</h3>
+      <p>Opciones reales:</p>
+      <ul>
+        <li><strong>Por token consumido:</strong> lo que hace Anthropic API. Justo para el usuario pesado, intimidante para el casual.</li>
+        <li><strong>Por tarea completada:</strong> brilla con el modelo agéntico, pero "tarea" es difícil de definir.</li>
+        <li><strong>Por hora de cómputo:</strong> raro en software, normal en infra.</li>
+        <li><strong>Suscripción flat con límites:</strong> previsible, simple, pierde correlación con valor.</li>
+      </ul>
+      <p>Mi decisión: <strong>suscripción flat con tiers basados en límite de "horas de agente"</strong>, donde una hora de agente = 5M de tokens equivalentes aproximadamente. Razón: el developer indie quiere previsibilidad en su factura mensual, no factura sorpresa de 400 dólares por una semana intensa.</p>
+
+      <h3>Capa 2 · Tiers</h3>
+      <ul>
+        <li><strong>Free:</strong> 10 horas/mes, modelo más barato, sin acceso a contexto largo. Captura curiosidad, demuestra valor.</li>
+        <li><strong>Pro · 30 USD/mes:</strong> 50 horas/mes, modelo top, contexto largo. Indie hacker hábil paga esto sin problema, recoge en una semana.</li>
+        <li><strong>Max · 100 USD/mes:</strong> 200 horas/mes, prioridad de cómputo, modelo top. Para profesionales que viven en CC todo el día.</li>
+        <li><strong>Enterprise · custom:</strong> límite ilimitado, deployment en VPC del cliente, compliance, audit log. Vendedor humano.</li>
+      </ul>
+
+      <h3>Capa 3 · Psicología</h3>
+      <ul>
+        <li><strong>Anclar al valor, no al coste.</strong> No "1M de tokens por X dólares", sino "construye tu MVP por menos de lo que cuesta tu hosting".</li>
+        <li><strong>Notificación proactiva al 80%</strong> del límite mensual. Eso evita facturación sorpresa, baja churn y crea momento natural para upsell.</li>
+        <li><strong>Rollover parcial</strong> de horas no usadas (hasta 25% al mes siguiente). Reduce ansiedad de "estoy pagando por algo que no uso este mes".</li>
+      </ul>
+
+      <h3>El competidor</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Cursor cobra 20 USD/mes flat. ¿Por qué cobramos 30 en Pro? <strong>Porque el modelo agéntico delega tareas, no autocompleta líneas, y ese valor es estructuralmente distinto.</strong> Pero la prima sobre Cursor no puede ser >50% sin justificación obvia. 30 es el punto donde el indie hacker que ya paga Cursor se cambia sin pensarlo si nota la diferencia.</p></div>
+
+      <h3>Tigers</h3>
+      <ul>
+        <li><strong>Confusión sobre "hora de agente"</strong>: nueva unidad, requiere educación. Mitigación: dashboard claro con métricas y traducción "esto equivale a X conversaciones tipo".</li>
+        <li><strong>Heavy users en Pro</strong> consumen más que su tarifa, otros consumen menos. Mitigación: la economía promedia. Si la cola larga de heavy users distorsiona, ajustas límites.</li>
+      </ul>
+
+      <h3>Métricas</h3>
+      <ul>
+        <li><strong>Leading:</strong> tasa de conversión Free → Pro al mes 1.</li>
+        <li><strong>Leading 2:</strong> ARPU por tier.</li>
+        <li><strong>Lagging:</strong> retención a 12 meses por tier. Y % de Pro que upgrade a Max.</li>
+        <li><strong>Guard rail:</strong> márgen bruto por tier no debe bajar del 60% considerando coste de inferencia.</li>
+      </ul>
+
+      <hr class="my-12" />
+
+      <h2>Ángulo 2 · "Compete con Cursor"</h2>
+
+      <h3>Apertura</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Cursor es competencia directa solo si asumes que Claude Code y Cursor sirven al mismo job. Mi tesis: <strong>no lo sirven</strong>. Cursor es "Copilot mejor": autocompletado inteligente dentro de un IDE familiar. Claude Code es agente que delega tareas en terminal. La pregunta "compete with Cursor" en realidad oculta una pregunta más interesante: <strong>¿cómo gana Claude Code la batalla por la mente del developer?</strong></p></div>
+
+      <h3>Las 3 opciones estratégicas</h3>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>A. Imitar Cursor.</strong></p>
+        <p class="!my-0">Construir IDE propio o plugin de VSCode con UX similar a Cursor. <strong>Rechazo</strong>. Es competir donde Cursor ya es fuerte, dilutas la propuesta diferencial agéntica.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>B. Convertir a Cursor en complementario.</strong></p>
+        <p class="!my-0">Posicionar Claude Code como <strong>el agente que delega y revisa, Cursor como el IDE donde editas</strong>. Integración explícita: cuando CC propone cambios, los abre en Cursor para revisión, y Cursor puede invocar CC para tareas grandes. <strong>Esta es la opción inteligente</strong>, porque convierte un competidor en aliado en lugar de carrera en superficie compartida.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>C. Desplazar IDE entero.</strong></p>
+        <p class="!my-0">Apostar a que el modelo agéntico hace el IDE obsoleto. <strong>Rechazo a corto, observación a 3 años.</strong> El IDE no desaparece mañana porque el developer todavía necesita leer código, debugger, integrar herramientas. Pero el peso del IDE en el flujo baja conforme el agente toma más tareas. La estrategia es <strong>no atacar el IDE, atacar el job de "ejecutar tareas largas" que el IDE no resuelve</strong>.</p>
+      </div>
+
+      <h3>La jugada concreta</h3>
+      <ul>
+        <li><strong>Doble down en terminal-native experience.</strong> No competir con Cursor en IDE, ser irreemplazable en terminal.</li>
+        <li><strong>API y MCP first.</strong> Otras herramientas (Cursor, VSCode, Replit, custom workflows) pueden invocar CC. Eso convierte a CC en <strong>capa de inteligencia agéntica</strong> que cualquier IDE puede usar, en lugar de IDE propio.</li>
+        <li><strong>Marketplace de agents especializados.</strong> Otros developers publican agentes verticales (Claude Code para Django, para Rails, para data engineering). CC se convierte en plataforma de agentes, no producto monolítico.</li>
+      </ul>
+
+      <h3>Tigers</h3>
+      <ul>
+        <li><strong>Cursor añade modo agéntico propio.</strong> Probable. Mitigación: ventana de diferenciación de 12-18 meses + foso por integración profunda con modelo top de Anthropic.</li>
+        <li><strong>El developer no quiere otra herramienta más.</strong> Reducir fricción de adopción: invocación desde Cursor mismo, no requiere abandonar el IDE.</li>
+      </ul>
+
+      <h3>Métricas</h3>
+      <ul>
+        <li><strong>Leading:</strong> % de usuarios de CC que también usan Cursor (no es churn, es complementariedad).</li>
+        <li><strong>Leading 2:</strong> número de tareas iniciadas desde otra herramienta (Cursor, VSCode plugin, etc.).</li>
+        <li><strong>Lagging:</strong> share of voice en developer mind share, medido vía surveys (Stack Overflow, JetBrains) y menciones en social.</li>
+        <li><strong>Guard rail:</strong> retención de usuarios CC standalone (los que solo usan CC en terminal). Si baja mucho, la estrategia de complementariedad nos está vaciando el core.</li>
+      </ul>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira (cierre):</strong> <strong>Competir con Cursor no es ganar a Cursor, es no dejar que Cursor defina el campo de batalla.</strong> Cursor compite en superficie de edición de código. CC compite en superficie de delegación de tareas. Si dejas que la conversación pública sea "CC vs Cursor", ya perdiste, porque Cursor llegó primero ahí. Si la conversación es "agentes delegables vs autocompletado", llevas ventaja.</p></div>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Cómo se evalúa</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Distinción de jobs, no de productos.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. "No dejar que el competidor defina el campo de batalla." Rechazo justificado de A y C.</li>
+          <li><strong>Product Design:</strong> Strong yes. Tiered pricing con rollover. Marketplace de agentes.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Reframe de competencia a complementariedad.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/claude-code" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Entrevista completa</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

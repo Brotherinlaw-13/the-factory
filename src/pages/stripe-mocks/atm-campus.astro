@@ -1,0 +1,99 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock — ATM Campus" description="Design an ATM for a university campus. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🎓</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">ATM Campus Universitario</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Design from scratch · ~6 min lectura</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 La pista clave</h3>
+        <p class="!mb-0">El estudiante usa cash menos que cualquier otra demográfica. Si diseñas un cajero "para sacar dinero", fracasas. <strong>El producto tiene que reinterpretar qué hace un cajero</strong> en un entorno donde el cash no es la necesidad principal.</p>
+      </div>
+
+      <h2 class="!mt-8">Ecosistema</h2>
+      <p>Estudiantes (locales, internacionales), staff académico, staff no académico (mantenimiento, restauración), visitantes (familiares, conferencias, eventos), proveedores de servicios del campus.</p>
+
+      <h2>Primary user · Estudiante internacional</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Mi primary es el <strong>estudiante internacional</strong>. Justificación. (1) Tiene poder adquisitivo (ya pagó matrícula). (2) Está en país nuevo con sistema bancario que no domina. (3) Tiene necesidades específicas: cash para emergencias, cambio de moneda, ayuda con servicios financieros básicos (mandar dinero a casa, pagar piso). (4) Es el segmento más rentable porque su banca de origen lo trata como extranjero y paga comisiones más altas. El estudiante local ya tiene su banco resuelto.</p></div>
+
+      <h2>Sub-segmentación</h2>
+      <ul>
+        <li><strong>Estudiante internacional recién llegado</strong> (primer mes). Alta necesidad, baja familiaridad. Necesita guía.</li>
+        <li><strong>Estudiante internacional asentado</strong> (resto del año). Necesidades específicas y puntuales, busca eficiencia.</li>
+        <li><strong>Estudiante local</strong> (uso ocasional, retirar cash pequeño).</li>
+      </ul>
+
+      <h2>El reframe · No es un cajero, es un hub financiero estudiantil</h2>
+      <p>Cajero tradicional sirve para sacar cash. <strong>Lo que el estudiante internacional necesita es un punto físico de servicios financieros adaptados</strong>. La diferencia es radical.</p>
+
+      <h2>Decisiones de diseño</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Funcionalidad expandida.</strong></p>
+        <p class="!my-0">Cash retirar, sí. Pero también: transferencias internacionales con tarifa competitiva (compitiendo con Wise/Revolut), cambio de divisa físico, recarga de tarjeta de estudiante para servicios del campus (comedor, lavandería, biblioteca de impresión).</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Onboarding integrado con la universidad.</strong></p>
+        <p class="!my-0">La primera vez que un estudiante internacional usa el cajero, lo identifica como tal (vía tarjeta de estudiante) y le ofrece un flujo guiado: "tu primer mes en X país: cosas que necesitas saber sobre dinero". Esto convierte el cajero en <strong>tutor financiero contextualmente relevante</strong>.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. Interfaz multilingüe profunda.</strong></p>
+        <p class="!my-0">No 5 idiomas, 30+. El estudiante internacional viene de todo el mundo. La detección es por su tarjeta de origen o elegida en primer uso, persiste en sesiones siguientes.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>4. Modelo de negocio · Subscripción a la universidad, no comisión al estudiante.</strong></p>
+        <p class="!my-0">La universidad paga una tarifa por el servicio (entendido como beneficio estudiantil tipo gimnasio). El estudiante <strong>no paga comisión por retirar</strong>, paga solo en servicios premium (transferencia internacional, cambio).</p>
+      </div>
+
+      <h2>Tigers</h2>
+      <ul>
+        <li><strong>🐅 Tiger:</strong> Competir con apps fintech (Wise, Revolut) que el estudiante ya usa en el móvil. Si el cajero ofrece transferencia internacional, ¿por qué iría al cajero en lugar de la app? <strong>Mitigación:</strong> el cajero no compite por la totalidad, compite por el momento "lo necesito ahora, físicamente, en cantidad significativa". Ese momento existe (mandar 2000 dólares a casa para emergencia familiar, por ejemplo, requiere verificación física en muchos países).</li>
+        <li><strong>📰 Paper Tiger:</strong> "Los estudiantes solo usan móvil para pagos". Verdad relativa. La asunción de que esto significa "no hay caso de uso físico" es falsa. Verificable con encuesta a estudiantes internacionales sobre frecuencia de necesidades físicas.</li>
+      </ul>
+
+      <h2>Métricas</h2>
+      <ul>
+        <li><strong>Leading:</strong> % de estudiantes internacionales que activan al menos una vez al cajero por trimestre, target 60% año 1.</li>
+        <li><strong>Leading 2:</strong> revenue por estudiante activo del segmento internacional al año.</li>
+        <li><strong>Lagging:</strong> renovación del contrato con la universidad (medido al año). NPS específico del segmento internacional.</li>
+        <li><strong>Guard rail:</strong> coste operativo del cajero (servicio + cash + soporte) no debe superar el revenue por usuario activo.</li>
+      </ul>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Primary user contraintuitivo (internacional) con justificación.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Reframe de "cajero" a "hub financiero". Modelo de negocio invertido (universidad paga, no estudiante).</li>
+          <li><strong>Product Design:</strong> Strong yes. Onboarding contextual con tarjeta de estudiante. Multilingüe profundo.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Paper Tiger sobre uso móvil. Diferenciación clara del momento físico.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/atm-hospital" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← ATM Hospital</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/atm-estacion" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Siguiente: Estación →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

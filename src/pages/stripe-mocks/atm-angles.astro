@@ -1,0 +1,130 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="ATM Aeropuerto — 2 ángulos extra" description="Two alternative Stripe prompts for the airport ATM: metrics deep dive and scale to 100 airports.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">✈️</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">ATM Aeropuerto · Ángulos extra</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">"Métricas deep dive" y "Scale to 100 airports"</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">2 ángulos · ~6 min lectura</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2 class="!mt-8">Ángulo 1 · "¿Cómo medirías el éxito del ATM aeropuerto?"</h2>
+
+      <p>👀 <strong>Pregunta clásica de Stripe.</strong> El error típico es soltar 4-5 métricas sin estructura. El patrón correcto es <strong>tier de métricas con relación entre ellas</strong>.</p>
+
+      <h3>Apertura</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Vale, métricas deep dive. Antes de listar, déjame establecer dos cosas. <strong>Una</strong>, el éxito depende de qué stakeholder estés sirviendo: el pasajero, el banco operador, o el aeropuerto. Voy a articularlo desde el pasajero como primary y luego mostrar cómo eso se conecta con los otros dos. <strong>Dos</strong>, distingo métricas de salud del producto, de éxito comercial, y de impacto a largo plazo.</p></div>
+
+      <h3>Tier 1 · Health metrics (estado del producto día a día)</h3>
+      <ul>
+        <li><strong>Completion rate</strong>: % de transacciones iniciadas que terminan con dinero entregado. Target 85%. Si baja, algo está roto en flujo.</li>
+        <li><strong>Tiempo medio de transacción</strong>: segundos entre primer toque y entrega del dinero. Target 45 segundos. Es proxy de experiencia.</li>
+        <li><strong>Tasa de error técnico</strong>: % de transacciones que fallan por conectividad, hardware, o backend. Target < 2%.</li>
+      </ul>
+
+      <h3>Tier 2 · Business metrics (éxito comercial)</h3>
+      <ul>
+        <li><strong>Revenue per transaction</strong>: incluyendo comisión fija, comisión variable y márgen de Dynamic Currency Conversion (si aplica).</li>
+        <li><strong>Transactions per hour por cajero</strong>: indica si el cajero está siendo usado. Si está por debajo de 5/hora en pico, hay problema de ubicación o de competencia interna.</li>
+        <li><strong>Mix de tipos de tarjeta</strong>: tarjetas extranjeras vs locales. En aeropuerto internacional, debería ser >70% extranjeras. Si no, el cajero está sirviendo al usuario equivocado.</li>
+      </ul>
+
+      <h3>Tier 3 · Outcome metrics (impacto a largo plazo)</h3>
+      <ul>
+        <li><strong>NPS</strong>: medido vía SMS opcional post-transacción.</li>
+        <li><strong>Tasa de chargeback</strong>: % de transacciones disputadas. Indicador de fricción percibida o problema de transparencia.</li>
+        <li><strong>Repeat usage</strong>: % de tarjetas extranjeras que vuelven a usar la red de cajeros del mismo operador en el mismo viaje o en un viaje siguiente.</li>
+      </ul>
+
+      <h3>La pregunta clave</h3>
+      <div class="card !p-4 my-3" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <p class="!my-0"><strong>Marcos:</strong> Si tuvieras que elegir una sola métrica para reportar al CEO, ¿cuál?</p>
+      </div>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Revenue per transaction × Transactions per hour por cajero</strong>, agregado. Es la North Star porque incluye salud (si está roto, transacciones bajan), experiencia (si frusta, transacciones bajan) y monetización (revenue per transaction). Si esa métrica sube, el producto funciona. Si baja, hay que descomponerla.</p></div>
+
+      <p>👀 <strong>Combinar dos métricas en una composite con razón estructural</strong> es muestra de pensamiento maduro. Mejor que decir "la North Star es completion rate".</p>
+
+      <hr class="my-12" />
+
+      <h2>Ángulo 2 · "Scale to 100 airports worldwide"</h2>
+
+      <h3>El reframe inicial</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Antes de hablar de escala, déjame separar dos preguntas que la pregunta original mezcla. <strong>Una</strong>, ¿es el mismo producto en 100 aeropuertos? <strong>Dos</strong>, ¿qué cambia cuando pasamos de 1 a 100?</p></div>
+
+      <h3>¿Es el mismo producto?</h3>
+      <p>No. Hay tres tipos de aeropuerto que requieren producto distinto:</p>
+      <ul>
+        <li><strong>Hubs internacionales (Heathrow, Dubai, JFK):</strong> alto volumen, multidivisa, multilingüe, alta competencia con cambio manual.</li>
+        <li><strong>Aeropuertos regionales con tráfico internacional (Birmingham, Marseille):</strong> volumen medio, menos divisas relevantes, competencia limitada.</li>
+        <li><strong>Aeropuertos de destino turístico (Mallorca, Cancún):</strong> tráfico estacional, perfil de usuario muy homogéneo, alta sensibilidad a comisión percibida.</li>
+      </ul>
+
+      <h3>3 dimensiones de escala</h3>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Producto: configurabilidad por categoría de aeropuerto.</strong></p>
+        <p class="!my-0">Mismo core (hardware, software, backend), tres configuraciones (set de divisas, lenguajes, UX específico). No es un producto por aeropuerto, son tres SKUs.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Operaciones: red de partners locales por región.</strong></p>
+        <p class="!my-0">Operar 100 cajeros desde un equipo central no funciona. La pieza crítica es <strong>quién rellena el cajero de cash, quién lo repara cuando se rompe</strong>. Eso requiere acuerdos con operadores logísticos locales por región (no por aeropuerto). Modelo de franquicia operativa, con SLAs centralizados.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. Regulación: licencia por jurisdicción, no por aeropuerto.</strong></p>
+        <p class="!my-0">Cada país tiene sus propias reglas de servicios financieros. La escala se gestiona por jurisdicción (UE como una, US como otra, etc.), no por aeropuerto. Empezar por jurisdicciones con mayor densidad de aeropuertos objetivo (UE primero, US segundo, ASEAN tercero).</p>
+      </div>
+
+      <h3>Tigers</h3>
+      <ul>
+        <li><strong>Acuerdo con el aeropuerto.</strong> Cada aeropuerto cobra rent por espacio para cajero, negocia exclusividad, y muchas veces ya tiene contrato con otro operador. Mitigación: empezar por aeropuertos donde el operador actual da mal servicio (mide con NPS o quejas), y entrar como segundo proveedor antes que como exclusivo.</li>
+        <li><strong>Coste de capital.</strong> 100 cajeros físicos × ~30k USD cada uno = 3M en hardware solo. Mitigación: leasing en lugar de compra, o partnership con bancos locales que ya tienen flota.</li>
+        <li><strong>Diferencia cultural en confianza al cajero.</strong> En algunos países la gente no confía en cajeros de operador desconocido en aeropuerto, prefieren bancos. Mitigación: co-branding con banco local conocido.</li>
+      </ul>
+
+      <h3>Métricas de la operación escalada</h3>
+      <ul>
+        <li><strong>Leading primario:</strong> número de aeropuertos con cajero activo y rentable (definido como break-even operativo al mes 12).</li>
+        <li><strong>Leading secundario:</strong> coste medio de despliegue por aeropuerto. Baja con learning curve.</li>
+        <li><strong>Lagging:</strong> revenue total de la red. Y churn de aeropuertos (cuántos cancelan contrato al renovar).</li>
+        <li><strong>Guard rail:</strong> uptime medio de la red, no debe bajar del 97% conforme escala. Si lo hace, hay problema operativo crítico.</li>
+      </ul>
+
+      <h3>Cierre</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> El error típico de escalar un producto físico como este es asumir que es replicación. No lo es. <strong>Es triplicación de modelos de operación adaptados a tres tipos de aeropuerto, con red de partners locales y compliance por jurisdicción.</strong> Yo lo gestionaría como tres roadmaps paralelos, no como un roadmap único.</p></div>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Cómo se evalúa</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Tres tipos de aeropuerto con perfil de usuario distinto.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Composite metric. Estrategia de tres SKUs.</li>
+          <li><strong>Product Design:</strong> Strong yes. Configurabilidad explícita, no fork.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Separa preguntas mezcladas. Identifica Tigers no obvios (capital, cultura).</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/atm-aeropuerto" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Worked example</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

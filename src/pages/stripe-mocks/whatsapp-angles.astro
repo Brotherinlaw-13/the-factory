@@ -1,0 +1,122 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="WhatsApp — 2 ángulos extra" description="Two alternative Stripe prompts for WhatsApp: improve, and kill-or-invest.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">💬</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">WhatsApp · Ángulos extra</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">"Improve X" y "Kill or invest"</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap text-xs">
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">2 ángulos · ~6 min lectura</span>
+      <span class="px-2 py-1 rounded" style="background: var(--color-mist); color: var(--color-stone);">Formato compacto</span>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Cómo usar estos ángulos</h3>
+        <p class="!mb-0">Si te llega "Improve X" o "Kill/invest", el patrón es el mismo de la entrevista completa pero <strong>el warm-up se acorta</strong>. Defines usuario rápido (1 frase), eliges segmento (1 frase), y vas directo al ángulo. La rúbrica se evalúa igual.</p>
+      </div>
+
+      <h2 class="!mt-8">Ángulo 1 · "Improve WhatsApp for small businesses"</h2>
+
+      <h3>Apertura (30 seg)</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Vale. WhatsApp para pequeños negocios. Mi segmento foco: el dueño que usa WhatsApp como canal principal de atención al cliente (peluquero, fontanero, tienda de barrio), no la franquicia que ya usa CRM. Las mejoras tienen que respetar que el dueño no quiere aprender otro producto.</p></div>
+
+      <h3>Diagnóstico del problema actual</h3>
+      <ul>
+        <li><strong>WhatsApp Business existe pero su discoverability es mala.</strong> Mucho dueño tiene su número personal como número del negocio.</li>
+        <li><strong>El feed mezcla amigos con clientes.</strong> Mensaje de madre, mensaje de cliente preguntando precio, mensaje de novia, todo en la misma lista. Coste cognitivo alto.</li>
+        <li><strong>No hay forma de saber qué cliente ya respondiste.</strong> Para 5 chats lo recuerdas; para 50 al día, te pierdes.</li>
+      </ul>
+
+      <h3>3 mejoras priorizadas</h3>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Detección automática de patrón comercial + sugerencia de upgrade.</strong></p>
+        <p class="!my-0">Si WhatsApp ve que un número recibe muchos mensajes de contactos nuevos cada día, con preguntas que se repiten (precios, horarios), sugiere convertir a Business sin migrar el número. Eso resuelve el cold start del Business.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Separación visual de chats personales y comerciales en el mismo número.</strong></p>
+        <p class="!my-0">Inbox unificado por defecto, pero dos tabs: "Personal" y "Trabajo". La clasificación inicial es automática (contactos vs no contactos), el usuario corrige y el sistema aprende. <em>Sin obligar al dueño a llevar dos teléfonos.</em></p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. Estado de chat: pendiente / respondido / cerrado.</strong></p>
+        <p class="!my-0">Tres estados visibles en el chat. Por defecto "pendiente" cuando entra mensaje nuevo, "respondido" cuando contestas, "cerrado" cuando el dueño lo marca manualmente. Ese tercer estado no existe en WhatsApp Business hoy y es lo que un dueño con 50 chats al día necesita.</p>
+      </div>
+
+      <h3>Tiger</h3>
+      <p>Si el sistema clasifica mal "personal vs trabajo" o cierra un chat sin que el dueño quiera, pierde confianza. <strong>Mitigación:</strong> todas las acciones automáticas son reversibles, y el sistema aprende del comportamiento. Y el estado de chat es opt-in, no se enciende solo.</p>
+
+      <h3>Métricas</h3>
+      <ul>
+        <li><strong>Leading:</strong> tiempo medio de respuesta del dueño a clientes nuevos (baja).</li>
+        <li><strong>Leading 2:</strong> ratio de chats marcados como "cerrado" sobre chats totales.</li>
+        <li><strong>Lagging:</strong> retención del dueño en Business a 6 meses.</li>
+        <li><strong>Guard rail:</strong> tasa de falsos cierres (chats cerrados que el dueño tiene que reabrir).</li>
+      </ul>
+
+      <hr class="my-12" />
+
+      <h2>Ángulo 2 · "WhatsApp, ¿kill o invest?" sobre Status (Stories)</h2>
+
+      <h3>Apertura (30 seg)</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Vale, asumo que la pregunta es sobre Status, no sobre WhatsApp entero. Status es la feature de stories que WhatsApp lanzó en 2017 copiando a Snapchat e Instagram. Mi posición: <strong>no kill, no invest, replantear la pregunta.</strong> Te explico.</p></div>
+
+      <h3>El reframe</h3>
+      <p>La pregunta "kill or invest" asume que Status es producto fin. <strong>Yo lo veo como feature de retención.</strong> No tiene engagement comparable a Instagram Stories porque WhatsApp no es producto social, es producto de mensajería. Y aún así muchos usuarios lo abren, lo cual sugiere que cumple una función distinta de "publicar a audiencia".</p>
+
+      <h3>El argumento</h3>
+      <ul>
+        <li><strong>Quien usa Status no busca audiencia, busca presencia ligera.</strong> Es el equivalente moderno de "ver el último visto", un "señal de vida" no intrusiva.</li>
+        <li><strong>Mata Status</strong> y pierdes una superficie de check-in pasivo que mantiene a usuarios menos activos enganchados al producto.</li>
+        <li><strong>Invierte en Status como producto social</strong> y compites con Instagram en un terreno que no es tuyo, dilutas la propuesta de "mensajería privada".</li>
+      </ul>
+
+      <h3>Mi decisión</h3>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> <strong>Re-posicionar Status como "señal pasiva entre contactos cercanos"</strong>, no como stories. Reduzco features sociales (no public stickers, no music overlays), refuerzo features de presencia (mood del día, ubicación opcional, "qué hago ahora"). Mantengo coste de mantenimiento bajo, conservo valor de retención, no compito donde no debo. <strong>No es kill, no es invest, es focus.</strong></p></div>
+
+      <p>👀 <strong>Reformular la pregunta es una jugada legítima en Stripe</strong>, siempre que la justifiques. La trampa es hacerlo para escapar de la respuesta. Aquí lo está haciendo porque la pregunta original es estructuralmente imperfecta, no porque no sepa contestar.</p>
+
+      <h3>Tiger</h3>
+      <p>Si re-posicionas demasiado, los usuarios actuales se quejan ("¿dónde están las stickers?"). Mitigación: cambio progresivo, no abrupto. Y comunicación clara del nuevo posicionamiento.</p>
+
+      <h3>Métricas</h3>
+      <ul>
+        <li><strong>Leading:</strong> % de usuarios que abren Status al menos 1 vez a la semana, sostenido.</li>
+        <li><strong>Lagging:</strong> retención en WhatsApp a 90 días en usuarios que abren Status vs los que no. Si el delta sube, Status está cumpliendo su función de retención.</li>
+        <li><strong>Guard rail:</strong> % de creadores de contenido (los que postean) no debe colapsar bruscamente. Si baja más del 30% en un trimestre, hay rechazo.</li>
+      </ul>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Cómo se evalúa</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Diferencia dueño de barrio vs franquicia. Diferencia usuario social activo vs check-in pasivo.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. "No compito donde no debo" como frame de focus.</li>
+          <li><strong>Product Design:</strong> Strong yes. Inbox separado sin obligar dos teléfonos. Estado de chat con tres niveles.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Reformula la pregunta cuando es estructuralmente imperfecta, con justificación.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/whatsapp" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Entrevista completa</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

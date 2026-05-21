@@ -1,0 +1,115 @@
+---
+import LightLayout from '../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="Mock — ATM Pueblo rural" description="Design an ATM for a rural village without bank branches. Annotated.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🏘️</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">ATM Pueblo rural sin sucursal</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Design from scratch · ~6 min lectura</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 La pista clave</h3>
+        <p class="!mb-0">En pueblo rural sin sucursal, <strong>el cajero no compite con otro cajero, compite con la ausencia de banca</strong>. Eso cambia tres cosas: el usuario tiene paciencia (no hay alternativa), el cajero asume funciones que en ciudad hace una sucursal, y la responsabilidad social es alta (es el único punto financiero del pueblo).</p>
+      </div>
+
+      <h2 class="!mt-8">El contexto · "España vaciada", rural America, rural UK</h2>
+      <p>Pueblo de menos de 1.500 habitantes, sin sucursal bancaria, población envejecida, conectividad 4G irregular, comercio local con perfil de necesidades específico (cobrar pensiones, pagar a proveedores rurales, retirar cantidades pequeñas con frecuencia alta).</p>
+
+      <h2>Ecosistema</h2>
+      <p>Vecino mayor (gran mayoría), vecino activo (minoría), comercio local, agricultor/ganadero, visitante de fin de semana (segundo residente urbano), turista esporádico.</p>
+
+      <h2>Primary user · Vecino mayor</h2>
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira:</strong> Primary: <strong>el vecino mayor</strong> (60+). Justificación. (1) Es la mayoría demográfica. (2) Tiene la necesidad más aguda (cobrar pensión, retirar para pagos del pueblo, sin alternativa digital fluida). (3) Es el segmento más vulnerable a fricción del producto, así que si lo sirvo bien, los otros heredan beneficios. (4) Tiene <strong>vínculo emocional</strong> con el pueblo y con el cajero como infraestructura local. No es transaccional, es social.</p></div>
+
+      <h2>Sub-segmentación</h2>
+      <ul>
+        <li><strong>Vecino mayor confiado</strong>. Sabe usar el cajero, lleva años. Necesita eficiencia y respeto.</li>
+        <li><strong>Vecino mayor inseguro</strong>. Ha aprendido pero le pone nervioso. Necesita confirmación y soporte.</li>
+        <li><strong>Vecino mayor que no sabe usarlo</strong>. Tiene que ir con un familiar o vecino que le ayude. Necesita interfaz que permita asistencia sin perder dignidad.</li>
+      </ul>
+
+      <h2>El reframe profundo · El cajero no es solo cajero</h2>
+      <p>En un pueblo sin sucursal, el cajero asume funciones bancarias que no son su core: <strong>consulta de saldo en formato comprensible para mayores, recogida de pensión (no solo verla, recogerla físicamente), pago de recibos (luz, agua, autónomo), transferencias básicas a familiares, depósito de cash para hijos que vienen a visitar</strong>. <strong>Es la única infraestructura financiera del pueblo, su diseño tiene que reflejar esa responsabilidad.</strong></p>
+
+      <h2>Decisiones de diseño</h2>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>1. Interfaz adaptada a la realidad cognitiva del mayor.</strong></p>
+        <p class="!my-0">Texto muy grande, voz opcional, menos pasos por defecto. Tiempo entre toques extendido (sin penalizar paciencia). Confirmación visual y auditiva clara de cada acción. <strong>Sin paternalismo</strong>: no infantilizar, no usar diseño "para abuelos" estereotipado.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>2. Funciones expandidas (banca rural sin sucursal).</strong></p>
+        <p class="!my-0">Recogida de pensión con notificación automática cuando entra. Pago de recibos del pueblo (luz, agua, autónomo, cooperativa) en una sola transacción. Depósito de cash (para que los hijos puedan ingresar cuando visitan). Transferencias a familiares con identificación simple.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>3. Modo "ayudado".</strong></p>
+        <p class="!my-0">Cuando un familiar ayuda al mayor, el cajero ofrece modo donde el familiar puede ver y guiar sin que el mayor pierda autonomía visible. <strong>Importante:</strong> el familiar ayuda, no opera. El PIN siempre lo introduce el titular. La dignidad se preserva.</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>4. Resiliencia operativa.</strong></p>
+        <p class="!my-0">Conectividad 4G irregular: el cajero funciona en modo offline para operaciones simples (saldo, retirada pequeña), sincronizando cuando recupera red. Cash refill por logística local con tiempos predecibles (semanal, día fijo).</p>
+      </div>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);">
+        <p class="!mb-1"><strong>5. Modelo de negocio · Subsidio.</strong></p>
+        <p class="!my-0">El cajero en pueblo de 1.500 habitantes no es rentable por transacción. Modelo: <strong>contrato con administración pública (ayuntamiento, gobierno regional) o con banco como obligación de cobertura territorial</strong>. Esto es servicio esencial, no servicio comercial. Stripe equivalent: Stripe Climate, donde el negocio justifica un servicio que no se sostiene por sí solo.</p>
+      </div>
+
+      <h2>Edge cases</h2>
+      <ul>
+        <li><strong>Mayor solo con problema en el cajero</strong>. Hotline de voz, no chat (los mayores no usan chat). Botón físico grande de "necesito ayuda" que abre línea directa.</li>
+        <li><strong>Robo o intento de estafa</strong>. Comunidad pequeña: el ladrón es identificable. Cajero con cámara de buena calidad, registro local que sirve para identificación rápida. Y detección de patrones sospechosos (uso fuera de horas habituales, retiradas grandes inusuales).</li>
+        <li><strong>Pueblo en evacuación por incendio o crisis</strong>. Sistema debe permitir bloqueo remoto y procesar retiradas grandes para emergencia con autorización del titular vía teléfono.</li>
+      </ul>
+
+      <h2>Tigers</h2>
+      <ul>
+        <li><strong>🐅 Tiger:</strong> Sostenibilidad económica. Sin subsidio público o de banco grande, el modelo es deficitario. <strong>Mitigación:</strong> el contrato de suministro de servicio se firma a nivel de jurisdicción (territorio + administración), no por pueblo. Es paquete: 50 pueblos a la vez, no uno a uno.</li>
+        <li><strong>🐅 Tiger:</strong> Sustitución gradual por móvil. Conforme los mayores aprenden móvil, el caso de uso baja. <strong>Mitigación:</strong> el cajero asume funciones que el móvil no resuelve (depósito de cash, recogida física, pago de recibos locales con autónomos del pueblo que no aceptan pago digital). Y la transición de demografía es lenta (20-30 años).</li>
+        <li><strong>📰 Paper Tiger:</strong> "El cajero es obsoleto en el mundo digital". En pueblo sin sucursal, lo contrario. Es la única infraestructura.</li>
+      </ul>
+
+      <h2>Métricas</h2>
+      <ul>
+        <li><strong>Leading primario:</strong> % de habitantes del pueblo registrados como usuarios activos. Target 70% mayores de 60.</li>
+        <li><strong>Leading 2:</strong> uso medio de funciones expandidas (no solo retirada): % de operaciones que incluyen pago de recibo, transferencia, depósito.</li>
+        <li><strong>Lagging:</strong> sostenibilidad económica del modelo (revenue + subsidio vs coste operativo). Y indicador social: % de habitantes que reportan el cajero como "esencial" en encuesta anual.</li>
+        <li><strong>Guard rail:</strong> uptime del cajero. En pueblo sin alternativa, un cajero roto durante 3 días es crisis social, no fallo técnico. Target uptime 99%.</li>
+      </ul>
+
+      <div class="card !p-4 my-3" style="background: var(--color-primary-soft);"><p class="!my-0"><strong>Elvira (cierre):</strong> Diseñar este cajero no es ejercicio comercial estándar. Es <strong>diseñar infraestructura social en territorio donde el mercado ha fallado</strong>. La decisión más importante del producto es asumir esa responsabilidad explícitamente en arquitectura y modelo de negocio.</p></div>
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Rúbrica</h3>
+        <ul class="!mb-0">
+          <li><strong>Users First:</strong> Strong yes. Sub-segmentación con criterios cognitivos. Modo ayudado preservando dignidad.</li>
+          <li><strong>Product Strategy:</strong> Strong yes. Reframe radical (infraestructura social, no producto comercial). Modelo de negocio explícito y defendible.</li>
+          <li><strong>Product Design:</strong> Strong yes. Funciones expandidas. Resiliencia operativa con offline mode.</li>
+          <li><strong>Critical Thinking:</strong> Strong yes. Edge case del pueblo en crisis. Paper Tiger sobre "cajero obsoleto" con razonamiento contrafactual.</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/atm-estacion" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← ATM Estación</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

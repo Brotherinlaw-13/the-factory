@@ -1,4 +1,5 @@
 ---
+layout: ../layouts/Layout.astro
 title: "RFC: message tool — explicit reply contract"
 date: 2026-05-21
 status: draft, awaiting Diego's review

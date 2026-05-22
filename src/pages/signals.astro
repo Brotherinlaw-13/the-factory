@@ -1,0 +1,236 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Rook · Signals" description="Live background signals: cron health, git state, inbox, filesystem. Rook's early-warning feed.">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-4 mb-8">
+      <span class="text-6xl">📡</span>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-white">Rook · Signals</h1>
+        <p class="text-amber-400 font-mono text-sm mt-1">Background sensor feed · refreshes every 60s · no LLM</p>
+      </div>
+    </div>
+
+    <!-- Summary bar -->
+    <div id="summary-bar" class="card mb-6 flex flex-wrap gap-4 items-center">
+      <div class="flex items-center gap-2">
+        <span class="text-gray-400 text-sm font-mono">Active signals:</span>
+        <span id="active-count" class="text-white font-bold text-lg">…</span>
+      </div>
+      <div class="flex gap-3">
+        <span id="high-count" class="px-2 py-0.5 rounded text-xs font-bold bg-red-900 text-red-300">HIGH 0</span>
+        <span id="med-count" class="px-2 py-0.5 rounded text-xs font-bold bg-amber-900 text-amber-300">MED 0</span>
+        <span id="low-count" class="px-2 py-0.5 rounded text-xs font-bold bg-slate-700 text-slate-300">LOW 0</span>
+      </div>
+      <div class="ml-auto text-gray-500 text-xs font-mono" id="last-updated">last update: …</div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="flex flex-wrap gap-2 mb-4" id="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="high">🔴 High</button>
+      <button class="filter-btn" data-filter="medium">🟡 Medium</button>
+      <button class="filter-btn" data-filter="low">⚪ Low</button>
+      <button class="filter-btn" data-filter="cron">Cron</button>
+      <button class="filter-btn" data-filter="git">Git</button>
+      <button class="filter-btn" data-filter="filesystem">Filesystem</button>
+      <button class="filter-btn" data-filter="telegram">Telegram</button>
+      <button class="filter-btn" data-filter="gmail">Gmail</button>
+      <button class="filter-btn" data-filter="memory">Memory</button>
+    </div>
+
+    <!-- Signals list -->
+    <div id="signals-list" class="space-y-3 mb-10">
+      <div class="text-gray-500 font-mono text-sm">Loading…</div>
+    </div>
+
+    <!-- History section -->
+    <div class="border-t border-gray-700 pt-8">
+      <h2 class="text-xl font-bold text-white mb-4">Recent history <span class="text-gray-500 text-sm font-normal">(last 48h from log)</span></h2>
+      <div id="history-list" class="space-y-1 font-mono text-xs text-gray-400">
+        <div>Loading history…</div>
+      </div>
+    </div>
+
+    <!-- Spec link -->
+    <div class="mt-8 text-center">
+      <a href="/signals-producer-spec" class="text-amber-400 hover:text-amber-300 text-sm font-mono underline">→ View producer spec</a>
+    </div>
+  </section>
+
+  <style>
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+    .signal-card {
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid transparent;
+      background: rgba(255,255,255,0.04);
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .signal-card:hover { background: rgba(255,255,255,0.07); }
+    .signal-card.high { border-left-color: #ef4444; background: rgba(239,68,68,0.08); }
+    .signal-card.medium { border-left-color: #f59e0b; background: rgba(245,158,11,0.08); }
+    .signal-card.low { border-left-color: #6b7280; }
+    .signal-card.hidden { display: none; }
+    .badge-high { background: #7f1d1d; color: #fca5a5; }
+    .badge-medium { background: #78350f; color: #fcd34d; }
+    .badge-low { background: #1f2937; color: #9ca3af; }
+    .badge { padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; font-family: monospace; text-transform: uppercase; }
+    .source-badge { background: rgba(255,255,255,0.08); color: #94a3b8; padding: 1px 6px; border-radius: 4px; font-size: 0.65rem; font-family: monospace; }
+    .detail-text { display: none; font-size: 0.78rem; color: #94a3b8; margin-top: 0.5rem; line-height: 1.5; }
+    .signal-card.expanded .detail-text { display: block; }
+    .filter-btn {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: monospace;
+      background: rgba(255,255,255,0.06);
+      color: #9ca3af;
+      border: 1px solid rgba(255,255,255,0.08);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(251,191,36,0.15);
+      color: #fbbf24;
+      border-color: rgba(251,191,36,0.3);
+    }
+    .ttl-bar-bg { background: rgba(255,255,255,0.1); border-radius: 2px; height: 3px; margin-top: 6px; }
+    .ttl-bar { background: #22c55e; border-radius: 2px; height: 3px; transition: width 0.5s; }
+    .ttl-bar.medium { background: #f59e0b; }
+    .ttl-bar.low-ttl { background: #ef4444; }
+  </style>
+
+  <script>
+    let activeFilter = 'all';
+    let signalsData = null;
+
+    const SOURCE_ICONS = {
+      cron: '⚙️', git: '🌿', filesystem: '📁', telegram: '✈️',
+      gmail: '📧', calendar: '📅', memory: '🧠', progress: '📋'
+    };
+
+    function timeAgo(isoTs) {
+      const diff = (Date.now() - new Date(isoTs).getTime()) / 1000;
+      if (diff < 60) return `${Math.round(diff)}s ago`;
+      if (diff < 3600) return `${Math.round(diff/60)}m ago`;
+      if (diff < 86400) return `${Math.round(diff/3600)}h ago`;
+      return `${Math.round(diff/86400)}d ago`;
+    }
+
+    function ttlPercent(ts, expiresAt) {
+      const emitted = new Date(ts).getTime();
+      const expires = new Date(expiresAt).getTime();
+      const now = Date.now();
+      const total = expires - emitted;
+      const remaining = expires - now;
+      return Math.max(0, Math.min(100, (remaining / total) * 100));
+    }
+
+    function renderSignals(data) {
+      signalsData = data;
+      const signals = data.signals || [];
+      const high = signals.filter(s => s.severity === 'high').length;
+      const med = signals.filter(s => s.severity === 'medium').length;
+      const low = signals.filter(s => s.severity === 'low').length;
+
+      document.getElementById('active-count').textContent = signals.length;
+      document.getElementById('high-count').textContent = `HIGH ${high}`;
+      document.getElementById('med-count').textContent = `MED ${med}`;
+      document.getElementById('low-count').textContent = `LOW ${low}`;
+      document.getElementById('last-updated').textContent = `last update: ${timeAgo(data.generated_at)}`;
+
+      if (signals.length === 0) {
+        document.getElementById('signals-list').innerHTML =
+          '<div class="card text-center text-gray-500 font-mono text-sm py-8">No active signals. All quiet.</div>';
+        return;
+      }
+
+      const sorted = [...signals].sort((a,b) => {
+        const order = {high:0, medium:1, low:2};
+        return (order[a.severity]||2) - (order[b.severity]||2);
+      });
+
+      document.getElementById('signals-list').innerHTML = sorted.map(sig => {
+        const pct = ttlPercent(sig.ts, sig.expires_at);
+        const barClass = pct < 20 ? 'low-ttl' : (pct < 50 ? 'medium' : '');
+        const icon = SOURCE_ICONS[sig.source] || '•';
+        const filterMatch = activeFilter === 'all' ||
+          activeFilter === sig.severity ||
+          activeFilter === sig.source;
+        return `<div class="signal-card ${sig.severity} ${filterMatch ? '' : 'hidden'}"
+                     data-severity="${sig.severity}" data-source="${sig.source}"
+                     onclick="this.classList.toggle('expanded')">
+          <div class="flex items-start gap-3">
+            <span class="text-lg mt-0.5">${icon}</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span class="badge badge-${sig.severity}">${sig.severity}</span>
+                <span class="source-badge">${sig.source}</span>
+                <span class="text-gray-500 text-xs font-mono">${timeAgo(sig.ts)}</span>
+              </div>
+              <div class="text-white font-semibold text-sm">${sig.title}</div>
+              <div class="detail-text">${sig.detail}</div>
+              <div class="ttl-bar-bg mt-2"><div class="ttl-bar ${barClass}" style="width:${pct}%"></div></div>
+              <div class="text-gray-600 text-xs font-mono mt-1">expires ${timeAgo(sig.expires_at).replace(' ago','')}</div>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function applyFilter(filter) {
+      activeFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === filter);
+      });
+      document.querySelectorAll('.signal-card').forEach(card => {
+        const match = filter === 'all' ||
+          filter === card.dataset.severity ||
+          filter === card.dataset.source;
+        card.classList.toggle('hidden', !match);
+      });
+    }
+
+    async function loadHistory() {
+      // History is append-only JSONL, we embed a static snapshot or note its absence
+      // The dashboard page can't read server filesystem directly (static site)
+      // So we show a note pointing to the spec
+      document.getElementById('history-list').innerHTML =
+        '<span class="text-gray-600">History from signals-log.jsonl is available on the server. ' +
+        'Producer logs each signal with event=emitted/expired/consumed. ' +
+        'Full history viewer coming in v1.</span>';
+    }
+
+    async function fetchAndRender() {
+      try {
+        const r = await fetch('/signals.json?t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const data = await r.json();
+        renderSignals(data);
+      } catch (e) {
+        document.getElementById('signals-list').innerHTML =
+          `<div class="card text-red-400 font-mono text-sm">Failed to load signals.json: ${e.message}</div>`;
+      }
+    }
+
+    // Wire filter buttons
+    document.getElementById('filter-bar').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (btn) applyFilter(btn.dataset.filter);
+    });
+
+    fetchAndRender();
+    loadHistory();
+    setInterval(fetchAndRender, 60000);
+  </script>
+
+</Layout>

@@ -1,0 +1,166 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="V4 · Google Maps + traslación a pesca artesanal" description="Análisis estructurado de Google Maps + traslación a navegación marítima de pesca artesanal">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver a V4</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🗺️</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Google Maps</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Producto + traslación a navegación de pesca artesanal</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2>Usuarios</h2>
+      <p>Primario: <strong>el commuter urbano</strong> que mueve la misma ciudad 2-5 veces al día con rutas repetidas pero condiciones cambiantes. Es donde Maps genera el engagement recurrente que sustenta el modelo.</p>
+      <p>Secundarios relevantes (no son "el resto", son sub-mercados con dinámicas propias):</p>
+      <ul>
+        <li><strong>El visitante</strong> en una ciudad nueva. Sesión densa pero corta. Necesita confianza, no optimización.</li>
+        <li><strong>El profesional logístico</strong> (delivery, rideshare, taxi). Maps es su herramienta de trabajo, su métrica es ingresos por hora, no minutos ahorrados.</li>
+        <li><strong>El consumidor de búsqueda local</strong>. No abre Maps para navegar, abre Maps para encontrar "farmacia abierta ahora". Ese es el verdadero competidor de Yelp y Google Search.</li>
+      </ul>
+
+      <h2>Ecosistema</h2>
+      <p>Maps juega en <strong>tres tableros simultáneos</strong>, y muchos PMs ven sólo uno:</p>
+      <ul>
+        <li><strong>Atención del usuario.</strong> Compite con Waze (mismo Google, pero canibal interno), Apple Maps, Citymapper, apps locales (Yandex en Rusia, Baidu Maps en China).</li>
+        <li><strong>Calidad del dato.</strong> No compite con apps, compite con OpenStreetMap, con los propios usuarios que reportan incidentes, y con telemetría de coches conectados (Tesla, BMW, Mercedes mandan datos de sus flotas).</li>
+        <li><strong>Monetización indirecta.</strong> Maps no se monetiza directo, es proveedor de tráfico para Google Search y Google Ads. Las decisiones de producto tienen que aguantar en este tablero también.</li>
+      </ul>
+
+      <h2>Competidores</h2>
+      <table>
+        <thead><tr><th>Competidor</th><th>Dónde compite</th><th>Vector real de amenaza</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Apple Maps</strong></td><td>iOS por defecto</td><td>Cada año mejora; en EEUU urbano ya es comparable. Riesgo de cohort effect en usuarios Gen Z iOS-only.</td></tr>
+          <tr><td><strong>Waze</strong> (propio)</td><td>Driver power users</td><td>Canibal interno, pero la app social/community la tiene Waze, no Maps.</td></tr>
+          <tr><td><strong>Citymapper</strong></td><td>Transporte público urbano</td><td>UX superior para multimodal en ciudades top-30. Maps lo ha copiado pero no superado.</td></tr>
+          <tr><td><strong>Yandex / Baidu</strong></td><td>Mercados con Google bloqueado</td><td>No es threat directa, es ausencia obligada.</td></tr>
+          <tr><td><strong>Uber / Bolt nativos</strong></td><td>"Llévame de A a B"</td><td>Threat indirecta pero estructural: el usuario que pide Uber no abre Maps. Maps pierde la sesión entera.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Ventajas vs competidores</h2>
+      <ul>
+        <li><strong>Cobertura global única.</strong> No hay otro producto que funcione razonablemente en Lagos, en Madrid y en Tokio. Apple Maps falla en mercados emergentes; Citymapper sólo cubre ciudades top.</li>
+        <li><strong>Densidad del dato de POIs.</strong> 200M+ negocios listados. Cuando buscas "kebab cerca", Maps tiene reseñas, fotos, horarios actualizados. Apple Maps depende de Yelp y se nota.</li>
+        <li><strong>Routing ML maduro.</strong> 20 años de datos de tráfico real. Predicción de ETA es la más precisa del mercado.</li>
+        <li><strong>Integración con resto del ecosistema Google.</strong> Calendar te lleva a la reunión, Gmail detecta vuelos y los mete en Maps, Search abre Maps directo. Apple replica pero menos profundo.</li>
+        <li><strong>Street View.</strong> No tiene competencia real. Mapillary lo intenta open source, lejos.</li>
+      </ul>
+
+      <h2>Desventajas vs competidores</h2>
+      <ul>
+        <li><strong>UX cargado.</strong> Demasiadas features visibles, Apple Maps gana en limpieza para uso casual.</li>
+        <li><strong>Comunidad débil.</strong> Waze tiene cultura de usuarios que reportan radares y accidentes en tiempo real. Maps lo intenta pero su comunidad es más fría.</li>
+        <li><strong>Privacidad percibida.</strong> Apple Maps no rastrea, Maps sí, y eso pesa en cohort consciente.</li>
+        <li><strong>Discovery local débil vs Yelp / TripAdvisor.</strong> Las reseñas de Maps tienen menos peso editorial; el restaurante con 4,2 en Maps puede ser un 3,5 real.</li>
+      </ul>
+
+      <h2>Qué hacen bien</h2>
+      <ul>
+        <li><strong>Search filtrado por relevancia temporal.</strong> "Pharmacy" devuelve farmacias <em>abiertas ahora</em>, no las más cercanas. Es una decisión de producto que convierte a Maps en asistente diario, no en mapa interactivo.</li>
+        <li><strong>Indoor maps</strong> en aeropuertos, centros comerciales, estaciones. Invisible cuando funciona, salvador cuando lo necesitas.</li>
+        <li><strong>Offline maps.</strong> Maduros y fiables, especialmente útiles viajando.</li>
+        <li><strong>Multimodal routing real.</strong> Coche + bici + andar + transporte público en la misma búsqueda, con switching dinámico.</li>
+      </ul>
+
+      <h2>Qué podrían mejorar</h2>
+      <ul>
+        <li><strong>Predicción anticipada de cambio de ruta.</strong> Hoy Maps responde cuando le preguntas. Una versión proactiva ("normalmente sales a las 8:30, hoy mejor a las 8:15 porque hay accidente en la M40") elevaría el valor del commuter sin coste de UI.</li>
+        <li><strong>Capa social ligera.</strong> Compartir ubicación está, pero falta "estoy yendo a ese sitio, ¿alguien más?". WhatsApp lo resuelve por fuera.</li>
+        <li><strong>Confianza en reseñas.</strong> Sistema de reputación de reviewers (Local Guides existe pero está mal expuesto). Los 4,2 inflados son problema real.</li>
+        <li><strong>Integración con calendario de manera más útil.</strong> Hoy te avisa cuándo salir, pero no te negocia tráfico cambiante con tu agenda completa del día.</li>
+      </ul>
+
+      <hr class="my-10" />
+
+      <h2>Traslación · navegación marítima de pesca artesanal</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Por qué este sector.</strong> Es lo bastante lejos para que rompa supuestos (no hay carreteras, no hay tráfico, no hay POIs fijos), pero conserva el problema esencial de Maps: <em>cómo voy de A a B en condiciones cambiantes que no controlo</em>. Y es un sector con 60M de pescadores artesanales en el mundo, mayoritariamente smartphone-equipados, donde no existe producto líder.</p>
+      </div>
+
+      <h3>Usuarios</h3>
+      <p>Primario: <strong>el pescador artesanal con barca de 8-15m</strong>, opera 20-80 millas náuticas de costa, sale en jornadas de 6-18 horas, vuelve a puerto cada día. España, Portugal, Italia, Grecia, Marruecos, Senegal, Indonesia, Filipinas. Lo distingue del comercial industrial: no tiene flota, no tiene GPS de barco profesional caro, decide solo qué pesca y dónde.</p>
+      <p>Secundarios: capitanes de chárter recreativo de pesca; cooperativas pesqueras que coordinan varias barcas.</p>
+
+      <h3>Ecosistema</h3>
+      <ul>
+        <li><strong>Navegación / seguridad.</strong> GPS marítimo, predicción de oleaje, alerta meteorológica.</li>
+        <li><strong>Inteligencia de caladero.</strong> Dónde está el pez hoy, basado en temperatura del agua, datos satélite, intercambio con otros pescadores.</li>
+        <li><strong>Comercialización en lonja.</strong> Precios en tiempo real, demanda por especie, optimizar la jornada para vender mejor lo capturado.</li>
+      </ul>
+
+      <h3>Competidores</h3>
+      <table>
+        <thead><tr><th>Competidor</th><th>Qué hace</th><th>Limitación</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Navionics</strong></td><td>Cartas náuticas digitales premium</td><td>Caro (~£60/año), enfocado a recreativos, no integra mercado lonja.</td></tr>
+          <tr><td><strong>C-MAP</strong></td><td>Cartas náuticas profesionales</td><td>Diseñado para barcos grandes con plotter integrado, no para móvil.</td></tr>
+          <tr><td><strong>Windy / Windguru</strong></td><td>Meteorología marina</td><td>Excelente en datos, pero pasivo: no te dice <em>dónde ir</em>, sólo <em>cómo estará el tiempo</em>.</td></tr>
+          <tr><td><strong>FishBrain / Fishidy</strong></td><td>Social network de pescadores</td><td>Enfocado a pesca recreativa de agua dulce, no a artesanal marítima profesional.</td></tr>
+          <tr><td><strong>WhatsApp + papel</strong></td><td>Status quo real en el 70% del sector</td><td>El competidor más serio. Funciona, es gratis, no tiene curva de aprendizaje.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Ventajas vs competidores</h3>
+      <p>Asumiendo que construyes un "Maps for fishing", las ventajas que podrías traer del playbook Maps:</p>
+      <ul>
+        <li><strong>Modelo ML sobre datos satelitales públicos</strong> (Copernicus, NOAA) para predecir presencia de especies por temperatura, clorofila, corrientes. Navionics no lo hace, Windy tiene los datos crudos pero no la inferencia.</li>
+        <li><strong>Network effects de inteligencia colectiva.</strong> Pescadores comparten anónimamente capturas (especie + zona aproximada + hora), igual que Waze comparte tráfico. Cada usuario hace mejor el producto.</li>
+        <li><strong>Integración con lonja local.</strong> "Hoy el bonito está pagándose a 8€/kg en Vigo, el rape a 12€/kg en Cangas. Optimizo la jornada hacia rape porque el viaje extra de 20 millas se compensa con margen."</li>
+        <li><strong>Mobile-first y gratuito.</strong> Pescador artesanal no compra plotter de 3.000€, sí lleva móvil rugerizado o tablet.</li>
+      </ul>
+
+      <h3>Desventajas vs competidores</h3>
+      <ul>
+        <li><strong>Conectividad.</strong> A 30 millas no hay 4G. La app tiene que funcionar offline con sync inteligente al puerto.</li>
+        <li><strong>Coste de adquisición.</strong> Sector tradicional, desconfianza tecnológica, network effects difíciles de arrancar. Año 1 con 50 pescadores en un puerto la app no aporta nada todavía.</li>
+        <li><strong>Compliance regulatorio.</strong> Cuotas, zonas vedadas, especies protegidas varían por país y temporada. Cualquier feature de "te llevo al mejor caladero" tiene que respetar regulación, o atrae a la inspección pesquera al producto.</li>
+        <li><strong>Monetización.</strong> Pescador artesanal con ingresos medios variables no paga £60/año. Modelo freemium + comisión de venta integrada en lonja es la apuesta, no suscripción.</li>
+      </ul>
+
+      <h3>Qué tomar del playbook Maps</h3>
+      <ul>
+        <li><strong>Routing dinámico</strong> adaptado: no minimizar tiempo, sino maximizar margen esperado de la jornada (rutas que combinan zonas según predicción de captura + precios lonja + gasto de combustible).</li>
+        <li><strong>Offline-first con sync al regresar.</strong> La descarga de zona del día al salir del puerto y la subida de datos de captura al volver. Mismo modelo que Maps offline en zonas sin cobertura.</li>
+        <li><strong>Search filtrado por relevancia temporal.</strong> No "todos los caladeros", sino "caladeros productivos hoy según las condiciones actuales".</li>
+        <li><strong>Datos invisibles que mejoran la app.</strong> Sensores de pH, salinidad o temperatura conectados a la barca subiendo datos automáticamente, igual que coches conectados alimentan Maps.</li>
+      </ul>
+
+      <h3>Lo que podría sumar específico</h3>
+      <ul>
+        <li><strong>Alerta meteorológica de seguridad</strong> activa: vibración + audio si la app detecta cambio peligroso en oleaje. Maps no necesita esto, una app pesquera sí (mueren ~32.000 pescadores al año en el mundo, mayoría artesanales).</li>
+        <li><strong>Bitácora automática</strong> para compliance: registro de capturas para autoridades, evita papeleo manual.</li>
+        <li><strong>Multi-actor.</strong> Familia en tierra ve la posición del barco; cooperativa ve la flota; comprador en lonja ve qué viene a puerto en las próximas horas y planifica.</li>
+      </ul>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"The right information is not the complete information, it's the actionable-now information."</strong> (de Google Maps al sector pesca: el pescador no necesita todos los caladeros, necesita los productivos hoy con las condiciones de hoy).</li>
+          <li><strong>"Network effects de inteligencia colectiva: cada usuario hace mejor el producto sin esfuerzo extra."</strong></li>
+          <li><strong>"Diseñar para el competidor real, que es WhatsApp y papel, no Navionics."</strong></li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← V4 hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4/linkedin" class="text-sm hover:opacity-80" style="color: var(--color-primary);">LinkedIn →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

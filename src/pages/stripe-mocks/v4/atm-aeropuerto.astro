@@ -1,0 +1,191 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="V4 · ATM Aeropuerto · diseño completo" description="Design exercise completo para ATM de aeropuerto: usuarios, contexto físico, constraints, jobs to be done, propuesta, edge cases, métricas, riesgos">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver a V4</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🏧</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">ATM aeropuerto</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Design exercise completo · "Design an ATM for an airport"</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 La trampa principal</h3>
+        <p class="!my-0">El 90% de candidatos diseña "un ATM normal con feature de divisa extranjera". Eso es ATM-with-bells. El movimiento senior es <strong>reconocer que el aeropuerto rompe los supuestos fundamentales de un ATM</strong> (usuario recurrente → usuario desconocido + nunca volverá; banco de referencia → banco desconocido + roaming charges; ubicación neutral → contexto de estrés temporal extremo). Una vez ves eso, el producto cambia radicalmente.</p>
+      </div>
+
+      <h2>Estructura de respuesta (8 movimientos)</h2>
+      <ol>
+        <li>Aclarar contexto (¿qué tipo de aeropuerto? ¿airside o landside? ¿qué cliente lo opera?)</li>
+        <li>Definir usuarios y segmentar</li>
+        <li>Mapear contexto físico y emocional</li>
+        <li>Listar jobs to be done</li>
+        <li>Identificar constraints duros</li>
+        <li>Propuesta de diseño con justificación</li>
+        <li>Edge cases / failure modes</li>
+        <li>Métricas + riesgos + qué cambiaría si...</li>
+      </ol>
+
+      <h2>1 · Preguntas para abrir (NO empieces a diseñar sin estas)</h2>
+      <div class="card !p-5 my-4" style="background: var(--color-mist);">
+        <p class="!my-0"><strong>Frase ancla:</strong> "Before I start designing, let me clarify three things, because the answer changes substantially depending on each."</p>
+      </div>
+      <ul>
+        <li><strong>¿Airside o landside?</strong> Airside (después de seguridad) = pasajero atrapado, contexto temporal claro, mix de divisas alto. Landside (antes de seguridad) = pasajero más tranquilo, también recoge gente.</li>
+        <li><strong>¿Quién lo opera?</strong> Banco local (Santander en Madrid), aeropuerto (operador propio), tercero independiente (Travelex, Euronet)? Cambia la economía: Euronet vive de FX fees, Santander vive de cross-sell.</li>
+        <li><strong>¿Qué tipo de aeropuerto?</strong> Hub internacional grande (Heathrow, JFK) vs regional doméstico vs low-cost (Stansted, Bergamo). Mix de pasajeros y horarios distinto.</li>
+      </ul>
+      <p>Asumo a partir de aquí: <strong>aeropuerto hub internacional grande, airside, operado por tercero financiero independiente con modelo FX-fee-driven</strong> (escenario más rico para análisis).</p>
+
+      <h2>2 · Usuarios</h2>
+      <table>
+        <thead><tr><th>Segmento</th><th>Frecuencia</th><th>Necesidad principal</th><th>Sensibilidad fee</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Turista llegando</strong></td><td>1ª vez en el país</td><td>Cash local rápido, sin pensar</td><td>Baja (paga lo que sea)</td></tr>
+          <tr><td><strong>Turista saliendo</strong></td><td>Última oportunidad</td><td>Deshacerse de cash sobrante o coger emergencia</td><td>Media</td></tr>
+          <tr><td><strong>Business traveler frecuente</strong></td><td>Múltiples veces</td><td>Cash mínimo para taxi/propinas, máxima velocidad</td><td>Alta (expense report)</td></tr>
+          <tr><td><strong>Migrante / worker</strong></td><td>Recurrente</td><td>Remesa, cambio divisa</td><td>Muy alta</td></tr>
+          <tr><td><strong>Crew (pilotos, azafatos)</strong></td><td>Muy frecuente</td><td>Cash múltiples divisas pequeñas</td><td>Alta</td></tr>
+          <tr><td><strong>Local sin tarjeta hábil</strong></td><td>Ocasional</td><td>Cash de su propia cuenta</td><td>Media</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Usuario primario:</strong> el turista llegando. Volumen mayor, mayor revenue (FX + withdrawal fee), mayor stress (no conoce el país, urgencia de cash). El producto se diseña para él; el resto se sirve como subset.</p>
+
+      <h2>3 · Contexto físico y emocional</h2>
+      <p>El aeropuerto cambia <strong>tres dimensiones</strong> de cualquier ATM normal:</p>
+      <ul>
+        <li><strong>Físico.</strong> Pasajero con maletas, cansado, posiblemente jet-lagged, en pasillo con tráfico, posiblemente con familia. Manos ocupadas. Tiempo entre 2-10 minutos entre conexiones.</li>
+        <li><strong>Emocional.</strong> Combinación de prisa + desconocimiento del país + ansiedad por necesitar cash YA (taxi, propina, agua). El error coste es alto: si la transacción falla, no hay tiempo de buscar otro ATM.</li>
+        <li><strong>Económico.</strong> Tarjeta extranjera: FX fees, dynamic currency conversion (DCC) ofrecida por el ATM, double fee del banco origen. El usuario muchas veces no sabe lo que va a pagar.</li>
+      </ul>
+
+      <h2>4 · Jobs to be done</h2>
+      <ul>
+        <li><strong>JTBD principal:</strong> "Conseguir cash local lo más rápido posible sin que me roben en el cambio".</li>
+        <li><strong>JTBD secundarios:</strong>
+          <ul>
+            <li>Saber cuánto va a costar antes de confirmar (transparencia FX).</li>
+            <li>No equivocarme con un idioma que no entiendo.</li>
+            <li>No olvidarme la tarjeta o el cash con prisa.</li>
+            <li>Recibir billetes de denominación útil (taxi pide cash, no me sirve un billete de 500).</li>
+            <li>Saber qué tipo de cambio voy a obtener antes de elegir DCC vs no.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>5 · Constraints duros</h2>
+      <ul>
+        <li><strong>Regulación.</strong> Anti-money laundering, límites por transacción, KYC. Aeropuerto = zona sensible para flujos de cash sospechosos.</li>
+        <li><strong>Seguridad física.</strong> ATM en zona pública, vulnerable a skimming, vandalism, robo. Cámaras alrededor obligadas.</li>
+        <li><strong>Accesibilidad.</strong> ADA compliance, screen height, audio for visually impaired, idiomas múltiples.</li>
+        <li><strong>Tiempos de operación.</strong> Aeropuertos 24/7, ATM no puede caer.</li>
+        <li><strong>Costos operativos.</strong> Recarga de cash en zona airside es operativamente caro (logística aduana). El producto tiene que minimizar trips de recarga.</li>
+        <li><strong>Card scheme rules.</strong> Visa / Mastercard establecen ratios de fees, requisitos de fraud detection, etc.</li>
+      </ul>
+
+      <h2>6 · Propuesta de diseño</h2>
+
+      <h3>Principio rector</h3>
+      <p><strong>Optimizar para el turista que llega: velocidad, transparencia, denominaciones útiles, recuperabilidad ante errores.</strong></p>
+
+      <h3>Flujo principal</h3>
+      <ol>
+        <li><strong>Pantalla de bienvenida.</strong> Detección automática del país del card BIN antes incluso de insertar PIN. "Looks like your card is from the UK. Continue in English? — Yes / No / Choose language". Pre-selecciona idioma del país emisor de la tarjeta.</li>
+        <li><strong>Inserción de tarjeta.</strong> Slot con luz pulsante visible incluso en aeropuerto con luz fuerte. Sin instrucciones largas.</li>
+        <li><strong>Choice arquitectónica clave: ofrecer cantidades pre-set contextuales</strong>, no genéricas. "€50 typical airport taxi / €100 average first day / €200 longer stay". Le da al usuario contexto local que no tiene.</li>
+        <li><strong>Pantalla de transparencia FX.</strong> ANTES de confirmar, muestra:
+          <ul>
+            <li>Cuánto recibe en moneda local (€100).</li>
+            <li>Cuánto se cobrará en moneda origen, con dos opciones lado a lado:
+              <ul>
+                <li>"Use your bank's rate" → muestra estimación + "your bank may add ~£3 fee".</li>
+                <li>"Use our rate (DCC)" → muestra cantidad exacta + "we charge £4.20 conversion fee".</li>
+              </ul>
+            </li>
+            <li>Marca claramente cuál de las dos es típicamente más barata. <strong>Esto es el diferenciador moral del producto.</strong> Hoy los ATMs aeropuerto manipulan el flujo para empujar a DCC.</li>
+          </ul>
+        </li>
+        <li><strong>Denominaciones útiles.</strong> "How would you like it? — Smaller (taxi/tips) / Mixed / Bigger (hotel)". Pre-selecciona Mixed.</li>
+        <li><strong>Confirmación con timer visible.</strong> 30 segundos para confirmar. Si no confirma, transacción cancelada sin cargo. Aeropuerto + prisa = errores.</li>
+        <li><strong>Dispensación de cash.</strong> Slot con luz, billetes deslizados parcialmente (no caen al suelo si usuario no los coge a tiempo, son sujetos por mecanismo y retraídos si no se retiran en 20s).</li>
+        <li><strong>Recordatorio físico de tarjeta.</strong> Tarjeta sale ANTES del cash, no después. Esto es decisión deliberada: la mayoría de ATMs hoy dispensan cash → te vas → olvidas tarjeta. Si el cash sale último, lo recoges con la tarjeta ya en mano.</li>
+        <li><strong>Recibo opcional con QR.</strong> Imprimir recibo o "escanear QR para guardarlo en email". Reduce papel, da copia electrónica al business traveler.</li>
+        <li><strong>Despedida útil.</strong> "Need a taxi? Authorised taxi rank is 200m to your right." Información contextual del aeropuerto, no spam.</li>
+      </ol>
+
+      <h3>Decisiones específicas notables</h3>
+      <ul>
+        <li><strong>Pantalla más grande que ATM convencional</strong> (15" mínimo) para gente con maletas que se aleja un paso.</li>
+        <li><strong>Audio dirigido</strong> (parametric speakers) que sólo escucha el usuario frente al ATM, no la cola detrás. Privacidad sin auriculares.</li>
+        <li><strong>Indicador de PIN privado</strong>: cuando estás escribiendo PIN, las teclas no laterales se apagan visualmente, evita shoulder surfing.</li>
+        <li><strong>Espacio físico para apoyar maleta</strong> a un lado del ATM, no detrás (donde estorba a la cola).</li>
+        <li><strong>Estante para móvil</strong> donde el usuario apoya el teléfono mientras opera. Suena trivial; reduce fricción real.</li>
+      </ul>
+
+      <h2>7 · Edge cases y failure modes</h2>
+      <ul>
+        <li><strong>Tarjeta retenida.</strong> Cómo recuperarla cuando el banco está en otro huso horario y tu vuelo sale en 1h. Solución: contacto inmediato con operador del ATM presente físicamente en el aeropuerto, no call center remoto.</li>
+        <li><strong>Cash dispensed pero usuario no lo recoge a tiempo</strong> (gente le tira de la maleta, distracción). Solución: retracted, transacción revertida automáticamente, SMS al usuario "tu transacción fue cancelada, no se cobra".</li>
+        <li><strong>Card declined sin explicación.</strong> Por seguridad bancaria, ATM no puede dar info concreta. Solución: pantalla muestra "Try contacting your bank. The number on the back of your card is X" y ofrece WiFi gratuito 5 minutos para llamar.</li>
+        <li><strong>Skimming detection.</strong> Sensor anti-skimming en el slot, si detecta hardware extraño se desactiva y notifica seguridad.</li>
+        <li><strong>Out of cash en una denominación.</strong> Pantalla dice "tenemos billetes de €50 y €10 pero no €20, ¿continuar?", no falla silenciosamente.</li>
+        <li><strong>Usuario con discapacidad visual.</strong> Modo audio activable desde botón físico exterior identificable al tacto (relieve), no enterrado en menú.</li>
+        <li><strong>Usuario hostil / robo asistido.</strong> Botón panic discreto (PIN inverso = silenciosa alerta a seguridad), aunque controvertido por falsos positivos.</li>
+        <li><strong>Tarjeta clonada / fraude.</strong> Pattern detection (tarjeta usada en LAX hace 4h, ahora en Heathrow) → step-up authentication.</li>
+      </ul>
+
+      <h2>8 · Métricas y riesgos</h2>
+
+      <h3>Métricas</h3>
+      <ul>
+        <li><strong>Target:</strong> tiempo medio de transacción end-to-end. Sub-90 segundos.</li>
+        <li><strong>Leading:</strong> abandonment rate antes de completar (signal de UX problem).</li>
+        <li><strong>Customer satisfaction:</strong> NPS rolling de usuarios que escanean QR del recibo (sample auto-selected pero útil).</li>
+        <li><strong>FX transparency:</strong> ratio de usuarios eligiendo DCC. <strong>Si baja, has hecho tu trabajo.</strong> Hoy DCC se acepta ~80% por engaño UX; objetivo bajar a 30% con elección informada.</li>
+        <li><strong>Operational:</strong> uptime 99.95%, cash-out frequency (cuántas veces se queda sin billetes).</li>
+        <li><strong>Guard rail:</strong> revenue per transaction. Si la transparencia mata demasiado el ingreso por DCC, modelo de negocio cae. Tiene que existir umbral mínimo.</li>
+      </ul>
+
+      <h3>Riesgos</h3>
+      <ul>
+        <li><strong>🐅 Tiger: la transparencia destroza la economía.</strong> Si quito el truco DCC, ingreso baja 40%+. Mitigación: trasladar revenue a fees claros pequeños, withdraw fee de €2.50 fijo visible. Modelo más sano pero requiere defenderlo ante operador.</li>
+        <li><strong>📰 Paper Tiger: "los pasajeros prefieren rapidez sobre transparencia, no van a leer".</strong> Suena plausible, no lo es. Los tres clicks extra de transparencia añaden ~6 segundos a la transacción. Cualquier sesgo de "no leen" se compensa con pre-selección de la opción más barata por defecto.</li>
+        <li><strong>Regulatorio:</strong> reguladores europeos están endureciendo DCC disclosure rules (PSD2, regulaciones FCA). Diseñar transparente <em>ahora</em> evita refit caro <em>luego</em>.</li>
+      </ul>
+
+      <h2>Si te preguntan transplant: "design it for a refugee camp"</h2>
+      <p>Las suposiciones que rompo: identidad verificable (refugees pueden no tener card formal), idiomas (multilingüe radical, posiblemente lenguas no soportadas hoy), conectividad (no asumir 4G/banca online), confianza institucional (relación con bancos puede ser nula). Producto se transforma de "ATM con UX consciente" a "punto de retirada de ayudas humanitarias con biométrica + identidad UN + soporte humano cerca". <strong>No es el mismo producto adaptado, es producto diferente.</strong></p>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"Before I start designing, let me clarify three things — the answer changes substantially depending on each."</strong></li>
+          <li><strong>"The airport breaks three assumptions of a normal ATM: user, context, and economics."</strong></li>
+          <li><strong>"FX transparency is the moral differentiator. Most airport ATMs today exploit the user; the right design refuses to."</strong></li>
+          <li><strong>"Card comes out before cash. That's a deliberate decision, not a UI quirk."</strong></li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/v4/claude-code" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Claude Code</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">V4 hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4/mychildatschool" class="text-sm hover:opacity-80" style="color: var(--color-primary);">MyChildAtSchool →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

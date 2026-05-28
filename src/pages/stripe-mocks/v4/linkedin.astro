@@ -1,0 +1,191 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="V4 · LinkedIn + traslación a comunidad académica" description="Análisis estructurado de LinkedIn + traslación a comunidades académicas">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver a V4</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">💼</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">LinkedIn</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Producto + traslación a comunidad académica científica</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2>Usuarios</h2>
+      <p>LinkedIn tiene <strong>tres usuarios primarios distintos en el mismo producto</strong>, y no todos pesan igual:</p>
+      <ul>
+        <li><strong>El profesional pasivo.</strong> Tiene perfil, no postea, mira ocasionalmente. Es el 80% de la base. Su valor para LinkedIn: ser <em>encontrable</em> por recruiters.</li>
+        <li><strong>El profesional activo.</strong> Postea, comenta, construye marca personal. Es el 5-10% de la base pero genera el 90% del contenido visible. Sustenta el feed.</li>
+        <li><strong>El recruiter.</strong> No es un profesional buscando trabajo, es un cazador buscando talento. Es el cliente que paga (Recruiter Lite cuesta £100+/mes, Talent Solutions enterprise mucho más).</li>
+        <li><strong>El job seeker activo.</strong> Subset del profesional, en ventana específica de búsqueda. Eres tú ahora mismo. Comportamiento muy distinto al pasivo.</li>
+        <li><strong>El comprador B2B / sales rep.</strong> Usa LinkedIn como CRM informal. Sales Navigator. Es la segunda pata de revenue.</li>
+      </ul>
+      <p>El producto sirve a todos pero <strong>la economía la sostiene el recruiter y el sales rep</strong>. Eso explica decisiones que parecen contraintuitivas (por qué el feed te muestra contenido que parece random: porque mantiene activos a los profesionales pasivos para que el recruiter pueda encontrarlos).</p>
+
+      <h2>Ecosistema</h2>
+      <p>LinkedIn opera en <strong>cuatro mercados solapados</strong>:</p>
+      <ul>
+        <li><strong>Identidad profesional.</strong> El CV vivo en internet. Aquí no compite con nadie serio. Es infraestructura.</li>
+        <li><strong>Recruitment marketplace.</strong> Compite con Indeed, Glassdoor, Greenhouse-integrados, headhunters tradicionales, y Refer (referrals tools internos).</li>
+        <li><strong>Content / media platform.</strong> Compite con Twitter, Substack, Medium, y crecientemente con TikTok para attention de Gen Z profesional.</li>
+        <li><strong>B2B sales intelligence.</strong> Compite con Apollo, ZoomInfo, Lusha, Cognism.</li>
+      </ul>
+      <p>Es propiedad de Microsoft desde 2016. Eso importa: integración con Office, Teams, Dynamics, y datos de LinkedIn alimentan al ecosistema entero de Microsoft.</p>
+
+      <h2>Competidores</h2>
+      <table>
+        <thead><tr><th>Competidor</th><th>Dónde compite</th><th>Vector de amenaza</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Indeed</strong></td><td>Job postings volumen</td><td>Mucho mayor volumen, peor calidad. LinkedIn es premium en este eje.</td></tr>
+          <tr><td><strong>Glassdoor</strong></td><td>Reseñas employer</td><td>LinkedIn no compite bien aquí, intentos suaves.</td></tr>
+          <tr><td><strong>Twitter / X</strong></td><td>Marca personal técnica</td><td>Para devs, ML, founders, Twitter sigue siendo la red de marca personal real. LinkedIn pierde a la élite tech.</td></tr>
+          <tr><td><strong>Substack</strong></td><td>Newsletters profesionales</td><td>LinkedIn Newsletter es respuesta directa. Subóptima vs Substack standalone.</td></tr>
+          <tr><td><strong>GitHub</strong></td><td>Identidad profesional de devs</td><td>Para developers, GitHub profile pesa más que LinkedIn. Microsoft owns ambos pero no los une bien.</td></tr>
+          <tr><td><strong>Apollo / ZoomInfo</strong></td><td>Sales prospecting</td><td>Vector real: dan datos más limpios y bulk, sin necesitar LinkedIn account.</td></tr>
+          <tr><td><strong>Referral tools internos</strong></td><td>Reclutamiento corporativo</td><td>Las empresas grandes priorizan referrals internos antes de LinkedIn, y eso quita pool premium.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Ventajas vs competidores</h2>
+      <ul>
+        <li><strong>Network effects más fuertes del sector.</strong> 1B+ usuarios, en mercados profesionales tu currículum tiene que estar ahí. Es opt-out coste enorme.</li>
+        <li><strong>Identity verification implícita</strong>. El perfil tiene foto + nombre real + empresas verificables. Twitter es anónimo masivamente; LinkedIn no.</li>
+        <li><strong>Datos de empleo verificados</strong>. Cuando alguien dice "trabajé en Stripe 2020-2023", LinkedIn tiene base de datos cruzable. Es activo único.</li>
+        <li><strong>Integración Microsoft.</strong> Outlook lateral pane muestra perfil del que te escribe. Teams sugiere ponentes según LinkedIn.</li>
+        <li><strong>Mejor producto enterprise para HR de Fortune 500</strong> que cualquier alternativa.</li>
+      </ul>
+
+      <h2>Desventajas vs competidores</h2>
+      <ul>
+        <li><strong>Feed degradado.</strong> Demasiado inspiracional, demasiado "buenos días LinkedIn", demasiado AI-generated. La élite tech ha migrado.</li>
+        <li><strong>UX recargado.</strong> Diez tabs, popups de premium constantes, gamification cringe ("you're in the top 1% of profile viewers").</li>
+        <li><strong>Spam de recruiters</strong>. InMail abusado destruye la experiencia del profesional activo.</li>
+        <li><strong>Mala señal/ruido en contenido.</strong> Los algoritmos premian engagement vacío (likes a posts vacíos).</li>
+        <li><strong>Search inferior a Google</strong> para encontrar gente con criterios complejos.</li>
+        <li><strong>Mobile app pobre</strong> para el caso de uso del profesional activo (creación de contenido es friction alto).</li>
+      </ul>
+
+      <h2>Qué hacen bien</h2>
+      <ul>
+        <li><strong>Profile como CV vivo.</strong> Es el feature core y sigue siendo best in class. Recommendations, skills endorsements, certificaciones.</li>
+        <li><strong>Easy Apply.</strong> Un click para postular con perfil entero. Friction de aplicar a trabajos casi cero.</li>
+        <li><strong>Open to Work</strong> signal. Te marcas como disponible, recruiters te encuentran. Aunque tiene su downside (visible al jefe), funciona.</li>
+        <li><strong>LinkedIn Learning.</strong> Integrado con perfil, las certificaciones quedan en el CV automáticamente.</li>
+        <li><strong>Sales Navigator.</strong> Producto B2B excelente, justifica precio.</li>
+      </ul>
+
+      <h2>Qué podrían mejorar</h2>
+      <ul>
+        <li><strong>Verificación de skills.</strong> Hoy todo el mundo se pone "Strategic Thinking" y "Leadership". Skill assessments existen pero están enterrados. Mover hacia GitHub-like: lo que has hecho se ve, no lo que dices.</li>
+        <li><strong>Tier de contenido serio.</strong> Una capa para gente que escribe deep posts (no cringe inspiracional) separada del feed general. LinkedIn Pulse intentó esto y murió.</li>
+        <li><strong>InMail con cost asimétrico.</strong> Recruiters mandan en bulk porque les es gratis a escala. Si cada InMail no respondido en 14 días les cuesta créditos, el spam baja.</li>
+        <li><strong>Job matching mejor que keywords.</strong> Hoy si tu título es "Head of Product" y el job dice "Senior PM", no aparecen. Semantic matching está al alcance pero mal ejecutado.</li>
+        <li><strong>Privacidad granular.</strong> Hoy o eres visible para recruiters o no. Falta "visible para recruiters de fintech de UK", por ejemplo.</li>
+        <li><strong>Talent network signals.</strong> Quién está saliendo de qué empresas (Stripe layoffs visibles en agregado anonimizado) es información que el sistema tiene y no superficie bien.</li>
+      </ul>
+
+      <hr class="my-10" />
+
+      <h2>Traslación · comunidad académica científica</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Por qué este sector.</strong> Existe un equivalente roto a LinkedIn en academia: <strong>ResearchGate</strong> + <strong>Academia.edu</strong> + <strong>Google Scholar</strong>. Ninguno cubre las cuatro patas que LinkedIn cubre (identidad + recruitment + content + intelligence). Hay 9M de investigadores activos en el mundo, mercado claro, ningún winner consolidado.</p>
+      </div>
+
+      <h3>Usuarios</h3>
+      <ul>
+        <li><strong>El investigador junior</strong> (PhD student, postdoc). Necesita visibilidad, encontrar colaboraciones, ser encontrable para hiring committees. Equivalente al "profesional activo" de LinkedIn.</li>
+        <li><strong>El investigador senior</strong> (tenured prof). Necesita reclutar a su grupo, encontrar colaboradores en otras instituciones, y mantener prestigio visible. Equivalente al "recruiter" y al "thought leader" combinados.</li>
+        <li><strong>El hiring committee universitario.</strong> Cliente que paga (las universidades pagarían acceso a la herramienta de búsqueda de candidatos). Equivalente al recruiter enterprise.</li>
+        <li><strong>La industria que contrata PhDs</strong> (pharma, AI labs, R&D corporativo). Cliente B2B paralelo.</li>
+        <li><strong>El editor / journal.</strong> Busca reviewers cualificados. Sales Navigator académico.</li>
+      </ul>
+
+      <h3>Ecosistema</h3>
+      <ul>
+        <li><strong>Identidad científica.</strong> ORCID es el ID estándar pero no es producto, es infraestructura.</li>
+        <li><strong>Publicación / reputation.</strong> Google Scholar, Semantic Scholar, OpenAlex.</li>
+        <li><strong>Hiring académico.</strong> Mathjobs, EconJobMarket, sector-específicos. Caóticos, fragmentados.</li>
+        <li><strong>Collaboration / discovery.</strong> ResearchGate, Twitter (#academictwitter), conferencias.</li>
+      </ul>
+
+      <h3>Competidores</h3>
+      <table>
+        <thead><tr><th>Competidor</th><th>Qué hace</th><th>Limitación</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ResearchGate</strong></td><td>Perfil + papers + Q&A</td><td>Producto degradado, spam alto, baja engagement, monetización oscura.</td></tr>
+          <tr><td><strong>Google Scholar</strong></td><td>Métricas de citaciones + perfil</td><td>No es red social, no hay messaging ni discovery activo.</td></tr>
+          <tr><td><strong>Academia.edu</strong></td><td>Hospedaje de papers + perfil</td><td>Pivot a freemium agresivo, comunidad descontenta.</td></tr>
+          <tr><td><strong>Semantic Scholar</strong></td><td>Discovery de papers con AI</td><td>Excelente en discovery, no en networking.</td></tr>
+          <tr><td><strong>Twitter / X (#acadX)</strong></td><td>Real-time discussion</td><td>Status quo real para muchas disciplinas, pero efímero y no estructurado.</td></tr>
+          <tr><td><strong>Mathjobs / EconJobMarket</strong></td><td>Hiring board por disciplina</td><td>Sólo el momento del job market anual, no continuo.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Ventajas vs competidores</h3>
+      <p>Asumiendo "LinkedIn for researchers" bien hecho:</p>
+      <ul>
+        <li><strong>Identidad verificada</strong> vía ORCID + afiliación institucional. ResearchGate permite cualquier email; el producto nuevo verificaría afiliación real, reduciendo spam de un golpe.</li>
+        <li><strong>Profile como CV académico vivo</strong> con publicaciones tiradas de OpenAlex en tiempo real (no inputs manuales), métricas de impacto contextualizadas por sub-disciplina (h-index de un matemático no es comparable al de un biólogo).</li>
+        <li><strong>Job matching semántico por sub-disciplina</strong>. Hoy un PhD en "computational neuroscience" mira mathjobs Y biojobs Y CS jobs. Mejor matching por palabras clave técnicas + métodos usados, no por nombre del departamento.</li>
+        <li><strong>Network effects de revisión por pares.</strong> Editor pide reviewer, el sistema sugiere candidatos basados en publicaciones recientes y disponibilidad, y track de reviews previas (anónimas pero contabilizadas).</li>
+        <li><strong>Mensajería con cost asimétrico</strong>. Mandar email cold a un Nobel hoy es cero coste; sistema con créditos limitados y respuesta esperada en 14 días reduciría el inbox bombing.</li>
+      </ul>
+
+      <h3>Desventajas vs competidores</h3>
+      <ul>
+        <li><strong>Cultura académica anti-Silicon Valley.</strong> Producto "social" se ve con sospecha. Hay que diseñar tono que no sea ni cringe inspiracional ni gamificado.</li>
+        <li><strong>Mercado pequeño en valor absoluto.</strong> 9M de usuarios potenciales vs 1B de LinkedIn. ARPU tiene que ser mayor o estructura debe ser muy lean.</li>
+        <li><strong>Fragmentación por disciplina.</strong> Un matemático y un sociólogo no se sirven con el mismo feed. ResearchGate falló aquí.</li>
+        <li><strong>Modelo de revenue difícil.</strong> Universidades públicas son lentas comprando software; pharma sí paga; AI labs sí pagan. Mix es posible pero no obvio.</li>
+        <li><strong>Datos sensibles.</strong> Quien está aplicando dónde, quién está sometiéndose a revisión doble ciego con quién, son señales que mal gestionadas pueden romper confidencialidad académica.</li>
+      </ul>
+
+      <h3>Qué tomar del playbook LinkedIn</h3>
+      <ul>
+        <li><strong>Profile como CV vivo verificado</strong>, no como hoja Word PDF subida.</li>
+        <li><strong>Open to Move / Open to Collaborate</strong> como signal opt-in, equivalente a Open to Work.</li>
+        <li><strong>Easy Apply</strong> para postdocs y tenure-track positions con perfil entero pre-rellenado.</li>
+        <li><strong>Endorsements estructurados</strong>: "X verificó que Y sabe técnica de inmunohistoquímica" en lugar de "Leadership".</li>
+        <li><strong>Talent intelligence agregada</strong>: qué institutos están subiendo / bajando en hiring de su disciplina (datos que el sistema tiene si se diseña bien).</li>
+      </ul>
+
+      <h3>Lo que añadiría específico</h3>
+      <ul>
+        <li><strong>Doble identidad: pública y anónima cualificada.</strong> Para revisión peer review, comentarios sensibles en publicaciones, denuncias éticas. Mantener verificación de credenciales sin exponer identidad.</li>
+        <li><strong>Citation flow analytics personales.</strong> Quién te cita, quién deja de citarte, en qué sub-disciplinas se está moviendo tu impacto.</li>
+        <li><strong>Conferences integration.</strong> Submit, accept, attend, present, todo trazable en el perfil. ResearchGate tiene papers, no presentaciones; eso es deuda.</li>
+        <li><strong>Grant / funding visibility.</strong> Auto-import de funding agencies (NIH, NSF, ERC, UKRI) para mostrar grants activos. Hoy hay que decirlo a mano.</li>
+        <li><strong>Cohort effects en hiring committees.</strong> "Tu perfil ha sido visto por 3 hiring committees de top-50 institutions esta semana" como signal sin exponer cuáles.</li>
+      </ul>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"LinkedIn tiene tres usuarios distintos en un solo producto; la economía la sostiene el recruiter, no el profesional pasivo."</strong></li>
+          <li><strong>"El competidor real de LinkedIn en algunos verticales no es Indeed, es Twitter para tech y GitHub para devs."</strong></li>
+          <li><strong>"Verificación de credenciales sin exponer identidad: la pata que LinkedIn nunca podrá replicar en academia."</strong></li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/v4/google-maps" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Google Maps</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">V4 hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4/claude-code" class="text-sm hover:opacity-80" style="color: var(--color-primary);">Claude Code →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

@@ -1,0 +1,186 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="V4 · Claude Code + traslación a auditoría forense" description="Análisis estructurado de Claude Code + traslación a auditoría contable / forense financiera">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver a V4</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">⚡</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">Claude Code</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Producto + traslación a auditoría contable / forense financiera</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2>Usuarios</h2>
+      <p>Primario: <strong>el developer senior con criterio técnico</strong>, alguien que sabe lo que quiere construir y necesita acelerar ejecución, no alguien aprendiendo a programar.</p>
+      <p>Tres sub-segmentos por modo de uso:</p>
+      <ul>
+        <li><strong>El solo builder.</strong> Proyectos personales, side projects, prototipos. Optimiza para velocidad de iteración.</li>
+        <li><strong>El integrador profesional.</strong> Codebase grande, en equipo. Optimiza para cambios contenidos y comprensión de impacto.</li>
+        <li><strong>El orquestador de tareas largas.</strong> Lanza refactors, migraciones, generación de tests. Optimiza para reducir su involucración mientras la tarea corre.</li>
+      </ul>
+      <p>Foco analítico: <strong>el orquestador</strong>, porque es donde Claude Code diferencia más vs IDE-first (Cursor, Copilot) y donde Anthropic tiene ventaja estructural por la calidad de razonamiento de Claude en horizontes largos.</p>
+
+      <h2>Ecosistema</h2>
+      <ul>
+        <li><strong>AI coding tools.</strong> Cursor, GitHub Copilot, Cody, Aider, Continue, y crecientemente interfaces web tipo v0, Lovable, Bolt.</li>
+        <li><strong>Developer infrastructure.</strong> Claude Code está entre el IDE y la línea de comandos: CLI-first con contexto profundo. Compite con shells aumentadas (Warp con AI) y con automation tooling tradicional.</li>
+        <li><strong>Anthropic API ecosystem.</strong> Claude Code es la aplicación más visible del API de Claude, juega doble papel: producto con ingresos y vehículo de adopción de plataforma.</li>
+      </ul>
+      <p>Tensión competitiva relevante: el modelo de pricing de Claude Code (suscripción Anthropic o API pay-per-token) difiere del de Cursor (suscripción fija). Eso crea fricciones de adopción y de comparabilidad.</p>
+
+      <h2>Competidores</h2>
+      <table>
+        <thead><tr><th>Competidor</th><th>Dónde compite</th><th>Vector de amenaza</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Cursor</strong></td><td>Editor IDE-first con AI</td><td>UX más pulida, base de usuarios masiva, ventaja de "estar donde el dev ya está".</td></tr>
+          <tr><td><strong>GitHub Copilot</strong></td><td>Autocomplete + chat en IDE</td><td>Distribution masiva (60M+ devs), bundled con GitHub Enterprise.</td></tr>
+          <tr><td><strong>Aider</strong></td><td>CLI agentic similar a Claude Code</td><td>Open source, agnóstico al modelo. Threat de larga cola técnica.</td></tr>
+          <tr><td><strong>Lovable / v0 / Bolt</strong></td><td>Generación de apps desde prompt</td><td>No compite directo pero come job-to-be-done de "construir cosas".</td></tr>
+          <tr><td><strong>Devin (Cognition)</strong></td><td>Agente autónomo end-to-end</td><td>Apuesta más radical: el dev sólo da el goal. Más promesa que realidad hoy, pero amenaza de framing.</td></tr>
+          <tr><td><strong>Cody (Sourcegraph)</strong></td><td>AI sobre codebase enterprise</td><td>Ventaja en empresas grandes con codebases masivos por integración con búsqueda Sourcegraph.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Ventajas vs competidores</h2>
+      <ul>
+        <li><strong>Calidad de razonamiento de Claude en tareas largas.</strong> Es la ventaja estructural más fuerte. Cursor y Copilot dependen de turnos cortos; Claude Code sostiene contexto de 200K tokens y razona sobre planes multi-step.</li>
+        <li><strong>Modelo "collaborator", no "assistant".</strong> Anticipa pasos, mantiene memoria de proyecto, propone cambios al plan. Cursor opera turn-by-turn.</li>
+        <li><strong>Bash + filesystem + búsqueda + edit como ciudadanos de primera.</strong> El agente actúa, no sólo sugiere. Esto cambia el contrato con el usuario.</li>
+        <li><strong>Distribution vía CLI.</strong> Sin instalación de plugin de IDE, funciona en cualquier setup, terminal-first. Para senior devs es la friction más baja.</li>
+        <li><strong>Permisos granulares y auditables.</strong> Permission system para tools peligrosas, logging de acciones. Más serio que Cursor para entornos con compliance.</li>
+      </ul>
+
+      <h2>Desventajas vs competidores</h2>
+      <ul>
+        <li><strong>UX inferior a Cursor</strong> para el caso de "editar un archivo concreto que tengo abierto". Cursor gana en el flujo IDE.</li>
+        <li><strong>Curva de aprendizaje.</strong> El modelo collaborator requiere que el usuario sepa delegar; juniors no saben qué pedir y se frustran.</li>
+        <li><strong>Coste por turno alto.</strong> 200K tokens de context con razonamiento largo no es barato. Cursor con turno corto sale más económico en uso ligero.</li>
+        <li><strong>No tiene moat de network effects.</strong> Cada usuario es individual; nada se acumula a escala más allá de mejoras del modelo base.</li>
+        <li><strong>Dependencia total de Anthropic.</strong> Si Claude cae, Claude Code cae. Aider y similares pueden swappear modelo.</li>
+        <li><strong>Brand awareness vs Cursor</strong>. En el bucket "AI coding tool" Cursor lidera mindshare por marketing y growth.</li>
+      </ul>
+
+      <h2>Qué hacen bien</h2>
+      <ul>
+        <li><strong>Tareas largas con checkpoints implícitos.</strong> Cuando el agente entra a una refactor de 20 archivos, el progreso es visible y reversible. Es algo que Cursor no resuelve hoy.</li>
+        <li><strong>Filesystem awareness.</strong> Lee, edita, mueve archivos sin que el usuario tenga que pegarlos en chat. Cambio de contrato vs Cursor/Copilot.</li>
+        <li><strong>Memoria con CLAUDE.md y subagents.</strong> Sistema de "memoria de proyecto" permite que el agente mantenga contexto entre sesiones sin reentrenar.</li>
+        <li><strong>Tool calling robusto.</strong> Bash, Read, Glob, Grep, edit, todas integradas con buena semántica de errores.</li>
+        <li><strong>Adopción interna de Anthropic.</strong> Anthropic usa Claude Code para construir Anthropic. Eso garantiza dogfooding salvaje.</li>
+      </ul>
+
+      <h2>Qué podrían mejorar</h2>
+      <ul>
+        <li><strong>Checkpoints negociables explícitos.</strong> Hoy los checkpoints son implícitos; una versión donde Claude Code se pause y reporte "he hecho X, planeo hacer Y, ¿sigues conmigo?" en momentos pre-definidos (no fijos por tiempo) reduciría el "salto al vacío" en tareas largas.</li>
+        <li><strong>Coste por tarea visible.</strong> Hoy el usuario ve coste por turno; debería ver coste estimado de la tarea completa antes de iniciar, y coste actual durante.</li>
+        <li><strong>Sub-agentes asíncronos.</strong> Hoy el main agent bloquea hasta que la subtask termina. Versión donde tareas largas corren en background y reportan al volver elevaría leverage.</li>
+        <li><strong>Integración con GitHub workflows.</strong> Crear PR, esperar CI, responder a review comments. Es feature que llegará pero hoy es operación manual.</li>
+        <li><strong>Compartir contexto entre sesiones de equipo.</strong> Si Diego y otro dev trabajan el mismo repo, hoy cada uno tiene su Claude Code aislado. Workspace compartido + memoria compartida sería diferenciador para teams.</li>
+        <li><strong>Mejor onboarding para juniors</strong> sin diluir el producto para seniors. Hoy se elige uno u otro segmento.</li>
+      </ul>
+
+      <hr class="my-10" />
+
+      <h2>Traslación · auditoría contable / forense financiera</h2>
+
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Por qué este sector.</strong> Es el sector profesional más parecido a coding en términos de estructura del problema: <em>navegar un sistema documentado, formal, formalizable, con dependencias entre piezas, buscando anomalías o aplicando cambios verificables</em>. Es un mercado de ~$250B globales con players concentrados (Big Four), tooling actual entre Excel y plataformas legacy (CaseWare, AuditBoard). Hueco evidente para agentes.</p>
+      </div>
+
+      <h3>Usuarios</h3>
+      <ul>
+        <li><strong>El auditor senior</strong> con criterio profesional, sabe qué buscar y necesita acelerar ejecución. Equivalente al senior developer.</li>
+        <li><strong>El auditor junior</strong> haciendo grunt work (revisar miles de transacciones, conciliar cuentas). Equivalente al dev junior con guardrails.</li>
+        <li><strong>El forense financiero</strong> persiguiendo fraude o irregularidades en datasets contables masivos. Equivalente al orquestador de tareas largas.</li>
+        <li><strong>El partner de auditoría</strong> firmando informes, responsabilidad legal. Cliente que paga decisión última.</li>
+      </ul>
+      <p>Foco analítico: <strong>el forense financiero</strong>, por el mismo motivo que el orquestador en Claude Code: es donde el razonamiento sobre horizonte largo y datos complejos genera valor estructural.</p>
+
+      <h3>Ecosistema</h3>
+      <ul>
+        <li><strong>Audit tooling.</strong> CaseWare, AuditBoard, Workiva. Sistemas pesados, año 2010 en UX, dominantes en Big Four.</li>
+        <li><strong>Data analytics financiero.</strong> ACL/Galvanize (Diligent), IDEA. Análisis de datasets contables para detectar anomalías.</li>
+        <li><strong>ERP integration.</strong> SAP, Oracle, NetSuite. La fuente del dato.</li>
+        <li><strong>Regulatory infrastructure.</strong> IFRS, GAAP, SOX, MiFID. El marco que define qué está "bien" o "mal".</li>
+      </ul>
+
+      <h3>Competidores</h3>
+      <table>
+        <thead><tr><th>Competidor</th><th>Qué hace</th><th>Limitación</th></tr></thead>
+        <tbody>
+          <tr><td><strong>CaseWare IDEA</strong></td><td>Data analytics para auditores</td><td>Excelente en queries estructuradas, cero en razonamiento agente.</td></tr>
+          <tr><td><strong>MindBridge</strong></td><td>AI risk scoring de transacciones</td><td>Más cerca, pero "score" pasivo, no agente activo investigando.</td></tr>
+          <tr><td><strong>AuditBoard</strong></td><td>Plataforma workflow auditoría</td><td>Gestión, no análisis con razonamiento.</td></tr>
+          <tr><td><strong>Big Four internal tools</strong></td><td>EY Helix, PwC Aura, KPMG Clara, Deloitte Omnia</td><td>Verticales pero conservadores, lock-in con clientes Big Four.</td></tr>
+          <tr><td><strong>Excel + auditor</strong></td><td>Status quo real para 60% del mercado mid-tier</td><td>El competidor más serio. Friction cero de aprendizaje, capa GPT por encima ya genera valor.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Ventajas vs competidores</h3>
+      <ul>
+        <li><strong>Razonamiento sobre horizontes largos.</strong> Una investigación forense puede atravesar 3 años de transacciones, múltiples entidades, varias divisas. Justo donde Claude brilla.</li>
+        <li><strong>Modelo collaborator, no analyst.</strong> El agente propone hipótesis ("estas 47 transacciones intercompany no cuadran con tu policy de transfer pricing porque..."), no sólo reporta números.</li>
+        <li><strong>Auditability nativa.</strong> Cada acción del agente queda loggeada con timestamp, query exacta, dato consultado. Diferenciador vs cualquier tool actual: el auditor humano puede defender el papel del agente ante un regulador.</li>
+        <li><strong>Tool calling sobre fuentes diversas.</strong> ERP, banca, registros públicos, news, ratings. Hoy el auditor humano hace toggle entre 15 sistemas; el agente lo unifica.</li>
+        <li><strong>Permisos granulares con compliance built-in.</strong> SOX, GDPR, secreto profesional. Permission system de Claude Code mapea bien.</li>
+      </ul>
+
+      <h3>Desventajas vs competidores</h3>
+      <ul>
+        <li><strong>Responsabilidad legal del informe.</strong> El partner firma; el partner no va a delegar a un agente. Producto vive en "asistente de partner", no "autor de informe".</li>
+        <li><strong>Conservadurismo sectorial.</strong> Big Four no quieren ser los primeros en explicar a un regulador que un agente AI hizo un cálculo crítico.</li>
+        <li><strong>Confidencialidad extrema.</strong> Datos de auditoría no pueden salir del cliente. Inference on-prem o private cloud obligatorio. Eleva coste de infraestructura.</li>
+        <li><strong>Coste de "alucinación" asimétrico.</strong> En coding, una alucinación es bug detectable; en forense, un falso positivo destruye relación con cliente, un falso negativo destruye carrera del auditor. Necesidad de confidence intervals explícitos.</li>
+        <li><strong>Regulación opaca y cambiante.</strong> IFRS y GAAP evolucionan, normas locales varían por país. El agente necesita updates constantes.</li>
+      </ul>
+
+      <h3>Qué tomar del playbook Claude Code</h3>
+      <ul>
+        <li><strong>Modelo collaborator</strong> sobre cuentas: el agente mantiene memoria del cliente, su negocio, su historial de issues anteriores, igual que Claude Code mantiene memoria del proyecto.</li>
+        <li><strong>Tool calling sobre fuentes contables</strong>: query a ERP, lectura de policies internas, comparación con benchmarks sectoriales.</li>
+        <li><strong>Checkpoints negociables.</strong> Cuando el agente identifica un patrón sospechoso, se pausa, reporta evidencia con confidence, y deja al auditor decidir si investiga más profundo o descarta.</li>
+        <li><strong>Audit trail completo</strong> de cada query y cada decisión. Mismo modelo que el log de acciones de Claude Code, pero con regulator-grade rigor.</li>
+        <li><strong>CLAUDE.md equivalente: AUDIT.md</strong> con perfil del cliente, materialidad, áreas de riesgo identificadas, decisiones de scope del año anterior.</li>
+      </ul>
+
+      <h3>Lo que añadiría específico</h3>
+      <ul>
+        <li><strong>Multi-hipotésis explícita.</strong> El agente no debe converger a una explicación, debe sostener varias hipótesis paralelas (error contable vs fraude vs cambio legítimo de criterio) y mostrarlas. La auditoría no es código que funciona o no funciona; es interpretación que admite varias verdades.</li>
+        <li><strong>Confidence intervals por hallazgo.</strong> "Esta anomalía tiene 87% de probabilidad de ser error involuntario por cambio de IVA en 2023" en lugar de afirmaciones binarias.</li>
+        <li><strong>Sandbox legal.</strong> Modo donde el agente sugiere acciones (subpoena documentos, ampliar muestra) pero no ejecuta. El partner aprueba.</li>
+        <li><strong>Integración con working papers regulatorios.</strong> Los hallazgos del agente se vuelven inputs estructurados a los working papers que se entregan al regulador, no markdown libre.</li>
+        <li><strong>Cost per investigation, no per turn.</strong> Una investigación forense se presupuesta por bloque, no por query. El producto debería precificar acorde.</li>
+        <li><strong>Modo "second opinion".</strong> Auditor humano completa su análisis, agente revisa, reporta divergencias. Útil para Big Four conservadores que no van a delegar pero sí van a validar.</li>
+      </ul>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"Claude Code operates as a collaborator, not as an assistant."</strong> Misma frase, misma fuerza en audit: el agente forense propone hipótesis, no sólo extrae datos.</li>
+          <li><strong>"La auditoría no es código que funciona o no funciona; admite varias verdades paralelas."</strong> El diseño exige multi-hipótesis explícita.</li>
+          <li><strong>"Cost per investigation, not cost per turn."</strong> La métrica que importa cambia con el dominio.</li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/v4/linkedin" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← LinkedIn</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">V4 hub</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4/atm-aeropuerto" class="text-sm hover:opacity-80" style="color: var(--color-primary);">ATM aeropuerto →</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

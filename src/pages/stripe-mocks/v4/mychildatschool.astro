@@ -1,0 +1,127 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="V4 · MyChildAtSchool · producto mal hecho" description="Crítica estructurada de MyChildAtSchool: por qué es malo, cómo lo rediseñarías, y la lección estructural sobre productos B2B2C con usuario forzado">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver a V4</a>
+
+    <div class="flex items-center gap-3 mt-6 mb-4">
+      <span class="text-5xl">🚨</span>
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black !my-0" style="color: var(--color-graphite);">MyChildAtSchool</h1>
+        <p class="!my-1 font-medium" style="color: var(--color-primary);">Cómo destrozar a un usuario cautivo (y qué aprende un PM senior de ahí)</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+        <h3 class="!mt-0">📌 Por qué este producto y no otro</h3>
+        <p class="!my-0">Stripe te pide criticar un producto mal diseñado. Mucha gente elige Twitter o algún rediseño de Microsoft. <strong>MyChildAtSchool</strong> es mejor elección por tres razones: (1) es un B2B2C con usuario forzado (el padre no eligió la app, la eligió el colegio); (2) muestra la patología clásica de productos donde el comprador no es el usuario; (3) te da credibilidad como PM con visión sobre verticales menos glamurosos. Hablar de un producto educativo familiar también te humaniza después de hablar de Google y Stripe.</p>
+      </div>
+
+      <h2>Qué es y por qué importa</h2>
+      <p>MyChildAtSchool (MCAS) es el portal/app que muchos colegios de UK usan para comunicar con familias: asistencia, calificaciones, comportamiento, pagos de comedor, pagos de excursiones, mensajes del colegio. Es propiedad de <strong>Bromcom</strong>, uno de los proveedores principales de MIS (Management Information System) escolar en UK.</p>
+      <p>Importa porque <strong>el padre no es el cliente, es el usuario forzado</strong>. El colegio compra Bromcom como MIS interno; los padres reciben MCAS como subproducto. Esa estructura B2B2C explica todo lo que está mal con el producto.</p>
+
+      <h2>El framework de crítica (no enumeres bugs, identifica patologías)</h2>
+      <p>La trampa al hablar de "producto mal hecho" es listar 20 cosas pequeñas que están mal. Un PM senior sube un nivel: <strong>identifica el patrón estructural que produce esos 20 fallos</strong>. Para MCAS, hay tres patologías raíz, y cada bug visible es síntoma de una de ellas.</p>
+
+      <h2>Patología 1 · El comprador no es el usuario, y se nota</h2>
+      <p>Bromcom vende a colegios. Los colegios eligen según features para profesorado, integración con DfE reporting, precio. La app del padre es <strong>una externalidad</strong> en esa decisión de compra; no genera revenue directo a Bromcom, sólo es checkmark "we have a parent portal".</p>
+      <p>Síntomas observables:</p>
+      <ul>
+        <li><strong>UI noventera</strong> tipo SharePoint 2008. No es decadencia accidental, es ausencia de inversión deliberada porque mejorar la UX del padre no aumenta ventas.</li>
+        <li><strong>App nativa iOS y Android que parecen wrapper web</strong>, no rediseñadas para mobile-first. Push notifications poco fiables.</li>
+        <li><strong>Bugs persistentes que llevan años</strong> (login que te tira al web view, scroll roto en algunas pantallas, idioma mezclado). Esos bugs no se priorizan porque no afectan al cliente de compra.</li>
+        <li><strong>Cero feedback loop con padres.</strong> No hay encuesta de uso, no hay NPS, no hay forum de feature requests. El padre no es interlocutor.</li>
+      </ul>
+
+      <h3>El rediseño estructural</h3>
+      <p>No "mejorar la app". Cambiar la relación: <strong>convertir al padre en cliente de pago opcional</strong> con tier premium ("MCAS Plus" con análisis del rendimiento del niño, alertas predictivas, integración con calendario familiar). Eso da a Bromcom incentivo directo a invertir en la experiencia del padre, no porque el colegio lo pida sino porque ahora hay revenue de padre. Mientras esa estructura económica no exista, ningún rediseño visual sirve.</p>
+
+      <h2>Patología 2 · Diseño que asume contexto de uso que no existe</h2>
+      <p>MCAS se diseña como si el padre fuera oficinista frente a desktop. La realidad: el padre lo abre <strong>en pico de estrés</strong>, mañana camino al colegio, o noche tarde para pagar excursión antes del deadline.</p>
+      <p>Síntomas:</p>
+      <ul>
+        <li><strong>Login complicado.</strong> User ID + password + school code. Tres campos sin guardar el school code automáticamente. El padre lo olvida cada 2 semanas.</li>
+        <li><strong>Navegación profunda.</strong> Para pagar una excursión: login → menu → finance → outstanding payments → select → pay. 5 niveles. Debería ser "tap notification → pay → done".</li>
+        <li><strong>Cero context awareness.</strong> Abro la app a las 8:45 lunes mañana: debería poner asistencia y comunicados del día, no un menú genérico.</li>
+        <li><strong>Información mezclada.</strong> Notas académicas, comportamiento, comunicados, pagos, todo al mismo nivel jerárquico. No hay distinción entre "lo urgente accionable" y "lo histórico consultable".</li>
+        <li><strong>Notificaciones push poco fiables.</strong> A veces sí, a veces no. El colegio manda un email "check MCAS for an important message" porque no confían en que la push haya llegado. Eso destruye el punto de tener app.</li>
+      </ul>
+
+      <h3>El rediseño estructural</h3>
+      <p>Diseñar para los tres momentos reales de uso del padre: <strong>(a) check rápido de 30 segundos, (b) acción de pago, (c) revisión semanal de rendimiento</strong>. Cada uno con flujo dedicado, no como tabs paralelas. Push notifications de confianza alta, con deep link directo a la acción. Eliminar el menú genérico. Por defecto, pantalla "hoy y esta semana", no "tu hijo en general".</p>
+
+      <h2>Patología 3 · Privacidad y seguridad arquitectónicamente mal pensadas</h2>
+      <p>MCAS gestiona datos extremadamente sensibles: educación de menores, finanzas familiares, comportamiento detallado del niño. Y el diseño no lo trata como tal.</p>
+      <p>Síntomas:</p>
+      <ul>
+        <li><strong>Single device login con sesión perpetua.</strong> Si pierdes el móvil, quien lo abra ve todo. No hay 2FA opcional ni siquiera para acciones sensibles como pagos.</li>
+        <li><strong>School code visible y compartible.</strong> Padres lo comparten en grupos de WhatsApp para nuevos compañeros. Es un identificador débil tratado como secreto.</li>
+        <li><strong>Cero distinción entre "padre/madre principal" y "tutor secundario / abuelo".</strong> Cualquier adulto con credenciales ve y modifica todo. No hay roles.</li>
+        <li><strong>Mensajes del colegio guardados sin cifrado claro</strong>, indefinidamente. El comportamiento del niño en Year 2 sigue ahí cuando esté en Year 8.</li>
+        <li><strong>Pagos pasan por un gateway opaco</strong>; el desglose de qué se paga, fees, refunds es críptico.</li>
+      </ul>
+
+      <h3>El rediseño estructural</h3>
+      <p>Tratar los datos como lo que son: educational + financial + minor's data. Eso implica:</p>
+      <ul>
+        <li>2FA obligatorio para acciones de pago.</li>
+        <li>Roles diferenciados: padre principal con permisos completos, secundario con read-only en finanzas, abuelo con sólo acceso a calendario y comunicados.</li>
+        <li>Data retention configurable por colegio según GDPR / DfE guidelines. Mensajes de behaviour antiguos se archivan, no se acumulan visibles para siempre.</li>
+        <li>Pagos vía Stripe / GoCardless con receipts limpios.</li>
+        <li>Auditoría visible: el padre ve quién ha accedido a los datos de su hijo y cuándo (incluyendo profesores).</li>
+      </ul>
+
+      <h2>La lección estructural (lo que un PM senior extrae)</h2>
+      <p>MCAS es <strong>el caso de libro de "productos B2B2C con usuario forzado"</strong>. Lo mismo aplica a:</p>
+      <ul>
+        <li>Sistemas de RRHH internos (Workday, SAP SuccessFactors): el empleado los sufre, el HR director compra.</li>
+        <li>EHR (electronic health records) en hospitales: el médico los sufre, el CMIO los compra.</li>
+        <li>Portales de pagos municipales: el ciudadano los sufre, el ayuntamiento los compra.</li>
+        <li>Apps de líneas aéreas low-cost antes de Ryanair girarlo: el pasajero las sufre, los compras están pre-hechas por contrato.</li>
+        <li>Algunas partes de Stripe enterprise: el developer las sufre, el CFO las compra (esto es relevante para tu interview, lo verás abajo).</li>
+      </ul>
+      <p>El patrón patológico: <strong>cuando el usuario y el comprador son personas distintas, y el comprador no tiene fricción de quejarse del usuario, la calidad de la experiencia degrada hasta un suelo de "no se queja lo suficiente"</strong>. La solución no es "mejor diseño visual"; es <strong>cambiar la economía</strong>: o el usuario se convierte en cliente (freemium con tier de pago para experiencia mejor), o el comprador empieza a pagar por la satisfacción del usuario (NPS del padre baja el precio que el colegio paga el siguiente año).</p>
+
+      <h2>Cómo conectarlo con Stripe en la entrevista</h2>
+      <div class="card !p-5 my-4" style="background: var(--color-primary-soft);">
+        <p class="!my-0"><strong>Frase de cierre:</strong> "Stripe is interesting partly because it inverts this pattern. The developer is both user and effective decision-maker; Stripe's reputation among developers is the moat. The MyChildAtSchool failure mode is what you get when you forget that. Stripe's discipline of treating the developer as customer-of-record is exactly the defence."</p>
+      </div>
+      <p>Eso te posiciona como alguien que entiende por qué Stripe ganó: no por mejor pricing, no por mejor docs (aunque ambos), sino por <strong>insistir en que el developer es el cliente real incluso cuando legal y financieramente el cliente es la empresa</strong>. Es un punto que Patrick y John Collison han hecho explícitamente.</p>
+
+      <h2>Lo que NO digas</h2>
+      <ul>
+        <li>No te quejes del producto en plan emocional ("es malísima"). Es padre frustrado, no PM analizando.</li>
+        <li>No propongas "rediseño visual con animaciones modernas". Eso es candidato junior sin entender la economía.</li>
+        <li>No menciones competidores específicos a no ser que te pregunten (Arbor, Bromcom mismo otros productos, Edulink). El argumento estructural se sostiene sin mencionarlos.</li>
+        <li>No exageres datos sensibles que no conoces de cierto. Habla de "behaviour records of minors" y "family financial data", no inventes incidentes específicos.</li>
+      </ul>
+
+      <hr class="my-10" />
+
+      <div class="card !p-6 my-8" style="background: var(--color-primary-soft);">
+        <h3 class="!mt-0">🎯 Frases ancla</h3>
+        <ol class="!mb-0">
+          <li><strong>"The parent is the forced user, not the customer. That structure explains every visible failure."</strong></li>
+          <li><strong>"When the user and the buyer are different people and the buyer has no friction in ignoring the user's pain, quality decays to whatever floor the user tolerates without abandoning."</strong></li>
+          <li><strong>"The fix isn't visual design. The fix is changing the economics so someone has financial incentive to make it good."</strong></li>
+          <li><strong>"Stripe wins partly because it refuses this pattern. The developer is treated as customer-of-record even when the contract is signed by the CFO."</strong></li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 mt-10">
+        <a href="/stripe-mocks/v4/atm-aeropuerto" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← ATM aeropuerto</a>
+        <span style="color: var(--color-stone);">·</span>
+        <a href="/stripe-mocks/v4" class="text-sm hover:opacity-80" style="color: var(--color-primary);">V4 hub</a>
+      </div>
+
+    </div>
+  </div>
+</LightLayout>

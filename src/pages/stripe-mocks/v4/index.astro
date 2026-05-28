@@ -1,0 +1,55 @@
+---
+import LightLayout from '../../../layouts/LightLayout.astro';
+---
+
+<LightLayout title="V4 Prep · Stripe Product Sense" description="Tres productos (Google Maps, LinkedIn, Claude Code) + traslación de cada uno + ATM aeropuerto + producto mal hecho (MyChildAtSchool)">
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+    <a href="/stripe-mocks" class="text-sm hover:opacity-80" style="color: var(--color-primary);">← Volver al hub</a>
+
+    <h1 class="text-3xl md:text-4xl font-black !my-4" style="color: var(--color-graphite);">V4 · Preparación final</h1>
+    <p class="!my-1 font-medium" style="color: var(--color-primary);">Tres productos · tres traslaciones · ATM aeropuerto · producto mal hecho</p>
+
+    <div class="card !p-5 my-6" style="background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.25);">
+      <h3 class="!mt-0">📌 Por qué este lote</h3>
+      <p class="!my-0">Mismo formato para los tres productos: users → ecosystem → competitors → advantages → disadvantages → what they do well & could improve → traslación a otro sector. Pensado para entrar a cualquiera de los tres con la misma estructura mental. Si Stripe te pregunta por uno, lo tienes. Si te piden traslación, también.</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="prose-factory">
+
+      <h2>Los tres productos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        <a href="/stripe-mocks/v4/google-maps" class="card !p-5 block no-underline hover:!shadow-lg transition-all" style="background: var(--color-mist); text-decoration: none;">
+          <div class="text-4xl">🗺️</div>
+          <h3 class="!my-2" style="color: var(--color-graphite);">Google Maps</h3>
+          <p class="text-sm !mb-0" style="color: var(--color-stone);">+ traslación a navegación marítima de pesca artesanal</p>
+        </a>
+        <a href="/stripe-mocks/v4/linkedin" class="card !p-5 block no-underline hover:!shadow-lg transition-all" style="background: var(--color-mist); text-decoration: none;">
+          <div class="text-4xl">💼</div>
+          <h3 class="!my-2" style="color: var(--color-graphite);">LinkedIn</h3>
+          <p class="text-sm !mb-0" style="color: var(--color-stone);">+ traslación a comunidades académicas (sustituir ResearchGate)</p>
+        </a>
+        <a href="/stripe-mocks/v4/claude-code" class="card !p-5 block no-underline hover:!shadow-lg transition-all" style="background: var(--color-mist); text-decoration: none;">
+          <div class="text-4xl">⚡</div>
+          <h3 class="!my-2" style="color: var(--color-graphite);">Claude Code</h3>
+          <p class="text-sm !mb-0" style="color: var(--color-stone);">+ traslación a auditoría contable / forense financiera</p>
+        </a>
+      </div>
+
+      <h2 class="!mt-10">ATM aeropuerto</h2>
+      <a href="/stripe-mocks/v4/atm-aeropuerto" class="card !p-6 block no-underline hover:!shadow-lg transition-all" style="background: var(--color-primary-soft); text-decoration: none;">
+        <h3 class="!mt-0" style="color: var(--color-graphite);">🏧 ATM de aeropuerto · diseño completo</h3>
+        <p class="text-sm !mb-0" style="color: var(--color-stone);">Users, contexto físico, constraints, jobs to be done, propuesta de diseño, edge cases, métricas, riesgos. Versión "design this" + versión "improve this".</p>
+      </a>
+
+      <h2 class="!mt-10">Producto mal hecho</h2>
+      <a href="/stripe-mocks/v4/mychildatschool" class="card !p-6 block no-underline hover:!shadow-lg transition-all" style="background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.25); text-decoration: none;">
+        <h3 class="!mt-0" style="color: var(--color-graphite);">🚨 MyChildAtSchool · cómo destrozar a un usuario cautivo</h3>
+        <p class="text-sm !mb-0" style="color: var(--color-stone);">Análisis crítico estructurado: por qué es malo, qué fallos son arquitectónicos vs cosméticos, cómo lo rediseñarías, y la lección estructural que sirve para cualquier producto B2B2C con usuario forzado.</p>
+      </a>
+
+    </div>
+  </div>
+</LightLayout>

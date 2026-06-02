@@ -550,26 +550,56 @@ details>summary::marker{display:none}
 </div>
 
 <div class="stitle">💰 Cash Balance Summary</div>
-<div class="grid3" style="margin-bottom:20px">
-<div class="card" style="text-align:center"><h3>Client Paid</h3><div class="big-number">£17,820.00</div><span style="font-size:12px;color:#64748b">inc VAT · received in [352]</span></div>
-<div class="card" style="text-align:center"><h3>HS Commission</h3><div class="big-number" style="color:#166534">£1,914.00</div><span style="font-size:12px;color:#64748b">ex VAT · deducted at source</span></div>
-<div class="card" style="text-align:center"><h3>Venue Payment</h3><div class="big-number" style="color:#64748b">£15,523.20</div><span style="font-size:12px;color:#64748b">inc VAT · net to venue</span></div>
+<div class="grid3" style="margin-bottom:16px">
+<div class="card" style="text-align:center"><h3>Client Paid</h3><div class="big-number">£17,820.00</div><span style="font-size:12px;color:#64748b">inc VAT · received in [352]</span><div style="font-size:12px;color:#166534;font-weight:600;margin-top:6px">📥 Received 5 Mar 2026</div></div>
+<div class="card" style="text-align:center"><h3>HS Commission</h3><div class="big-number" style="color:#166534">£1,914.00</div><span style="font-size:12px;color:#64748b">ex VAT · deducted at source</span><div style="font-size:12px;color:#166534;font-weight:600;margin-top:6px">✓ Retained at payout</div></div>
+<div class="card" style="text-align:center"><h3>Venue Payment</h3><div class="big-number" style="color:#64748b">£15,523.20</div><span style="font-size:12px;color:#64748b">inc VAT · net to venue</span><div style="font-size:12px;color:#2563eb;font-weight:600;margin-top:6px">📤 Paid 26 Mar 2026</div></div>
 </div>
 
-<!-- 1. VAT Reconciliation Section -->
-<div class="stitle">🧾 VAT Reconciliation</div>
+<!-- Cash flow timeline: when money in vs out -->
+<div class="card" style="margin-bottom:20px;background:#f8fafc">
+<h4 style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px">⏱️ Cash Flow Timeline — Funds Held in Transit</h4>
+<div style="display:flex;align-items:flex-start;gap:0;position:relative">
+<div style="flex:1;text-align:center;position:relative">
+<div style="width:14px;height:14px;border-radius:50%;background:#166534;margin:0 auto 8px"></div>
+<div style="font-size:13px;font-weight:700;color:#166534">£17,820.00 in</div>
+<div style="font-size:12px;color:#64748b">Client pays</div>
+<div style="font-size:12px;color:#1e293b;font-weight:600">5 Mar 2026</div>
+</div>
+<div style="flex:1.4;padding-top:7px">
+<div style="border-top:2px dashed #94a3b8;position:relative;margin:0 4px">
+<span style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#fef9c3;color:#854d0e;font-size:11px;font-weight:600;padding:2px 10px;border-radius:10px;white-space:nowrap">held 21 days · £15,523.20 in transit</span>
+</div>
+</div>
+<div style="flex:1;text-align:center">
+<div style="width:14px;height:14px;border-radius:50%;background:#2563eb;margin:0 auto 8px"></div>
+<div style="font-size:13px;font-weight:700;color:#2563eb">£15,523.20 out</div>
+<div style="font-size:12px;color:#64748b">Venue paid</div>
+<div style="font-size:12px;color:#1e293b;font-weight:600">26 Mar 2026</div>
+</div>
+</div>
+<div style="display:flex;gap:24px;margin-top:16px;padding-top:14px;border-top:1px solid #e2e8f0;font-size:12px;color:#64748b">
+<span>📅 Event: <strong style="color:#1e293b">22 Mar 2026</strong></span>
+<span>💷 HS commission retained: <strong style="color:#166534">£1,914.00</strong></span>
+<span>⏳ Float window (in→out): <strong style="color:#854d0e">21 days</strong></span>
+</div>
+<div class="todo" style="margin-top:12px">[TODO] Payment date to venue is policy-driven (e.g. event date + N days, or after client cleared). Pull both dates from the payment run / Xero so the float window is real, not assumed.</div>
+</div>
+
+<!-- 1. Final VAT Invoice Section -->
+<div class="stitle">🧾 Final VAT Invoice</div>
 <div class="card">
-<h3>Final VAT Invoice</h3>
+<h3>Final VAT Invoice from venue</h3>
 <div style="display:flex;align-items:center;gap:16px">
 <div class="upload-zone" style="flex:0 0 200px">
 📎 Click to upload final VAT invoice
 </div>
 <div style="flex:1">
 <div style="font-size:13px;color:#64748b;margin-bottom:4px">Status:</div>
-<span class="badge badge-red">Not uploaded</span>
+<span class="badge badge-red">Not received</span>
 </div>
-<div class="todo">Upload your final VAT bill here for reconciliation. This enables finance to cross-check against calculated VAT.</div>
 </div>
+<div class="todo">Somewhere to store the venue's final VAT bill (usually a PDF) against the booking, so finance can see at a glance whether it's in. Status: Not received → Received.</div>
 </div>
 
 <div class="stitle">🧾 Client Invoices | Venue Bills | Commission</div>
@@ -935,10 +965,40 @@ Creates venue bill, commission provision, and client invoice for new items only
 <div class="l2-c l2-c-payrecon">
 
 <div class="stitle">⚡ 1-Click DAS Payment</div>
-<div class="grid3" style="margin-bottom:20px">
-<div class="card" style="text-align:center"><h3>Client Paid</h3><div class="big-number">£17,820.00</div><span style="font-size:12px;color:#64748b">inc VAT · received in [352]</span></div>
-<div class="card" style="text-align:center"><h3>HS Commission</h3><div class="big-number" style="color:#166534">£1,914.00</div><span style="font-size:12px;color:#64748b">ex VAT · deducted at source</span></div>
-<div class="card" style="text-align:center"><h3>Venue Payment</h3><div class="big-number" style="color:#64748b">£15,523.20</div><span style="font-size:12px;color:#64748b">inc VAT · net to venue</span></div>
+<div class="grid3" style="margin-bottom:16px">
+<div class="card" style="text-align:center"><h3>Client Paid</h3><div class="big-number">£17,820.00</div><span style="font-size:12px;color:#64748b">inc VAT · received in [352]</span><div style="font-size:12px;color:#166534;font-weight:600;margin-top:6px">📥 Received 5 Mar 2026</div></div>
+<div class="card" style="text-align:center"><h3>HS Commission</h3><div class="big-number" style="color:#166534">£1,914.00</div><span style="font-size:12px;color:#64748b">ex VAT · deducted at source</span><div style="font-size:12px;color:#166534;font-weight:600;margin-top:6px">✓ Retained at payout</div></div>
+<div class="card" style="text-align:center"><h3>Venue Payment</h3><div class="big-number" style="color:#64748b">£15,523.20</div><span style="font-size:12px;color:#64748b">inc VAT · net to venue</span><div style="font-size:12px;color:#2563eb;font-weight:600;margin-top:6px">📤 Paid 26 Mar 2026</div></div>
+</div>
+
+<!-- Cash flow timeline: when money in vs out -->
+<div class="card" style="margin-bottom:20px;background:#f8fafc">
+<h4 style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px">⏱️ Cash Flow Timeline — Funds Held in Transit</h4>
+<div style="display:flex;align-items:flex-start;gap:0;position:relative">
+<div style="flex:1;text-align:center;position:relative">
+<div style="width:14px;height:14px;border-radius:50%;background:#166534;margin:0 auto 8px"></div>
+<div style="font-size:13px;font-weight:700;color:#166534">£17,820.00 in</div>
+<div style="font-size:12px;color:#64748b">Client pays</div>
+<div style="font-size:12px;color:#1e293b;font-weight:600">5 Mar 2026</div>
+</div>
+<div style="flex:1.4;padding-top:7px">
+<div style="border-top:2px dashed #94a3b8;position:relative;margin:0 4px">
+<span style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#fef9c3;color:#854d0e;font-size:11px;font-weight:600;padding:2px 10px;border-radius:10px;white-space:nowrap">held 21 days · £15,523.20 in transit</span>
+</div>
+</div>
+<div style="flex:1;text-align:center">
+<div style="width:14px;height:14px;border-radius:50%;background:#2563eb;margin:0 auto 8px"></div>
+<div style="font-size:13px;font-weight:700;color:#2563eb">£15,523.20 out</div>
+<div style="font-size:12px;color:#64748b">Venue paid</div>
+<div style="font-size:12px;color:#1e293b;font-weight:600">26 Mar 2026</div>
+</div>
+</div>
+<div style="display:flex;gap:24px;margin-top:16px;padding-top:14px;border-top:1px solid #e2e8f0;font-size:12px;color:#64748b">
+<span>📅 Event: <strong style="color:#1e293b">22 Mar 2026</strong></span>
+<span>💷 HS commission retained: <strong style="color:#166534">£1,914.00</strong></span>
+<span>⏳ Float window (in→out): <strong style="color:#854d0e">21 days</strong></span>
+</div>
+<div class="todo" style="margin-top:12px">[TODO] Payment date to venue is policy-driven (e.g. event date + N days, or after client cleared). Pull both dates from the payment run / Xero so the float window is real, not assumed.</div>
 </div>
 
 <div class="card">

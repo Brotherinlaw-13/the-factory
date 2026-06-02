@@ -667,6 +667,55 @@ details>summary::marker{display:none}
 
 <div class="info-banner">📋 <strong>DAS</strong> — Deducted At Source. Commission is withheld from client payment before paying venue. This booking uses DAS.</div>
 
+<!-- Status model / legend -->
+<div class="stitle" style="margin-top:24px">🗂️ Status model</div>
+<p style="font-size:13px;color:#64748b;margin:0 0 12px">Each status is a hint for action, not just an accounting label: <strong>cuadra</strong> (green), <strong>revísalo</strong> (amber), <strong>escálalo / AP</strong> (red). Statuses marked <em>(meeting)</em> come from the 12 Mar finance review; those marked <em>(Xero)</em> are standard Xero lifecycle states, included for completeness.</p>
+<div class="grid3" style="margin-bottom:20px">
+
+<div class="card" style="border-left:3px solid #2563eb">
+<h3>Client Invoices <span style="font-size:11px;color:#94a3b8;font-weight:400">— we generate</span></h3>
+<table>
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><span class="badge badge-green">Paid</span></td><td>Settled by client <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-yellow">Expected</span></td><td>Due but not yet raised / received <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-red">Overdue</span></td><td>Past due, needs chasing <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-gray">Draft</span></td><td>Created, not sent <em style="color:#94a3b8">(Xero)</em></td></tr>
+<tr><td><span class="badge badge-gray">Sent</span></td><td>Issued, awaiting payment <em style="color:#94a3b8">(Xero)</em></td></tr>
+<tr><td><span class="badge badge-gray">Part-paid</span></td><td>Partial payment received (legit, e.g. deposit) <em style="color:#94a3b8">(Xero)</em></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card" style="border-left:3px solid #f59e0b">
+<h3>Venue Bills <span style="font-size:11px;color:#94a3b8;font-weight:400">— venue bills us</span></h3>
+<table>
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><span class="badge badge-yellow">Expected</span></td><td>Awaited, not yet received <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-green">Received / Matched</span></td><td>Received, total adds up to expected <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-red">Mismatch</span></td><td>Total received ≠ expected, flagged to resolve <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-yellow">Part / split</span></td><td>Multiple bills against one expected (deposits) <em style="color:#94a3b8">(meeting)</em></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card" style="border-left:3px solid #16a34a">
+<h3 style="text-transform:uppercase;font-size:13px;letter-spacing:0.5px;color:#334155">Commission</h3>
+<table>
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><span class="badge badge-green">Recognised</span></td><td>Journal generated as booking progresses <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-yellow">Journal, no invoice</span></td><td>Commission journal exists but no invoice <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-red">Invoice ≠ journal</span></td><td>Commission invoice doesn't match journal (most common) <em style="color:#94a3b8">(meeting)</em></td></tr>
+<tr><td><span class="badge badge-green">Paid</span></td><td>Commission settled <em style="color:#94a3b8">(meeting)</em></td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+
 <!-- 4. Payment Run Modal -->
 <div class="css-modal" id="modal-overlay-payment-run">
 <label for="modal-payment-run" class="css-modal-backdrop"></label>
